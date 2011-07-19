@@ -1,0 +1,65 @@
+% $Id: INF_Dokumentvorlage_example.tex 1613 2010-02-16 19:20:13Z tkren $
+%
+% TU Wien - Faculty of Informatics
+% English document template
+%
+% This template is using the scrreprt document class of KOMA script, see
+% chapter 3 of
+% <http://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf>
+%
+% For questions and comments send an email to
+% Thomas Krennwallner <tkren@kr.tuwien.ac.at>
+%
+\documentclass{scrartcl} 
+
+\usepackage{TUINF}
+\usepackage{url}
+\newcommand{\nop}[1]{}
+
+\begin{document}
+
+\selectlanguage{english}
+~\vspace{0.5cm}
+\section*{A Weather Ontology for Predictive Control in Smart Homes}
+Paul Staroch, 0425426, 066 937
+\begin{tabbing}
+Supervisiors:\ \= Ao.Univ.Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner\\
+\> Univ.Ass. Dipl.-Ing. Mag.rer.soc.oec. Christian Reinisch
+\end{tabbing}
+
+\subsection*{Problem statement}
+Increased comfort for their inhabitants is a main goal of smart homes. Smart homes possess some kind of intelligence that enables them to take work from their inhabitants in order to make their lives easier. Besides that, the reduction of energy use can be application area for smart homes.
+
+The aim of the \textit{ThinkHome} project \cite{CR2011-TH_Journal} \cite{CR2010-DEST_ThinkHome} is designing smart homes that are able to decrease energy consumption. For making control decisions, \textit{ThinkHome} is capable of processing input data from various sources. In the context of the \textit{ThinkHome} project, this thesis aims at constructing an ontology for weather information, containing data from both current conditions and weather forecasts. The data described by this ontology will enable the \textit{ThinkHome} system to make decisions according to current and future weather conditions.
+
+\subsection*{Expected results}
+An expected result of this diploma thesis is an OWL ontology for weather data. This data describes both current and future weather conditions. The main data sources will be weather services that are accessible via Internet. Optionally, local weather stations can provide data about current weather conditions.
+
+Another result will be the implementation of a module for the \textit{ThinkHome} project that gathers data from weather services and local weather stations. This data will be transformed into a representation that complies to the weather ontology that has been created previously.
+
+\subsection*{Methodological approach}
+As none of the existing ontologies for weather data fits the requirements of the \textit{ThinkHome} project, the ones best fitting to the project's requirements are reviewed for their structure, advantages and disadvantages.
+
+Furthermore, weather services that are accessible via Internet are reviewed. Some conditions are defined that a weather service must adhere to for being suitable for use within the \textit{ThinkHome} project; e.g. the services must provide both current data and forecasts, the data retrieved must be machine-readable and the services' terms and conditions must allow the use for smart homes.
+
+After that review process has been finished, a set of weather properties (e.g. temperature and humdity) is defined. Afterwards, that properties are structured into an OWL ontology that is designed for making OWL reasoning possible. One of the approaches described in \cite{Ontology101} and \cite{def} 
+
+Finally, the process of retrieving weather data from various sources is implemented. A modular approach helps adding additional data sources if needed.
+
+\subsection*{State-of-the art}
+
+There are already some ontologies for weather data.
+\bibliography{bibfile}
+\bibliographystyle{ieeetr}
+
+\end{document}
+
+%%% Local Variables:
+%%% fill-column: 72
+%%% TeX-PDF-mode: t
+%%% TeX-debug-bad-boxes: t
+%%% TeX-master: t
+%%% TeX-parse-self: t
+%%% TeX-auto-save: t
+%%% reftex-plug-into-AUCTeX: t
+%%% End:

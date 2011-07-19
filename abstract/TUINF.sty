@@ -1,0 +1,52 @@
+% $Id: TUINF.sty 1653 2010-02-24 12:23:59Z tkren $
+%
+% TU Wien - Faculty of Informatics
+% settings for TUINF documents, letters, and presentations
+%
+% This packages is using the scrpage2 package of KOMA script, see
+% chapter 4 of
+% <http://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf>
+%
+% For questions and comments send an email to
+% Thomas Krennwallner <tkren@kr.tuwien.ac.at>
+%
+\ProvidesPackage{TUINF}[2010/02/23 v1.0 TU INF style file]
+\typeout{2010/02/23 v1.0 TU INF style file}
+
+% use Helvetica as default font
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault}
+
+% load english and ngerman
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+
+% search for graphics in ./figures
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% logo on next pages
+\usepackage{tikz}
+% total page count
+\usepackage{lastpage}
+% calculate dimensions
+\usepackage{calc}
+
+% default fontsize is 11pt
+\KOMAoptions{fontsize=11pt}
+
+% read geometry.cfg
+\usepackage{geometry}
+
+% reads scrpage.cfg
+\usepackage{scrpage2}[2008/12/08]
+
+% turn off chapter, section, ... numbering
+\setcounter{secnumdepth}{-1}
+
+\endinput
+
+%%% Local Variables:
+%%% mode: latex
+%%% End:
