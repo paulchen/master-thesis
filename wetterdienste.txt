@@ -1,0 +1,147 @@
+deutscher wetterdienst
++ aktuelle wetterdaten weltweit, zugänglich über FTP; kompliziertes
+format (http://de.wikipedia.org/wiki/SYNOP)
++ vorhersagen nur in form von wetterkarten, als text, als tabelle; nur
+für große städte weltweit
++ spezialangebote nach anfrage
++ frei verwendbar für smart homes
+
+zamg
++ "wetter für ihre homepage": 1 sprache, 2 tage -> 6 €/monat, 140 €
+setup (110€ für mind. 1 jahr, 70€ für mind. 3 jahre), 50% aufpreis für
+weitere daten, 25% aufpreis für zweites update/tag
+  => 162 € jahr, 140/110/70 € setup
++ spezialangebote nach anfrage
+
+meteoschweiz
++ spezialangebote nach anfrage
+
+
+
+yahoo weather (http://developer.yahoo.com/weather/)
++ The feeds are provided free of charge for use by individuals and
+non-profit organizations for personal, non-commercial uses.
++ das meiste sind nur aktuelle daten
++ vorschaudaten: min/max-temperatur, generelle wetterentwicklung (sunny,
+hot, showers, ...)
+
+
+
+www.worldweatheronline.com
++ free api/premium api
++ free api: free to use for personal and commercial use, requires credit
+to be given to World Weather Online (shouldn't be a problem)
++ free api: weather 5 days in advance, daily forecast
++ free api: current: temperature, weathercode, weatherdesc, windspeed,
+winddir, precipitationMM, humidity, visibility, pressure, cloudcover
++ free api: forecast: temp min/max, windspeed, winddir, weathercode,
+weatherdesc, precipitationMM
++ updates every 3-4h
++ <500 requests/h
++ premium api: costs starting at 15$/day
++ premium api: hourly forecasts; pressure, cloud cover, feels like
+temperature, dew point; chances of rain, snow, thunder, cloud, sunshine,
+frost
+
+
+National Weather Service (http://www.nws.noaa.gov/forecasts/xml/)
++ SOAP/REST
++ only for US
+
+
+Animaonline Weather API (http://awapi.codeplex.com/)
++ documentation links to 404, seems abandoned
+
+
+Google Weather Feed
++ undocumented
++ eg. http://www.google.at/ig/api?weather=Vienna&hl=en
++ only simple weather data (forecast per day, min/max temp, weather
+condition)
+
+
+Weather Underground (http://wiki.wunderground.com/index.php/API_-_XML)
++ only for personal, non-commercial use
++ custom weather services available
++ forecast by day, eg.
+http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query=Vienna,Austria
++ min/max temperature, condition
+
+
+HAMWeather (http://www.hamweather.com/)
++ complicated client
++ only weather condition shown for forecast
++ raw data available only on request
+
+
+METAR data (http://weather.noaa.gov/weather/metar.shtml)
++ airport observations
++ only current conditions, in non-human-readble format
++ PyMETAR helps making it readable:
+http://www.schwarzvogel.de/software-pymetar.shtml
+
+
+Accuweather (http://www.accuweather.com)
++ API and documentation not public, so features and terms of use unknown
+
+
+Weather.com (http://www.weather.com/services/xmloap.html)
++ complicated registration
++ terms of use seem to forbid use for smart homes
++ current conditions: temperature, condition, barometric pressure, wind
+speed/direction, humidity, visibility, dew point, sunrise/sunset, moon phase
++ five-day forecast: temp low/high, sunrise/sunset, condition, wind
+speed/direction, humidity, precipitation
+
+
+WeatherBug
+(http://weather.weatherbug.com/desktop-weather/api.html?zcode=z6286&lang_id=de-DE)
++ commercial, personal and mobile devices available
++ web page extremely slow?
++ current conditions and one forecast period (36 hours) only
++ temperature, wind direction and wind speed only
+
+
+Foreca (http://corporate.foreca.com/en/products/forecaweatherapi/)
++ minimal informations available
++ unknown terms of use
++ details only via email?
+
+
+wetter.com (http://at.wetter.com/api/uebersicht/)
++ für nicht-kommerzielle Produkte gratis
++ registrierung notwendig
++ max. 10k zugriffe/Monat
++ 6/11/17/23 Uhr: min/max-temp, condition,
+niederschlagswahrscheinlichkeit, windrichtung-/geschwindigkeit
+
+
+yr.no (http://api.yr.no/)
++ really simple REST interface
++ well documented
++ eg.
+http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=150
++ completely free to use for any purpose, only a few conditions for use
++ forecasts in 3h steps for 10 days in advance
++ temp, wind dir, wind speed, pressure, humidity, cloudiness, fog,
+clouds in 3 layers, precepitation
+
+
+
+
+
++ tmin/tmax
++ humidity/dew point
++ precipitation
++ sunset/sunrise (can be calculated using lat/lon)
++ condition
++ precipitation
++ wind speed/direction
+
++ forecast: whole day/hourly/for a few hours
++ history: temperature, sunshine, precipitation, humidity; every hour?
+
+
++ KNX weather stations: helligkeit, sonnenstand, wind, regen, temperatur
+
+
