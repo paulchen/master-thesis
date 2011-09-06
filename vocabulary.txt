@@ -1,0 +1,36 @@
+precipitation
+precipitation probability
+mm
+l/m²
+weather condition
+weather data
+weather property
+temperature
+minimum temperature
+maximum temperature
+celcius
+humidity
+cloud cover
+sunrise time
+sunset time
+light intensity
+wind speed
+wind direction
+km/h
+m/s
+forecast
+weather change
+barometric pressure
+hPa, mbar
+dew point
+latitude
+longitude
+fog
+visibility
+weather change
+thunderstorm
+severe weather
+snow
+rain
+hail
+
