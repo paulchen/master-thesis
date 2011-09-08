@@ -1,0 +1,35 @@
+* Heizung
+* Kühlung
+* Photovoltaik
+* Thermische Solaranlage
+* Sonneneinstrahlung, Abdunklung (Jalousien, Rollläden etc.)
+* Belüftung
+* Bewässerung
+* Regenwassersammlung
+* Wetterumschwung
+* Kälteeinbruch
+* Unwetter
+* Regen
+* Luftentfeuchter/Luftbefeuchter
+
+
+* Will the weather change?
+* Will temperature rise/fall?
+* Will there be (is there) bright sunshine from East?
+* Will it rain in the next few hours?
+* Will it rain today?
+* Will there be any sun today?
+* Do we need to irrigate the garden?
+* Does it rain (how intensive)?
+* Will there be severe weather?
+* Will there be danger of hail?
+* How much power is expected to be produced today using photovoltaic?
+* Shall we heat up water during the night (when electricity is cheaper) or during the day (using sunlight)?
+* How warm will it be during the day/night? 
+* Shall we take fresh air now or later?
+* Can we expect fresh rain water?
+* Will temperature drop below 0°C?
+* Will it snow? Will it stay on the ground?
+* Shall we close windows due to upcoming storm?
+* Shall we turn on/off light outside?
+
