@@ -13,6 +13,31 @@
 * Luftentfeuchter/Luftbefeuchter
 
 
+(Step 1 as in Ontology 101)
+
+
+What is the domain the ontology will cover?
+
+The ontology will cover the domain of information about current weather and weather in the near future, based on sensor observations and forecasts provided by Internet weather services.
+
+
+For what are we going to use the ontology?
+
+The ontology will be used in smart home environments to represent current and future weather conditions that influence on the building.
+
+
+For what types of questions the information in the ontology should provide answers?
+
+* What will the weather be in 3 hours?
+* What is the current weather situation?
+* What is the weather situation in 1 hour?
+* What is the weather situation tomorrow (morning, afternoon, night)?
+* What is the currnet air moisture?
+* What is the current sun radiation?
+* What is the predicted sun radiation in 3 hours?
+* What is the wind speed?
+* What is the current amount of precipitation?
+* What is the barometric pressure?
 * Will the weather change?
 * Will temperature rise/fall?
 * Will there be (is there) bright sunshine from East?
@@ -32,4 +57,18 @@
 * Will it snow? Will it stay on the ground?
 * Shall we close windows due to upcoming storm?
 * Shall we turn on/off light outside?
+
+TODO: what questions are useless because
+  - they can't be answered using an ontology?
+  - the data required is not provided by every/most weather service?
+  - it's too complicated?
+  - ...?
+
+
+Who will use and maintain the ontology?
+
+The ontology will be used in smart home systems like ThinkHome to add the capability to make control decisions based on current and future weather conditions.
+
+TODO: maintainance?
+
 
