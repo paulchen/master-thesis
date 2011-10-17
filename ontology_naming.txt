@@ -1,0 +1,25 @@
+Naming conventions, according to chapter 6 of "Ontology 101":
+
+We do not want to depend on a specific system. Hence, these assumptions:
+
+* We assume that all classes, slots and instances share one namespace. So the ontology works both with systems that have a one namespace and with systems that have separate namespaces for classes, slots and instances.
+
+* We use capitalization, but we will never use names that only differ in their capitalization. Hence the ontology works on all systems, independent from if they are case-sensitive or not.
+
+* We will only use upper and lower case letters from A to Z, numbers from 0 to 9, underscores (_) and dashes (-). Hence, all names match the regular expression ^[A-Za-z0-9\-_]$. We assume that every system supports using that set of characters safely.
+
+
+
+
+Names built from more than one world: camelCase
+
+class names: capitalize first letter; use singular
+
+slot names: first letter lower case
+
+prefixes/suffixes: use has- and -of for relationships between classes
+
+
+
+check these conventions afterwards!
+
