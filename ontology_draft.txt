@@ -1,0 +1,45 @@
++ WeatherDatum
+    - time
+    - lat/lon
+    - altitude
+  + RelativeTimeWeatherDatum
+      - time
+    + CurrentWeatherDatum
+    + ForecastWeatherDatum
+      + Forecast1HoursWeatherDatum
+      + Forecast2HoursWeatherDatum
+      + Forecast3HoursWeatherDatum
+      + Forecast6HoursWeatherDatum
+      + Forecast9HoursWeatherDatum
+      + Forecast12HoursWeatherDatum
+      + Forecast15HoursWeatherDatum
+      + Forecast18HoursWeatherDatum
+      + Forecast21HoursWeatherDatum
+      + Forecast24HoursWeatherDatum
+    + WeatherProperty
+      + Temperature
+        - value (°C)
+      + Precipitation
+        - mm/h
+        - probability
+      + Humidity
+        - value (%)
+      + DewPoint
+        - value (%)
+      + CloudCover
+        - coverage (okta)
+        - altitude (m)
+      + Wind
+        - speed (m/s)
+        - direction (degrees)
+      + AtmosphericPressure
+        - value (mbar)
+      + WeatherCondition
+        - name (STANDARDIZATION?)
+      + SunRadiation
+        - value (W/m²)
+  + AbsoluteTimeWeatherDatum
+    + SunData
+      - sunrise time
+      - sunset time
+      - max angle above horizon (degrees)
