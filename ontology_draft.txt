@@ -5,7 +5,11 @@
   + RelativeTimeWeatherDatum
       - time
     + CurrentWeatherDatum
+      + ObservedWeatherDatum
+      + WeatherDatumFromService
+        - source
     + ForecastWeatherDatum
+        - source
       + Forecast1HoursWeatherDatum
       + Forecast2HoursWeatherDatum
       + Forecast3HoursWeatherDatum
