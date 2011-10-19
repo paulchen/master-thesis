@@ -1,5 +1,5 @@
 + WeatherDatum
-    - time
+    - observationTime
     - lat/lon
     - altitude
   + RelativeTimeWeatherDatum

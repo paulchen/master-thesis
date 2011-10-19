@@ -16,6 +16,500 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#altitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#altitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#atmosphericPressure -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#atmosphericPressure">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#cloudAltitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#cloudAltitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#cloudCoverage -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#cloudCoverage">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#dewPoint -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#dewPoint">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#DewPoint"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#humidity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#humidity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#latitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#latitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#longitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#longitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#observationTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#observationTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#precipitationProbability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#precipitationProbability">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#precipitationValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#precipitationValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#source -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#source">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatumFromService"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunAngleNoon -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunAngleNoon">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunDatum"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunRadiation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunRadiation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunRadiation"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunriseTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunriseTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunDatum"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunsetTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sunsetTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunDatum"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#temperature -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#temperature">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#weatherConditionName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#weatherConditionName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#windDirection -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#windDirection">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#windSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#windSpeed">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AbsoluteTimeWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AbsoluteTimeWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CurrentWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CurrentWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#DewPoint -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#DewPoint">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast12HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast12HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast15HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast15HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast18HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast18HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast1HourWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast1HourWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast21HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast21HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast24HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast24HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast2HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast2HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast3HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast3HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast6HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast6HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast9HoursWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast9HoursWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ForecastWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ObservedWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ObservedWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CurrentWeatherDatum"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatumFromService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunDatum">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AbsoluteTimeWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunRadiation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunRadiation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatumFromService -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatumFromService">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CurrentWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast12HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast15HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast18HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast1HourWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast21HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast24HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast2HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast3HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast6HoursWeatherDatum"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast9HoursWeatherDatum"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#DewPoint"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunRadiation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind"/>
+        </owl:members>
+    </rdf:Description>
 </rdf:RDF>
 
 
