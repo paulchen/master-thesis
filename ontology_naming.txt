@@ -1,3 +1,5 @@
+TODO: We're using OWL, does it define some standards?
+
 Naming conventions, according to chapter 6 of "Ontology 101":
 
 We do not want to depend on a specific system. Hence, these assumptions:
