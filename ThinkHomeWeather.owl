@@ -378,6 +378,29 @@
     
 
 
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Frost -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Frost">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#temperature"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;float"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxExclusive rdf:datatype="&xsd;float">0.0</xsd:maxExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity">
@@ -407,6 +430,29 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#RelativeTimeWeatherDatum">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Storm -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Storm">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#windSpeed"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minExclusive rdf:datatype="&xsd;integer">30</xsd:minExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
     </owl:Class>
     
 
@@ -465,11 +511,108 @@
     
 
 
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
+    
+
+
     <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherProperty"/>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#pressure0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#pressure0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatumFromService"/>
+        <atmosphericPressure rdf:datatype="&xsd;float">1025.0</atmosphericPressure>
+        <longitude rdf:datatype="&xsd;float">16.37</longitude>
+        <altitude rdf:datatype="&xsd;int">171</altitude>
+        <time rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</time>
+        <observationTime rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</observationTime>
+        <latitude rdf:datatype="&xsd;float">48.21</latitude>
+        <source rdf:datatype="&xsd;string">yr.no</source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sun0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#sun0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunDatum"/>
+        <longitude rdf:datatype="&xsd;float">16.37</longitude>
+        <altitude rdf:datatype="&xsd;int">171</altitude>
+        <sunriseTime rdf:datatype="&xsd;dateTime">2011-10-20T05:20:44Z</sunriseTime>
+        <sunsetTime rdf:datatype="&xsd;dateTime">2011-10-20T15:57:15Z</sunsetTime>
+        <observationTime rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</observationTime>
+        <sunAngleNoon rdf:datatype="&xsd;float">31.5228762337216</sunAngleNoon>
+        <latitude rdf:datatype="&xsd;float">48.21</latitude>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#temperature0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#temperature0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatumFromService"/>
+        <longitude rdf:datatype="&xsd;float">16.37</longitude>
+        <altitude rdf:datatype="&xsd;int">171</altitude>
+        <time rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</time>
+        <observationTime rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</observationTime>
+        <latitude rdf:datatype="&xsd;float">48.21</latitude>
+        <temperature rdf:datatype="&xsd;float">6.5</temperature>
+        <source rdf:datatype="&xsd;string">yr.no</source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#temperature1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#temperature1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Forecast1HourWeatherDatum"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
+        <temperature rdf:datatype="&xsd;float">-1.0</temperature>
+        <longitude rdf:datatype="&xsd;float">16.37</longitude>
+        <altitude rdf:datatype="&xsd;int">171</altitude>
+        <observationTime rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</observationTime>
+        <time rdf:datatype="&xsd;dateTime">2011-10-20T17:00:00Z</time>
+        <latitude rdf:datatype="&xsd;float">48.21</latitude>
+        <source rdf:datatype="&xsd;string">yr.no</source>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#wind0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#wind0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherDatumFromService"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind"/>
+        <windDirection rdf:datatype="&xsd;nonNegativeInteger">110</windDirection>
+        <longitude rdf:datatype="&xsd;float">16.37</longitude>
+        <altitude rdf:datatype="&xsd;int">171</altitude>
+        <time rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</time>
+        <observationTime rdf:datatype="&xsd;dateTime">2011-10-20T16:00:00Z</observationTime>
+        <windSpeed rdf:datatype="&xsd;nonNegativeInteger">35</windSpeed>
+        <latitude rdf:datatype="&xsd;float">48.21</latitude>
+        <source rdf:datatype="&xsd;string">yr.no</source>
+    </owl:NamedIndividual>
     
 
 
