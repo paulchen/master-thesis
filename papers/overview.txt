@@ -89,7 +89,7 @@ Existing ontologies:
   Jyotishman Pathak, Doina Caragea, and Vasant G. Honavar. Ontology-Extended Component-Based Workflows: A Framework for Constructing Complex Workflows from Semantically Heterogeneous Software Components
 
 
-State of the art (from abstract):
+State of the art (partly from abstract):
 
 * A7P2(Raskin).pdf
   Rob Raskin. Semantic Web for Earth and Environmental Terminology (SWEET)
@@ -100,6 +100,9 @@ State of the art (from abstract):
 * SHS08-IC-Column-SSW.pdf
   Amit Sheth, Cory Henson, and Satya S. Sahoo. Semantic Sensor Web
 
+* ASHRAE-D-AJ10DecET-20101201.pdf
+  Alissa Cooperman; John Dieckmann; James Brodrick. Using Weather Data For Predictive Control
+  
 
 Other:
 
