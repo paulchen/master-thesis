@@ -9,6 +9,10 @@ ThinkHome:
 
 Building Ontologies:
 
+* ProtegeOWLTutorialP4_v1_3.pdf
+  Protege OWL Tutorial
+  http://owl.cs.manchester.ac.uk/tutorials/protegeowltutorial/
+
 * ontology-tutorial-noy-mcguinness.pdf
   Natalya F. Noy and Deborah L. McGuinness. Ontology Development 101: A Guide to Creating Your First Ontology.
 
@@ -17,6 +21,12 @@ Building Ontologies:
 
 * SS97-06-005.pdf
   Mariano Fernandez, Asuncion Gomez-Perez, Natalia Juristo. METHONTOLOGY: From Ontological Art Towards Ontological Engineering.
+
+* 00747904.pdf
+  Mariano Fernandez Lopez, Asuncion Gomez-Perez, Juan Pazos Sierra, Alejandro Pazos Sierra. Building a Chemical Ontology Using Methontology and the Ontology Design Environment
+
+* 10.1.1.101.6681.pdf
+  Building legal ontologies with METHONTOLOGY and WebODE
 
 * 4-fernandez.pdf
   Fernández López, M. Overview Of Methodologies For Building Ontologies
@@ -33,9 +43,10 @@ Building Ontologies:
 * grninger95methodology.pdf
   Michael Grüninger and Mark S. Fox. Methodology for the Design and Evaluation of Ontologies
 
-* Amaya Berneras et. al [KAC96, Sch95]
-
-* more METHONTOLOGY papers
+* Schreiber95a.pdf
+  Guus Schreiber, Bob Wielinga, Wouter Jansweijer. The KACTUS View on the ’O’ Word
+  http://hcs.science.uva.nl/projects/NewKACTUS/Reports.html
+  (leider vieles nicht frei zugänglich)
 
 * SENSUS ontology
 
@@ -46,7 +57,6 @@ Existing ontologies:
 
 State of the art:
 
-* 
 
 
 
@@ -60,11 +70,16 @@ weatherbot
 
 A7P2(Raskin).pdf
 C+09-SemSOS_CTS.pdf
-De_Nicola_Missikoff_Navigli_2009.pdf
 SHS08-IC-Column-SSW.pdf
 
-OWL, RDF, RDFS
+OWL, RDF, RDFS:
 
-protege tutorial
+* http://www.w3.org/2004/OWL/
+
+* http://www.w3.org/RDF/
+
+* http://www.w3.org/TR/rdf-schema/
+
+
 
 
