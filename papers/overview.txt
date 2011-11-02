@@ -1,3 +1,9 @@
+Books:
+
+* Dean Allemang, Jim Hendler. Semantic Web for the Working Ontologist
+  http://workingontologist.org/
+
+
 ThinkHome:
 
 * ThinkHome-DEST10.pdf
@@ -51,27 +57,6 @@ Building Ontologies:
 * SENSUS ontology
 
 
-Existing ontologies:
-
-* 
-
-State of the art:
-
-
-
-
-dan arkoff
-owl-time
-wgs-84
-weather agent of aberdeen
-weatherbot
-
-
-
-A7P2(Raskin).pdf
-C+09-SemSOS_CTS.pdf
-SHS08-IC-Column-SSW.pdf
-
 OWL, RDF, RDFS:
 
 * http://www.w3.org/2004/OWL/
@@ -81,5 +66,37 @@ OWL, RDF, RDFS:
 * http://www.w3.org/TR/rdf-schema/
 
 
+
+Existing ontologies:
+
+* OWL-Time:
+  W3C Working Draft: http://www.w3.org/TR/owl-time/
+  OWL-Time homepage: http://www.isi.edu/~hobbs/owl-time.html (time-entry.owl !)
+
+* Basic Geo (WGS84 lat/long) Vocabulary:
+  http://www.w3.org/2003/01/geo/
+
+* Weather Agent of Aberdeen:
+  http://inf.abdn.ac.uk/research/AgentCities/WeatherAgent/index.php
+
+* WeatherBot Project:
+  http://dormouse.cs.umd.edu:8080/wiki/weatherbot.wiki
+
+  
+State of the art (from abstract):
+
+* A7P2(Raskin).pdf
+  Rob Raskin. Semantic Web for Earth and Environmental Terminology (SWEET)
+
+* C+09-SemSOS_CTS.pdf
+  Cory A. Henson, Josh K. Pschorr, Amit P. Sheth, and Krishnaprasad Thirunarayan. SemSOS: Semantic Sensor Observation Service
+
+* SHS08-IC-Column-SSW.pdf
+  Amit Sheth, Cory Henson, and Satya S. Sahoo. Semantic Sensor Web
+
+
+dan arkoff
+weather agent of aberdeen
+weatherbot
 
 
