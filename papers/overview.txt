@@ -83,9 +83,12 @@ Existing ontologies:
   http://dormouse.cs.umd.edu:8080/wiki/weatherbot.wiki
 
 * Dan Arkoff Information Studies 277 Final Paper Proposal (unfortunately many dead links)
-  See: WeatherConcepts.owl, weather-ontology.owl
+  See: WeatherConcepts.owl, weather-ontology.owl, weather-ont.daml
 
-  
+  SWDB04.pdf
+  Jyotishman Pathak, Doina Caragea, and Vasant G. Honavar. Ontology-Extended Component-Based Workflows: A Framework for Constructing Complex Workflows from Semantically Heterogeneous Software Components
+
+
 State of the art (from abstract):
 
 * A7P2(Raskin).pdf
@@ -98,6 +101,7 @@ State of the art (from abstract):
   Amit Sheth, Cory Henson, and Satya S. Sahoo. Semantic Sensor Web
 
 
-dan arkoff
+Other:
 
+* Glossary of meteorological terms: http://amsglossary.allenpress.com/glossary
 
