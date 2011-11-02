@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE uridef[
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl">
+	<!ENTITY xsd  "http://www.w3.org/2001/XMLSchema">
+]>
+<rdf:RDF 
+	xmlns:rdf=     "&rdf;#"
+	xmlns:rdfs=    "&rdfs;#"
+	xmlns:owl=    "&owl;#"
+	xmlns:xsd=     "&xsd;"
+>
+<owl:Ontology about="">
+	<owl:versionInfo><!-- Version Info --></owl:versionInfo> 
+	<rdfs:comment>   ---ADD INFO---</rdfs:comment> 
+	<owl:imports rdf:resource="&rdf;" />
+	<owl:imports rdf:resource="&rdfs;" />
+	<owl:imports rdf:resource="&owl;" />
+	<!-- Add Imports -->
+</owl:Ontology>
+
+
+
+
+
+
+<!--Definition forArrayOfExtreme-->
+<owl:Class rdf:ID="ArrayOfExtreme">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="item">
+    <rdfs:range rdf:resource="#Extreme"/>
+    <rdfs:domain rdf:resource="#ArrayOfExtreme"/>
+</owl:Property>
+
+
+
+<!--Definition forArrayOfLayer-->
+<owl:Class rdf:ID="ArrayOfLayer">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="item">
+    <rdfs:range rdf:resource="#Layer"/>
+    <rdfs:domain rdf:resource="#ArrayOfLayer"/>
+</owl:Property>
+
+
+
+<!--Definition forArrayOfPhenomenon-->
+<owl:Class rdf:ID="ArrayOfPhenomenon">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="item">
+    <rdfs:range rdf:resource="#Phenomenon"/>
+    <rdfs:domain rdf:resource="#ArrayOfPhenomenon"/>
+</owl:Property>
+
+
+
+<!--Definition forArrayOfPrecipitation-->
+<owl:Class rdf:ID="ArrayOfPrecipitation">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="item">
+    <rdfs:range rdf:resource="#Precipitation"/>
+    <rdfs:domain rdf:resource="#ArrayOfPrecipitation"/>
+</owl:Property>
+
+
+
+<!--Definition forArrayOfStation-->
+<owl:Class rdf:ID="ArrayOfStation">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="item">
+    <rdfs:range rdf:resource="#Station"/>
+    <rdfs:domain rdf:resource="#ArrayOfStation"/>
+</owl:Property>
+
+
+
+<!--Definition forArrayOfstring-->
+<owl:Class rdf:ID="ArrayOfstring">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="item">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#ArrayOfstring"/>
+</owl:Property>
+
+
+
+<!--Definition forDirection-->
+<owl:Class rdf:ID="Direction">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="compass">
+    <rdfs:range rdf:resource="#DirectionCompass"/>
+    <rdfs:domain rdf:resource="#Direction"/>
+</owl:Property>
+<owl:Property rdf:ID="degrees">
+    <rdfs:range rdf:resource="#int"/>
+    <rdfs:domain rdf:resource="#Direction"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Direction"/>
+</owl:Property>
+
+
+
+<!--Definition forExtreme-->
+<owl:Class rdf:ID="Extreme">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="temperature">
+    <rdfs:range rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="#Extreme"/>
+</owl:Property>
+<owl:Property rdf:ID="type">
+    <rdfs:range rdf:resource="#ExtremeType"/>
+    <rdfs:domain rdf:resource="#Extreme"/>
+</owl:Property>
+<owl:Property rdf:ID="hours">
+    <rdfs:range rdf:resource="#int"/>
+    <rdfs:domain rdf:resource="#Extreme"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Extreme"/>
+</owl:Property>
+
+
+
+<!--Definition forLayer-->
+<owl:Class rdf:ID="Layer">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="altitude">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Layer"/>
+</owl:Property>
+<owl:Property rdf:ID="extent">
+    <rdfs:range rdf:resource="#int"/>
+    <rdfs:domain rdf:resource="#Layer"/>
+</owl:Property>
+<owl:Property rdf:ID="type">
+    <rdfs:range rdf:resource="#PhenomenonType"/>
+    <rdfs:domain rdf:resource="#Layer"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Layer"/>
+</owl:Property>
+
+
+
+<!--Definition forPhenomenon-->
+<owl:Class rdf:ID="Phenomenon">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="type">
+    <rdfs:range rdf:resource="#PhenomenonType"/>
+    <rdfs:domain rdf:resource="#Phenomenon"/>
+</owl:Property>
+<owl:Property rdf:ID="intensity">
+    <rdfs:range rdf:resource="#PhenomenonIntensity"/>
+    <rdfs:domain rdf:resource="#Phenomenon"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Phenomenon"/>
+</owl:Property>
+
+
+
+<!--Definition forPrecipitation-->
+<owl:Class rdf:ID="Precipitation">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="amount">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Precipitation"/>
+</owl:Property>
+<owl:Property rdf:ID="hours">
+    <rdfs:range rdf:resource="#int"/>
+    <rdfs:domain rdf:resource="#Precipitation"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Precipitation"/>
+</owl:Property>
+
+
+
+<!--Definition forPressure-->
+<owl:Class rdf:ID="Pressure">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="altimeter">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Pressure"/>
+</owl:Property>
+<owl:Property rdf:ID="slp">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Pressure"/>
+</owl:Property>
+<owl:Property rdf:ID="delta">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Pressure"/>
+</owl:Property>
+<owl:Property rdf:ID="delta_hours">
+    <rdfs:range rdf:resource="#int"/>
+    <rdfs:domain rdf:resource="#Pressure"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Pressure"/>
+</owl:Property>
+
+
+
+<!--Definition forRange-->
+<owl:Class rdf:ID="Range">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="from">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Range"/>
+</owl:Property>
+<owl:Property rdf:ID="to">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Range"/>
+</owl:Property>
+
+
+
+<!--Definition forSky-->
+<owl:Class rdf:ID="Sky">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="ceiling_altitude">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Sky"/>
+</owl:Property>
+<owl:Property rdf:ID="layers">
+    <rdfs:range rdf:resource="#ArrayOfLayer"/>
+    <rdfs:domain rdf:resource="#Sky"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Sky"/>
+</owl:Property>
+
+
+
+<!--Definition forStation-->
+<owl:Class rdf:ID="Station">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="icao">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="wmo">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="iata">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="elevation">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="latitude">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="longitude">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="name">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="region">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="country">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Station"/>
+</owl:Property>
+
+
+
+<!--Definition forTemperature-->
+<owl:Class rdf:ID="Temperature">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="ambient">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Temperature"/>
+</owl:Property>
+<owl:Property rdf:ID="dewpoint">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Temperature"/>
+</owl:Property>
+<owl:Property rdf:ID="relative_humidity">
+    <rdfs:range rdf:resource="#int"/>
+    <rdfs:domain rdf:resource="#Temperature"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Temperature"/>
+</owl:Property>
+
+
+
+<!--Definition forVisibility-->
+<owl:Class rdf:ID="Visibility">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="distance">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Visibility"/>
+</owl:Property>
+<owl:Property rdf:ID="qualifier">
+    <rdfs:range rdf:resource="#VisibilityQualifier"/>
+    <rdfs:domain rdf:resource="#Visibility"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Visibility"/>
+</owl:Property>
+
+
+
+<!--Definition forWeatherReport-->
+<owl:Class rdf:ID="WeatherReport">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="timestamp">
+    <rdfs:range rdf:resource="#dateTime"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="station">
+    <rdfs:range rdf:resource="#Station"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="phenomena">
+    <rdfs:range rdf:resource="#ArrayOfPhenomenon"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="precipitation">
+    <rdfs:range rdf:resource="#ArrayOfPrecipitation"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="extremes">
+    <rdfs:range rdf:resource="#ArrayOfExtreme"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="pressure">
+    <rdfs:range rdf:resource="#Pressure"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="sky">
+    <rdfs:range rdf:resource="#Sky"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="temp">
+    <rdfs:range rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="visibility">
+    <rdfs:range rdf:resource="#Visibility"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+<owl:Property rdf:ID="wind">
+    <rdfs:range rdf:resource="#Wind"/>
+    <rdfs:domain rdf:resource="#WeatherReport"/>
+</owl:Property>
+
+
+
+<!--Definition forWind-->
+<owl:Class rdf:ID="Wind">
+    <owl:subClassOf rdf:resource="&owl;#Thing"/>
+</owl:Class>
+<owl:Property rdf:ID="prevailing_speed">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Wind"/>
+</owl:Property>
+<owl:Property rdf:ID="gust_speed">
+    <rdfs:range rdf:resource="#double"/>
+    <rdfs:domain rdf:resource="#Wind"/>
+</owl:Property>
+<owl:Property rdf:ID="prevailing_direction">
+    <rdfs:range rdf:resource="#Direction"/>
+    <rdfs:domain rdf:resource="#Wind"/>
+</owl:Property>
+<owl:Property rdf:ID="varying_from_direction">
+    <rdfs:range rdf:resource="#Direction"/>
+    <rdfs:domain rdf:resource="#Wind"/>
+</owl:Property>
+<owl:Property rdf:ID="varying_to_direction">
+    <rdfs:range rdf:resource="#Direction"/>
+    <rdfs:domain rdf:resource="#Wind"/>
+</owl:Property>
+<owl:Property rdf:ID="string">
+    <rdfs:range rdf:resource="&xsd;#string"/>
+    <rdfs:domain rdf:resource="#Wind"/>
+</owl:Property>
+</rdf:RDF>
