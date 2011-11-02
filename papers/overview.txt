@@ -1,0 +1,70 @@
+ThinkHome:
+
+* ThinkHome-DEST10.pdf
+  Christian Reinisch, Mario J. Kofler, Wolfgang Kastner. ThinkHome: A Smart Home as Digital Ecosystem
+
+* ThinkHome-Eurasip11.pdf
+  Christian Reinisch, Mario J. Kofler, Felix Iglesias, and Wolfgang Kastner. ThinkHome Energy Efficiency in Future Smart Homes
+
+
+Building Ontologies:
+
+* ontology-tutorial-noy-mcguinness.pdf
+  Natalya F. Noy and Deborah L. McGuinness. Ontology Development 101: A Guide to Creating Your First Ontology.
+
+* De_Nicola_Missikoff_Navigli_2009.pdf
+  Antonio De Nicola, Michele Missikoff, Roberto Navigli. A software engineering approach to ontology building.
+
+* SS97-06-005.pdf
+  Mariano Fernandez, Asuncion Gomez-Perez, Natalia Juristo. METHONTOLOGY: From Ontological Art Towards Ontological Engineering.
+
+* 4-fernandez.pdf
+  Fernández López, M. Overview Of Methodologies For Building Ontologies
+
+* 490501.pdf
+  IEEE Standard for Developing Software Life Cycle Processes
+
+* 10.1.1.55.5357.ps
+  Mike Uschold, Martin King. Towards a Methodology for Building Ontologies
+
+* 10.1.1.11.9054.pdf
+  Michael Grüninger and Mark S. Fox. The Role of Competency Questions in Enterprise Engineering
+
+* grninger95methodology.pdf
+  Michael Grüninger and Mark S. Fox. Methodology for the Design and Evaluation of Ontologies
+
+* Amaya Berneras et. al [KAC96, Sch95]
+
+* more METHONTOLOGY papers
+
+* SENSUS ontology
+
+
+Existing ontologies:
+
+* 
+
+State of the art:
+
+* 
+
+
+
+dan arkoff
+owl-time
+wgs-84
+weather agent of aberdeen
+weatherbot
+
+
+
+A7P2(Raskin).pdf
+C+09-SemSOS_CTS.pdf
+De_Nicola_Missikoff_Navigli_2009.pdf
+SHS08-IC-Column-SSW.pdf
+
+OWL, RDF, RDFS
+
+protege tutorial
+
+
