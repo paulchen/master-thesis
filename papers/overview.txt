@@ -82,6 +82,9 @@ Existing ontologies:
 * WeatherBot Project:
   http://dormouse.cs.umd.edu:8080/wiki/weatherbot.wiki
 
+* Dan Arkoff Information Studies 277 Final Paper Proposal (unfortunately many dead links)
+  See: WeatherConcepts.owl, weather-ontology.owl
+
   
 State of the art (from abstract):
 
@@ -96,7 +99,5 @@ State of the art (from abstract):
 
 
 dan arkoff
-weather agent of aberdeen
-weatherbot
 
 
