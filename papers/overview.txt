@@ -54,6 +54,12 @@ Building Ontologies:
   http://hcs.science.uva.nl/projects/NewKACTUS/Reports.html
   (leider vieles nicht frei zugänglich)
 
+* whichweatherdatashouldyouuseforenergysimulations.pdf
+  Drury B. Crawley. Which Weather Data Should You Use for Energy Simulations of Commercial Buildings?
+
+* Olde_10_Proc-Clima2010.pdf
+  Frauke Oldewurtel, Dimitrios Gyalistras, Markus Gwerder, Colin N. Jones, Alessandra Parisio, Vanessa Stauch, Beat Lehmann and Manfred Morari. Increasing Energy Efficiency in Building Climate Control using Weather Forecasts and Model Predictive Control
+
 * SENSUS ontology
 
 
