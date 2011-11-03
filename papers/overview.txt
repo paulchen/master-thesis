@@ -60,7 +60,8 @@ Building Ontologies:
 * Olde_10_Proc-Clima2010.pdf
   Frauke Oldewurtel, Dimitrios Gyalistras, Markus Gwerder, Colin N. Jones, Alessandra Parisio, Vanessa Stauch, Beat Lehmann and Manfred Morari. Increasing Energy Efficiency in Building Climate Control using Weather Forecasts and Model Predictive Control
 
-* SENSUS ontology
+* SS97-06-018.pdf
+  Bill Swartout, Ramesh Patil, Kevin Knight, Tom Russ. Toward Distributed Use of Large-Scale Ontologies
 
 
 OWL, RDF, RDFS:
