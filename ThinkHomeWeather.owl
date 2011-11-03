@@ -576,7 +576,7 @@
                         </owl:onDataRange>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasAltitude"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasCloudAltitude"/>
                         <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                         <owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
                     </owl:Restriction>

@@ -1,0 +1,237 @@
+ThinkHome Weather Ontology
+===========================
+
+Description according to Methontology approach
+
+
+TODO: add TemporalThing, Instant, Interval
+
+
+Specification
+---------------
+
+Domain: Weather
+Date: November 1, 2011
+Purpose: Ontology covering data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will come from both internet services as well as from weather sensors mounted to the building.
+Level of formality: Formal (?)
+Scope:
+* Weather: all relevant weather data that can be obtained for a certain location over the next 24 hours
+* Weather phenomena: temperature, humidity, wind, ...
+* Weather conditions: sunshine, rain, thunder, ...
+* Weather state: current weather, weather in 1 hour, ..., weather in 24 hours
+* Weather source: weather from sensors
+
+Sources of knowledge (TODO):
+* data in weather reports
+* data available from sensors
+* data required by/useful for ThinkHome
+* other weather ontologies
+* glossary of weather reports (see link at Dan Arkoff)
+
+
+
+Glossary of terms
+------------------
+
+
+Weather
+Weather state
+Current weather
+Forecast
+Forecast for x hours
+Weather service
+Weather sensor
+Weather phenomenon
+Weather data for exact date and time
+Weather data for a period of time
+Temperature
+Room temperature
+Above room temperature
+Below room temperature
+Frost
+Heat
+Humidity
+Dry
+Moist
+Precipitation
+Rain
+Heavy rain
+Snow
+Wind
+Calm
+Storm
+Hurricane
+Dew point
+Cloud cover
+Clear sky
+Partly cloudy
+Mostly cloudy
+Overcast
+Unknown cloud cover
+Sunshine
+Sun radiation
+Thunder
+Sunrise
+Sunset
+Weather condition
+Weather state from service
+Weather state from sensor
+Fog
+Sleet
+Atmospheric pressure
+
+
+Concept-classification trees
+-----------------------------
+
+Weather
+
+WeatherState
++ CurrentWeatherState
++ ForecastWeatherState
+  + Forecast1HourWeatherState
+  + Forecast2HourWeatherState
+  + Forecast3HourWeatherState
+  + Forecast6HourWeatherState
+  + ...
+  + Forecast24HourWeatherState
++ IntervalWeatherState
++ InstantWeatherState
++ WeatherStateFromSensor
++ WeatherStateFromService
++ CurrentWeatherStateFromSensor
++ CurrentWeatherStateFromService
+
+WeatherPhenomenon
++ Temperature
+  + BelowRoomTemperature
+    + Frost
+  + RoomTemperature
+  + AboveRoomTemperature
+    + Heat
++ Humidity
+  + Dry
+  + Moist
++ AtmosphericPressure
++ Wind
+  + Calm
+  + Storm
+    + Hurricane
++ SunRadiation
++ SunAboveHorizon
++ Precipitation
+  + NoRain
+  + HeavyRain
++ Condition
++ CloudCover
+  + ClearSky
+  + PartlyCloudy
+  + MostlyCloudy
+  + Overcast
+  + UnknownCloudCover
++ DewPoint
+
+WeatherStateSource
++ Sensor
++ Service
+
+
+Binary-relations diagram
+-------------------------
+
+Weather <-> WeatherState - hasWeatherState/belongsToWeather
+WeatherState <-> WeatherPhenomenon - hasWeatherPhenomenon/belongsToState
+WeatherCondition <-> Condition - hasCondition
+WeatherState <-> WeatherStateSource - isSourceOf/hasSource
+
+
+Concept dictionary
+-------------------
+
+TODO
+
+attributes:
+* hasAltitude (Weather)
+* hasLatitude
+* hasLongitude
+* hasObservationTime
+* hasTime (WeatherState)
+* hasStartTime
+* hasEndTime
+* hasTemperature (Temperature)
+* hasHumidity (Humidity)
+* hasPressure (AtmosphericPressure)
+* hasWindSpeed (Wind)
+* hasWindDirection
+* hasSunRadiation (SunRadiation)
+* sunAngleNoon (SunAboveHorizon)
+* hasPrecipitationProbability (Precipitation)
+* hasPrecipitationValue
+* hasCloudCover (CloudCover)
+* hasCloudAltitude
+* hasDewPoint (DewPoint)
+
+
+Binary-relation tables
+-----------------------
+
+hasWeather - TODO
+belongsToWeather - TODO
+hasWeatherPhenomenon - TODO
+belongsToState - TODO
+hasCondition - TODO
+isSourceOf - TODO
+hasSource - TODO
+
+
+Instance-attribute tables
+--------------------------
+
+TODO (describe attributes seen above in "Concept dictionary")
+
+
+Class-attribute tables
+-----------------------
+
+?
+
+
+Logical-axioms tables
+----------------------
+
+TODO: rules for linking WeatherCondition to WeatherPhenomenon
+
+equivalent class rules for:
+* CurrentWeatherState, ForecastWeatherState, ForecastXHoursWeatherState
+* WeatherStateFrom{Sensor,Service}
+* CurrentWeatherStateFrom{Sensor,Service}
+* RoomTemperature, AboveRoomTemperature, BelowRoomTemperature, Frost, Heat
+* Dry, Moist
+* Calm, Storm, Hurricane
+* NoRain, HeavyRain (TODO: additional classes here?)
+* UnknownCloudCover, ClearSky, PartlyCloudy, MostlyCloudy, Overcast
+
+
+Constants table
+----------------
+
+WeatherCondition: Cloud, Fog, LightCloud, PartlyCloud, Rain, Sleet, Snow, Sun, Thunder
+
+
+Formula table
+--------------
+
+TODO: after completing instance-attribute tables; don't think there are any/many?
+
+
+Attribute-classification trees
+-------------------------------
+
+TODO
+
+
+Instance tables
+----------------
+
+no known values?
+
