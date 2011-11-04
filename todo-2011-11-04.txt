@@ -1,0 +1,33 @@
+METHONTOLOGY paper
+
+classes: explicit properties
+
+Semantic Web Programming
+
+literatur: predictive control - weather data
+
+abbildung von dingen wie: priorität von sensordaten über daten von wetterdiensten
+
+paper: using weather data for predictive control, cooperman, dieckmann, brodrick; ASHRAE journal, december 2010
+
+weather state: string
+
+weather agent of aberdeen
+
+accuracy of weather data from services; how accurate does the model have to be?
+
+
+
+
+TODO:
+* protege 4.1 tutorial
+* literaturrecherche: weather and predictive control, modelling of ontologies
+* already existing ontologies
+* methontology - create documents
+* explicit properties for classes
+* welche konzepte noch interessant? was sinnvoll?
+* ontologie schicken
+* nächster termin: 4.11 11:00 
+
+
+

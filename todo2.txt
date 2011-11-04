@@ -1,0 +1,25 @@
+https://tiss.tuwien.ac.at/course/courseDetails.xhtml?windowId=722&courseNr=127013&semester=2011W
+
+pizza ontology slides
+
+individuals erstellen
+
+top level concepts primitive
+
+import OWL-time ontology
+
+unterklassen von Weather: SevereWeather, AiringWeather, ...
+
+Weather -> WeatherObservation
+
+Pellet
+
+Unterscheidung instant/interval weatherstate nur für servicedaten
+
+Seasons
+
+Prioritäten als Wert
+
+recherche: ontology normalization
+
+
