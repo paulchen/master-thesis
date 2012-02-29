@@ -1,6 +1,6 @@
 https://tiss.tuwien.ac.at/course/courseDetails.xhtml?windowId=722&courseNr=127013&semester=2011W
 
-pizza ontology slides
+pizza ontology slides - http://www.co-ode.org/resources/tutorials/intro/
 
 individuals erstellen
 
