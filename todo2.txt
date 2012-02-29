@@ -14,7 +14,7 @@ Weather -> WeatherObservation - OK
 
 Pellet - OK
 
-Unterscheidung instant/interval weatherstate nur für servicedaten
+Unterscheidung instant/interval weatherstate nur für servicedaten - OK
 
 Seasons
 
