@@ -18,7 +18,7 @@ Unterscheidung instant/interval weatherstate nur für servicedaten - OK
 
 Seasons
 
-Prioritäten als Wert
+Prioritäten als Wert - OK
 
 recherche: ontology normalization
 
