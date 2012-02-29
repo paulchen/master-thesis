@@ -6,13 +6,13 @@ individuals erstellen
 
 top level concepts primitive
 
-import OWL-time ontology
+import OWL-time ontology - OK
 
 unterklassen von Weather: SevereWeather, AiringWeather, ...
 
-Weather -> WeatherObservation
+Weather -> WeatherObservation - OK
 
-Pellet
+Pellet - OK
 
 Unterscheidung instant/interval weatherstate nur für servicedaten
 
