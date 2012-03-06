@@ -135,6 +135,9 @@ NEW:
 * p366-obrst.pdf
   Leo Obrst: Ontologies for Semantically Interoperable Systems
 
+* Interoperability_2.pdf
+  Raúl García-Castro, Asunción Gómez-Pérez: Interoperability results for Semantic Web technologies using OWL as the interchange language
+
 * rector-modularisation-kcap-2003-distrib.pdf
   Alan L Rector: Modularisation of Domain Ontologies Implemented in Description Logics and related formalisms including OWL
 
