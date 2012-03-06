@@ -126,6 +126,13 @@ NEW:
 * 27.pdf
   Michel Klein: Combining and relating ontologies: an analysis of problems and solutions
 
-*
+* Some_Issues_on.pdf
   H. Sofia Pinto, Asunción Gómez-Pérez, João P. Martins: Some Issues on Ontology Integration
+
+* 10.1.1.143.1048.pdf
+  Aldo Gangemi: Design patterns for legal ontology construction
+
+* p366-obrst.pdf
+  Leo Obrst: Ontologies for Semantically Interoperable Systems
+
 
