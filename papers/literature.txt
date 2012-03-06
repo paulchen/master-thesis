@@ -115,3 +115,14 @@ Other:
 
 * Glossary of meteorological terms: http://amsglossary.allenpress.com/glossary
 
+
+
+
+NEW:
+
+* ontology-design-principles-and-normalization-techniques.pdf
+  Xiaoshu Wang, Jonas S. Almeida und Arlindo L. Oliveira: Ontology Design Principles and Normalization Techniques in the Web
+
+* 
+  Michel Klein: Combining and relating ontologies: an analysis of problems and solutions
+
