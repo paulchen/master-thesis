@@ -123,6 +123,9 @@ NEW:
 * ontology-design-principles-and-normalization-techniques.pdf
   Xiaoshu Wang, Jonas S. Almeida und Arlindo L. Oliveira: Ontology Design Principles and Normalization Techniques in the Web
 
-* 
+* 27.pdf
   Michel Klein: Combining and relating ontologies: an analysis of problems and solutions
+
+*
+  H. Sofia Pinto, Asunción Gómez-Pérez, João P. Martins: Some Issues on Ontology Integration
 
