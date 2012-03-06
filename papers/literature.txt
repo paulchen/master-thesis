@@ -141,4 +141,6 @@ NEW:
 * AIKED-69.pdf
   LULE AHMEDI, EDMOND JAJAGA: Normalization of relations and ontologies
 
+* 2003_211_Volz_Views_for_Light_1.pdf
+  Raphael Volz, Daniel Oberle, Rudi Studer: Views for light-weight web ontologies
 
