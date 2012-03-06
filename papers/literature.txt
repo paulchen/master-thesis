@@ -135,4 +135,7 @@ NEW:
 * p366-obrst.pdf
   Leo Obrst: Ontologies for Semantically Interoperable Systems
 
+* rector-modularisation-kcap-2003-distrib.pdf
+  Alan L Rector: Modularisation of Domain Ontologies Implemented in Description Logics and related formalisms including OWL
+
 
