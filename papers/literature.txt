@@ -138,4 +138,7 @@ NEW:
 * rector-modularisation-kcap-2003-distrib.pdf
   Alan L Rector: Modularisation of Domain Ontologies Implemented in Description Logics and related formalisms including OWL
 
+* AIKED-69.pdf
+  LULE AHMEDI, EDMOND JAJAGA: Normalization of relations and ontologies
+
 
