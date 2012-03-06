@@ -144,3 +144,7 @@ NEW:
 * 2003_211_Volz_Views_for_Light_1.pdf
   Raphael Volz, Daniel Oberle, Rudi Studer: Views for light-weight web ontologies
 
+* A_Note_on_Ontology_Localization.pdf
+  Philipp Cimiano, Elena Montiel-Ponsoda, Paul Buitelaar, Mauricio Espinoza, Asunción Gómez-Pérez: A Note on Ontology Localization
+
+
