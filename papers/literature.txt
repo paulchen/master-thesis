@@ -144,6 +144,9 @@ NEW:
 * AIKED-69.pdf
   LULE AHMEDI, EDMOND JAJAGA: Normalization of relations and ontologies
 
+* CAEPIA09_-_Common_Pitfalls_in_Ontology_Development_-_final_version_fixed.pdf
+  María Poveda, Mari Carmen Suárez-Figueroa, Asunción Gómez-Pérez: Common Pitfalls in Ontology Development
+
 * 2003_211_Volz_Views_for_Light_1.pdf
   Raphael Volz, Daniel Oberle, Rudi Studer: Views for light-weight web ontologies
 
