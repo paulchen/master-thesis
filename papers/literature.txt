@@ -153,4 +153,7 @@ NEW:
 * A_Note_on_Ontology_Localization.pdf
   Philipp Cimiano, Elena Montiel-Ponsoda, Paul Buitelaar, Mauricio Espinoza, Asunción Gómez-Pérez: A Note on Ontology Localization
 
+* 04606786.pdf
+  Gómez-Pérez A., Ramos J.A.: Semantic mappings: out of ontology world limits
+
 
