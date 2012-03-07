@@ -2,7 +2,7 @@ https://tiss.tuwien.ac.at/course/courseDetails.xhtml?windowId=722&courseNr=12701
 
 pizza ontology slides - http://www.co-ode.org/resources/tutorials/intro/ - OK
 
-individuals erstellen
+individuals erstellen - OK
 
 top level concepts primitive
 
