@@ -1,0 +1,31 @@
+AiringWeather, IrrigationWeather, ...
+
+CurrentWeatherStateFromSensor?
+
+owl-time for observationTime?
+
+WeatherObservation - history
+
+Short/Mid/LongRange forecast
+
+WeatherState -> WeatherCondition (without Condition)
+
+TimedWeatherState, ConditionWeatherState
+
+zusätzliche Unterkonzepte von WeatherPhenomenon (e.g. SunRadiation)
+
+unterkonzepte von WeatherPhenomenon: complete value partitions (e.g. for Precipitation: NoRain, LightRain, heavyRain, ...)
+
+Spezialfälle (e.g. Thunderstorm) testen
+
+SWEET ontology - reuse?
+
+methodology for ontology creation
+
+pellint
+
+kapitelstruktur/inhaltsverzeichnis
+
+21.3.2012 11:00
+
+
