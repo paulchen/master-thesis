@@ -1,0 +1,50 @@
+\chapter*{Abstract}
+
+\subsection*{Problem statement}
+In the past few years, the idea of creating smart homes, i.e. homes that possess some kind of intelligence, has gained popularity.
+Their intelligence enables smart homes to take work from their inhabitants in order to make the inhabitants' lives easier.
+Besides increased comfort for the inhabitants, the reduction of energy use can be a goal for smart homes.
+
+The aim of the \textit{ThinkHome} project \cite{CR2011-TH_Journal} \cite{CR2010-DEST_ThinkHome} is to design smart homes that are able to decrease energy consumption.
+For making control decisions, \textit{ThinkHome} is capable of processing input data from various sources.
+In the context of the \textit{ThinkHome} project, this thesis aims at constructing an ontology for weather information, containing data from both current conditions and weather forecasts.
+The data described by this ontology will enable the \textit{ThinkHome} system to make decisions based on current and future weather conditions.
+
+\subsection*{Expected results}
+An expected result of this diploma thesis is an \textit{OWL} ontology for weather data. This weather data describes both current and future weather conditions.
+The main data sources are weather services that are accessible via Internet. Optionally, local weather stations can provide further data about current weather conditions.
+The ontology will be designed with the possibility of simple and efficient \textit{OWL reasoning} in mind.
+
+Another result is the implementation of a weather module for the \textit{ThinkHome} project that gathers data from weather services and local weather stations.
+This information will be transformed into a representation that complies to the \textit{OWL} ontology that has been created previously.
+Furthermore, the interface between the weather module and \textit{ThinkHome}'s multi-agent system will be pictured.
+That interface will enable the multi-agent system to use weather information in order to make appropriate decisions.
+
+\subsection*{Methodological approach}
+As none of the existing ontologies for weather information fits the requirements of the \textit{ThinkHome} project, the ones best fitting to the project's requirements are reviewed for their structure, advantages and disadvantages.
+
+Furthermore, weather services that are accessible via Internet are reviewed.
+Some conditions are defined that a weather service must adhere to for being suitable for use within the \textit{ThinkHome} project;
+e.g. the services must provide both current data and forecasts, the data retrieved must be machine-readable and the services' terms and conditions must allow the use for smart homes.
+
+After that review process has been finished, a set of weather properties (e.g. temperature and humidity) is defined.
+Afterwards, that properties are structured into an \textit{OWL} ontology that is designed for making \textit{OWL} reasoning possible.
+One of the approaches described in \cite{Ontology101} and \cite{SoftwareEngineeringOntology} may be used.
+
+Finally, the process of retrieving weather data from various sources is implemented. A modular approach helps adding additional data sources if needed.
+
+\subsection*{State-of-the-art}
+
+There are some existing ontologies for weather data. The \textit{Semantic Sensor Web} \cite{SemanticSensorWeb} is an approach to improve handling of sensor data from various sources.
+Sensor data is annotated with spatial, temporal and thematic metadata. Part of this approach is an \textit{OWL} ontology that covers different kinds of data including weather information.
+
+The \textit{Sensor Observation Service} (\textit{SOS}) \cite{SOS} is a specification of web services designed to make sensor data discoverable and accessible via Internet.
+The \textit{Semantic Sensor Observation Service} (\textit{SemSOS}) \cite{SemSOS} adds semantic web features to \textit{SOS}.
+Therefore, it uses an \textit{OWL} ontology adding semantic annotations to all sensor data, including weather information.
+
+The \textit{Semantic Web for Earth and environmental terminology project} (\textit{SWEET}) \cite{SWEET} comes with a collection of ontologies designed to improve discovery and use of Earth science data.
+Among other data these ontologies cover weather information, but they may be too shallow.
+
+The \textit{Next Generation Air Transportation System} (\textit{NextGen}) \cite{NextGen} is a project aimed at a complete transformation of the United States' air transportation system.
+One of its parts is the \textit{NNEW} project (\textit{NextGen Network Enabled Weather}) that -- once it is finished -- will provide simplified access to weather information across the United States.
+It is built around an \textit{OWL} ontology adding semantic metadata to weather information.
