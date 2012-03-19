@@ -313,7 +313,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:maxInclusive rdf:datatype="&xsd;float">180.0</xsd:maxInclusive>
+                        <xsd:minInclusive rdf:datatype="&xsd;float">-180.0</xsd:minInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -323,7 +323,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:minInclusive rdf:datatype="&xsd;float">-180.0</xsd:minInclusive>
+                        <xsd:maxInclusive rdf:datatype="&xsd;float">180.0</xsd:maxInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -357,7 +357,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:maxInclusive rdf:datatype="&xsd;float">1.0</xsd:maxInclusive>
+                        <xsd:minInclusive rdf:datatype="&xsd;float">0.0</xsd:minInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -367,7 +367,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:minInclusive rdf:datatype="&xsd;float">0.0</xsd:minInclusive>
+                        <xsd:maxInclusive rdf:datatype="&xsd;float">1.0</xsd:maxInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -455,7 +455,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:minInclusive rdf:datatype="&xsd;float">-23.5</xsd:minInclusive>
+                        <xsd:maxInclusive rdf:datatype="&xsd;float">90.0</xsd:maxInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -465,7 +465,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:maxInclusive rdf:datatype="&xsd;float">90.0</xsd:maxInclusive>
+                        <xsd:minInclusive rdf:datatype="&xsd;float">-23.5</xsd:minInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -1358,7 +1358,6 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
     </owl:Class>
     
 
@@ -1768,7 +1767,6 @@ NOTE: This class only specifies a single cloud layer. It does not make any state
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
     </owl:Class>
     
 
@@ -1937,13 +1935,6 @@ Several instances of WeatherCondition can be associated with the same instance o
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherObservation">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasObservationTime"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasAltitude"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;int"/>
@@ -1961,6 +1952,13 @@ Several instances of WeatherCondition can be associated with the same instance o
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasLatitude"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasObservationTime"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="&xsd;string">A WeatherObservation puts together all the information known at a certain time about both the current and the future weather at a certain location.
@@ -2027,20 +2025,6 @@ For specifying the weather information, there exist several data properties: has
 
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState">
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasTemporalEntity"/>
-                <owl:onClass rdf:resource="&time;TemporalEntity"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#belongsToWeatherObservation"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherObservation"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#InstantWeatherState"/>
@@ -2050,8 +2034,22 @@ For specifying the weather information, there exist several data properties: has
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#belongsToWeatherObservation"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherObservation"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasSource"/>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherStateSource"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasTemporalEntity"/>
+                <owl:onClass rdf:resource="&time;TemporalEntity"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
