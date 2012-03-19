@@ -30,7 +30,7 @@ kapitelstruktur/inhaltsverzeichnis - OK
 
 include WGS84 - OK
 
-link consecutive WeatherStates together
+link consecutive WeatherStates together - OK
 
-link TimedWeatherState to Instant, not to TemporalEntity
+link TimedWeatherState to Instant, not to TemporalEntity - OK
 
