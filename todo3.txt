@@ -6,7 +6,7 @@ owl-time for observationTime?
 
 WeatherObservation - history
 
-Short/Mid/LongRange forecast
+Short/Mid/LongRange forecast - DONE
 
 WeatherState -> WeatherCondition (without Condition) - DONE
 
