@@ -28,4 +28,9 @@ kapitelstruktur/inhaltsverzeichnis - OK
 
 21.3.2012 11:00
 
+include WGS84 - OK
+
+link consecutive WeatherStates together
+
+link TimedWeatherState to Instant, not to TemporalEntity
 
