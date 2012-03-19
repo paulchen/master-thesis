@@ -1,6 +1,6 @@
 AiringWeather, IrrigationWeather, ...
 
-CurrentWeatherStateFromSensor?
+CurrentWeatherStateFromSensor? - DONE
 
 owl-time for observationTime?
 
@@ -20,9 +20,9 @@ Spezialfälle (e.g. Thunderstorm) testen
 
 SWEET ontology - reuse?
 
-methodology for ontology creation
+methodology for ontology creation - METHONTOLOGY - OK
 
-pellint
+pellint - OK
 
 kapitelstruktur/inhaltsverzeichnis - OK
 
