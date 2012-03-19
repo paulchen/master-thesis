@@ -8,7 +8,7 @@ WeatherObservation - history
 
 Short/Mid/LongRange forecast
 
-WeatherState -> WeatherCondition (without Condition)
+WeatherState -> WeatherCondition (without Condition) - DONE
 
 TimedWeatherState, ConditionWeatherState
 
