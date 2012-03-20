@@ -152,10 +152,21 @@ above the local reference ellipsoid).</rdfs:comment>
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherObservation"/>
         <rdfs:range>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&time;unitType"/>
-                <owl:hasValue rdf:resource="&time;unitMinute"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&time;Instant"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&time;inDateTime"/>
+                        <owl:onClass>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;unitType"/>
+                                <owl:hasValue rdf:resource="&time;unitMinute"/>
+                            </owl:Restriction>
+                        </owl:onClass>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </rdfs:range>
     </owl:ObjectProperty>
     
@@ -2818,10 +2829,21 @@ Several instances of WeatherCondition can be associated with the same instance o
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasObservationTime"/>
                 <owl:onClass>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&time;unitType"/>
-                        <owl:hasValue rdf:resource="&time;unitMinute"/>
-                    </owl:Restriction>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&time;Instant"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;inDateTime"/>
+                                <owl:onClass>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&time;unitType"/>
+                                        <owl:hasValue rdf:resource="&time;unitMinute"/>
+                                    </owl:Restriction>
+                                </owl:onClass>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
                 </owl:onClass>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
@@ -3108,15 +3130,6 @@ sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Fog">
         <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition"/>
     </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hours3 -->
-
-    <time:DurationDescription rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hours3">
-        <rdf:type rdf:resource="&owl;NamedIndividual"/>
-        <time:hours rdf:datatype="&xsd;decimal">3</time:hours>
-    </time:DurationDescription>
     
 
 
