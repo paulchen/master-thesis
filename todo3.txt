@@ -14,9 +14,11 @@ TimedWeatherState, ConditionWeatherState - DONE
 
 zusätzliche Unterkonzepte von WeatherPhenomenon (e.g. SunRadiation)
 
-unterkonzepte von WeatherPhenomenon: complete value partitions (e.g. for Precipitation: NoRain, LightRain, heavyRain, ...)
+unterkonzepte von WeatherPhenomenon: complete value partitions (e.g. for Precipitation: NoRain, LightRain, heavyRain, ...) - TODO
+-- disjunct partitions?
+-- dewpoint
 
-Spezialfälle (e.g. Thunderstorm) testen
+Spezialfälle (e.g. Thunderstorm) testen - in progress
 
 SWEET ontology - reuse?
 
