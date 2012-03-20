@@ -2,7 +2,7 @@ AiringWeather, IrrigationWeather, ...
 
 CurrentWeatherStateFromSensor? - DONE
 
-owl-time for observationTime?
+owl-time for observationTime? - DONE
 
 WeatherObservation - history
 
@@ -10,7 +10,7 @@ Short/Mid/LongRange forecast - DONE
 
 WeatherState -> WeatherCondition (without Condition) - DONE
 
-TimedWeatherState, ConditionWeatherState
+TimedWeatherState, ConditionWeatherState - DONE
 
 zusätzliche Unterkonzepte von WeatherPhenomenon (e.g. SunRadiation)
 
