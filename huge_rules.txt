@@ -1,0 +1,81 @@
+TendencyPhenomenon
+
+
+StablePressure:
+
+(VeryLowPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some VeryLowPressure)))) or
+(LowPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some LowPressure)))) or
+(NormalPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some NormalPressure)))) or
+(HighPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some HighPressure)))) or
+(VeryHighPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some VeryHighPressure))))
+
+
+IncreasingPressure:
+
+(VeryLowPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (LowPressure or NormalPressure or HighPressure or VeryHighPressure))))) or
+(LowPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (NormalPressure or HighPressure or VeryHighPressure))))) or
+(NormalPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (HighPressure or VeryHighPressure))))) or
+(HighPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some VeryHighPressure))))
+
+
+DecreasingPressure:
+
+(VeryHighPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (VeryLowPressure or LowPressure or NormalPressure or HighPressure))))) or
+(HighPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (VeryLowPressure or LowPressure or NormalPressure))))) or
+(NormalPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (VeryLowPressure or LowPressure))))) or
+(LowPressure and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some VeryLowPressure))))
+
+
+
+StableTemperature:
+
+(Frost and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some Frost)))) or
+(BelowRoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some BelowRoomTemperature)))) or
+(RoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some RoomTemperature)))) or
+(AboveRoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some AboveRoomTemperature)))) or
+(Heat and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some Heat))))
+
+
+IncreasingTemperature:
+
+(Frost and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (BelowRoomTemperature or RoomTemperature or AboveRoomTemperature or Heat))))) or
+(BelowRoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (RoomTemperature or AboveRoomTemperature or Heat))))) or
+(RoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (AboveRoomTemperature or Heat))))) or
+(AboveRoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some Heat))))
+
+
+DecreasingTemperature:
+
+(BelowRoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some Frost)))) or
+(RoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (BelowRoomTemperature or Frost))))) or
+(AboveRoomTemperature and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (RoomTemperature or BelowRoomTemperature or Frost))))) or
+(Heat and (belongsToState some (hasThirdNextWeatherState some (hasWeatherPhenomenon some (AboveRoomTemperature or RoomTemperature or BelowRoomTemperature or Frost)))))
+
+
+TODO: split BelowRoomTemperature into two classes, make BelowRoomTemperature/Frost and AboveRoomTemperature/Heat disjunct
+
+
+StableWindSpeed
+IncreasingWindSpeed
+DecreasingWindSpeed
+
+
+StableWindDirection
+TurningWindDirection
+
+
+AnyRain
+ContinuousRain
+BeginningRain
+EndingRain
+MoreRain
+LessRain
+
+
+ChangingWeather
+ImprovingWeather
+DeterioratingWeather
+StableWeather
+
+
+

@@ -1,12 +1,23 @@
-AiringWeather
-WindowsOpenWeather
+AiringWeather === WindowsOpenWeather
++ FairWeather, RoomTemperature/BelowRoomTemperature/AboveRoomTemperature
 WindowsClosedWeather
++ SevereWeather, StrongWind
 IrrigationWeather
++ NoRain
++ hasNextWeatherState NoRain, hasSecondNextWeatherState NoRain, hasThirdNextWeatherState NoRain
++ hasPreviousWeatherState NoRain, hasSecondPreviousWeatherState NoRain, hasThirdPreviousWeatherState NoRain
++ mind: does have previous/next weather states?
 SevereWeather
++ HeavyRain/ExtremelyHeavyRain/TropicalStormRain, Storm/Hurricane
 FairWeather
-
-
-WeatherChange - better/worse
++ NoRain, Calm/LightWind, ClearSky/PartlyCloudy
+Heating
++ BelowRoomTemperature/Frost
+SunProtection
++ ClearSky/PartlyCloudy
+Awning
++ SunProtection, Calm/LightWind
+temperature, wind speed/direction, pressure, precipitation value/probability, humidity, cloud cover
 
 
 
@@ -14,6 +25,8 @@ season - spring/summer/autumn/winter
 
 
 
+split BelowRoomTemperature into two classes (0-10 degrees, 10-20 degrees)
+modify everything depending on BelowRoomTemperature afterwards
 
 
 SWEET:
