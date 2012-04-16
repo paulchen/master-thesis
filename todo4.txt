@@ -1,23 +1,25 @@
-AiringWeather === WindowsOpenWeather
+AiringWeather === WindowsOpenWeather - DONE
 + FairWeather, RoomTemperature/BelowRoomTemperature/AboveRoomTemperature
-WindowsClosedWeather
+WindowsClosedWeather - DONE
 + SevereWeather, StrongWind
 IrrigationWeather
 + NoRain
 + hasNextWeatherState NoRain, hasSecondNextWeatherState NoRain, hasThirdNextWeatherState NoRain
 + hasPreviousWeatherState NoRain, hasSecondPreviousWeatherState NoRain, hasThirdPreviousWeatherState NoRain
 + mind: does have previous/next weather states?
-SevereWeather
+SevereWeather - OK
 + HeavyRain/ExtremelyHeavyRain/TropicalStormRain, Storm/Hurricane
-FairWeather
+FairWeather - OK
 + NoRain, Calm/LightWind, ClearSky/PartlyCloudy
-Heating
-+ BelowRoomTemperature/Frost
-SunProtection
+HeatingWeather - OK
++ Cold/Frost
+SunProtection - OK
 + ClearSky/PartlyCloudy
-Awning
+Awning - OK
 + SunProtection, Calm/LightWind
-temperature, wind speed/direction, pressure, precipitation value/probability, humidity, cloud cover
+
+
+weather phenomena: temperature, wind speed/direction, pressure, precipitation value/probability, humidity, cloud cover
 
 
 
