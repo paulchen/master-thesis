@@ -4,18 +4,16 @@ ThinkHome Weather Ontology
 Description according to Methontology approach
 
 
-TODO: add TemporalThing, Instant, Interval
-
 
 Specification
 ---------------
 
 Domain: Weather
-Date: November 1, 2011
+Date: 2012
 Purpose: Ontology covering data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will come from both internet services as well as from weather sensors mounted to the building.
 Level of formality: Formal (?)
 Scope:
-* Weather: all relevant weather data that can be obtained for a certain location over the next 24 hours
+* Weather observation: all relevant weather data that can be obtained for a certain location over the next 24 hours
 * Weather phenomena: temperature, humidity, wind, ...
 * Weather conditions: sunshine, rain, thunder, ...
 * Weather state: current weather, weather in 1 hour, ..., weather in 24 hours
@@ -79,12 +77,13 @@ Weather state from sensor
 Fog
 Sleet
 Atmospheric pressure
+...?
 
 
 Concept-classification trees
 -----------------------------
 
-Weather
+WeatherObservation
 
 WeatherState
 + CurrentWeatherState
@@ -104,46 +103,37 @@ WeatherState
 
 WeatherPhenomenon
 + Temperature
-  + BelowRoomTemperature
-    + Frost
-  + RoomTemperature
-  + AboveRoomTemperature
-    + Heat
+  + ...
 + Humidity
-  + Dry
-  + Moist
+  + ...
 + AtmosphericPressure
+  + ...
 + Wind
-  + Calm
-  + Storm
-    + Hurricane
+  + ...
 + SunRadiation
+  + ...
 + SunAboveHorizon
++ ...
 + Precipitation
-  + NoRain
-  + HeavyRain
-+ Condition
+  + ...
 + CloudCover
-  + ClearSky
-  + PartlyCloudy
-  + MostlyCloudy
-  + Overcast
-  + UnknownCloudCover
+  + ...
 + DewPoint
 
 WeatherStateSource
-+ Sensor
-+ Service
++ SensorSource
++ ServiceSource
+
+WeatherCondition
 
 
 Binary-relations diagram
 -------------------------
 
-Weather <-> WeatherState - hasWeatherState/belongsToWeather
+WeatherObservation <-> WeatherState - hasWeatherState/belongsToWeather
 WeatherState <-> WeatherPhenomenon - hasWeatherPhenomenon/belongsToState
-WeatherCondition <-> Condition - hasCondition
+WeatherState <-> WeatherCondition - hasCondition
 WeatherState <-> WeatherStateSource - isSourceOf/hasSource
-
 
 Concept dictionary
 -------------------
@@ -175,13 +165,15 @@ attributes:
 Binary-relation tables
 -----------------------
 
-hasWeather - TODO
-belongsToWeather - TODO
+hasWeatherState - TODO
+belongsToWeatherObservation - TODO
 hasWeatherPhenomenon - TODO
 belongsToState - TODO
 hasCondition - TODO
 isSourceOf - TODO
 hasSource - TODO
+hasNextWeatherState - TODO
+hasPreviousWeatherState - TODO
 
 
 Instance-attribute tables
@@ -233,5 +225,8 @@ TODO
 Instance tables
 ----------------
 
-no known values?
+instances of WeatherCondition
+
+
+TODO imports
 
