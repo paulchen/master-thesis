@@ -1,0 +1,63 @@
+AiringWeather
+WindowsOpenWeather
+WindowsClosedWeather
+IrrigationWeather
+SevereWeather
+FairWeather
+
+
+WeatherChange - better/worse
+
+
+
+season - spring/summer/autumn/winter
+
+
+
+
+
+SWEET:
+* units (degreesC, pascal, degrees, hour, millimeter,
+wattPerMeterSquared, meterPerSecond) - problem
+
+
+
+complete ant - DONE
+document ant
+document ontology
+rewrite ontology
+airingweather etc.
+makefiles for abstract and thesis
+more test cases for individuals using junit - DONE
+more complex test cases using junit
+make the project compileable with java 5, 6 and 7 - DONE
+
+rewrite abstract (in english)
+slides for seminar (latex beamer, makefile)
+chapter: weatherservices
+
+missing tasks?
+
+some triple store?
+output of ontologies created by test cases
+test cases for WeatherReader? - using fake test XML files, containing certain data
+
+evaluate if test cases can be simplified (using object-oriented design?) - DONE
+
+manifest.mf for JAR file generated during "dist" ant task
+
+conditions of use of http://api.yr.no/
+
+Reread weather states
+
+check for floating point calculation problems in:
+* HumidityTest
+* PressureTest
+* TemperatureTest
+* WindTest
+
+methondology - in progress
+
+interfacing with multi-agent system?
+
+
