@@ -2319,7 +2319,7 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                                 <owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
                                 <owl:withRestrictions rdf:parseType="Collection">
                                     <rdf:Description>
-                                        <xsd:minExclusive rdf:datatype="&xsd;integer">5</xsd:minExclusive>
+                                        <xsd:minExclusive rdf:datatype="&xsd;integer">4</xsd:minExclusive>
                                     </rdf:Description>
                                 </owl:withRestrictions>
                             </rdfs:Datatype>
