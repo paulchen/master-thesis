@@ -73,4 +73,6 @@ methondology - in progress
 
 interfacing with multi-agent system?
 
+test if Jena rule inferencing engine works?
+
 
