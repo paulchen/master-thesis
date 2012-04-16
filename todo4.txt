@@ -25,8 +25,8 @@ season - spring/summer/autumn/winter
 
 
 
-split BelowRoomTemperature into two classes (0-10 degrees, 10-20 degrees)
-modify everything depending on BelowRoomTemperature afterwards
+split BelowRoomTemperature into two classes (0-10 degrees, 10-20 degrees) - DONE
+modify everything depending on BelowRoomTemperature afterwards - DONE
 
 
 SWEET:
