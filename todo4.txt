@@ -2,7 +2,7 @@ AiringWeather === WindowsOpenWeather - DONE
 + FairWeather, RoomTemperature/BelowRoomTemperature/AboveRoomTemperature
 WindowsClosedWeather - DONE
 + SevereWeather, StrongWind
-IrrigationWeather
+IrrigationWeather - DONE
 + NoRain
 + hasNextWeatherState NoRain, hasSecondNextWeatherState NoRain, hasThirdNextWeatherState NoRain
 + hasPreviousWeatherState NoRain, hasSecondPreviousWeatherState NoRain, hasThirdPreviousWeatherState NoRain
