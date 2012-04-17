@@ -1,0 +1,40 @@
+@prefix weather: <http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#>
+
+[weatherPhenomenonChain: (?a weather:belongsToState ?b), (?b weather:hasNextWeatherState ?c), (?d weather:belongsToState ?c) -> (?a weather:hasFollowingPhenomenon ?d)]
+
+   
+[pressureVeryLowStable: (?a rdf:type weather:VeryLowPressure), (?b rdf:type weather:VeryLowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:StablePressure)]
+[pressureLowStable: (?a rdf:type weather:LowPressure), (?b rdf:type weather:LowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:StablePressure)]
+[pressureNormalStable: (?a rdf:type weather:NormalPressure), (?b rdf:type weather:NormalPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:StablePressure)]
+[pressureHighStable: (?a rdf:type weather:HighPressure), (?b rdf:type weather:HighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:StablePressure)]
+[pressureVeryHighStable: (?a rdf:type weather:VeryHighPressure), (?b rdf:type weather:VeryHighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:StablePressure)]
+
+
+[pressureVeryLowIncreasing1: (?a rdf:type weather:VeryLowPressure), (?b rdf:type weather:LowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+[pressureVeryLowIncreasing2: (?a rdf:type weather:VeryLowPressure), (?b rdf:type weather:NormalPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+[pressureVeryLowIncreasing3: (?a rdf:type weather:VeryLowPressure), (?b rdf:type weather:HighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+[pressureVeryLowIncreasing4: (?a rdf:type weather:VeryLowPressure), (?b rdf:type weather:VeryHighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+
+[pressureLowIncreasing1: (?a rdf:type weather:LowPressure), (?b rdf:type weather:NormalPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+[pressureLowIncreasing2: (?a rdf:type weather:LowPressure), (?b rdf:type weather:HighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+[pressureLowIncreasing3: (?a rdf:type weather:LowPressure), (?b rdf:type weather:VeryHighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+
+[pressureNormalIncreasing1: (?a rdf:type weather:NormalPressure), (?b rdf:type weather:HighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+[pressureNormalIncreasing2: (?a rdf:type weather:NormalPressure), (?b rdf:type weather:VeryHighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+
+[pressureHighIncreasing: (?a rdf:type weather:HighPressure), (?b rdf:type weather:VeryHighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:IncreasingPressure)]
+
+
+[pressureLowDecreasing: (?a rdf:type weather:LowPressure), (?b rdf:type weather:VeryLowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+
+[pressureNormalDecreasing1: (?a rdf:type weather:NormalPressure), (?b rdf:type weather:LowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+[pressureNormalDecreasing2: (?a rdf:type weather:NormalPressure), (?b rdf:type weather:VeryLowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+
+[pressureHighDecreasing1: (?a rdf:type weather:HighPressure), (?b rdf:type weather:NormalPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+[pressureHighDecreasing2: (?a rdf:type weather:HighPressure), (?b rdf:type weather:LowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+[pressureHighDecreasing3: (?a rdf:type weather:HighPressure), (?b rdf:type weather:VeryLowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+
+[pressureVeryHighDecreasing1: (?a rdf:type weather:VeryHighPressure), (?b rdf:type weather:HighPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+[pressureVeryHighDecreasing2: (?a rdf:type weather:VeryHighPressure), (?b rdf:type weather:NormalPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+[pressureVeryHighDecreasing3: (?a rdf:type weather:VeryHighPressure), (?b rdf:type weather:LowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
+[pressureVeryHighDecreasing4: (?a rdf:type weather:VeryHighPressure), (?b rdf:type weather:VeryLowPressure), (?a weather:hasFollowingPhenomenon ?b) -> (?a rdf:type weather:DecreasingPressure)]
