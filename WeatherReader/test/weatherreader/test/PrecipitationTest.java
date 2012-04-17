@@ -34,6 +34,7 @@ public class PrecipitationTest extends IndividualsTest {
 	
 	@Test
 	public void testNoRain() {
+		// use int here to avoid problems with floating-point numbers
 		for(int probability=0; probability<=100; probability+=10) {
 			checkPrecipitation(0f, probability, "Precipitation", "NoRain");			
 		}

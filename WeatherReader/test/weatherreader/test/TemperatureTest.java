@@ -30,43 +30,44 @@ public class TemperatureTest extends IndividualsTest {
 	
 	@Test
 	public void testAboveRoomTemperature() {
-		for(float temperature=25.1f; temperature<=30f; temperature+=.1f) {
-			checkTemperature(temperature, "Temperature", "AboveRoomTemperature");			
+		// use int here to avoid problems with floating-point numbers
+		for(int temperature=251; temperature<=300; temperature+=1) {
+			checkTemperature(((float)temperature)/10, "Temperature", "AboveRoomTemperature");			
 		}
 	}
 	
 	@Test
 	public void testRoomTemperature() {
-		for(float temperature=20f; temperature<=25f; temperature+=.1f) {
-			checkTemperature(temperature, "Temperature", "RoomTemperature");			
+		for(int temperature=200; temperature<=250; temperature+=1) {
+			checkTemperature(((float)temperature)/10, "Temperature", "RoomTemperature");			
 		}
 	}
 	
 	@Test
 	public void testBelowRoomTemperature() {
-		for(float temperature=10f; temperature<20f; temperature+=.1f) {
-			checkTemperature(temperature, "Temperature", "BelowRoomTemperature");			
+		for(int temperature=100; temperature<200; temperature+=1) {
+			checkTemperature(((float)temperature)/10, "Temperature", "BelowRoomTemperature");			
 		}
 	}
 	
 	@Test
 	public void testCold() {
-		for(float temperature=0f; temperature<10f; temperature+=.1f) {
-			checkTemperature(temperature, "Temperature", "Cold");			
+		for(int temperature=0; temperature<100; temperature+=1) {
+			checkTemperature(((float)temperature)/10, "Temperature", "Cold");			
 		}
 	}
 	
 	@Test
 	public void testHeat() {
-		for(float temperature=30.1f; temperature<=100f; temperature+=.5f) {
-			checkTemperature(temperature, "Temperature", "Heat");			
+		for(int temperature=301; temperature<=100; temperature+=5) {
+			checkTemperature(((float)temperature)/10, "Temperature", "Heat");			
 		}
 	}
 	
 	@Test
 	public void testFrost() {
-		for(float temperature=-100f; temperature<0f; temperature+=.5f) {
-			checkTemperature(temperature, "Temperature", "Frost");			
+		for(int temperature=-1000; temperature<0; temperature+=5) {
+			checkTemperature(((float)temperature)/10, "Temperature", "Frost");			
 		}
 	}
 }
