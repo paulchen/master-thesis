@@ -84,6 +84,9 @@
         <mkdir dir="${dist.dir}" />
 		<jar destfile="${dist.dir}/WeatherReader.jar">
 			<fileset dir="${build.dir}" />
+			<manifest>
+				<attribute name="Main-Class" value="weatherreader.Main" />
+			</manifest>
 		</jar>
 	</target>
 	
