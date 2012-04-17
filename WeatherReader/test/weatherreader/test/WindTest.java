@@ -46,36 +46,37 @@ public class WindTest extends IndividualsTest {
 	
 	@Test
 	public void testCalm() {
-		for(float windSpeed=0f; windSpeed<1f; windSpeed+=.1f) {
-			checkWindSpeed(windSpeed, "Wind", "Calm");			
+		// use int here to avoid problems with floating-point numbers
+		for(int windSpeed=0; windSpeed<10; windSpeed++) {
+			checkWindSpeed(((float)windSpeed)/10, "Wind", "Calm");			
 		}
 	}
 	
 	@Test
 	public void testLightWind() {
-		for(float windSpeed=1f; windSpeed<10f; windSpeed+=.5f) {
-			checkWindSpeed(windSpeed, "Wind", "LightWind");			
+		for(int windSpeed=10; windSpeed<100; windSpeed+=5) {
+			checkWindSpeed(((float)windSpeed)/10, "Wind", "LightWind");			
 		}
 	}
 	
 	@Test
 	public void testStrongWind() {
-		for(float windSpeed=10f; windSpeed<20f; windSpeed+=.5f) {
-			checkWindSpeed(windSpeed, "Wind", "StrongWind");			
+		for(int windSpeed=100; windSpeed<200; windSpeed+=5) {
+			checkWindSpeed(((float)windSpeed)/10, "Wind", "StrongWind");			
 		}
 	}
 	
 	@Test
 	public void testStorm() {
-		for(float windSpeed=20f; windSpeed<=32f; windSpeed+=.5f) {
-			checkWindSpeed(windSpeed, "Wind", "Storm");			
+		for(int windSpeed=200; windSpeed<=320; windSpeed+=5) {
+			checkWindSpeed(((float)windSpeed)/10, "Wind", "Storm");			
 		}
 	}
 	
 	@Test
 	public void testHurricane() {
-		for(float windSpeed=32.1f; windSpeed<100f; windSpeed+=.5f) {
-			checkWindSpeed(windSpeed, "Wind", "Storm", "Hurricane");			
+		for(int windSpeed=321; windSpeed<1000; windSpeed+=5) {
+			checkWindSpeed(((float)windSpeed)/10, "Wind", "Storm", "Hurricane");			
 		}
 	}
 	
