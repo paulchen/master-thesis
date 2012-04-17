@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="WeatherReader" default="dist" basedir=".">
+	<property name="java_version" value="1.6" />
+	
+    <property name="src.dir" value="src" />
+    <property name="src.test.dir" value="test" />
+    <property name="build.dir" value="bin" />
+    <property name="build.test.dir" value="bin_test" />
+    <property name="lib.dir" value="lib" />
+    <property name="reports.dir" value="reports" />
+    <property name="dist.dir" value="dist" />
+    
+		
+    <path id="project.classpath" >
+        <!-- <pathelement location="${build.dir}" /> -->
+    	<pathelement location="${dist.dir}/WeatherReader.jar" />
+        <pathelement location="${build.test.dir}" />
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+        	<exclude name="**/pellet/jena/*.jar" />
+        	<exclude name="**/slf4j*.jar" />
+        </fileset>
+    </path>
+    
+    <target name="compile" description="TODO">
+        <mkdir dir="${build.dir}" />
+        <javac srcdir="${src.dir}" destdir="${build.dir}"
+    			classpathref="project.classpath"
+        		debug="true" deprecation="true"
+				includeantruntime="false"
+				source="${java_version}" target="${java_version}" />
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}">
+                <include name="*.properties" />
+            </fileset>
+        </copy>
+    </target>
+	
+    <target name="compile_test" depends="dist" description="TODO">
+        <mkdir dir="${build.test.dir}" />
+        <javac srcdir="${src.test.dir}" destdir="${build.test.dir}"
+				classpathref="project.classpath"
+				debug="true" deprecation="true"
+				includeantruntime="false" 
+				source="${java_version}" target="${java_version}"/>
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}">
+                <include name="*.properties" />
+            </fileset>
+        </copy>
+    </target>
+	
+	<target name="run" depends="dist" description="TODO">
+		<!-- re-enable if you want to debug the classpath -->
+		<!--
+		<property name="classpath" refid="project.classpath" />
+		<echo message="Classpath = ${classpath}" />
+		-->
+	    <java classname="weatherreader.Main" fork="true" classpathref="project.classpath" />
+	</target>
+
+	<target name="test" depends="compile_test" description="TODO">
+        <delete dir="${reports.dir}" />
+        <mkdir dir="${reports.dir}" />
+		<property name="classpath" refid="project.classpath" />
+		<junit printsummary="yes">
+			<classpath>
+				<pathelement path="${classpath}"/>
+			</classpath>
+			
+			<formatter type="xml"/>
+
+			<batchtest fork="yes" todir="${reports.dir}">
+				<fileset dir="${src.test.dir}">
+					<include name="**/*.java"/>
+					<exclude name="**/base/*.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	
+	<target name="dist" depends="compile">
+        <mkdir dir="${dist.dir}" />
+		<jar destfile="${dist.dir}/WeatherReader.jar">
+			<fileset dir="${build.dir}" />
+		</jar>
+	</target>
+	
+    <target name="clean" description="Clean build products.">
+        <delete dir="${dist.dir}" />
+        <delete dir="${build.dir}" />
+        <delete dir="${build.test.dir}" />
+        <delete dir="${reports.dir}" />
+    </target>
+    
+    <target name="rebuild" depends="clean, compile_test, dist" description="TODO" />
+</project>
