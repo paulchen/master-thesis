@@ -30,6 +30,7 @@ public class HumidityTest extends IndividualsTest {
 	
 	@Test
 	public void testVeryDry() throws Exception {
+		// use int here to avoid problems with floating-point numbers
 		for(int humidity=0; humidity<30; humidity++) {
 			checkHumidity(((float)humidity)/100, "Humidity", "VeryDry");			
 		}

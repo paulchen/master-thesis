@@ -30,36 +30,37 @@ public class PressureTest extends IndividualsTest {
 	
 	@Test
 	public void testVeryLowPressure() {
-		for(float pressure=949.9f; pressure<998f; pressure+=.5f) {
-			checkPressure(pressure, "AtmosphericPressure", "VeryLowPressure");			
+		// use int here to avoid problems with floating-point numbers
+		for(int pressure=9499; pressure<9980; pressure+=5) {
+			checkPressure(((float)pressure)/10, "AtmosphericPressure", "VeryLowPressure");			
 		}
 	}
 	
 	@Test
 	public void testLowPressure() {
-		for(float pressure=998f; pressure<1008f; pressure+=.1f) {
-			checkPressure(pressure, "AtmosphericPressure", "LowPressure");			
+		for(int pressure=9980; pressure<10080; pressure+=1) {
+			checkPressure(((float)pressure)/10, "AtmosphericPressure", "LowPressure");			
 		}
 	}
 	
 	@Test
 	public void testNormalPressure() {
-		for(float pressure=1008f; pressure<1018f; pressure+=.1f) {
-			checkPressure(pressure, "AtmosphericPressure", "NormalPressure");			
+		for(int pressure=10080; pressure<10180; pressure+=1) {
+			checkPressure(((float)pressure)/10, "AtmosphericPressure", "NormalPressure");			
 		}
 	}
 	
 	@Test
 	public void testHighPressure() {
-		for(float pressure=1018f; pressure<1028f; pressure+=.1f) {
-			checkPressure(pressure, "AtmosphericPressure", "HighPressure");			
+		for(int pressure=10180; pressure<10280; pressure+=1) {
+			checkPressure(((float)pressure)/10, "AtmosphericPressure", "HighPressure");			
 		}
 	}
 	
 	@Test
 	public void testVeryHighPressure() {
-		for(float pressure=1028f; pressure<1050f; pressure+=.5f) {
-			checkPressure(pressure, "AtmosphericPressure", "VeryHighPressure");			
+		for(int pressure=10280; pressure<10500; pressure+=5) {
+			checkPressure(((float)pressure)/10, "AtmosphericPressure", "VeryHighPressure");			
 		}
 	}
 }

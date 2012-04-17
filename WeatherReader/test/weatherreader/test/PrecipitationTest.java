@@ -34,56 +34,56 @@ public class PrecipitationTest extends IndividualsTest {
 	
 	@Test
 	public void testNoRain() {
-		for(int probability=0; probability<=1; probability+=10) {
+		for(int probability=0; probability<=100; probability+=10) {
 			checkPrecipitation(0f, probability, "Precipitation", "NoRain");			
 		}
-		for(float value=0f; value<=100f; value+=5f) {
-			checkPrecipitation(value, 0, "Precipitation", "NoRain");			
+		for(int value=0; value<=100; value+=5) {
+			checkPrecipitation((float)value, 0, "Precipitation", "NoRain");			
 		}
 	}
 	
 	@Test
 	public void testLightRain() {
-		for(int probability=1; probability<=1; probability+=10) {
-			for(float value=1f; value<=5f; value+=1f) {
-				checkPrecipitation(value, probability, "Precipitation", "LightRain");			
+		for(int probability=1; probability<=100; probability+=10) {
+			for(int value=1; value<=5; value+=1) {
+				checkPrecipitation((float)value, probability, "Precipitation", "LightRain");			
 			}
 		}
 	}
 	
 	@Test
 	public void testMediumRain() {
-		for(int probability=1; probability<=1; probability+=10) {
-			for(float value=6f; value<=20f; value+=1f) {
-				checkPrecipitation(value, probability, "Precipitation", "MediumRain");			
+		for(int probability=1; probability<=100; probability+=10) {
+			for(int value=6; value<=20; value+=1) {
+				checkPrecipitation((float)value, probability, "Precipitation", "MediumRain");			
 			}
 		}
 	}
 	
 	@Test
 	public void testHeavyRain() {
-		for(int probability=1; probability<=1; probability+=10) {
-			for(float value=21f; value<=50f; value+=5f) {
+		for(int probability=1; probability<=100; probability+=10) {
+			for(int value=21; value<=50; value+=5) {
 				System.out.println(value + " " + probability);
-				checkPrecipitation(value, probability, "Precipitation", "HeavyRain");			
+				checkPrecipitation((float)value, probability, "Precipitation", "HeavyRain");			
 			}
 		}
 	}
 	
 	@Test
 	public void testExtremelyHeavyRain() {
-		for(int probability=1; probability<=1; probability+=10) {
-			for(float value=51f; value<=100f; value+=7f) {
-				checkPrecipitation(value, probability, "Precipitation", "ExtremelyHeavyRain");			
+		for(int probability=1; probability<=100; probability+=10) {
+			for(int value=51; value<=100; value+=7) {
+				checkPrecipitation((float)value, probability, "Precipitation", "ExtremelyHeavyRain");			
 			}
 		}
 	}
 	
 	@Test
 	public void testTropicalStormRain() {
-		for(int probability=1; probability<=1; probability+=10) {
-			for(float value=101f; value<=200f; value+=5f) {
-				checkPrecipitation(value, probability, "Precipitation", "TropicalStormRain");			
+		for(int probability=1; probability<=100; probability+=10) {
+			for(int value=101; value<=200; value+=5) {
+				checkPrecipitation((float)value, probability, "Precipitation", "TropicalStormRain");			
 			}
 		}
 	}
