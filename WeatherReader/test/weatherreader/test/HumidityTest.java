@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import weatherrader.model.Weather;
+import weatherreader.model.Weather;
 import weatherreader.test.base.IndividualsTest;
 
 import com.hp.hpl.jena.ontology.Individual;

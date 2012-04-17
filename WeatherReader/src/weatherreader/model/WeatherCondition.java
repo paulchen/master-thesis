@@ -1,4 +1,4 @@
-package weatherrader.model;
+package weatherreader.model;
 
 public enum WeatherCondition {
 	Cloud,

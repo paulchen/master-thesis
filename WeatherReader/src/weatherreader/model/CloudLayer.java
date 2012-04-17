@@ -1,4 +1,4 @@
-package weatherrader.model;
+package weatherreader.model;
 
 // TODO javadoc
 public class CloudLayer {

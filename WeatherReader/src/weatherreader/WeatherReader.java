@@ -35,10 +35,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import weatherrader.model.CloudLayer;
-import weatherrader.model.Weather;
-import weatherrader.model.WeatherCondition;
-import weatherrader.model.WeatherState;
+import weatherreader.model.CloudLayer;
+import weatherreader.model.Weather;
+import weatherreader.model.WeatherCondition;
+import weatherreader.model.WeatherState;
 
 import com.hp.hpl.jena.ontology.OntModel;
 

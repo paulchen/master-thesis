@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
-import weatherrader.model.Weather;
+import weatherreader.model.Weather;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.Individual;
