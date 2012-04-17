@@ -35,28 +35,29 @@ public class SunRadiationTest extends IndividualsTest {
 
 	@Test
 	public void testLowRadiation() {
-		for(float radiation=1f; radiation<250f; radiation+=8f) {
+		// use int here to avoid problems with floating-point numbers
+		for(int radiation=1; radiation<250; radiation+=8) {
 			checkSunRadiation(radiation, "SunRadiation", "LowRadiation");
 		}
 	}
 	
 	@Test
 	public void testMediumRadiation() {
-		for(float radiation=250f; radiation<500f; radiation+=3f) {
+		for(int radiation=250; radiation<500; radiation+=3) {
 			checkSunRadiation(radiation, "SunRadiation", "MediumRadiation");
 		}
 	}
 	
 	@Test
 	public void testHighRadiation() {
-		for(float radiation=500f; radiation<750f; radiation+=3f) {
+		for(int radiation=500; radiation<750; radiation+=3) {
 			checkSunRadiation(radiation, "SunRadiation", "HighRadiation");
 		}
 	}
 	
 	@Test
 	public void testVeryHighRadiation() {
-		for(float radiation=750f; radiation<1500f; radiation+=10f) {
+		for(int radiation=750; radiation<1500; radiation+=10) {
 			checkSunRadiation(radiation, "SunRadiation", "VeryHighRadiation");
 		}
 	}
