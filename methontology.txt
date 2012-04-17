@@ -3,6 +3,9 @@ ThinkHome Weather Ontology
 
 Description according to Methontology approach
 
+see also:
+* 00747904.pdf
+  Mariano Fernandez Lopez, Asuncion Gomez-Perez, Juan Pazos Sierra, Alejandro Pazos Sierra. Building a Chemical Ontology Using Methontology and the Ontology Design Environment
 
 
 Specification
