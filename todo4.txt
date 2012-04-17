@@ -41,8 +41,8 @@ complete ant - DONE
 document ant
 document ontology
 rewrite ontology
-airingweather etc.
-makefiles for abstract and thesis
+airingweather etc. - DONE
+makefiles for abstract and thesis - DONE
 more test cases for individuals using junit - DONE
 more complex test cases using junit
 make the project compileable with java 5, 6 and 7 - DONE
@@ -59,17 +59,17 @@ test cases for WeatherReader? - using fake test XML files, containing certain da
 
 evaluate if test cases can be simplified (using object-oriented design?) - DONE
 
-manifest.mf for JAR file generated during "dist" ant task
+manifest.mf for JAR file generated during "dist" ant task - DONE
 
 conditions of use of http://api.yr.no/
 
 Reread weather states
 
 check for floating point calculation problems in:
-* HumidityTest
-* PressureTest
-* TemperatureTest
-* WindTest
+* HumidityTest - DONE
+* PressureTest - DONE
+* TemperatureTest - DONE
+* WindTest - DONE
 
 methondology - in progress
 
