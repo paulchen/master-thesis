@@ -64,7 +64,6 @@ public class PrecipitationTest extends IndividualsTest {
 	public void testHeavyRain() {
 		for(int probability=1; probability<=100; probability+=10) {
 			for(int value=21; value<=50; value+=5) {
-				System.out.println(value + " " + probability);
 				checkPrecipitation((float)value, probability, "Precipitation", "HeavyRain");			
 			}
 		}
