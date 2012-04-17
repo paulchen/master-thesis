@@ -47,7 +47,7 @@ more test cases for individuals using junit - DONE
 more complex test cases using junit
 make the project compileable with java 5, 6 and 7 - DONE
 
-rewrite abstract (in english)
+rewrite abstract (in english) - DONE
 slides for seminar (latex beamer, makefile)
 chapter: weatherservices
 
@@ -77,4 +77,7 @@ interfacing with multi-agent system?
 
 test if Jena rule inferencing engine works?
 
+ASK:
+* abstract - which tempus?
+* bibliography style "unsrt" instead of "plain"?
 
