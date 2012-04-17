@@ -77,7 +77,10 @@ interfacing with multi-agent system?
 
 test if Jena rule inferencing engine works?
 
+complex rules?
+
 ASK:
 * abstract - which tempus?
 * bibliography style "unsrt" instead of "plain"?
+* Jena general purpose reasoner?
 
