@@ -30,36 +30,36 @@ public class HumidityTest extends IndividualsTest {
 	
 	@Test
 	public void testVeryDry() throws Exception {
-		for(float temperature=0f; temperature<.3f; temperature+=.01f) {
-			checkHumidity(temperature, "Humidity", "VeryDry");			
+		for(int humidity=0; humidity<30; humidity++) {
+			checkHumidity(((float)humidity)/100, "Humidity", "VeryDry");			
 		}
 	}
 	
 	@Test
 	public void testDry() throws Exception {
-		for(float temperature=.3f; temperature<.4f; temperature+=.01f) {
-			checkHumidity(temperature, "Humidity", "Dry");			
+		for(int humidity=30; humidity<40; humidity++) {
+			checkHumidity(((float)humidity)/100, "Humidity", "Dry");			
 		}
 	}
 	
 	@Test
 	public void testNormalHumidity() throws Exception {
-		for(float temperature=.4f; temperature<=.7f; temperature+=.01f) {
-			checkHumidity(temperature, "Humidity", "NormalHumidity");			
+		for(int humidity=40; humidity<=70; humidity++) {
+			checkHumidity(((float)humidity)/100, "Humidity", "NormalHumidity");			
 		}
 	}
 	
 	@Test
 	public void testMoist() throws Exception {
-		for(float temperature=.71f; temperature<=.8f; temperature+=.01f) {
-			checkHumidity(temperature, "Humidity", "Moist");			
+		for(int humidity=71; humidity<=80; humidity++) {
+			checkHumidity(((float)humidity)/100, "Humidity", "Moist");			
 		}
 	}
 	
 	@Test
 	public void testVeryMoist() throws Exception {
-		for(float temperature=.81f; temperature<=1f; temperature+=.01f) {
-			checkHumidity(temperature, "Humidity", "VeryMoist");			
+		for(int humidity=81; humidity<=100; humidity++) {
+			checkHumidity(((float)humidity)/100, "Humidity", "VeryMoist");			
 		}
 	}
 }
