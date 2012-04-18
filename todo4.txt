@@ -84,3 +84,30 @@ ASK:
 * bibliography style "unsrt" instead of "plain"?
 * Jena general purpose reasoner?
 
+umbennennen: WeatherObservation -> WeatherReport
+
+hasTime, source, priority verschieben: WeatherState -> WeatherReport
+
+weatherState gilt von wann bis wann?
+
+keine äquivalenten konzepte
+
+weatherstate-hierarchie überarbeiten
+
+CoolingWeather etc. implementieren, mehr generelle konzepte
+
+
+LongRange/MidRange/ShortRange etc. loswerden
+
+ConditionWeatherState -> WeatherReport
+
+hasTemperature -> hasTemperatureValue etc., PrecipValue -> PrecipIntensity
+
+SpatialThing/Point: datatypeProperties lat/long/alt
+
+ontologies for units
+
+grafische darstellung
+
+nächstes meeting: 4.5. 11 uhr
+
