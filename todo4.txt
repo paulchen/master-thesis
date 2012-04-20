@@ -97,7 +97,7 @@ weatherstate-hierarchie überarbeiten
 CoolingWeather etc. implementieren, mehr generelle konzepte
 
 
-LongRange/MidRange/ShortRange etc. loswerden
+LongRange/MidRange/ShortRange etc. loswerden - DONE
 
 ConditionWeatherState -> WeatherReport
 
