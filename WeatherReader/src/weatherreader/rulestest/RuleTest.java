@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
-import weatherreader.model.Weather;
+import weatherreader.model.WeatherReport;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.InfModel;
@@ -46,7 +46,7 @@ public class RuleTest {
 			System.out.println(clazz + ":");
 			
 			Property p = model.getProperty(RDF_NAMESPACE + "type");
-			Resource r = model.getResource(Weather.NAMESPACE + clazz);
+			Resource r = model.getResource(WeatherReport.NAMESPACE + clazz);
 			StmtIterator it = model.listStatements(null, p, r);
 			
 			while(it.hasNext()) {

@@ -21,7 +21,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
-public class Weather {
+public class WeatherReport {
 	private Date observationTime;
 	private float latitude;
 	private float longitude;
@@ -37,7 +37,7 @@ public class Weather {
 	
 	private Logger log;
 	
-	public Weather(float latitude, float longitude, int altitude, List<Integer> forecastHours) {
+	public WeatherReport(float latitude, float longitude, int altitude, List<Integer> forecastHours) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -48,7 +48,7 @@ public class Weather {
 		Collections.sort(this.forecastHours);
 		this.maxHour = this.forecastHours.get(forecastHours.size() - 1)*2;
 		
-		log = Logger.getLogger(Weather.class);
+		log = Logger.getLogger(WeatherReport.class);
 	}
 	
 	public void addWeatherState(WeatherState state) {
@@ -56,13 +56,13 @@ public class Weather {
 	}
 	
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherObservationClass = onto.getOntClass(NAMESPACE + "WeatherObservation");
-		Individual weatherObservation = onto.createIndividual(NAMESPACE + "weatherObservation", weatherObservationClass);
+		OntClass weatherReportClass = onto.getOntClass(NAMESPACE + "WeatherReport");
+		Individual weatherReport = onto.createIndividual(NAMESPACE + "weatherReport", weatherReportClass);
 		
 		Resource pointClass = onto.getResource(WGS84 + "Point");
 		
 		Individual point = onto.createIndividual(NAMESPACE + "point0", pointClass);
-		onto.add(onto.createStatement(weatherObservation, onto.getProperty(WGS84 + "location"), point));
+		onto.add(onto.createStatement(weatherReport, onto.getProperty(WGS84 + "location"), point));
 		onto.add(onto.createStatement(point, RDF.type, pointClass));		
 		
 		onto.add(onto.createLiteralStatement(point, onto.getProperty(WGS84 + "lat"), latitude));
@@ -99,12 +99,12 @@ public class Weather {
 		
 		onto.add(onto.createStatement(instant, onto.getProperty(TIME + "inDateTime"), dateTime));
 		
-		onto.add(onto.createLiteralStatement(weatherObservation, onto.getProperty(NAMESPACE + "hasObservationTime"), instant));
+		onto.add(onto.createLiteralStatement(weatherReport, onto.getProperty(NAMESPACE + "hasObservationTime"), instant));
 
 		int a = 0;
 		WeatherState previousState = null;
 		for(WeatherState state : weatherStates) {
-			state.createIndividuals(onto, weatherObservation, a, previousState);
+			state.createIndividuals(onto, weatherReport, a, previousState);
 			a++;
 			previousState = state;
 		}

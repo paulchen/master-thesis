@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import weatherreader.model.Weather;
+import weatherreader.model.WeatherReport;
 import weatherreader.test.base.IndividualsTest;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -19,12 +19,12 @@ public class TemperatureTest extends IndividualsTest {
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(Weather.NAMESPACE + "hasTemperature"), temperature);
+		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasTemperature"), temperature);
 		
 		getOnto().add(statement);
 		
 		for(String concept : concepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(Weather.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
 		}
 	}
 	

@@ -146,81 +146,81 @@ public class WeatherState {
 	}
 
 	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex, WeatherState previousState) {
-		OntClass sensorSourceClass = onto.getOntClass(Weather.NAMESPACE + "ServiceSource");
-		Individual sourceIndividual = onto.createIndividual(Weather.NAMESPACE + source, sensorSourceClass);
+		OntClass sensorSourceClass = onto.getOntClass(WeatherReport.NAMESPACE + "ServiceSource");
+		Individual sourceIndividual = onto.createIndividual(WeatherReport.NAMESPACE + source, sensorSourceClass);
 
-		OntClass weatherStateClass = onto.getOntClass(Weather.NAMESPACE + "WeatherState");
-		Individual weatherState = onto.createIndividual(Weather.NAMESPACE + "weather" + stateIndex, weatherStateClass);
-		onto.add(onto.createStatement(weatherState, onto.getProperty(Weather.NAMESPACE + "hasSource"), sourceIndividual));
-		onto.add(onto.createLiteralStatement(weatherState, onto.getProperty(Weather.NAMESPACE + "hasPriority"), priority));
+		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
+		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + stateIndex, weatherStateClass);
+		onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasSource"), sourceIndividual));
+		onto.add(onto.createLiteralStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasPriority"), priority));
 
-		OntClass hourClass = onto.getOntClass(Weather.NAMESPACE + "Hour");
-		Individual hour = onto.createIndividual(Weather.NAMESPACE + "hour" + startDate, hourClass);
-		onto.add(onto.createLiteralStatement(hour, onto.getProperty(Weather.TIME + "hours"), new BigDecimal(startDate)));
+		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
+		Individual hour = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startDate, hourClass);
+		onto.add(onto.createLiteralStatement(hour, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startDate)));
 		
-		Resource intervalClass = onto.getResource(Weather.TIME + "Interval");
-		Individual interval = onto.createIndividual(Weather.NAMESPACE + "interval" + startDate, intervalClass);
-		onto.add(onto.createStatement(interval, onto.getProperty(Weather.TIME + "hasDurationDescription"), hour));
-		onto.add(onto.createStatement(weatherState, onto.getProperty(Weather.NAMESPACE + "hasTime"), interval));
+		Resource intervalClass = onto.getResource(WeatherReport.TIME + "Interval");
+		Individual interval = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + startDate, intervalClass);
+		onto.add(onto.createStatement(interval, onto.getProperty(WeatherReport.TIME + "hasDurationDescription"), hour));
+		onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasTime"), interval));
 		
-		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
+		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
 		if(temperature != null) {
-			Individual weatherPhenomenon = onto.createIndividual(Weather.NAMESPACE + "temperature" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasTemperature"), temperature));
+			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "temperature" + stateIndex, weatherPhenomenonClass);
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasTemperature"), temperature));
 		}
 		if(humidity != null) {
-			Individual weatherPhenomenon = onto.createIndividual(Weather.NAMESPACE + "humidity" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasHumidity"), humidity));
+			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "humidity" + stateIndex, weatherPhenomenonClass);
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasHumidity"), humidity));
 		}
 		if(dewPoint != null) {
-			Individual weatherPhenomenon = onto.createIndividual(Weather.NAMESPACE + "dewPoint" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasDewPoint"), dewPoint));
+			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "dewPoint" + stateIndex, weatherPhenomenonClass);
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasDewPoint"), dewPoint));
 		}
 		if(pressure != null) {
-			Individual weatherPhenomenon = onto.createIndividual(Weather.NAMESPACE + "pressure" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasPressure"), pressure));
+			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "pressure" + stateIndex, weatherPhenomenonClass);
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPressure"), pressure));
 		}
 		if(windSpeed != null || windDirection != null) {
-			Individual weatherPhenomenon = onto.createIndividual(Weather.NAMESPACE + "wind" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "belongsToState"), weatherState));
+			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "wind" + stateIndex, weatherPhenomenonClass);
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
 			if(windSpeed != null) {
-				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasWindSpeed"), windSpeed));
+				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasWindSpeed"), windSpeed));
 			}
 			if(windDirection != null) {
-				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasWindDirection"), windDirection));
+				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasWindDirection"), windDirection));
 			}
 		}
 		if(precipitationProbability != null || precipitationValue != null) {
-			Individual weatherPhenomenon = onto.createIndividual(Weather.NAMESPACE + "precipitation" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "belongsToState"), weatherState));
+			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "precipitation" + stateIndex, weatherPhenomenonClass);
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
 			if(precipitationProbability != null) {
-				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasPrecipitationProbability"), precipitationProbability));
+				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationProbability"), precipitationProbability));
 			}
 			if(precipitationValue != null) {
-				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(Weather.NAMESPACE + "hasPrecipitationValue"), precipitationValue));
+				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationValue"), precipitationValue));
 			}
 		}
 		
 		int index = 0;
 		for(CloudLayer cloudLayer : cloudLayers) {
-			Individual cloudLayerIndividual = onto.createIndividual(Weather.NAMESPACE + "cloudLayer" + stateIndex + "_" + index, weatherPhenomenonClass);
-			onto.add(onto.createStatement(cloudLayerIndividual, onto.getProperty(Weather.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(Weather.NAMESPACE + "hasCloudCover"), cloudLayer.getCoverage()));
-			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(Weather.NAMESPACE + "hasCloudAltitude"), cloudLayer.getAltitude()));
+			Individual cloudLayerIndividual = onto.createIndividual(WeatherReport.NAMESPACE + "cloudLayer" + stateIndex + "_" + index, weatherPhenomenonClass);
+			onto.add(onto.createStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
+			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudCover"), cloudLayer.getCoverage()));
+			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudAltitude"), cloudLayer.getAltitude()));
 			index++;
 		}
 		
 		for(WeatherCondition condition : weatherConditions) {
-			onto.add(onto.createStatement(weatherState, onto.getProperty(Weather.NAMESPACE + "hasCondition"), onto.getIndividual(Weather.NAMESPACE + condition.toString())));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasCondition"), onto.getIndividual(WeatherReport.NAMESPACE + condition.toString())));
 		}
 		
 		if(previousState != null) {
-			Individual previousStateIndividual = onto.getIndividual(Weather.NAMESPACE + "weather" + (stateIndex-1));
-			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(Weather.NAMESPACE + "hasNextWeatherState"), weatherState));
+			Individual previousStateIndividual = onto.getIndividual(WeatherReport.NAMESPACE + "weather" + (stateIndex-1));
+			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
 		}
 	}
 

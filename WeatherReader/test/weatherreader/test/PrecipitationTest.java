@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import weatherreader.model.Weather;
+import weatherreader.model.WeatherReport;
 import weatherreader.test.base.IndividualsTest;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -21,14 +21,14 @@ public class PrecipitationTest extends IndividualsTest {
 		Float floatProbability = (float)precipitationProbability/100;
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement1 = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(Weather.NAMESPACE + "hasPrecipitationValue"), precipitationValue);
-		Statement statement2 = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(Weather.NAMESPACE + "hasPrecipitationProbability"), floatProbability);
+		Statement statement1 = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasPrecipitationValue"), precipitationValue);
+		Statement statement2 = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasPrecipitationProbability"), floatProbability);
 		
 		getOnto().add(statement1);
 		getOnto().add(statement2);
 		
 		for(String concept : concepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(Weather.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
 		}
 	}
 	

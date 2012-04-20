@@ -36,7 +36,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import weatherreader.model.CloudLayer;
-import weatherreader.model.Weather;
+import weatherreader.model.WeatherReport;
 import weatherreader.model.WeatherCondition;
 import weatherreader.model.WeatherState;
 
@@ -60,7 +60,7 @@ public class WeatherReader {
 	private List<Integer> forecastHours;
 	private int forecastPeriod;
 	
-	private Weather weather;
+	private WeatherReport weather;
 	
 	private Logger log;
 	
@@ -363,7 +363,7 @@ public class WeatherReader {
 			XPath xpath = xpathFactory.newXPath();
 			XPathExpression datapointExpression = xpath.compile("/weatherdata/product/time");
 			
-			weather = new Weather(latitude, longitude, altitude, forecastHours);
+			weather = new WeatherReport(latitude, longitude, altitude, forecastHours);
 			nodes = (NodeList)datapointExpression.evaluate(document, XPathConstants.NODESET);
 		}
 		catch (IllegalArgumentException e) {
