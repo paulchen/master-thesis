@@ -84,7 +84,7 @@ ASK:
 * bibliography style "unsrt" instead of "plain"?
 * Jena general purpose reasoner?
 
-umbennennen: WeatherObservation -> WeatherReport
+umbennennen: WeatherObservation -> WeatherReport - DONE
 
 hasTime, source, priority verschieben: WeatherState -> WeatherReport
 
