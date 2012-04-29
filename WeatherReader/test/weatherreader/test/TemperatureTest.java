@@ -14,12 +14,12 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public class TemperatureTest extends IndividualsTest {
-	private void checkTemperature(Float temperature, String... expectedConcepts) {
+	private void checkTemperature(Float temperatureValue, String... expectedConcepts) {
 		String[] concepts = { "Temperature", "RoomTemperature", "AboveRoomTemperature", "BelowRoomTemperature", "Cold", "Heat", "Frost" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasTemperature"), temperature);
+		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), temperatureValue);
 		
 		getOnto().add(statement);
 		
@@ -31,43 +31,43 @@ public class TemperatureTest extends IndividualsTest {
 	@Test
 	public void testAboveRoomTemperature() {
 		// use int here to avoid problems with floating-point numbers
-		for(int temperature=251; temperature<=300; temperature+=1) {
-			checkTemperature(((float)temperature)/10, "Temperature", "AboveRoomTemperature");			
+		for(int temperatureValue=251; temperatureValue<=300; temperatureValue+=1) {
+			checkTemperature(((float)temperatureValue)/10, "Temperature", "AboveRoomTemperature");			
 		}
 	}
 	
 	@Test
 	public void testRoomTemperature() {
-		for(int temperature=200; temperature<=250; temperature+=1) {
-			checkTemperature(((float)temperature)/10, "Temperature", "RoomTemperature");			
+		for(int temperatureValue=200; temperatureValue<=250; temperatureValue+=1) {
+			checkTemperature(((float)temperatureValue)/10, "Temperature", "RoomTemperature");			
 		}
 	}
 	
 	@Test
 	public void testBelowRoomTemperature() {
-		for(int temperature=100; temperature<200; temperature+=1) {
-			checkTemperature(((float)temperature)/10, "Temperature", "BelowRoomTemperature");			
+		for(int temperatureValue=100; temperatureValue<200; temperatureValue+=1) {
+			checkTemperature(((float)temperatureValue)/10, "Temperature", "BelowRoomTemperature");			
 		}
 	}
 	
 	@Test
 	public void testCold() {
-		for(int temperature=0; temperature<100; temperature+=1) {
-			checkTemperature(((float)temperature)/10, "Temperature", "Cold");			
+		for(int temperatureValue=0; temperatureValue<100; temperatureValue+=1) {
+			checkTemperature(((float)temperatureValue)/10, "Temperature", "Cold");			
 		}
 	}
 	
 	@Test
 	public void testHeat() {
-		for(int temperature=301; temperature<=100; temperature+=5) {
-			checkTemperature(((float)temperature)/10, "Temperature", "Heat");			
+		for(int temperatureValue=301; temperatureValue<=100; temperatureValue+=5) {
+			checkTemperature(((float)temperatureValue)/10, "Temperature", "Heat");			
 		}
 	}
 	
 	@Test
 	public void testFrost() {
-		for(int temperature=-1000; temperature<0; temperature+=5) {
-			checkTemperature(((float)temperature)/10, "Temperature", "Frost");			
+		for(int temperatureValue=-1000; temperatureValue<0; temperatureValue+=5) {
+			checkTemperature(((float)temperatureValue)/10, "Temperature", "Frost");			
 		}
 	}
 }

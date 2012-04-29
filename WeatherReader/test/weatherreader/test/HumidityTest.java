@@ -14,12 +14,12 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public class HumidityTest extends IndividualsTest {
-	private void checkHumidity(Float temperature, String... expectedConcepts) {
+	private void checkHumidity(Float humidityValue, String... expectedConcepts) {
 		String[] concepts = { "Humidity", "VeryDry", "Dry", "NormalHumidity", "Moist", "VeryMoist" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasHumidity"), temperature);
+		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasHumidityValue"), humidityValue);
 		
 		getOnto().add(statement);
 		
@@ -31,36 +31,36 @@ public class HumidityTest extends IndividualsTest {
 	@Test
 	public void testVeryDry() throws Exception {
 		// use int here to avoid problems with floating-point numbers
-		for(int humidity=0; humidity<30; humidity++) {
-			checkHumidity(((float)humidity)/100, "Humidity", "VeryDry");			
+		for(int humidityValue=0; humidityValue<30; humidityValue++) {
+			checkHumidity(((float)humidityValue)/100, "Humidity", "VeryDry");			
 		}
 	}
 	
 	@Test
 	public void testDry() throws Exception {
-		for(int humidity=30; humidity<40; humidity++) {
-			checkHumidity(((float)humidity)/100, "Humidity", "Dry");			
+		for(int humidityValue=30; humidityValue<40; humidityValue++) {
+			checkHumidity(((float)humidityValue)/100, "Humidity", "Dry");			
 		}
 	}
 	
 	@Test
 	public void testNormalHumidity() throws Exception {
-		for(int humidity=40; humidity<=70; humidity++) {
-			checkHumidity(((float)humidity)/100, "Humidity", "NormalHumidity");			
+		for(int humidityValue=40; humidityValue<=70; humidityValue++) {
+			checkHumidity(((float)humidityValue)/100, "Humidity", "NormalHumidity");			
 		}
 	}
 	
 	@Test
 	public void testMoist() throws Exception {
-		for(int humidity=71; humidity<=80; humidity++) {
-			checkHumidity(((float)humidity)/100, "Humidity", "Moist");			
+		for(int humidityValue=71; humidityValue<=80; humidityValue++) {
+			checkHumidity(((float)humidityValue)/100, "Humidity", "Moist");			
 		}
 	}
 	
 	@Test
 	public void testVeryMoist() throws Exception {
-		for(int humidity=81; humidity<=100; humidity++) {
-			checkHumidity(((float)humidity)/100, "Humidity", "VeryMoist");			
+		for(int humidityValue=81; humidityValue<=100; humidityValue++) {
+			checkHumidity(((float)humidityValue)/100, "Humidity", "VeryMoist");			
 		}
 	}
 }

@@ -12,25 +12,26 @@ import com.hp.hpl.jena.rdf.model.Resource;
 public class WeatherState {
 	private float startDate;
 	private float endDate;
-	private Float temperature;
-	private Float humidity;
-	private Float dewPoint;
-	private Float pressure;
+	private Float temperatureValue;
+	private Float humidityValue;
+	private Float dewPointValue;
+	private Float pressureValue;
 	private Float windSpeed;
 	private Integer windDirection;
 	private Float precipitationProbability;
-	private Float precipitationValue;
+	private Float precipitationIntensity;
 	private List<CloudLayer> cloudLayers;
 	private List<WeatherCondition> weatherConditions;
 	private String source;
 	private int priority;
 	
-	public WeatherState(Date startDate, Date endDate, Float temperature,
-			Float humidity, Float dewPoint, Float pressure, Float windSpeed,
+	public WeatherState(Date startDate, Date endDate, Float temperatureValue,
+			Float humidityValue, Float dewPointValue, Float pressureValue, Float windSpeed,
 			Integer windDirection, Float precipitationProbability,
-			Float precipitationValue, List<CloudLayer> cloudLayers,
+			Float precipitationIntensity, List<CloudLayer> cloudLayers,
 			List<WeatherCondition> weatherConditions, String source, int priority) {
-		this(0, 0, temperature, humidity, dewPoint, pressure, windSpeed, windDirection, precipitationProbability, precipitationValue, cloudLayers, weatherConditions, source, priority);
+		this(0, 0, temperatureValue, humidityValue, dewPointValue, pressureValue, windSpeed, windDirection,
+				precipitationProbability, precipitationIntensity, cloudLayers, weatherConditions, source, priority);
 		
 		long startSeconds = startDate.getTime()-new Date().getTime();
 		this.startDate = (float)Math.round(startSeconds/3600000);
@@ -52,37 +53,37 @@ public class WeatherState {
 		buffer.append("[");
 		buffer.append("startDate=" + startDate + "; ");
 		buffer.append("endDate=" + endDate + "; ");
-		buffer.append("temperature=" + temperature + "; ");
-		buffer.append("humidity=" + humidity + "; ");
-		buffer.append("dewPoint=" + dewPoint + "; ");
-		buffer.append("pressure=" + pressure + "; ");
+		buffer.append("temperatureValue=" + temperatureValue + "; ");
+		buffer.append("humidityValue=" + humidityValue + "; ");
+		buffer.append("dewPointValue=" + dewPointValue + "; ");
+		buffer.append("pressureValue=" + pressureValue + "; ");
 		buffer.append("windSpeed=" + windSpeed + "; ");
 		buffer.append("windDirection=" + windDirection + "; ");
 		buffer.append("precipitationProbability=" + precipitationProbability + "; ");
-		buffer.append("precipitationValue=" + precipitationValue + "; ");
+		buffer.append("precipitationIntensity=" + precipitationIntensity + "; ");
 		buffer.append("cloudLayers=" + cloudLayers.toString() + "; ");
 		buffer.append("weatherConditions=" + weatherConditions.toString());
 		buffer.append("]");
 		return buffer.toString();
 	}
 
-	public WeatherState(float startDate, float endDate, Float temperature,
-			Float humidity, Float dewPoint, Float pressure, Float windSpeed,
+	public WeatherState(float startDate, float endDate, Float temperatureValue,
+			Float humidityValue, Float dewPointValue, Float pressureValue, Float windSpeed,
 			Integer windDirection, Float precipitationProbability,
-			Float precipitationValue, List<CloudLayer> cloudLayers,
+			Float precipitationIntensity, List<CloudLayer> cloudLayers,
 			List<WeatherCondition> weatherConditions, String source, int priority) {
 		super();
 		
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.temperature = temperature;
-		this.humidity = humidity;
-		this.dewPoint = dewPoint;
-		this.pressure = pressure;
+		this.temperatureValue = temperatureValue;
+		this.humidityValue = humidityValue;
+		this.dewPointValue = dewPointValue;
+		this.pressureValue = pressureValue;
 		this.windSpeed = windSpeed;
 		this.windDirection = windDirection;
 		this.precipitationProbability = precipitationProbability;
-		this.precipitationValue = precipitationValue;
+		this.precipitationIntensity = precipitationIntensity;
 		this.cloudLayers = cloudLayers;
 		this.weatherConditions = weatherConditions;
 		this.source = source;
@@ -97,20 +98,20 @@ public class WeatherState {
 		this.endDate = endDate;
 	}
 
-	protected void setTemperature(Float temperature) {
-		this.temperature = temperature;
+	protected void setTemperatureValue(Float temperatureValue) {
+		this.temperatureValue = temperatureValue;
 	}
 
-	protected void setHumidity(Float humidity) {
-		this.humidity = humidity;
+	protected void setHumidityValue(Float humidityValue) {
+		this.humidityValue = humidityValue;
 	}
 
-	protected void setDewPoint(Float dewPoint) {
-		this.dewPoint = dewPoint;
+	protected void setDewPointValue(Float dewPointValue) {
+		this.dewPointValue = dewPointValue;
 	}
 
-	protected void setPressure(Float pressure) {
-		this.pressure = pressure;
+	protected void setPressureValue(Float pressureValue) {
+		this.pressureValue = pressureValue;
 	}
 
 	protected void setWindSpeed(Float windSpeed) {
@@ -125,8 +126,8 @@ public class WeatherState {
 		this.precipitationProbability = precipitationProbability;
 	}
 
-	protected void setPrecipitationValue(Float precipitationValue) {
-		this.precipitationValue = precipitationValue;
+	protected void setPrecipitationIntensity(Float precipitationIntensity) {
+		this.precipitationIntensity = precipitationIntensity;
 	}
 
 	protected void setCloudLayers(List<CloudLayer> cloudLayers) {
@@ -164,25 +165,25 @@ public class WeatherState {
 		onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasTime"), interval));
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		if(temperature != null) {
+		if(temperatureValue != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "temperature" + stateIndex, weatherPhenomenonClass);
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasTemperature"), temperature));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), temperatureValue));
 		}
-		if(humidity != null) {
+		if(humidityValue != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "humidity" + stateIndex, weatherPhenomenonClass);
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasHumidity"), humidity));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasHumidityValue"), humidityValue));
 		}
-		if(dewPoint != null) {
+		if(dewPointValue != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "dewPoint" + stateIndex, weatherPhenomenonClass);
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasDewPoint"), dewPoint));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasDewPointValue"), dewPointValue));
 		}
-		if(pressure != null) {
+		if(pressureValue != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "pressure" + stateIndex, weatherPhenomenonClass);
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPressure"), pressure));
+			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPressureValue"), pressureValue));
 		}
 		if(windSpeed != null || windDirection != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "wind" + stateIndex, weatherPhenomenonClass);
@@ -194,14 +195,14 @@ public class WeatherState {
 				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasWindDirection"), windDirection));
 			}
 		}
-		if(precipitationProbability != null || precipitationValue != null) {
+		if(precipitationProbability != null || precipitationIntensity != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "precipitation" + stateIndex, weatherPhenomenonClass);
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
 			if(precipitationProbability != null) {
-				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationProbability"), precipitationProbability));
+				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationIntensity"), precipitationProbability));
 			}
-			if(precipitationValue != null) {
-				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationValue"), precipitationValue));
+			if(precipitationIntensity != null) {
+				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationValue"), precipitationIntensity));
 			}
 		}
 		
@@ -232,20 +233,20 @@ public class WeatherState {
 		return endDate;
 	}
 
-	public Float getTemperature() {
-		return temperature;
+	public Float getTemperatureValue() {
+		return temperatureValue;
 	}
 
-	public Float getHumidity() {
-		return humidity;
+	public Float getHumidityValue() {
+		return humidityValue;
 	}
 
-	public Float getDewPoint() {
-		return dewPoint;
+	public Float getDewPointValue() {
+		return dewPointValue;
 	}
 
-	public Float getPressure() {
-		return pressure;
+	public Float getPressureValue() {
+		return pressureValue;
 	}
 
 	public Float getWindSpeed() {
@@ -260,8 +261,8 @@ public class WeatherState {
 		return precipitationProbability;
 	}
 
-	public Float getPrecipitationValue() {
-		return precipitationValue;
+	public Float getPrecipitationIntensity() {
+		return precipitationIntensity;
 	}
 
 	public List<CloudLayer> getCloudLayers() {

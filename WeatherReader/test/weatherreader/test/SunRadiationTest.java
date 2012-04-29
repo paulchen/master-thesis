@@ -14,12 +14,12 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public class SunRadiationTest extends IndividualsTest {
-	private void checkSunRadiation(float sunRadiation, String... expectedConcepts) {
+	private void checkSunRadiation(float sunRadiationValue, String... expectedConcepts) {
 		String[] concepts = { "SunRadiation", "NoRadiation", "LowRadiation", "MediumRadiation", "HighRadiation", "VeryHighRadiation" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasSunRadiation"), sunRadiation);
+		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasSunRadiationValue"), sunRadiationValue);
 		
 		getOnto().add(statement);
 		
@@ -36,29 +36,29 @@ public class SunRadiationTest extends IndividualsTest {
 	@Test
 	public void testLowRadiation() {
 		// use int here to avoid problems with floating-point numbers
-		for(int radiation=1; radiation<250; radiation+=8) {
-			checkSunRadiation(radiation, "SunRadiation", "LowRadiation");
+		for(int radiationValue=1; radiationValue<250; radiationValue+=8) {
+			checkSunRadiation(radiationValue, "SunRadiation", "LowRadiation");
 		}
 	}
 	
 	@Test
 	public void testMediumRadiation() {
-		for(int radiation=250; radiation<500; radiation+=3) {
-			checkSunRadiation(radiation, "SunRadiation", "MediumRadiation");
+		for(int radiationValue=250; radiationValue<500; radiationValue+=3) {
+			checkSunRadiation(radiationValue, "SunRadiation", "MediumRadiation");
 		}
 	}
 	
 	@Test
 	public void testHighRadiation() {
-		for(int radiation=500; radiation<750; radiation+=3) {
-			checkSunRadiation(radiation, "SunRadiation", "HighRadiation");
+		for(int radiationValue=500; radiationValue<750; radiationValue+=3) {
+			checkSunRadiation(radiationValue, "SunRadiation", "HighRadiation");
 		}
 	}
 	
 	@Test
 	public void testVeryHighRadiation() {
-		for(int radiation=750; radiation<1500; radiation+=10) {
-			checkSunRadiation(radiation, "SunRadiation", "VeryHighRadiation");
+		for(int radiationValue=750; radiationValue<1500; radiationValue+=10) {
+			checkSunRadiation(radiationValue, "SunRadiation", "VeryHighRadiation");
 		}
 	}
 }
