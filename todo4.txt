@@ -101,7 +101,7 @@ LongRange/MidRange/ShortRange etc. loswerden - DONE
 
 ConditionWeatherState -> WeatherReport
 
-hasTemperature -> hasTemperatureValue etc., PrecipValue -> PrecipIntensity
+hasTemperature -> hasTemperatureValue etc., PrecipValue -> PrecipIntensity - DONE
 
 SpatialThing/Point: datatypeProperties lat/long/alt
 
