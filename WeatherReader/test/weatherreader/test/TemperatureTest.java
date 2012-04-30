@@ -20,6 +20,7 @@ public class TemperatureTest extends IndividualsTest {
 		
 		Resource blankNode = getOnto().createResource();
 		getOnto().add(getOnto().createLiteralStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), temperatureValue));
+		// TODO get rid of magic constant for individual name here
 		getOnto().add(getOnto().createStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
