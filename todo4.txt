@@ -88,6 +88,8 @@ umbennennen: WeatherObservation -> WeatherReport - DONE
 
 hasTime, source, priority verschieben: WeatherState -> WeatherReport
 
+normalpressure -> averagepressure
+
 weatherState gilt von wann bis wann?
 
 keine äquivalenten konzepte
