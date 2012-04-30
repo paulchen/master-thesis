@@ -175,9 +175,13 @@ public class WeatherState {
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), blankNode));
 		}
 		if(humidityValue != null) {
+			Resource blankNode = onto.createResource();
+			onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), humidityValue));
+			// TODO get rid of magic constant for individual name here
+			onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent")));
+			
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "humidity" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasHumidityValue"), humidityValue));
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasHumidityValue"), blankNode));
 		}
 		if(dewPointValue != null) {
 			Resource blankNode = onto.createResource();
