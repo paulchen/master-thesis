@@ -166,9 +166,12 @@ public class WeatherState {
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
 		if(temperatureValue != null) {
+			Resource blankNode = onto.createResource();
+			onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), temperatureValue));
+			onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
+			
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "temperature" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), temperatureValue));
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), blankNode));
 		}
 		if(humidityValue != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "humidity" + stateIndex, weatherPhenomenonClass);

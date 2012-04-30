@@ -9,7 +9,7 @@ import weatherreader.model.WeatherReport;
 import weatherreader.test.base.IndividualsTest;
 
 import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
@@ -18,10 +18,12 @@ public class TemperatureTest extends IndividualsTest {
 		String[] concepts = { "Temperature", "RoomTemperature", "AboveRoomTemperature", "BelowRoomTemperature", "Cold", "Heat", "Frost" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
-		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), temperatureValue);
+		Resource blankNode = getOnto().createResource();
+		getOnto().add(getOnto().createLiteralStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), temperatureValue));
+		getOnto().add(getOnto().createStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
 		
-		getOnto().add(statement);
+		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
+		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), blankNode));
 		
 		for(String concept : concepts) {
 			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
