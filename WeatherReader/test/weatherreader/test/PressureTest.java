@@ -25,7 +25,6 @@ public class PressureTest extends IndividualsTest {
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
 		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasPressureValue"), blankNode));
-		
 
 		for(String concept : concepts) {
 			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
