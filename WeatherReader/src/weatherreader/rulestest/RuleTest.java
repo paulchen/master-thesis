@@ -1,5 +1,7 @@
 package weatherreader.rulestest;
 
+import java.util.Date;
+
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
 import weatherreader.model.WeatherReport;
@@ -39,6 +41,7 @@ public class RuleTest {
 		// String[] classes = { "StablePressure", "DecreasingPressure", "IncreasingPressure" };
 		String[] classes = { "HighPressure", "LowPressure", "NormalPressure", "CurrentWeatherState", "WeatherStateFromSensor" };
 		
+		Date startDate = new Date();
 		for(String clazz : classes) {
 			System.out.println(clazz + ":");
 			
@@ -51,5 +54,7 @@ public class RuleTest {
 			}
 			System.out.println();
 		}
+		Date endDate = new Date();
+		System.out.println(startDate + " " + endDate);
 	}
 }
