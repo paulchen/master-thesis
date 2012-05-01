@@ -1,20 +1,15 @@
 package weatherreader.rulestest;
 
-import java.util.List;
-
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
 import weatherreader.model.WeatherReport;
 
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFReader;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
-import com.hp.hpl.jena.reasoner.rulesys.GenericRuleReasoner;
-import com.hp.hpl.jena.reasoner.rulesys.Rule;
 import com.hp.hpl.jena.util.PrintUtil;
 
 public class RuleTest {
@@ -30,9 +25,10 @@ public class RuleTest {
 		arp.setProperty("embedding", "true");
 		arp.read(onto, "file:" + inputFilename);
 	
-		List<Rule> rules = Rule.rulesFromURL("file:test.rules");
-		GenericRuleReasoner ruleReasoner = new GenericRuleReasoner(rules);
-		InfModel model = ModelFactory.createInfModel(ruleReasoner, onto);
+//		List<Rule> rules = Rule.rulesFromURL("file:test.rules");
+//		GenericRuleReasoner ruleReasoner = new GenericRuleReasoner(rules);
+//		InfModel model = ModelFactory.createInfModel(ruleReasoner, onto);
+		OntModel model = onto;
 		
 //		Resource r = model.getResource(Weather.NAMESPACE + "NormalPressure");
 //		StmtIterator it = model.listStatements(r, null, (RDFNode)null);
@@ -40,7 +36,8 @@ public class RuleTest {
 //		Property p = model.getProperty(Weather.NAMESPACE + "hasFollowingPhenomenon");
 //		StmtIterator it = model.listStatements(null, p, (RDFNode)null);
 
-		String[] classes = { "StablePressure", "DecreasingPressure", "IncreasingPressure" };
+		// String[] classes = { "StablePressure", "DecreasingPressure", "IncreasingPressure" };
+		String[] classes = { "HighPressure", "LowPressure", "NormalPressure", "CurrentWeatherState", "WeatherStateFromSensor" };
 		
 		for(String clazz : classes) {
 			System.out.println(clazz + ":");
