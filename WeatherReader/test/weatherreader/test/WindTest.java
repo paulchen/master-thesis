@@ -9,7 +9,7 @@ import weatherreader.model.WeatherReport;
 import weatherreader.test.base.IndividualsTest;
 
 import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
@@ -18,10 +18,12 @@ public class WindTest extends IndividualsTest {
 		String[] concepts = { "Wind", "Calm", "LightWind", "StrongWind", "Storm", "Hurricane" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
-		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasWindSpeed"), windSpeed);
+		Resource blankNode = getOnto().createResource();
+		getOnto().add(getOnto().createLiteralStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), windSpeed));
+		getOnto().add(getOnto().createStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "metresPerSecond")));
 		
-		getOnto().add(statement);
+		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
+		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasWindSpeed"), blankNode));
 		
 		for(String concept : concepts) {
 			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
@@ -32,12 +34,18 @@ public class WindTest extends IndividualsTest {
 		String[] concepts = { "Wind", "DirectionalWind", "EastWind", "SouthWind", "WestWind", "NorthWind" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
-		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		Statement statement1 = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasWindSpeed"), 10f);
-		Statement statement2 = getOnto().createLiteralStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasWindDirection"), windDirection);
+		Resource blankNode1 = getOnto().createResource();
+		getOnto().add(getOnto().createLiteralStatement(blankNode1, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), 10f));
+		getOnto().add(getOnto().createStatement(blankNode1, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "metresPerSecond")));
 		
-		getOnto().add(statement1);
-		getOnto().add(statement2);
+		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
+		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasWindSpeed"), blankNode1));
+
+		Resource blankNode2 = getOnto().createResource();
+		getOnto().add(getOnto().createLiteralStatement(blankNode2, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), windDirection));
+		getOnto().add(getOnto().createStatement(blankNode2, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "metresPerSecond")));
+		
+		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasWindDirection"), blankNode2));
 		
 		for(String concept : concepts) {
 			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
@@ -68,7 +76,7 @@ public class WindTest extends IndividualsTest {
 	
 	@Test
 	public void testStorm() {
-		for(int windSpeed=200; windSpeed<=320; windSpeed+=5) {
+		for(int windSpeed=200; windSpeed<320; windSpeed+=5) {
 			checkWindSpeed(((float)windSpeed)/10, "Wind", "Storm");			
 		}
 	}
