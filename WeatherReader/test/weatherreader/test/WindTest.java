@@ -43,7 +43,8 @@ public class WindTest extends IndividualsTest {
 
 		Resource blankNode2 = getOnto().createResource();
 		getOnto().add(getOnto().createLiteralStatement(blankNode2, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), windDirection));
-		getOnto().add(getOnto().createStatement(blankNode2, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "metresPerSecond")));
+		// TODO get rid of magic constant for individual name here
+		getOnto().add(getOnto().createStatement(blankNode2, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 		
 		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasWindDirection"), blankNode2));
 		
