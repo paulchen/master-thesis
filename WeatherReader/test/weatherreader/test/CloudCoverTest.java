@@ -21,7 +21,7 @@ public class CloudCoverTest extends IndividualsTest {
 		Resource blankNode = getOnto().createResource();
 		getOnto().add(getOnto().createLiteralStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), cloudCover));
 		// TODO get rid of magic constant for individual name here
-		getOnto().add(getOnto().createStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "octa")));
+		getOnto().add(getOnto().createStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "okta")));
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
 		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasCloudCover"), blankNode));
