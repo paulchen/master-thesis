@@ -223,9 +223,14 @@ public class WeatherState {
 		
 		int index = 0;
 		for(CloudLayer cloudLayer : cloudLayers) {
+			Resource blankNode = onto.createResource();
+			onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), cloudLayer.getCoverage()));
+			// TODO get rid of magic constant for individual name here
+			onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "octa")));
+			
 			Individual cloudLayerIndividual = onto.createIndividual(WeatherReport.NAMESPACE + "cloudLayer" + stateIndex + "_" + index, weatherPhenomenonClass);
 			onto.add(onto.createStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
-			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudCover"), cloudLayer.getCoverage()));
+			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudCover"), blankNode));
 			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudAltitude"), cloudLayer.getAltitude()));
 			index++;
 		}
