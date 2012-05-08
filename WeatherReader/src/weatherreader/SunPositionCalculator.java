@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import weatherreader.model.GeographicalPosition;
+import weatherreader.model.SunPosition;
+
 // stolen from http://www.psa.es/sdg/sunpos.htm
 // see http://wiki.happylab.at/w/Sonnenstandsberechner_(f%C3%BCr_sun_tracker_devices)
 public class SunPositionCalculator {

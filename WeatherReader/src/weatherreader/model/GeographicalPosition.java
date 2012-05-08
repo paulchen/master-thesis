@@ -1,4 +1,4 @@
-package weatherreader;
+package weatherreader.model;
 
 public class GeographicalPosition {
 	private float latitude;
