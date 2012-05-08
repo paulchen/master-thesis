@@ -23,9 +23,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 // TODO javadoc
 public class WeatherReport {
 	private Date observationTime;
-	private float latitude;
-	private float longitude;
-	private int altitude;
+	private GeographicalPosition position;
 	private List<WeatherState> weatherStates;
 	
 	public static final String NAMESPACE = "http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#";
@@ -38,13 +36,11 @@ public class WeatherReport {
 	
 	private Logger log;
 	
-	public WeatherReport(float latitude, float longitude, int altitude, List<Integer> forecastHours) {
+	public WeatherReport(GeographicalPosition position, List<Integer> forecastHours) {
 		super();
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.position = position;
 		this.observationTime = new Date();
 		this.weatherStates = new ArrayList<WeatherState>();
-		this.altitude = altitude;
 		this.forecastHours = new ArrayList<Integer>(forecastHours);
 		Collections.sort(this.forecastHours);
 		this.maxHour = this.forecastHours.get(forecastHours.size() - 1)*2;
@@ -66,9 +62,9 @@ public class WeatherReport {
 		onto.add(onto.createStatement(weatherReport, onto.getProperty(WGS84 + "location"), point));
 		onto.add(onto.createStatement(point, RDF.type, pointClass));		
 		
-		onto.add(onto.createLiteralStatement(point, onto.getProperty(WGS84 + "lat"), latitude));
-		onto.add(onto.createLiteralStatement(point, onto.getProperty(WGS84 + "long"), longitude));
-		onto.add(onto.createLiteralStatement(point, onto.getProperty(WGS84 + "alt"), altitude));
+		onto.add(onto.createLiteralStatement(point, onto.getProperty(WGS84 + "lat"), position.getLatitude()));
+		onto.add(onto.createLiteralStatement(point, onto.getProperty(WGS84 + "long"), position.getLongitude()));
+		onto.add(onto.createLiteralStatement(point, onto.getProperty(WGS84 + "alt"), position.getAltitude()));
 		
 		Resource instantClass = onto.getResource(TIME + "Instant");
 		Individual instant = onto.createIndividual(NAMESPACE + "instant0", instantClass);
