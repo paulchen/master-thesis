@@ -1,5 +1,6 @@
 package weatherreader;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -20,6 +21,7 @@ public class SunPositionCalculator {
 		this.position = position;
 	}
 
+	// TODO remove
 	public static void main(String[] args) {
 		SunPositionCalculator positionCalculator = new SunPositionCalculator(
 				new GeographicalPosition(48f, 16f));
@@ -40,6 +42,10 @@ public class SunPositionCalculator {
 		// and JD 2451545.0, which is noon 1 January 2000 Universal Time
 		Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
 		calendar.setTime(date);
+		
+		// TODO
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm"); 
+		System.out.println("Calculating sun position for: " + simpleDateFormat.format(date));
 
 		// Calculate time of the day in UT decimal hours
 		double decimalHours = calendar.get(Calendar.HOUR_OF_DAY)

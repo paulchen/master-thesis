@@ -24,6 +24,7 @@ public class WeatherState {
 	private List<WeatherCondition> weatherConditions;
 	private String source;
 	private int priority;
+	private SunPosition sunPosition;
 	
 	public WeatherState(Date startDate, Date endDate, Float temperatureValue,
 			Float humidityValue, Float dewPointValue, Float pressureValue, Float windSpeed,
@@ -63,6 +64,7 @@ public class WeatherState {
 		buffer.append("precipitationIntensity=" + precipitationIntensity + "; ");
 		buffer.append("cloudLayers=" + cloudLayers.toString() + "; ");
 		buffer.append("weatherConditions=" + weatherConditions.toString());
+		buffer.append("sunPosition=" + sunPosition);
 		buffer.append("]");
 		return buffer.toString();
 	}
@@ -144,6 +146,10 @@ public class WeatherState {
 
 	protected void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	protected void setSunPosition(SunPosition position) {
+		this.sunPosition = position;
 	}
 
 	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex, WeatherState previousState) {
@@ -240,6 +246,23 @@ public class WeatherState {
 				onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationIntensity"), blankNode));
 //				onto.add(onto.createLiteralStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPrecipitationValue"), precipitationIntensity));
 			}
+		}
+		
+		if(sunPosition != null) {
+			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "sunPosition" + stateIndex, weatherPhenomenonClass);
+			
+			Resource blankNode1 = onto.createResource();
+			onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (int)sunPosition.getAzimuth()));
+			// TODO get rid of magic constant for individual name here
+			onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
+			
+			Resource blankNode2 = onto.createResource();
+			onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), sunPosition.getElevation()));
+			// TODO get rid of magic constant for individual name here
+			onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
+			
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasSunDirection"), blankNode1));
+			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasSunElevationAngle"), blankNode2));
 		}
 		
 		int index = 0;

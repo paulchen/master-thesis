@@ -13,6 +13,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import weatherreader.SunPositionCalculator;
+
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -417,6 +419,15 @@ public class WeatherReport {
 			}
 		}
 		
-		printWeatherStates("Final weather states after normalization", weatherStates);
+		printWeatherStates("Weather states after normalization", weatherStates);
+		
+		// add sun position data
+		SunPositionCalculator sunPositionCalculator = new SunPositionCalculator(position);
+		for(WeatherState state : weatherStates) {
+			Date date = new Date((long)(new Date().getTime() + state.getStartDate()*3600000));
+			state.setSunPosition(sunPositionCalculator.calculate(date));
+		}
+		
+		printWeatherStates("Final weather states after normalization including sun position data", weatherStates);
 	}
 }
