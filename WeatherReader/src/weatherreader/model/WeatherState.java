@@ -63,7 +63,7 @@ public class WeatherState {
 		buffer.append("precipitationProbability=" + precipitationProbability + "; ");
 		buffer.append("precipitationIntensity=" + precipitationIntensity + "; ");
 		buffer.append("cloudLayers=" + cloudLayers.toString() + "; ");
-		buffer.append("weatherConditions=" + weatherConditions.toString());
+		buffer.append("weatherConditions=" + weatherConditions.toString() + "; ");
 		buffer.append("sunPosition=" + sunPosition);
 		buffer.append("]");
 		return buffer.toString();

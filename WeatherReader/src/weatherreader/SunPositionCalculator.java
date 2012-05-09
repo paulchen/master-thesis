@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import org.apache.log4j.Logger;
+
 import weatherreader.model.GeographicalPosition;
 import weatherreader.model.SunPosition;
 
@@ -17,20 +19,12 @@ public class SunPositionCalculator {
 	private static final double EARTH_MEAN_RADIUS = 6371.01;
 	private static final double ASTRONOMICAL_UNIT = 149597890;
 
+	private Logger log;
+	
 	public SunPositionCalculator(GeographicalPosition position) {
 		this.position = position;
-	}
-
-	// TODO remove
-	public static void main(String[] args) {
-		SunPositionCalculator positionCalculator = new SunPositionCalculator(
-				new GeographicalPosition(48f, 16f));
-
-		GregorianCalendar calendar = new GregorianCalendar(
-				TimeZone.getTimeZone("Europe/Berlin"));
-		calendar.set(2012, 4, 8, 14, 0, 0);
-		System.out.println(positionCalculator.calculate(calendar.getTime()));
-		// System.out.println(position.calculate(48f, 16f, new Date()));
+		
+		log = Logger.getLogger(SunPositionCalculator.class);
 	}
 
 	public SunPosition calculate() {
@@ -44,8 +38,8 @@ public class SunPositionCalculator {
 		calendar.setTime(date);
 		
 		// TODO
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm"); 
-		System.out.println("Calculating sun position for: " + simpleDateFormat.format(date));
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+		log.debug("Calculating sun position for: " + simpleDateFormat.format(date));
 
 		// Calculate time of the day in UT decimal hours
 		double decimalHours = calendar.get(Calendar.HOUR_OF_DAY)
