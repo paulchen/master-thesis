@@ -63,6 +63,8 @@ Building Ontologies:
 * SS97-06-018.pdf
   Bill Swartout, Ramesh Patil, Kevin Knight, Tom Russ. Toward Distributed Use of Large-Scale Ontologies
 
+* 10.1.1.111.5903.pdf
+  Mike Uschold & Michael Gruninger. ONTOLOGIES: Principles, Methods and Applications
 
 OWL, RDF, RDFS:
 
