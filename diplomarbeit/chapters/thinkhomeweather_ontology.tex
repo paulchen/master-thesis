@@ -1,7 +1,55 @@
-\section{Competency questions}
+The previous chapters covered all aspects that have to be analyzed in order to build a completely new ontology from scratch: Chapter \ref{ch:weather_data} discussed all details about weather data necessary for the \thinkhome weather ontology, what data will be used and where to obain it. Chapter \ref{ch:existing_work} gave an overview over existing work regarding ontologies in the domain of weather data. As none of the existing ontologies fit the needs of an ontology for \thinkhome, chapter  \ref{ch:development_approaches} analyzed some of the most popular approaches for building ontologies from scratch. Among those \methontology was identified as the best suitable approach. % TODO citation for methontology?
 
-\section{Developing the ontology}
+Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail.
 
-\section{The ontology}
+\section{Specification}
+
+Specification, the first step in the ontology development process defined by \methontology, aims at creating an ontology specification document using natural language. That document must include at least the intended purpose of the ontology, the level of 
+formality and the ontology's scope.
+
+\begin{framed}
+\setlength{\parindent}{0pt}
+% TODO additional vertical spaces
+\MakeUppercase{\textbf{Ontology requirements specification document}}
+
+
+\textbf{Domain}: Weather data
+
+\textbf{Date}: 2012 % TODO
+
+\textbf{Purpose}: Ontology covering data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be aquired from both internet services as well as from weather sensors mounted to the building.
+
+\textbf{Level of formality}: semi-informal % TODO citations for uschold & gruninger, 1996; uschuld & king (enterprise ontology)
+
+\textbf{Scope}:
+
+\begin{itemize}
+  \item \emph{Weather phenomenon}: Represents a certain weather element. Weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, sun radiation, and the position of the sun.
+  \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
+  \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
+  \item \emph{Weather report}: Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
+  \item \emph{Weather source}: Source where the data belonging to a weather report has been obtained from (either a internet weather service or a local weather sensor).
+\end{itemize}
+
+\textbf{Sources of knowledge}:
+\begin{itemize}
+  \item data in weather reports
+  \item data available from sensors
+  \item data required by/useful for ThinkHome
+  \item other weather ontologies
+  \item glossary of weather reports (see link at Dan Arkoff)
+\end{itemize}
+
+\end{framed}
+
+\section{Knowledge Aquisition}
+
+\section{Conceptualization}
+
+\section{Integration}
+
+\section{Implementation}
+
+\section{Evaluation}
 
 \section{Fetching weather data}
