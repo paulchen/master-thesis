@@ -66,6 +66,9 @@ Building Ontologies:
 * 10.1.1.111.5903.pdf
   Mike Uschold & Michael Gruninger. ONTOLOGIES: Principles, Methods and Applications
 
+* 98-ker-ent-ontology.pdf
+  Mike Uschold, Martin King, Stuart Moralee and Yannis Zorgios. The Enterprise Ontology
+
 OWL, RDF, RDFS:
 
 * http://www.w3.org/2004/OWL/
