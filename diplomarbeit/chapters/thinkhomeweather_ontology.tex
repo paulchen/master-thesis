@@ -23,7 +23,7 @@ formality and the ontology's scope.
 
 \vspace{.2cm}
 
-\textbf{Purpose}: Ontology covering data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be aquired from both internet services as well as from weather sensors mounted to the building.
+\textbf{Purpose}: The ontology shall cover data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be aquired from both internet services as well as from weather sensors mounted to a building. This weather data will enable the \textit{ThinkHome} system to make decisions based on current and future weather conditions.
 
 \vspace{.2cm}
 
@@ -52,9 +52,29 @@ formality and the ontology's scope.
   \item Information about weather in general, e.g. the Glossary of Meteorology by the American Meteorological Society. % TODO citation, more literature
 \end{itemize}
 
+\textbf{Competency questions}:
+\begin{itemize}
+  \item What is the current weather situation?
+  \item What will the weather situation be in one hour, in two hours, …, in 24 hours?
+  \item What is the current temperature, humidity, wind speed, …?
+  \item What will be the temperature, humidity, wind speed, … in one hour, in two hours, …, in 24 hours?
+  \item What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?
+  \item Will the weather change? Will the temperature, humidity, … rise or fall?
+  \item Does it rain? Will it rain in the next hours? Will it rain today?
+  \item Will there be sunshine today? 
+  \item Do we need to irrigate the garden?
+  \item Will there be severe weather?
+  \item Will temperature drop/stay below $0°C$?
+  \item When can we open windows and when do we have to keep them shut?
+  \item When do we need sun protection?
+  \item When will it outside be colder than inside the house? When will it be warmer?
+\end{itemize}
+
 \end{mdframed}
 
-% TODO competence questions
+\vspace{.5cm}
+
+In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements. Section \ref{ch:ontology_evaluation} evaluates if the ontology that has been developed fits the specification and what the ontology's shortcomings are.
 
 \section{Knowledge Aquisition}
 
@@ -90,11 +110,16 @@ formality and the ontology's scope.
 % TODO diagrams for parts of the ontology
 
 \section{Evaluation}
+\label{ch:ontology_evaluation}
 
 % TODO compare existing ontology with specification and competence questions
 
-\section{Fetching weather data}
+\section{Fetching data}
 
 % TODO describe fetching weather data from yr.no
 % TODO describe algorithms for calculation of the position of the sun
 % TODO perhaps split into two categories (one for weather data and one for the sun's position according to one of the two available algorithms, see SunPositionCalculator's source code
+
+\subsection{Weather data}
+
+\subsection{Position of the sun}
