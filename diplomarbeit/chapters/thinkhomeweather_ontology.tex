@@ -1,11 +1,20 @@
+% TODO put all names of steps according to \methontology into \emph
+% TODO ontology - naming conventions
+% TODO mention - this chapter does not cover the ontology development process as it was done; instead, it presents the completed documents that were created in that processs.
+% TODO mention second paper about methontology (the one that describes all artefacts created when building the chemical ontology)
+
 % TODO check if the things mentioned here are properly covered in the chapters referred
+
+% TODO rename: belongsToWeatherReport -> belongsToReport
+
+% TODO elaborate steps more?
 The previous chapters covered all aspects that have to be analyzed in order to build a completely new ontology from scratch: Chapter \ref{ch:weather_data} discussed all details about weather data necessary for the \thinkhome weather ontology, what data will be used and where to obain it. Chapter \ref{ch:existing_work} gave an overview over existing work regarding ontologies in the domain of weather data. As none of the existing ontologies fit the needs of an ontology for \thinkhome, chapter  \ref{ch:development_approaches} analyzed some of the most popular approaches for building ontologies from scratch. Among those \methontology was identified as the best suitable approach. % TODO citation for methontology?
 
-Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail.
+Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail. The structure follows the steps in the ontology development process introduced by \methontology.
 
 \section{Specification}
 
-Specification, the first step in the ontology development process defined by \methontology, aims at creating an ontology specification document using natural language. That document must include at least the intended purpose of the ontology, the level of 
+Specification, the first step proposed by \methontology, aims at creating an ontology specification document using natural language. That document must include at least the intended purpose of the ontology, the level of 
 formality and the ontology's scope.
 
 % TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
@@ -64,7 +73,7 @@ formality and the ontology's scope.
   \item Will there be sunshine today? 
   \item Do we need to irrigate the garden?
   \item Will there be severe weather?
-  \item Will temperature drop/stay below $0°C$? % FIXME
+%  \item Will temperature drop/stay below $0°C$? % FIXME
   \item When can we open windows and when do we have to keep them shut?
   \item When do we need sun protection?
   \item When will it outside be colder than inside the house? When will it be warmer?
@@ -78,13 +87,415 @@ In the following sections, the \thinkhomeweather ontology is built in a way to m
 
 \section{Knowledge Aquisition}
 
-% TODO mostly refer to previous chapters as knowledge aquisition is already completed
+The step of knowledge aquisition was already described in the previous chapters \ref{ch:existing_work} and \ref{ch:weather_data}. These chapters disussed in detail:
+
+\begin{itemize}
+  \item Which weather data are relevant for \thinkhome?
+  \item Which weather data are available from sensors and internet services? How can this data be acquired?
+  \item Which data do not have any use for \thinkhomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
+  \item What knowledge about weather in general is required to build an appropriate ontology? % TODO check if this is available in the previous chapters
+\end{itemize}
 
 \section{Conceptualization}
 
-% TODO check if these steps are correct (see referenced papers
+In the conceptualization step, the domain knowledge is structured in a conceptial model that describes the problem and its solution in terms of the domain vocabulary identified in the specification step. At first, a complete Glossary of Terms is built that covers all concepts, instances, attributes and binary relations.
 
-% TODO glossary of terms
+\subsection{Glossary of Terms}
+
+% TODO mention: in alphabetical order
+% TODO repeat header on every page?
+% TODO references between glossary items; e.g. from 'civil twilight' to 'twilight'
+% TODO add sub-concepts for weather state
+% TODO add type column
+% TODO add binary relations
+\begin{longtable}{|p{0.25\textwidth}|p{0.7\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Description} \\
+  \hline\hline
+  Above room temperature & \\
+  \hline
+  Altitude & \\
+  \hline
+  Astronomical twilight & \\
+  \hline
+  Atmospheric pressure & \\
+  \hline
+  Below room temperature & \\
+  \hline
+  Calm & \\
+  \hline
+  Civil twilight & \\
+  \hline
+  Clear sky & \\
+  \hline
+  Cloud & \\
+  \hline
+  Cloud cover & \\
+  \hline
+  Cold & \\
+  \hline
+  Condition weather state & \\
+  \hline
+  Current weather state & \\
+  \hline
+  Current weather state from sensor & \\
+  \hline
+  Current weather state from service & \\
+  \hline
+  Day & \\
+  \hline
+  Dew point & \\
+  \hline
+  Directional wind & \\
+  \hline
+  Dry & \\
+  \hline
+  East wind & \\
+  \hline
+  End time & \\
+  \hline
+  Extremely heavy rain & \\
+  \hline
+  Fog & \\
+  \hline
+  Forecast weather state & \\
+  \hline
+  Frost & \\
+  \hline
+  Heat & \\
+  \hline
+  Heavy rain & \\
+  \hline
+  High pressure & \\
+  \hline
+  High radiation & \\
+  \hline
+  Humidity & \\
+  \hline
+  Hurricane & \\
+  \hline
+  Latitude & \\
+  \hline
+  Light clouds & \\
+  \hline
+  Light rain & \\
+  \hline
+  Light wind & \\
+  \hline
+  Location & \\
+  \hline
+  Longitude & \\
+  \hline
+  Long range weather report & \\
+  \hline
+  Low pressure & \\
+  \hline
+  Low radiation & \\
+  \hline
+  Medium radiation & \\
+  \hline
+  Medium rain & \\
+  \hline
+  Medium range weather report & \\
+  \hline
+  Moist & \\
+  \hline
+  Mostly cloudy & \\
+  \hline
+  Nautical twilight & \\
+  \hline
+  Night & \\
+  \hline
+  No radiation & \\
+  \hline
+  No rain & \\
+  \hline
+  Normal humidity & \\
+  \hline
+  Normal pressure & \\
+  \hline
+  North wind & \\
+  \hline
+  Observation time & \\
+  \hline
+  Overcast & \\
+  \hline
+  Partly cloudy & \\
+  \hline
+  Precipitation & \\
+  \hline
+  Priority & \\
+  \hline
+  Rain & \\
+  \hline
+  Room temperature & \\
+  \hline
+  Sensor source & \\
+  \hline
+  Service source & \\
+  \hline
+  Short range weather report & \\
+  \hline
+  Sleet & \\
+  \hline
+  Snow & \\
+  \hline
+  Solar twilight & \\
+  \hline
+  South wind & \\
+  \hline
+  Start time & \\
+  \hline
+  Storm & \\
+  \hline
+  Strong wind & \\
+  \hline
+  Sun & \\
+  \hline
+  Sun from east & \\
+  \hline
+  Sun from north & \\
+  \hline
+  Sun from south & \\
+  \hline
+  Sun from west & \\
+  \hline
+  Sun position & \\
+  \hline
+  Sun radiation & \\
+  \hline
+  Temperature & \\
+  \hline
+  Thunder & \\
+  \hline
+  Timed weather report & \\
+  \hline
+  Tropical storm rain & \\
+  \hline
+  Unknown cloud cover & \\
+  \hline
+  Very dry & \\
+  \hline
+  Very high pressure & \\
+  \hline
+  Very high radiation & \\
+  \hline
+  Very low pressure & \\
+  \hline
+  Very moist & \\
+  \hline
+  Weather condition & \\
+  \hline
+  Weather phenomenon & \\
+  \hline
+  Weather report & \\
+  \hline
+  Weather report from sensor & \\
+  \hline
+  Weather report from service & \\
+  \hline
+  Weather report source & \\
+  \hline
+  Weather state & \\
+  \hline
+  West wind & \\
+  \hline
+  Wind & \\
+  \hline
+\end{longtable}
+
+\subsection{Concept-classification trees}
+\label{sec:concept_classification_trees}
+
+All concepts from the Glossary of Terms can be organized into five categories. Each of these categories has one root concept. These are \emph{Weather condition}, \emph{Weather phenomenon}, \emph{Weather report}, \emph{Weather source} and \emph{Weather state}. All other concepts are sub-concepts of one of these five root concepts. The trees resulting from the structure are presented below.
+
+\subsubsection{Weather condition}
+
+A \emph{Weather condition} represents a simple verbal description of the weather state at a certain time. As it does not have any sub-concepts, the diagram showing this classification tree looks rather simple:
+
+% TODO
+
+\subsubsection{Weather phenomenon}
+
+A \emph{Weather phenomenon} represents a certain weather element, e.g. temperature or humidity. Every specific weather element is a sub-concept of \emph{Weather phenomenon}. Hence, this tree evolves:
+
+% TODO
+Every of these sub-concepts again has sub-concepts for different states of the weather elements. For the sake of clarity, these concepts are not shown in the diagram above. See the diagrams below for details.
+
+The only sub-concept of \emph{Weather phenomenon} that does not have any sub-concepts is \emph{Dew point}. The diagram showing a tree that consists of only one node for \emph{Dew point} is omitted.
+
+\paragraph{Atmospheric pressure}
+% TODO
+
+\paragraph{Cloud cover}
+% TODO
+
+\paragraph{Humidity}
+% TODO
+
+\paragraph{Precipitation}
+% TODO
+
+\paragraph{Temperature}
+% TODO
+
+\paragraph{Wind}
+% TODO
+
+\subsubsection{Weather report}
+
+There are two main attributes for a \emph{Weather report}: Its \emph{Start date} and its \emph{Source}. A number of sub-concepts is defined in order to reflect different values of these two attributes:
+
+% TODO
+
+\subsubsection{Weather source}
+
+A \emph{Weather source} can either be a \emph{Sensor source} or a \emph{Service source}:
+
+% TODO
+
+\subsubsection{Weather state}
+
+% TODO reformulate this
+A \emph{Weather state} collects all \emph{Weather phenomena} for a certain \emph{Weather report}. Because of this, sub-concepts of \emph{Weather state} can be introduced that reflect certain combination of related instances of \emph{Weather phenomenon}:
+
+% TODO
+
+\subsection{Binary relations diagram}
+\label{sec:binary_relations_diagram}
+
+The binary relations diagram shows all binary relations between concepts in the ontology in a clear manner:
+
+% TODO 
+% Weather state <-> Weather phenomenon: belongs to state/has weather phenomenon
+% Weather report <-> Weather state: belongs to weather report/has weather state
+% Weather state <-> Weather condition: has condition
+% Weather report <-> Weather report: has next weather report/has previous weather report
+% Weather report <-> Weather source: has weather source/is source of
+% put all this one diagram
+
+\subsection{Concept dictionaries}
+
+A concept dictionary lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section \ref{sec:concept_classification_trees}.
+
+\subsubsection{Weather condition}
+
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  Weather condition & Cloud\newline Fog\newline Partly cloudy\newline Mostly cloudy\newline Rain\newline Sleet\newline Snow\newline Sun\newline Thunder\newline & - & - & hasCondition \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather phenomenon}
+
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  lala & - & - & - & - \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather report}
+
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  lala & - & - & - & - \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather state}
+
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  lala & - & - & - & - \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather source}
+
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  lala & - & - & - & - \\
+  \hline
+\end{longtable}
+
+\subsection{Binary relations table}
+
+The binary relation table specifies all relations from section \ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
+
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
+  \hline\hline
+  belongs to state & Weather phenomenon & Weather state & 1 & has weather phenomenon \\
+  \hline
+  belongs to report & Weather state & Weather report & 1 & has weather state \\
+  \hline
+  has condition & Weather state & Weather condition & N & - \\
+  \hline
+  has next weather report & Weather report & Weather report & 1 & has previous weather report \\
+  \hline
+  has previous weather report & Weather report & Weather report & 1 & has next weather report \\
+  \hline
+  has source & Weather report & Weather source & 1 & is source of \\
+  \hline
+  has weather phenomenon & Weather state & Weather phenomenon & N & belongs to state \\
+  \hline
+  has weather state & Weather report & Weather state & 1 & belongs to report \\
+  \hline
+  is source of & Weather source & Weather report & N & has source \\
+  \hline
+\end{longtable}
+
+\subsection{Instance attribute tables}
+
+% TODO description of what is going on here
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Cardinality} \\
+  \hline\hline
+  lalala & lala & lala & lala & lala \\
+  \hline
+\end{longtable}
+
+\subsection{Class attribute tables}
+
+% TODO description of what is going on here
+% TODO 
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Attribute name} & \textbf{Defined concept} & \textbf{Value type} & \textbf{Cardinality} & \textbf{Values} \\
+  \hline\hline
+  lalala & lala & lala & lala & lala \\
+  \hline
+\end{longtable}
+
+\subsection{Logical axioms tables}
+
+% TODO sub-concepts of weather state
+
+\subsection{Formula tables}
+
+% TODO sub-concepts of weather state
+
+\subsection{Instance tables}
+
+% TODO check if these steps are correct (see referenced papers)
+
 % TODO concept classification trees
 % TODO data dictionaries
 % TODO tables of instance attributes
