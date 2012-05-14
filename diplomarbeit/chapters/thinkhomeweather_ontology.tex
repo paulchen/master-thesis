@@ -51,7 +51,7 @@ formality and the ontology's scope.
   \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
   \item \emph{Weather report}: Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
-  \item \emph{Weather source}: Source where the data belonging to a weather report has been obtained from (either a internet weather service or a local weather sensor).
+  \item \emph{Weather report source}: Source where the data belonging to a weather report has been obtained from (either a internet weather service or a local weather sensor).
 \end{itemize}
 
 \vspace{.2cm}
@@ -139,11 +139,11 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
   \hline
   Condition weather state & \\
   \hline
-  Current weather state & \\
+  Current weather report & \\
   \hline
-  Current weather state from sensor & \\
+  Current weather report from sensor & \\
   \hline
-  Current weather state from service & \\
+  Current weather report from service & \\
   \hline
   Day & \\
   \hline
@@ -161,7 +161,7 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
   \hline
   Fog & \\
   \hline
-  Forecast weather state & \\
+  Forecast weather report & \\
   \hline
   Frost & \\
   \hline
@@ -310,7 +310,7 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
 \subsection{Concept-classification trees}
 \label{sec:concept_classification_trees}
 
-All concepts from the Glossary of Terms can be organized into five categories. Each of these categories has one root concept. These are \emph{Weather condition}, \emph{Weather phenomenon}, \emph{Weather report}, \emph{Weather source} and \emph{Weather state}. All other concepts are sub-concepts of one of these five root concepts. The trees resulting from the structure are presented below.
+All concepts from the Glossary of Terms can be organized into five categories. Each of these categories has one root concept. These are \emph{Weather condition}, \emph{Weather phenomenon}, \emph{Weather report}, \emph{Weather report source} and \emph{Weather state}. All other concepts are sub-concepts of one of these five root concepts. The trees resulting from the structure are presented below.
 
 \subsubsection{Weather condition}
 
@@ -351,9 +351,9 @@ There are two main attributes for a \emph{Weather report}: Its \emph{Start date}
 
 % TODO
 
-\subsubsection{Weather source}
+\subsubsection{Weather report source}
 
-A \emph{Weather source} can either be a \emph{Sensor source} or a \emph{Service source}:
+A \emph{Weather report source} can either be a \emph{Sensor source} or a \emph{Service source}:
 
 % TODO
 
@@ -374,7 +374,7 @@ The binary relations diagram shows all binary relations between concepts in the 
 % Weather report <-> Weather state: belongs to weather report/has weather state
 % Weather state <-> Weather condition: has condition
 % Weather report <-> Weather report: has next weather report/has previous weather report
-% Weather report <-> Weather source: has weather source/is source of
+% Weather report <-> Weather report source: has weather source/is source of
 % put all this one diagram
 
 \subsection{Concept dictionaries}
@@ -398,7 +398,129 @@ A concept dictionary lists all concepts together with their names, instances, cl
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  lala & - & - & - & - \\
+  Above room temperature & - & - & - & - \\
+  \hline
+  Astronomical twilight & - & - & - & - \\
+  \hline
+  Atmospheric pressure & - & - & - & - \\
+  \hline
+  Below room temperature & - & - & - & - \\
+  \hline
+  Calm & - & - & - & - \\
+  \hline
+  Civil twilight & - & - & - & - \\
+  \hline
+  Clear sky & - & - & - & - \\
+  \hline
+  Cloud & - & - & - & - \\
+  \hline
+  Cloud cover & - & - & - & - \\
+  \hline
+  Cold & - & - & - & - \\
+  \hline
+  Day & - & - & - & - \\
+  \hline
+  Dew point & - & - & - & - \\
+  \hline
+  Directional wind & - & - & - & - \\
+  \hline
+  Dry & - & - & - & - \\
+  \hline
+  East wind & - & - & - & - \\
+  \hline
+  Extremely heavy rain & - & - & - & - \\
+  \hline
+  Fog & - & - & - & - \\
+  \hline
+  Frost & - & - & - & - \\
+  \hline
+  Heat & - & - & - & - \\
+  \hline
+  Heavy rain & - & - & - & - \\
+  \hline
+  High pressure & - & - & - & - \\
+  \hline
+  High radiation & - & - & - & - \\
+  \hline
+  Humidity & - & - & - & - \\
+  \hline
+  Hurricane & - & - & - & - \\
+  \hline
+  Light rain & - & - & - & - \\
+  \hline
+  Light wind & - & - & - & - \\
+  \hline
+  Low pressure & - & - & - & - \\
+  \hline
+  Low radiation & - & - & - & - \\
+  \hline
+  Medium radiation & - & - & - & - \\
+  \hline
+  Medium rain & - & - & - & - \\
+  \hline
+  Moist & - & - & - & - \\
+  \hline
+  Mostly cloudy & - & - & - & - \\
+  \hline
+  Nautical twilight & - & - & - & - \\
+  \hline
+  Night & - & - & - & - \\
+  \hline
+  No radiation & - & - & - & - \\
+  \hline
+  No rain & - & - & - & - \\
+  \hline
+  Normal humidity & - & - & - & - \\
+  \hline
+  Normal pressure & - & - & - & - \\
+  \hline
+  North wind & - & - & - & - \\
+  \hline
+  Overcast & - & - & - & - \\
+  \hline
+  Partly cloudy & - & - & - & - \\
+  \hline
+  Precipitation & - & - & - & - \\
+  \hline
+  Room temperature & - & - & - & - \\
+  \hline
+  Solar twilight & - & - & - & - \\
+  \hline
+  South wind & - & - & - & - \\
+  \hline
+  Sun from east & - & - & - & - \\
+  \hline
+  Sun from north & - & - & - & - \\
+  \hline
+  Sun from south & - & - & - & - \\
+  \hline
+  Sun from west & - & - & - & - \\
+  \hline
+  Sun position & - & - & - & - \\
+  \hline
+  Sun radiation & - & - & - & - \\
+  \hline
+  Temperature & - & - & - & - \\
+  \hline
+  Tropical storm rain & - & - & - & - \\
+  \hline
+  Unknown cloud cover & - & - & - & - \\
+  \hline
+  Very dry & - & - & - & - \\
+  \hline
+  Very high pressure & - & - & - & - \\
+  \hline
+  Very high radiation & - & - & - & - \\
+  \hline
+  Very low pressure & - & - & - & - \\
+  \hline
+  Very moist & - & - & - & - \\
+  \hline
+  Weather phenomenon & - & - & - & - \\
+  \hline
+  West wind & - & - & - & - \\
+  \hline
+  Wind & - & - & - & - \\
   \hline
 \end{longtable}
 
@@ -409,7 +531,43 @@ A concept dictionary lists all concepts together with their names, instances, cl
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  lala & - & - & - & - \\
+  Altitude & - & - & - & - \\
+  \hline
+  Current weather report & - & - & - & - \\
+  \hline
+  Current weather report from sensor & - & - & - & - \\
+  \hline
+  Current weather report from service & - & - & - & - \\
+  \hline
+  End time & - & - & - & - \\
+  \hline
+  Forecast weather report & - & - & - & - \\
+  \hline
+  Latitude & - & - & - & - \\
+  \hline
+  Location & - & - & - & - \\
+  \hline
+  Longitude & - & - & - & - \\
+  \hline
+  Long range weather report & - & - & - & - \\
+  \hline
+  Medium range weather report & - & - & - & - \\
+  \hline
+  Observation time & - & - & - & - \\
+  \hline
+  Priority & - & - & - & - \\
+  \hline
+  Short range weather report & - & - & - & - \\
+  \hline
+  Timed weather report & - & - & - & - \\
+  \hline
+  Weather report & - & - & - & - \\
+  \hline
+  Weather report from sensor & - & - & - & - \\
+  \hline
+  Weather report from service & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
   \hline
 \end{longtable}
 
@@ -420,18 +578,38 @@ A concept dictionary lists all concepts together with their names, instances, cl
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  lala & - & - & - & - \\
+  Condition weather state & - & - & - & - \\
+  \hline
+  Weather state & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
+  \hline
+  & - & - & - & - \\
   \hline
 \end{longtable}
 
-\subsubsection{Weather source}
+\subsubsection{Weather report source}
 
 % TODO
 \begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  lala & - & - & - & - \\
+  Sensor source & - & - & - & - \\
+  \hline
+  Service source & - & - & - & - \\
+  \hline
+  Weather report source & - & - & - & - \\
   \hline
 \end{longtable}
 
@@ -453,13 +631,13 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
   \hline
   has previous weather report & Weather report & Weather report & 1 & has next weather report \\
   \hline
-  has source & Weather report & Weather source & 1 & is source of \\
+  has source & Weather report & Weather report source & 1 & is source of \\
   \hline
   has weather phenomenon & Weather state & Weather phenomenon & N & belongs to state \\
   \hline
   has weather state & Weather report & Weather state & 1 & belongs to report \\
   \hline
-  is source of & Weather source & Weather report & N & has source \\
+  is source of & Weather report source & Weather report & N & has source \\
   \hline
 \end{longtable}
 
