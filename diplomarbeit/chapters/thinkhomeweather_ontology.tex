@@ -8,6 +8,9 @@
 % TODO rename: belongsToWeatherReport -> belongsToReport
 
 % TODO elaborate steps more?
+
+% TODO reference paper: Building legal ontologies with METHONTOLOGY and WebODE
+
 The previous chapters covered all aspects that have to be analyzed in order to build a completely new ontology from scratch: Chapter \ref{ch:weather_data} discussed all details about weather data necessary for the \thinkhome weather ontology, what data will be used and where to obain it. Chapter \ref{ch:existing_work} gave an overview over existing work regarding ontologies in the domain of weather data. As none of the existing ontologies fit the needs of an ontology for \thinkhome, chapter  \ref{ch:development_approaches} analyzed some of the most popular approaches for building ontologies from scratch. Among those \methontology was identified as the best suitable approach. % TODO citation for methontology?
 
 Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail. The structure follows the steps in the ontology development process introduced by \methontology.
@@ -384,7 +387,7 @@ A concept dictionary lists all concepts together with their names, instances, cl
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  Weather condition & Cloud\newline Fog\newline Partly cloudy\newline Mostly cloudy\newline Rain\newline Sleet\newline Snow\newline Sun\newline Thunder\newline & - & - & hasCondition \\
+  Weather condition & Cloud\newline Fog\newline Partly cloudy\newline Mostly cloudy\newline Rain\newline Sleet\newline Snow\newline Sun\newline Thunder & - & - & hasCondition \\
   \hline
 \end{longtable}
 
@@ -494,20 +497,31 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
 
 \subsection{Instance tables}
 
-% TODO check if these steps are correct (see referenced papers)
-
-% TODO concept classification trees
-% TODO data dictionaries
-% TODO tables of instance attributes
-% TODO tables of class attributes
-% TODO tables of constants
-% TODO tables of instances
-% TODO attributes classification trees
-% TODO verbs diagrams
-% TODO verbs dictionary
-% TODO table of conditions
-% TODO table of formulas
-% TODO table of rules
+% TODO description of what is going on here
+% TODO
+\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Instance name} & \textbf{Concept name} & \textbf{Attribute} & \textbf{Values} \\
+  \hline\hline
+  Cloud & Weather condition & - & - \\
+  \hline
+  Fog & Weather condition & - & - \\
+  \hline
+  Partly cloudy & Weather condition & - & - \\
+  \hline
+  Mostly cloudy & Weather condition & - & - \\
+  \hline
+  Rain & Weather condition & - & - \\
+  \hline
+  Sleet & Weather condition & - & - \\
+  \hline
+  Snow & Weather condition & - & - \\
+  \hline
+  Sun & Weather condition & - & - \\
+  \hline
+  Thunder & Weather condition & - & - \\
+  \hline
+\end{longtable}
 
 \section{Integration}
 
