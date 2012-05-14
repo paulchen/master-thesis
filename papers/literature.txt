@@ -69,6 +69,11 @@ Building Ontologies:
 * 98-ker-ent-ontology.pdf
   Mike Uschold, Martin King, Stuart Moralee and Yannis Zorgios. The Enterprise Ontology
 
+* LawSemWeb2004_CorchoEtAl.pdf
+  Oscar Corcho, Mariano Fernández-López, Asunción Gómez-Pérez, Angel López-Cima. Building legal ontologies with METHONTOLOGY and WebODE
+
+
+
 OWL, RDF, RDFS:
 
 * http://www.w3.org/2004/OWL/
