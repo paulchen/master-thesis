@@ -525,10 +525,31 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
 
 \section{Integration}
 
-% TODO mention other ontologies: why not SWEET; ontology for units, owl-time, wgs84
+One of the goals of the \thinkhomeweather ontology is to keep an eye on existing ontologies to be re-used. While analyzing the problem domain, it quickly became clear that there are four areas where already existing ontologies could be reused: Location data, measuremenr units, date/time specifications and weather concepts. Chapter \label{ch:existing_work} already shed some light on existing ontologies around the domain of weather data. In this section, the ontologies being short-listed for reuse within \thinkhomeweather are summarized.
+
+% TODO reference: website, WGS84
+For location data, the W3C Semantic Web Interest Group offers a \emph{Basic Geo (WGS84 lat/long) Vocabulary}. It introduces a concept called \emph{Spatial thing} that can have \emph{latitude}, \emph{longitude} and \emph{altitude} according to the WGS 84 geodetic reference system. However, the vocabulary contains some data properties that are incorrectly defined as annotation property. This shortcoming needs to be overriden in any ontology that uses this vocabulary.
+
+% TODO reference SWEET
+NASA's SWEET ontology offers a wide range of concepts, attributes and individuals for environmental and atmospherical phenomena, including all units that may be used within a weather data ontology. SWEET is designed in a highly modular manner. Units can be found in a single OWL file. However, importing one of SWEET's OWL files into an ontology entails the import of a large number of other OWL files. As this makes any simple ontology using SWEET hard to handle, reusing SWEET is not an option.
+
+Besides SWEET, there is no appropriate ontology containing weather concepts that would make sense to be reused within \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
+
+% TODO reference: http://forge.morfeo-project.org/wiki_en/index.php/Units_of_measurement_ontology
+% TODO reference: http://idi.fundacionctic.org/muo/muo-vocab.html
+The \emph{Measurement Units Ontology} is a simple and light-weight approach to enrich measurement values with appropriate units. Some of the most important units are pre-defined, all others can easily be added. The \emph{Measurement Units Ontology} (MUO) is still work in progress. However, it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, MUO can be imported into any ontology without problems.
+
+% TODO reference W3C consortium
+% TODO reference W3C working draft definition
+% TODO reference http://www.w3.org/TR/owl-time/
+For specifying temporal properties, the W3C consortium offers a working draft of \emph{OWL-Time}, a \emph{Time Ontology in OWL}. It defines the concept called \emph{TemporalEntity} that can either be an \emph{Instant} or an \emph{Interval}. Using appropriate attributes, the properties of a \emph{TemporalEntity} are specified. Although \emph{OWL-Time} is in the state of a working draft since September 2006, the main concepts and attributes that will be reused by other ontologies are expected not to change in any way.
+
 % TODO mention meta-ontology
 
+Section \ref{sec:implementation} describes the reuse of the aforementioned ontologies within the \thinkhomeweather ontology in detail.
+
 \section{Implementation}
+\label{sec:implementation}
 
 % TODO cover: integration of other ontologies; e.g. how the unit ontology being used works
 % TODO document completed ontology thoroughly
@@ -545,6 +566,29 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
 % TODO describe algorithms for calculation of the position of the sun
 % TODO perhaps split into two categories (one for weather data and one for the sun's position according to one of the two available algorithms, see SunPositionCalculator's source code
 
+% TODO reference section/subsection instead of chapter?
+As discussed in chapter \label{ch:weather_data}, among all internet services that have been analyzed, \emph{yr.no} is the API that best fits the requirements for the \thinkhomeweather ontology. This section covers acquisition of weather data from that service in detail.
+
+% TODO reference Jena framework
+A Java application called \emph{WeatherReader} was developed. It processes weather data in two steps:
+
+\begin{itemize}
+  \item In the first step, the application uses the API of \emph{yr.no} to fetch weather data. Additionally, sun position data is calculated (see \ref{subsec:sun_position}). Data is stored in a specially built domain model. % See figure \ref{...} for the UML class diagram of the domain model used by \emph{WeatherReader}.
+  \item The second step, individuals are created based on the weather data that has been previously acquired. This results in a new ontology based on the \thinkhomeweather ontology enriched by appropriate individuals.
+\end{itemize}
+
+% TODO UML class diagram of the domain model used by \emph{WeatherReader}.
+
+Using a configuration file, \emph{WeatherReader} is fully customizable regarding OWL files and location.
+
 \subsection{Weather data}
 
+% TODO
+
 \subsection{Position of the sun}
+\label{subsec:sun_position}
+
+% TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
+Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon will be provided. The angle of the sun at solar noon is also given.
+
+However, 
