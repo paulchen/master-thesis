@@ -584,6 +584,8 @@ Using a configuration file, \emph{WeatherReader} is fully customizable regarding
 \subsection{Weather data}
 \label{subsec:weather_data_yr_no}
 
+% TODO fix overfull hboxes in this subsection
+
 % TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
 For an arbitrary request, one must specify latitude and logitude (in degrees, nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a URL of the format
 
@@ -675,4 +677,10 @@ The content of the XML document covers a period of nine days, starting at the cu
 % TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
 Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon will be provided. The angle of the sun at solar noon is also given.
 
-However, 
+However, these data are inappropriate for use within the \thinkhomeweather ontology as every \emph{Weather state} may be linked to an instance of \emph{Sun position}. \emph{Sun position} has two attributes which are \emph{has sun elevation angle} and \emph{has sun direction} that specify the sun's position. However, none of these values can be calculated from the data provided by \emph{yr.no}.
+
+% TODO reference PSA algorithm: http://www.sciencedirect.com/science/article/pii/S0038092X00001560
+% TODO reference SPA algorithm:  Reda, I.; Andreas, A. (2003): Solar Position Algorithm for Solar Radiation Applications. NREL Report No. TP-560-34302, Revised January 2008
+% TODO reference http://www.psa.es/sdg/sunpos.htm - terms of use?
+% TODO give informations about precision of PSA and SPA
+There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time. The \emph{SPA algorithm} is a rather complicated algorithm, but it yields results with uncertainities of less than 0.0003 degrees. A simpler algorithm is the \emph{PSA algorithm}. Its results differ from the actual values more than the ones calculated by the \emph{SPA algorithm}. As approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology, the \emph{PSA algorithm} is suitable for use by the \emph{WeatherReader} application. There are even complete implementations of PSA in C++ that can easily be ported to Java.
