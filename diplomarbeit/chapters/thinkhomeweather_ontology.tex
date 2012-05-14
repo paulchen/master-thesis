@@ -642,6 +642,7 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
 \end{longtable}
 
 \subsection{Instance attribute tables}
+\label{subsec:instance_attribute_tables}
 
 % TODO add these attributes to the Glossary of Terms
 
@@ -738,6 +739,7 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
 \end{longtable}
 
 \section{Integration}
+\label{sec:integration}
 
 One of the goals of the \thinkhomeweather ontology is to keep an eye on existing ontologies to be re-used. While analyzing the problem domain, it quickly became clear that there are four areas where already existing ontologies could be reused: Location data, measuremenr units, date/time specifications and weather concepts. Chapter \label{ch:existing_work} already shed some light on existing ontologies around the domain of weather data. In this section, the ontologies being short-listed for reuse within \thinkhomeweather are summarized.
 
@@ -765,12 +767,52 @@ Section \ref{sec:implementation} describes the reuse of the aforementioned ontol
 \section{Implementation}
 \label{sec:implementation}
 
-% TODO cover: integration of other ontologies; e.g. how the unit ontology being used works
+After exhaustive analysis and structurization in the previous sections, the step of implementing the ontology has become a straight-forward task.
+
+% TODO reference OWL, Protege, Pellet
+% TODO \emph{} for names
+The \thinkhomeweather ontology is implemented in OWL using Protege 4.1 together with the Pellet OWL 2 Reasoner. Pellet includes Pellint, an ontology performance tool that uses a set of patterns to find possible performance problems in an OWL ontology. Pellint has been used for locating problems and led to a few improvements boosting reasoning performance.
+
+To ensure that the reasoning of all sub-concepts of \emph{Weather phenomenon}, \emph{Weather state} and \emph{Weather report} works correctly, a JUnit is used. Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
+
+\subsection{Imported ontologies}
+
+During the implementation step, the ontologies listed in section \ref{sec:integration} need to be imported and integrated. Their use implies the application of certain patterns required by the ontologies.
+
+% TODO reference OWL-Time
+\emph{OWL-Time} defines the concept \emph{TemporalEntity} and its sub-concepts \emph{Instant} and \emph{Interval}. Although \emph{Start time} and \emph{End time} of a \emph{Weather report} are actually \emph{Instant}s, these times are specified using \emph{Interval}s. The duration of such an interval represents the duration between the \emph{Observation time} of the \emph{Weather report} and the time that is to be expressed. This results in the structure shown in figure . % TODO reference figure
+The duration is rounded to full hours. Hence, there are simple rules for defining concepts for a \emph{Weather report} for forecasts in an arbitrary number of hours.
+
+% TODO figure
+
+The \emph{Observation time} of a \emph{Weather report} is specified using an \emph{Instant} as defined by \emph{OWL-time}. See figure ... for the resulting structure. % TODO reference figure
+
+% TODO figure
+
+The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times must be given in UTC.
+
+% TODO reference unit ontology
+All instances of \emph{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to section \label{subsec:instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \emph{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. $^\circ$F and $^\circ$C for the \emph{Temperature value}), concepts, attributes and instances from the \emph{Measurement Units Ontology} (MUO) are re-used to add unit information. MUO forces the use of a certain pattern that is shown in figure . % TODO reference figure
+
+% TODO reference WGS-84
+The \emph{Basic Geo (WGS84 lat/long) Vocabulary} by the \emph{W3C Semantic Web Interest Group} defines the concept \emph{Point} together with the attributes \emph{lat} (latitude), \emph{long} (longitude) and \emph{alt} (altitude). Furthermore, the attribute \emph{location} offers the possibility of connecting a \emph{Point} to any instance of some concept. See figure ... for the structure that results from this. % TODO reference figure
+
+% TODO figure
+
 % TODO document completed ontology thoroughly
 % TODO diagrams for parts of the ontology
-% TODO OWL, Protege
-% TODO jUnit tests
-% TODO naming conventions
+\subsection{Naming conventions}
+
+During the implementation of the \thinkhomeweather ontology, it was necessary to define strict naming conventions for concepts, individuals and attributes; some of these conventions have already been applied to previous steps of developing the ontology:
+
+\begin{itemize}
+  \item All concepts, instances and attributes share one namespace, regardless of capitalization; e.g. there is no pair of a concept and an instance that shares the same name. There is also no pair of a concept and an instance which names only differ in their capitalization.
+  \item Only upper case and lower case letters from A to Z, numbers from 0 to 9, underscores (\texttt{\_}) and dashes (\texttt{-}) may occur in the name of a concept, an instance or an attribute. Hence, all names match the regular expression \texttt{\^{}[A-Za-z0-9\textbackslash -\_]\$}.
+  \item Names built from more than one word are written in \emph{Camel case}, e.g. \emph{Weather phenomenon} becomes \emph{WeatherPhenomenon} and \emph{is source of} becomes \emph{isSourceOf}. % TODO reference to camel case definition?
+  \item Concept names start with a capital letter and only appear in singular. There is no concept name \emph{Weather phenomena}, only \emph{WeatherPhenomenon}.
+  \item Attribute names start with a lower-case letter. Attribute names are always built from more than one word and the first word must be a verb; see \emph{isSourceOf} or \emph{hasWeatherCondition}.
+\end{itemize}
+
 
 \section{Evaluation}
 \label{ch:ontology_evaluation}
