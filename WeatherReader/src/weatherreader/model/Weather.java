@@ -341,16 +341,14 @@ public class Weather {
 		
 		printWeatherReports("Weather reports after normalization", weatherReports);
 		
-		/*
 		// add sun position data
 		SunPositionCalculator sunPositionCalculator = new SunPositionCalculator(position);
-		for(WeatherState state : weatherStates) {
-			Date date = new Date((long)(new Date().getTime() + state.getStartDate()*3600000));
-			state.setSunPosition(sunPositionCalculator.calculate(date));
+		for(WeatherReport report : weatherReports) {
+			Date date = new Date((long)(new Date().getTime() + report.getStartTime()*3600000));
+			report.getState().setSunPosition(sunPositionCalculator.calculate(date));
 		}
 		
-		printWeatherStates("Final weather states after normalization including sun position data", weatherStates);
-		*/
+		printWeatherReports("Final weather states after normalization including sun position data", weatherReports);
 	}
 
 	public void createIndividuals(OntModel ontology) {
