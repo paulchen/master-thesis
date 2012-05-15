@@ -339,6 +339,17 @@ public class Weather {
 			}
 		}
 		
+		for(int a=0; a<weatherReports.size(); a++) {
+			float nextStartTime;
+			if(a+1<weatherReports.size()) {
+				nextStartTime = weatherReports.get(a+1).getStartTime();
+			}
+			else {
+				nextStartTime = 2*weatherReports.get(a).getStartTime() - weatherReports.get(a-1).getStartTime();
+			}
+			weatherReports.get(a).setEndTime(nextStartTime);
+		}
+		
 		printWeatherReports("Weather reports after normalization", weatherReports);
 		
 		// add sun position data

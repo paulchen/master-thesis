@@ -196,4 +196,8 @@ public class WeatherReport {
 	protected void setPosition(GeographicalPosition position) {
 		this.position = position;
 	}
+
+	protected void setEndTime(float endTime) {
+		this.endTime = endTime;
+	}
 }
