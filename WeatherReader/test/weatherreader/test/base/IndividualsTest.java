@@ -19,7 +19,6 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFReader;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public abstract class IndividualsTest extends TestCase {
@@ -38,19 +37,6 @@ public abstract class IndividualsTest extends TestCase {
 		RDFReader arp = onto.getReader("RDF/XML");
 		arp.setProperty("embedding", "true");
 		arp.read(onto, "file:ThinkHomeWeather.owl");
-		
-		OntClass weatherObservationClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherObservation");
-		Individual weatherObservation = onto.createIndividual(WeatherReport.NAMESPACE + "weatherObservation", weatherObservationClass);
-		
-		Resource pointClass = onto.getResource(WeatherReport.WGS84 + "Point");
-		
-		Individual point = onto.createIndividual(WeatherReport.NAMESPACE + "point0", pointClass);
-		onto.add(onto.createStatement(weatherObservation, onto.getProperty(WeatherReport.WGS84 + "location"), point));
-		onto.add(onto.createStatement(point, RDF.type, pointClass));		
-		
-		onto.add(onto.createLiteralStatement(point, onto.getProperty(WeatherReport.WGS84 + "lat"), 48.21f));
-		onto.add(onto.createLiteralStatement(point, onto.getProperty(WeatherReport.WGS84 + "long"), 16.37f));
-		onto.add(onto.createLiteralStatement(point, onto.getProperty(WeatherReport.WGS84 + "alt"), 171));
 		
 		Resource instantClass = onto.getResource(WeatherReport.TIME + "Instant");
 		Individual instant = onto.createIndividual(WeatherReport.NAMESPACE + "instant0", instantClass);
@@ -81,15 +67,8 @@ public abstract class IndividualsTest extends TestCase {
 		
 		onto.add(onto.createStatement(instant, onto.getProperty(WeatherReport.TIME + "inDateTime"), dateTime));
 		
-		onto.add(onto.createLiteralStatement(weatherObservation, onto.getProperty(WeatherReport.NAMESPACE + "hasObservationTime"), instant));
-
-		OntClass sensorSourceClass = onto.getOntClass(WeatherReport.NAMESPACE + "ServiceSource");
-		Individual sourceIndividual = onto.createIndividual(WeatherReport.NAMESPACE + "weatherService", sensorSourceClass);
-		
 		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
 		weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + 0, weatherStateClass);
-		onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasSource"), sourceIndividual));
-		onto.add(onto.createLiteralStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasPriority"), 1));
 	}
 	
 	@After
