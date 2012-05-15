@@ -384,20 +384,33 @@ The only sub-concept of \emph{Weather phenomenon} that does not have any sub-con
 
 There are two main attributes for a \emph{Weather report}: Its \emph{Start date} and its \emph{Source}. A number of sub-concepts is defined in order to reflect different values of these two attributes:
 
-% TODO figure
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-report.png}
+\end{center}
+
+The concepts \emph{Short range forecast}, \emph{Medium range forecast} and \emph{Long range forecast} each do have sub-concepts which have been omitted from the above diagram for clarity. These sub-concepts are:
+\begin{itemize}
+  \item \emph{Short range forecast}: \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} and \emph{Forecast 3 hours weather report} for weather reports describing the weather in one, two and three hours.
+  \item \emph{Medium range forecast}: \emph{Forecast 6 hour weather report} and \emph{Forecast 9 hours weather report} for weather reports describing the weather in 6 and 9 hours.
+  \item \emph{Long range forecast}: \emph{Forecast 12 hour weather report}, \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report} and \emph{Forecast 25 hours weather report} for weather reports describing the weather in 12, 15, 18, 21 and 24 hours.
+\end{itemize}
 
 \subsubsection{Weather report source}
 
 A \emph{Weather report source} can either be a \emph{Sensor source} or a \emph{Service source}:
 
-% TODO figure
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-report-source.png}
+\end{center}
 
 \subsubsection{Weather state}
 
 % TODO reformulate this
 A \emph{Weather state} collects all \emph{Weather phenomena} for a certain \emph{Weather report}. Because of this, sub-concepts of \emph{Weather state} can be introduced that reflect certain combination of related instances of \emph{Weather phenomenon}:
 
-% TODO figure
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-state.png}
+\end{center}
 
 \subsection{Binary relations diagram}
 \label{sec:binary_relations_diagram}
