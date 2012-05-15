@@ -76,8 +76,8 @@ public class WeatherReport {
 		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
 		Individual hour1 = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startTime, hourClass);
 		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startTime)));
-		Individual hour2 = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startTime, hourClass);
-		onto.add(onto.createLiteralStatement(hour2, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startTime)));
+		Individual hour2 = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + endTime, hourClass);
+		onto.add(onto.createLiteralStatement(hour2, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(endTime)));
 		
 		Resource intervalClass = onto.getResource(WeatherReport.TIME + "Interval");
 		Individual interval1 = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + startTime, intervalClass);
