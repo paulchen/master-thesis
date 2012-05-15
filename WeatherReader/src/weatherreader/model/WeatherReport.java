@@ -74,14 +74,20 @@ public class WeatherReport {
 		onto.add(onto.createLiteralStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasPriority"), priority));
 		
 		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
-		Individual hour = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startTime, hourClass);
-		onto.add(onto.createLiteralStatement(hour, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startTime)));
+		Individual hour1 = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startTime, hourClass);
+		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startTime)));
+		Individual hour2 = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startTime, hourClass);
+		onto.add(onto.createLiteralStatement(hour2, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startTime)));
 		
 		Resource intervalClass = onto.getResource(WeatherReport.TIME + "Interval");
-		Individual interval = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + startTime, intervalClass);
-		onto.add(onto.createStatement(interval, onto.getProperty(WeatherReport.TIME + "hasDurationDescription"), hour));
-		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasTime"), interval));
-		
+		Individual interval1 = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + startTime, intervalClass);
+		onto.add(onto.createStatement(interval1, onto.getProperty(WeatherReport.TIME + "hasDurationDescription"), hour1));
+		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasStartTime"), interval1));
+
+		Individual interval2 = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + endTime, intervalClass);
+		onto.add(onto.createStatement(interval2, onto.getProperty(WeatherReport.TIME + "hasDurationDescription"), hour2));
+		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasEndTime"), interval2));
+
 		Resource pointClass = onto.getResource(WGS84 + "Point");
 		
 		Individual point = onto.createIndividual(NAMESPACE + "point0", pointClass);
