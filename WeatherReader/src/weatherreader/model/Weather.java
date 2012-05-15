@@ -58,7 +58,7 @@ public class Weather {
 			if(report.getStartTime() != report.getEndTime()) {
 				it.remove();
 				for(int a=(int)report.getStartTime(); a<report.getEndTime(); a++) {
-					// TODO clone weather state
+					// TODO clone weather state?
 					additionalWeatherReports.add(new WeatherReport(report.getObservationTime(), (float)a, (float)a, priority, source, report.getPosition(), report.getState()));  
 				}
 			}
