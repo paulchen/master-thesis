@@ -352,8 +352,10 @@ public class Weather {
 	}
 
 	public void createIndividuals(OntModel ontology) {
-		// TODO Auto-generated method stub
-		
+		int a=0;
+		for(WeatherReport report : weatherReports) {
+			report.createIndividuals(ontology, ++a);
+		}
 	}
 	
 	

@@ -1,15 +1,8 @@
 package weatherreader.model;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.Individual;
@@ -34,8 +27,8 @@ public class WeatherReport {
 	public static final String TIME = "http://www.w3.org/2006/time#";
 	public static final String MUO_NAMESPACE = "http://purl.oclc.org/NET/muo/muo#";
 	
-	private List<Integer> forecastHours;
-	private int maxHour;
+//	private List<Integer> forecastHours;
+//	private int maxHour;
 	
 //	private Logger log;
 	
@@ -101,7 +94,22 @@ public class WeatherReport {
 	public void createIndividuals(OntModel onto, int reportIndex) {
 		// TODO source, priority, start time, end time
 		OntClass weatherReportClass = onto.getOntClass(NAMESPACE + "WeatherReport");
-		Individual weatherReport = onto.createIndividual(NAMESPACE + "weatherReport", weatherReportClass);
+		Individual weatherReport = onto.createIndividual(NAMESPACE + "weatherReport" + reportIndex, weatherReportClass);
+		
+		OntClass sensorSourceClass = onto.getOntClass(WeatherReport.NAMESPACE + "ServiceSource");
+		Individual sourceIndividual = onto.createIndividual(WeatherReport.NAMESPACE + source, sensorSourceClass);
+
+		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasSource"), sourceIndividual));
+		onto.add(onto.createLiteralStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasPriority"), priority));
+		
+		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
+		Individual hour = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startTime, hourClass);
+		onto.add(onto.createLiteralStatement(hour, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startTime)));
+		
+		Resource intervalClass = onto.getResource(WeatherReport.TIME + "Interval");
+		Individual interval = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + startTime, intervalClass);
+		onto.add(onto.createStatement(interval, onto.getProperty(WeatherReport.TIME + "hasDurationDescription"), hour));
+		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasTime"), interval));
 		
 		Resource pointClass = onto.getResource(WGS84 + "Point");
 		

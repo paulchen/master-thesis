@@ -116,7 +116,7 @@ public class WeatherState {
 	// TODO move previousState to WeatherReport
 	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex /*, WeatherState previousState */ ) {
 		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
-		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + stateIndex, weatherStateClass);
+		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weatherState" + stateIndex, weatherStateClass);
 		// TODO move to WeatherReport
 		/*
 		OntClass sensorSourceClass = onto.getOntClass(WeatherReport.NAMESPACE + "ServiceSource");
@@ -222,7 +222,7 @@ public class WeatherState {
 			onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 			
 			Resource blankNode2 = onto.createResource();
-			onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), sunPosition.getElevation()));
+			onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (float)sunPosition.getElevation()));
 			// TODO get rid of magic constant for individual name here
 			onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 			
