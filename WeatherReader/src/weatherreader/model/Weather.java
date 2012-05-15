@@ -22,6 +22,7 @@ public class Weather {
 	private GeographicalPosition position;
 	private List<WeatherReport> weatherReports;	
 	private List<Integer> forecastHours;
+	private int maxHour;
 	
 	private Logger log;
 	
@@ -34,6 +35,7 @@ public class Weather {
 		this.source = source;
 		this.position = position;
 		this.forecastHours = forecastHours;
+		this.maxHour = this.forecastHours.get(forecastHours.size() - 1)*2;		
 		weatherReports = new ArrayList<WeatherReport>();
 		
 		log = Logger.getLogger(Weather.class);
@@ -65,20 +67,24 @@ public class Weather {
 		
 		printWeatherReports("Weather states after splitting them up", weatherReports);
 		
-		System.exit(0);
 		/* merge weather states */
-		/*
-		Map<Integer, WeatherState> newWeatherStates = new HashMap<Integer, WeatherState>();
+		Map<Integer, WeatherReport> newWeatherReports = new HashMap<Integer, WeatherReport>();
 		for(int a=0; a<=maxHour; a++) {
-			newWeatherStates.put(a, new WeatherState((float)a, (float)a, null, null, null, null, null, null, null, null, new ArrayList<CloudLayer>(), new ArrayList<WeatherCondition>(), "", 0));
+			// TODO clone weather state
+			newWeatherReports.put(a, new WeatherReport(null, a, a+1, 0, "", null, new WeatherState(null, null, null, null, null, null, null, null, new ArrayList<CloudLayer>(), new ArrayList<WeatherCondition>())));
 		}
-		for(WeatherState state : weatherStates) {
-			WeatherState newState = newWeatherStates.get((int)state.getStartDate());
-			newState.setPriority(state.getPriority());
-			newState.setSource(state.getSource());
+		for(WeatherReport report : weatherReports) {
+			WeatherState state = report.getState();
+			
+			WeatherReport newReport = newWeatherReports.get((int)report.getStartTime());
+			newReport.setObservationTime(report.getObservationTime());
+			newReport.setPriority(report.getPriority());
+			newReport.setSource(report.getSource());
+			newReport.setPosition(report.getPosition());
+			
+			WeatherState newState = newReport.getState();
 			
 			/* let's assume we get a value only from one source */
-			/*
 			if(state.getTemperatureValue() != null) {
 				newState.setTemperatureValue(state.getTemperatureValue());
 			}
@@ -111,7 +117,7 @@ public class Weather {
 			}
 		}
 		
-		printWeatherStates("Weather states after merging states for the same time", newWeatherStates);
+		printWeatherReports("Weather states after merging states for the same time", newWeatherReports);
 		
 		/* interpolate missing values */
 		/*
@@ -357,7 +363,7 @@ public class Weather {
 		log.debug(description + ":");
 		log.debug("");		
 		for(WeatherReport report : reports) {
-			log.debug(report.getState().toString());
+			log.debug(report.toString());
 		}
 		log.debug("");
 	}
@@ -370,7 +376,7 @@ public class Weather {
 		keys.addAll(reports.keySet());
 		Collections.sort(keys);
 		for(Integer key : keys) {
-			log.debug(reports.get(key).getState().toString());
+			log.debug(reports.get(key).toString());
 		}
 		log.debug("");
 	}

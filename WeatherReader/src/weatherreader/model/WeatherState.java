@@ -20,6 +20,7 @@ public class WeatherState {
 	private List<WeatherCondition> weatherConditions;
 	private SunPosition sunPosition;
 	
+	/*
 	public WeatherState(Float temperatureValue,
 			Float humidityValue, Float dewPointValue, Float pressureValue, Float windSpeed,
 			Integer windDirection, Float precipitationProbability,
@@ -28,6 +29,7 @@ public class WeatherState {
 		this(0, 0, temperatureValue, humidityValue, dewPointValue, pressureValue, windSpeed, windDirection,
 				precipitationProbability, precipitationIntensity, cloudLayers, weatherConditions);
 	}
+	*/
 	
 	@Override
 	public String toString() {
@@ -48,7 +50,7 @@ public class WeatherState {
 		return buffer.toString();
 	}
 
-	public WeatherState(float startDate, float endDate, Float temperatureValue,
+	public WeatherState(Float temperatureValue,
 			Float humidityValue, Float dewPointValue, Float pressureValue, Float windSpeed,
 			Integer windDirection, Float precipitationProbability,
 			Float precipitationIntensity, List<CloudLayer> cloudLayers,

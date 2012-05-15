@@ -454,6 +454,7 @@ public class WeatherReport {
 	}
 	*/
 	
+	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		
@@ -486,5 +487,29 @@ public class WeatherReport {
 
 	public GeographicalPosition getPosition() {
 		return position;
+	}
+
+	public void setObservationTime(Date observationTime) {
+		this.observationTime = observationTime;
+	}
+
+	protected int getPriority() {
+		return priority;
+	}
+
+	protected String getSource() {
+		return source;
+	}
+
+	protected void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+	protected void setSource(String source) {
+		this.source = source;
+	}
+	
+	protected void setPosition(GeographicalPosition position) {
+		this.position = position;
 	}
 }
