@@ -1,6 +1,4 @@
 package weatherreader.model;
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -10,8 +8,6 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 //TODO javadoc
 public class WeatherState {
-	private float startDate;
-	private float endDate;
 	private Float temperatureValue;
 	private Float humidityValue;
 	private Float dewPointValue;
@@ -22,38 +18,21 @@ public class WeatherState {
 	private Float precipitationIntensity;
 	private List<CloudLayer> cloudLayers;
 	private List<WeatherCondition> weatherConditions;
-	private String source;
-	private int priority;
 	private SunPosition sunPosition;
 	
-	public WeatherState(Date startDate, Date endDate, Float temperatureValue,
+	public WeatherState(Float temperatureValue,
 			Float humidityValue, Float dewPointValue, Float pressureValue, Float windSpeed,
 			Integer windDirection, Float precipitationProbability,
 			Float precipitationIntensity, List<CloudLayer> cloudLayers,
-			List<WeatherCondition> weatherConditions, String source, int priority) {
+			List<WeatherCondition> weatherConditions) {
 		this(0, 0, temperatureValue, humidityValue, dewPointValue, pressureValue, windSpeed, windDirection,
-				precipitationProbability, precipitationIntensity, cloudLayers, weatherConditions, source, priority);
-		
-		long startSeconds = startDate.getTime()-new Date().getTime();
-		this.startDate = (float)Math.round(startSeconds/3600000);
-		if(this.startDate < 0) {
-			/* ignore data for the past */
-			this.startDate = 0;
-		}
-		long endSeconds = endDate.getTime()-new Date().getTime();
-		this.endDate = (float)Math.round(endSeconds/3600000);
-		if(this.endDate < 0) {
-			/* ignore data for the past */
-			this.endDate = 0;
-		}		
+				precipitationProbability, precipitationIntensity, cloudLayers, weatherConditions);
 	}
 	
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("[");
-		buffer.append("startDate=" + startDate + "; ");
-		buffer.append("endDate=" + endDate + "; ");
 		buffer.append("temperatureValue=" + temperatureValue + "; ");
 		buffer.append("humidityValue=" + humidityValue + "; ");
 		buffer.append("dewPointValue=" + dewPointValue + "; ");
@@ -73,11 +52,9 @@ public class WeatherState {
 			Float humidityValue, Float dewPointValue, Float pressureValue, Float windSpeed,
 			Integer windDirection, Float precipitationProbability,
 			Float precipitationIntensity, List<CloudLayer> cloudLayers,
-			List<WeatherCondition> weatherConditions, String source, int priority) {
+			List<WeatherCondition> weatherConditions) {
 		super();
 		
-		this.startDate = startDate;
-		this.endDate = endDate;
 		this.temperatureValue = temperatureValue;
 		this.humidityValue = humidityValue;
 		this.dewPointValue = dewPointValue;
@@ -88,18 +65,8 @@ public class WeatherState {
 		this.precipitationIntensity = precipitationIntensity;
 		this.cloudLayers = cloudLayers;
 		this.weatherConditions = weatherConditions;
-		this.source = source;
-		this.priority = priority;
 	}
 	
-	protected void setStartDate(float startDate) {
-		this.startDate = startDate;
-	}
-
-	protected void setEndDate(float endDate) {
-		this.endDate = endDate;
-	}
-
 	protected void setTemperatureValue(Float temperatureValue) {
 		this.temperatureValue = temperatureValue;
 	}
@@ -140,27 +107,22 @@ public class WeatherState {
 		this.weatherConditions = weatherConditions;
 	}
 
-	protected void setSource(String source) {
-		this.source = source;
-	}
-
-	protected void setPriority(int priority) {
-		this.priority = priority;
-	}
-
 	protected void setSunPosition(SunPosition position) {
 		this.sunPosition = position;
 	}
 
-	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex, WeatherState previousState) {
+	// TODO move previousState to WeatherReport
+	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex /*, WeatherState previousState */ ) {
+		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
+		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + stateIndex, weatherStateClass);
+		// TODO move to WeatherReport
+		/*
 		OntClass sensorSourceClass = onto.getOntClass(WeatherReport.NAMESPACE + "ServiceSource");
 		Individual sourceIndividual = onto.createIndividual(WeatherReport.NAMESPACE + source, sensorSourceClass);
 
-		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
-		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + stateIndex, weatherStateClass);
 		onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasSource"), sourceIndividual));
 		onto.add(onto.createLiteralStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasPriority"), priority));
-
+		
 		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
 		Individual hour = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startDate, hourClass);
 		onto.add(onto.createLiteralStatement(hour, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startDate)));
@@ -169,6 +131,7 @@ public class WeatherState {
 		Individual interval = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + startDate, intervalClass);
 		onto.add(onto.createStatement(interval, onto.getProperty(WeatherReport.TIME + "hasDurationDescription"), hour));
 		onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasTime"), interval));
+		*/
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
 		if(temperatureValue != null) {
@@ -286,18 +249,12 @@ public class WeatherState {
 			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasCondition"), onto.getIndividual(WeatherReport.NAMESPACE + condition.toString())));
 		}
 		
+		/*
 		if(previousState != null) {
 			Individual previousStateIndividual = onto.getIndividual(WeatherReport.NAMESPACE + "weather" + (stateIndex-1));
 			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
 		}
-	}
-
-	public float getStartDate() {
-		return startDate;
-	}
-
-	public float getEndDate() {
-		return endDate;
+		*/
 	}
 
 	public Float getTemperatureValue() {
@@ -338,13 +295,5 @@ public class WeatherState {
 
 	public List<WeatherCondition> getWeatherConditions() {
 		return weatherConditions;
-	}
-
-	public String getSource() {
-		return source;
-	}
-
-	public int getPriority() {
-		return priority;
 	}
 }

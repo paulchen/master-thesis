@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
 
 import weatherreader.model.CloudLayer;
 import weatherreader.model.GeographicalPosition;
-import weatherreader.model.WeatherReport;
+import weatherreader.model.Weather;
 import weatherreader.model.WeatherCondition;
 import weatherreader.model.WeatherState;
 
@@ -61,7 +61,7 @@ public class WeatherReader {
 	private List<Integer> forecastHours;
 	private int forecastPeriod;
 	
-	private WeatherReport weather;
+	private Weather weather;
 	
 	private Logger log;
 	
@@ -275,10 +275,10 @@ public class WeatherReader {
 			weatherConditions = new ArrayList<WeatherCondition>();
 		}
 		
-		weather.addWeatherState(new WeatherState(startDate, endDate, temperature,
+		weather.newWeatherReport(startDate, endDate, new WeatherState(temperature,
 				humidity, dewPoint, pressure, windSpeed, windDirection,
 				precipitationProbability, precipitationValue, cloudLayers,
-				weatherConditions, source, priority));		
+				weatherConditions));		
 	}
 	
 	private List<WeatherCondition> getWeatherConditionList(WeatherCondition... conditions) {
@@ -319,6 +319,7 @@ public class WeatherReader {
 		weatherConditions.put(23, getWeatherConditionList(WeatherCondition.Sleet, WeatherCondition.Thunder));
 		
 		if(!weatherConditions.containsKey(number)) {
+			// TODO wtf?
 			throw new WeatherReaderException("Invalid ");
 		}
 		return weatherConditions.get(number);
@@ -364,7 +365,7 @@ public class WeatherReader {
 			XPath xpath = xpathFactory.newXPath();
 			XPathExpression datapointExpression = xpath.compile("/weatherdata/product/time");
 			
-			weather = new WeatherReport(new GeographicalPosition(latitude, longitude, altitude), forecastHours);
+			weather = new Weather(new Date(), priority, source, new GeographicalPosition(latitude, longitude, altitude), forecastHours);
 			nodes = (NodeList)datapointExpression.evaluate(document, XPathConstants.NODESET);
 		}
 		catch (IllegalArgumentException e) {
@@ -399,7 +400,7 @@ public class WeatherReader {
 			processWeatherState(nodes.item(a));
 		}
 
-		weather.normalizeWeatherStates();
+		weather.normalizeWeatherReports();
 		
 		log.info("Importing weather data completed");
 	}
