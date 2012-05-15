@@ -63,7 +63,7 @@ public class WeatherReport {
 		this.weatherState = weatherState;
 	}
 	
-	public void createIndividuals(OntModel onto, int reportIndex) {
+	public void createIndividuals(OntModel onto, int reportIndex, WeatherReport previousReport) {
 		OntClass weatherReportClass = onto.getOntClass(NAMESPACE + "WeatherReport");
 		Individual weatherReport = onto.createIndividual(NAMESPACE + "weatherReport" + reportIndex, weatherReportClass);
 		
@@ -124,7 +124,12 @@ public class WeatherReport {
 		
 		onto.add(onto.createLiteralStatement(weatherReport, onto.getProperty(NAMESPACE + "hasObservationTime"), instant));
 
-		weatherState.createIndividuals(onto, weatherReport, reportIndex);
+		if(previousReport != null) {
+			weatherState.createIndividuals(onto, weatherReport, reportIndex, previousReport.getState());
+		}
+		else {
+			weatherState.createIndividuals(onto, weatherReport, reportIndex, null);
+		}
 	}	
 	
 	@Override

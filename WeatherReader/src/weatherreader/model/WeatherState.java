@@ -113,8 +113,7 @@ public class WeatherState {
 		this.sunPosition = position;
 	}
 
-	// TODO move previousState to WeatherReport
-	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex) {
+	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex, WeatherState previousState) {
 		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
 		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weatherState" + stateIndex, weatherStateClass);
 		
@@ -232,12 +231,11 @@ public class WeatherState {
 			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasCondition"), onto.getIndividual(WeatherReport.NAMESPACE + condition.toString())));
 		}
 		
-		/*
 		if(previousState != null) {
-			Individual previousStateIndividual = onto.getIndividual(WeatherReport.NAMESPACE + "weather" + (stateIndex-1));
+			// TODO use variable 'previousState' here
+			Individual previousStateIndividual = onto.getIndividual(WeatherReport.NAMESPACE + "weatherState" + (stateIndex-1));
 			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
 		}
-		*/
 	}
 
 	public Float getTemperatureValue() {
