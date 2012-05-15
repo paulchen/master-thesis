@@ -65,7 +65,7 @@ public class Weather {
 		}
 		weatherReports.addAll(additionalWeatherReports);
 		
-		printWeatherReports("Weather states after splitting them up", weatherReports);
+		printWeatherReports("Weather reports after splitting them up", weatherReports);
 		
 		/* merge weather states */
 		Map<Integer, WeatherReport> newWeatherReports = new HashMap<Integer, WeatherReport>();
@@ -117,10 +117,9 @@ public class Weather {
 			}
 		}
 		
-		printWeatherReports("Weather states after merging states for the same time", newWeatherReports);
+		printWeatherReports("Weather reports after merging states for the same time", newWeatherReports);
 		
 		/* interpolate missing values */
-		/*
 		Integer lastTemperatureValue = null;
 		Integer lastHumidityValue = null;
 		Integer lastDewPointValue = null;
@@ -133,7 +132,8 @@ public class Weather {
 		Integer lastWeatherConditions = null;
 		
 		for(int a=0; a<=maxHour; a++) {
-			WeatherState currentState = newWeatherStates.get(a);
+			WeatherReport currentReport = newWeatherReports.get(a);
+			WeatherState currentState = currentReport.getState();
 			
 			if(currentState.getTemperatureValue() != null) {
 				float lastValue;
@@ -143,13 +143,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastTemperatureValue).getTemperatureValue();
+					lastValue = newWeatherReports.get(lastTemperatureValue).getState().getTemperatureValue();
 					start = lastTemperatureValue + 1;
 				}
 				Float thisValue = currentState.getTemperatureValue();
 				for(int b=start; b<a; b++) {
 					Float newValue = Math.round((lastValue + (thisValue - lastValue)/(a-b))*100)/100f;
-					newWeatherStates.get(b).setTemperatureValue(newValue);
+					newWeatherReports.get(b).getState().setTemperatureValue(newValue);
 				}
 				
 				lastTemperatureValue = a;
@@ -163,13 +163,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastHumidityValue).getHumidityValue();
+					lastValue = newWeatherReports.get(lastHumidityValue).getState().getHumidityValue();
 					start = lastHumidityValue + 1;
 				}
 				Float thisValue = currentState.getHumidityValue();
 				for(int b=start; b<a; b++) {
 					Float newValue = Math.round((lastValue + (thisValue - lastValue)/(a-b))*100)/100f;
-					newWeatherStates.get(b).setHumidityValue(newValue);
+					newWeatherReports.get(b).getState().setHumidityValue(newValue);
 				}
 				
 				lastHumidityValue = a;
@@ -183,13 +183,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastDewPointValue).getDewPointValue();
+					lastValue = newWeatherReports.get(lastDewPointValue).getState().getDewPointValue();
 					start = lastDewPointValue + 1;
 				}
 				Float thisValue = currentState.getDewPointValue();
 				for(int b=start; b<a; b++) {
 					Float newValue = Math.round((lastValue + (thisValue - lastValue)/(a-b))*100)/100f;
-					newWeatherStates.get(b).setDewPointValue(newValue);
+					newWeatherReports.get(b).getState().setDewPointValue(newValue);
 				}
 				
 				lastDewPointValue = a;
@@ -203,13 +203,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastPressureValue).getPressureValue();
+					lastValue = newWeatherReports.get(lastPressureValue).getState().getPressureValue();
 					start = lastPressureValue + 1;
 				}
 				Float thisValue = currentState.getPressureValue();
 				for(int b=start; b<a; b++) {
 					Float newValue = Math.round((lastValue + (thisValue - lastValue)/(a-b))*100)/100f;
-					newWeatherStates.get(b).setPressureValue(newValue);
+					newWeatherReports.get(b).getState().setPressureValue(newValue);
 				}
 				
 				lastPressureValue = a;
@@ -223,13 +223,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastWindSpeed).getWindSpeed();
+					lastValue = newWeatherReports.get(lastWindSpeed).getState().getWindSpeed();
 					start = lastWindSpeed + 1;
 				}
 				Float thisValue = currentState.getWindSpeed();
 				for(int b=start; b<a; b++) {
 					Float newValue = Math.round((lastValue + (thisValue - lastValue)/(a-b))*100)/100f;
-					newWeatherStates.get(b).setWindSpeed(newValue);
+					newWeatherReports.get(b).getState().setWindSpeed(newValue);
 				}
 				
 				lastWindSpeed = a;
@@ -243,13 +243,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastWindDirection).getWindDirection();
+					lastValue = newWeatherReports.get(lastWindDirection).getState().getWindDirection();
 					start = lastWindDirection + 1;
 				}
 				int thisValue = currentState.getWindDirection();
 				for(int b=start; b<a; b++) {
 					int newValue = lastValue + (thisValue - lastValue)/(a-b);
-					newWeatherStates.get(b).setWindDirection(newValue);
+					newWeatherReports.get(b).getState().setWindDirection(newValue);
 				}
 				
 				lastWindDirection = a;
@@ -263,13 +263,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastPrecipitationProbability).getPrecipitationProbability();
+					lastValue = newWeatherReports.get(lastPrecipitationProbability).getState().getPrecipitationProbability();
 					start = lastPrecipitationProbability + 1;
 				}
 				Float thisValue = currentState.getPrecipitationProbability();
 				for(int b=start; b<a; b++) {
 					Float newValue = Math.round((lastValue + (thisValue - lastValue)/(a-b))*100)/100f;
-					newWeatherStates.get(b).setPrecipitationProbability(newValue);
+					newWeatherReports.get(b).getState().setPrecipitationProbability(newValue);
 				}
 				
 				lastPrecipitationProbability = a;
@@ -283,13 +283,13 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastPrecipitationIntensity).getPrecipitationIntensity();
+					lastValue = newWeatherReports.get(lastPrecipitationIntensity).getState().getPrecipitationIntensity();
 					start = lastPrecipitationIntensity + 1;
 				}
 				Float thisValue = currentState.getPrecipitationIntensity();
 				for(int b=start; b<a; b++) {
 					Float newValue = Math.round((lastValue + (thisValue - lastValue)/(a-b))*100)/100f;
-					newWeatherStates.get(b).setPrecipitationIntensity(newValue);
+					newWeatherReports.get(b).getState().setPrecipitationIntensity(newValue);
 				}
 				
 				lastPrecipitationIntensity = a;
@@ -303,11 +303,11 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastCloudLayers).getCloudLayers();
+					lastValue = newWeatherReports.get(lastCloudLayers).getState().getCloudLayers();
 					start = lastCloudLayers + 1;
 				}
 				for(int b=start; b<a; b++) {
-					newWeatherStates.get(b).setCloudLayers(lastValue);
+					newWeatherReports.get(b).getState().setCloudLayers(lastValue);
 				}
 				
 				lastCloudLayers = a;
@@ -321,26 +321,27 @@ public class Weather {
 					start = 0;
 				}
 				else {
-					lastValue = newWeatherStates.get(lastWeatherConditions).getWeatherConditions();
+					lastValue = newWeatherReports.get(lastWeatherConditions).getState().getWeatherConditions();
 					start = lastWeatherConditions + 1;
 				}
 				for(int b=start; b<a; b++) {
-					newWeatherStates.get(b).setWeatherConditions(lastValue);
+					newWeatherReports.get(b).getState().setWeatherConditions(lastValue);
 				}
 				
 				lastWeatherConditions = a;
 			}
 		}
 		
-		weatherStates = new ArrayList<WeatherState>();
+		weatherReports = new ArrayList<WeatherReport>();
 		for(int a=0; a<=maxHour; a++) {
 			if(forecastHours.contains(a)) {
-				weatherStates.add(newWeatherStates.get(a));
+				weatherReports.add(newWeatherReports.get(a));
 			}
 		}
 		
-		printWeatherStates("Weather states after normalization", weatherStates);
+		printWeatherReports("Weather reports after normalization", weatherReports);
 		
+		/*
 		// add sun position data
 		SunPositionCalculator sunPositionCalculator = new SunPositionCalculator(position);
 		for(WeatherState state : weatherStates) {
