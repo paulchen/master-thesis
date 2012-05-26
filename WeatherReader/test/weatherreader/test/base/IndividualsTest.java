@@ -37,6 +37,7 @@ public abstract class IndividualsTest extends TestCase {
 		arp.setProperty("embedding", "true");
 		arp.read(onto, "file:ThinkHomeWeather.owl");
 		
+		// TODO clean up here?
 		Resource instantClass = onto.getResource(WeatherReport.TIME + "Instant");
 		Individual instant = onto.createIndividual(WeatherReport.NAMESPACE + "instant0", instantClass);
 
