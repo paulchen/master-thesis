@@ -15,7 +15,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 // TODO javadoc
 public class SunPositionTest extends IndividualsTest {
 	private void checkSunElevation(int sunDirection, int sunElevationAngle, String... expectedConcepts) {
-		String[] concepts = { "SunPosition", "Day", "Night", "SolarTwilight", "CivilTwilight", "NauticalTwilight", "AstronomicalTwilight" };
+		String[] concepts = { "SunPosition", "Day", "Night", "SunBelowHorizon", "Twilight", "SolarTwilight", "CivilTwilight", "NauticalTwilight", "AstronomicalTwilight" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		Resource blankNode1 = getOnto().createResource();
@@ -135,7 +135,7 @@ public class SunPositionTest extends IndividualsTest {
 	public void testCivilTwilight() {
 		for(int direction=0; direction<360; direction+=30) {
 			for(int elevation=-6; elevation<0; elevation+=5) {
-				checkSunElevation(direction, elevation, "SunPosition", "CivilTwilight");
+				checkSunElevation(direction, elevation, "SunPosition", "CivilTwilight", "Twilight", "SunBelowHorizon" );
 			}
 		}
 	}
@@ -144,7 +144,7 @@ public class SunPositionTest extends IndividualsTest {
 	public void testNauticalTwilight() {
 		for(int direction=0; direction<360; direction+=30) {
 			for(int elevation=-12; elevation<-6; elevation+=5) {
-				checkSunElevation(direction, elevation, "SunPosition", "NauticalTwilight");
+				checkSunElevation(direction, elevation, "SunPosition", "NauticalTwilight", "Twilight", "SunBelowHorizon" );
 			}
 		}
 	}
@@ -153,7 +153,7 @@ public class SunPositionTest extends IndividualsTest {
 	public void testAstronomicalTwilight() {
 		for(int direction=0; direction<360; direction+=30) {
 			for(int elevation=-18; elevation<-12; elevation+=5) {
-				checkSunElevation(direction, elevation, "SunPosition", "AstronomicalTwilight");
+				checkSunElevation(direction, elevation, "SunPosition", "AstronomicalTwilight", "Twilight", "SunBelowHorizon" );
 			}
 		}
 	}
@@ -162,9 +162,9 @@ public class SunPositionTest extends IndividualsTest {
 	public void testNight() {
 		for(int direction=0; direction<360; direction+=30) {
 			for(int elevation=-90; elevation<-18; elevation+=10) {
-				checkSunElevation(direction, elevation, "SunPosition", "Night");
+				checkSunElevation(direction, elevation, "SunPosition", "Night", "SunBelowHorizon");
 			}
-			checkSunElevation(direction, -19, "SunPosition", "Night");
+			checkSunElevation(direction, -19, "SunPosition", "Night", "SunBelowHorizon");
 		}
 	}
 }
