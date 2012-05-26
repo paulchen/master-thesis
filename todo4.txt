@@ -108,6 +108,8 @@ hasTemperature -> hasTemperatureValue etc., PrecipValue -> PrecipIntensity - DON
 SpatialThing/Point: datatypeProperties lat/long/alt
 
 ontologies for units
+* store preferred units
+* fix solar radiation value
 
 grafische darstellung
 
@@ -118,6 +120,21 @@ WeatherState: hasCondition explizit dazuschreiben - DONE
 WeatherState: hasWeatherPhenomenon max 1 Precipitation, ... - DONE
 
 belongsToWeatherReport/hasWeatherState: definition zu WeatherReport - DONE
+
+midrangeweatherstate -> mediumrangeweatherstate
+
+sunposition - add concepts NoSunshine (SunBelowHorizon), Twilight
+
+WeatherReader:
+* create WeatherSource as class?
+* create WeatherPhenomenon as class including appropriate subclasses?
+
+* change dia files of diagrams in order to have arrows from circle center to circle center
+* Weather report diagram: missing rdfs:subClassOf
+* belongsToState -> belongsToWeatherState
+* missing diagrams
+* midrangeweatherreport -> mediumrangeweatherreport
+* rebuild hasSunRadiationValue
 
 meeting: 30.5., 11 uhr
 
