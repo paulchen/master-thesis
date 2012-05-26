@@ -23,8 +23,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 // TODO javadoc
 public abstract class IndividualsTest extends TestCase {
 	private OntModel onto;
-	private Individual weatherState;
-	private int WeatherPhenomenonIndex = 0;
+	private int weatherIndex = 0;
 	
 	protected OntModel getOnto() {
 		return onto;
@@ -66,9 +65,6 @@ public abstract class IndividualsTest extends TestCase {
 		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherReport.TIME + "year"), onto.createTypedLiteral(String.valueOf(calendar.get(Calendar.YEAR)), XSDDatatype.XSDgYear)));
 		
 		onto.add(onto.createStatement(instant, onto.getProperty(WeatherReport.TIME + "inDateTime"), dateTime));
-		
-		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
-		weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + 0, weatherStateClass);
 	}
 	
 	@After
@@ -77,11 +73,14 @@ public abstract class IndividualsTest extends TestCase {
 	}
 
 	protected Individual createSingleWeatherPhenomenon() {
+		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
+		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + weatherIndex, weatherStateClass);
+		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "weatherPhenomenon" + WeatherPhenomenonIndex, weatherPhenomenonClass);
+		Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "weatherPhenomenon" + weatherIndex, weatherPhenomenonClass);
 		onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
 		
-		WeatherPhenomenonIndex++;
+		weatherIndex++;
 		
 		return weatherPhenomenon;
 	}
