@@ -21,6 +21,7 @@ public class WeatherReport {
 	private float startTime;
 	private float endTime;
 	
+	// TODO move this somewhere else?
 	public static final String NAMESPACE = "http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#";
 	public static final String WGS84 = "http://www.w3.org/2003/01/geo/wgs84_pos#";
 	public static final String TIME = "http://www.w3.org/2006/time#";
