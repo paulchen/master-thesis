@@ -13,9 +13,9 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
-public class SunRadiationTest extends IndividualsTest {
+public class SolarRadiationTest extends IndividualsTest {
 	private void checkSunRadiation(float sunRadiationValue, String... expectedConcepts) {
-		String[] concepts = { "SunRadiation", "NoRadiation", "LowRadiation", "MediumRadiation", "HighRadiation", "VeryHighRadiation" };
+		String[] concepts = { "SolarRadiation", "NoRadiation", "LowRadiation", "MediumRadiation", "HighRadiation", "VeryHighRadiation" };
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
@@ -30,35 +30,35 @@ public class SunRadiationTest extends IndividualsTest {
 	
 	@Test
 	public void testNoRadiation() {
-		checkSunRadiation(0f, "SunRadiation", "NoRadiation");
+		checkSunRadiation(0f, "SolarRadiation", "NoRadiation");
 	}
 
 	@Test
 	public void testLowRadiation() {
 		// use int here to avoid problems with floating-point numbers
 		for(int radiationValue=1; radiationValue<250; radiationValue+=8) {
-			checkSunRadiation(radiationValue, "SunRadiation", "LowRadiation");
+			checkSunRadiation(radiationValue, "SolarRadiation", "LowRadiation");
 		}
 	}
 	
 	@Test
 	public void testMediumRadiation() {
 		for(int radiationValue=250; radiationValue<500; radiationValue+=3) {
-			checkSunRadiation(radiationValue, "SunRadiation", "MediumRadiation");
+			checkSunRadiation(radiationValue, "SolarRadiation", "MediumRadiation");
 		}
 	}
 	
 	@Test
 	public void testHighRadiation() {
 		for(int radiationValue=500; radiationValue<750; radiationValue+=3) {
-			checkSunRadiation(radiationValue, "SunRadiation", "HighRadiation");
+			checkSunRadiation(radiationValue, "SolarRadiation", "HighRadiation");
 		}
 	}
 	
 	@Test
 	public void testVeryHighRadiation() {
 		for(int radiationValue=750; radiationValue<1500; radiationValue+=10) {
-			checkSunRadiation(radiationValue, "SunRadiation", "VeryHighRadiation");
+			checkSunRadiation(radiationValue, "SolarRadiation", "VeryHighRadiation");
 		}
 	}
 }
