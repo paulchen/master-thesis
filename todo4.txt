@@ -121,9 +121,9 @@ WeatherState: hasWeatherPhenomenon max 1 Precipitation, ... - DONE
 
 belongsToWeatherReport/hasWeatherState: definition zu WeatherReport - DONE
 
-midrangeweatherstate -> mediumrangeweatherstate
+midrangeweatherstate -> mediumrangeweatherstate - DONE
 
-sunposition - add concepts NoSunshine (SunBelowHorizon), Twilight
+sunposition - add concepts NoSunshine (SunBelowHorizon), Twilight - DONE
 
 WeatherReader:
 * create WeatherSource as class?
