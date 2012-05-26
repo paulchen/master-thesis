@@ -111,5 +111,13 @@ ontologies for units
 
 grafische darstellung
 
-nächstes meeting: 4.5. 11 uhr
+SunRadiation -> SolarRadiation
+
+WeatherState: hasCondition explizit dazuschreiben
+
+WeatherState: hasWeatherPhenomenon max 1 Precipitation, ...
+
+belongsToWeatherReport/hasWeatherState: definition zu WeatherReport
+
+meeting: 30.5., 11 uhr
 
