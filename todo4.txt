@@ -111,7 +111,7 @@ ontologies for units
 
 grafische darstellung
 
-SunRadiation -> SolarRadiation
+SunRadiation -> SolarRadiation - OK
 
 WeatherState: hasCondition explizit dazuschreiben
 
