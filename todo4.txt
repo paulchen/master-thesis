@@ -113,9 +113,9 @@ grafische darstellung
 
 SunRadiation -> SolarRadiation - OK
 
-WeatherState: hasCondition explizit dazuschreiben
+WeatherState: hasCondition explizit dazuschreiben - DONE
 
-WeatherState: hasWeatherPhenomenon max 1 Precipitation, ...
+WeatherState: hasWeatherPhenomenon max 1 Precipitation, ... - DONE
 
 belongsToWeatherReport/hasWeatherState: definition zu WeatherReport
 
