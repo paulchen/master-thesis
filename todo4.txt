@@ -131,9 +131,9 @@ WeatherReader:
 
 * change dia files of diagrams in order to have arrows from circle center to circle center
 * Weather report diagram: missing rdfs:subClassOf
-* belongsToState -> belongsToWeatherState
+* belongsToState -> belongsToWeatherState - DONE
 * missing diagrams
-* midrangeweatherreport -> mediumrangeweatherreport
+* midrangeweatherreport -> mediumrangeweatherreport - DONE
 * rebuild hasSunRadiationValue
 
 meeting: 30.5., 11 uhr
