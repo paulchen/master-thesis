@@ -86,13 +86,13 @@ ASK:
 
 umbennennen: WeatherObservation -> WeatherReport - DONE
 
-hasTime, source, priority verschieben: WeatherState -> WeatherReport
+hasTime, source, priority verschieben: WeatherState -> WeatherReport - DONE
 
 normalpressure -> averagepressure
 
-weatherState gilt von wann bis wann?
+weatherState gilt von wann bis wann? - DONE
 
-keine äquivalenten konzepte
+keine äquivalenten konzepte - DONE
 
 weatherstate-hierarchie überarbeiten
 
@@ -101,7 +101,7 @@ CoolingWeather etc. implementieren, mehr generelle konzepte
 
 LongRange/MidRange/ShortRange etc. loswerden - DONE
 
-ConditionWeatherState -> WeatherReport
+ConditionWeatherState -> WeatherReport - DONE
 
 hasTemperature -> hasTemperatureValue etc., PrecipValue -> PrecipIntensity - DONE
 
@@ -117,7 +117,7 @@ WeatherState: hasCondition explizit dazuschreiben - DONE
 
 WeatherState: hasWeatherPhenomenon max 1 Precipitation, ... - DONE
 
-belongsToWeatherReport/hasWeatherState: definition zu WeatherReport
+belongsToWeatherReport/hasWeatherState: definition zu WeatherReport - DONE
 
 meeting: 30.5., 11 uhr
 
