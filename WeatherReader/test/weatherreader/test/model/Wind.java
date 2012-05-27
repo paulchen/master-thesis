@@ -8,6 +8,7 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 // TODO javadoc
+// TODO support for wind direction
 public class Wind extends WeatherPhenomenon {
 	private float windSpeed;
 	private String name;
@@ -22,7 +23,6 @@ public class Wind extends WeatherPhenomenon {
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
 		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), windSpeed));
-		// TODO get rid of magic constant for individual name here
 		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "metresPerSecond")));
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
