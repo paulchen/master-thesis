@@ -75,6 +75,8 @@
 				<fileset dir="${src.test.dir}">
 					<include name="**/*.java"/>
 					<exclude name="**/base/*.java"/>
+					<!-- TODO remove -->
+					<exclude name="**/model/*.java"/>
 				</fileset>
 			</batchtest>
 		</junit>
