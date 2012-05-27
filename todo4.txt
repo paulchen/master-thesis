@@ -105,7 +105,7 @@ ConditionWeatherState -> WeatherReport - DONE
 
 hasTemperature -> hasTemperatureValue etc., PrecipValue -> PrecipIntensity - DONE
 
-SpatialThing/Point: datatypeProperties lat/long/alt
+SpatialThing/Point: datatypeProperties lat/long/alt - DONE
 
 ontologies for units
 * store preferred units
