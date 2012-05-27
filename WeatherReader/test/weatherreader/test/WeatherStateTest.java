@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
 import weatherreader.model.WeatherReport;
+import weatherreader.test.model.CloudCover;
 import weatherreader.test.model.WeatherPhenomenon;
 import weatherreader.test.model.WeatherState;
 import weatherreader.test.model.Wind;
@@ -39,7 +40,8 @@ public class WeatherStateTest extends TestCase {
 	
 	private void testState(WeatherPhenomenon[] phenomena, String[] expectedConcepts) {
 		String[] allConcepts = {
-				"CalmWeather", "WindyWeather", "StormyWeather"
+				"CalmWeather", "WindyWeather", "StormyWeather",
+				"ClearWeather", "CloudyWeather",
 			};
 		List<String> expected = Arrays.asList(expectedConcepts);
 
@@ -59,7 +61,7 @@ public class WeatherStateTest extends TestCase {
 	}
 	
 	@Test
-	public void testWindyWeather() {
+	public void testWind() {
 		for(int a=0; a<10; a++) {
 			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a) }, new String[] { "CalmWeather" });
 		}
@@ -69,5 +71,25 @@ public class WeatherStateTest extends TestCase {
 		for(int a=20; a<100; a++) {
 			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a) }, new String[] { "WindyWeather", "StormyWeather" });
 		}
+	}
+
+	@Test
+	public void testCloudCover() {
+		for(int a=0; a<5; a++) {
+			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a) }, new String[] { "ClearWeather" });
+		}
+		for(int a=5; a<9; a++) {
+			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a) }, new String[] { "CloudyWeather" });
+		}
+	}
+	
+	@Test
+	public void testTemperature() {
+		// TODO
+	}
+	
+	@Test
+	public void testPrecipitation() {
+		// TODO
 	}
 }
