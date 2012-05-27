@@ -44,7 +44,7 @@ public class WeatherReportTest extends TestCase {
 		reportIndex++;
 		
 		// TODO duplicate code here?
-		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
+		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherReport");
 		Individual weatherReport = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + reportIndex, weatherStateClass);
 				
 		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
