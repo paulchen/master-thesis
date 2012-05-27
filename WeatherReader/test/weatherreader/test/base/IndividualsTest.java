@@ -43,7 +43,7 @@ public abstract class IndividualsTest extends TestCase {
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
 		Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "weatherPhenomenon" + weatherIndex, weatherPhenomenonClass);
-		onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToState"), weatherState));
+		onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
 		
 		weatherIndex++;
 		
