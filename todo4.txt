@@ -109,7 +109,7 @@ SpatialThing/Point: datatypeProperties lat/long/alt
 
 ontologies for units
 * store preferred units
-* fix solar radiation value
+* fix solar radiation value - DONE
 
 grafische darstellung
 
@@ -134,7 +134,7 @@ WeatherReader:
 * belongsToState -> belongsToWeatherState - DONE
 * missing diagrams
 * midrangeweatherreport -> mediumrangeweatherreport - DONE
-* rebuild hasSunRadiationValue
+* rebuild hasSunRadiationValue - DONE
 
 meeting: 30.5., 11 uhr
 
