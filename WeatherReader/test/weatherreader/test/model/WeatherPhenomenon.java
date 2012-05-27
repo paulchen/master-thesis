@@ -1,4 +1,4 @@
-package weatherreader.test;
+package weatherreader.test.model;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;

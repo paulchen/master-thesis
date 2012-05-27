@@ -1,4 +1,4 @@
-package weatherreader.test;
+package weatherreader.test.model;
 
 import weatherreader.model.WeatherReport;
 

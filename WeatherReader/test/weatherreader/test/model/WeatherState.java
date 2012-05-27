@@ -1,4 +1,4 @@
-package weatherreader.test;
+package weatherreader.test.model;
 
 import java.util.ArrayList;
 import java.util.List;
