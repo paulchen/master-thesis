@@ -12,6 +12,7 @@ import org.mindswap.pellet.jena.PelletReasonerFactory;
 
 import weatherreader.model.WeatherReport;
 import weatherreader.test.model.CloudCover;
+import weatherreader.test.model.Temperature;
 import weatherreader.test.model.WeatherPhenomenon;
 import weatherreader.test.model.WeatherState;
 import weatherreader.test.model.Wind;
@@ -42,6 +43,7 @@ public class WeatherStateTest extends TestCase {
 		String[] allConcepts = {
 				"CalmWeather", "WindyWeather", "StormyWeather",
 				"ClearWeather", "CloudyWeather",
+				"ColdWeather", "PleasantTemperatureWeather", "HotWeather"
 			};
 		List<String> expected = Arrays.asList(expectedConcepts);
 
@@ -85,7 +87,15 @@ public class WeatherStateTest extends TestCase {
 	
 	@Test
 	public void testTemperature() {
-		// TODO
+		for(int a=-50; a<10; a++) {
+			testState(new WeatherPhenomenon[] { new Temperature("temperature" + a, a) }, new String[] { "ColdWeather" });
+		}
+		for(int a=10; a<31; a++) {
+			testState(new WeatherPhenomenon[] { new Temperature("temperature" + a, a) }, new String[] { "PleasantTemperatureWeather" });
+		}
+		for(int a=31; a<50; a++) {
+			testState(new WeatherPhenomenon[] { new Temperature("temperature" + a, a) }, new String[] { "HotWeather" });
+		}
 	}
 	
 	@Test
