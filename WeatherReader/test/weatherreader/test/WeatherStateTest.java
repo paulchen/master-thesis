@@ -110,4 +110,6 @@ public class WeatherStateTest extends TestCase {
 			testState(new WeatherPhenomenon[] { new Precipitation("rain" + a, a) }, new String[] { "RainyWeather", "VeryRainyWeather" });
 		}
 	}
+	
+	// TODO FairWeather, AiringWeather, SunProtectionWeather, SevereWeather
 }
