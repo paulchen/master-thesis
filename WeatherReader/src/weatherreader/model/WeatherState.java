@@ -126,7 +126,7 @@ public class WeatherState {
 			onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
 			
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "temperature" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), weatherPhenomenon));
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasTemperatureValue"), blankNode));
 		}
 		if(humidityValue != null) {
@@ -136,7 +136,7 @@ public class WeatherState {
 			onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent")));
 			
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "humidity" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), weatherPhenomenon));
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasHumidityValue"), blankNode));
 		}
 		if(dewPointValue != null) {
@@ -146,7 +146,7 @@ public class WeatherState {
 			onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
 			
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "dewPoint" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), weatherPhenomenon));
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasDewPointValue"), blankNode));
 		}
 		if(pressureValue != null) {
@@ -155,12 +155,12 @@ public class WeatherState {
 			onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "hectopascal")));
 			
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "pressure" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), weatherPhenomenon));
 			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "hasPressureValue"), blankNode));
 		}
 		if(windSpeed != null || windDirection != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "wind" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), weatherPhenomenon));
 			if(windSpeed != null) {
 				Resource blankNode1 = onto.createResource();
 				onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), windSpeed));
@@ -179,7 +179,7 @@ public class WeatherState {
 		}
 		if(precipitationProbability != null || precipitationIntensity != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "precipitation" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), weatherPhenomenon));
 			
 			if(precipitationProbability != null) {
 				Resource blankNode = onto.createResource();
@@ -200,7 +200,7 @@ public class WeatherState {
 		
 		if(sunPosition != null) {
 			Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "sunPosition" + stateIndex, weatherPhenomenonClass);
-			onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), weatherPhenomenon));
 
 			Resource blankNode1 = onto.createResource();
 			onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (int)sunPosition.getAzimuth()));
@@ -227,7 +227,7 @@ public class WeatherState {
 			onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/length/meter")));
 			
 			Individual cloudLayerIndividual = onto.createIndividual(WeatherReport.NAMESPACE + "cloudLayer" + stateIndex + "_" + index, weatherPhenomenonClass);
-			onto.add(onto.createStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
+			onto.add(onto.createStatement(weatherState, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), cloudLayerIndividual));
 			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudCover"), blankNode1));
 			onto.add(onto.createLiteralStatement(cloudLayerIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudAltitude"), blankNode2));
 			index++;
