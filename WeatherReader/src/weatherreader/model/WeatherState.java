@@ -238,8 +238,8 @@ public class WeatherState {
 		}
 		
 		if(previousState != null) {
-//			Individual previousStateIndividual = previousState.getState();
-//			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
+			Individual previousStateIndividual = previousState.getState();
+			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
 		}
 	}
 
