@@ -39,6 +39,7 @@ The ontology development process as used by Gómez-Pérez et al. divides ontolog
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/ontology_lifecycle.png}
   \caption{States and activities in the life cycle of an ontology according to \methontology \cite{Methontology}}
+  \label{fig:methontology1}
 \end{figure}
 
 As seen in figure \ref{fig:methontology1}, these groups are split into \emph{planification} that must be performed at the very beginning of development, a \emph{set of stages} (consisting of \emph{specification}, \emph{conceptualization}, \emph{formalization}, \emph{integration}, \emph{implementation} and \emph{maintenance}) through which the ontology moves during its life and some activities (\emph{knowledge acquisition}, \emph{documentation} and \emph{evaluation}) that are performed throughout the whole development process in parallel to the stages.
@@ -53,7 +54,27 @@ Only the idea behind \methontology is described; for the application of \methont
 
 \subsubsection{Specification}
 
+As \methontology specifies a clear structure for developing an ontology, the planning step may be omitted. Hence, \emph{specification} is the first step of developing an ontology from scratch. During \emph{specification}, an ontology specification document is produced. That document is written in natural language using a set of intermediate representations or using competence questions. It should include the following:
+
+\begin{itemize}
+  \item The purpose of the ontology, its intended uses, scenarios of use, end-users etc.
+  \item The level of formality (highly informal, semi-informal, semi-formal or rigorously formal). % TODO reference to Uschuld & Gruninger 1996
+  \item The scope which includes the set of terms to be represented, its characteristics and its granularity.
+\end{itemize}
+
+A good ontology specification document has the following properties:
+
+\begin{itemize}
+  \item \textbf{Consision}: Every term is relevant and there are no duplicated or irrelevant terms.
+  \item \textbf{Partial completeness}: % TODO specify?
+  \item \textbf{Consistency}: All terms and their meanings make sense in the domain.
+\end{itemize}
+
 \subsubsection{Knowledge Acquisition}
+
+Most of knowledge acquisition is done simultanously with the \emph{specification} phase. It is one of the most important activities and needs to be performed thoroughly as most other activities depend heavily on it.
+
+Sources of knowledge are experts, books, handbooks, figures, tables and even other ontologies. Knowledge will be collected using techniques such as brainstorming, interviews, formal and informal analysis of texts and knowledge acquisition tools.
 
 \subsubsection{Conceptualization}
 
