@@ -238,8 +238,8 @@ public class WeatherState {
 		
 		if(previousState != null) {
 			// TODO use variable 'previousState' here
-			Individual previousStateIndividual = onto.getIndividual(WeatherReport.NAMESPACE + "weatherState" + (stateIndex-1));
-			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
+//			Individual previousStateIndividual = onto.getIndividual(WeatherReport.NAMESPACE + "weatherState" + (stateIndex-1));
+//			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
 		}
 	}
 
