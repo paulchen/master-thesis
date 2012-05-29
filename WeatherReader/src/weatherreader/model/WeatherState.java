@@ -19,6 +19,7 @@ public class WeatherState {
 	private List<CloudLayer> cloudLayers;
 	private List<WeatherCondition> weatherConditions;
 	private SunPosition sunPosition;
+	private Individual weatherState;
 	
 	/*
 	public WeatherState(Float temperatureValue,
@@ -115,7 +116,7 @@ public class WeatherState {
 
 	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex, WeatherState previousState) {
 		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
-		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weatherState" + stateIndex, weatherStateClass);
+		weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weatherState" + stateIndex, weatherStateClass);
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
 		if(temperatureValue != null) {
@@ -237,8 +238,7 @@ public class WeatherState {
 		}
 		
 		if(previousState != null) {
-			// TODO use variable 'previousState' here
-//			Individual previousStateIndividual = onto.getIndividual(WeatherReport.NAMESPACE + "weatherState" + (stateIndex-1));
+//			Individual previousStateIndividual = previousState.getState();
 //			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), weatherState));
 		}
 	}
@@ -281,5 +281,9 @@ public class WeatherState {
 
 	public List<WeatherCondition> getWeatherConditions() {
 		return weatherConditions;
+	}
+	
+	private Individual getState() {
+		return weatherState;
 	}
 }
