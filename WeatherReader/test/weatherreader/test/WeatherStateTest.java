@@ -10,13 +10,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
+import weatherreader.model.CloudCover;
+import weatherreader.model.Precipitation;
+import weatherreader.model.Temperature;
+import weatherreader.model.WeatherPhenomenon;
 import weatherreader.model.WeatherReport;
-import weatherreader.test.model.CloudCover;
-import weatherreader.test.model.Precipitation;
-import weatherreader.test.model.Temperature;
-import weatherreader.test.model.WeatherPhenomenon;
-import weatherreader.test.model.WeatherState;
-import weatherreader.test.model.Wind;
+import weatherreader.model.WeatherState;
+import weatherreader.model.Wind;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -67,23 +67,23 @@ public class WeatherStateTest extends TestCase {
 	@Test
 	public void testWind() {
 		for(int a=0; a<10; a++) {
-			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a) }, new String[] { "CalmWeather" });
+			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a, 0) }, new String[] { "CalmWeather" });
 		}
 		for(int a=10; a<20; a++) {
-			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a) }, new String[] { "WindyWeather" });
+			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a, 0) }, new String[] { "WindyWeather" });
 		}
 		for(int a=20; a<100; a++) {
-			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a) }, new String[] { "WindyWeather", "StormyWeather" });
+			testState(new WeatherPhenomenon[] { new Wind("wind" + a, a, 0) }, new String[] { "WindyWeather", "StormyWeather" });
 		}
 	}
 
 	@Test
 	public void testCloudCover() {
 		for(int a=0; a<5; a++) {
-			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a) }, new String[] { "ClearWeather" });
+			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a, 1000) }, new String[] { "ClearWeather" });
 		}
 		for(int a=5; a<9; a++) {
-			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a) }, new String[] { "CloudyWeather" });
+			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a, 1000) }, new String[] { "CloudyWeather" });
 		}
 	}
 	
@@ -102,12 +102,12 @@ public class WeatherStateTest extends TestCase {
 	
 	@Test
 	public void testPrecipitation() {
-		testState(new WeatherPhenomenon[] { new Precipitation("rain0", 0) }, new String[] { "NoRainWeather" });
+		testState(new WeatherPhenomenon[] { new Precipitation("rain0", 0, 1) }, new String[] { "NoRainWeather" });
 		for(int a=1; a<21; a++) {
-			testState(new WeatherPhenomenon[] { new Precipitation("rain" + a, a) }, new String[] { "RainyWeather" });
+			testState(new WeatherPhenomenon[] { new Precipitation("rain" + a, a, 1) }, new String[] { "RainyWeather" });
 		}
 		for(int a=21; a<100; a++) {
-			testState(new WeatherPhenomenon[] { new Precipitation("rain" + a, a) }, new String[] { "RainyWeather", "VeryRainyWeather" });
+			testState(new WeatherPhenomenon[] { new Precipitation("rain" + a, a, 1) }, new String[] { "RainyWeather", "VeryRainyWeather" });
 		}
 	}
 	

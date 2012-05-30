@@ -1,5 +1,6 @@
 package weatherreader.model;
 
+// TODO WeatherPhenomenon; correctly merge in WeatherState
 public class SunPosition {
 	private double azimuth;
 	private double zenith;

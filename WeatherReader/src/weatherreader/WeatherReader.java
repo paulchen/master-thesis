@@ -35,11 +35,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import weatherreader.model.CloudLayer;
+import weatherreader.model.CloudCover;
+import weatherreader.model.DewPoint;
 import weatherreader.model.GeographicalPosition;
+import weatherreader.model.Humidity;
+import weatherreader.model.Precipitation;
+import weatherreader.model.Pressure;
+import weatherreader.model.Temperature;
 import weatherreader.model.Weather;
 import weatherreader.model.WeatherCondition;
+import weatherreader.model.WeatherPhenomenon;
 import weatherreader.model.WeatherState;
+import weatherreader.model.Wind;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
@@ -65,6 +72,8 @@ public class WeatherReader {
 	
 	private Logger log;
 	
+	private int reportIndex;
+	
 	public WeatherReader(float latitude, float longitude, int altitude, int lowCloudAltitude, int mediumCloudAltitude, int highCloudAltitude, List<Integer> forecastHours) {
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -79,6 +88,8 @@ public class WeatherReader {
 		forecastPeriod = forecastHours.get(forecastHours.size() - 1)*3600000;
 		
 		log = Logger.getLogger(WeatherReader.class);
+		
+		reportIndex = 0;
 	}
 	
 	private void xmlError(String message) throws WeatherReaderException {
@@ -99,6 +110,8 @@ public class WeatherReader {
 	}
 	
 	private void processWeatherState(Node node) throws WeatherReaderException {
+		reportIndex++;
+		
 		NamedNodeMap attributes = node.getAttributes();
 		
 		Date startDate = DatatypeConverter.parseDateTime(attributes.getNamedItem("from").getNodeValue()).getTime();
@@ -115,6 +128,7 @@ public class WeatherReader {
 			endDate = new Date(new Date().getTime() + forecastPeriod*2);
 		}
 		
+		// TODO rename to ...Value
 		Float temperature = null;
 		Float humidity = null;
 		Float dewPoint = null;
@@ -123,7 +137,7 @@ public class WeatherReader {
 		Integer windDirection = null;
 		Float precipitationProbability = null;
 		Float precipitationValue = null;
-		List<CloudLayer> cloudLayers = new ArrayList<CloudLayer>();
+		List<CloudCover> cloudLayers = new ArrayList<CloudCover>();
 		
 		NodeList child = (NodeList)node.getChildNodes();
 		NodeList children = null;
@@ -151,11 +165,12 @@ public class WeatherReader {
 			xmlError("The <time> element has no child node <location>.");
 		}
 		
-		CloudLayer lowClouds = null;
-		CloudLayer mediumClouds = null;
-		CloudLayer highClouds = null;
+		CloudCover lowClouds = null;
+		CloudCover mediumClouds = null;
+		CloudCover highClouds = null;
 		List<WeatherCondition> weatherConditions = null;
 		
+		// TODO no dew point value from weather service? 
 		for(int b=0; b<children.getLength(); b++) {
 			Node childNode = children.item(b);
 			switch(childNode.getNodeType()) {
@@ -206,7 +221,7 @@ public class WeatherReader {
 						checkAttributes(childNode, "percent");
 						coverage = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("percent").getNodeValue())*8/100);
 						if(coverage > 0) {
-							lowClouds = new CloudLayer(lowCloudAltitude, coverage);
+							lowClouds = new CloudCover("clouds" + reportIndex + "_low", lowCloudAltitude, coverage);
 							cloudLayers.add(lowClouds);
 						}
 					}		
@@ -215,7 +230,7 @@ public class WeatherReader {
 						checkAttributes(childNode, "percent");
 						coverage = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("percent").getNodeValue())*8/100);
 						if(coverage > 0) {
-							mediumClouds = new CloudLayer(mediumCloudAltitude, coverage);
+							mediumClouds = new CloudCover("clouds" + reportIndex + "_medium", mediumCloudAltitude, coverage);
 							cloudLayers.add(mediumClouds);
 						}
 					}		
@@ -224,7 +239,7 @@ public class WeatherReader {
 						checkAttributes(childNode, "percent");
 						coverage = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("percent").getNodeValue())*8/100);
 						if(coverage > 0) {
-							highClouds = new CloudLayer(highCloudAltitude, coverage);
+							highClouds = new CloudCover("clouds" + reportIndex + "_high", highCloudAltitude, coverage);
 							cloudLayers.add(highClouds);
 						}
 					}		
@@ -268,17 +283,38 @@ public class WeatherReader {
 		}
 		
 		if(lowClouds == null && mediumClouds == null && highClouds == null) {
-			cloudLayers.add(new CloudLayer(mediumCloudAltitude, 0));
+			cloudLayers.add(new CloudCover("clouds" + reportIndex, mediumCloudAltitude, 0));
 		}
 		
 		if(weatherConditions == null) {
 			weatherConditions = new ArrayList<WeatherCondition>();
 		}
 		
-		weather.newWeatherReport(startDate, endDate, new WeatherState(temperature,
-				humidity, dewPoint, pressure, windSpeed, windDirection,
-				precipitationProbability, precipitationValue, cloudLayers,
-				weatherConditions));		
+		List<WeatherPhenomenon> weatherPhenomena = new ArrayList<WeatherPhenomenon>();
+		if(temperature != null) {
+			weatherPhenomena.add(new Temperature("temperature" + reportIndex, temperature));
+		}
+		if(humidity != null) {
+			weatherPhenomena.add(new Humidity("humidity" + reportIndex, humidity));
+		}
+		if(dewPoint != null) {
+			weatherPhenomena.add(new DewPoint("dewPoint" + reportIndex, dewPoint));
+		}
+		if(pressure != null) {
+			weatherPhenomena.add(new Pressure("pressure" + reportIndex, pressure));
+		}
+		if(windSpeed != null && windDirection != null) {
+			weatherPhenomena.add(new Wind("wind" + reportIndex, windSpeed, windDirection));
+		}
+		if(precipitationProbability != null && precipitationValue != null) {
+			weatherPhenomena.add(new Precipitation("precipitation" + reportIndex, precipitationValue, precipitationProbability));
+		}
+		
+		for(CloudCover cloudLayer : cloudLayers) {
+			weatherPhenomena.add(cloudLayer);
+		}
+		
+		weather.newWeatherReport(startDate, endDate, new WeatherState("weatherState" + reportIndex, weatherPhenomena, weatherConditions));
 	}
 	
 	private List<WeatherCondition> getWeatherConditionList(WeatherCondition... conditions) {
