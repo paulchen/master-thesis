@@ -22,6 +22,7 @@ public class WeatherReport implements OntologyClass {
 	private Interval endTime;
 	private String name;
 	private Individual individual;
+	private WeatherReport previousReport;
 	
 	// TODO move this somewhere else?
 	public static final String NAMESPACE = "http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#";
@@ -95,15 +96,10 @@ public class WeatherReport implements OntologyClass {
 		observationTime.createIndividuals(onto);
 		onto.add(onto.createLiteralStatement(individual, onto.getProperty(NAMESPACE + "hasObservationTime"), observationTime.getOntIndividual()));
 
-		// TODO
-		/*
 		if(previousReport != null) {
-			weatherState.createIndividuals(onto, weatherReport, reportIndex, previousReport.getState());
+			weatherState.setPreviousState(previousReport.getState());
 		}
-		else {
-			weatherState.createIndividuals(onto, weatherReport, reportIndex, null);
-		}
-		*/
+		weatherState.createIndividuals(onto);
 	}	
 	
 	@Override
@@ -172,5 +168,9 @@ public class WeatherReport implements OntologyClass {
 	@Override
 	public Individual getOntIndividual() {
 		return individual;
+	}
+
+	public void setPreviousReport(WeatherReport previousReport) {
+		this.previousReport = previousReport;
 	}
 }

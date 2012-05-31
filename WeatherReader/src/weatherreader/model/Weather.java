@@ -204,6 +204,7 @@ public class Weather {
 		int a=0;
 		WeatherReport previousReport = null;
 		for(WeatherReport report : weatherReports) {
+			report.setPreviousReport(previousReport);
 			// TODO
 			report.createIndividuals(ontology); //, ++a, previousReport);
 			previousReport = report;

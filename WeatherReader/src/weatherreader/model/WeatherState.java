@@ -25,6 +25,7 @@ public class WeatherState implements OntologyClass {
 //	private SunPosition sunPosition;
 	private Individual individual;
 	private List<WeatherPhenomenon> weatherPhenomena;
+	private WeatherState previousState;
 	
 	/*
 	public WeatherState(Float temperatureValue,
@@ -412,5 +413,9 @@ public class WeatherState implements OntologyClass {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void setPreviousState(WeatherState previousState) {
+		this.previousState = previousState;
 	}
 }
