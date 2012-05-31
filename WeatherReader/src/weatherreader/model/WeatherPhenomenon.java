@@ -20,6 +20,11 @@ public abstract class WeatherPhenomenon implements OntologyClass {
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current);
 	
 	// TODO do not round here?
+	protected float linearDoubleInterpolation(double startValue, double endValue,
+			int end, int current) {
+		return Math.round((startValue + (endValue - startValue)/(end-current))*100)/100f;
+	}
+	
 	protected float linearFloatInterpolation(float startValue, float endValue,
 			int end, int current) {
 		return Math.round((startValue + (endValue - startValue)/(end-current))*100)/100f;

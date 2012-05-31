@@ -11,6 +11,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import weatherreader.SunPositionCalculator;
+
 import com.hp.hpl.jena.ontology.OntModel;
 
 public class Weather {
@@ -70,18 +72,17 @@ public class Weather {
 		printWeatherReports("Weather reports after splitting them up", weatherReports);
 		
 		List<Class<? extends WeatherPhenomenon>> phenomenonClasses = new ArrayList<Class<? extends WeatherPhenomenon>>();
-		// TODO find these classes via reflection
 		phenomenonClasses.add(Temperature.class);
 		phenomenonClasses.add(Humidity.class);
 		phenomenonClasses.add(DewPoint.class);
 		phenomenonClasses.add(Pressure.class);
 		phenomenonClasses.add(Wind.class);
 		phenomenonClasses.add(Precipitation.class);
+		phenomenonClasses.add(SunPosition.class);
 		
 		/* merge weather states */
 		Map<Integer, WeatherReport> newWeatherReports = new HashMap<Integer, WeatherReport>();
 		for(int a=0; a<=maxHour; a++) {
-			// TODO clone weather state
 			newWeatherReports.put(a, new WeatherReport("weatherReport" + a, null, new Interval("interval" + a, a), new Interval("interval" + (a+1), a+1), 0, null, null, new WeatherState("weatherState" + a)));
 		}
 		for(WeatherReport report : weatherReports) {
@@ -92,8 +93,6 @@ public class Weather {
 			newReport.setPriority(report.getPriority());
 			newReport.setSource(report.getSource());
 			newReport.setPosition(report.getPosition());
-			
-			// TODO start time, end time?
 			
 			WeatherState newState = newReport.getState();
 			
@@ -120,7 +119,6 @@ public class Weather {
 			WeatherState currentState = currentReport.getState();
 
 			for(Class<? extends WeatherPhenomenon> clazz : phenomenonClasses) {
-				// TODO what if currentState does not have weather phenomena of certain types?
 				if(currentState.containsPhenomenonType(clazz)) {
 					WeatherPhenomenon lastWeatherPhenomenon;
 					int start;
@@ -188,14 +186,12 @@ public class Weather {
 		
 		printWeatherReports("Weather reports after normalization", weatherReports);
 		
-		/* TODO fix this 
 		// add sun position data
 		SunPositionCalculator sunPositionCalculator = new SunPositionCalculator(position);
 		for(WeatherReport report : weatherReports) {
-			Date date = new Date((long)(new Date().getTime() + report.getStartTime()*3600000));
-			report.getState().setSunPosition(sunPositionCalculator.calculate(date));
+			Date date = new Date((long)(new Date().getTime() + report.getStartTime().getTime()*3600000));
+			report.getState().addPhenomenon(sunPositionCalculator.calculate(date));
 		}
-		*/
 		
 		printWeatherReports("Final weather states after normalization including sun position data", weatherReports);
 	}
