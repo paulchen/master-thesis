@@ -2,11 +2,8 @@ package weatherreader.model;
 
 import java.util.List;
 
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.OntModel;
-
 //TODO javadoc
-public abstract class WeatherPhenomenon {
+public abstract class WeatherPhenomenon implements OntologyClass {
 	public WeatherPhenomenon() {
 		/* nothing to do */
 	}
@@ -19,12 +16,6 @@ public abstract class WeatherPhenomenon {
 		}
 	}
 	
-	public abstract void createIndividuals(OntModel onto);
-
-	protected abstract Individual getOntIndividual();
-	
-	public abstract String toString();
-
 	public abstract void interpolate(WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current);
 	

@@ -41,6 +41,7 @@ import weatherreader.model.GeographicalPosition;
 import weatherreader.model.Humidity;
 import weatherreader.model.Precipitation;
 import weatherreader.model.Pressure;
+import weatherreader.model.ServiceSource;
 import weatherreader.model.Temperature;
 import weatherreader.model.Weather;
 import weatherreader.model.WeatherCondition;
@@ -401,7 +402,7 @@ public class WeatherReader {
 			XPath xpath = xpathFactory.newXPath();
 			XPathExpression datapointExpression = xpath.compile("/weatherdata/product/time");
 			
-			weather = new Weather(new Date(), priority, source, new GeographicalPosition(latitude, longitude, altitude), forecastHours);
+			weather = new Weather(new Date(), priority, new ServiceSource(source), new GeographicalPosition(latitude, longitude, altitude), forecastHours);
 			nodes = (NodeList)datapointExpression.evaluate(document, XPathConstants.NODESET);
 		}
 		catch (IllegalArgumentException e) {

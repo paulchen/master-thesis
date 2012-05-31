@@ -10,7 +10,7 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 
 //TODO javadoc
-public class WeatherState {
+public class WeatherState implements OntologyClass {
 //	private Float temperatureValue;
 //	private Float humidityValue;
 //	private Float dewPointValue;

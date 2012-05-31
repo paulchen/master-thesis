@@ -42,7 +42,7 @@ public class Pressure extends WeatherPhenomenon {
 	}
 
 	@Override
-	protected Individual getOntIndividual() {
+	public Individual getOntIndividual() {
 		return individual;
 	}
 

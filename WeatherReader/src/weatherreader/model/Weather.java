@@ -16,7 +16,7 @@ import com.hp.hpl.jena.ontology.OntModel;
 public class Weather {
 	private Date observationTime;
 	private int priority;
-	private String source;
+	private WeatherSource source;
 	private GeographicalPosition position;
 	private List<WeatherReport> weatherReports;	
 	private List<Integer> forecastHours;
@@ -24,7 +24,7 @@ public class Weather {
 	
 	private Logger log;
 	
-	public Weather(Date observationTime, int priority, String source,
+	public Weather(Date observationTime, int priority, WeatherSource source,
 			GeographicalPosition position, List<Integer> forecastHours) {
 		super();
 		
@@ -40,7 +40,8 @@ public class Weather {
 	}
 	
 	public void newWeatherReport(Date startDate, Date endDate, WeatherState weatherState) {
-		weatherReports.add(new WeatherReport(observationTime, startDate, endDate, priority, source, position, weatherState));
+		// TODO other names?
+		weatherReports.add(new WeatherReport("weatherReport", new Instant("instant", observationTime), new Interval("interval", startDate), new Interval("interval", endDate), priority, source, position, weatherState));
 	}
 	
 	public void normalizeWeatherReports() {
@@ -55,9 +56,10 @@ public class Weather {
 			WeatherReport report = it.next();
 			if(report.getStartTime() != report.getEndTime()) {
 				it.remove();
-				for(int a=(int)report.getStartTime(); a<report.getEndTime(); a++) {
+				for(int a=(int)report.getStartTime().getTime(); a<report.getEndTime().getTime(); a++) {
 					// TODO clone weather state?
-					additionalWeatherReports.add(new WeatherReport(report.getObservationTime(), (float)a, (float)a, priority, source, report.getPosition(), report.getState()));  
+					// TODO store intervals in some data structure
+					additionalWeatherReports.add(new WeatherReport("weatherReport" + a, report.getObservationTime(), new Interval("interval" + a, a), new Interval("interval" + a, a), priority, source, report.getPosition(), report.getState()));  
 				}
 			}
 		}
@@ -78,12 +80,12 @@ public class Weather {
 		Map<Integer, WeatherReport> newWeatherReports = new HashMap<Integer, WeatherReport>();
 		for(int a=0; a<=maxHour; a++) {
 			// TODO clone weather state
-			newWeatherReports.put(a, new WeatherReport(null, a, a+1, 0, "", null, new WeatherState("weatherState" + a)));
+			newWeatherReports.put(a, new WeatherReport("weatherReport" + a, null, new Interval("interval" + a, a), new Interval("interval" + (a+1), a+1), 0, null, null, new WeatherState("weatherState" + a)));
 		}
 		for(WeatherReport report : weatherReports) {
 			WeatherState state = report.getState();
 			
-			WeatherReport newReport = newWeatherReports.get((int)report.getStartTime());
+			WeatherReport newReport = newWeatherReports.get((int)report.getStartTime().getTime());
 			newReport.setObservationTime(report.getObservationTime());
 			newReport.setPriority(report.getPriority());
 			newReport.setSource(report.getSource());
@@ -174,12 +176,12 @@ public class Weather {
 		for(int a=0; a<weatherReports.size(); a++) {
 			float nextStartTime;
 			if(a+1<weatherReports.size()) {
-				nextStartTime = weatherReports.get(a+1).getStartTime();
+				nextStartTime = weatherReports.get(a+1).getStartTime().getTime();
 			}
 			else {
-				nextStartTime = 2*weatherReports.get(a).getStartTime() - weatherReports.get(a-1).getStartTime();
+				nextStartTime = 2*weatherReports.get(a).getStartTime().getTime() - weatherReports.get(a-1).getStartTime().getTime();
 			}
-			weatherReports.get(a).setEndTime(nextStartTime);
+			weatherReports.get(a).setEndTime(new Interval("interval" + nextStartTime, nextStartTime));
 		}
 		
 		printWeatherReports("Weather reports after normalization", weatherReports);
@@ -200,7 +202,8 @@ public class Weather {
 		int a=0;
 		WeatherReport previousReport = null;
 		for(WeatherReport report : weatherReports) {
-			report.createIndividuals(ontology, ++a, previousReport);
+			// TODO
+			report.createIndividuals(ontology); //, ++a, previousReport);
 			previousReport = report;
 		}
 	}
