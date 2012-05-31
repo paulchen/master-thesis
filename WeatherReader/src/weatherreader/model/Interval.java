@@ -49,4 +49,9 @@ public class Interval extends TemporalEntity {
 	public float getTime() {
 		return time;
 	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(time);
+	}
 }

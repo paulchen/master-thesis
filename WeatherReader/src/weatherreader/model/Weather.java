@@ -54,7 +54,7 @@ public class Weather {
 		List<WeatherReport> additionalWeatherReports = new ArrayList<WeatherReport>();
 		while(it.hasNext()) {
 			WeatherReport report = it.next();
-			if(report.getStartTime() != report.getEndTime()) {
+			if(report.getStartTime().getTime() != report.getEndTime().getTime()) {
 				it.remove();
 				for(int a=(int)report.getStartTime().getTime(); a<report.getEndTime().getTime(); a++) {
 					// TODO clone weather state?
@@ -63,6 +63,8 @@ public class Weather {
 				}
 			}
 		}
+		printWeatherReports("Additional weather reports", additionalWeatherReports);
+		
 		weatherReports.addAll(additionalWeatherReports);
 		
 		printWeatherReports("Weather reports after splitting them up", weatherReports);

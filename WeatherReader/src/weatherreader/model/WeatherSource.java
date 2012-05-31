@@ -24,4 +24,9 @@ public abstract class WeatherSource implements OntologyClass {
 	public Individual getOntIndividual() {
 		return individual;
 	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 }

@@ -58,4 +58,9 @@ public class Instant extends TemporalEntity {
 	public Individual getOntIndividual() {
 		return individual;
 	}
+	
+	@Override
+	public String toString() {
+		return date.toString();
+	}
 }
