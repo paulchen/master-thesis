@@ -86,4 +86,9 @@ public class Wind extends WeatherPhenomenon {
 		wind.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return wind;
 	}
+
+	@Override
+	public Object clone() {
+		return new Wind(name, windSpeed, windDirection);
+	}
 }

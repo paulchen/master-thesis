@@ -172,4 +172,18 @@ public class WeatherState implements OntologyClass {
 	public void setPreviousState(WeatherState previousState) {
 		this.previousState = previousState;
 	}
+	
+	@Override
+	public Object clone() {
+		WeatherState weatherState = new WeatherState(name);		
+		weatherState.weatherConditions = new ArrayList<WeatherCondition>(weatherConditions);
+		weatherState.previousState = previousState;
+		
+		weatherState.weatherPhenomena = new ArrayList<WeatherPhenomenon>();
+		for(WeatherPhenomenon weatherPhenomenon : weatherPhenomena) {
+			weatherState.weatherPhenomena.add((WeatherPhenomenon)(weatherPhenomenon.clone()));
+		}
+		
+		return weatherState;
+	}
 }

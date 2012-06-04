@@ -103,4 +103,9 @@ public class SunPosition extends WeatherPhenomenon {
 		sunPosition.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return sunPosition;
 	}
+
+	@Override
+	public Object clone() {
+		return new SunPosition(name, zenith, azimuth);
+	}
 }

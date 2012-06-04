@@ -87,4 +87,9 @@ public class Precipitation extends WeatherPhenomenon {
 		precipitation.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return precipitation;
 	}
+
+	@Override
+	public Object clone() {
+		return new Precipitation(name, intensity, probability);
+	}
 }

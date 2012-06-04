@@ -72,4 +72,9 @@ public class Temperature extends WeatherPhenomenon {
 		temperature.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return temperature;
 	}
+
+	@Override
+	public Object clone() {
+		return new Temperature(name, temperatureValue);
+	}
 }

@@ -70,4 +70,9 @@ public class DewPoint extends WeatherPhenomenon {
 		dewPoint.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return dewPoint;
 	}
+
+	@Override
+	public Object clone() {
+		return new DewPoint(name, dewPointValue);
+	}
 }

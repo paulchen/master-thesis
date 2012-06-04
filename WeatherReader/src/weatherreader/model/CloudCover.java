@@ -88,4 +88,9 @@ public class CloudCover extends WeatherPhenomenon {
 		cloudCover.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return cloudCover;
 	}
+
+	@Override
+	public Object clone() {
+		return new CloudCover(name, altitude, coverage);
+	}
 }

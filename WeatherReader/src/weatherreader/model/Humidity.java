@@ -70,4 +70,9 @@ public class Humidity extends WeatherPhenomenon {
 		humidity.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return humidity;
 	}
+
+	@Override
+	public Object clone() {
+		return new Humidity(name, humidityValue);
+	}
 }

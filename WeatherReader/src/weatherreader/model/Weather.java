@@ -59,7 +59,6 @@ public class Weather {
 			if(report.getStartTime().getTime() != report.getEndTime().getTime()) {
 				it.remove();
 				for(int a=(int)report.getStartTime().getTime(); a<report.getEndTime().getTime(); a++) {
-					// TODO clone weather state?
 					additionalWeatherReports.add(new WeatherReport("weatherReport" + a, report.getObservationTime(), Interval.getInterval(a), Interval.getInterval(a), priority, source, report.getPosition(), report.getState()));  
 				}
 			}
@@ -93,7 +92,7 @@ public class Weather {
 			newReport.setSource(report.getSource());
 			newReport.setPosition(report.getPosition());
 			
-			WeatherState newState = newReport.getState();
+			WeatherState newState = (WeatherState)(newReport.getState());
 			
 			/* let's assume we get a value only from one source */
 			for(Class<? extends WeatherPhenomenon> clazz : phenomenonClasses) {

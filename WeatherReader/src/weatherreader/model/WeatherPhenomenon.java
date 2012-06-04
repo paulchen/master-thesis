@@ -38,4 +38,7 @@ public abstract class WeatherPhenomenon implements OntologyClass {
 	public abstract WeatherPhenomenon createInterpolatedPhenomenon(
 			String name, WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current);
+	
+	@Override
+	public abstract Object clone();
 }
