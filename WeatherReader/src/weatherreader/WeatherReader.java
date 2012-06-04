@@ -129,15 +129,14 @@ public class WeatherReader {
 			endDate = new Date(new Date().getTime() + forecastPeriod*2);
 		}
 		
-		// TODO rename to ...Value
-		Float temperature = null;
-		Float humidity = null;
-		Float dewPoint = null;
-		Float pressure = null;
+		Float temperatureValue = null;
+		Float humidityValue = null;
+		Float dewPointValue = null;
+		Float pressureValue = null;
 		Float windSpeed = null;
 		Integer windDirection = null;
 		Float precipitationProbability = null;
-		Float precipitationValue = null;
+		Float precipitationIntensity = null;
 		List<CloudCover> cloudLayers = new ArrayList<CloudCover>();
 		
 		NodeList child = (NodeList)node.getChildNodes();
@@ -171,19 +170,18 @@ public class WeatherReader {
 		CloudCover highClouds = null;
 		List<WeatherCondition> weatherConditions = null;
 		
-		// TODO no dew point value from weather service? 
 		for(int b=0; b<children.getLength(); b++) {
 			Node childNode = children.item(b);
 			switch(childNode.getNodeType()) {
 				case Node.ELEMENT_NODE:
 					int coverage;
 					if(childNode.getLocalName().equals("temperature")) {
-						checkDuplicate(childNode, temperature);
+						checkDuplicate(childNode, temperatureValue);
 						checkAttributes(childNode, "unit", "value");
 						if(!childNode.getAttributes().getNamedItem("unit").getNodeValue().equals("celcius")) {
 							xmlError("The temperature unit must be 'celcius'.");
 						}
-						temperature = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue())*100)/100f;
+						temperatureValue = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue())*100)/100f;
 					}		
 					else if(childNode.getLocalName().equals("windDirection")) {
 						checkDuplicate(childNode, windDirection);
@@ -196,20 +194,20 @@ public class WeatherReader {
 						windSpeed = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("mps").getNodeValue())*10)/10f;
 					}		
 					else if(childNode.getLocalName().equals("humidity")) {
-						checkDuplicate(childNode, humidity);
+						checkDuplicate(childNode, humidityValue);
 						checkAttributes(childNode, "unit", "value");
 						if(!childNode.getAttributes().getNamedItem("unit").getNodeValue().equals("percent")) {
 							xmlError("The humidity unit must be 'percent'.");
 						}
-						humidity = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue()))/100f;
+						humidityValue = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue()))/100f;
 					}		
 					else if(childNode.getLocalName().equals("pressure")) {
-						checkDuplicate(childNode, pressure);
+						checkDuplicate(childNode, pressureValue);
 						checkAttributes(childNode, "unit", "value");
 						if(!childNode.getAttributes().getNamedItem("unit").getNodeValue().equals("hPa")) {
 							xmlError("The pressure unit must be 'hPa'.");
 						}
-						pressure = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue())*100)/100f;
+						pressureValue = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue())*100)/100f;
 					}		
 					else if(childNode.getLocalName().equals("cloudiness")) {
 						/* will be ignored */
@@ -245,14 +243,14 @@ public class WeatherReader {
 						}
 					}		
 					else if(childNode.getLocalName().equals("precipitation")) {
-						checkDuplicate(childNode, precipitationValue);
+						checkDuplicate(childNode, precipitationIntensity);
 						checkAttributes(childNode, "unit", "value");
 						if(!childNode.getAttributes().getNamedItem("unit").getNodeValue().equals("mm")) {
 							xmlError("The unit for the precipitation value must be 'mm'.");
 						}
-						precipitationValue = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue())*100)/100f;
+						precipitationIntensity = Math.round(Float.parseFloat(childNode.getAttributes().getNamedItem("value").getNodeValue())*100)/100f;
 						precipitationProbability = 0f;
-						if(precipitationValue > 0) {
+						if(precipitationIntensity > 0) {
 							precipitationProbability = 1f;
 						}
 					}		
@@ -286,8 +284,8 @@ public class WeatherReader {
 		if(lowClouds == null && mediumClouds == null && highClouds == null) {
 			cloudLayers.add(new CloudCover("clouds" + reportIndex, mediumCloudAltitude, 0));
 		}
-		if(humidity != null && temperature != null) {
-			dewPoint = temperature - 20*(1-humidity);
+		if(humidityValue != null && temperatureValue != null) {
+			dewPointValue = temperatureValue - 20*(1-humidityValue);
 		}
 		
 		if(weatherConditions == null) {
@@ -295,30 +293,32 @@ public class WeatherReader {
 		}
 		
 		List<WeatherPhenomenon> weatherPhenomena = new ArrayList<WeatherPhenomenon>();
-		if(temperature != null) {
-			weatherPhenomena.add(new Temperature("temperature" + reportIndex, temperature));
+		if(temperatureValue != null) {
+			weatherPhenomena.add(new Temperature("temperature" + reportIndex, temperatureValue));
 		}
-		if(humidity != null) {
-			weatherPhenomena.add(new Humidity("humidity" + reportIndex, humidity));
+		if(humidityValue != null) {
+			weatherPhenomena.add(new Humidity("humidity" + reportIndex, humidityValue));
 		}
-		if(dewPoint != null) {
-			weatherPhenomena.add(new DewPoint("dewPoint" + reportIndex, dewPoint));
+		if(dewPointValue != null) {
+			weatherPhenomena.add(new DewPoint("dewPoint" + reportIndex, dewPointValue));
 		}
-		if(pressure != null) {
-			weatherPhenomena.add(new Pressure("pressure" + reportIndex, pressure));
+		if(pressureValue != null) {
+			weatherPhenomena.add(new Pressure("pressure" + reportIndex, pressureValue));
 		}
 		if(windSpeed != null && windDirection != null) {
 			weatherPhenomena.add(new Wind("wind" + reportIndex, windSpeed, windDirection));
 		}
-		if(precipitationProbability != null && precipitationValue != null) {
-			weatherPhenomena.add(new Precipitation("precipitation" + reportIndex, precipitationValue, precipitationProbability));
+		if(precipitationProbability != null && precipitationIntensity != null) {
+			weatherPhenomena.add(new Precipitation("precipitation" + reportIndex, precipitationIntensity, precipitationProbability));
 		}
 		
 		for(CloudCover cloudLayer : cloudLayers) {
 			weatherPhenomena.add(cloudLayer);
 		}
 		
-		weather.newWeatherReport(startDate, endDate, new WeatherState("weatherState" + reportIndex, weatherPhenomena, weatherConditions));
+		WeatherState weatherState = new WeatherState("weatherState" + reportIndex, weatherPhenomena, weatherConditions);
+		weatherState.mergePhenomena(String.valueOf(reportIndex));
+		weather.newWeatherReport(startDate, endDate, weatherState);
 	}
 	
 	private List<WeatherCondition> getWeatherConditionList(WeatherCondition... conditions) {
