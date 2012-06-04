@@ -43,7 +43,7 @@ public class Weather {
 	
 	public void newWeatherReport(Date startDate, Date endDate, WeatherState weatherState) {
 		// TODO other names?
-		weatherReports.add(new WeatherReport("weatherReport", new Instant("instant", observationTime), new Interval("interval", startDate), new Interval("interval", endDate), priority, source, position, weatherState));
+		weatherReports.add(new WeatherReport("weatherReport", new Instant("instant", observationTime), Interval.getInterval(startDate), Interval.getInterval(endDate), priority, source, position, weatherState));
 	}
 	
 	public void normalizeWeatherReports() {
@@ -60,8 +60,7 @@ public class Weather {
 				it.remove();
 				for(int a=(int)report.getStartTime().getTime(); a<report.getEndTime().getTime(); a++) {
 					// TODO clone weather state?
-					// TODO store intervals in some data structure
-					additionalWeatherReports.add(new WeatherReport("weatherReport" + a, report.getObservationTime(), new Interval("interval" + a, a), new Interval("interval" + a, a), priority, source, report.getPosition(), report.getState()));  
+					additionalWeatherReports.add(new WeatherReport("weatherReport" + a, report.getObservationTime(), Interval.getInterval(a), Interval.getInterval(a), priority, source, report.getPosition(), report.getState()));  
 				}
 			}
 		}
@@ -83,7 +82,7 @@ public class Weather {
 		/* merge weather states */
 		Map<Integer, WeatherReport> newWeatherReports = new HashMap<Integer, WeatherReport>();
 		for(int a=0; a<=maxHour; a++) {
-			newWeatherReports.put(a, new WeatherReport("weatherReport" + a, null, new Interval("interval" + a, a), new Interval("interval" + (a+1), a+1), 0, null, null, new WeatherState("weatherState" + a)));
+			newWeatherReports.put(a, new WeatherReport("weatherReport" + a, null, Interval.getInterval(a), Interval.getInterval(a+1), 0, null, null, new WeatherState("weatherState" + a)));
 		}
 		for(WeatherReport report : weatherReports) {
 			WeatherState state = report.getState();
@@ -181,7 +180,7 @@ public class Weather {
 			else {
 				nextStartTime = 2*weatherReports.get(a).getStartTime().getTime() - weatherReports.get(a-1).getStartTime().getTime();
 			}
-			weatherReports.get(a).setEndTime(new Interval("interval" + (int)nextStartTime, nextStartTime));
+			weatherReports.get(a).setEndTime(Interval.getInterval(nextStartTime));
 		}
 		
 		printWeatherReports("Weather reports after normalization", weatherReports);

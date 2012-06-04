@@ -2,6 +2,8 @@ package weatherreader.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -13,6 +15,22 @@ public class Interval extends TemporalEntity {
 	private float time;
 	private Individual individual;
 	
+	private static Map<Float, Interval> intervals;
+	
+	public static Interval getInterval(float time) {
+		if(intervals == null) {
+			intervals = new HashMap<Float, Interval>();
+		}
+		if(!intervals.containsKey(time)) {
+			intervals.put(time, new Interval("interval" + time, time));
+		}
+		return intervals.get(time);
+	}
+	
+	public static Interval getInterval(Date time) {
+		return getInterval(getTime(time));
+	}
+	
 	public Interval(String name, float time) {
 		super();
 		this.name = name;
@@ -23,14 +41,19 @@ public class Interval extends TemporalEntity {
 		super();
 		this.name = name;
 		
-		long seconds = date.getTime()-new Date().getTime();
-		time = (float)Math.round(seconds/3600000);
-		if(time < 0) {
-			/* ignore data for the past */
-			time = 0;
-		}
+		time = getTime(date);
 	}
 
+	private static float getTime(Date date) {
+		long seconds = date.getTime()-new Date().getTime();
+		float ret = (float)Math.round(seconds/3600000);
+		if(ret < 0) {
+			/* ignore data for the past */
+			ret = 0;
+		}
+		return ret;
+	}
+	
 	@Override
 	public void createIndividuals(OntModel onto) {
 		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
