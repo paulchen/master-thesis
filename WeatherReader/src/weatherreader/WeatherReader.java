@@ -286,6 +286,9 @@ public class WeatherReader {
 		if(lowClouds == null && mediumClouds == null && highClouds == null) {
 			cloudLayers.add(new CloudCover("clouds" + reportIndex, mediumCloudAltitude, 0));
 		}
+		if(humidity != null && temperature != null) {
+			dewPoint = temperature - 20*(1-humidity);
+		}
 		
 		if(weatherConditions == null) {
 			weatherConditions = new ArrayList<WeatherCondition>();
