@@ -197,12 +197,10 @@ public class Weather {
 	}
 
 	public void createIndividuals(OntModel ontology) {
-		int a=0;
 		WeatherReport previousReport = null;
 		for(WeatherReport report : weatherReports) {
 			report.setPreviousReport(previousReport);
-			// TODO
-			report.createIndividuals(ontology); //, ++a, previousReport);
+			report.createIndividuals(ontology);
 			previousReport = report;
 		}
 	}

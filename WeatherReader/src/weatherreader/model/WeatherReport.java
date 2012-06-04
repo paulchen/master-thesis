@@ -66,9 +66,7 @@ public class WeatherReport implements OntologyClass {
 		this.weatherState = weatherState;
 	}
 	
-	// TODO
-//	public void createIndividuals(OntModel onto, int reportIndex, WeatherReport previousReport) {
-	public void createIndividuals(OntModel onto) { //, int reportIndex, WeatherReport previousReport) {
+	public void createIndividuals(OntModel onto) {
 		OntClass weatherReportClass = onto.getOntClass(NAMESPACE + "WeatherReport");
 		individual = onto.createIndividual(NAMESPACE + name, weatherReportClass);
 		

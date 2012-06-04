@@ -37,7 +37,6 @@ public class SunPositionCalculator {
 		Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
 		calendar.setTime(date);
 		
-		// TODO
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm");
 		log.debug("Calculating sun position for: " + simpleDateFormat.format(date));
 
