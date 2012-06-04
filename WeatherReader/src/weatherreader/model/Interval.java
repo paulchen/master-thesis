@@ -38,7 +38,7 @@ public class Interval extends TemporalEntity {
 		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(time)));
 		
 		Resource intervalClass = onto.getResource(WeatherReport.TIME + "Interval");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name + time, intervalClass);
+		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, intervalClass);
 	}
 
 	@Override

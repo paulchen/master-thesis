@@ -181,7 +181,7 @@ public class Weather {
 			else {
 				nextStartTime = 2*weatherReports.get(a).getStartTime().getTime() - weatherReports.get(a-1).getStartTime().getTime();
 			}
-			weatherReports.get(a).setEndTime(new Interval("interval" + nextStartTime, nextStartTime));
+			weatherReports.get(a).setEndTime(new Interval("interval" + (int)nextStartTime, nextStartTime));
 		}
 		
 		printWeatherReports("Weather reports after normalization", weatherReports);

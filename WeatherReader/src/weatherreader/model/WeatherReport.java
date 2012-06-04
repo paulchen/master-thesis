@@ -22,37 +22,6 @@ public class WeatherReport implements OntologyClass {
 	public static final String TIME = "http://www.w3.org/2006/time#";
 	public static final String MUO_NAMESPACE = "http://purl.oclc.org/NET/muo/muo#";
 	
-	/*
-	public WeatherReport(String name, Instant observationTime, Interval startTime, Interval endTime,
-			int priority, WeatherSource source, GeographicalPosition position,
-			WeatherState weatherState) {
-		
-		/* TODO
-		long startSeconds = startTime.getTime()-new Date().getTime();
-		float startHours = (float)Math.round(startSeconds/3600000);
-		if(startHours < 0) {
-			/* ignore data for the past *
-			startHours = 0;
-		}
-		long endSeconds = endTime.getTime()-new Date().getTime();
-		float endHours = (float)Math.round(endSeconds/3600000);
-		if(endHours < 0) {
-			/* ignore data for the past *
-			endHours = 0;
-		}
-		
-		
-		initReport(name, observationTime, startHours, endHours, priority, source, position, weatherState);
-	} */
-
-	/*
-	protected WeatherReport(String name, Instant observationTime, Interval startTime, Interval endTime,
-			int priority, WeatherSource source, GeographicalPosition position,
-			WeatherState weatherState) {
-		initReport(name, observationTime, startTime, endTime, priority, source, position, weatherState);
-	}
-	*/
-	
 	public WeatherReport(String name, Instant observationTime, Interval startTime, Interval endTime,
 			int priority, WeatherSource source, GeographicalPosition position,
 			WeatherState weatherState) {
@@ -78,7 +47,7 @@ public class WeatherReport implements OntologyClass {
 		startTime.createIndividuals(onto);
 		endTime.createIndividuals(onto);
 		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasStartTime"), startTime.getOntIndividual()));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasStartTime"), endTime.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasEndTime"), endTime.getOntIndividual()));
 		
 		position.createIndividuals(onto);
 		onto.add(onto.createStatement(individual, onto.getProperty(WGS84 + "location"), position.getOntIndividual()));
