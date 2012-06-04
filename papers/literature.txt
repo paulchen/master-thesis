@@ -125,7 +125,8 @@ Other:
 
 * Glossary of meteorological terms: http://amsglossary.allenpress.com/glossary
 
-
+* bams-86-2-225.pdf
+  Mark G. Lawrence: The Relationship between Relative Humidity and the Dewpoint Temperature in Moist Air: A Simple Conversion and Applications
 
 
 NEW:
