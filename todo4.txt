@@ -138,3 +138,6 @@ WeatherReader:
 
 meeting: 30.5., 11 uhr
 
+cite: http://journals.ametsoc.org/toc/bams/86/2 (Mark G. Lawrence - The Relationship between Relative Humidity and the Dewpoint Temperature in Moist Air: A Simple Conversion and Applications) for calculation of dew point from humidity and temperature
+
+
