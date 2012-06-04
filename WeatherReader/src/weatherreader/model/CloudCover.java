@@ -23,10 +23,11 @@ public class CloudCover extends WeatherPhenomenon {
 		coverage = 0;
 		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
 			altitude += ((CloudCover)phenomenon).getAltitude();
-			coverage += ((CloudCover)phenomenon).getCoverage();
+			if(coverage < ((CloudCover)phenomenon).getCoverage()) {
+				coverage = ((CloudCover)phenomenon).getCoverage();
+			}
 		}
 		altitude /= weatherPhenomena.size();
-		coverage /= weatherPhenomena.size();
 	}
 
 	// TODO use separate enum for octa?
