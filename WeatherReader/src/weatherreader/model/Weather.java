@@ -77,6 +77,7 @@ public class Weather {
 		phenomenonClasses.add(Wind.class);
 		phenomenonClasses.add(Precipitation.class);
 		phenomenonClasses.add(SunPosition.class);
+		phenomenonClasses.add(CloudCover.class);
 		
 		/* merge weather states */
 		Map<Integer, WeatherReport> newWeatherReports = new HashMap<Integer, WeatherReport>();
@@ -99,7 +100,6 @@ public class Weather {
 				newState.addPhenomena(state.getPhenomenonType(clazz));
 			}
 
-			// TODO clouds?
 			newState.mergePhenomena(String.valueOf(report.getStartTime()));
 			
 			if(state.getWeatherConditions().size() > 0) {
@@ -112,6 +112,7 @@ public class Weather {
 		/* interpolate missing values */
 		Map<Class<? extends WeatherPhenomenon>, Integer> lastPhenomena = new HashMap<Class<? extends WeatherPhenomenon>, Integer>();
 		
+		Integer lastWeatherConditions = null;
 		for(int a=0; a<=maxHour; a++) {
 			WeatherReport currentReport = newWeatherReports.get(a);
 			WeatherState currentState = currentReport.getState();
@@ -143,7 +144,6 @@ public class Weather {
 				}
 			}
 
-			/* TODO fix this 
 			if(currentState.getWeatherConditions().size() > 0) {
 				List<WeatherCondition> lastValue;
 				int start;
@@ -161,7 +161,6 @@ public class Weather {
 				
 				lastWeatherConditions = a;
 			}
-			*/
 		}
 		
 		weatherReports = new ArrayList<WeatherReport>();

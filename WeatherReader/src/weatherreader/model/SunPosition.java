@@ -6,17 +6,17 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 public class SunPosition extends WeatherPhenomenon {
-	private double azimuth;
-	private double zenith;
-	private double elevation;
+	private float azimuth;
+	private float zenith;
+	private float elevation;
 	private String name;
 	private Individual individual;
 	
 	public SunPosition(String name, double zenith, double azimuth) {
 		this.name = name;
-		this.zenith = zenith;
-		this.elevation = 90 - zenith;
-		this.azimuth = azimuth;
+		this.zenith = Math.round(zenith*100)/(float)100;
+		this.elevation = 90 - this.zenith;
+		this.azimuth = Math.round(azimuth*100)/(float)100;
 	}
 
 	public SunPosition(double zenith, double azimuth) {
@@ -32,7 +32,7 @@ public class SunPosition extends WeatherPhenomenon {
 	}
 
 	public void setAzimuth(double azimuth) {
-		this.azimuth = azimuth;
+		this.azimuth = Math.round(azimuth*100)/(float)100;
 	}
 
 	public double getElevation() {
@@ -44,13 +44,13 @@ public class SunPosition extends WeatherPhenomenon {
 	}
 
 	public void setZenith(double zenith) {
-		this.zenith = zenith;
-		this.elevation = 90 - zenith;
+		this.zenith = Math.round(zenith*100)/(float)100;
+		this.elevation = 90 - this.zenith;
 	}
 
 	public void setElevation(double elevation) {
-		this.elevation = elevation;
-		this.zenith = 90 - elevation;
+		this.elevation = Math.round(elevation*100)/(float)100;
+		this.zenith = 90 - this.elevation;
 	}
 	
 	public String toString() {
