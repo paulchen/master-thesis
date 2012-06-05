@@ -26,7 +26,6 @@ public class Temperature extends WeatherPhenomenon {
 		temperatureValue /= weatherPhenomena.size();
 	}
 	
-	// TODO constructor taking List<WeatherPhenomenon> argument
 	public Temperature(String name, float temperatureValue) {
 		this.name = name;
 		this.temperatureValue = temperatureValue;
