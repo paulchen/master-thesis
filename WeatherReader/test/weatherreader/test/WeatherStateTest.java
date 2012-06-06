@@ -77,10 +77,10 @@ public class WeatherStateTest extends TestCase {
 	@Test
 	public void testCloudCover() {
 		for(int a=0; a<5; a++) {
-			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a, 1000) }, new String[] { "ClearWeather" });
+			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, 1000, a) }, new String[] { "ClearWeather" });
 		}
 		for(int a=5; a<9; a++) {
-			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, a, 1000) }, new String[] { "CloudyWeather" });
+			testState(new WeatherPhenomenon[] { new CloudCover("cloud" + a, 1000, a) }, new String[] { "CloudyWeather" });
 		}
 	}
 	

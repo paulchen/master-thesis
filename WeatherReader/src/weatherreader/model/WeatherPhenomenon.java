@@ -41,4 +41,6 @@ public abstract class WeatherPhenomenon implements OntologyClass {
 	
 	@Override
 	public abstract Object clone();
+
+	public abstract void setName(String name);
 }

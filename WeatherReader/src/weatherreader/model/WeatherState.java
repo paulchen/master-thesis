@@ -197,4 +197,8 @@ public class WeatherState implements OntologyClass {
 		
 		return weatherState;
 	}
+
+	public String getName() {
+		return name;
+	}
 }

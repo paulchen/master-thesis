@@ -1,34 +1,17 @@
 package weatherreader.test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
 
-import weatherreader.model.WeatherReport;
+import weatherreader.model.CloudCover;
+import weatherreader.model.WeatherPhenomenon;
 import weatherreader.test.base.IndividualsTest;
-
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public class CloudCoverTest extends IndividualsTest {
 	private void checkCloudCover(int cloudCover, String... expectedConcepts) {
 		String[] concepts = { "CloudCover", "ClearSky", "PartlyCloudy", "MostlyCloudy", "Overcast", "UnknownCloudCover" };
-		List<String> expected = Arrays.asList(expectedConcepts);
-		
-		Resource blankNode = getOnto().createResource();
-		getOnto().add(getOnto().createLiteralStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), cloudCover));
-		// TODO get rid of magic constant for individual name here
-		getOnto().add(getOnto().createStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "okta")));
-		
-		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasCloudCover"), blankNode));
-
-		for(String concept : concepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
-		}
+		WeatherPhenomenon weatherPhenomenon = new CloudCover("cloudCover", 1000, cloudCover);
+		testConcepts(concepts, expectedConcepts, weatherPhenomenon);
 	}
 	
 	@Test

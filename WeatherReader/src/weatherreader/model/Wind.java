@@ -91,4 +91,9 @@ public class Wind extends WeatherPhenomenon {
 	public Object clone() {
 		return new Wind(name, windSpeed, windDirection);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }

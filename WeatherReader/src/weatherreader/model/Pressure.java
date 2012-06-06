@@ -74,4 +74,9 @@ public class Pressure extends WeatherPhenomenon {
 	public Object clone() {
 		return new Pressure(name, pressureValue);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }

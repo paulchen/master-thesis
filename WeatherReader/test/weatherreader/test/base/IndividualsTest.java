@@ -1,18 +1,22 @@
 package weatherreader.test.base;
 
+import java.util.Arrays;
+import java.util.List;
+
 import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
+import weatherreader.model.WeatherPhenomenon;
 import weatherreader.model.WeatherReport;
+import weatherreader.model.WeatherState;
 
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFReader;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public abstract class IndividualsTest extends TestCase {
@@ -25,7 +29,6 @@ public abstract class IndividualsTest extends TestCase {
 	
 	@Before
 	public void setUp() {
-		// TODO duplicate code here?
 		onto = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
 		RDFReader arp = onto.getReader("RDF/XML");
 		arp.setProperty("embedding", "true");
@@ -37,16 +40,22 @@ public abstract class IndividualsTest extends TestCase {
 		/* nothing to do? */
 	}
 
-	protected Individual createSingleWeatherPhenomenon() {
-		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
-		Individual weatherState = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + weatherIndex, weatherStateClass);
-		
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		Individual weatherPhenomenon = onto.createIndividual(WeatherReport.NAMESPACE + "weatherPhenomenon" + weatherIndex, weatherPhenomenonClass);
-		onto.add(onto.createStatement(weatherPhenomenon, onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), weatherState));
-		
+	protected void testConcepts(String[] concepts, String[] expectedConcepts,
+			WeatherPhenomenon weatherPhenomenon) {
 		weatherIndex++;
 		
-		return weatherPhenomenon;
+		weatherPhenomenon.setName("phenomenon" + weatherIndex);
+		WeatherState weatherState = new WeatherState("weather" + weatherIndex);
+		weatherState.addPhenomenon(weatherPhenomenon);
+
+		weatherState.createIndividuals(getOnto());
+		
+		List<String> expected = Arrays.asList(expectedConcepts);
+
+		for(String concept : concepts) {
+			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon.getOntIndividual(), RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
+		}
+		// TODO Auto-generated method stub
+		
 	}
 }

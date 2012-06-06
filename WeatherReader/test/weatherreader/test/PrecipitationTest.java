@@ -1,42 +1,17 @@
 package weatherreader.test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
 
-import weatherreader.model.WeatherReport;
+import weatherreader.model.Precipitation;
+import weatherreader.model.WeatherPhenomenon;
 import weatherreader.test.base.IndividualsTest;
-
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public class PrecipitationTest extends IndividualsTest {
 	private void checkPrecipitation(Float precipitationIntensity, int precipitationProbability, String... expectedConcepts) {
 		String[] concepts = { "Precipitation", "NoRain", "LightRain", "MediumRain", "HeavyRain", "ExtremelyHeavyRain", "TropicalStormRain" };
-		List<String> expected = Arrays.asList(expectedConcepts);
-		
-		Float floatProbability = (float)precipitationProbability/100;
-		
-		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		
-		Resource blankNode1 = getOnto().createResource();
-		getOnto().add(getOnto().createLiteralStatement(blankNode1, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), floatProbability));
-		// TODO get rid of magic constant for individual name here
-		getOnto().add(getOnto().createStatement(blankNode1, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource("http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent")));
-		
-		Resource blankNode2 = getOnto().createResource();
-		getOnto().add(getOnto().createLiteralStatement(blankNode2, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), precipitationIntensity));
-		getOnto().add(getOnto().createStatement(blankNode2, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "millimetresPerHour")));
-		
-		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasPrecipitationProbability"), blankNode1));
-		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasPrecipitationIntensity"), blankNode2));
-		
-		for(String concept : concepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
-		}
+		WeatherPhenomenon weatherPhenomenon = new Precipitation("precipitation", precipitationIntensity, (float)precipitationProbability/100);
+		testConcepts(concepts, expectedConcepts, weatherPhenomenon);
 	}
 	
 	@Test

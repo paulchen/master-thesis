@@ -75,4 +75,9 @@ public class Humidity extends WeatherPhenomenon {
 	public Object clone() {
 		return new Humidity(name, humidityValue);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }

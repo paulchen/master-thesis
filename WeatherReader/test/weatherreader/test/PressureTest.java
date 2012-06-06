@@ -1,34 +1,17 @@
 package weatherreader.test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
 
-import weatherreader.model.WeatherReport;
+import weatherreader.model.Pressure;
+import weatherreader.model.WeatherPhenomenon;
 import weatherreader.test.base.IndividualsTest;
-
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public class PressureTest extends IndividualsTest {
 	private void checkPressure(Float pressureValue, String... expectedConcepts) {
 		String[] concepts = { "AtmosphericPressure", "VeryLowPressure", "LowPressure", "NormalPressure", "HighPressure", "VeryHighPressure" };
-		List<String> expected = Arrays.asList(expectedConcepts);
-		
-		Resource blankNode = getOnto().createResource();
-		getOnto().add(getOnto().createLiteralStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), pressureValue));
-		// TODO get rid of magic constant for individual name here
-		getOnto().add(getOnto().createStatement(blankNode, getOnto().getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), getOnto().getResource(WeatherReport.NAMESPACE + "hectopascal")));
-		
-		Individual weatherPhenomenon = createSingleWeatherPhenomenon();
-		getOnto().add(getOnto().createStatement(weatherPhenomenon, getOnto().getProperty(WeatherReport.NAMESPACE + "hasPressureValue"), blankNode));
-
-		for(String concept : concepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon, RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
-		}
+		WeatherPhenomenon weatherPhenomenon = new Pressure("pressure", pressureValue);
+		testConcepts(concepts, expectedConcepts, weatherPhenomenon);
 	}
 	
 	@Test

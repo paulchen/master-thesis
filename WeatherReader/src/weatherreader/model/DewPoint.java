@@ -75,4 +75,9 @@ public class DewPoint extends WeatherPhenomenon {
 	public Object clone() {
 		return new DewPoint(name, dewPointValue);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }

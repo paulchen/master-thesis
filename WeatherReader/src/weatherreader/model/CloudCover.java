@@ -93,4 +93,9 @@ public class CloudCover extends WeatherPhenomenon {
 	public Object clone() {
 		return new CloudCover(name, altitude, coverage);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }

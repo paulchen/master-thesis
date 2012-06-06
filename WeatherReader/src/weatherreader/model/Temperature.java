@@ -76,4 +76,9 @@ public class Temperature extends WeatherPhenomenon {
 	public Object clone() {
 		return new Temperature(name, temperatureValue);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }

@@ -92,4 +92,9 @@ public class Precipitation extends WeatherPhenomenon {
 	public Object clone() {
 		return new Precipitation(name, intensity, probability);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
 }
