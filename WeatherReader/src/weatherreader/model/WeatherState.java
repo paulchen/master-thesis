@@ -2,12 +2,15 @@ package weatherreader.model;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.ibm.icu.text.Collator;
 
 //TODO javadoc
 public class WeatherState implements OntologyClass {
@@ -19,10 +22,18 @@ public class WeatherState implements OntologyClass {
 	
 	@Override
 	public String toString() {
+		List<WeatherPhenomenon> phenomena = new ArrayList<WeatherPhenomenon>(weatherPhenomena);
+		Collections.sort(phenomena, new Comparator<WeatherPhenomenon>() {
+			@Override
+			public int compare(WeatherPhenomenon o1, WeatherPhenomenon o2) {
+				Collator collator = Collator.getInstance();
+				return collator.compare(o1.getClass().getName(), o2.getClass().getName());
+			}
+		});
+		
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("[");
-		// TODO sort alphabetically
-		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
+		for(WeatherPhenomenon phenomenon : phenomena) {
 			buffer.append(phenomenon.toString() + "; ");
 		}
 		buffer.append("weatherConditions=" + weatherConditions.toString());
@@ -126,8 +137,9 @@ public class WeatherState implements OntologyClass {
 		}
 		
 		for(Class<? extends WeatherPhenomenon> type : types) {
-			// TODO first letter lower case
-			mergePhenomena(type.getSimpleName() + suffix, type);
+			String name = type.getSimpleName() + suffix;
+			name = name.substring(0, 1).toLowerCase() + name.substring(1);
+			mergePhenomena(name, type);
 		}
 	}
 	
@@ -145,27 +157,26 @@ public class WeatherState implements OntologyClass {
 		}
 		
 		try {
-			// TODO does this work?
-			Constructor<? extends WeatherPhenomenon> constructor = type.getConstructor(String.class, List.class); // new ArrayList<WeatherPhenomenon>().getClass());
+			Constructor<? extends WeatherPhenomenon> constructor = type.getConstructor(String.class, List.class);
 			weatherPhenomena.add(constructor.newInstance(suffix, phenomena));
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}
+		catch (NoSuchMethodException e) {
+			/* ignore as it won't happen */
+		}
+		catch (SecurityException e) {
+			/* ignore as it won't happen */
+		}
+		catch (IllegalArgumentException e) {
+			/* ignore as it won't happen */
+		}
+		catch (InvocationTargetException e) {
+			/* ignore as it won't happen */
+		}
+		catch (InstantiationException e) {
+			/* ignore as it won't happen */
+		}
+		catch (IllegalAccessException e) {
+			/* ignore as it won't happen */
 		}
 	}
 

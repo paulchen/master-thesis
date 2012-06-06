@@ -52,10 +52,7 @@ public class WeatherStateTest extends TestCase {
 		WeatherState state = new WeatherState("weatherState" + stateIndex);
 		stateIndex++;
 		
-		// TODO method addAll?
-		for(WeatherPhenomenon phenomenon : phenomena) {
-			state.addPhenomenon(phenomenon);
-		}
+		state.addPhenomena(Arrays.asList(phenomena));
 		
 		state.createIndividuals(onto);
 		

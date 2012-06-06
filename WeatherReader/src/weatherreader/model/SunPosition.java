@@ -54,11 +54,12 @@ public class SunPosition extends WeatherPhenomenon {
 	}
 	
 	public String toString() {
-		String output = "";
+		String output = "sunPosition=[";
 		
 		output += "azimuth=" + azimuth + "; ";
 		output += "zenith=" + zenith + "; ";
 		output += "elevation=" + elevation;
+		output += "]";
 		
 		return output;
 	}
