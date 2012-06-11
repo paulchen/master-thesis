@@ -2,15 +2,16 @@ package weatherreader.test;
 
 import org.junit.Test;
 
+import weatherreader.model.SolarRadiation;
+import weatherreader.model.WeatherPhenomenon;
 import weatherreader.test.base.IndividualsTest;
 
 // TODO javadoc
 public class SolarRadiationTest extends IndividualsTest {
 	private void checkSunRadiation(float sunRadiationValue, String... expectedConcepts) {
-		// TODO implement class SolarRadiation
-//		String[] concepts = { "SolarRadiation", "NoRadiation", "LowRadiation", "MediumRadiation", "HighRadiation", "VeryHighRadiation" };
-//		WeatherPhenomenon weatherPhenomenon = new SolarRadiation("solarRadiation", sunRadiationValue);
-//		testConcepts(concepts, expectedConcepts, weatherPhenomenon);
+		String[] concepts = { "SolarRadiation", "NoRadiation", "LowRadiation", "MediumRadiation", "HighRadiation", "VeryHighRadiation" };
+		WeatherPhenomenon weatherPhenomenon = new SolarRadiation("solarRadiation", sunRadiationValue);
+		testConcepts(concepts, expectedConcepts, weatherPhenomenon);
 	}
 	
 	@Test
