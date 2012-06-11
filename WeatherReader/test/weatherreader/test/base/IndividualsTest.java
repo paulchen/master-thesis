@@ -55,7 +55,5 @@ public abstract class IndividualsTest extends TestCase {
 		for(String concept : concepts) {
 			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon.getOntIndividual(), RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
 		}
-		// TODO Auto-generated method stub
-		
 	}
 }

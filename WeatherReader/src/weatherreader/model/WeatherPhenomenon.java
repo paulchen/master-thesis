@@ -8,10 +8,11 @@ public abstract class WeatherPhenomenon implements OntologyClass {
 		/* nothing to do */
 	}
 	
-	public WeatherPhenomenon(List<WeatherPhenomenon> phenomena) {
+	public WeatherPhenomenon(List<WeatherPhenomenon> phenomena) throws IllegalArgumentException {
 		for(WeatherPhenomenon phenomenon : phenomena) {
 			if(!phenomenon.getClass().equals(this.getClass())) {
-				// TODO initiate apocalypse
+				throw new IllegalArgumentException(
+					"Can't use a list containing instances of different subclasses of WeatherPhenomenon.");
 			}
 		}
 	}
