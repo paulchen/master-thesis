@@ -36,7 +36,7 @@ public class Humidity extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), humidityValue));
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(humidityValue, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
 		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent")));
 		
@@ -53,7 +53,7 @@ public class Humidity extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "humidity=" + humidityValue;
+		return "humidity=" + roundFloat(humidityValue, WeatherConstants.DECIMALS);
 	}
 
 	@Override

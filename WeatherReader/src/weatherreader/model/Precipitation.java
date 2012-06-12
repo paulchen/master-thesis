@@ -47,12 +47,12 @@ public class Precipitation extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), probability));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(probability, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
 		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), intensity));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(intensity, WeatherConstants.DECIMALS)));
 		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "millimetresPerHour")));
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
@@ -69,7 +69,13 @@ public class Precipitation extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "precipitation=[intensity=" + intensity + ";probability=" + probability + "]";
+		String output;
+		
+		output = "precipitation=[";
+		output += "intensity=" + roundFloat(intensity, WeatherConstants.DECIMALS) + ";";
+		output += "probability=" + roundFloat(probability, WeatherConstants.DECIMALS) + "]";
+		
+		return output;
 	}
 
 	@Override

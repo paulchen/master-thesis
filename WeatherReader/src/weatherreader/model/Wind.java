@@ -38,7 +38,7 @@ public class Wind extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), windSpeed));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(windSpeed, WeatherConstants.DECIMALS)));
 		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "metresPerSecond")));
 		
 		Resource blankNode2 = onto.createResource();
@@ -60,7 +60,13 @@ public class Wind extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "wind=[speed=" + windSpeed + ";direction=" + windDirection + "]";
+		String output;
+		
+		output = "wind=[";
+		output += "speed=" + roundFloat(windSpeed, WeatherConstants.DECIMALS) + ";";
+		output += "direction=" + windDirection + "]";
+		
+		return output;
 	}
 	
 	private int getWindDirection() {

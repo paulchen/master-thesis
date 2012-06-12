@@ -27,6 +27,6 @@ public abstract class WeatherSource implements OntologyClass {
 	
 	@Override
 	public String toString() {
-		return name;
+		return getOntClassName() + ":" + name;
 	}
 }

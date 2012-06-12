@@ -10,7 +10,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 public class SolarRadiation extends WeatherPhenomenon {
 	private String name;
-	private Float radiationValue;
+	private float radiationValue;
 	private Individual individual;
 
 	public SolarRadiation(String name, List<WeatherPhenomenon> weatherPhenomena) {
@@ -24,7 +24,7 @@ public class SolarRadiation extends WeatherPhenomenon {
 		radiationValue /= weatherPhenomena.size();
 	}
 	
-	public SolarRadiation(String name, Float pressureValue) {
+	public SolarRadiation(String name, float pressureValue) {
 		this.name = name;
 		this.radiationValue = pressureValue;
 	}
@@ -32,7 +32,7 @@ public class SolarRadiation extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), radiationValue));
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(radiationValue, WeatherConstants.DECIMALS)));
 		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "hectopascal")));
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
@@ -48,7 +48,7 @@ public class SolarRadiation extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "pressure=" + radiationValue;
+		return "solarRadiation=" + roundFloat(radiationValue, WeatherConstants.DECIMALS);
 	}
 
 	private Float getRadiationValue() {

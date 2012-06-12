@@ -10,7 +10,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 public class Pressure extends WeatherPhenomenon {
 	private String name;
-	private Float pressureValue;
+	private float pressureValue;
 	private Individual individual;
 
 	public Pressure(String name, List<WeatherPhenomenon> weatherPhenomena) {
@@ -24,7 +24,7 @@ public class Pressure extends WeatherPhenomenon {
 		pressureValue /= weatherPhenomena.size();
 	}
 	
-	public Pressure(String name, Float pressureValue) {
+	public Pressure(String name, float pressureValue) {
 		this.name = name;
 		this.pressureValue = pressureValue;
 	}
@@ -48,7 +48,7 @@ public class Pressure extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "pressure=" + pressureValue;
+		return "pressure=" + roundFloat(pressureValue, WeatherConstants.DECIMALS);
 	}
 
 	private Float getPressureValue() {

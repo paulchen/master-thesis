@@ -32,7 +32,7 @@ public class DewPoint extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), dewPointValue));
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(dewPointValue, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
 		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
 		
@@ -49,7 +49,7 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "dewPoint=" + dewPointValue;
+		return "dewPoint=" + roundFloat(dewPointValue, WeatherConstants.DECIMALS);
 	}
 
 	private float getDewPointValue() {

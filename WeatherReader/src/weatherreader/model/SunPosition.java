@@ -6,17 +6,17 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 public class SunPosition extends WeatherPhenomenon {
-	private float azimuth;
-	private float zenith;
-	private float elevation;
+	private double azimuth;
+	private double zenith;
+	private double elevation;
 	private String name;
 	private Individual individual;
 	
 	public SunPosition(String name, double zenith, double azimuth) {
 		this.name = name;
-		this.zenith = Math.round(zenith*100)/(float)100;
+		this.zenith = zenith*100;
 		this.elevation = 90 - this.zenith;
-		this.azimuth = Math.round(azimuth*100)/(float)100;
+		this.azimuth = azimuth;
 	}
 
 	public SunPosition(double zenith, double azimuth) {
@@ -32,7 +32,7 @@ public class SunPosition extends WeatherPhenomenon {
 	}
 
 	public void setAzimuth(double azimuth) {
-		this.azimuth = Math.round(azimuth*100)/(float)100;
+		this.azimuth = azimuth;
 	}
 
 	public double getElevation() {
@@ -44,21 +44,21 @@ public class SunPosition extends WeatherPhenomenon {
 	}
 
 	public void setZenith(double zenith) {
-		this.zenith = Math.round(zenith*100)/(float)100;
-		this.elevation = 90 - this.zenith;
+		this.zenith = zenith;
+		this.elevation = 90 - zenith;
 	}
 
 	public void setElevation(double elevation) {
-		this.elevation = Math.round(elevation*100)/(float)100;
-		this.zenith = 90 - this.elevation;
+		this.elevation = elevation;
+		this.zenith = 90 - elevation;
 	}
 	
 	public String toString() {
 		String output = "sunPosition=[";
 		
-		output += "azimuth=" + azimuth + "; ";
-		output += "zenith=" + zenith + "; ";
-		output += "elevation=" + elevation;
+		output += "azimuth=" + roundDouble(azimuth, WeatherConstants.DECIMALS) + "; ";
+		output += "zenith=" + roundDouble(zenith, WeatherConstants.DECIMALS) + "; ";
+		output += "elevation=" + roundDouble(elevation, WeatherConstants.DECIMALS);
 		output += "]";
 		
 		return output;
@@ -70,12 +70,12 @@ public class SunPosition extends WeatherPhenomenon {
 		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, weatherPhenomenonClass);
 
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (int)azimuth));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (int)roundDouble(azimuth, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
 		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (float)elevation));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (float)roundDouble(elevation, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
 		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 		
