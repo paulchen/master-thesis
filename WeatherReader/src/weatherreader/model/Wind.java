@@ -38,19 +38,19 @@ public class Wind extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(windSpeed, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "metresPerSecond")));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(windSpeed, WeatherConstants.DECIMALS)));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "metresPerSecond")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), windDirection));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), windDirection));
 		// TODO get rid of magic constant for individual name here
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 		
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, weatherPhenomenonClass);
+		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
 		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasWindSpeed"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasWindDirection"), blankNode2));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindSpeed"), blankNode1));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindDirection"), blankNode2));
 	}
 
 	@Override

@@ -9,8 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
+import weatherreader.model.WeatherConstants;
 import weatherreader.model.WeatherPhenomenon;
-import weatherreader.model.WeatherReport;
 import weatherreader.model.WeatherState;
 
 import com.hp.hpl.jena.ontology.OntModel;
@@ -53,7 +53,7 @@ public abstract class IndividualsTest extends TestCase {
 		List<String> expected = Arrays.asList(expectedConcepts);
 
 		for(String concept : concepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon.getOntIndividual(), RDF.type, getOnto().getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon.getOntIndividual(), RDF.type, getOnto().getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
 		}
 	}
 }

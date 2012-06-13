@@ -56,12 +56,12 @@ public class Interval extends TemporalEntity {
 	
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
-		Individual hour1 = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + time, hourClass);
-		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(time)));
+		OntClass hourClass = onto.getOntClass(WeatherConstants.NAMESPACE + "Hour");
+		Individual hour1 = onto.createIndividual(WeatherConstants.NAMESPACE + "hour" + time, hourClass);
+		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherConstants.TIME + "hours"), new BigDecimal(time)));
 		
-		Resource intervalClass = onto.getResource(WeatherReport.TIME + "Interval");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, intervalClass);
+		Resource intervalClass = onto.getResource(WeatherConstants.TIME + "Interval");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, intervalClass);
 	}
 
 	@Override

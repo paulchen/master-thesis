@@ -66,21 +66,21 @@ public class SunPosition extends WeatherPhenomenon {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, weatherPhenomenonClass);
+		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
 
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (int)roundDouble(azimuth, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), (int)roundDouble(azimuth, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), (float)roundDouble(elevation, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), (float)roundDouble(elevation, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree")));
 		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasSunDirection"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasSunElevationAngle"), blankNode2));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunDirection"), blankNode1));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunElevationAngle"), blankNode2));
 	}
 
 	@Override

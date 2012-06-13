@@ -32,14 +32,14 @@ public class DewPoint extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), roundFloat(dewPointValue, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(dewPointValue, WeatherConstants.DECIMALS)));
 		// TODO get rid of magic constant for individual name here
-		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
+		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius")));
 		
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, weatherPhenomenonClass);
+		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
 		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasDewPointValue"), blankNode));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasDewPointValue"), blankNode));
 	}
 
 	@Override

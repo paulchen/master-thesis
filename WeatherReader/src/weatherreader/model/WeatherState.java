@@ -56,21 +56,21 @@ public class WeatherState implements OntologyClass {
 	}
 
 	public void createIndividuals(OntModel onto, Individual weatherObservation, int stateIndex, WeatherState previousState) {
-		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + "weatherState" + stateIndex, weatherStateClass);
+		OntClass weatherStateClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherState");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + "weatherState" + stateIndex, weatherStateClass);
 		
 		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
 			phenomenon.createIndividuals(onto);
-			onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasWeatherPhenomenon"), phenomenon.getOntIndividual()));
+			onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWeatherPhenomenon"), phenomenon.getOntIndividual()));
 		}
 		
 		for(WeatherCondition condition : weatherConditions) {
-			onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasCondition"), onto.getIndividual(WeatherReport.NAMESPACE + condition.toString())));
+			onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasCondition"), onto.getIndividual(WeatherConstants.NAMESPACE + condition.toString())));
 		}
 		
 		if(previousState != null) {
 			Individual previousStateIndividual = previousState.getOntIndividual();
-			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), individual));
+			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherConstants.NAMESPACE + "hasNextWeatherState"), individual));
 		}
 	}
 
@@ -99,21 +99,21 @@ public class WeatherState implements OntologyClass {
 	}
 
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherState");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, weatherStateClass);
+		OntClass weatherStateClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherState");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherStateClass);
 		
 		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
 			phenomenon.createIndividuals(onto);
-			onto.add(onto.createStatement(phenomenon.getOntIndividual(), onto.getProperty(WeatherReport.NAMESPACE + "belongsToWeatherState"), individual));
+			onto.add(onto.createStatement(phenomenon.getOntIndividual(), onto.getProperty(WeatherConstants.NAMESPACE + "belongsToWeatherState"), individual));
 		}
 		
 		for(WeatherCondition condition : weatherConditions) {
-			onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasCondition"), onto.getIndividual(WeatherReport.NAMESPACE + condition.toString())));
+			onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasCondition"), onto.getIndividual(WeatherConstants.NAMESPACE + condition.toString())));
 		}
 		
 		if(previousState != null) {
 			Individual previousStateIndividual = previousState.getOntIndividual();
-			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherReport.NAMESPACE + "hasNextWeatherState"), individual));
+			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherConstants.NAMESPACE + "hasNextWeatherState"), individual));
 		}
 	}
 

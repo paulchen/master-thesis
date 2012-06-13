@@ -13,8 +13,8 @@ import org.mindswap.pellet.jena.PelletReasonerFactory;
 import weatherreader.model.CloudCover;
 import weatherreader.model.Precipitation;
 import weatherreader.model.Temperature;
+import weatherreader.model.WeatherConstants;
 import weatherreader.model.WeatherPhenomenon;
-import weatherreader.model.WeatherReport;
 import weatherreader.model.WeatherState;
 import weatherreader.model.Wind;
 
@@ -57,7 +57,7 @@ public class WeatherStateTest extends TestCase {
 		state.createIndividuals(onto);
 		
 		for(String concept : allConcepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(state.getOntIndividual(), RDF.type, onto.getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(state.getOntIndividual(), RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
 		}		
 	}
 	

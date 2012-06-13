@@ -49,14 +49,14 @@ public class GeographicalPosition implements OntologyClass {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
-		Resource pointClass = onto.getResource(WeatherReport.WGS84 + "Point");
+		Resource pointClass = onto.getResource(WeatherConstants.WGS84 + "Point");
 		
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + "point0", pointClass);
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + "point0", pointClass);
 		onto.add(onto.createStatement(individual, RDF.type, pointClass));		
 		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherReport.WGS84 + "lat"), WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS)));
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherReport.WGS84 + "long"), WeatherPhenomenon.roundFloat(longitude, WeatherConstants.DECIMALS)));
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherReport.WGS84 + "alt"), WeatherPhenomenon.roundFloat(altitude, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "lat"), WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "long"), WeatherPhenomenon.roundFloat(longitude, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "alt"), WeatherPhenomenon.roundFloat(altitude, WeatherConstants.DECIMALS)));
 	}
 
 	@Override

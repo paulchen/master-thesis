@@ -54,18 +54,18 @@ public class CloudCover extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), coverage));
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "okta")));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), coverage));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "okta")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), altitude));
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/length/meter")));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), altitude));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/length/meter")));
 		
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, weatherPhenomenonClass);
+		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
 		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudCover"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasCloudAltitude"), blankNode2));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasCloudCover"), blankNode1));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasCloudAltitude"), blankNode2));
 	}
 
 	@Override

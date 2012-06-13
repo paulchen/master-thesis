@@ -32,13 +32,13 @@ public class Pressure extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "numericalValue"), pressureValue));
-		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherReport.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherReport.NAMESPACE + "hectopascal")));
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), pressureValue));
+		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "hectopascal")));
 		
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, weatherPhenomenonClass);
+		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
 		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasPressureValue"), blankNode));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasPressureValue"), blankNode));
 	}
 
 	@Override

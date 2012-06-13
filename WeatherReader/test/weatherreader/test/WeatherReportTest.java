@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
-import weatherreader.model.WeatherReport;
+import weatherreader.model.WeatherConstants;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -44,22 +44,22 @@ public class WeatherReportTest extends TestCase {
 		reportIndex++;
 		
 		// TODO duplicate code here?
-		OntClass weatherStateClass = onto.getOntClass(WeatherReport.NAMESPACE + "WeatherReport");
-		Individual weatherReport = onto.createIndividual(WeatherReport.NAMESPACE + "weather" + reportIndex, weatherStateClass);
+		OntClass weatherStateClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherReport");
+		Individual weatherReport = onto.createIndividual(WeatherConstants.NAMESPACE + "weather" + reportIndex, weatherStateClass);
 				
-		OntClass hourClass = onto.getOntClass(WeatherReport.NAMESPACE + "Hour");
-		Individual hour1 = onto.createIndividual(WeatherReport.NAMESPACE + "hour" + startTime, hourClass);
-		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherReport.TIME + "hours"), new BigDecimal(startTime)));
+		OntClass hourClass = onto.getOntClass(WeatherConstants.NAMESPACE + "Hour");
+		Individual hour1 = onto.createIndividual(WeatherConstants.NAMESPACE + "hour" + startTime, hourClass);
+		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherConstants.TIME + "hours"), new BigDecimal(startTime)));
 
-		Resource intervalClass = onto.getResource(WeatherReport.TIME + "Interval");
-		Individual interval1 = onto.createIndividual(WeatherReport.NAMESPACE + "interval" + reportIndex, intervalClass);
-		onto.add(onto.createStatement(interval1, onto.getProperty(WeatherReport.TIME + "hasDurationDescription"), hour1));
-		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherReport.NAMESPACE + "hasStartTime"), interval1));
+		Resource intervalClass = onto.getResource(WeatherConstants.TIME + "Interval");
+		Individual interval1 = onto.createIndividual(WeatherConstants.NAMESPACE + "interval" + reportIndex, intervalClass);
+		onto.add(onto.createStatement(interval1, onto.getProperty(WeatherConstants.TIME + "hasDurationDescription"), hour1));
+		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherConstants.NAMESPACE + "hasStartTime"), interval1));
 
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		for(String concept : allConcepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(weatherReport, RDF.type, onto.getOntClass(WeatherReport.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(weatherReport, RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
 		}
 	}
 	

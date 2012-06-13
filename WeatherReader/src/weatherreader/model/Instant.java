@@ -23,35 +23,35 @@ public class Instant extends TemporalEntity {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
-		Resource instantClass = onto.getResource(WeatherReport.TIME + "Instant");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, instantClass);
+		Resource instantClass = onto.getResource(WeatherConstants.TIME + "Instant");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, instantClass);
 
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
-		Resource dateTimeClass = onto.getResource(WeatherReport.TIME + "DateTimeDescription");
-		Individual dateTime = onto.createIndividual(WeatherReport.NAMESPACE + "dateTime0", dateTimeClass);
+		Resource dateTimeClass = onto.getResource(WeatherConstants.TIME + "DateTimeDescription");
+		Individual dateTime = onto.createIndividual(WeatherConstants.NAMESPACE + "dateTime0", dateTimeClass);
 		
-		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherReport.TIME + "unitType"), onto.getResource(WeatherReport.TIME + "unitMinute")));
-		onto.add(onto.createLiteralStatement(dateTime, onto.getProperty(WeatherReport.TIME + "minute"), new BigDecimal(calendar.get(Calendar.MINUTE))));
-		onto.add(onto.createLiteralStatement(dateTime, onto.getProperty(WeatherReport.TIME + "hour"), new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY))));
+		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "unitType"), onto.getResource(WeatherConstants.TIME + "unitMinute")));
+		onto.add(onto.createLiteralStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "minute"), new BigDecimal(calendar.get(Calendar.MINUTE))));
+		onto.add(onto.createLiteralStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "hour"), new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY))));
 		
 		String dayString = "---";
 		if(calendar.get(Calendar.DAY_OF_MONTH) < 10) {
 			dayString += "0";
 		}
 		dayString += calendar.get(Calendar.DAY_OF_MONTH);
-		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherReport.TIME + "day"), onto.createTypedLiteral(dayString, XSDDatatype.XSDgDay)));
+		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "day"), onto.createTypedLiteral(dayString, XSDDatatype.XSDgDay)));
 		
 		String monthString = "--";
 		if(calendar.get(Calendar.MONTH) < 10) {
 			monthString += "0";
 		}
 		monthString += calendar.get(Calendar.MONTH);
-		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherReport.TIME + "month"), onto.createTypedLiteral(monthString, XSDDatatype.XSDgMonth)));
+		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "month"), onto.createTypedLiteral(monthString, XSDDatatype.XSDgMonth)));
 		
-		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherReport.TIME + "year"), onto.createTypedLiteral(String.valueOf(calendar.get(Calendar.YEAR)), XSDDatatype.XSDgYear)));
+		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "year"), onto.createTypedLiteral(String.valueOf(calendar.get(Calendar.YEAR)), XSDDatatype.XSDgYear)));
 		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.TIME + "inDateTime"), dateTime));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.TIME + "inDateTime"), dateTime));
 	}
 
 	@Override

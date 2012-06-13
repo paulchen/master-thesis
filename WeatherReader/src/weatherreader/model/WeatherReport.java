@@ -17,10 +17,6 @@ public class WeatherReport implements OntologyClass {
 	private WeatherReport previousReport;
 	
 	// TODO move this somewhere else?
-	public static final String NAMESPACE = "http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#";
-	public static final String WGS84 = "http://www.w3.org/2003/01/geo/wgs84_pos#";
-	public static final String TIME = "http://www.w3.org/2006/time#";
-	public static final String MUO_NAMESPACE = "http://purl.oclc.org/NET/muo/muo#";
 	
 	public WeatherReport(String name, Instant observationTime, Interval startTime, Interval endTime,
 			int priority, WeatherSource source, GeographicalPosition position,
@@ -36,24 +32,24 @@ public class WeatherReport implements OntologyClass {
 	}
 	
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherReportClass = onto.getOntClass(NAMESPACE + "WeatherReport");
-		individual = onto.createIndividual(NAMESPACE + name, weatherReportClass);
+		OntClass weatherReportClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherReport");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherReportClass);
 		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasPriority"), priority));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasPriority"), priority));
 		
 		source.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasSource"), source.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSource"), source.getOntIndividual()));
 
 		startTime.createIndividuals(onto);
 		endTime.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasStartTime"), startTime.getOntIndividual()));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherReport.NAMESPACE + "hasEndTime"), endTime.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasStartTime"), startTime.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasEndTime"), endTime.getOntIndividual()));
 		
 		position.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WGS84 + "location"), position.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "location"), position.getOntIndividual()));
 		
 		observationTime.createIndividuals(onto);
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(NAMESPACE + "hasObservationTime"), observationTime.getOntIndividual()));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasObservationTime"), observationTime.getOntIndividual()));
 
 		if(previousReport != null) {
 			weatherState.setPreviousState(previousReport.getState());

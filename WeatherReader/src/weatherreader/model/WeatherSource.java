@@ -16,8 +16,8 @@ public abstract class WeatherSource implements OntologyClass {
 	
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass sensorSourceClass = onto.getOntClass(WeatherReport.NAMESPACE + "ServiceSource");
-		individual = onto.createIndividual(WeatherReport.NAMESPACE + name, sensorSourceClass);
+		OntClass sensorSourceClass = onto.getOntClass(WeatherConstants.NAMESPACE + "ServiceSource");
+		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, sensorSourceClass);
 	}
 
 	@Override
