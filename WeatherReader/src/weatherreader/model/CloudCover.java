@@ -30,7 +30,6 @@ public class CloudCover extends WeatherPhenomenon {
 		altitude /= weatherPhenomena.size();
 	}
 
-	// TODO use separate enum for octa?
 	public CloudCover(String name, int altitude, int coverage) {
 		super();
 		this.name = name;
@@ -59,7 +58,7 @@ public class CloudCover extends WeatherPhenomenon {
 		
 		Resource blankNode2 = onto.createResource();
 		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), altitude));
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/length/meter")));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.UNIT_METER)));
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);

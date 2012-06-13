@@ -48,8 +48,7 @@ public class Precipitation extends WeatherPhenomenon {
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
 		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(probability, WeatherConstants.DECIMALS)));
-		// TODO get rid of magic constant for individual name here
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent")));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.UNIT_PERCENT)));
 		
 		Resource blankNode2 = onto.createResource();
 		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(intensity, WeatherConstants.DECIMALS)));

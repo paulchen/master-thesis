@@ -37,7 +37,6 @@ public class Humidity extends WeatherPhenomenon {
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
 		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(humidityValue, WeatherConstants.DECIMALS)));
-		// TODO get rid of magic constant for individual name here
 		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource("http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent")));
 		
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");

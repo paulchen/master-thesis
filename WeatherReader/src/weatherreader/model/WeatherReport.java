@@ -16,8 +16,6 @@ public class WeatherReport implements OntologyClass {
 	private Individual individual;
 	private WeatherReport previousReport;
 	
-	// TODO move this somewhere else?
-	
 	public WeatherReport(String name, Instant observationTime, Interval startTime, Interval endTime,
 			int priority, WeatherSource source, GeographicalPosition position,
 			WeatherState weatherState) {
