@@ -359,8 +359,7 @@ public class WeatherReader {
 		weatherConditions.put(23, getWeatherConditionList(WeatherCondition.Sleet, WeatherCondition.Thunder));
 		
 		if(!weatherConditions.containsKey(number)) {
-			// TODO wtf?
-			throw new WeatherReaderException("Invalid ");
+			throw new WeatherReaderException("Unknown weather condition number: " + number);
 		}
 		return weatherConditions.get(number);
 	}

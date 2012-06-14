@@ -42,7 +42,10 @@ public class Weather {
 	}
 	
 	public void newWeatherReport(Date startDate, Date endDate, WeatherState weatherState) {
-		// TODO other names?
+		/* we can use non-unique names here as normalizeWeatherReports() will
+		 * create new instances of WeatherReport and Instant which have
+		 * unique names 
+		 */
 		weatherReports.add(new WeatherReport("weatherReport", new Instant("instant", observationTime), Interval.getInterval(startDate), Interval.getInterval(endDate), priority, source, position, weatherState));
 	}
 	
