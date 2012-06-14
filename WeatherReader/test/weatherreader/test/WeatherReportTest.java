@@ -1,7 +1,7 @@
 package weatherreader.test;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -10,14 +10,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
+import weatherreader.model.GeographicalPosition;
+import weatherreader.model.Instant;
+import weatherreader.model.Interval;
+import weatherreader.model.ServiceSource;
 import weatherreader.model.WeatherConstants;
+import weatherreader.model.WeatherReport;
+import weatherreader.model.WeatherSource;
+import weatherreader.model.WeatherState;
 
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFReader;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
@@ -31,6 +35,10 @@ public class WeatherReportTest extends TestCase {
 	
 	private OntModel onto;
 	private int reportIndex = 0;
+
+	private GeographicalPosition position;
+	private WeatherSource source;
+	private int priority;
 	
 	@Before
 	public void setUp() {
@@ -38,28 +46,30 @@ public class WeatherReportTest extends TestCase {
 		RDFReader arp = onto.getReader("RDF/XML");
 		arp.setProperty("embedding", "true");
 		arp.read(onto, "file:ThinkHomeWeather.owl");
+		
+		position = new GeographicalPosition(48.21f, 16.37f, 171f);
+		priority = 421;
+		source = new ServiceSource("testSource");
 	}
 	
 	private void testConcepts(float startTime, String[] allConcepts, String... expectedConcepts) {
 		reportIndex++;
 		
-		// TODO duplicate code here?
-		OntClass weatherStateClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherReport");
-		Individual weatherReport = onto.createIndividual(WeatherConstants.NAMESPACE + "weather" + reportIndex, weatherStateClass);
-				
-		OntClass hourClass = onto.getOntClass(WeatherConstants.NAMESPACE + "Hour");
-		Individual hour1 = onto.createIndividual(WeatherConstants.NAMESPACE + "hour" + startTime, hourClass);
-		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherConstants.TIME + "hours"), new BigDecimal(startTime)));
-
-		Resource intervalClass = onto.getResource(WeatherConstants.TIME + "Interval");
-		Individual interval1 = onto.createIndividual(WeatherConstants.NAMESPACE + "interval" + reportIndex, intervalClass);
-		onto.add(onto.createStatement(interval1, onto.getProperty(WeatherConstants.TIME + "hasDurationDescription"), hour1));
-		onto.add(onto.createStatement(weatherReport, onto.getProperty(WeatherConstants.NAMESPACE + "hasStartTime"), interval1));
-
+		Interval startInterval = Interval.getInterval(startTime);
+		Interval endInterval = Interval.getInterval(startTime+1);
+		Instant observationTime = new Instant("instant" + reportIndex, new Date());
+		WeatherState weatherState = new WeatherState("weatherState" + reportIndex);
+		WeatherReport weatherReport = new WeatherReport(
+				"weatherReport" + reportIndex,
+				observationTime, startInterval, endInterval,
+				priority, source, position, weatherState);
+		
+		weatherReport.createIndividuals(onto);
+		
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		for(String concept : allConcepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(weatherReport, RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(weatherReport.getOntIndividual(), RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
 		}
 	}
 	
