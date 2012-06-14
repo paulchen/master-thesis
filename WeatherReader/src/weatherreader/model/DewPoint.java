@@ -65,7 +65,7 @@ public class DewPoint extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		DewPoint dewPoint = new DewPoint(name, 0f);
+		DewPoint dewPoint = new DewPoint("dewPoint" + name, 0f);
 		dewPoint.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return dewPoint;
 	}

@@ -65,7 +65,7 @@ public class Humidity extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		Humidity humidity = new Humidity(name, 0f);
+		Humidity humidity = new Humidity("humidity" + name, 0f);
 		humidity.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return humidity;
 	}

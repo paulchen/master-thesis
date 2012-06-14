@@ -87,7 +87,7 @@ public class Wind extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		Wind wind = new Wind(name, 0f, 0);
+		Wind wind = new Wind("wind" + name, 0f, 0);
 		wind.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return wind;
 	}

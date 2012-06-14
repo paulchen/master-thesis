@@ -65,7 +65,7 @@ public class Pressure extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		Pressure pressure = new Pressure(name, 0f);
+		Pressure pressure = new Pressure("pressure" + name, 0f);
 		pressure.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return pressure;
 	}

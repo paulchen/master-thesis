@@ -83,7 +83,7 @@ public class CloudCover extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		CloudCover cloudCover = new CloudCover(name, 0, 0);
+		CloudCover cloudCover = new CloudCover("cloudCover" + name, 0, 0);
 		cloudCover.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return cloudCover;
 	}

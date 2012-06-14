@@ -65,7 +65,7 @@ public class SolarRadiation extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		SolarRadiation pressure = new SolarRadiation(name, 0f);
+		SolarRadiation pressure = new SolarRadiation("solarRadiation" + name, 0f);
 		pressure.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return pressure;
 	}

@@ -66,7 +66,7 @@ public class Temperature extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		Temperature temperature = new Temperature(name, 0f);
+		Temperature temperature = new Temperature("temperature" + name, 0f);
 		temperature.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return temperature;
 	}

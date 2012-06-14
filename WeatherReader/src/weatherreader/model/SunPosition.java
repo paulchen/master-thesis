@@ -98,7 +98,7 @@ public class SunPosition extends WeatherPhenomenon {
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
 			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		SunPosition sunPosition = new SunPosition(name, 0f, 0f);
+		SunPosition sunPosition = new SunPosition("sunPosition" + name, 0f, 0f);
 		sunPosition.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
 		return sunPosition;
 	}
