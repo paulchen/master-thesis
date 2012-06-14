@@ -62,6 +62,8 @@ public class Interval extends TemporalEntity {
 		
 		Resource intervalClass = onto.getResource(WeatherConstants.TIME + "Interval");
 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, intervalClass);
+		
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.TIME + "hasDurationDescription"), hour1));
 	}
 
 	@Override
