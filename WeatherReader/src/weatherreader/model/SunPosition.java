@@ -3,7 +3,6 @@ package weatherreader.model;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.Resource;
 
 public class SunPosition extends WeatherPhenomenon {
 	private double azimuth;
@@ -69,16 +68,8 @@ public class SunPosition extends WeatherPhenomenon {
 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
 
-		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), (int)roundDouble(azimuth, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.UNIT_DEGREE)));
-		
-		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), (float)roundDouble(elevation, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.UNIT_DEGREE)));
-		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunDirection"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunElevationAngle"), blankNode2));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunDirection"), (int)roundDouble(azimuth, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunElevationAngle"), (float)roundDouble(elevation, WeatherConstants.DECIMALS)));
 	}
 
 	@Override
