@@ -190,7 +190,9 @@ public class Weather {
 		SunPositionCalculator sunPositionCalculator = new SunPositionCalculator(position);
 		for(WeatherReport report : weatherReports) {
 			Date date = new Date((long)(new Date().getTime() + report.getStartTime().getTime()*3600000));
-			report.getState().addPhenomenon(sunPositionCalculator.calculate(date));
+			SunPosition position = sunPositionCalculator.calculate(date);
+			position.setName("sunPosition" + report.getStartTime());
+			report.getState().addPhenomenon(position);
 		}
 		
 		printWeatherReports("Final weather states after normalization including sun position data", weatherReports);
