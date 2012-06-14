@@ -14,7 +14,7 @@ public class SunPosition extends WeatherPhenomenon {
 	
 	public SunPosition(String name, double zenith, double azimuth) {
 		this.name = name;
-		this.zenith = zenith*100;
+		this.zenith = zenith;
 		this.elevation = 90 - this.zenith;
 		this.azimuth = azimuth;
 	}
