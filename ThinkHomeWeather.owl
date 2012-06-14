@@ -680,6 +680,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasDewPointValue">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <muo:preferredUnit rdf:resource="&ucum;unit/temperature/degree-Celsius"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#DewPoint"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
@@ -702,6 +703,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasTemperatureValue">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <muo:preferredUnit rdf:resource="&ucum;unit/temperature/degree-Celsius"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
