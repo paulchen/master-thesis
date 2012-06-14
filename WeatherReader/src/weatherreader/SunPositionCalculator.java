@@ -105,6 +105,11 @@ public class SunPositionCalculator {
 				* Math.sin(zenithAngle);
 		zenithAngle = (zenithAngle + parallax) * 180 / Math.PI;
 
+		assert(zenithAngle >= -90f);
+		assert(zenithAngle <= 90f);
+		assert(azimuth >= 0f);
+		assert(azimuth < 360f);
+		
 		return new SunPosition(zenithAngle, azimuth);
 	}
 }
