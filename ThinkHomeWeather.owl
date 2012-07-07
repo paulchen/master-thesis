@@ -362,7 +362,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:maxInclusive rdf:datatype="&xsd;float">1.0</xsd:maxInclusive>
+                        <xsd:minInclusive rdf:datatype="&xsd;float">0.0</xsd:minInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -372,7 +372,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:minInclusive rdf:datatype="&xsd;float">0.0</xsd:minInclusive>
+                        <xsd:maxInclusive rdf:datatype="&xsd;float">1.0</xsd:maxInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -507,7 +507,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:maxInclusive rdf:datatype="&xsd;float">90.0</xsd:maxInclusive>
+                        <xsd:minInclusive rdf:datatype="&xsd;float">-90.0</xsd:minInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -517,7 +517,7 @@
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:minInclusive rdf:datatype="&xsd;float">-90.0</xsd:minInclusive>
+                        <xsd:maxInclusive rdf:datatype="&xsd;float">90.0</xsd:maxInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -1064,34 +1064,6 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
     
 
 
-    <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ConditionWeatherReport -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ConditionWeatherReport">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherReport"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherState"/>
-                        <owl:someValuesFrom>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasCondition"/>
-                                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition"/>
-                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                            </owl:Restriction>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:comment rdf:datatype="&xsd;string">A WeatherState that is linked to a WeatherCondition using the hasCondition property.</rdfs:comment>
-        <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition"/>
-        <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
-        <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasCondition"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CurrentWeatherReport -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CurrentWeatherReport">
@@ -1102,25 +1074,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">0</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">0</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1470,25 +1432,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">12</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">12</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1510,25 +1462,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">15</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">15</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1550,25 +1492,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">18</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">18</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1590,25 +1522,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">1</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">1</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1630,25 +1552,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">21</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">21</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1670,25 +1582,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">24</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">24</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1710,25 +1612,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">2</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">2</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1750,25 +1642,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">3</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">3</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1790,25 +1672,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">6</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">6</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1830,25 +1702,15 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:hasValue rdf:datatype="&xsd;integer">9</owl:hasValue>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
+                                        <owl:hasValue rdf:datatype="&xsd;integer">9</owl:hasValue>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -1870,34 +1732,24 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
                                         <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:someValuesFrom>
-                                                            <rdfs:Datatype>
-                                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
-                                                                <owl:withRestrictions rdf:parseType="Collection">
-                                                                    <rdf:Description>
-                                                                        <xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
-                                                                    </rdf:Description>
-                                                                </owl:withRestrictions>
-                                                            </rdfs:Datatype>
-                                                        </owl:someValuesFrom>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
+                                            <rdfs:Datatype>
+                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
+                                                <owl:withRestrictions rdf:parseType="Collection">
+                                                    <rdf:Description>
+                                                        <xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
+                                                    </rdf:Description>
+                                                </owl:withRestrictions>
+                                            </rdfs:Datatype>
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -2131,6 +1983,18 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
         <rdfs:subClassOf rdf:resource="&time;DurationDescription"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&time;minutes"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&time;weeks"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&time;months"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
             </owl:Restriction>
@@ -2143,26 +2007,14 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&time;hours"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&time;weeks"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&time;minutes"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&time;seconds"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&time;hours"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2360,35 +2212,24 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                        <owl:onProperty rdf:resource="&time;hours"/>
                                         <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                                                        <owl:onDataRange>
-                                                            <rdfs:Datatype>
-                                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
-                                                                <owl:withRestrictions rdf:parseType="Collection">
-                                                                    <rdf:Description>
-                                                                        <xsd:minInclusive rdf:datatype="&xsd;integer">12</xsd:minInclusive>
-                                                                    </rdf:Description>
-                                                                </owl:withRestrictions>
-                                                            </rdfs:Datatype>
-                                                        </owl:onDataRange>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
+                                            <rdfs:Datatype>
+                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
+                                                <owl:withRestrictions rdf:parseType="Collection">
+                                                    <rdf:Description>
+                                                        <xsd:minInclusive rdf:datatype="&xsd;integer">12</xsd:minInclusive>
+                                                    </rdf:Description>
+                                                </owl:withRestrictions>
+                                            </rdfs:Datatype>
                                         </owl:someValuesFrom>
                                     </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -2587,49 +2428,43 @@ If there is more than one cloud layer, for each cloud layer another WeatherPheno
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                                                        <owl:onDataRange>
-                                                            <rdfs:Datatype>
-                                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
-                                                                <owl:withRestrictions rdf:parseType="Collection">
-                                                                    <rdf:Description>
-                                                                        <xsd:minExclusive rdf:datatype="&xsd;integer">3</xsd:minExclusive>
-                                                                    </rdf:Description>
-                                                                </owl:withRestrictions>
-                                                            </rdfs:Datatype>
-                                                        </owl:onDataRange>
-                                                    </owl:Restriction>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                                                        <owl:onDataRange>
-                                                            <rdfs:Datatype>
-                                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
-                                                                <owl:withRestrictions rdf:parseType="Collection">
-                                                                    <rdf:Description>
-                                                                        <xsd:maxExclusive rdf:datatype="&xsd;integer">12</xsd:maxExclusive>
-                                                                    </rdf:Description>
-                                                                </owl:withRestrictions>
-                                                            </rdfs:Datatype>
-                                                        </owl:onDataRange>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="&time;hours"/>
+                                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                                                <owl:onDataRange>
+                                                    <rdfs:Datatype>
+                                                        <owl:onDatatype rdf:resource="&xsd;decimal"/>
+                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                            <rdf:Description>
+                                                                <xsd:minExclusive rdf:datatype="&xsd;integer">3</xsd:minExclusive>
+                                                            </rdf:Description>
+                                                        </owl:withRestrictions>
+                                                    </rdfs:Datatype>
+                                                </owl:onDataRange>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="&time;hours"/>
+                                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                                                <owl:onDataRange>
+                                                    <rdfs:Datatype>
+                                                        <owl:onDatatype rdf:resource="&xsd;decimal"/>
+                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                            <rdf:Description>
+                                                                <xsd:maxExclusive rdf:datatype="&xsd;integer">12</xsd:maxExclusive>
+                                                            </rdf:Description>
+                                                        </owl:withRestrictions>
+                                                    </rdfs:Datatype>
+                                                </owl:onDataRange>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -2831,16 +2666,20 @@ NOTE: This class only specifies a single cloud layer. It does not make any state
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#NoAwningWeather">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SevereWeather"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#StrongWind"/>
-                    </owl:Restriction>
-                </owl:unionOf>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SevereWeather"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#StrongWind"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
     </owl:Class>
     
 
@@ -3213,30 +3052,11 @@ NOTE: This class only specifies a single cloud layer. It does not make any state
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#ExtremelyHeavyRain"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#HeavyRain"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#LightRain"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#MediumRain"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#TropicalStormRain"/>
-                            </owl:Restriction>
-                        </owl:unionOf>
-                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#NoRain"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+                    </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -3334,47 +3154,43 @@ NOTE: This class only specifies a single cloud layer. It does not make any state
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom>
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:someValuesFrom>
-                                                            <rdfs:Datatype>
-                                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
-                                                                <owl:withRestrictions rdf:parseType="Collection">
-                                                                    <rdf:Description>
-                                                                        <xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
-                                                                    </rdf:Description>
-                                                                </owl:withRestrictions>
-                                                            </rdfs:Datatype>
-                                                        </owl:someValuesFrom>
-                                                    </owl:Restriction>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="&time;hours"/>
-                                                        <owl:someValuesFrom>
-                                                            <rdfs:Datatype>
-                                                                <owl:onDatatype rdf:resource="&xsd;decimal"/>
-                                                                <owl:withRestrictions rdf:parseType="Collection">
-                                                                    <rdf:Description>
-                                                                        <xsd:maxInclusive rdf:datatype="&xsd;integer">3</xsd:maxInclusive>
-                                                                    </rdf:Description>
-                                                                </owl:withRestrictions>
-                                                            </rdfs:Datatype>
-                                                        </owl:someValuesFrom>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
-                                        </owl:someValuesFrom>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="&time;hours"/>
+                                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                                                <owl:onDataRange>
+                                                    <rdfs:Datatype>
+                                                        <owl:onDatatype rdf:resource="&xsd;decimal"/>
+                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                            <rdf:Description>
+                                                                <xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
+                                                            </rdf:Description>
+                                                        </owl:withRestrictions>
+                                                    </rdfs:Datatype>
+                                                </owl:onDataRange>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="&time;hours"/>
+                                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                                                <owl:onDataRange>
+                                                    <rdfs:Datatype>
+                                                        <owl:onDatatype rdf:resource="&xsd;decimal"/>
+                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                            <rdf:Description>
+                                                                <xsd:maxInclusive rdf:datatype="&xsd;integer">3</xsd:maxInclusive>
+                                                            </rdf:Description>
+                                                        </owl:withRestrictions>
+                                                    </rdfs:Datatype>
+                                                </owl:onDataRange>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -3948,15 +3764,10 @@ NOTE: This class only specifies a single cloud layer. It does not make any state
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasStartTime"/>
                         <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&time;Interval"/>
-                                    <owl:Restriction>
-                                        <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
-                                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
-                                    </owl:Restriction>
-                                </owl:intersectionOf>
-                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&time;hasDurationDescription"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hour"/>
+                            </owl:Restriction>
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -4348,6 +4159,20 @@ For specifying the weather information, there exist several data properties: has
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherReport">
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasCondition"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasSource"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherReportSource"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasObservationTime"/>
                 <owl:onClass>
                     <owl:Class>
@@ -4371,9 +4196,9 @@ For specifying the weather information, there exist several data properties: has
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasCondition"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherCondition"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:maxQualifiedCardinality>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasPriority"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;positiveInteger"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -4388,20 +4213,6 @@ For specifying the weather information, there exist several data properties: has
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherState"/>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasSource"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherReportSource"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasPriority"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;positiveInteger"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="&xsd;string">A WeatherObservation puts together all the information known at a certain time about both the current and the future weather at a certain location.
@@ -4476,62 +4287,6 @@ WeatherStateSource is connected to WeatherState via the hasSource/isSourceOf pro
     <!-- http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SolarRadiation"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunPosition"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="&xsd;string">A WeatherState is a set of weather information (temperature, humidity etc.). It is assigned to exactly one WeatherObservation (properties belongsToWeatherObservation/hasWeatherState), has a priority (property hasPriority) and has a source (where the weather information comes from, properties hasSource/isSourceOf).
 
 The weather information itself (temperature, humidity etc.) is provided using instances of WeatherPhenomenon that are connected using the belongsToState/hasWeatherPhenomenon properties.</rdfs:comment>
@@ -4642,22 +4397,16 @@ The weather information itself (temperature, humidity etc.) is provided using in
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#WeatherState"/>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Hurricane"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Storm"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#StrongWind"/>
-                            </owl:Restriction>
-                        </owl:unionOf>
-                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Calm"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#hasWeatherPhenomenon"/>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#LightWind"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+                    </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -5034,20 +4783,6 @@ basic geo vocab
         </owl:members>
     </rdf:Description>
     <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#DewPoint"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SolarRadiation"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunPosition"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Cloud"/>
@@ -5060,6 +4795,20 @@ basic geo vocab
             <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Sun"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Thunder"/>
         </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#AtmosphericPressure"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#CloudCover"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#DewPoint"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Humidity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Precipitation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SolarRadiation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#SunPosition"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Temperature"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#Wind"/>
+        </owl:members>
     </rdf:Description>
 </rdf:RDF>
 
