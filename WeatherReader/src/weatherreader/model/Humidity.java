@@ -5,6 +5,7 @@ import java.util.List;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 public class Humidity extends WeatherPhenomenon {
 	private String name;
@@ -34,10 +35,14 @@ public class Humidity extends WeatherPhenomenon {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+		Resource blankNode = onto.createResource();
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(humidityValue, WeatherConstants.DECIMALS)));
+		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "percent")));
 		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasHumidityValue"), roundFloat(humidityValue, WeatherConstants.DECIMALS)));
+ 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
+ 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+ 		
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasHumidityValue"), blankNode));
 	}
 
 	@Override
