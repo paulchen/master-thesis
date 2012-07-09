@@ -40,7 +40,7 @@ public class Wind extends WeatherPhenomenon {
 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
 		
 		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindSpeed"), roundFloat(windSpeed, WeatherConstants.DECIMALS)));
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindDirection"), onto.getResource(WeatherConstants.UNIT_DEGREE)));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindDirection"), windDirection));
 	}
 
 	@Override
