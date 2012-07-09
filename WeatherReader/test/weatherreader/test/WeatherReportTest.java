@@ -26,7 +26,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 // TODO javadoc
 public class WeatherReportTest extends TestCase {
-	private String[] timeConcepts = { "TimedWeatherReport", "CurrentWeatherReport",
+	private String[] timeConcepts = { "CurrentWeatherReport",
 			"ForecastWeatherReport", "ShortRangeForecastReport", "MediumRangeForecastReport", "LongRangeForecastReport",
 			"Forecast1HourWeatherReport", "Forecast2HoursWeatherReport", "Forecast3HoursWeatherReport",
 			"Forecast6HoursWeatherReport", "Forecast9HoursWeatherReport", "Forecast12HoursWeatherReport",
@@ -75,30 +75,30 @@ public class WeatherReportTest extends TestCase {
 	
 	@Test
 	public void testTimedWeatherReports() {
-		testConcepts(0f, timeConcepts, "TimedWeatherReport", "CurrentWeatherReport");
-		testConcepts(1f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "ShortRangeForecastReport", "Forecast1HourWeatherReport");
-		testConcepts(2f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "ShortRangeForecastReport", "Forecast2HoursWeatherReport");
-		testConcepts(3f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "ShortRangeForecastReport", "Forecast3HoursWeatherReport");
-		testConcepts(4f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport");
-		testConcepts(5f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport");
-		testConcepts(6f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport", "Forecast6HoursWeatherReport");
-		testConcepts(7f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport");
-		testConcepts(8f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport");
-		testConcepts(9f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport", "Forecast9HoursWeatherReport");
-		testConcepts(10f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport");
-		testConcepts(11f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "MediumRangeForecastReport");
-		testConcepts(12f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport", "Forecast12HoursWeatherReport");
-		testConcepts(13f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(14f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(15f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport", "Forecast15HoursWeatherReport");
-		testConcepts(16f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(17f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(18f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport", "Forecast18HoursWeatherReport");
-		testConcepts(19f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(20f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(21f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport", "Forecast21HoursWeatherReport");
-		testConcepts(22f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(23f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport");
-		testConcepts(24f, timeConcepts, "TimedWeatherReport", "ForecastWeatherReport", "LongRangeForecastReport", "Forecast24HoursWeatherReport");
+		testConcepts(0f, timeConcepts, "CurrentWeatherReport");
+		testConcepts(1f, timeConcepts, "ForecastWeatherReport", "ShortRangeForecastReport", "Forecast1HourWeatherReport");
+		testConcepts(2f, timeConcepts, "ForecastWeatherReport", "ShortRangeForecastReport", "Forecast2HoursWeatherReport");
+		testConcepts(3f, timeConcepts, "ForecastWeatherReport", "ShortRangeForecastReport", "Forecast3HoursWeatherReport");
+		testConcepts(4f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport");
+		testConcepts(5f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport");
+		testConcepts(6f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport", "Forecast6HoursWeatherReport");
+		testConcepts(7f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport");
+		testConcepts(8f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport");
+		testConcepts(9f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport", "Forecast9HoursWeatherReport");
+		testConcepts(10f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport");
+		testConcepts(11f, timeConcepts, "ForecastWeatherReport", "MediumRangeForecastReport");
+		testConcepts(12f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport", "Forecast12HoursWeatherReport");
+		testConcepts(13f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(14f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(15f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport", "Forecast15HoursWeatherReport");
+		testConcepts(16f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(17f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(18f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport", "Forecast18HoursWeatherReport");
+		testConcepts(19f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(20f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(21f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport", "Forecast21HoursWeatherReport");
+		testConcepts(22f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(23f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport");
+		testConcepts(24f, timeConcepts, "ForecastWeatherReport", "LongRangeForecastReport", "Forecast24HoursWeatherReport");
 	}
 }
