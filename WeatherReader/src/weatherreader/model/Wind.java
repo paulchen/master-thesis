@@ -6,6 +6,7 @@ import java.util.List;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 // TODO javadoc
 public class Wind extends WeatherPhenomenon {
@@ -36,11 +37,19 @@ public class Wind extends WeatherPhenomenon {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+		Resource blankNode1 = onto.createResource();
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(windSpeed, WeatherConstants.DECIMALS)));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "metresPerSecond")));
 		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindSpeed"), roundFloat(windSpeed, WeatherConstants.DECIMALS)));
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindDirection"), windDirection));
+		Resource blankNode2 = onto.createResource();
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), windDirection));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.MUO_NAMESPACE + "degree")));
+		
+ 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
+ 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+ 		
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindSpeed"), blankNode1));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindDirection"), blankNode2));
 	}
 
 	@Override
