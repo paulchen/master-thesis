@@ -2,11 +2,52 @@
 
 % TODO some section containing thoughts about which data is required for the ThinkHome ontology, e.g. in the chapter about the ontology itself?
 
+Based on the insights acquired from existing work in chapter \ref{ch:existing_work}, this chapter aims at compiling a set of weather properties which are either necessary for providing useful data to the \thinkhome system or which would add benefit to the data provided. Furthermore, possible sources will are evaluated with respect to their usableness in the given context.
+
+\section{Weather information}
+
+% TODO reference competence questions
+In order to identify weather properties required for \thinkhome, one must specify the requirements that have to be met. When designing an ontology, this is often done by asking numerous \emph{competence questions}.
+
+These competence questions that shall be answered by \thinkhome's weather ontology:
+
+% TODO answer: where do 24 hours come from? discuss questions further? how were these questions built?
+\begin{itemize}
+  \item What is the current weather situation?
+  \item What will the weather situation be in one hour, in two hours, …, in 24 hours?
+  \item What is the current temperature, humidity, wind speed, …?
+  \item What will be the temperature, humidity, wind speed, … in one hour, in two hours, …, in 24 hours?
+  \item What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?
+  \item Will the weather change? Will the temperature, humidity, … rise or fall?
+  \item Does it rain? Will it rain in the next hours? Will it rain today?
+  \item Will there be sunshine today? 
+  \item Do we need to irrigate the garden?
+  \item Will there be severe weather?
+  \item Will temperature drop/stay below $0^\circ C$?
+  \item When can we open windows and when do we have to keep them shut?
+  \item When do we need sun protection?
+  \item When will it outside be colder than inside the house? When will it be warmer?
+\end{itemize}
+
+These competence questions will again be used in section \label{sec:ontology_specification} for creating the \emph{Ontology requirements specification document}.
+
+% TODO references
+% TODO measurement readings
+These questions can be answered when knowing the (predicted) state of the weather for particular points of time. The state of the weather is given by measurement readings of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage etc.
+
+A set of measurement readings for one or more points of time is called \emph{weather data} from now on.
+
+Sources for weather data are weather sensors and weather forecasts. As no weather forecasting is performed within \thinkhome, forecast data will be obtained from weather services via Internet. Data about the current weather state can be obtained from both weather sensors and Internet services; the only source for data about future weather states are Internet services.
+
+However, there there are weather elements no sensor can provide data about, and there are weather elements that are not available via any of the Internet services that have been analyzed. Chapter \ref{sec:weather_sensors} covers everything that can be obtained from weather sensors, and chapter \ref{sec:weather_services} discusses weather data that can be fetched from Internet services. Based on the findings within these two chapters, \ref{sec:weather_conclusion} presents a set of weather elements that are incorporated into the ontology that is developed in chapter \ref{ch:thinkhomeweather_ontology}.
+
 \section{Sensor data}
+\label{sec:weather_sensors}
 
 \subsection{KNX weather stations}
 
 \section{Service data}
+\label{sec:weather_services}
 
 \subsection{Available internet services}
 
@@ -35,3 +76,4 @@
 \subsection{yr.no}
 
 \section{Conclusion}
+\label{sec:weather_conclusion}
