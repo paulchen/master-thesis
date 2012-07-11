@@ -74,7 +74,7 @@ For evaluation of Internet weather services, the following aspects are examined:
   A weather service covering a wider range of weather elements is preferred over a service covering a smaller range.
   \item \textbf{Timeframe:} Are forecasts available? If yes, how detailled are these forecasts? How far into the future are forecasts available? What is the interval between two forecasts?\\
   Forecasts for at least 48 hours are mandatory. Over the next 48 hours, there should be at least six forecasts with an interval of at most eight hours between two consecutive forecasts. A weather service covering a longer period than 48 hours into the future and/or more than six forecasts within the next 48 hours is preferred.
-  \item \textbf{Updates:} How often is the weather data being updated?\\
+  \item \textbf{Weather updates:} How often is the weather data being updated?\\
   The data should be updated at least every six hours. A service having a shorter update interval is preferred over a service having a longer interval.
 \end{itemize}
 
@@ -83,33 +83,33 @@ In the following sections, some of the most popular Internet weather services ar
 \paragraph{DWD}
 
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Operator:} \emph{Deutscher Wetterdienst} (\emph{DWD}, ``German weather service'')
+  \item \textbf{Web page:} \href{http://www.dwd.de/}{http://www.dwd.de/}
+  \item \textbf{Coverage area:} Current weather data is available worldwide, forecasts are available within Germany and only for large cities outside Germany.
+  \item \textbf{Data format:} Current weather data is available in SYNOP format (Surface Synoptic Observations) \footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}}. A Java parser may be difficult to implement. Forecasts are available as weather maps, tables and text (not machine-readable).
+  \item \textbf{Data access:} Via FTP (supported by the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}).
+  \item \textbf{Access restrictions, terms of use:} An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for projects like \thinkhome. % TODO inspect terms of use more detailled
+  \item \textbf{Documentation:} % TODO
+  \item \textbf{Stability:} Every few weeks there are a few changes to the data format. However, data required by \thinkhome has never been changed during the last six months. Changes are announced via email at least one week in advance.
+  \item \textbf{Weather elements:} % TODO
+  \item \textbf{Timeframe:} % TODO
+  \item \textbf{Weather updates:} % TODO
 \end{itemize}
 
-\paragraph{Yahoo Weather}
+\paragraph{Yahoo! Weather}
 
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Operator:} \emph{Yahoo! Inc.}
+  \item \textbf{Web page:} \href{http://developer.yahoo.com/weather/}{http://developer.yahoo.com/weather/}
+  \item \textbf{Coverage area:} Worldwide coverage.
+  \item \textbf{Data format:} RSS feed.
+  \item \textbf{Data access:} Via HTTP.
+  \item \textbf{Access restrictions, terms of use:} Free for use for individuals and non-profit organizations, providing attribution required. No statement about commercial use anywhere in the documentation.
+  \item \textbf{Documentation:} Full documentation is available.
+  \item \textbf{Stability:} % TODO
+  \item \textbf{Weather elements:} % TODO
+  \item \textbf{Timeframe:} % TODO
+  \item \textbf{Weather updates:} % TODO
 \end{itemize}
 
 \paragraph{World Weather Online}
@@ -125,7 +125,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Stability:}
   \item \textbf{Weather elements:}
   \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Weather updates:}
 \end{itemize}
 
 \paragraph{Google Weather Feed}
@@ -141,23 +141,24 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Stability:}
   \item \textbf{Weather elements:}
   \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Weather updates:}
 \end{itemize}
 
 \paragraph{yr.no}
 
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Operator:} Meteorologisk institutt (Norwegian Meteorological Institute), Norsk rikskringkasting AS (NRK, Norwegian Broadcasting Corporation)
+  \item \textbf{Web page:} \href{http://api.yr.no/}{http://api.yr.no/}
+  \item \textbf{Coverage area:} Worldwide.
+  \item \textbf{Data format:} XML.
+  \item \textbf{Data access:} Via HTTP.
+  \item \textbf{Access restrictions, terms of use:} Data is available under a Creative Commons licence (CC-BY 3.0\footnote{\href{http://creativecommons.org/licenses/by/3.0}{http://creativecommons.org/licenses/by/3.0}})
+  \item \textbf{Documentation:} Full documentation is available.
+  \item \textbf{Stability:} There are new releases of the API one or two times per year. The old API remains in operation a few months after a new version has been released. New releases are announced on the web page of the API.\\
+  Additionally, there is a \emph{long time support} weather API that changes less frequent.
+  \item \textbf{Weather elements:} Temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, fog.
+  \item \textbf{Timeframe:} Forecasts for nine days in advance, interval of six hours between two forecasts.
+  \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
 
 \paragraph{METAR}
@@ -173,7 +174,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Stability:}
   \item \textbf{Weather elements:}
   \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Weather updates:}
 \end{itemize}
 
 \paragraph{National Weather Service}
@@ -189,7 +190,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Stability:}
   \item \textbf{Weather elements:}
   \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Weather updates:}
 \end{itemize}
 
 \paragraph{Weather Underground}
@@ -205,7 +206,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Stability:}
   \item \textbf{Weather elements:}
   \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Weather updates:}
 \end{itemize}
 
 \paragraph{Weather.com}
@@ -221,7 +222,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Stability:}
   \item \textbf{Weather elements:}
   \item \textbf{Timeframe:}
-  \item \textbf{Updates:}
+  \item \textbf{Weather updates:}
 \end{itemize}
 
 \section{Conclusion}
@@ -234,13 +235,13 @@ However, the weather service shall be replaceable. The ontology is designed in a
 The ontology uses these weather elements which are available from most Internet weather services and many weather sensors:
 \begin{itemize}
   \item Temperature,
-  \item Relative humidity,
-  \item Dew point,
-  \item Cloud cover,
-  \item Chance and intensity of precipitation,
-  \item Speed and direction of window,
-  \item Atmospheric pressure, and
-  \item Solar radiation
+  \item relative humidity,
+  \item dew point,
+  \item cloud cover,
+  \item chance and intensity of precipitation,
+  \item speed and direction of window,
+  \item atmospheric pressure, and
+  \item solar radiation
 \end{itemize}
 
 Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see \ref{subsec:sun_position} for details.
