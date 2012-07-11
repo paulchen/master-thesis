@@ -49,31 +49,199 @@ However, there there are weather elements no sensor can provide data about, and 
 \section{Service data}
 \label{sec:weather_services}
 
-\subsection{Available internet services}
+% TODO blah blah
 
-% TODO criteria for weather services, e.g. terms of use, data format, availability of use
+\subsection{Available Internet services}
 
-\subsubsection{DWD}
+There is a tremendous amount of services providing weather data over the Internet. However, only a small number of them is suitable for use in a context as in \thinkhome. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
 
-\subsubsection{Yahoo Weather}
+For evaluation of Internet weather services, the following aspects are examined:
 
-\subsubsection{World Weather Online}
+\begin{itemize}
+  \item \textbf{Coverage area:} Which part of the world is covered by the weather service?\\
+  In order to keep things simple, a service covering a larger part of the world is preferred over a service covering a smaller part.
+  \item \textbf{Data format:} In what format is weather data being delivered? Can it be easily parsed and processed?\\
+  A data format that is easier to handle on the client-side is preferred over a data format that requires more complicated handling.
+  \item \textbf{Data access:} How does the access to weather data work? How is data requested and how is the answer being received?\\
+  The less complicated a request is, the better the service suits the requirements.
+  \item \textbf{Access restrictions, terms of use:} Is the service available freely or is the access restricted? Are credentials (e.g. a username and a password or an access key) required for access? If yes, can the credentials be obtained in a simple way or does that entail a complicated procedure? Are there any access fees for academic or commercial use?\\
+  A service being less restricted is preferred over a service coming with more restrictions.
+  \item \textbf{Documentation:} Is there any documentation for this service? Does it cover all aspects or are there some features that are undocumented?\\
+  Of course, a service without documentation is unsuitable. A better documented service is always preferred over a service that is less documented.
+  \item \textbf{Stability:} Can one expect the service to remain unchanged over a reasonable amount of time (e.g. several years)? If there will be future changes, will they be announced? How long will they be announced in advance?\\
+  A stable service is preferred over an unstable one. A better handling of changes is preferred over a worse handling of changes.
+  \item \textbf{Weather elements:} Which weather elements (e.g. temperature, relative humidity, dew point etc.) are covered by the service?\\
+  A weather service covering a wider range of weather elements is preferred over a service covering a smaller range.
+  \item \textbf{Timeframe:} Are forecasts available? If yes, how detailled are these forecasts? How far into the future are forecasts available? What is the interval between two forecasts?\\
+  Forecasts for at least 48 hours are mandatory. Over the next 48 hours, there should be at least six forecasts with an interval of at most eight hours between two consecutive forecasts. A weather service covering a longer period than 48 hours into the future and/or more than six forecasts within the next 48 hours is preferred.
+  \item \textbf{Updates:} How often is the weather data being updated?\\
+  The data should be updated at least every six hours. A service having a shorter update interval is preferred over a service having a longer interval.
+\end{itemize}
 
-\subsubsection{Google Weather Feed}
+In the following sections, some of the most popular Internet weather services are evaluated. In addition to the aspects listed above, some general information is provided (operator, web page and ...). % TODO
 
-\subsubsection{yr.no}
+\paragraph{DWD}
 
-\subsubsection{METAR}
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
 
-\subsubsection{National Weather Service}
+\paragraph{Yahoo Weather}
 
-\subsubsection{Weather Underground}
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
 
-\subsubsection{Weather.com}
+\paragraph{World Weather Online}
 
-\subsubsection{Conclusion}
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
 
-\subsection{yr.no}
+\paragraph{Google Weather Feed}
+
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
+
+\paragraph{yr.no}
+
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
+
+\paragraph{METAR}
+
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
+
+\paragraph{National Weather Service}
+
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
+
+\paragraph{Weather Underground}
+
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
+
+\paragraph{Weather.com}
+
+\begin{itemize}
+  \item \textbf{Operator:}
+  \item \textbf{Web page:}
+  \item \textbf{Coverage area:}
+  \item \textbf{Data format:}
+  \item \textbf{Data access:}
+  \item \textbf{Access restrictions, terms of use:}
+  \item \textbf{Documentation:}
+  \item \textbf{Stability:}
+  \item \textbf{Weather elements:}
+  \item \textbf{Timeframe:}
+  \item \textbf{Updates:}
+\end{itemize}
 
 \section{Conclusion}
 \label{sec:weather_conclusion}
+
+Among the weather services that have been evaluated, \emph{yr.no} suits \thinkhome's requirements best. Therefore, it is used for developing a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology that is developed in section \ref{sec:ontology_specification}. See section \ref{subsec:weather_data_yr_no} for details on how to query \emph{yr.no}'s weather API.
+
+However, the weather service shall be replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \emph{yr.no} is to be replaced by another weather service, the ontology remains unchanged, but a new program for importing weather data into the ontology must be developed.
+
+The ontology uses these weather elements which are available from most Internet weather services and many weather sensors:
+\begin{itemize}
+  \item Temperature,
+  \item Relative humidity,
+  \item Dew point,
+  \item Cloud cover,
+  \item Chance and intensity of precipitation,
+  \item Speed and direction of window,
+  \item Atmospheric pressure, and
+  \item Solar radiation
+\end{itemize}
+
+Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see \ref{subsec:sun_position} for details.
+
