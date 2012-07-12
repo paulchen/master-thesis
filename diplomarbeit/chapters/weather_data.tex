@@ -81,6 +81,8 @@ For evaluation of Internet weather services, the following aspects are examined:
 In the following sections, some of the most popular Internet weather services are evaluated. In addition to the aspects listed above, some general information is provided (operator, web page and ...). % TODO
 
 % TODO conclusion for every service?
+% TODO pro/cons table with all weather services?
+% TODO where do the informations in this sections come from?
 
 \paragraph{DWD}
 
@@ -165,34 +167,35 @@ In the following sections, some of the most popular Internet weather services ar
 
 \paragraph{METAR}
 
+% TODO references
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Weather updates:}
+  \item \textbf{Operator:} Airports around the world.
+  \item \textbf{Web page:} \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/}
+  \item \textbf{Coverage area:} Worldwide coverage. % TODO mention http://www.aviationweather.gov/static/adds/metars/stations.txt
+  \item \textbf{Data format:} The \emph{METAR} format is standardized by \emph{ICAO} (\emph{International Civil Aviation Organization}). It is not human-readable. Parsers for various programming languages are available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}}.
+  \item \textbf{Data access:} Via HTML from \emph{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available.
+  \item \textbf{Access restrictions, terms of use:} % TODO nothing stated anywhere?
+  \item \textbf{Documentation:} \emph{METAR} is well documented as it is used around the world.
+  \item \textbf{Stability:} \emph{METAR} is standardized by \emph{ICAO}. It was introduced in 1968 and has been modified a numer of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
+  \item \textbf{Weather elements:} Among others, temperature, dew point, wind speed and direction, precipitation, cloud coverage, visibility and atmospheric pressure are provided.
+  \item \textbf{Timeframe:} Only current data, no forecasts.
+  \item \textbf{Weather updates:} \emph{METAR}s are updated once per hour.
 \end{itemize}
 
 \paragraph{National Weather Service}
 
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Weather updates:}
+  \item \textbf{Operator:} National Weather Service (part of \emph{NOAA}, \emph{National Oceanic and Atmospheric Administration})
+  \item \textbf{Web page:} \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/}
+  \item \textbf{Coverage area:} Only US.
+  \item \textbf{Data format:} XML feed.
+  \item \textbf{Data access:} Via SOAP or REST.
+  \item \textbf{Access restrictions, terms of use:} % TODO
+  \item \textbf{Documentation:} Full documentation is available.
+  \item \textbf{Stability:} Small changes are applied every few months, although most of the interface remains unchanged in the long run. Changes are announced via an RSS feed.
+  \item \textbf{Weather elements:} % TODO
+  \item \textbf{Timeframe:} % TODO
+  \item \textbf{Weather updates:} Weather data is updated about once per hour. 
 \end{itemize}
 
 \paragraph{Weather Underground}
@@ -246,7 +249,8 @@ The ontology uses these weather elements which are available from most Internet 
   \item solar radiation.
 \end{itemize}
 
-% TODO weather condition
+% TODO mention weather condition
+% TODO table that assigns weather elements to competence questions
 
 Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see \ref{subsec:sun_position} for details.
 
