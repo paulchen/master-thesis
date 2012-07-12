@@ -88,12 +88,12 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Coverage area:} Current weather data is available worldwide, forecasts are available within Germany and only for large cities outside Germany.
   \item \textbf{Data format:} Current weather data is available in SYNOP format (Surface Synoptic Observations) \footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}}. A Java parser may be difficult to implement. Forecasts are available as weather maps, tables and text (not machine-readable).
   \item \textbf{Data access:} Via FTP (supported by the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}).
-  \item \textbf{Access restrictions, terms of use:} An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for projects like \thinkhome. % TODO inspect terms of use more detailled
-  \item \textbf{Documentation:} % TODO
+  \item \textbf{Access restrictions, terms of use:} An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within projects like \thinkhome.
+  \item \textbf{Documentation:} There is extensive documentation 
   \item \textbf{Stability:} Every few weeks there are a few changes to the data format. However, data required by \thinkhome has never been changed during the last six months. Changes are announced via email at least one week in advance.
-  \item \textbf{Weather elements:} % TODO
-  \item \textbf{Timeframe:} % TODO
-  \item \textbf{Weather updates:} % TODO
+  \item \textbf{Weather elements:} Temperature, relative humidity, wind speed and direction, precipitation, atmospheric pressure, cloud coverage. Forecasts only include temperature and the overall weather condition.
+  \item \textbf{Timeframe:} Forecasts are available for 72 hours into the future.
+  \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
 
 \paragraph{Yahoo! Weather}
@@ -106,26 +106,26 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Data access:} Via HTTP.
   \item \textbf{Access restrictions, terms of use:} Free for use for individuals and non-profit organizations, providing attribution required. No statement about commercial use anywhere in the documentation.
   \item \textbf{Documentation:} Full documentation is available.
-  \item \textbf{Stability:} % TODO
-  \item \textbf{Weather elements:} % TODO
-  \item \textbf{Timeframe:} % TODO
-  \item \textbf{Weather updates:} % TODO
+  \item \textbf{Stability:} It is unknown whether this API is subject to change or not.
+  \item \textbf{Weather elements:} Temperature, wind chill, speed and direction, relative humidity, visibility, atmospheric pressure, sunrise and sunset times.
+  \item \textbf{Timeframe:} Forecasts are available for 48 hours, but only one forecast per day.
+  \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
 
 \paragraph{World Weather Online}
 
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Weather updates:}
+  \item \textbf{Operator:} World Weather Online
+  \item \textbf{Web page:} \href{http://www.worldweatheronline.com}{http://www.worldweatheronline.com}
+  \item \textbf{Coverage area:} Worldwide coverage.
+  \item \textbf{Data format:} Data is available in XML, JSON, JSON-P and CSV formats.
+  \item \textbf{Data access:} Via HTTP.
+  \item \textbf{Access restrictions, terms of use:} An account must be created for accessing both the Free API and the Premium API. The Free API is free to use for personal and commercial use, credits must be given to World Weather Online. Costs for the Premium API start at 20 US dollars per month.
+  \item \textbf{Documentation:} Full documentation is available.
+  \item \textbf{Stability:} It is unknown whether the APIs are subject to change or not.
+  \item \textbf{Weather elements:} Free API offers temperature, wind speed and direction, relative humidity and precipitation intensity. Premium API additionally offers dew point, chance of precipitation and atmospheric pressure.
+  \item \textbf{Timeframe:} The Free API offers daily forecasts over a range of five days, the Premium API comes with 
+  \item \textbf{Weather updates:} Weather data is updated every 3 to 4 hours.
 \end{itemize}
 
 \paragraph{Google Weather Feed}
@@ -241,8 +241,10 @@ The ontology uses these weather elements which are available from most Internet 
   \item chance and intensity of precipitation,
   \item speed and direction of window,
   \item atmospheric pressure, and
-  \item solar radiation
+  \item solar radiation.
 \end{itemize}
+
+% TODO weather condition
 
 Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see \ref{subsec:sun_position} for details.
 
