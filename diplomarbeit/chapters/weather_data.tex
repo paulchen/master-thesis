@@ -5,6 +5,7 @@
 Based on the insights acquired from existing work in chapter \ref{ch:existing_work}, this chapter aims at compiling a set of weather properties which are either necessary for providing useful data to the \thinkhome system or which would add benefit to the data provided. Furthermore, possible sources will are evaluated with respect to their usableness in the given context.
 
 \section{Weather information}
+\label{sec:weather_information}
 
 % TODO reference competence questions
 In order to identify weather properties required for \thinkhome, one must specify the requirements that have to be met. When designing an ontology, this is often done by asking numerous \emph{competence questions}.
@@ -53,6 +54,8 @@ However, there there are weather elements no sensor can provide data about, and 
 
 \subsection{Available Internet services}
 
+% TODO mention that everything will be done in Java
+
 There is a tremendous amount of services providing weather data over the Internet. However, only a small number of them is suitable for use in a context as in \thinkhome. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
 
 For evaluation of Internet weather services, the following aspects are examined:
@@ -61,9 +64,9 @@ For evaluation of Internet weather services, the following aspects are examined:
   \item \textbf{Coverage area:} Which part of the world is covered by the weather service?\\
   In order to keep things simple, a service covering a larger part of the world is preferred over a service covering a smaller part.
   \item \textbf{Data format:} In what format is weather data being delivered? Can it be easily parsed and processed?\\
-  A data format that is easier to handle on the client-side is preferred over a data format that requires more complicated handling.
+  A data format that is easier to handle on the client-side is preferred over a data format that requires more complicated handling. XML can be handled natively within many programming languages, JSON may require an additional library (e.g. in Java). % TODO references
   \item \textbf{Data access:} How does the access to weather data work? How is data requested and how is the answer being received?\\
-  The less complicated a request is, the better the service suits the requirements.
+  The less complicated a request is, the better the service suits the requirements. Requests in HTTP are preferred due to the simplicity of performing requests on the client side in Java using the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}.
   \item \textbf{Access restrictions, terms of use:} Is the service available freely or is the access restricted? Are credentials (e.g. a username and a password or an access key) required for access? If yes, can the credentials be obtained in a simple way or does that entail a complicated procedure? Are there any access fees for academic or commercial use?\\
   A service being less restricted is preferred over a service coming with more restrictions.
   \item \textbf{Documentation:} Is there any documentation for this service? Does it cover all aspects or are there some features that are undocumented?\\
@@ -80,7 +83,6 @@ For evaluation of Internet weather services, the following aspects are examined:
 
 In the following sections, some of the most popular Internet weather services are evaluated. In addition to the aspects listed above, some general information is provided (operator, web page and ...). % TODO
 
-% TODO conclusion for every service?
 % TODO pro/cons table with all weather services?
 % TODO where do the informations in this sections come from?
 
@@ -91,7 +93,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Web page:} \href{http://www.dwd.de/}{http://www.dwd.de/}
   \item \textbf{Coverage area:} Current weather data is available worldwide, forecasts are available within Germany and only for large cities outside Germany.
   \item \textbf{Data format:} Current weather data is available in SYNOP format (Surface Synoptic Observations) \footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}}. A Java parser may be difficult to implement. Forecasts are available as weather maps, tables and text (not machine-readable).
-  \item \textbf{Data access:} Via FTP (supported by the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}).
+  \item \textbf{Data access:} Via FTP (supported in Java by the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}).
   \item \textbf{Access restrictions, terms of use:} An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within projects like \thinkhome.
   \item \textbf{Documentation:} There is extensive documentation 
   \item \textbf{Stability:} Every few weeks there are a few changes to the data format. However, data required by \thinkhome has never been changed during the last six months. Changes are announced via email at least one week in advance.
@@ -201,41 +203,68 @@ In the following sections, some of the most popular Internet weather services ar
 \paragraph{Weather Underground}
 
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Weather updates:}
+  \item \textbf{Operator:} Weather Underground
+  \item \textbf{Web page:} \href{http://www.wunderground.com/weather/api/}{http://www.wunderground.com/weather/api/}
+  \item \textbf{Coverage area:} Worldwide coverage.
+  \item \textbf{Data format:} JSON and XML are available.
+  \item \textbf{Data access:} Via HTTP.
+  \item \textbf{Access restrictions, terms of use:} The public API is only available for personal, non-commercial use. Account creation is mandatory. Custom weather services are available.
+  \item \textbf{Documentation:} Full documentation is available.
+  \item \textbf{Stability:} There has been a change to a new API during the last months. Although it can be expected that the new API will stay there for a while, it must be expected that a change of API will always be possible.
+  \item \textbf{Weather elements:} Only an overall weather condition and minimum and maximum temperatures are available. Custom weather services include more data.
+  \item \textbf{Timeframe:} Daily forecasts for five days.
+  \item \textbf{Weather updates:} Updated every few hours.
 \end{itemize}
 
 \paragraph{Weather.com}
 
 \begin{itemize}
-  \item \textbf{Operator:}
-  \item \textbf{Web page:}
-  \item \textbf{Coverage area:}
-  \item \textbf{Data format:}
-  \item \textbf{Data access:}
-  \item \textbf{Access restrictions, terms of use:}
-  \item \textbf{Documentation:}
-  \item \textbf{Stability:}
-  \item \textbf{Weather elements:}
-  \item \textbf{Timeframe:}
-  \item \textbf{Weather updates:}
+  \item \textbf{Operator:} The Weather Channel, LLC
+  \item \textbf{Web page:} \href{http://www.weather.com/services/xmloap.html}{http://www.weather.com/services/xmloap.html}
+  \item \textbf{Coverage area:} Worldwide coverage.
+  \item \textbf{Data format:} XML or JSON.
+  \item \textbf{Data access:} Via HTTP.
+  \item \textbf{Access restrictions, terms of use:} For accessing the API, an account must be created in a complicated process. 
+  \item \textbf{Documentation:} Full documentation is available.
+  \item \textbf{Stability:} It is unknown whether the API is subject to change or not.
+  \item \textbf{Weather elements:} Temperature, humidity, precipitation, wind speed and direction, sunrise and sunset times and the overall weather condition. Furthermore, the current weather report includes atmospheric pressure, visibility and dew point.
+  \item \textbf{Timeframe:} Forecasts are available for five days.
+  \item \textbf{Weather updates:} Updated every few hours.
 \end{itemize}
 
 \section{Conclusion}
 \label{sec:weather_conclusion}
 
-Among the weather services that have been evaluated, \emph{yr.no} suits \thinkhome's requirements best. Therefore, it is used for developing a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology that is developed in section \ref{sec:ontology_specification}. See section \ref{subsec:weather_data_yr_no} for details on how to query \emph{yr.no}'s weather API.
+% TODO
+\begin{table}
+  \begin{tabular}[h]{|l|l|l|}
+  \hline
+  \textbf{Weather service} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\ % TODO replace (s) by s or omit completely?
+  \hline \hline
+  DWD & & \\
+  \hline
+  World Weather Online & & \\
+  \hline
+  Google Weather Feed & & \\
+  \hline
+  yr.no & & \\
+  \hline
+  METAR & & \\
+  \hline
+  National Weather Service & & \\
+  \hline
+  Weather Underground & & \\
+  \hline
+  Weather.com & & \\
+  \hline
+  \end{tabular}
+  \caption{Advantages and disadvantages of Internet weather services}
+  \label{table:weather_services}
+\end{table}
 
-However, the weather service shall be replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \emph{yr.no} is to be replaced by another weather service, the ontology remains unchanged, but a new program for importing weather data into the ontology must be developed.
+Table \ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in \ref{weather_services}. Based on that evaluation, it is determined that \emph{yr.no} suits \thinkhome's requirements best. Therefore, it is used for developing a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology that is developed in section \ref{sec:ontology_specification}. See section \ref{subsec:weather_data_yr_no} for details on how to query \emph{yr.no}'s weather API.
+
+However, the weather service shall be replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \emph{yr.no} is to be replaced by another weather service, the ontology remains unchanged, but a new program for importing weather data into the ontology must be developed. If the weather service to be used does not support one or more weather elements, they are simply omitted in the program's output.
 
 The ontology uses these weather elements which are available from most Internet weather services and many weather sensors:
 \begin{itemize}
@@ -249,8 +278,38 @@ The ontology uses these weather elements which are available from most Internet 
   \item solar radiation.
 \end{itemize}
 
-% TODO mention weather condition
+Furthermore, an overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition. These states are taken from the list of symbols used for describing the weather condition in the API of \emph{yr.no}.
+
 % TODO table that assigns weather elements to competence questions
 
-Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see \ref{subsec:sun_position} for details.
+Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section \ref{subsec:sun_position} for details.
 
+To ensure the ontology can be used in the desired manner, it is necessary that the competence questions from section \ref{sec:weather_information} can be answered by the ontology using the provided input data. See table \ref{table:competence_questions} for details about which competence questions can be answered by using which weather element(s). After developing the ontology, section \ref{sec:ontology_evaluation} will discuss whether this ontology can answer the competence questions.
+
+\begin{table}
+\begin{tabular}[h]{|l|l|} % TODO
+\hline
+\textbf{Competence question} & \textbf{Weather element(s)} \\ % TODO remove (s) or replace it by s?
+\hline \hline
+bla & \\
+\hline
+bla & \\
+\hline
+bla & \\
+\hline
+bla & \\
+\hline
+bla & \\
+\hline
+bla & \\
+\hline
+bla & \\
+\hline
+bla & \\
+\hline
+bla & \\
+\hline
+\end{tabular}
+\label{table:competence_questions}
+\caption{Assignment of competence questions to weather element(s)} % TODO remove (s) or replace it by s?
+\end{table}
