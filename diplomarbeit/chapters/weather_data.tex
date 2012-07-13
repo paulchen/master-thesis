@@ -53,6 +53,7 @@ However, there there are weather elements no sensor can provide data about, and 
 % TODO blah blah
 
 \subsection{Available Internet services}
+\label{sec:internet_services}
 
 % TODO mention that everything will be done in Java
 
@@ -83,8 +84,9 @@ For evaluation of Internet weather services, the following aspects are examined:
 
 In the following sections, some of the most popular Internet weather services are evaluated. In addition to the aspects listed above, some general information is provided (operator, web page and ...). % TODO
 
-% TODO pro/cons table with all weather services?
+% TODO we used this section to find out what is available and what not
 % TODO where do the informations in this sections come from?
+% TODO describe: what is "overall weather condition"
 
 \paragraph{DWD}
 
@@ -92,7 +94,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Operator:} \emph{Deutscher Wetterdienst} (\emph{DWD}, ``German weather service'')
   \item \textbf{Web page:} \href{http://www.dwd.de/}{http://www.dwd.de/}
   \item \textbf{Coverage area:} Current weather data is available worldwide, forecasts are available within Germany and only for large cities outside Germany.
-  \item \textbf{Data format:} Current weather data is available in SYNOP format (Surface Synoptic Observations) \footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}}. A Java parser may be difficult to implement. Forecasts are available as weather maps, tables and text (not machine-readable).
+  \item \textbf{Data format:} Current weather data is available in SYNOP format (Surface Synoptic Observations) \footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}}. A Java parser may be time-consuming to implement. Forecasts are available as weather maps, tables and text (not machine-readable).
   \item \textbf{Data access:} Via FTP (supported in Java by the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}).
   \item \textbf{Access restrictions, terms of use:} An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within projects like \thinkhome.
   \item \textbf{Documentation:} There is extensive documentation 
@@ -113,7 +115,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Access restrictions, terms of use:} Free for use for individuals and non-profit organizations, providing attribution required. No statement about commercial use anywhere in the documentation.
   \item \textbf{Documentation:} Full documentation is available.
   \item \textbf{Stability:} It is unknown whether this API is subject to change or not.
-  \item \textbf{Weather elements:} Temperature, wind chill, speed and direction, relative humidity, visibility, atmospheric pressure, sunrise and sunset times.
+  \item \textbf{Weather elements:} Data about current weather state includes temperature, wind chill, speed and direction, relative humidity, visibility, atmospheric pressure, sunrise and sunset times. Forecasts only include temperature and an overall weather condition.
   \item \textbf{Timeframe:} Forecasts are available for 48 hours, but only one forecast per day.
   \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
@@ -130,7 +132,7 @@ In the following sections, some of the most popular Internet weather services ar
   \item \textbf{Documentation:} Full documentation is available.
   \item \textbf{Stability:} It is unknown whether the APIs are subject to change or not.
   \item \textbf{Weather elements:} Free API offers temperature, wind speed and direction, relative humidity and precipitation intensity. Premium API additionally offers dew point, chance of precipitation and atmospheric pressure.
-  \item \textbf{Timeframe:} The Free API offers daily forecasts over a range of five days, the Premium API comes with 
+  \item \textbf{Timeframe:} The Free API offers daily forecasts over a range of five days, the Premium API comes with % TODO
   \item \textbf{Weather updates:} Weather data is updated every 3 to 4 hours.
 \end{itemize}
 
@@ -235,34 +237,35 @@ In the following sections, some of the most popular Internet weather services ar
 \section{Conclusion}
 \label{sec:weather_conclusion}
 
-% TODO
 \begin{table}
-  \begin{tabular}[h]{|l|l|l|}
+  \begin{tabularx}{\textwidth}{|X|X|X|}
   \hline
-  \textbf{Weather service} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\ % TODO replace (s) by s or omit completely?
+  \textbf{Weather service} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
   \hline \hline
-  DWD & & \\
+  DWD & - & Data format (\emph{SYNOP}); forecasts lack important weather elements \\
   \hline
-  World Weather Online & & \\
+  Yahoo! Weather & Simple data format (RSS) & Low number of forecasts; forecasts lack important weather elements \\
   \hline
-  Google Weather Feed & & \\
+  World Weather Online & Wide range of data formats & Free API lacks important data \\
   \hline
-  yr.no & & \\
+  Google Weather Feed & Simple data format (XML) & Unofficial, undocumented API; unknown terms of use; only a small number of available weather elements \\
   \hline
-  METAR & & \\
+  yr.no & Simple data format (XML); available under CC-BY 3.0 & - \\
   \hline
-  National Weather Service & & \\
+  METAR & - & Data format (\emph{METAR}); no forecasts \\
   \hline
-  Weather Underground & & \\
+  National Weather Service & Simple data format (XML) & No worldwide coverage \\
   \hline
-  Weather.com & & \\
+  Weather Underground & Data formats (XML and JSON) & Public API lacks important data \\
   \hline
-  \end{tabular}
+  Weather.com & Data formats (XML and JSON) & Complicated account creation \\
+  \hline
+  \end{tabularx}
   \caption{Advantages and disadvantages of Internet weather services}
   \label{table:weather_services}
 \end{table}
 
-Table \ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in \ref{weather_services}. Based on that evaluation, it is determined that \emph{yr.no} suits \thinkhome's requirements best. Therefore, it is used for developing a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology that is developed in section \ref{sec:ontology_specification}. See section \ref{subsec:weather_data_yr_no} for details on how to query \emph{yr.no}'s weather API.
+Table \ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in \ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \emph{yr.no} suits \thinkhome's requirements best. Therefore, it is used for developing a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology that is developed in section \ref{sec:ontology_specification}. See section \ref{subsec:weather_data_yr_no} for details on how to query \emph{yr.no}'s weather API.
 
 However, the weather service shall be replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \emph{yr.no} is to be replaced by another weather service, the ontology remains unchanged, but a new program for importing weather data into the ontology must be developed. If the weather service to be used does not support one or more weather elements, they are simply omitted in the program's output.
 
@@ -278,38 +281,46 @@ The ontology uses these weather elements which are available from most Internet 
   \item solar radiation.
 \end{itemize}
 
-Furthermore, an overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition. These states are taken from the list of symbols used for describing the weather condition in the API of \emph{yr.no}.
-
-% TODO table that assigns weather elements to competence questions
+Furthermore, an overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition. These states are taken from the list of symbols used for describing the weather condition in the API of \emph{yr.no}\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
 
 Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section \ref{subsec:sun_position} for details.
 
 To ensure the ontology can be used in the desired manner, it is necessary that the competence questions from section \ref{sec:weather_information} can be answered by the ontology using the provided input data. See table \ref{table:competence_questions} for details about which competence questions can be answered by using which weather element(s). After developing the ontology, section \ref{sec:ontology_evaluation} will discuss whether this ontology can answer the competence questions.
 
 \begin{table}
-\begin{tabular}[h]{|l|l|} % TODO
+\begin{tabularx}{\textwidth}{|X|X|}
 \hline
-\textbf{Competence question} & \textbf{Weather element(s)} \\ % TODO remove (s) or replace it by s?
+\textbf{Competence question} & \textbf{Weather element(s)} \\
 \hline \hline
-bla & \\
+What is the current weather situation? & \emph{all available elements} \\
 \hline
-bla & \\
+What will the weather situation be in one hour, in two hours, …, in 24 hours? & \emph{all available elements} \\
 \hline
-bla & \\
+What is the current temperature, humidity, wind speed, …? & \emph{the corresponding weather element} \\
 \hline
-bla & \\
+What will be the temperature, humidity, wind speed, … in one hour, in two hours, …, in 24 hours? & \emph{the corresponding weather element} \\
 \hline
-bla & \\
+What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values? & \emph{the corresponding weather element} \\
 \hline
-bla & \\
+Will the weather change? Will the temperature, humidity, … rise or fall? & \emph{the corresponding weather element} \\
 \hline
-bla & \\
+Does it rain? Will it rain in the next hours? Will it rain today? & Precipitation \\
 \hline
-bla & \\
+Will there be sunshine today? & Cloud coverage, sun radiation, sun position \\
 \hline
-bla & \\
+Do we need to irrigate the garden? & Precipitation, cloud coverage, sun radiation \\
 \hline
-\end{tabular}
+Will there be severe weather? & Wind, precipitation, temperature \\
+\hline
+Will temperature drop/stay below $0^\circ C$? & Temperature \\
+\hline
+When can we open windows and when do we have to keep them shut? & Precipitation, wind \\
+\hline
+When do we need sun protection? & Sun radiation, cloud coverage, sun position \\
+\hline
+When will it outside be colder than inside the house? When will it be warmer? & Temperature \\
+\hline
+\end{tabularx}
 \label{table:competence_questions}
-\caption{Assignment of competence questions to weather element(s)} % TODO remove (s) or replace it by s?
+\caption{Assignment of competence questions to weather element(s)}
 \end{table}
