@@ -13,13 +13,15 @@
 
 The previous chapters covered all aspects that have to be analyzed in order to build a completely new ontology from scratch: Chapter \ref{ch:weather_data} discussed all details about weather data necessary for the \thinkhome weather ontology, what data will be used and where to obain it. Chapter \ref{ch:existing_work} gave an overview over existing work regarding ontologies in the domain of weather data. As none of the existing ontologies fit the needs of an ontology for \thinkhome, chapter  \ref{ch:development_approaches} analyzed some of the most popular approaches for building ontologies from scratch. Among those \methontology was identified as the best suitable approach. % TODO citation for methontology?
 
-Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail. The structure follows the steps in the ontology development process introduced by \methontology.
+Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail. The structure follows the steps in the ontology development process introduced by \methontology as described in detail in chapter \ref{sec:methontology}.
 
 \section{Specification}
 \label{sec:ontology_specification}
 
-Specification, the first step proposed by \methontology, aims at creating an ontology specification document using natural language. That document must include at least the intended purpose of the ontology, the level of 
+Specification, the first step proposed by \methontology, aims at creating an \emph{ontology specification document} using natural language. That document must include at least the intended purpose of the ontology, the level of 
 formality and the ontology's scope.
+
+The contents of the ontology specification document are based on the knowledge acquired in the previous chapters about related work (chapter \ref{ch:existing_work}) and weather data (chapter \ref{ch:weather_data}). Competency questions are taken from section \label{sec:weather_information}.
 
 % TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
 \begin{mdframed}
@@ -48,7 +50,6 @@ formality and the ontology's scope.
 
 \begin{itemize}
   \item \emph{Weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, sun radiation, and the sun's position.
-
   \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
   \item \emph{Weather report}: Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
@@ -59,13 +60,12 @@ formality and the ontology's scope.
 
 \textbf{Sources of knowledge}: % TODO reference more literature (e.g. for types of twilight)
 \begin{itemize}
-  \item Weather data that is available from internet services.
-  \item Weather data that is available from local weather sensors.
-  \item Existing ontologies that cover the domain of weather data.
+  \item Weather data that is available from internet services (see section \ref{sec:internet_services}).
+  \item Weather data that is available from local weather sensors (see section \ref{sec:weather_sensors}).
+  \item Existing ontologies that cover the domain of weather data (see chapter \ref{ch:existing_work}).
   \item Information about weather in general, e.g. the Glossary of Meteorology by the American Meteorological Society. % TODO citation, more literature
 \end{itemize}
 
-% TODO reference previous chapter
 \textbf{Competency questions}:
 \begin{itemize}
   \item What is the current weather situation?
@@ -88,11 +88,11 @@ formality and the ontology's scope.
 
 \vspace{.5cm}
 
-In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements. Section \ref{ch:ontology_evaluation} evaluates if the ontology that has been developed fits the specification and what the ontology's shortcomings are.
+In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements. Section \ref{sec:ontology_evaluation} evaluates if the ontology that has been developed fits the specification and what the ontology's shortcomings are.
 
 \section{Knowledge Aquisition}
 
-The step of knowledge aquisition was already described in the previous chapters \ref{ch:existing_work} and \ref{ch:weather_data}. These chapters disussed in detail:
+The step of knowledge aquisition is already described in the previous chapters \ref{ch:existing_work} and \ref{ch:weather_data}. These chapters discuss in detail:
 
 \begin{itemize}
   \item Which weather data are relevant for \thinkhome?
@@ -113,199 +113,199 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
 % TODO add sub-concepts for weather state
 % TODO add type column
 % TODO add binary relations
-\begin{longtable}{|p{0.25\textwidth}|p{0.7\textwidth}|}
+\begin{longtable}{|p{0.25\textwidth}|p{0.6\textwidth}|p{0.1\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Description} \\
+  \textbf{Name} & \textbf{Description} & \textbf{Type} \\
   \hline\hline
-  Above room temperature & \\
+  Above room temperature & Temperature of more than 25 and less than or equal to 30 degrees Celsius; see \emph{Temperature}. & Concept \\
   \hline
-  Altitude & \\
+  Altitude & Height of a location above \emph{MSL}\footnote{\emph{Mean sea level}} in metres. & Instance attribute \\
   \hline
-  Astronomical twilight & \\
+  Astronomical twilight & During astronomical twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & \\ % TODO reference
   \hline
-  Atmospheric pressure & \\
+  Atmospheric pressure & & Concept \\ % TODO
   \hline
-  Below room temperature & \\
+  Below room temperature & Temperature of more than or equal to 10 and less than 20 degrees Celsius; see \emph{Temperature}. & Concept \\
   \hline
-  Calm & \\
+  Calm & Wind speed below 1 m/s; see \emph{Wind}. & Concept \\
   \hline
-  Civil twilight & \\
+  Civil twilight & During civil twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\
   \hline
-  Clear sky & \\
+  Clear sky & Cloud coverage is reported as to be 0 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
   \hline
-  Cloud & \\
+  Cloud & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
   \hline
-  Cloud cover & \\
+  Cloud cover & Concept describing the current cloud coverage in okta (integer numbers from 0 to 9); see \emph{okta}. Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast} and \emph{Unknown cloud cover}. & Concept \\
   \hline
-  Cold & \\
+  Cold & Temperature of more than or equal to 0 and less than 10 degrees Celsius; see \emph{Temperature}. & Concept \\
   \hline
-  Condition weather state & \\
+  Current weather report & Weather report describing the current weather; see \emph{Weather report}. & Concept \\
   \hline
-  Current weather report & \\
+  Current weather report from sensor & \emph{Current weather report} compiled from data from a \emph{Sensor source}; see \emph{Weather report}. & Concept \\
   \hline
-  Current weather report from sensor & \\
+  Current weather report from service & \emph{Current weather report} compiled from data from a \emph{Service source}; see \emph{Weather report}. & Concept \\
   \hline
-  Current weather report from service & \\
+  Day & During the day, the sun is exactly at or above the horizon. & Concept \\
   \hline
-  Day & \\
+  Dew point & & Concept \\ % TODO
   \hline
-  Dew point & \\
+  Directional wind & Wind including a direction; see \emph{Wind}. & Concept \\
   \hline
-  Directional wind & \\
+  Dry & Relative humidity of at least 30 and less than 40 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Dry & \\
+  East wind & & \\
   \hline
-  East wind & \\
+  End time & & \\
   \hline
-  End time & \\
+  Extremely heavy rain & & \\
   \hline
-  Extremely heavy rain & \\
+  Fog & & \\
   \hline
-  Fog & \\
+  Forecast weather report & & \\
   \hline
-  Forecast weather report & \\
+  Frost & & \\
   \hline
-  Frost & \\
+  Heat & & \\
   \hline
-  Heat & \\
+  Heavy rain & & \\
   \hline
-  Heavy rain & \\
+  High pressure & & \\
   \hline
-  High pressure & \\
+  High radiation & & \\
   \hline
-  High radiation & \\
+  Humidity & & Concept \\ % TODO
   \hline
-  Humidity & \\
+  Hurricane & & \\
   \hline
-  Hurricane & \\
+  Latitude & & \\
   \hline
-  Latitude & \\
+  Light clouds & & \\
   \hline
-  Light clouds & \\
+  Light rain & & \\
   \hline
-  Light rain & \\
+  Light wind & & \\
   \hline
-  Light wind & \\
+  Location & & \\
   \hline
-  Location & \\
+  Longitude & & \\
   \hline
-  Longitude & \\
+  Long range weather report & & \\
   \hline
-  Long range weather report & \\
+  Low pressure & & \\
   \hline
-  Low pressure & \\
+  Low radiation & & \\
   \hline
-  Low radiation & \\
+  Medium radiation & & \\
   \hline
-  Medium radiation & \\
+  Medium rain & & \\
   \hline
-  Medium rain & \\
+  Medium range weather report & & \\
   \hline
-  Medium range weather report & \\
+  Moist & Relative humidity of more than 70 and at most 80 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Moist & \\
+  Mostly cloudy & & \\
   \hline
-  Mostly cloudy & \\
+  Nautical twilight & & \\
   \hline
-  Nautical twilight & \\
+  Night & & \\
   \hline
-  Night & \\
+  No radiation & & \\
   \hline
-  No radiation & \\
+  No rain & & \\
   \hline
-  No rain & \\
+  Normal humidity & Relative humidity of at least 40 and at most 70 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Normal humidity & \\
+  Normal pressure & & \\
   \hline
-  Normal pressure & \\
+  North wind & & \\
   \hline
-  North wind & \\
+  Observation time & & \\
   \hline
-  Observation time & \\
+  Okta & & \\
   \hline
-  Overcast & \\
+  Overcast & & \\
   \hline
-  Partly cloudy & \\
+  Partly cloudy & & \\
   \hline
-  Precipitation & \\
+  Precipitation & & \\
   \hline
-  Priority & \\
+  Priority & & \\
   \hline
-  Rain & \\
+  Rain & & \\
   \hline
-  Room temperature & \\
+  Room temperature & & \\
   \hline
-  Sensor source & \\
+  Sensor source & & \\
   \hline
-  Service source & \\
+  Service source & & \\
   \hline
-  Short range weather report & \\
+  Short range weather report & & \\
   \hline
-  Sleet & \\
+  Sleet & & \\
   \hline
-  Snow & \\
+  Snow & & \\
   \hline
-  Solar twilight & \\
+  Solar twilight & & \\
   \hline
-  South wind & \\
+  South wind & & \\
   \hline
-  Start time & \\
+  Start time & & \\
   \hline
-  Storm & \\
+  Storm & & \\
   \hline
-  Strong wind & \\
+  Strong wind & & \\
   \hline
-  Sun & \\
+  Sun & & \\
   \hline
-  Sun from east & \\
+  Sun from east & & \\
   \hline
-  Sun from north & \\
+  Sun from north & & \\
   \hline
-  Sun from south & \\
+  Sun from south & & \\
   \hline
-  Sun from west & \\
+  Sun from west & & \\
   \hline
-  Sun position & \\
+  Sun position & & \\
   \hline
-  Sun radiation & \\
+  Sun radiation & & \\
   \hline
-  Temperature & \\
+  Temperature & & \\
   \hline
-  Thunder & \\
+  Thunder & & \\
   \hline
-  Timed weather report & \\
+  Timed weather report & & \\
   \hline
-  Tropical storm rain & \\
+  Tropical storm rain & & \\
   \hline
-  Unknown cloud cover & \\
+  Unknown cloud cover & & \\
   \hline
-  Very dry & \\
+  Very dry & Relative humidity of less than 30 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Very high pressure & \\
+  Very high pressure & & \\
   \hline
-  Very high radiation & \\
+  Very high radiation & & \\
   \hline
-  Very low pressure & \\
+  Very low pressure & & \\
   \hline
-  Very moist & \\
+  Very moist & Relative humidity of more than 80 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Weather condition & \\
+  Weather condition & & \\
   \hline
-  Weather phenomenon & \\
+  Weather phenomenon & & \\
   \hline
-  Weather report & \\
+  Weather report & & \\
   \hline
-  Weather report from sensor & \\
+  Weather report from sensor & & \\
   \hline
-  Weather report from service & \\
+  Weather report from service & & \\
   \hline
-  Weather report source & \\
+  Weather report source & & \\
   \hline
-  Weather state & \\
+  Weather state & & \\
   \hline
-  West wind & \\
+  West wind & & \\
   \hline
-  Wind & \\
+  Wind & & \\
   \hline
 \end{longtable}
 
@@ -787,7 +787,7 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
 \section{Integration}
 \label{sec:integration}
 
-One of the goals of the \thinkhomeweather ontology is to keep an eye on existing ontologies to be re-used. While analyzing the problem domain, it quickly became clear that there are four areas where already existing ontologies could be reused: Location data, measuremenr units, date/time specifications and weather concepts. Chapter \label{ch:existing_work} already shed some light on existing ontologies around the domain of weather data. In this section, the ontologies being short-listed for reuse within \thinkhomeweather are summarized.
+One of the goals of the \thinkhomeweather ontology is to keep an eye on existing ontologies to be re-used. While analyzing the problem domain, it quickly became clear that there are four areas where already existing ontologies could be reused: Location data, measuremenr units, date/time specifications and weather concepts. Chapter \ref{ch:existing_work} already sheds some light on existing ontologies around the domain of weather data. In this section, the ontologies being short-listed for reuse within \thinkhomeweather are summarized.
 
 % TODO reference: website, WGS84
 For location data, the W3C Semantic Web Interest Group offers a \emph{Basic Geo (WGS84 lat/long) Vocabulary}. It introduces a concept called \emph{Spatial thing} that can have \emph{latitude}, \emph{longitude} and \emph{altitude} according to the WGS 84 geodetic reference system. However, the vocabulary contains some data properties that are incorrectly defined as annotation property. This shortcoming needs to be overriden in any ontology that uses this vocabulary.

@@ -1,16 +1,11 @@
-% TODO aim of this chapter: find out which data is available, where can they be obtained, which values are useful
-
-% TODO some section containing thoughts about which data is required for the ThinkHome ontology, e.g. in the chapter about the ontology itself?
-
 Based on the insights acquired from existing work in chapter \ref{ch:existing_work}, this chapter aims at compiling a set of weather properties which are either necessary for providing useful data to the \thinkhome system or which would add benefit to the data provided. Furthermore, possible sources will are evaluated with respect to their usableness in the given context.
 
 \section{Weather information}
 \label{sec:weather_information}
 
-% TODO reference competence questions
-In order to identify weather properties required for \thinkhome, one must specify the requirements that have to be met. When designing an ontology, this is often done by asking numerous \emph{competence questions}.
+In order to identify weather properties required for \thinkhome, one must specify the requirements that have to be met. When designing an ontology, this is often done by asking numerous \emph{competency questions}.
 
-These competence questions that shall be answered by \thinkhome's weather ontology:
+These competency questions that shall be answered by \thinkhome's weather ontology:
 
 % TODO answer: where do 24 hours come from? discuss questions further? how were these questions built?
 \begin{itemize}
@@ -30,13 +25,15 @@ These competence questions that shall be answered by \thinkhome's weather ontolo
   \item When will it outside be colder than inside the house? When will it be warmer?
 \end{itemize}
 
-These competence questions will again be used in section \label{sec:ontology_specification} for creating the \emph{Ontology requirements specification document}.
+These competency questions will again be used in section \label{sec:ontology_specification} for creating the \emph{Ontology requirements specification document}.
 
 % TODO references
-% TODO measurement readings
+% TODO replace "measurement readings" by other term?
 These questions can be answered when knowing the (predicted) state of the weather for particular points of time. The state of the weather is given by measurement readings of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage etc.
 
 A set of measurement readings for one or more points of time is called \emph{weather data} from now on.
+
+Apart from weather elements, Internet weather services often provide some information that will be called \emph{overall weather condition} from now on. Generally speaking, the overall weather condition is what someone tells you if you ask her about the current weather situation. Examples for the overall weather condition are ``Sun'', ``Rain'', ``Fog'' etc. Some weather conditions can be split up into several conditions, e.g. ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
 
 Sources for weather data are weather sensors and weather forecasts. As no weather forecasting is performed within \thinkhome, forecast data will be obtained from weather services via Internet. Data about the current weather state can be obtained from both weather sensors and Internet services; the only source for data about future weather states are Internet services.
 
@@ -55,9 +52,9 @@ However, there there are weather elements no sensor can provide data about, and 
 \subsection{Available Internet services}
 \label{sec:internet_services}
 
-% TODO mention that everything will be done in Java
-
 There is a tremendous amount of services providing weather data over the Internet. However, only a small number of them is suitable for use in a context as in \thinkhome. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
+
+Handling of Internet weather services will be implemented in Java, hence an important question about a certain weather service is whether in can easily be accessed from within a Java program.
 
 For evaluation of Internet weather services, the following aspects are examined:
 
@@ -82,11 +79,9 @@ For evaluation of Internet weather services, the following aspects are examined:
   The data should be updated at least every six hours. A service having a shorter update interval is preferred over a service having a longer interval.
 \end{itemize}
 
-In the following sections, some of the most popular Internet weather services are evaluated. In addition to the aspects listed above, some general information is provided (operator, web page and ...). % TODO
+In the following sections, some of the most popular Internet weather services are evaluated. In addition to the aspects listed above, some general information is provided (operator and web page). These sections aim at determining which Internet weather service best fits the given requirements. Furthermore, based on which weather elements are provided by various services, a set of weather elements is determined that will be used in the ontology. Including weather elements that are not available from any weather services are useless.
 
-% TODO we used this section to find out what is available and what not
 % TODO where do the informations in this sections come from?
-% TODO describe: what is "overall weather condition"
 
 \paragraph{DWD}
 
@@ -175,7 +170,7 @@ In the following sections, some of the most popular Internet weather services ar
 \begin{itemize}
   \item \textbf{Operator:} Airports around the world.
   \item \textbf{Web page:} \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/}
-  \item \textbf{Coverage area:} Worldwide coverage. % TODO mention http://www.aviationweather.gov/static/adds/metars/stations.txt
+  \item \textbf{Coverage area:} Worldwide coverage.
   \item \textbf{Data format:} The \emph{METAR} format is standardized by \emph{ICAO} (\emph{International Civil Aviation Organization}). It is not human-readable. Parsers for various programming languages are available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}}.
   \item \textbf{Data access:} Via HTML from \emph{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available.
   \item \textbf{Access restrictions, terms of use:} % TODO nothing stated anywhere?
@@ -281,16 +276,16 @@ The ontology uses these weather elements which are available from most Internet 
   \item solar radiation.
 \end{itemize}
 
-Furthermore, an overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition. These states are taken from the list of symbols used for describing the weather condition in the API of \emph{yr.no}\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
+Furthermore, an overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition (of course, two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used together). These states are taken from the list of symbols used for describing the weather condition in the API of \emph{yr.no}\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
 
 Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section \ref{subsec:sun_position} for details.
 
-To ensure the ontology can be used in the desired manner, it is necessary that the competence questions from section \ref{sec:weather_information} can be answered by the ontology using the provided input data. See table \ref{table:competence_questions} for details about which competence questions can be answered by using which weather element(s). After developing the ontology, section \ref{sec:ontology_evaluation} will discuss whether this ontology can answer the competence questions.
+To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section \ref{sec:weather_information} can be answered by the ontology using the provided input data. See table \ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). After developing the ontology, section \ref{sec:ontology_evaluation} will discuss whether this ontology can answer the competency questions.
 
 \begin{table}
 \begin{tabularx}{\textwidth}{|X|X|}
 \hline
-\textbf{Competence question} & \textbf{Weather element(s)} \\
+\textbf{Competency question} & \textbf{Weather element(s)} \\
 \hline \hline
 What is the current weather situation? & \emph{all available elements} \\
 \hline
@@ -321,6 +316,6 @@ When do we need sun protection? & Sun radiation, cloud coverage, sun position \\
 When will it outside be colder than inside the house? When will it be warmer? & Temperature \\
 \hline
 \end{tabularx}
-\label{table:competence_questions}
-\caption{Assignment of competence questions to weather element(s)}
+\label{table:competency_questions}
+\caption{Assignment of competency questions to weather element(s)}
 \end{table}
