@@ -21,7 +21,7 @@ Based on these findings, this chapter describes the process of building the \thi
 Specification, the first step proposed by \methontology, aims at creating an \emph{ontology specification document} using natural language. That document must include at least the intended purpose of the ontology, the level of 
 formality and the ontology's scope.
 
-The contents of the ontology specification document are based on the knowledge acquired in the previous chapters about related work (chapter \ref{ch:existing_work}) and weather data (chapter \ref{ch:weather_data}). Competency questions are taken from section \label{sec:weather_information}.
+The contents of the ontology specification document are based on the knowledge acquired in the previous chapters about related work (chapter \ref{ch:existing_work}) and weather data (chapter \ref{ch:weather_data}). Competency questions are taken from section \ref{sec:weather_information}.
 
 % TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
 \begin{mdframed}
@@ -49,7 +49,7 @@ The contents of the ontology specification document are based on the knowledge a
 \textbf{Scope}:
 
 \begin{itemize}
-  \item \emph{Weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, sun radiation, and the sun's position.
+  \item \emph{Weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, solar radiation, and the sun's position.
   \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
   \item \emph{Weather report}: Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
@@ -107,7 +107,8 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
 
 \subsection{Glossary of Terms}
 
-% TODO mention: in alphabetical order
+The terms in this table are arranged in alphabetical order.
+
 % TODO repeat header on every page?
 % TODO references between glossary items; e.g. from 'civil twilight' to 'twilight'
 % TODO add sub-concepts for weather state
@@ -209,7 +210,7 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
   \hline
   Night & Sun is more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\
   \hline
-  No radiation & No sun radiation ($0 W/m^2$); see \emph{Solar radiation}. & Concept \\
+  No radiation & No solar radiation ($0 W/m^2$); see \emph{Solar radiation}. & Concept \\
   \hline
   No rain & No precipitation (because the chance or the intensity of precipitation is 0); see \emph{Precipitation}. & Concept \\
   \hline
@@ -289,17 +290,17 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
   \hline
   Very moist & Relative humidity of more than 80 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Weather condition & & \\ % TODO
+  Weather condition & Overall state of the weather, represented by (a combination of) these individuals: \emph{Sun}, \emph{Light clouds}, \emph{Partly cloudy}, \emph{Cloudy}, \emph{Fog}, \emph{Rain}, \emph{Snow}, \emph{Sleet}, and \emph{Thunder}. & Concept \\
   \hline
-  Weather phenomenon & & \\ % TODO
+  Weather phenomenon & Represents a certain weather element. Relevant weather elements are \emph{Temperature}, \emph{Humidity}, \emph{Dew point}, \emph{Wind}, \emph{Precipitation}, \emph{Atmospheric pressure}, \emph{Cloud cover}, \emph{Solar radiation}, and the \emph{Sun position}. & Concept \\
   \hline
-  Weather report & & \\ % TODO
+  Weather report & Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report. & Concept \\ % TODO related concepts
   \hline
-  Weather report from sensor & A weather report containing data coming from one or more sensors. & Concept \\
+  Weather report from sensor & A weather report containing data coming from one or more sensors; see \emph{Weather report} and \emph{Sensor source}. & Concept \\
   \hline
-  Weather report from service & A weather report containing data coming from an Internet weather service. & Concept \\
+  Weather report from service & A weather report containing data coming from an Internet weather service; see \emph{Weather report} and \emph{Service source}. & Concept \\
   \hline
-  Weather report source & A source for weather data, either a set of weather sensors or an Internet weather service. & Concept \\
+  Weather report source & A source for weather data, either a set of weather sensors or an Internet weather service; see \emph{Weather report}, \emph{Sensor source} and \emph{Service source}. & Concept \\
   \hline
   Weather state & & \\
   \hline
@@ -364,10 +365,10 @@ The only sub-concept of \emph{Weather phenomenon} that does not have any sub-con
   \includegraphics[scale=.3]{figures/diagrams/sun-position.png}
 \end{center}
 
-\paragraph{Sun radiation}
+\paragraph{Solar radiation}
 
 \begin{center}
-  \includegraphics[scale=.3]{figures/diagrams/sun-radiation.png}
+  \includegraphics[scale=.3]{figures/diagrams/solar-radiation.png}
 \end{center}
 
 \paragraph{Temperature}
@@ -392,9 +393,9 @@ There are two main attributes for a \emph{Weather report}: Its \emph{Start date}
 
 The concepts \emph{Short range forecast}, \emph{Medium range forecast} and \emph{Long range forecast} each do have sub-concepts which have been omitted from the above diagram for clarity. These sub-concepts are:
 \begin{itemize}
-  \item \emph{Short range forecast}: \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} and \emph{Forecast 3 hours weather report} for weather reports describing the weather in one, two and three hours.
-  \item \emph{Medium range forecast}: \emph{Forecast 6 hour weather report} and \emph{Forecast 9 hours weather report} for weather reports describing the weather in 6 and 9 hours.
-  \item \emph{Long range forecast}: \emph{Forecast 12 hour weather report}, \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report} and \emph{Forecast 25 hours weather report} for weather reports describing the weather in 12, 15, 18, 21 and 24 hours.
+  \item \emph{Short range forecast}: \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} and \emph{Forecast 3 hours weather report} for weather reports describing the weather in one, two and three hours, respectively.
+  \item \emph{Medium range forecast}: \emph{Forecast 6 hour weather report} and \emph{Forecast 9 hours weather report} for weather reports describing the weather in 6 and 9 hours, respectively.
+  \item \emph{Long range forecast}: \emph{Forecast 12 hour weather report}, \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report} and \emph{Forecast 25 hours weather report} for weather reports describing the weather in 12, 15, 18, 21 and 24 hours, respectively.
 \end{itemize}
 
 \subsubsection{Weather report source}
@@ -838,7 +839,7 @@ The \emph{Observation time} of a \emph{Weather report} is specified using an \em
 The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times must be given in UTC.
 
 % TODO reference unit ontology
-All instances of \emph{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to section \label{subsec:instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \emph{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. $^\circ$F and $^\circ$C for the \emph{Temperature value}), concepts, attributes and instances from the \emph{Measurement Units Ontology} (MUO) are re-used to add unit information. MUO forces the use of a certain pattern that is shown in figure . % TODO reference figure
+All instances of \emph{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to section \ref{subsec:instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \emph{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. $^\circ$F and $^\circ$C for the \emph{Temperature value}), concepts, attributes and instances from the \emph{Measurement Units Ontology} (MUO) are re-used to add unit information. MUO forces the use of a certain pattern that is shown in figure . % TODO reference figure
 
 % TODO reference WGS-84
 The \emph{Basic Geo (WGS84 lat/long) Vocabulary} by the \emph{W3C Semantic Web Interest Group} defines the concept \emph{Point} together with the attributes \emph{lat} (latitude), \emph{long} (longitude) and \emph{alt} (altitude). Furthermore, the attribute \emph{location} offers the possibility of connecting a \emph{Point} to any instance of some concept. See figure ... for the structure that results from this. % TODO reference figure
