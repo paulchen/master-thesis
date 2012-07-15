@@ -111,17 +111,17 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
 % TODO repeat header on every page?
 % TODO references between glossary items; e.g. from 'civil twilight' to 'twilight'
 % TODO add sub-concepts for weather state
-% TODO add type column
 % TODO add binary relations
+% TODO hPa, degrees Celsius, metres per second, MSL
 \begin{longtable}{|p{0.25\textwidth}|p{0.6\textwidth}|p{0.1\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Description} & \textbf{Type} \\
   \hline\hline
   Above room temperature & Temperature of more than 25 and less than or equal to 30 degrees Celsius; see \emph{Temperature}. & Concept \\
   \hline
-  Altitude & Height of a location above \emph{MSL}\footnote{\emph{Mean sea level}} in metres. & Instance attribute \\
+  Altitude & Height above \emph{MSL}\footnote{\emph{Mean sea level}} in metres. & Instance attribute \\ % TODO remove footnote?
   \hline
-  Astronomical twilight & During astronomical twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & \\ % TODO reference
+  Astronomical twilight & During astronomical twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\ % TODO reference
   \hline
   Atmospheric pressure & & Concept \\ % TODO
   \hline
@@ -153,159 +153,159 @@ In the conceptualization step, the domain knowledge is structured in a conceptia
   \hline
   Dry & Relative humidity of at least 30 and less than 40 percent; see \emph{Humidity}. & Concept \\
   \hline
-  East wind & & \\
+  East wind & Wind approximately coming from the East, e.g. originating from a direction of at least 45 and less than 135 degrees; see \emph{Wind}. & Concept \\
   \hline
-  End time & & \\
+  End time & The time a weather report is valid until, relative to the weather report's observation time; see \emph{Weather report}. & Instance attribute \\
   \hline
-  Extremely heavy rain & & \\
+  Extremely heavy rain & More than 50 and at most 100 mm/h precipitation per hour. & Concept \\
   \hline
-  Fog & & \\
+  Fog & One of the 8 predefined weather conditions; see \emph{Weather condition}. & Individual \\
   \hline
-  Forecast weather report & & \\
+  Forecast weather report & Weather report for some time after the \emph{Observation time}; see \emph{Weather report}. & Concept \\
   \hline
-  Frost & & \\
+  Frost & Temperature below 0 degrees Celsius; see \emph{Temperature}. & Concept \\
   \hline
-  Heat & & \\
+  Heat & Temperature above 30 degrees Celsius; see \emph{Temperature}. & Concept \\
   \hline
-  Heavy rain & & \\
+  Heavy rain & More than 20 and at most 50 mm/h precipitation per hour. & Concept \\
   \hline
-  High pressure & & \\
+  High pressure & Atmospheric pressure of at least 1018 and less than 1028 hPa; see \emph{Atmospheric pressure}. & Concept \\
   \hline
-  High radiation & & \\
+  High radiation & Solar radiation of at least $500 W/m^2$ and less than $750 W/m^2$. & Concept \\
   \hline
   Humidity & & Concept \\ % TODO
   \hline
-  Hurricane & & \\
+  Hurricane & Wind with a speed of at least 32 m/s. & Concept \\
   \hline
-  Latitude & & \\
+  Latitude & Latitude of the position a weather report is valid for; see \emph{Weather report}. & \\ % TODO degrees
   \hline
-  Light clouds & & \\
+  Light clouds & One of the 8 predefined weather conditions; see \emph{weather condition}. & Indivdual \\
   \hline
-  Light rain & & \\
+  Light rain & More than 0 and at most 5 mm/h precipitation per hour. & Concept \\
   \hline
-  Light wind & & \\
+  Light wind & Wind with a speed of at least 1 and less than 10 m/s. & Concept \\
   \hline
-  Location & & \\
+  Location & Geographical position a weather report is valid for, given by \emph{Altitude}, \emph{Longitude} and \emph{Latitude}; see \emph{Weather report}. & Concept \\
   \hline
-  Longitude & & \\
+  Longitude & Longitude of the position a weather report is valid for; see \emph{Weather report}. & \\ % TODO degrees
   \hline
-  Long range weather report & & \\
+  Long range weather report & Weather report describing a forecast for a point of time more than 12 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
   \hline
-  Low pressure & & \\
+  Low pressure & Atmospheric pressure of at least 998 and less than 1008 hPa; see \emph{Atmospheric pressure}. & Concept \\
   \hline
-  Low radiation & & \\
+  Low radiation & Solar radiation of more than $0 W/m^2$ and less than $250 W/m^2$. & Concept \\
   \hline
-  Medium radiation & & \\
+  Medium radiation & Solar radiation of more than $250 W/m^2$ and less than $500 W/m^2$. & Concept \\
   \hline
-  Medium rain & & \\
+  Medium rain & More than 5 and at most 0 mm/h precipitation per hour. & Concept \\
   \hline
-  Medium range weather report & & \\
+  Medium range weather report & Weather report describing a forecast for a point of time more than 3 hours and at most 12 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
   \hline
   Moist & Relative humidity of more than 70 and at most 80 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Mostly cloudy & & \\
+  Mostly cloudy & Cloud coverage is reported as to be 5, 6 or 7 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
   \hline
-  Nautical twilight & & \\
+  Nautical twilight & During astronomical twilight, the sun is more than 6 degrees and no more than 12 degrees below horizon; see \emph{Sun position}. & Concept \\
   \hline
-  Night & & \\
+  Night & Sun is more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\
   \hline
-  No radiation & & \\
+  No radiation & No sun radiation ($0 W/m^2$); see \emph{Solar radiation}. & Concept \\
   \hline
-  No rain & & \\
+  No rain & No precipitation (because the chance or the intensity of precipitation is 0); see \emph{Precipitation}. & Concept \\
   \hline
   Normal humidity & Relative humidity of at least 40 and at most 70 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Normal pressure & & \\
+  Normal pressure & Atmospheric pressure of at least 1008 and less than 1018 hPa; see \emph{Atmospheric pressure}.& \\
   \hline
-  North wind & & \\
+  North wind & Wind approximately coming from the East, e.g. originating from a direction of at least 315 or less than 45 degrees; see \emph{Wind}. & Concept \\
   \hline
-  Observation time & & \\
+  Observation time & Time when the weather data was collected from the weather sensor or the Internet weather service. & Instance attribute \\
   \hline
-  Okta & & \\
+  Okta & Unit of measurement that specifies the amount of cloud cover on a range from 0 (\emph{Clear sky}) to 8 (\emph{Overcast}); a value of 9 represents an \emph{Unknown cloud cover}; see \emph{Cloud cover}. & Individual \\ % TODO reference
   \hline
-  Overcast & & \\
+  Overcast & Cloud coverage is reported as to be 8 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
   \hline
-  Partly cloudy & & \\
+  Partly cloudy & Cloud coverage is reported as to be 1, 2, 3 or 4 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
   \hline
-  Precipitation & & \\
+  Partly cloudy & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
   \hline
-  Priority & & \\
+  Precipitation & & Concept \\ % TODO
   \hline
-  Rain & & \\
+  Priority & An integer value indicating which weather report for a certain period of time is to be preferred over another weather report for the same period of time. & Instance attribute \\
   \hline
-  Room temperature & & \\
+  Rain & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
   \hline
-  Sensor source & & \\
+  Room temperature & Temperature of at least 20 and at most 25 degrees Celsius. & Concept \\
   \hline
-  Service source & & \\
+  Sensor source & A sensor offering some kind of weather data. & Concept \\
   \hline
-  Short range weather report & & \\
+  Service source & An Internet weather service offering some kind of weather data. & Concept \\
   \hline
-  Sleet & & \\
+  Short range weather report & Weather report describing a forecast for a point of time at most 3 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
   \hline
-  Snow & & \\
+  Sleet & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
   \hline
-  Solar twilight & & \\
+  Snow & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
   \hline
-  South wind & & \\
+  Solar twilight & During solar twilight, the sun is above horizon, but less than 6 degrees above; see \emph{Sun position}. & Concept \\
   \hline
-  Start time & & \\
+  South wind & Wind approximately coming from the South, e.g. originating from a direction of at least 135 and less than 225 degrees; see \emph{Wind}. & Concept \\
   \hline
-  Storm & & \\
+  Start time & The time a weather report is valid from, relative to the weather report's observation time; see \emph{Weather report}. & Instance attribute \\
   \hline
-  Strong wind & & \\
+  Storm & Wind with a speed of at least 20 m/s. & Concept \\
   \hline
-  Sun & & \\
+  Strong wind & Wind with a speed of at least 10 and less than 20 m/s. & Concept \\
   \hline
-  Sun from east & & \\
+  Sun & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
   \hline
-  Sun from north & & \\
+  Sun from east & The direction of the sun's position of more than 45 and at most 135 degrees. & Concept \\
   \hline
-  Sun from south & & \\
+  Sun from north & The direction of the sun's position of more than 315 or at most 45 degrees. & Concept \\
   \hline
-  Sun from west & & \\
+  Sun from south & The direction of the sun's position of more than 135 and at most 225 degrees. & Concept \\
   \hline
-  Sun position & & \\
+  Sun from west & The direction of the sun's position of more than 225 and at most 315 degrees. & Concept \\
   \hline
-  Sun radiation & & \\
+  Sun position & Position of the sun, given by its elevation above horizon and its direction. & Concept \\ % TODO degrees
   \hline
-  Temperature & & \\
+  Sun radiation & & Concept \\ % TODO
   \hline
-  Thunder & & \\
+  Temperature & & Concept \\ % TODO
   \hline
-  Timed weather report & & \\
+  Thunder & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
   \hline
-  Tropical storm rain & & \\
+  Tropical storm rain & More than 100 mm/h precipitation per hour. & Concept \\
   \hline
-  Unknown cloud cover & & \\
+  Unknown cloud cover & Cloud coverage is reported as to be 9 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
   \hline
   Very dry & Relative humidity of less than 30 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Very high pressure & & \\
+  Very high pressure & Atmospheric pressure of at least 1028 hPa; see \emph{Atmospheric pressure}. & Concept \\
   \hline
-  Very high radiation & & \\
+  Very high radiation & Solar radiation of more than $750 W/m^2$. & Concept \\
   \hline
-  Very low pressure & & \\
+  Very low pressure & Atmospheric pressure of less than 998 hPa; see \emph{Atmospheric pressure}. & Concept \\
   \hline
   Very moist & Relative humidity of more than 80 percent; see \emph{Humidity}. & Concept \\
   \hline
-  Weather condition & & \\
+  Weather condition & & \\ % TODO
   \hline
-  Weather phenomenon & & \\
+  Weather phenomenon & & \\ % TODO
   \hline
-  Weather report & & \\
+  Weather report & & \\ % TODO
   \hline
-  Weather report from sensor & & \\
+  Weather report from sensor & A weather report containing data coming from one or more sensors. & Concept \\
   \hline
-  Weather report from service & & \\
+  Weather report from service & A weather report containing data coming from an Internet weather service. & Concept \\
   \hline
-  Weather report source & & \\
+  Weather report source & A source for weather data, either a set of weather sensors or an Internet weather service. & Concept \\
   \hline
   Weather state & & \\
   \hline
-  West wind & & \\
+  West wind & Wind approximately coming from the East, e.g. originating from a direction of at least 225 and less than 315 degrees; see \emph{Wind}. & Concept \\
   \hline
-  Wind & & \\
+  Wind & & Concept \\ % TODO
   \hline
 \end{longtable}
 
