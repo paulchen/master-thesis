@@ -420,6 +420,7 @@ A \emph{Weather state} collects all \emph{Weather phenomena} for a certain \emph
 
 The binary relations diagram shows all binary relations between concepts in the ontology in a clear manner:
 
+% TODO link "Weather condition" to "Weather state"
 \begin{center}
   \includegraphics[scale=.3]{figures/diagrams/binary-relations.png}
 \end{center}
@@ -428,13 +429,15 @@ The binary relations diagram shows all binary relations between concepts in the 
 
 A concept dictionary lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section \ref{sec:concept_classification_trees}.
 
+In the following tables, only the root concepts as shown in the concept-classification trees above are described in case the sub-concepts have the same instances, class attributes, instance attributes and relations as their respective super-concepts.
+
 \subsubsection{Weather condition}
 
 \begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  Weather condition & Cloud\newline Fog\newline Partly cloudy\newline Mostly cloudy\newline Rain\newline Sleet\newline Snow\newline Sun\newline Thunder & - & - & hasCondition \\
+  Weather condition & Cloud\newline Fog\newline Partly cloudy\newline Mostly cloudy\newline Rain\newline Sleet\newline Snow\newline Sun\newline Thunder & - & - & has condition \\
   \hline
 \end{longtable}
 
@@ -444,177 +447,37 @@ A concept dictionary lists all concepts together with their names, instances, cl
 \begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
-  \hline\hline
-  Above room temperature & - & - & - & - \\
   \hline
-  Astronomical twilight & - & - & - & - \\
+  Atmospheric pressure & - & - & Pressure value & belongs to state,\newline has weather phenomenon \\
   \hline
-  Atmospheric pressure & - & - & - & - \\
+  Dew point & - & - & Dew point value & belongs to state,\newline has weather phenomenon \\
   \hline
-  Below room temperature & - & - & - & - \\
+  Humidity & - & - & Humidity value & belongs to state,\newline has weather phenomenon \\
   \hline
-  Calm & - & - & - & - \\
+  Sun position & - & - & Sun elevation angle,\newline Sun direction & belongs to state,\newline has weather phenomenon \\
   \hline
-  Civil twilight & - & - & - & - \\
+  Sun radiation & - & - & Sun radiation value & belongs to state,\newline has weather phenomenon \\
   \hline
-  Clear sky & - & - & - & - \\
+  Temperature & - & - & Temperature value & belongs to state,\newline has weather phenomenon \\
   \hline
-  Cloud & - & - & - & - \\
+  Weather phenomenon & - & - & - & belongs to state,\newline has weather phenomenon \\
   \hline
-  Cloud cover & - & - & - & - \\
-  \hline
-  Cold & - & - & - & - \\
-  \hline
-  Day & - & - & - & - \\
-  \hline
-  Dew point & - & - & - & - \\
-  \hline
-  Directional wind & - & - & - & - \\
-  \hline
-  Dry & - & - & - & - \\
-  \hline
-  East wind & - & - & - & - \\
-  \hline
-  Extremely heavy rain & - & - & - & - \\
-  \hline
-  Fog & - & - & - & - \\
-  \hline
-  Frost & - & - & - & - \\
-  \hline
-  Heat & - & - & - & - \\
-  \hline
-  Heavy rain & - & - & - & - \\
-  \hline
-  High pressure & - & - & - & - \\
-  \hline
-  High radiation & - & - & - & - \\
-  \hline
-  Humidity & - & - & - & - \\
-  \hline
-  Hurricane & - & - & - & - \\
-  \hline
-  Light rain & - & - & - & - \\
-  \hline
-  Light wind & - & - & - & - \\
-  \hline
-  Low pressure & - & - & - & - \\
-  \hline
-  Low radiation & - & - & - & - \\
-  \hline
-  Medium radiation & - & - & - & - \\
-  \hline
-  Medium rain & - & - & - & - \\
-  \hline
-  Moist & - & - & - & - \\
-  \hline
-  Mostly cloudy & - & - & - & - \\
-  \hline
-  Nautical twilight & - & - & - & - \\
-  \hline
-  Night & - & - & - & - \\
-  \hline
-  No radiation & - & - & - & - \\
-  \hline
-  No rain & - & - & - & - \\
-  \hline
-  Normal humidity & - & - & - & - \\
-  \hline
-  Normal pressure & - & - & - & - \\
-  \hline
-  North wind & - & - & - & - \\
-  \hline
-  Overcast & - & - & - & - \\
-  \hline
-  Partly cloudy & - & - & - & - \\
-  \hline
-  Precipitation & - & - & - & - \\
-  \hline
-  Room temperature & - & - & - & - \\
-  \hline
-  Solar twilight & - & - & - & - \\
-  \hline
-  South wind & - & - & - & - \\
-  \hline
-  Sun from east & - & - & - & - \\
-  \hline
-  Sun from north & - & - & - & - \\
-  \hline
-  Sun from south & - & - & - & - \\
-  \hline
-  Sun from west & - & - & - & - \\
-  \hline
-  Sun position & - & - & - & - \\
-  \hline
-  Sun radiation & - & - & - & - \\
-  \hline
-  Temperature & - & - & - & - \\
-  \hline
-  Tropical storm rain & - & - & - & - \\
-  \hline
-  Unknown cloud cover & - & - & - & - \\
-  \hline
-  Very dry & - & - & - & - \\
-  \hline
-  Very high pressure & - & - & - & - \\
-  \hline
-  Very high radiation & - & - & - & - \\
-  \hline
-  Very low pressure & - & - & - & - \\
-  \hline
-  Very moist & - & - & - & - \\
-  \hline
-  Weather phenomenon & - & - & - & - \\
-  \hline
-  West wind & - & - & - & - \\
-  \hline
-  Wind & - & - & - & - \\
+  Wind & - & - & Wind speed,\newline Wind direction & belongs to state,\newline has weather phenomenon \\
   \hline
 \end{longtable}
 
 \subsubsection{Weather report}
 
-% TODO
+% TODO insert Altitude, Latitude, Longitude, start time, end time, observation time, priority somewhere else
+% TODO add Location to binary-relations diagram?
+% TODO 
+
+% TODO 
 \begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  Altitude & - & - & - & - \\
-  \hline
-  Current weather report & - & - & - & - \\
-  \hline
-  Current weather report from sensor & - & - & - & - \\
-  \hline
-  Current weather report from service & - & - & - & - \\
-  \hline
-  End time & - & - & - & - \\
-  \hline
-  Forecast weather report & - & - & - & - \\
-  \hline
-  Latitude & - & - & - & - \\
-  \hline
-  Location & - & - & - & - \\
-  \hline
-  Longitude & - & - & - & - \\
-  \hline
-  Long range weather report & - & - & - & - \\
-  \hline
-  Medium range weather report & - & - & - & - \\
-  \hline
-  Observation time & - & - & - & - \\
-  \hline
-  Priority & - & - & - & - \\
-  \hline
-  Short range weather report & - & - & - & - \\
-  \hline
-  Timed weather report & - & - & - & - \\
-  \hline
-  Weather report & - & - & - & - \\
-  \hline
-  Weather report from sensor & - & - & - & - \\
-  \hline
-  Weather report from service & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
+  Weather report & - & - & - & has source,\newline is source of,\newline has weather state,\newline belongs to weather report \\
   \hline
 \end{longtable}
 
@@ -625,23 +488,7 @@ A concept dictionary lists all concepts together with their names, instances, cl
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  Condition weather state & - & - & - & - \\
-  \hline
-  Weather state & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
-  \hline
-  & - & - & - & - \\
+  Weather state & - & - & - & has condition,\newline belongs to weather report,\newline has weather state,\newline belongs to state,\newline has weather phenomenon\\
   \hline
 \end{longtable}
 
@@ -652,11 +499,7 @@ A concept dictionary lists all concepts together with their names, instances, cl
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  Sensor source & - & - & - & - \\
-  \hline
-  Service source & - & - & - & - \\
-  \hline
-  Weather report source & - & - & - & - \\
+  Weather report source & - & - & - & is source of,\newline has source \\
   \hline
 \end{longtable}
 
@@ -695,59 +538,55 @@ The binary relation table specifies all relations from section \ref{sec:binary_r
 
 % TODO description of what is going on here
 % TODO
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+
+% TODO describe percent unit somewhere
+% TODO describe datatypes somewhere
+% TODO describe units somewhere
+\begin{longtable}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
   \hline
-  \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Cardinality} \\
+  \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
   \hline\hline
-  Altitude & - & - & - & - \\
+  Altitude & Location & Decimal & \emph{any values allowed} & Metres & $(1, 1)$ \\
   \hline
-  Cloud altitude & - & - & - & - \\
+  Cloud altitude & Cloud cover & Decimal & \emph{any values allowed} & Metres & $(1, 1)$ \\
   \hline
-  Cloud cover & - & - & - & - \\
+  Cloud cover & Cloud cover & Integer & $[0, 9]$ & Okta & $(1, 1)$ \\
   \hline
-  Dew point value & - & - & - & - \\
+  Dew point value & Dew point & Decimal & \emph{any values allowed} & Degrees Celsius & $(1, 1)$ \\
   \hline
-  End time & - & - & - & - \\
+  End time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  Humidity value & - & - & - & - \\
+  Humidity value & Humidity & Percent & $[0, 1]$ & - & $(1, 1)$ \\
   \hline
-  Latitude & - & - & - & - \\
+  Latitude & Location & Decimal & $[-90, 90]$ & Degrees & $(1, 1)$ \\
   \hline
-  Longitude & - & - & - & - \\
+  Longitude & Location & Decimal & $[-180, 180]$ & Degrees & $(1, 1)$ \\
   \hline
-  Observation time & - & - & - & - \\
+  Observation time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  Precipitation intensity & - & - & - & - \\
+  Precipitation intensity & Precipitation & Decimal & $[0, \infty)$ & Millimetres per hour & $(1, 1)$ \\
   \hline
-  Precipitation probability & - & - & - & - \\
+  Precipitation probability & Precipitation & Decimal & $[0, 1]$ & Percent & $(1, 1)$ \\
   \hline
-  Pressure value & - & - & - & - \\
+  Pressure value & Atmospheric pressure & Decimal & $[0, \infty)$ & Hectopascal & $(1, 1)$ \\
   \hline
-  Start time & - & - & - & - \\
+  Start time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  Sun direction & - & - & - & - \\
+  Sun direction & Sun position & Decimal & $[0, 360)$ & Degrees & $(1, 1)$ \\
   \hline
-  Sun elevation angle & - & - & - & - \\
+  Sun elevation angle & Sun position & Decimal & $[-90, 90]$ & Degrees & $(1, 1)$ \\
   \hline
-  Temperature value & - & - & - & - \\
+  Temperature value & Temperature & Decimal & \emph{any values allowed} & Degrees Celsius & $(1, 1)$ \\
   \hline
-  Wind direction & - & - & - & - \\
+  Wind direction & Wind & Decimal & $[0, 360)$ & Degrees & $(1, 1)$ \\
   \hline
-  Wind speed & - & - & - & - \\
+  Wind speed & Wind & Decimal & $[0, \infty)$ & Metres per second & $(1, 1)$ \\
   \hline
 \end{longtable}
 
 \subsection{Class attribute tables}
 
-% TODO description of what is going on here
-% TODO 
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
-  \hline
-  \textbf{Attribute name} & \textbf{Defined concept} & \textbf{Value type} & \textbf{Cardinality} & \textbf{Values} \\
-  \hline\hline
-  - & - & - & - & - \\
-  \hline
-\end{longtable}
+The ontology does not contain any class attributes, hence there is no table describing the class attributes' properties.
 
 \subsection{Logical axioms tables}
 
