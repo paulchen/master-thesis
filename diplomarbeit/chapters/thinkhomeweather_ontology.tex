@@ -15,6 +15,30 @@ The previous chapters covered all aspects that have to be analyzed in order to b
 
 Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail. The structure follows the steps in the ontology development process introduced by \methontology as described in detail in chapter \ref{sec:methontology}.
 
+% TODO move this paragraph about conventions somewhere else?
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/template.png}
+  \label{fig:diagram_example}
+  \caption{Example diagram}
+\end{figure}
+
+\definecolor{convention_color1}{HTML}{99CCFF}
+\definecolor{convention_color2}{HTML}{87E776}
+\definecolor{convention_color3}{HTML}{23B8DC}
+\definecolor{convention_color4}{HTML}{FFFF66}
+\definecolor{convention_color_bg4}{HTML}{AAAAAA}
+
+All diagrams in this chapter showing parts of an ontology follow these conventions:
+\begin{itemize}
+  \item \emph{Concepts} are shown as ellipses filled with the color \texttt{\textcolor{convention_color1}{\#99CCFF}}.
+  \item \emph{Instances} are shown as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
+  \item \emph{Blank nodes} are shown as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
+  \item \emph{Literals} are shown as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
+  \item \emph{Properties in the RDF(S) namespace} are shown as dashed lines. Their caption is written in italics.
+  \item \emph{Properties in other namespaces} are shown as solid lines. Their caption is not written in italics.
+\end{itemize}
+Figure \ref{fig:diagram_example} shows an example of a diagram containing all relevant elements.
+
 \section{Specification}
 \label{sec:ontology_specification}
 
@@ -604,9 +628,12 @@ Many concepts within the \thinkhomeweather ontology define themselves to be spec
 In the Glossary of Terms, \emph{Normal pressure} is defined to be an instance of \emph{Atmospheric pressure} having a value of at least 1008 and at most 1018 hPa to be assigned via \emph{has pressure value}. One could write this rule in the following manner:
 
 % TODO description
-% TODO format
+% TODO format, no page breaks within
 \begin{verbatim}
-if Atmospheric pressure(?X) and has pressure value(?X, ?Y) and ?Y >= 1008 and ?Y <= 1018 then Normal pressure(?X)
+if Atmospheric pressure(?X)
+  and has pressure value(?X, ?Y)
+  and ?Y >= 1008 and ?Y <= 1018
+then Normal pressure(?X)
 \end{verbatim}
 
 As a long list of such rules becomes apparently confusing, the relevant information is summarized in a table. In the case of the super-concept \emph{Atmospheric pressure}, this table has three columns: One that takes the name of the super-concept, one takes the name of the sub-concept and one the value range of the instance attribute \emph{has pressure value}. For the sub-concept \emph{Normal pressure}, this table evolves:
@@ -894,11 +921,20 @@ For location data, the W3C Semantic Web Interest Group offers a \emph{Basic Geo 
 % TODO reference SWEET
 NASA's SWEET ontology offers a wide range of concepts, attributes and individuals for environmental and atmospherical phenomena, including all units that may be used within a weather data ontology. SWEET is designed in a highly modular manner. Units can be found in a single OWL file. However, importing one of SWEET's OWL files into an ontology entails the import of a large number of other OWL files. As this makes any simple ontology using SWEET hard to handle, reusing SWEET is not an option.
 
-Besides SWEET, there is no appropriate ontology containing weather concepts that would make sense to be reused within \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
+Besides SWEET, there is no ontology containing weather concepts that has been determined to be appropriate for use within the \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
 
 % TODO reference: http://forge.morfeo-project.org/wiki_en/index.php/Units_of_measurement_ontology
 % TODO reference: http://idi.fundacionctic.org/muo/muo-vocab.html
 The \emph{Measurement Units Ontology} is a simple and light-weight approach to enrich measurement values with appropriate units. Some of the most important units are pre-defined, all others can easily be added. The \emph{Measurement Units Ontology} (MUO) is still work in progress. However, it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, MUO can be imported into any ontology without problems.
+
+Besides the \emph{Measurement Units Ontology}, several other ontologies have been examined, but all of them came with shortcomings that led to the decision not to use them in the \thinkhomeweather ontology. These ontologies are:
+\begin{itemize}
+  \item \textbf{SWEET:} Besides concepts, attributes and individuals for atmospherical phenomena, SWEET also comes with support for literals more precisely specified by units. However, as mentioned above importing any part of SWEET entails the import of a large number of OWL files that makes handling a ontology using SWEET difficult. Hence, SWEET is not used for introducing units into the \thinkhomeweather ontology.
+  \item \textbf{QUDT:} \emph{QUDT}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an OWL ontology. However, \emph{QUDT} does not work in Protege together with the Pellet reasoner. Using \emph{QUDT} would require several changes to the OWL files. Hence, it cannot be used in the \thinkhomeweather ontology. % TODO reference http://www.qudt.org/
+  \item \textbf{QUOMOS:} The \emph{OASIS Quantities and Units of Measure Ontology Standard} (\emph{QUOMOS}) aims at developing ``an ontology for quantities, systems of measurement units, and base dimensions for use across multiple industries''. However, at the time of writing, there is no release of any OWL ontology yet. % TODO reference https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=quomos
+  \item \textbf{OBO Foundry Initiative:} The \emph{OBO Foundry Initiative} is an initiative that aims at collecting ontologies for use in the biomedical domain. The list of \emph{The Open Biological and Biomedical Ontologies} (abbreviated by \emph{OBO}) includes an ontology for units of measurements. This ontology apparently covers most of the units that are used in the \thinkhomeweather ontology. However, it lacks any documentation and hence cannot be used in \thinkhomeweather. % TODO reference http://obofoundry.org/ and http://obofoundry.org/cgi-bin/detail.cgi?id=unit and http://code.google.com/p/unit-ontology/
+\end{itemize}
+Although the \emph{Measurement Units Ontology} has the shortcoming of making OWL reasoning clearly slower, it is the only ontology that has been determined to be usable in the \thinkhomeweather ontology flawlessly.
 
 % TODO reference W3C consortium
 % TODO reference W3C working draft definition
@@ -925,14 +961,22 @@ To ensure that the reasoning of all sub-concepts of \emph{Weather phenomenon}, \
 During the implementation step, the ontologies listed in section \ref{sec:integration} need to be imported and integrated. Their use implies the application of certain patterns required by the ontologies.
 
 % TODO reference OWL-Time
-\emph{OWL-Time} defines the concept \emph{TemporalEntity} and its sub-concepts \emph{Instant} and \emph{Interval}. Although \emph{Start time} and \emph{End time} of a \emph{Weather report} are actually \emph{Instant}s, these times are specified using \emph{Interval}s. The duration of such an interval represents the duration between the \emph{Observation time} of the \emph{Weather report} and the time that is to be expressed. This results in the structure shown in figure . % TODO reference figure
-The duration is rounded to full hours. Hence, there are simple rules for defining concepts for a \emph{Weather report} for forecasts in an arbitrary number of hours.
+\emph{OWL-Time} defines the concept \emph{TemporalEntity} and its sub-concepts \emph{Instant} and \emph{Interval}. Although \emph{Start time} and \emph{End time} of a \emph{Weather report} are actually \emph{Instant}s, these times are specified using \emph{Interval}s. The duration of such an interval represents the duration between the \emph{Observation time} of the \emph{Weather report} and the time that is to be expressed. This results in the structure shown in figure \ref{fig:owl_time1}. The duration is rounded to full hours. Hence, there are simple rules for defining concepts for a \emph{Weather report} for forecasts in an arbitrary number of hours.
 
-% TODO figure
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/owl-time1.png}
+  \caption{An instance of \emph{Current weather report} together with start time and end time and observation time.}
+  \label{fig:owl_time}
+\end{figure}
 
-The \emph{Observation time} of a \emph{Weather report} is specified using an \emph{Instant} as defined by \emph{OWL-time}. See figure ... for the resulting structure. % TODO reference figure
+The \emph{Observation time} of a \emph{Weather report} is specified using an \emph{Instant} as defined by \emph{OWL-time}. See figure \ref{fig:owl_time1} for the resulting structure. % TODO reference figure
 
-% TODO figure
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/owl-time2.png}
+  % TODO no line break inside the date string
+  \caption{An instance of \emph{Current weather report} together with its observation time (2012-06-16 14:30).}
+  \label{fig:owl_time}
+\end{figure}
 
 The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times must be given in UTC.
 
@@ -942,17 +986,13 @@ All instances of \emph{Weather phenomenon} have one or more attributes specifyin
 % TODO reference WGS-84
 The \emph{Basic Geo (WGS84 lat/long) Vocabulary} by the \emph{W3C Semantic Web Interest Group} defines the concept \emph{Point} together with the attributes \emph{lat} (latitude), \emph{long} (longitude) and \emph{alt} (altitude). Furthermore, the attribute \emph{location} offers the possibility of connecting a \emph{Point} to any instance of some concept. See figure ... for the structure that results from this. % TODO reference figure
 
-\begin{center}
-  \includegraphics[width=\textwidth]{figures/diagrams/template.png}
-\end{center}
-
 % TODO figure
 
 % TODO document completed ontology thoroughly
 % TODO diagrams for parts of the ontology
 \subsection{Naming conventions}
 
-During the implementation of the \thinkhomeweather ontology, it was necessary to define strict naming conventions for concepts, individuals and attributes; some of these conventions have already been applied to previous steps of developing the ontology:
+During the implementation of the \thinkhomeweather ontology, it is necessary to define strict naming conventions for concepts, individuals and attributes; some of these conventions have already been applied to previous steps of developing the ontology:
 
 \begin{itemize}
   \item All concepts, instances and attributes share one namespace, regardless of capitalization; e.g. there is no pair of a concept and an instance that shares the same name. There is also no pair of a concept and an instance which names only differ in their capitalization.
