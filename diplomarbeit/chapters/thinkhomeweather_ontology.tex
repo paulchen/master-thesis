@@ -965,7 +965,7 @@ During the implementation step, the ontologies listed in section \ref{sec:integr
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/owl-time1.png}
-  \caption{An instance of \emph{Current weather report} together with start time and end time and observation time.}
+  \caption{An instance of \emph{Current weather report} together with start time and end time.}
   \label{fig:owl_time}
 \end{figure}
 
@@ -974,7 +974,7 @@ The \emph{Observation time} of a \emph{Weather report} is specified using an \em
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/owl-time2.png}
   % TODO no line break inside the date string
-  \caption{An instance of \emph{Current weather report} together with its observation time (2012-06-16 14:30).}
+  \caption{An instance of \emph{Weather report} together with its observation time (2012-06-16 14:30).}
   \label{fig:owl_time}
 \end{figure}
 
@@ -984,12 +984,15 @@ The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \th
 All instances of \emph{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to section \ref{subsec:instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \emph{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. $^\circ$F and $^\circ$C for the \emph{Temperature value}), concepts, attributes and instances from the \emph{Measurement Units Ontology} (MUO) are re-used to add unit information. MUO forces the use of a certain pattern that is shown in figure . % TODO reference figure
 
 % TODO reference WGS-84
-The \emph{Basic Geo (WGS84 lat/long) Vocabulary} by the \emph{W3C Semantic Web Interest Group} defines the concept \emph{Point} together with the attributes \emph{lat} (latitude), \emph{long} (longitude) and \emph{alt} (altitude). Furthermore, the attribute \emph{location} offers the possibility of connecting a \emph{Point} to any instance of some concept. See figure ... for the structure that results from this. % TODO reference figure
+The \emph{Basic Geo (WGS84 lat/long) Vocabulary} by the \emph{W3C Semantic Web Interest Group} defines the concept \emph{Point} together with the attributes \emph{lat} (latitude), \emph{long} (longitude) and \emph{alt} (altitude). Furthermore, the attribute \emph{location} offers the possibility of connecting a \emph{Point} to any instance of some concept. See figure \label{fig:wgs84} for the structure that results from this. % TODO reference figure
 
-% TODO figure
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/wgs84.png}
+  \caption{An instance of \emph{Weather report} together with its location (Vienna, Austria: $48.21 ^{\circ} N$, $16.37 ^{\circ} E$, $171 m$ above MSL.}
+  \label{fig:owl_time}
+\end{figure}
 
 % TODO document completed ontology thoroughly
-% TODO diagrams for parts of the ontology
 \subsection{Naming conventions}
 
 During the implementation of the \thinkhomeweather ontology, it is necessary to define strict naming conventions for concepts, individuals and attributes; some of these conventions have already been applied to previous steps of developing the ontology:
@@ -1031,8 +1034,6 @@ Using a configuration file, \emph{WeatherReader} is fully customizable regarding
 
 \subsection{Weather data}
 \label{subsec:weather_data_yr_no}
-
-% TODO fix overfull hboxes in this subsection
 
 % TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
 For an arbitrary request, one must specify latitude and logitude (in degrees, nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a URL of the format
