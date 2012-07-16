@@ -1,0 +1,46 @@
+Ontology for Flights
+
+assumptions:
+* flight only from one airport to another; not from one airport to itself, not from A to B to C
+* flight always flown by the same aircraft
+* airports, aircraft and aircraft types will never change; hence, these values are fixed
+
+* specification document/competency questions
+
+* knowledge acquisition
+
+* glossary of terms
+  location, airport, flight, aircraft, aircraft type, cargo aircraft type, passenger aircraft type
+  iata code, registration number
+
+* concept-classification trees
+  location-airport
+
+* binary relations diagram
+  * departure airport, arrival airport - some super-property? - 
+  * <flight> flown by <aircraft>
+  * <aircraft> has type <aircraft type>
+  * inverse properties
+
+* concept dictionary
+
+* instance attribute tables
+  location name, iata code, aircraft name, registration number type name, flight number
+
+* class attribute tables
+  aircraft type - transports - cargo/passenger => cargo aircraft type/passenger aircraft type
+
+* constants
+  TODO
+
+* logical axioms table
+  * a flight can't start and end at the same airport
+
+* formula tables (rules)
+  * flight with cargo aircraft: cargo flight
+
+* instances
+  airport: VIE, MUC, FRA, ZRH
+  aircraft type: dash 8-400, boeing 767-freighter
+  aircraft: dash8: OE-LGA, OE-LGB, OE-LGC; b767: N301UP, N302UP, N303UP
+
