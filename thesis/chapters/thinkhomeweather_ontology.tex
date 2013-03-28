@@ -1,0 +1,1191 @@
+\chapter{The ThinkHomeWeather ontology}
+\label{ch:thinkhomeweather_ontology}
+
+% TODO put all names of steps according to \methontology into \emph
+% TODO ontology - naming conventions
+% TODO mention - this chapter does not cover the ontology development process as it was done; instead, it presents the completed documents that were created in that processs.
+% TODO mention second paper about methontology (the one that describes all artefacts created when building the chemical ontology)
+
+% TODO check if the things mentioned here are properly covered in the chapters referred
+
+% TODO rename: belongsToWeatherReport -> belongsToReport
+
+% TODO elaborate steps more?
+
+% TODO reference paper: Building legal ontologies with METHONTOLOGY and WebODE
+
+The previous chapters covered all aspects that have to be analyzed in order to build a completely new ontology from scratch: Chapter \ref{ch:weather_data} discussed all details about weather data necessary for the \thinkhome weather ontology, what data will be used and where to obain it. Chapter \ref{ch:existing_work} gave an overview over existing work regarding ontologies in the domain of weather data. As none of the existing ontologies fit the needs of an ontology for \thinkhome, chapter  \ref{ch:development_approaches} analyzed some of the most popular approaches for building ontologies from scratch. Among those \methontology was identified as the best suitable approach. % TODO citation for methontology?
+
+Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail. The structure follows the steps in the ontology development process introduced by \methontology as described in detail in chapter \ref{sec:methontology}.
+
+% TODO move this paragraph about conventions somewhere else?
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/template.png}
+  \label{fig:diagram_example}
+  \caption{Example diagram}
+\end{figure}
+
+\definecolor{convention_color1}{HTML}{99CCFF}
+\definecolor{convention_color2}{HTML}{87E776}
+\definecolor{convention_color3}{HTML}{23B8DC}
+\definecolor{convention_color4}{HTML}{FFFF66}
+\definecolor{convention_color_bg4}{HTML}{AAAAAA}
+
+All diagrams in this chapter showing parts of an ontology follow these conventions:
+\begin{itemize}
+  \item \emph{Concepts} are shown as ellipses filled with the color \texttt{\textcolor{convention_color1}{\#99CCFF}}.
+  \item \emph{Instances} are shown as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
+  \item \emph{Blank nodes} are shown as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
+  \item \emph{Literals} are shown as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
+  \item \emph{Properties in the RDF(S) namespace} are shown as dashed lines. Their caption is written in italics.
+  \item \emph{Properties in other namespaces} are shown as solid lines. Their caption is not written in italics.
+\end{itemize}
+Figure \ref{fig:diagram_example} shows an example of a diagram containing all relevant elements.
+
+\section{Specification}
+\label{sec:ontology_specification}
+
+Specification, the first step proposed by \methontology, aims at creating an \emph{ontology specification document} using natural language. That document must include at least the intended purpose of the ontology, the level of 
+formality and the ontology's scope.
+
+The contents of the ontology specification document are based on the knowledge acquired in the previous chapters about related work (chapter \ref{ch:existing_work}) and weather data (chapter \ref{ch:weather_data}). Competency questions are taken from section \ref{sec:weather_information}.
+
+% TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
+\begin{mdframed}
+\setlength{\parindent}{0pt}
+\MakeUppercase{\textbf{Ontology requirements specification document}}
+
+\vspace{.5cm}
+
+\textbf{Domain}: Weather data
+
+\vspace{.2cm}
+
+\textbf{Date}: 2012 % TODO
+
+\vspace{.2cm}
+
+\textbf{Purpose}: The ontology shall cover data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be aquired from both internet services as well as from weather sensors mounted to a building. This weather data will enable the \textit{ThinkHome} system to make decisions based on current and future weather conditions.
+
+\vspace{.2cm}
+
+\textbf{Level of formality}: semi-informal % TODO citations for uschold & gruninger, 1996; uschuld & king (enterprise ontology)
+
+\vspace{.2cm}
+
+\textbf{Scope}:
+
+\begin{itemize}
+  \item \emph{Weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, solar radiation, and the sun's position.
+  \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
+  \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
+  \item \emph{Weather report}: Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
+  \item \emph{Weather report source}: Source where the data belonging to a weather report has been obtained from (either a internet weather service or a local weather sensor).
+\end{itemize}
+
+\vspace{.2cm}
+
+\textbf{Sources of knowledge}: % TODO reference more literature (e.g. for types of twilight)
+\begin{itemize}
+  \item Weather data that is available from internet services (see section \ref{sec:internet_services}).
+  \item Weather data that is available from local weather sensors (see section \ref{sec:weather_sensors}).
+  \item Existing ontologies that cover the domain of weather data (see chapter \ref{ch:existing_work}).
+  \item Information about weather in general, e.g. the Glossary of Meteorology by the American Meteorological Society. % TODO citation, more literature
+\end{itemize}
+
+\textbf{Competency questions}:
+\begin{itemize}
+  \item What is the current weather situation?
+  \item What will the weather situation be in one hour, in two hours, …, in 24 hours?
+  \item What is the current temperature, humidity, wind speed, …?
+  \item What will be the temperature, humidity, wind speed, … in one hour, in two hours, …, in 24 hours?
+  \item What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?
+  \item Will the weather change? Will the temperature, humidity, … rise or fall?
+  \item Does it rain? Will it rain in the next hours? Will it rain today?
+  \item Will there be sunshine today? 
+  \item Do we need to irrigate the garden?
+  \item Will there be severe weather?
+  \item Will temperature drop/stay below $0^\circ C$?
+  \item When can we open windows and when do we have to keep them shut?
+  \item When do we need sun protection?
+  \item When will it outside be colder than inside the house? When will it be warmer?
+\end{itemize}
+
+\end{mdframed}
+
+\vspace{.5cm}
+
+In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements. Section \ref{sec:ontology_evaluation} evaluates if the ontology that has been developed fits the specification and what the ontology's shortcomings are.
+
+\section{Knowledge Aquisition}
+
+The step of knowledge aquisition is already described in the previous chapters \ref{ch:existing_work} and \ref{ch:weather_data}. These chapters discuss in detail:
+
+\begin{itemize}
+  \item Which weather data are relevant for \thinkhome?
+  \item Which weather data are available from sensors and internet services? How can this data be acquired?
+  \item Which data do not have any use for \thinkhomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
+  \item What knowledge about weather in general is required to build an appropriate ontology? % TODO check if this is available in the previous chapters
+\end{itemize}
+
+\section{Conceptualization}
+
+In the conceptualization step, the domain knowledge is structured in a conceptial model that describes the problem and its solution in terms of the domain vocabulary identified in the specification step. At first, a complete Glossary of Terms is built that covers all concepts, instances, attributes and binary relations.
+
+\subsection{Glossary of Terms}
+
+The terms in this table are arranged in alphabetical order.
+
+% TODO repeat header on every page?
+% TODO references between glossary items; e.g. from 'civil twilight' to 'twilight'
+% TODO add sub-concepts for weather state
+% TODO add binary relations
+% TODO hPa, degrees Celsius, metres per second, MSL
+% TODO where do all the values come from?
+% TODO mention WGS84 for lat, lon, alt
+\begin{longtable}{|p{0.25\textwidth}|p{0.6\textwidth}|p{0.1\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Description} & \textbf{Type} \\
+  \hline\hline
+  Above room temperature & Temperature of more than 25 and less than or equal to 30 degrees Celsius; see \emph{Temperature}. & Concept \\
+  \hline
+  Altitude & Height above \emph{MSL}\footnote{\emph{Mean sea level}} in metres. & Instance attribute \\ % TODO remove footnote?
+  \hline
+  Astronomical twilight & During astronomical twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\ % TODO reference
+  \hline
+  Atmospheric pressure & & Concept \\ % TODO
+  \hline
+  Below room temperature & Temperature of more than or equal to 10 and less than 20 degrees Celsius; see \emph{Temperature}. & Concept \\
+  \hline
+  Calm & Wind speed below 1 m/s; see \emph{Wind}. & Concept \\
+  \hline
+  Civil twilight & During civil twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\
+  \hline
+  Clear sky & Cloud coverage is reported as to be 0 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
+  \hline
+  Cloud & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
+  \hline
+  Cloud cover & Concept describing the current cloud coverage in okta (integer numbers from 0 to 9); see \emph{okta}. Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast} and \emph{Unknown cloud cover}. & Concept \\
+  \hline
+  Cold & Temperature of more than or equal to 0 and less than 10 degrees Celsius; see \emph{Temperature}. & Concept \\
+  \hline
+  Current weather report & Weather report describing the current weather; see \emph{Weather report}. & Concept \\
+  \hline
+  Current weather report from sensor & \emph{Current weather report} compiled from data from a \emph{Sensor source}; see \emph{Weather report}. & Concept \\
+  \hline
+  Current weather report from service & \emph{Current weather report} compiled from data from a \emph{Service source}; see \emph{Weather report}. & Concept \\
+  \hline
+  Day & During the day, the sun is exactly at or above the horizon. & Concept \\
+  \hline
+  Dew point & & Concept \\ % TODO
+  \hline
+  Directional wind & Wind including a direction; see \emph{Wind}. & Concept \\
+  \hline
+  Dry & Relative humidity of at least 30 and less than 40 percent; see \emph{Humidity}. & Concept \\
+  \hline
+  East wind & Wind approximately coming from the East, e.g. originating from a direction of at least 45 and less than 135 degrees; see \emph{Wind}. & Concept \\
+  \hline
+  End time & The time a weather report is valid until, relative to the weather report's observation time; see \emph{Weather report}. & Instance attribute \\
+  \hline
+  Extremely heavy rain & More than 50 and at most 100 mm/h precipitation per hour. & Concept \\
+  \hline
+  Fog & One of the 8 predefined weather conditions; see \emph{Weather condition}. & Individual \\
+  \hline
+  Forecast weather report & Weather report for some time after the \emph{Observation time}; see \emph{Weather report}. & Concept \\
+  \hline
+  Frost & Temperature below 0 degrees Celsius; see \emph{Temperature}. & Concept \\
+  \hline
+  Heat & Temperature above 30 degrees Celsius; see \emph{Temperature}. & Concept \\
+  \hline
+  Heavy rain & More than 20 and at most 50 mm/h precipitation per hour. & Concept \\
+  \hline
+  High pressure & Atmospheric pressure of at least 1018 and less than 1028 hPa; see \emph{Atmospheric pressure}. & Concept \\
+  \hline
+  High radiation & Solar radiation of at least $500 W/m^2$ and less than $750 W/m^2$. & Concept \\
+  \hline
+  Humidity & & Concept \\ % TODO
+  \hline
+  Hurricane & Wind with a speed of at least 32 m/s. & Concept \\
+  \hline
+  Latitude & Latitude of the position a weather report is valid for; see \emph{Weather report}. & \\ % TODO degrees
+  \hline
+  Light clouds & One of the 8 predefined weather conditions; see \emph{weather condition}. & Indivdual \\
+  \hline
+  Light rain & More than 0 and at most 5 mm/h precipitation per hour. & Concept \\
+  \hline
+  Light wind & Wind with a speed of at least 1 and less than 10 m/s. & Concept \\
+  \hline
+  Location & Geographical position a weather report is valid for, given by \emph{Altitude}, \emph{Longitude} and \emph{Latitude}; see \emph{Weather report}. & Concept \\
+  \hline
+  Longitude & Longitude of the position a weather report is valid for; see \emph{Weather report}. & \\ % TODO degrees
+  \hline
+  Long range weather report & Weather report describing a forecast for a point of time more than 12 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
+  \hline
+  Low pressure & Atmospheric pressure of at least 998 and less than 1008 hPa; see \emph{Atmospheric pressure}. & Concept \\
+  \hline
+  Low radiation & Solar radiation of more than $0 W/m^2$ and less than $250 W/m^2$. & Concept \\
+  \hline
+  Medium radiation & Solar radiation of more than $250 W/m^2$ and less than $500 W/m^2$. & Concept \\
+  \hline
+  Medium rain & More than 5 and at most 0 mm/h precipitation per hour. & Concept \\
+  \hline
+  Medium range weather report & Weather report describing a forecast for a point of time more than 3 hours and at most 12 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
+  \hline
+  Moist & Relative humidity of more than 70 and at most 80 percent; see \emph{Humidity}. & Concept \\
+  \hline
+  Mostly cloudy & Cloud coverage is reported as to be 5, 6 or 7 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
+  \hline
+  Nautical twilight & During astronomical twilight, the sun is more than 6 degrees and no more than 12 degrees below horizon; see \emph{Sun position}. & Concept \\
+  \hline
+  Night & Sun is more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\
+  \hline
+  No radiation & No solar radiation ($0 W/m^2$); see \emph{Solar radiation}. & Concept \\
+  \hline
+  No rain & No precipitation (because the chance or the intensity of precipitation is 0); see \emph{Precipitation}. & Concept \\
+  \hline
+  Normal humidity & Relative humidity of at least 40 and at most 70 percent; see \emph{Humidity}. & Concept \\
+  \hline
+  Normal pressure & Atmospheric pressure of at least 1008 and less than 1018 hPa; see \emph{Atmospheric pressure}.& \\
+  \hline
+  North wind & Wind approximately coming from the East, e.g. originating from a direction of at least 315 or less than 45 degrees; see \emph{Wind}. & Concept \\
+  \hline
+  Observation time & Time when the weather data was collected from the weather sensor or the Internet weather service. & Instance attribute \\
+  \hline
+  Okta & Unit of measurement that specifies the amount of cloud cover on a range from 0 (\emph{Clear sky}) to 8 (\emph{Overcast}); a value of 9 represents an \emph{Unknown cloud cover}; see \emph{Cloud cover}. & Individual \\ % TODO reference
+  \hline
+  Overcast & Cloud coverage is reported as to be 8 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
+  \hline
+  Partly cloudy & Cloud coverage is reported as to be 1, 2, 3 or 4 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
+  \hline
+  Partly cloudy & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
+  \hline
+  Precipitation & & Concept \\ % TODO
+  \hline
+  Priority & An integer value indicating which weather report for a certain period of time is to be preferred over another weather report for the same period of time. & Instance attribute \\
+  \hline
+  Rain & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
+  \hline
+  Room temperature & Temperature of at least 20 and at most 25 degrees Celsius. & Concept \\
+  \hline
+  Sensor source & A sensor offering some kind of weather data. & Concept \\
+  \hline
+  Service source & An Internet weather service offering some kind of weather data. & Concept \\
+  \hline
+  Short range weather report & Weather report describing a forecast for a point of time at most 3 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
+  \hline
+  Sleet & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
+  \hline
+  Snow & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
+  \hline
+  Solar twilight & During solar twilight, the sun is above horizon, but less than 6 degrees above; see \emph{Sun position}. & Concept \\
+  \hline
+  South wind & Wind approximately coming from the South, e.g. originating from a direction of at least 135 and less than 225 degrees; see \emph{Wind}. & Concept \\
+  \hline
+  Start time & The time a weather report is valid from, relative to the weather report's observation time; see \emph{Weather report}. & Instance attribute \\
+  \hline
+  Storm & Wind with a speed of at least 20 m/s. & Concept \\
+  \hline
+  Strong wind & Wind with a speed of at least 10 and less than 20 m/s. & Concept \\
+  \hline
+  Sun & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
+  \hline
+  Sun from east & The direction of the sun's position of more than 45 and at most 135 degrees. & Concept \\
+  \hline
+  Sun from north & The direction of the sun's position of more than 315 or at most 45 degrees. & Concept \\
+  \hline
+  Sun from south & The direction of the sun's position of more than 135 and at most 225 degrees. & Concept \\
+  \hline
+  Sun from west & The direction of the sun's position of more than 225 and at most 315 degrees. & Concept \\
+  \hline
+  Sun position & Position of the sun, given by its elevation above horizon and its direction. & Concept \\ % TODO degrees
+  \hline
+  Sun radiation & & Concept \\ % TODO
+  \hline
+  Temperature & & Concept \\ % TODO
+  \hline
+  Thunder & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
+  \hline
+  Tropical storm rain & More than 100 mm/h precipitation per hour. & Concept \\
+  \hline
+  Unknown cloud cover & Cloud coverage is reported as to be 9 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
+  \hline
+  Very dry & Relative humidity of less than 30 percent; see \emph{Humidity}. & Concept \\
+  \hline
+  Very high pressure & Atmospheric pressure of at least 1028 hPa; see \emph{Atmospheric pressure}. & Concept \\
+  \hline
+  Very high radiation & Solar radiation of more than $750 W/m^2$. & Concept \\
+  \hline
+  Very low pressure & Atmospheric pressure of less than 998 hPa; see \emph{Atmospheric pressure}. & Concept \\
+  \hline
+  Very moist & Relative humidity of more than 80 percent; see \emph{Humidity}. & Concept \\
+  \hline
+  Weather condition & Overall state of the weather, represented by (a combination of) these individuals: \emph{Sun}, \emph{Light clouds}, \emph{Partly cloudy}, \emph{Cloudy}, \emph{Fog}, \emph{Rain}, \emph{Snow}, \emph{Sleet}, and \emph{Thunder}. & Concept \\
+  \hline
+  Weather phenomenon & Represents a certain weather element. Relevant weather elements are \emph{Temperature}, \emph{Humidity}, \emph{Dew point}, \emph{Wind}, \emph{Precipitation}, \emph{Atmospheric pressure}, \emph{Cloud cover}, \emph{Solar radiation}, and the \emph{Sun position}. & Concept \\
+  \hline
+  Weather report & Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report. & Concept \\ % TODO related concepts
+  \hline
+  Weather report from sensor & A weather report containing data coming from one or more sensors; see \emph{Weather report} and \emph{Sensor source}. & Concept \\
+  \hline
+  Weather report from service & A weather report containing data coming from an Internet weather service; see \emph{Weather report} and \emph{Service source}. & Concept \\
+  \hline
+  Weather report source & A source for weather data, either a set of weather sensors or an Internet weather service; see \emph{Weather report}, \emph{Sensor source} and \emph{Service source}. & Concept \\
+  \hline
+  Weather state & & \\
+  \hline
+  West wind & Wind approximately coming from the East, e.g. originating from a direction of at least 225 and less than 315 degrees; see \emph{Wind}. & Concept \\
+  \hline
+  Wind & & Concept \\ % TODO
+  \hline
+\end{longtable}
+
+\subsection{Concept-classification trees}
+\label{sec:concept_classification_trees}
+
+All concepts from the Glossary of Terms can be organized into five categories. Each of these categories has one root concept. These are \emph{Weather condition}, \emph{Weather phenomenon}, \emph{Weather report}, \emph{Weather report source} and \emph{Weather state}. All other concepts are sub-concepts of one of these five root concepts. The trees resulting from the structure are presented below.
+
+\subsubsection{Weather condition}
+
+A \emph{Weather condition} represents a simple verbal description of the weather state at a certain time. As it does not have any sub-concepts, the diagram showing this classification tree looks rather simple:
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-condition.png}
+\end{center}
+
+\subsubsection{Weather phenomenon}
+
+A \emph{Weather phenomenon} represents a certain weather element, e.g. temperature or humidity. Every specific weather element is a sub-concept of \emph{Weather phenomenon}. Hence, this tree evolves:
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-phenomenon.png}
+\end{center}
+
+Every of these sub-concepts again has sub-concepts for different states of the weather elements. For the sake of clarity, these concepts are not shown in the diagram above. See the diagrams below for details.
+
+The only sub-concept of \emph{Weather phenomenon} that does not have any sub-concepts is \emph{Dew point}. The diagram showing a tree that consists of only one node for \emph{Dew point} is omitted.
+
+\paragraph{Atmospheric pressure}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/atmospheric-pressure.png}
+\end{center}
+
+\paragraph{Cloud cover}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/cloud-cover.png}
+\end{center}
+
+\paragraph{Humidity}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/humidity.png}
+\end{center}
+
+\paragraph{Precipitation}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/precipitation.png}
+\end{center}
+
+\paragraph{Solar radiation}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/solar-radiation.png}
+\end{center}
+
+\paragraph{Sun position}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/sun-position.png}
+\end{center}
+
+\paragraph{Temperature}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/temperature.png}
+\end{center}
+
+\paragraph{Wind}
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/wind.png}
+\end{center}
+
+\subsubsection{Weather report}
+
+% TODO get rid of timed weather report
+There are two main attributes for a \emph{Weather report}: Its \emph{Start date} and its \emph{Source}. A number of sub-concepts is defined in order to reflect different values of these two attributes:
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-report.png}
+\end{center}
+
+The concepts \emph{Short range forecast}, \emph{Medium range forecast} and \emph{Long range forecast} each do have sub-concepts which have been omitted from the above diagram for clarity. These sub-concepts are:
+\begin{itemize}
+  \item \emph{Short range forecast}: \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} and \emph{Forecast 3 hours weather report} for weather reports describing the weather in one, two and three hours, respectively.
+  \item \emph{Medium range forecast}: \emph{Forecast 6 hour weather report} and \emph{Forecast 9 hours weather report} for weather reports describing the weather in 6 and 9 hours, respectively.
+  \item \emph{Long range forecast}: \emph{Forecast 12 hour weather report}, \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report} and \emph{Forecast 25 hours weather report} for weather reports describing the weather in 12, 15, 18, 21 and 24 hours, respectively.
+\end{itemize}
+
+\subsubsection{Weather report source}
+
+A \emph{Weather report source} can either be a \emph{Sensor source} or a \emph{Service source}:
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-report-source.png}
+\end{center}
+
+\subsubsection{Weather state}
+
+% TODO reformulate this
+A \emph{Weather state} collects all \emph{Weather phenomena} for a certain \emph{Weather report}. Because of this, sub-concepts of \emph{Weather state} can be introduced that reflect certain combination of related instances of \emph{Weather phenomenon}:
+
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/weather-state.png}
+\end{center}
+
+\subsection{Binary relations diagram}
+\label{sec:binary_relations_diagram}
+
+The binary relations diagram shows all binary relations between concepts in the ontology in a clear manner:
+
+% TODO link "Weather condition" to "Weather state"
+\begin{center}
+  \includegraphics[scale=.3]{figures/diagrams/binary-relations.png}
+\end{center}
+
+\subsection{Concept dictionaries}
+
+A concept dictionary lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section \ref{sec:concept_classification_trees}.
+
+In the following tables, only the root concepts as shown in the concept-classification trees above are described in case the sub-concepts have the same instances, class attributes, instance attributes and relations as their respective super-concepts.
+
+\subsubsection{Weather condition}
+
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  Weather condition & Cloud\newline Fog\newline Partly cloudy\newline Mostly cloudy\newline Rain\newline Sleet\newline Snow\newline Sun\newline Thunder & - & - & has condition \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather phenomenon}
+
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline
+  Atmospheric pressure & - & - & Pressure value & belongs to state,\newline has weather phenomenon \\
+  \hline
+  Dew point & - & - & Dew point value & belongs to state,\newline has weather phenomenon \\
+  \hline
+  Humidity & - & - & Humidity value & belongs to state,\newline has weather phenomenon \\
+  \hline
+  Sun position & - & - & Sun elevation angle,\newline Sun direction & belongs to state,\newline has weather phenomenon \\
+  \hline
+  Sun radiation & - & - & Sun radiation value & belongs to state,\newline has weather phenomenon \\
+  \hline
+  Temperature & - & - & Temperature value & belongs to state,\newline has weather phenomenon \\
+  \hline
+  Weather phenomenon & - & - & - & belongs to state,\newline has weather phenomenon \\
+  \hline
+  Wind & - & - & Wind speed,\newline Wind direction & belongs to state,\newline has weather phenomenon \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather report}
+
+% TODO insert Altitude, Latitude, Longitude, start time, end time, observation time, priority somewhere else
+% TODO add Location to binary-relations diagram?
+% TODO 
+
+% TODO 
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  Weather report & - & - & - & has source,\newline is source of,\newline has weather state,\newline belongs to weather report \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather state}
+
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  Weather state & - & - & - & has condition,\newline belongs to weather report,\newline has weather state,\newline belongs to state,\newline has weather phenomenon\\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather report source}
+
+% TODO
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  Weather report source & - & - & - & is source of,\newline has source \\
+  \hline
+\end{longtable}
+
+\subsection{Binary relations table}
+
+The binary relation table specifies all relations from section \ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
+
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
+  \hline\hline
+  belongs to state & Weather phenomenon & Weather state & 1 & has weather phenomenon \\
+  \hline
+  belongs to report & Weather state & Weather report & 1 & has weather state \\
+  \hline
+  has condition & Weather state & Weather condition & N & - \\
+  \hline
+  has next weather report & Weather report & Weather report & 1 & has previous weather report \\
+  \hline
+  has previous weather report & Weather report & Weather report & 1 & has next weather report \\
+  \hline
+  has source & Weather report & Weather report source & 1 & is source of \\
+  \hline
+  has weather phenomenon & Weather state & Weather phenomenon & N & belongs to state \\
+  \hline
+  has weather state & Weather report & Weather state & 1 & belongs to report \\
+  \hline
+  is source of & Weather report source & Weather report & N & has source \\
+  \hline
+\end{longtable}
+
+\subsection{Instance attribute tables}
+\label{subsec:instance_attribute_tables}
+
+% TODO add these attributes to the Glossary of Terms
+
+% TODO description of what is going on here
+% TODO
+
+% TODO describe percent unit somewhere
+% TODO describe datatypes somewhere
+% TODO describe units somewhere
+\begin{longtable}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+  \hline
+  \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
+  \hline\hline
+  Altitude & Location & Decimal & \emph{any values allowed} & Metres & $(1, 1)$ \\
+  \hline
+  Cloud altitude & Cloud cover & Decimal & \emph{any values allowed} & Metres & $(1, 1)$ \\
+  \hline
+  Cloud cover & Cloud cover & Integer & $[0, 9]$ & Okta & $(1, 1)$ \\
+  \hline
+  Dew point value & Dew point & Decimal & \emph{any values allowed} & Degrees Celsius & $(1, 1)$ \\
+  \hline
+  End time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
+  \hline
+  Humidity value & Humidity & Percent & $[0, 1]$ & - & $(1, 1)$ \\
+  \hline
+  Latitude & Location & Decimal & $[-90, 90]$ & Degrees & $(1, 1)$ \\
+  \hline
+  Longitude & Location & Decimal & $[-180, 180]$ & Degrees & $(1, 1)$ \\
+  \hline
+  Observation time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
+  \hline
+  Precipitation intensity & Precipitation & Decimal & $[0, \infty)$ & Millimetres per hour & $(1, 1)$ \\
+  \hline
+  Precipitation probability & Precipitation & Decimal & $[0, 1]$ & Percent & $(1, 1)$ \\
+  \hline
+  Pressure value & Atmospheric pressure & Decimal & $[0, \infty)$ & Hectopascal & $(1, 1)$ \\
+  \hline
+  Start time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
+  \hline
+  Sun direction & Sun position & Decimal & $[0, 360)$ & Degrees & $(1, 1)$ \\
+  \hline
+  Sun elevation angle & Sun position & Decimal & $[-90, 90]$ & Degrees & $(1, 1)$ \\
+  \hline
+  Temperature value & Temperature & Decimal & \emph{any values allowed} & Degrees Celsius & $(1, 1)$ \\
+  \hline
+  Wind direction & Wind & Decimal & $[0, 360)$ & Degrees & $(1, 1)$ \\
+  \hline
+  Wind speed & Wind & Decimal & $[0, \infty)$ & Metres per second & $(1, 1)$ \\
+  \hline
+\end{longtable}
+
+\subsection{Class attribute tables}
+
+% TODO ?
+The ontology does not contain any class attributes, hence there is no table describing the class attributes' properties.
+
+\subsection{Logical axioms tables} % TODO formal axioms
+
+% TODO ?
+There are no logical axioms that will be encoded into the ontology, hence there is no table describing logical axioms.
+
+% TODO missing section: constants?
+
+\subsection{Formula tables} % TODO rules?
+
+Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \emph{Very low pressure}, \emph{Low pressure}, \emph{Normal pressure}, \emph{High pressure} and \emph{Very high pressure} are all sub-concepts of \emph{Atmospheric pressure}. They all differ by the value of the instance attribute \emph{has pressure value} that every instance of \emph{Atmospheric pressure} has.
+
+In the Glossary of Terms, \emph{Normal pressure} is defined to be an instance of \emph{Atmospheric pressure} having a value of at least 1008 and at most 1018 hPa to be assigned via \emph{has pressure value}. One could write this rule in the following manner:
+
+% TODO description
+% TODO format, no page breaks within
+\begin{verbatim}
+if Atmospheric pressure(?X)
+  and has pressure value(?X, ?Y)
+  and ?Y >= 1008 and ?Y <= 1018
+then Normal pressure(?X)
+\end{verbatim}
+
+As a long list of such rules becomes apparently confusing, the relevant information is summarized in a table. In the case of the super-concept \emph{Atmospheric pressure}, this table has three columns: One that takes the name of the super-concept, one takes the name of the sub-concept and one the value range of the instance attribute \emph{has pressure value}. For the sub-concept \emph{Normal pressure}, this table evolves:
+
+% TODO 
+\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has pressure value} \\
+  \hline\hline
+  Atmospheric pressure & Normal pressure & $[1008, 1018)$ \\
+  \hline
+\end{longtable}
+
+There are sub-concepts defined by restrictions on more than one instance attribute. In such a case, columns are added to the respective table as needed. For instance, sub-concepts of \emph{Wind} have restrictions on both the instance attribute \emph{has wind speed} and on the instance attribute \emph{has wind direction}. In that case, the table has four columns: Super-concept, sub-concept, \emph{has wind speed} and \emph{has wind direction}.
+
+If there is more than one row for a certain sub-concept, these rows specify alternatives: The instance of the super-concept is an instance of the sub-concept, if any of the restrictions in the respective rows holds.
+
+If the value of an instance attribute is not significant for an instance of the super-concept being also an instance of the sub-concept, this is indicated by a dash (-).
+
+% TODO reference?
+In the following sections, for each concept-classification tree shown above, the respective table is given.
+
+\subsubsection{Atmospheric pressure}
+
+\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has pressure value} \\
+  \hline\hline
+  Atmospheric pressure & Very low pressure & $< 998$ \\
+  \hline
+  Atmospheric pressure & Low pressure & $[998, 1008)$ \\
+  \hline
+  Atmospheric pressure & Normal pressure & $[1008, 1018)$ \\
+  \hline
+  Atmospheric pressure & High pressure & $[1018, 1028)$ \\
+  \hline
+  Atmospheric pressure & Very high pressure & $\geq 1028$ \\
+  \hline
+\end{longtable}
+
+\subsubsection{Cloud cover}
+
+\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has cloud cover} \\
+  \hline\hline
+  Cloud cover & Clear sky & 0 \\
+  \hline
+  Cloud cover & Partly cloudy & 1, 2, 3, 4 \\
+  \hline
+  Cloud cover & Mostly cloudy & 5, 6, 7 \\
+  \hline
+  Cloud cover & Overcast & 8 \\
+  \hline
+  Cloud cover & Unknown cloud cover & 9 \\
+  \hline
+\end{longtable}
+
+\subsubsection{Humidity}
+
+\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has humidity value} \\
+  \hline\hline
+  Humidity & Very dry & $< 0.3$ \\
+  \hline
+  Humidity & Dry & $[0.3, 0.4)$ \\
+  \hline
+  Humidity & Normal humidity & $[0.4, 0.7]$ \\
+  \hline
+  Humidity & Moist & $(0.7, 0.8]$ \\
+  \hline
+  Humidity & Very moist & $> 0.8$ \\
+  \hline
+\end{longtable}
+
+\subsubsection{Precipitation}
+
+\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has precipitation\newline probability} & \textbf{has precipitation\newline intensity} \\
+  \hline\hline
+  Precipitation & No rain & $0$ & - \\
+  \hline
+  Precipitation & No rain & - & $0$ \\
+  \hline
+  Precipitation & Light rain & $(0, 1]$ & $(0, 5]$ \\
+  \hline
+  Precipitation & Medium rain & $(0, 1]$ & $(5, 20]$ \\
+  \hline
+  Precipitation & Heavy rain & $(0, 1]$ & $(20, 50]$ \\
+  \hline
+  Precipitation & Extremely heavy rain & $(0, 1]$ & $(50, 100]$ \\
+  \hline
+  Precipitation & Tropical storm rain & $(0, 1]$ & $> 100$ \\
+  \hline
+\end{longtable}
+
+\subsubsection{Solar radiation}
+
+\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has solar\newline radiation value} \\
+  \hline\hline
+  Solar radiation & No radiation & $0$ \\
+  \hline
+  Solar radiation & Low radiation & $(0, 250)$ \\
+  \hline
+  Solar radiation & Medium radiation & $[250, 500)$ \\
+  \hline
+  Solar radiation & High radiation & $[500, 750)$ \\
+  \hline
+  Solar radiation & Very high radiation & $\geq 750$ \\
+  \hline
+\end{longtable}
+
+\subsubsection{Sun position}
+
+\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has sun\newline direction} & \textbf{has sun\newline elevation angle} \\
+  \hline\hline
+  Sun position & Sun from north & $(0, 45]$ & - \\
+  \hline
+  Sun position & Sun from north & $(315, 360)$ & - \\
+  \hline
+  Sun position & Sun from east & $(45, 135]$ & - \\
+  \hline
+  Sun position & Sun from south & $(135, 225]$ & - \\
+  \hline
+  Sun position & Sun from west & $(225, 315]$ & - \\
+  \hline
+  Sun position & Day & - & $[0, 90]$ \\
+  \hline
+  Sun position & Solar twilight & - & $[0, 6)$ \\
+  \hline
+  Sun position & Sun below horizon & - & $[-90, 0)$ \\
+  \hline
+  Sun position & Twilight & - & $[-18, 0)$ \\
+  \hline
+  Sun position & Civil twilight & - & $[-6, 0)$ \\
+  \hline
+  Sun position & Nautical twilight & - & $[-12, -6)$ \\
+  \hline
+  Sun position & Astronomical twilight & - & $[-18, -12)$ \\
+  \hline
+  Sun position & Night & - & $[-90, -18)$ \\
+  \hline
+\end{longtable}
+
+\subsubsection{Temperature}
+
+\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has temperature\newline value} \\
+  \hline\hline
+  Temperature & Frost & $< 0$ \\
+  \hline
+  Temperature & Cold & $[0, 10)$ \\
+  \hline
+  Temperature & Below room temperature & $[10, 20)$ \\
+  \hline
+  Temperature & Room temperature & $[20, 25]$ \\
+  \hline
+  Temperature & Above room temperature & $(25, 30]$ \\
+  \hline
+  Temperature & Heat & $> 30$ \\
+  \hline
+\end{longtable}
+
+\subsubsection{Wind}
+
+\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has wind\newline speed} & \textbf{has wind\newline direction} \\
+  \hline\hline
+  Wind & Directional wind & - & $[0, 360)$ \\
+  \hline
+  Wind & North wind & - & $[0, 45)$ \\
+  \hline
+  Wind & North wind & - & $(315, 360)$ \\
+  \hline
+  Wind & East wind & - & $[45, 135)$ \\
+  \hline
+  Wind & South wind & - & $[135, 225)$ \\
+  \hline
+  Wind & West wind & - & $[225, 315)$ \\
+  \hline
+  Wind & Calm & $[0, 1)$ & - \\
+  \hline
+  Wind & Light wind & $[1, 10)$ & - \\
+  \hline
+  Wind & Strong wind & $[10, 20)$ & - \\
+  \hline
+  Wind & Storm & $\geq 20$ & - \\
+  \hline
+  Wind & Hurricane & $\geq 32$ & - \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather report}
+
+\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has start time} & \textbf{has source} \\
+  \hline\hline
+  Weather report & Current weather report & $0$ & - \\
+  \hline
+  Weather report & Forecast weather report & $> 0$ & - \\
+  \hline
+  Weather report & Forecast 1 hour weather report & $1$ & - \\
+  \hline
+  Weather report & Forecast 2 hours weather report & $2$ & - \\
+  \hline
+  Weather report & Forecast 3 hours weather report & $3$ & - \\
+  \hline
+  Weather report & Forecast 6 hours weather report & $6$ & - \\
+  \hline
+  Weather report & Forecast 9 hours weather report & $9$ & - \\
+  \hline
+  Weather report & Forecast 12 hours weather report & $12$ & - \\
+  \hline
+  Weather report & Forecast 15 hours weather report & $15$ & - \\
+  \hline
+  Weather report & Forecast 18 hours weather report & $18$ & - \\
+  \hline
+  Weather report & Forecast 21 hours weather report & $21$ & - \\
+  \hline
+  Weather report & Forecast 24 hours weather report & $24$ & - \\
+  \hline
+  Weather report & Short range weather report & $(0, 3]$ & - \\
+  \hline
+  Weather report & Medium range weather report & $(3, 12)$ & - \\
+  \hline
+  Weather report & Long range weather report & $\geq 12$ & - \\
+  \hline
+  Weather report & Weather report from sensor & - & \emph{any instance of Weather sensor} \\
+  \hline
+  Weather report & Weather report from service & - & \emph{any instance of Weather service} \\
+  \hline
+  Weather report & Current weather report from sensor & $0$ & \emph{any instance of Weather sensor} \\
+  \hline
+  Weather report & Current weather report from service & $0$ & \emph{any instance of Weather service} \\
+  \hline
+\end{longtable}
+
+% TODO sub-concepts of weather state
+
+\subsection{Instance tables}
+
+% TODO description of what is going on here
+% TODO
+\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Instance name} & \textbf{Concept name} & \textbf{Attribute} & \textbf{Values} \\
+  \hline\hline
+  Cloud & Weather condition & - & - \\
+  \hline
+  Fog & Weather condition & - & - \\
+  \hline
+  Partly cloudy & Weather condition & - & - \\
+  \hline
+  Mostly cloudy & Weather condition & - & - \\
+  \hline
+  Rain & Weather condition & - & - \\
+  \hline
+  Sleet & Weather condition & - & - \\
+  \hline
+  Snow & Weather condition & - & - \\
+  \hline
+  Sun & Weather condition & - & - \\
+  \hline
+  Thunder & Weather condition & - & - \\
+  \hline
+\end{longtable}
+
+\section{Integration}
+\label{sec:integration}
+
+One of the goals of the \thinkhomeweather ontology is to keep an eye on existing ontologies to be re-used. While analyzing the problem domain, it quickly became clear that there are four areas where already existing ontologies could be reused: Location data, measuremenr units, date/time specifications and weather concepts. Chapter \ref{ch:existing_work} already sheds some light on existing ontologies around the domain of weather data. In this section, the ontologies being short-listed for reuse within \thinkhomeweather are summarized.
+
+% TODO reference: website, WGS84
+For location data, the W3C Semantic Web Interest Group offers a \emph{Basic Geo (WGS84 lat/long) Vocabulary}. It introduces a concept called \emph{Spatial thing} that can have \emph{latitude}, \emph{longitude} and \emph{altitude} according to the WGS 84 geodetic reference system. However, the vocabulary contains some data properties that are incorrectly defined as annotation property. This shortcoming needs to be overriden in any ontology that uses this vocabulary.
+
+% TODO reference SWEET
+NASA's SWEET ontology offers a wide range of concepts, attributes and individuals for environmental and atmospherical phenomena, including all units that may be used within a weather data ontology. SWEET is designed in a highly modular manner. Units can be found in a single OWL file. However, importing one of SWEET's OWL files into an ontology entails the import of a large number of other OWL files. As this makes any simple ontology using SWEET hard to handle, reusing SWEET is not an option.
+
+Besides SWEET, there is no ontology containing weather concepts that has been determined to be appropriate for use within the \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
+
+% TODO reference: http://forge.morfeo-project.org/wiki_en/index.php/Units_of_measurement_ontology
+% TODO reference: http://idi.fundacionctic.org/muo/muo-vocab.html
+The \emph{Measurement Units Ontology} is a simple and light-weight approach to enrich measurement values with appropriate units. Some of the most important units are pre-defined, all others can easily be added. The \emph{Measurement Units Ontology} (MUO) is still work in progress. However, it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, MUO can be imported into any ontology without problems.
+
+Besides the \emph{Measurement Units Ontology}, several other ontologies have been examined, but all of them came with shortcomings that led to the decision not to use them in the \thinkhomeweather ontology. These ontologies are:
+\begin{itemize}
+  \item \textbf{SWEET:} Besides concepts, attributes and individuals for atmospherical phenomena, SWEET also comes with support for literals more precisely specified by units. However, as mentioned above importing any part of SWEET entails the import of a large number of OWL files that makes handling a ontology using SWEET difficult. Hence, SWEET is not used for introducing units into the \thinkhomeweather ontology.
+  \item \textbf{QUDT:} \emph{QUDT}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an OWL ontology. However, \emph{QUDT} does not work in Protege together with the Pellet reasoner. Using \emph{QUDT} would require several changes to the OWL files. Hence, it cannot be used in the \thinkhomeweather ontology. % TODO reference http://www.qudt.org/
+  \item \textbf{QUOMOS:} The \emph{OASIS Quantities and Units of Measure Ontology Standard} (\emph{QUOMOS}) aims at developing ``an ontology for quantities, systems of measurement units, and base dimensions for use across multiple industries''. However, at the time of writing, there is no release of any OWL ontology yet. % TODO reference https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=quomos
+  \item \textbf{OBO Foundry Initiative:} The \emph{OBO Foundry Initiative} is an initiative that aims at collecting ontologies for use in the biomedical domain. The list of \emph{The Open Biological and Biomedical Ontologies} (abbreviated by \emph{OBO}) includes an ontology for units of measurements. This ontology apparently covers most of the units that are used in the \thinkhomeweather ontology. However, it lacks any documentation and hence cannot be used in \thinkhomeweather. % TODO reference http://obofoundry.org/ and http://obofoundry.org/cgi-bin/detail.cgi?id=unit and http://code.google.com/p/unit-ontology/
+\end{itemize}
+Although the \emph{Measurement Units Ontology} has the shortcoming of making OWL reasoning clearly slower, it is the only ontology that has been determined to be usable in the \thinkhomeweather ontology flawlessly.
+
+% TODO reference W3C consortium
+% TODO reference W3C working draft definition
+% TODO reference http://www.w3.org/TR/owl-time/
+For specifying temporal properties, the W3C consortium offers a working draft of \emph{OWL-Time}, a \emph{Time Ontology in OWL}. It defines the concept called \emph{TemporalEntity} that can either be an \emph{Instant} or an \emph{Interval}. Using appropriate attributes, the properties of a \emph{TemporalEntity} are specified. Although \emph{OWL-Time} is in the state of a working draft since September 2006, the main concepts and attributes that will be reused by other ontologies are expected not to change in any way.
+
+% TODO mention meta-ontology
+
+Section \ref{sec:implementation} describes the reuse of the aforementioned ontologies within the \thinkhomeweather ontology in detail.
+
+\section{Implementation}
+\label{sec:implementation}
+
+After exhaustive analysis and structurization in the previous sections, the step of implementing the ontology has become a straight-forward task.
+
+% TODO reference OWL, Protege, Pellet
+% TODO \emph{} for names
+The \thinkhomeweather ontology is implemented in OWL using Protege 4.1 together with the Pellet OWL 2 Reasoner. Pellet includes Pellint, an ontology performance tool that uses a set of patterns to find possible performance problems in an OWL ontology. Pellint has been used for locating problems and led to a few improvements boosting reasoning performance.
+
+To ensure that the reasoning of all sub-concepts of \emph{Weather phenomenon}, \emph{Weather state} and \emph{Weather report} works correctly, a JUnit is used. Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
+
+\subsection{Imported ontologies}
+
+During the implementation step, the ontologies listed in section \ref{sec:integration} need to be imported and integrated. Their use implies the application of certain patterns required by the ontologies.
+
+% TODO reference OWL-Time
+\emph{OWL-Time} defines the concept \emph{TemporalEntity} and its sub-concepts \emph{Instant} and \emph{Interval}. Although \emph{Start time} and \emph{End time} of a \emph{Weather report} are actually \emph{Instant}s, these times are specified using \emph{Interval}s. The duration of such an interval represents the duration between the \emph{Observation time} of the \emph{Weather report} and the time that is to be expressed. This results in the structure shown in figure \ref{fig:owl_time1}. The duration is rounded to full hours. Hence, there are simple rules for defining concepts for a \emph{Weather report} for forecasts in an arbitrary number of hours.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/owl-time1.png}
+  \caption{An instance of \emph{Current weather report} together with start time and end time.}
+  \label{fig:owl_time1}
+\end{figure}
+
+The \emph{Observation time} of a \emph{Weather report} is specified using an \emph{Instant} as defined by \emph{OWL-time}. See figure \ref{fig:owl_time2} for the resulting structure.
+
+% TODO figure 5.2: interval -> Interval
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/owl-time2.png}
+  % TODO no line break inside the date string
+  \caption{An instance of \emph{Weather report} together with its observation time (2012-06-16 14:30).}
+  \label{fig:owl_time2}
+\end{figure}
+
+The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times must be given in UTC.
+
+% TODO reference unit ontology
+All instances of \emph{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to section \ref{subsec:instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \emph{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. $^\circ$F and $^\circ$C for the \emph{Temperature value}), concepts, attributes and instances from the \emph{Measurement Units Ontology} (MUO) are re-used to add unit information. MUO forces the use of a certain pattern that is shown in figure . % TODO reference figure
+
+% TODO reference WGS-84
+The \emph{Basic Geo (WGS84 lat/long) Vocabulary} by the \emph{W3C Semantic Web Interest Group} defines the concept \emph{Point} together with the attributes \emph{lat} (latitude), \emph{long} (longitude) and \emph{alt} (altitude). Furthermore, the attribute \emph{location} offers the possibility of connecting a \emph{Point} to any instance of some concept. See figure \label{fig:wgs84} for the structure that results from this. % TODO reference figure
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/diagrams/wgs84.png}
+  \caption{An instance of \emph{Weather report} together with its location (Vienna, Austria: $48.21 ^{\circ} N$, $16.37 ^{\circ} E$, $171 m$ above MSL.}
+  \label{fig:owl_time}
+\end{figure}
+
+% TODO document completed ontology thoroughly
+\subsection{Naming conventions}
+
+During the implementation of the \thinkhomeweather ontology, it is necessary to define strict naming conventions for concepts, individuals and attributes; some of these conventions have already been applied to previous steps of developing the ontology:
+
+\begin{itemize}
+  \item All concepts, instances and attributes share one namespace, regardless of capitalization; e.g. there is no pair of a concept and an instance that shares the same name. There is also no pair of a concept and an instance which names only differ in their capitalization.
+  \item Only upper case and lower case letters from A to Z, numbers from 0 to 9, underscores (\texttt{\_}) and dashes (\texttt{-}) may occur in the name of a concept, an instance or an attribute. Hence, all names match the regular expression \texttt{\^{}[A-Za-z0-9\textbackslash -\_]\$}.
+  \item Names built from more than one word are written in \emph{Camel case}, e.g. \emph{Weather phenomenon} becomes \emph{WeatherPhenomenon} and \emph{is source of} becomes \emph{isSourceOf}. % TODO reference to camel case definition?
+  \item Concept names start with a capital letter and only appear in singular. There is no concept name \emph{Weather phenomena}, only \emph{WeatherPhenomenon}.
+  \item Attribute names start with a lower-case letter. Attribute names are always built from more than one word and the first word must be a verb; see \emph{isSourceOf} or \emph{hasWeatherCondition}.
+\end{itemize}
+
+
+\section{Evaluation}
+\label{sec:ontology_evaluation}
+
+In section \ref{sec:weather_information} and in the ontology specification document, a set of competency questions is presented. In order to verify whether the \thinkhomeweather works as intended, this section now examines if all competency questions can be answered by the ontology.
+
+% TODO
+\begin{itemize}
+  \item \textbf{What is the current weather situation?}\\
+    The current weather situation is represented by an instance of \emph{Current weather report}, the instance of \emph{Weather state} connected via the property \emph{has weather state}, the instances of \emph{Weather condition} linked via the property \emph{has condition} and all instances of \emph{Weather phenomenon} associated via the property \emph{has weather phenomenon}. These instances together with the values of their instance attribute give all required information about the current weather state.
+  \item \textbf{What will the weather situation be in one hour, in two hours, …, in 24 hours?}\\
+    The weather situation in one hour is represented by an instance of \emph{Forecast 1 hour weather report} together with connected instances of \emph{Weather state}, \emph{Weather condition} and \emph{Weather phenomenon}. Questions about future weather situations can be answered in the same way as questions about the current weather situation.\\
+    The weather situations in 2, 3, 6, 9, 12, 15, 18, 21 and 24 hours work are represented in the same way as the weather situation in one hour is, hence the ontology can answer questions about these weather situations as well.
+  \item \textbf{What is the current temperature, humidity, wind speed, …?}\\
+    The current weather situation is represented by an instance of \emph{Current weather report}. Via the property \emph{has weather state}, an instance of \emph{Weather state} is connected. This \emph{Weather state} has an arbitrary number of \emph{has weather phenomenon} properties that link instances of \emph{Weather phenomenon} to it. These instances of \emph{Weather phenomenon} specify current measurement values for all weather elements implemented in the ontology.\\
+    Furthermore, instances of \emph{Weather condition} are linked to the \emph{Current weather report} using the property \emph{has condition}.
+  \item \textbf{What will be the temperature, humidity, wind speed, … in one hour, in two hours, …, in 24 hours?}\\
+    The ontology can answer questions about weather elements in future weather situations in the same way it answers them about weather elements in the current weather situation.
+  \item \textbf{What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?}\\ % TODO open world assumption
+    Due to the open world assumption, it is not possible for OWL to determine minimum or maximum values of a set of values where values can be added. However, the \thinkhomeweather ontology makes the values for all weather elements for 24 hours available. Any program using the ontology can collect these values and determine minimum and maximum values as needed.
+  \item \textbf{Will the weather change? Will the temperature, humidity, … rise or fall?}\\
+    The \thinkhomeweather ontology does not link consecutive instances of \emph{Weather report} or \emph{Weather state} to each other. Hence, the ontology does not provide any information about weather changes. Again, any program using the ontology can get data about all weather situations and compare them in order to find out if the weather will change or if the measurement value of a certain weather element will rise or fall.
+  \item \textbf{Does it rain? Will it rain in the next hours? Will it rain today?}\\
+    If precipitation data is available, every instance of \emph{Weather state} has a property \emph{has weather phenomenon} that links an instance of \emph{Precipitation} to it. That instance of \emph{Precipitation} has instance attributes specifying chance and intensity of rain. There are several sub-concepts of \emph{Precipitation} (\emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain} and \emph{Tropical storm rain}).\\
+    Furthermore, there are sub-concepts of \emph{Weather state} regarding precipitation. These are \emph{No rain weather}, \emph{Rainy weather} and \emph{Very rainy weather}. These concepts provide general knowledge about precipitation for the respective \emph{Weather state}.\\
+    Although the \thinkhomeweather ontology cannot tell whether it will rain in the next 24 hours, but it can tell if it will be raining at a certain time in the next 24 hours. Any program using the ontology can again collect this information and draw conclusions based on it.
+  \item \textbf{Will there be sunshine today?}\\
+    Again, the \thinkhomeweather ontology only provides data about sunshine at certain points of time. A proposition like ``There will be sunshine today'' can only be made by a program using \thinkhomeweather.\\
+    There are several concepts providing information about the sun's state. First of all, there is the concept \emph{Sun position} that specifies the elevation angle of the sun above horizon and the direction of the sun. The sub-concept \emph{Day} of \emph{Sun position} states whether sunshine is possible at all. \emph{Sun below horizon}, another sub-concept of \emph{Sun position} represents the sun at a position below the horizon, hence sunshine is not possible at all.\\
+    Cloud coverage is another factor for sunshine being possible. The concept \emph{Cloud cover} together with its sub-concepts \emph{Clear sky}, \emph{Party cloudy}, \emph{Mostly cloudy} and \emph{Overcast} specifies cloud coverage with regard to sunshine.\\
+    At last, the instance \emph{Sun} of \emph{Weather condition} indicates (possible) sunshine.
+  \item \textbf{Do we need to irrigate the garden?}\\
+    To decide whether irrigation is necessary, the instances of the concept \emph{Precipitation} together with its sub-concepts (\emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain} and \emph{Tropical storm rain}) can be used that provide information about chance and intensity of precipitation for certain \emph{Weather states}. Furthermore, there are sub-concepts of \emph{Weather state} that provide information about precipitation (\emph{No rain weather}, \emph{Rainy weather} and \emph{Very rainy weather}).\\
+    Any program using the \thinkhomeweather ontology can collect data for several instances of \emph{Weather report} and \emph{Weather state} and use the acquired data to decide whether to irrigate the garden or not.
+  \item \textbf{Will there be severe weather?}\\
+    To determine whether there is severe weather, one can use the sub-concept \emph{Severe weather} of the concept \emph{Weather state}. Alternatively, the instances of \emph{Weather phenomenon} linked to the \emph{Weather state} via the property \emph{has weather phenomenon} can be used (especially its sub-concepts \emph{Wind} and \emph{Precipitation} and their respective sub-concepts).\\
+    Anything that goes beyond a single \emph{Weather report} or \emph{Weather state} must be processed in an external program.
+  \item \textbf{Will temperature drop/stay below $0^\circ C$?}\\
+    For a certain \emph{Weather state}, temperature is below $0^\circ C$ if an instance of \emph{Frost} is linked to it via the property \emph{has weather phenomenon}. However, determining whether there is any \emph{Weather state} with an instance of \emph{Frost} linked to it must be again done in an external program as the \thinkhomeweather ontology does not provide that functionality.
+  \item \textbf{When can we open windows and when do we have to keep them shut?}\\ % TODO alphabetical order
+    There a several sub-concepts of \emph{Weather state} which indicate that opening or closing windows makes sense or is necessary; these are \emph{Fair weather}, \emph{Airing weather}, \emph{Pleasant temperature weather}, \emph{Windy weather}, \emph{Very windy weather}, \emph{Severe weather}, \emph{Hot weather}, \emph{Cold weather} and \emph{Thunderstorm}. Furthermore, all instances of \emph{Weather phenomenon} linked to a certain instance of \emph{Weather state} together with their respective attributes can be used to decide whether to open or close the windows.\\
+    Again, anything that goes beyond a single \emph{Weather report} or \emph{Weather state} must be processed in an external program.
+  \item \textbf{When do we need sun protection?}\\
+    Sun protection is only necessary if there is sunshine (see question ``Will there be sunshine today?'' above). Furthermore, it is relevant from which direction the sun is shining; this information is provided by the concept \emph{Sun position} and its property \emph{has sun direction}. There are four sub-concepts (\emph{Sun from North}, \emph{Sun from East}, \emph{Sun from South} and \emph{Sun from West}) that indicate the approximate direction.\\
+    Furthermore, one must pay attention to the fact that strong wind can break awnings. The concept \emph{Wind} and its property \emph{has wind speed} can be used to know whether there is wind that may be too strong; \emph{Wind} has the sub-concepts \emph{Strong wind}, \emph{Storm} and \emph{Hurricane} for simplifying that decision.\\
+    \emph{Weather state} has three relevant sub-concepts: \emph{Windy weather}, \emph{Stormy weather} and \emph{No awning weather}. The latter is introduced especially with awnings in mind that can be broken by strong wind.
+  \item \textbf{When will it outside be colder than inside the house? When will it be warmer?}\\
+    The sub-concept \emph{Room temperature} of \emph{Temperature} represents a temperature of at least $20^\circ C$ and at most $25^\circ C$. Temperatures above are represented by \emph{Above room temperature} (at most $30^\circ C$) and \emph{Heat} (everything above). Temperatures below are represented by \emph{Below room temperature} (at least $10^\circ C$), \emph{Cold} (at least $0^\circ C$ and less than $10^\circ C$) and \emph{Frost} (everything below $0^\circ C$).\\
+    Furthermore, there is a sub-concept \emph{Pleasant temperature weather} of \emph{Weather state} that represents a weather state with a temperature of at least $10^\circ C$ and at most $30^\circ C$.\\
+    Again, anything that goes beyond a single \emph{Weather report} or \emph{Weather state} must be processed in an external program.
+\end{itemize}
+
+The \thinkhomeweather ontology can answer most competency questions satisfactorily. Anything that cannot be answered using the \thinkhomeweather ontology (everything that includes more than one \emph{Weather report} or \emph{Weather state}) is difficult or impossible in OWL. These questions can only be answered using external programs that use data from the \thinkhomeweather ontology. However, the ontology provides all relevant data for answering all questions.
+
+Hence, the ontology constructed in the previous sections complies with its specification in section \ref{sec:ontology_specification}.
+
+\section{Fetching data}
+
+% TODO describe fetching weather data from yr.no
+% TODO describe algorithms for calculation of the position of the sun
+% TODO perhaps split into two categories (one for weather data and one for the sun's position according to one of the two available algorithms, see SunPositionCalculator's source code
+
+% TODO reference section/subsection instead of chapter?
+As discussed in chapter \ref{ch:weather_data}, among all internet services that have been analyzed, \emph{yr.no} is the API that best fits the requirements for the \thinkhomeweather ontology. This section covers acquisition of weather data from that service in detail.
+
+% TODO reference Jena framework
+A Java application called \emph{WeatherReader} was developed. It processes weather data in two steps:
+
+\begin{itemize}
+  \item In the first step, the application uses the API of \emph{yr.no} to fetch weather data(see \ref{subsec:weather_data_yr_no}). Additionally, sun position data is calculated (see \ref{subsec:sun_position}). Data is stored in a specially built domain model. % See figure \ref{...} for the UML class diagram of the domain model used by \emph{WeatherReader}.
+  \item The second step, individuals are created based on the weather data that has been previously acquired. This results in a new ontology based on the \thinkhomeweather ontology enriched by appropriate individuals.
+\end{itemize}
+
+% TODO UML class diagram of the domain model used by \emph{WeatherReader}.
+
+Using a configuration file, \emph{WeatherReader} is fully customizable regarding OWL files and location.
+
+\subsection{Weather data}
+\label{subsec:weather_data_yr_no}
+
+% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
+For an arbitrary request, one must specify latitude and logitude (in degrees, nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a URL of the format
+
+% TODO move this definition to some other position
+% TODO improve formatting of lstlisting environments
+\lstset{frame=trbl}
+\begin{lstlisting}
+http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}
+http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>;msl=<altitude>
+\end{lstlisting}
+
+is built, e.g.
+
+\begin{lstlisting}
+http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
+\end{lstlisting}
+
+% TODO explicitly name lat, lon, msl for Vienna
+for the city of Vienna, Austria. A GET request to this URL returns an XML document conforming to the XML Schema definition that can be found
+% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema
+online.
+
+The structure of the XML document is as follows (attributes are omitted for better readability):
+
+\begin{lstlisting}
+<weatherdata>
+	<meta>
+		<model />
+	</meta>
+	<product>
+		/* ... */
+	</product>
+</weatherdata>
+\end{lstlisting}
+
+The attributes of the <model> element specify when the forecast has been created, when it will be updated for the next time and what date and time of the first and the last forecast returned are.
+
+There is an arbitrary number of <time> elements that are children of the <product> element. Every <time> element represents the weather forecast for a certain period of time. Each <time> element has a <location> element that has a child element for each weather property.
+
+This is a typical <time> element:
+
+\begin{lstlisting}
+<time datatype="forecast" from="2011-10-17T09:00:00Z" to="2011-10-17T09:00:00Z">
+	<location altitude="171" latitude="48.2100" longitude="16.3700">
+		<temperature id="TTT" unit="celcius" value="8.5" />
+		<windDirection id="dd" deg="140.3" name="SE" />
+		<windSpeed id="ff" mps="4.5" beaufort="3" name="Lett bris" />
+		<humidity value="45.1" unit="percent" />
+		<pressure id="pr" unit="hPa" value="1027.6" />
+		<cloudiness id="NN" percent="0.0" />
+		<fog id="FOG" percent="0.0" />
+		<lowClouds id="LOW" percent="0.0" />
+		<mediumClouds id="MEDIUM" percent="0.0" />
+		<highClouds id="HIGH" percent="0.0" />
+	</location>
+</time>
+\end{lstlisting}
+
+% TODO format names?
+% TODO group names (e.g. for temperature, humidity, clouds, ...)?
+The names of the elements that are allowed to be children of the <location> element are: groundCover, pressure, maximumPrecipitation, highestTemperature, lowestTemperature, precipitation, fog, cloudiness, lowClouds, mediumClouds, highClouds, temperature, dewpointTemperature, minTemperatureDay, minTemperatureNight, maxTemperatureDay, maxTemperatureNight, uv, tidalwater, currentDirection, maxWaveHeight, surfaceTemperature, waveDirection, wavePeriod, waveHeight, humidity, bias, numberofobservations, meanabsoluteerror, score, windDirection, windSpeed, maxWindSpeed, stateOfTheSea, snowDepth, weather, symbol, forest-fire, windProbability, temperatureProbability and symbolProbability.
+
+None of the child elements are required. However, for most places of the world, the XML document contains <location> elements having two different sets of child elements:
+
+\begin{itemize}
+  \item Some <location> elements have the child elements temperature, windDirection, windSpeed, humidity, pressure, cloudiness, fog, lowClouds, mediumClouds and highClouds (as shown above). The values of the attributes from and to of the enclosing <time> element are equal.
+  \item Some <location> elements have the child elements precipitation and symbol; the values of the attributes from and to of the enclosing <time> element differ by three to six hours; such an element looks like this:
+\end{itemize}
+
+\begin{lstlisting}
+<time datatype="forecast" from="2011-10-17T03:00:00Z" to="2011-10-17T09:00:00Z">
+	<location altitude="171" latitude="48.2100" longitude="16.3700">
+		<precipitation unit="mm" value="0.0" />
+		<symbol id="SUN" number="1" />
+	</location>
+</time>
+\end{lstlisting}
+
+The content of the XML document covers a period of nine days, starting at the current day.
+
+\subsection{Position of the sun}
+\label{subsec:sun_position}
+
+% TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
+Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon will be provided. The angle of the sun at solar noon is also given.
+
+However, these data are inappropriate for use within the \thinkhomeweather ontology as every \emph{Weather state} may be linked to an instance of \emph{Sun position}. \emph{Sun position} has two attributes which are \emph{has sun elevation angle} and \emph{has sun direction} that specify the sun's position. However, none of these values can be calculated from the data provided by \emph{yr.no}.
+
+% TODO reference PSA algorithm: http://www.sciencedirect.com/science/article/pii/S0038092X00001560
+% TODO reference SPA algorithm:  Reda, I.; Andreas, A. (2003): Solar Position Algorithm for Solar Radiation Applications. NREL Report No. TP-560-34302, Revised January 2008
+% TODO reference http://www.psa.es/sdg/sunpos.htm - terms of use?
+% TODO give informations about precision of PSA and SPA
+There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time. The \emph{SPA algorithm} is a rather complicated algorithm, but it yields results with uncertainities of less than 0.0003 degrees. A simpler algorithm is the \emph{PSA algorithm}. Its results differ from the actual values more than the ones calculated by the \emph{SPA algorithm}. As approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology, the \emph{PSA algorithm} is suitable for use by the \emph{WeatherReader} application. There are even complete implementations of PSA in C++ that can easily be ported to Java.
