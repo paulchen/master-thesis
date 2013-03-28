@@ -4,6 +4,7 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 
+// TODO javadoc
 public abstract class WeatherSource implements OntologyClass {
 	private String name;
 	private Individual individual;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- TODO cleanup, document -->
 <project name="WeatherReader" default="dist" basedir=".">
 	<property name="java_version" value="1.6" />
 	

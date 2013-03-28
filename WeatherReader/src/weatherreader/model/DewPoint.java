@@ -6,6 +6,7 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 
+// TODO javadoc
 public class DewPoint extends WeatherPhenomenon {
 	private String name;
 	private Individual individual;

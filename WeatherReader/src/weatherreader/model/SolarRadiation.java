@@ -8,6 +8,7 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
+// TODO javadoc
 public class SolarRadiation extends WeatherPhenomenon {
 	private String name;
 	private float radiationValue;

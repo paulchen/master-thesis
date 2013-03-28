@@ -1,5 +1,6 @@
 package weatherreader.model;
 
+// TODO document
 public enum WeatherCondition {
 	Cloud,
 	Fog,

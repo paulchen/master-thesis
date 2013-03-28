@@ -10,6 +10,7 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
+// TODO javadoc
 public class Instant extends TemporalEntity {
 	private String name;
 	private Date date;

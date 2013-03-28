@@ -15,6 +15,7 @@ import weatherreader.SunPositionCalculator;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
+// TODO javadoc
 public class Weather {
 	private Date observationTime;
 	private int priority;

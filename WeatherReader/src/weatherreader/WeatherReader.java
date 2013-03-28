@@ -52,6 +52,9 @@ import weatherreader.model.Wind;
 import com.hp.hpl.jena.ontology.OntModel;
 
 // TODO javadoc
+// TODO additional modes: change current weather state, remove/replace data
+// TODO namespace
+// TODO pluggable import package
 public class WeatherReader {
 	private static final String source = "yr_no";
 	private static final int priority = 421;
