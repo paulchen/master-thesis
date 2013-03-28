@@ -59,6 +59,8 @@
 \newcommand{\thinkhomeweather}{\emph{ThinkHomeWeather }}
 \newcommand{\methontology}{\emph{METHONTOLOGY }}
 
+\newcommand{\chapterquotation}[2]{\hfill\parbox{0.5\textwidth}{\raggedleft\noindent\textit{#1}\\--\enskip #2}}
+
 \begin{document}
 
 \captionnamefont{\bfseries}
@@ -121,37 +123,25 @@
 %%%   MAINMATTER    %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% TODO chapter titles: all upper case?
+
 \mainmatter
 \pagenumbering{arabic}
 \pagestyle{numberCorner}
 
-\chapter{Introduction}
-\label{ch:intro}
 \input{chapters/introduction}
 
-\chapter{Existing work}
-\label{ch:existing_work}
 \input{chapters/existing_work}
 
-\chapter{Weather data}
-\label{ch:weather_data}
 \input{chapters/weather_data}
 
-\chapter{Approaches for developing ontologies}
-\label{ch:development_approaches}
 \input{chapters/development_approaches}
 
-\chapter{The ThinkHomeWeather ontology}
-\label{ch:thinkhomeweather_ontology}
 \input{chapters/thinkhomeweather_ontology}
 
-\chapter{Interaction with ThinkHome's multi-agent system}
-\label{ch:interaction}
-\input{chapters/interaction}
+\input{chapters/weather_importer}
 
-\chapter{Summary}
-\label{ch:summary}
-\input{chapters/summary}
+\input{chapters/conclusion}
 
 % TODO harmonize directions: sun, wind
 
