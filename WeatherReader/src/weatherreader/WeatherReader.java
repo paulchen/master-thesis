@@ -51,6 +51,8 @@ import weatherreader.model.Wind;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
+// TODO move to WeatherImpoter
+// TODO modular style (several jars: data model, executable file, actual importer for a certain weather service)
 // TODO javadoc
 // TODO additional modes: change current weather state, remove/replace data
 // TODO namespace
