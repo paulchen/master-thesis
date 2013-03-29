@@ -1,4 +1,4 @@
-package at.ac.tuwien.auto.thinkhome.weatherimporter;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.importer;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -36,6 +36,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.common.WeatherImporterException;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.common.WeatherImporterProperties;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.CloudCover;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.DewPoint;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.GeographicalPosition;
@@ -50,29 +52,22 @@ import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherPhenomenon;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherState;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Wind;
 
-import com.hp.hpl.jena.ontology.OntModel;
-
 // TODO move to WeatherImpoter
 // TODO modular style (several jars: data model, executable file, actual importer for a certain weather service)
 // TODO javadoc
 // TODO additional modes: change current weather state, remove/replace data
 // TODO namespace
 // TODO pluggable import package
-public class WeatherImporter {
+public class YrNoImporter implements Importer {
 	private static final String source = "yr_no";
 	private static final int priority = 421;
 	private static final String feedUrl = "http://api.yr.no/weatherapi/locationforecast/1.8/?lat=%lat;lon=%lon;msl=%alt";
 	private static final String schemaLocation = "http://api.yr.no/weatherapi/locationforecast/1.8/schema";
 	
-	private float latitude;
-	private float longitude;
-	private int altitude;
-	
 	private int lowCloudAltitude;
 	private int mediumCloudAltitude;
 	private int highCloudAltitude;
 	
-	private List<Integer> forecastHours;
 	private int forecastPeriod;
 	
 	private Weather weather;
@@ -81,22 +76,8 @@ public class WeatherImporter {
 	
 	private int reportIndex;
 	
-	public WeatherImporter(float latitude, float longitude, int altitude, int lowCloudAltitude, int mediumCloudAltitude, int highCloudAltitude, List<Integer> forecastHours) {
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.altitude = altitude;
-		
-		this.lowCloudAltitude = lowCloudAltitude;
-		this.mediumCloudAltitude = mediumCloudAltitude;
-		this.highCloudAltitude = highCloudAltitude;
-		
-		this.forecastHours = new ArrayList<Integer>(forecastHours);
-		Collections.sort(this.forecastHours);
-		forecastPeriod = forecastHours.get(forecastHours.size() - 1)*3600000;
-		
-		log = Logger.getLogger(WeatherImporter.class);
-		
-		reportIndex = 0;
+	public YrNoImporter() {
+		log = Logger.getLogger(YrNoImporter.class);
 	}
 	
 	private void xmlError(String message) throws WeatherImporterException {
@@ -377,11 +358,20 @@ public class WeatherImporter {
 		}
 	}
 
-	public void process() throws WeatherImporterException {
+	@Override
+	public Weather fetchWeather(GeographicalPosition position,
+			WeatherImporterProperties properties, List<Integer> forecastHours) throws WeatherImporterException {
+		lowCloudAltitude = properties.getInt("low_clouds");
+		mediumCloudAltitude = properties.getInt("medium_clouds");
+		highCloudAltitude = properties.getInt("high_clouds");
+		
+		forecastPeriod = Collections.max(forecastHours)*3600000;	
+		reportIndex = 0;
+		
 		String url = new String(feedUrl);
-		url = url.replaceAll("%lat", String.valueOf(latitude));
-		url = url.replaceAll("%lon", String.valueOf(longitude));
-		url = url.replaceAll("%alt", String.valueOf(altitude));
+		url = url.replaceAll("%lat", String.valueOf(position.getLatitude()));
+		url = url.replaceAll("%lon", String.valueOf(position.getLongitude()));
+		url = url.replaceAll("%alt", String.valueOf((int)(Math.round(position.getAltitude()))));
 		log.info("Retrieving weather data from URL: " + url);
 		
 		NodeList nodes;
@@ -410,7 +400,7 @@ public class WeatherImporter {
 			XPath xpath = xpathFactory.newXPath();
 			XPathExpression datapointExpression = xpath.compile("/weatherdata/product/time");
 			
-			weather = new Weather(new Date(), priority, new ServiceSource(source), new GeographicalPosition(latitude, longitude, altitude), forecastHours);
+			weather = new Weather(new Date(), priority, new ServiceSource(source), position, forecastHours);
 			nodes = (NodeList)datapointExpression.evaluate(document, XPathConstants.NODESET);
 		}
 		catch (IllegalArgumentException e) {
@@ -448,9 +438,7 @@ public class WeatherImporter {
 		weather.normalizeWeatherReports();
 		
 		log.info("Importing weather data completed");
-	}
-	
-	public void createIndividuals(OntModel ontology) {
-		weather.createIndividuals(ontology);
+		
+		return weather;
 	}
 }

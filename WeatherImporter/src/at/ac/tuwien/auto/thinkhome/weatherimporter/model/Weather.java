@@ -12,7 +12,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.SunPositionCalculator;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.common.SunPositionCalculator;
 
 import com.hp.hpl.jena.ontology.OntModel;
 

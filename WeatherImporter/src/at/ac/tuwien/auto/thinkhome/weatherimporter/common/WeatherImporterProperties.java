@@ -1,9 +1,10 @@
-package at.ac.tuwien.auto.thinkhome.weatherimporter;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.common;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
 
 // TODO javadoc
 public class WeatherImporterProperties extends Properties {

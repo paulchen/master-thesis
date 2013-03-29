@@ -1,4 +1,4 @@
-package at.ac.tuwien.auto.thinkhome.weatherimporter;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.common;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
