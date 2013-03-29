@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
@@ -32,6 +33,7 @@ public class Instant extends TemporalEntity {
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
 		Resource dateTimeClass = onto.getResource(WeatherConstants.TIME + "DateTimeDescription");
+		// TODO document why this is unique
 		Individual dateTime = onto.createIndividual(WeatherConstants.NAMESPACE + "dateTime0", dateTimeClass);
 		
 		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "unitType"), onto.getResource(WeatherConstants.TIME + "unitMinute")));
@@ -61,7 +63,29 @@ public class Instant extends TemporalEntity {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		// TODO
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.TIME_PREFIX + "Instant"));
+		
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(date);
+		// TODO document why this is unique
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", "a", WeatherConstants.TIME_PREFIX + "DateTimeDescription"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "unitType", WeatherConstants.TIME_PREFIX + "unitMinute"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "minute", String.valueOf(new BigDecimal(calendar.get(Calendar.MINUTE)))));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "hour", String.valueOf(new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY)))));
+		
+		String dayString = "---";
+		if(calendar.get(Calendar.DAY_OF_MONTH) < 10) {
+			dayString += "0";
+		}
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "day", dayString + "^^xsd:gDay"));
+		
+		String monthString = "--";
+		if(calendar.get(Calendar.MONTH) < 10) {
+			monthString += "0";
+		}
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "month", monthString + "^^xsd:gMonth"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "year", String.valueOf(new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY))) + "^^xsd:gYear"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.TIME_PREFIX + "inDateTime", WeatherConstants.NAMESPACE_PREFIX + "dateTime0"));
 		
 		return turtle;
 	}
