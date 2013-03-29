@@ -15,7 +15,6 @@ import at.ac.tuwien.auto.thinkhome.weatherimporter.main.SunPositionCalculator;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.sparql.pfunction.library.blankNode;
 
 // TODO javadoc
 public class Weather {
@@ -246,6 +245,6 @@ public class Weather {
 	private static int blankNodeId = 0;
 	public static String generateBlankNode() {
 		blankNodeId++;
-		return "blank" + blankNodeId;
+		return "_:blank" + blankNodeId;
 	}	
 }

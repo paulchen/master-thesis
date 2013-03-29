@@ -78,10 +78,14 @@ public class CloudCover extends WeatherPhenomenon {
 		String blankNode2 = Weather.generateBlankNode();
 		
 		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(coverage)));
-		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "okta"));
+		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "okta"));
+		
+		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(altitude)));
+		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "meter"));
 		
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		// TODO
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasCloudCover", blankNode1));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasCloudAltitude", blankNode2));
 		
 		return turtle;
 	}
