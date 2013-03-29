@@ -1,0 +1,781 @@
+@prefix : <http://www.tuwien.ac.at/esw08/ca#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ca: <http://www.tuwien.ac.at/esw08/ca#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@base <http://www.tuwien.ac.at/esw08/ca> .
+
+<http://www.tuwien.ac.at/esw08/ca> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+dc:description rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.tuwien.ac.at/esw08/ca#belongsToCA
+
+:belongsToCA rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             dc:description "describes to which CA a RecovationList belongs" ;
+             
+             owl:inverseOf :hasRevocationList .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#hasRevocationList
+
+:hasRevocationList rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   dc:description "links a RevocationList to a CA" ;
+                   
+                   rdfs:domain :CA ;
+                   
+                   rdfs:range :RevocationList .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#hasUID
+
+:hasUID rdf:type owl:FunctionalProperty ,
+                 owl:InverseFunctionalProperty ,
+                 owl:ObjectProperty ;
+        
+        rdfs:comment "links a UID to a Certificate" ;
+        
+        rdfs:range :UID ;
+        
+        owl:inverseOf :isUIDOf .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#heldBy
+
+:heldBy rdf:type owl:InverseFunctionalProperty ,
+                 owl:ObjectProperty ;
+        
+        dc:description "links a CertifiableEntity to a Certificate" ;
+        
+        rdfs:domain :Certificate .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#holdsCertificate
+
+:holdsCertificate rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  dc:description "links a Certificate to a CertifiableEntity" ;
+                  
+                  rdfs:domain :CertifiableEntity ;
+                  
+                  owl:inverseOf :heldBy .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#holdsCertificateIssuedBy
+
+:holdsCertificateIssuedBy rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:comment "property chain connecting holdsCertificate and issuedBy" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#isLocatedIn
+
+:isLocatedIn rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:comment "describes in which Country a CertifiableEntity resides" ;
+             
+             rdfs:domain :CertifiableEntity ;
+             
+             rdfs:range :Country .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#isUIDOf
+
+:isUIDOf rdf:type owl:FunctionalProperty ,
+                  owl:InverseFunctionalProperty ,
+                  owl:ObjectProperty ;
+         
+         rdfs:comment "inverse property of isUIDOf" ;
+         
+         rdfs:range :Certificate ;
+         
+         rdfs:domain :UID .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#issuedBy
+
+:issuedBy rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          dc:description "describes which CA issued a Certificate" ;
+          
+          rdfs:range :CA ;
+          
+          rdfs:domain :Certificate ;
+          
+          owl:inverseOf :issuesCertificate .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#issuesCertificate
+
+:issuesCertificate rdf:type owl:ObjectProperty ;
+                   
+                   dc:description "describes that a Certificate is issued by a CA" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#revokedBy
+
+:revokedBy rdf:type owl:ObjectProperty ;
+           
+           dc:description "describes the RecovationList revoking a Certificate" ;
+           
+           owl:inverseOf :revokesCertificate .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#revokesCertificate
+
+:revokesCertificate rdf:type owl:ObjectProperty ;
+                    
+                    dc:description "links a Certificate to a RecovationList in order to revoke it" .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.tuwien.ac.at/esw08/ca#hasKeyLength
+
+:hasKeyLength rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:label "links a key length (in KBytes) to a Certificate" ;
+              
+              rdfs:domain :Certificate ;
+              
+              rdfs:range xsd:positiveInteger .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.tuwien.ac.at/esw08/ca#AustrianCA
+
+:AustrianCA rdf:type owl:Class ;
+            
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:intersectionOf ( :CA
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :isLocatedIn ;
+                                                         owl:hasValue :Austria
+                                                       ]
+                                                     )
+                                ] ;
+            
+            owl:disjointWith :NonAustrianCA ;
+            
+            rdfs:comment "a CA located in Austria" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#CA
+
+:CA rdf:type owl:Class ;
+    
+    rdfs:subClassOf :Organisation ;
+    
+    rdfs:comment "an Organisation issuing a Certificate to a CertifiableEntity" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#CertifiableEntity
+
+:CertifiableEntity rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf owl:Thing ;
+                   
+                   rdfs:comment "something a Certificate can be issued to" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Certificate
+
+:Certificate rdf:type owl:Class ;
+             
+             rdfs:subClassOf owl:Thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasUID ;
+                               owl:onClass :UID ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Class ;
+                               owl:unionOf ( :InvalidCertificate
+                                             :ValidCertificate
+                                           )
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :heldBy ;
+                               owl:onClass :CertifiableEntity ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasKeyLength ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :issuedBy ;
+                               owl:onClass :CA ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
+             
+             rdfs:comment "a certificate" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#ContractingCertificate
+
+:ContractingCertificate rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Certificate ;
+                        
+                        rdfs:comment "a contracting certificate" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Country
+
+:Country rdf:type owl:Class ;
+         
+         rdfs:subClassOf owl:Thing ;
+         
+         rdfs:comment "a country where a CertifiableEntity may reside" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#DeveloperCertificate
+
+:DeveloperCertificate rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Certificate ;
+                      
+                      rdfs:comment "a developer certificate" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#EGovernmentCertificate
+
+:EGovernmentCertificate rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Certificate ;
+                        
+                        rdfs:comment "a certificate for E-Government" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#EMailCertificate
+
+:EMailCertificate rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Certificate ;
+                  
+                  rdfs:comment "an Email certificate" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#InvalidCertificate
+
+:InvalidCertificate rdf:type owl:Class ;
+                    
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty :revokedBy ;
+                                          owl:onClass :RevocationList ;
+                                          owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                        ] ;
+                    
+                    rdfs:subClassOf :Certificate ;
+                    
+                    owl:disjointWith :ValidCertificate ;
+                    
+                    rdfs:comment "a certificate that is not listed in any RevocationList" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#NonAustrianCA
+
+:NonAustrianCA rdf:type owl:Class ;
+               
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:intersectionOf ( :CA
+                                                          [ rdf:type owl:Class ;
+                                                            owl:complementOf :AustrianCA
+                                                          ]
+                                                        )
+                                   ] ;
+               
+               rdfs:comment "a CA not located in Austria" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Organisation
+
+:Organisation rdf:type owl:Class ;
+              
+              rdfs:subClassOf :CertifiableEntity ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :isLocatedIn ;
+                                owl:onClass :Country ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ;
+              
+              owl:disjointWith :Person ;
+              
+              rdfs:comment "some organisation a Certificate can be issued to" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Person
+
+:Person rdf:type owl:Class ;
+        
+        rdfs:subClassOf :CertifiableEntity ;
+        
+        rdfs:comment "a person a Certificate can be issued to" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#PersonWithValidDeveloperCertificate
+
+:PersonWithValidDeveloperCertificate rdf:type owl:Class ;
+                                     
+                                     owl:equivalentClass [ rdf:type owl:Class ;
+                                                           owl:intersectionOf ( :Person
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :holdsCertificate ;
+                                                                                  owl:someValuesFrom :ValidDeveloperCertificate
+                                                                                ]
+                                                                              )
+                                                         ] ;
+                                     
+                                     rdfs:subClassOf :Person ;
+                                     
+                                     rdfs:comment "name says all ;)" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#RevocationList
+
+:RevocationList rdf:type owl:Class ;
+                
+                rdfs:subClassOf owl:Thing ;
+                
+                rdfs:comment "a list describing which CA has revoked which Certificate" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#RevokedCertificateIssuedToOrganisation
+
+:RevokedCertificateIssuedToOrganisation rdf:type owl:Class ;
+                                        
+                                        owl:equivalentClass [ rdf:type owl:Class ;
+                                                              owl:intersectionOf ( :InvalidCertificate
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :heldBy ;
+                                                                                     owl:someValuesFrom :Organisation
+                                                                                   ]
+                                                                                 )
+                                                            ] ;
+                                        
+                                        rdfs:comment "name says all" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#SelfSignedCA
+
+:SelfSignedCA rdf:type owl:Class ;
+              
+              rdfs:subClassOf :CA ;
+              
+              rdfs:comment "a CA that holds some Certificate that is issued by itself" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#UID
+
+:UID rdf:type owl:Class ;
+     
+     rdfs:subClassOf owl:Thing ;
+     
+     rdfs:comment "a Certificate's UID" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#ValidCertificate
+
+:ValidCertificate rdf:type owl:Class ;
+                  
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:intersectionOf ( :Certificate
+                                                             [ rdf:type owl:Class ;
+                                                               owl:complementOf :InvalidCertificate
+                                                             ]
+                                                           )
+                                      ] ;
+                  
+                  rdfs:comment "a certificate that is not listed in any RevocationList" .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#ValidDeveloperCertificate
+
+:ValidDeveloperCertificate rdf:type owl:Class ;
+                           
+                           owl:equivalentClass [ rdf:type owl:Class ;
+                                                 owl:intersectionOf ( :DeveloperCertificate
+                                                                      :ValidCertificate
+                                                                    )
+                                               ] ;
+                           
+                           rdfs:comment "name says all ;)" .
+
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+
+owl:Thing rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Austria
+
+:Austria rdf:type :Country .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#CA_Austria_1
+
+:CA_Austria_1 rdf:type :CA ,
+                       :SelfSignedCA ;
+              
+              :isLocatedIn :Austria .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#CA_Germany_1
+
+:CA_Germany_1 rdf:type :CA ;
+              
+              :isLocatedIn :Germany .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Cert1
+
+:Cert1 rdf:type :ContractingCertificate ,
+                [ rdf:type owl:Class ;
+                  owl:unionOf ( :InvalidCertificate
+                                :ValidCertificate
+                              )
+                ] ;
+       
+       :hasKeyLength "1"^^xsd:positiveInteger ;
+       
+       :issuedBy :CA_Austria_1 ;
+       
+       :heldBy :Organisation_1 ;
+       
+       :hasUID :UID_1 .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Cert2
+
+:Cert2 rdf:type :DeveloperCertificate ,
+                :ValidCertificate ;
+       
+       :hasKeyLength "2"^^xsd:positiveInteger ;
+       
+       :issuedBy :CA_Germany_1 ;
+       
+       :heldBy :Person_1 ;
+       
+       :hasUID :UID_2 .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Cert3
+
+:Cert3 rdf:type :EGovernmentCertificate ,
+                :ValidCertificate ;
+       
+       :hasKeyLength "3"^^xsd:positiveInteger ;
+       
+       :issuedBy :CA_Austria_1 ;
+       
+       :heldBy :Organisation_2 ;
+       
+       :hasUID :UID_3 .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Cert4
+
+:Cert4 rdf:type :EMailCertificate ;
+       
+       :hasKeyLength "4"^^xsd:positiveInteger ;
+       
+       :issuedBy :CA_Germany_1 ;
+       
+       :heldBy :Person_2 ;
+       
+       :hasUID :UID_4 .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Cert5
+
+:Cert5 rdf:type :ValidCertificate ;
+       
+       :hasKeyLength "6"^^xsd:positiveInteger ;
+       
+       :issuedBy :CA_Germany_1 ;
+       
+       :heldBy :CA_Germany_1 ;
+       
+       :hasUID :UID_5 .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Cert6
+
+:Cert6 rdf:type :DeveloperCertificate ,
+                :ValidCertificate ;
+       
+       :issuedBy :CA_Austria_1 ;
+       
+       :heldBy :TrustedPerson .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Germany
+
+:Germany rdf:type :Country .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Organisation_1
+
+:Organisation_1 rdf:type :Organisation .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Organisation_2
+
+:Organisation_2 rdf:type :Organisation .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Person_1
+
+:Person_1 rdf:type :Person .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#Person_2
+
+:Person_2 rdf:type :Person .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#RevocationList_Austria_1
+
+:RevocationList_Austria_1 rdf:type :RevocationList ;
+                          
+                          :belongsToCA :CA_Austria_1 ;
+                          
+                          :revokesCertificate :Cert1 ,
+                                              :Cert4 .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#TrustedPerson
+
+:TrustedPerson rdf:type :Person .
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#UID_1
+
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#UID_2
+
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#UID_3
+
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#UID_4
+
+
+
+
+###  http://www.tuwien.ac.at/esw08/ca#UID_5
+
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Person_1
+                        :UID_4
+                        :CA_Germany_1
+                        :Cert1
+                        :CA_Austria_1
+                        :UID_5
+                        :Austria
+                        :RevocationList_Austria_1
+                        :Cert4
+                        :Organisation_2
+                        :Cert3
+                        :UID_2
+                        :Organisation_1
+                        :TrustedPerson
+                        :Person_2
+                        :Germany
+                        :UID_1
+                        :Cert6
+                        :Cert2
+                        :Cert5
+                        :UID_3
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Person_1
+                        :UID_4
+                        :CA_Germany_1
+                        :Cert1
+                        :CA_Austria_1
+                        :UID_5
+                        :Austria
+                        :RevocationList_Austria_1
+                        :Cert4
+                        :Organisation_2
+                        :Cert3
+                        :UID_2
+                        :Organisation_1
+                        :TrustedPerson
+                        :Person_2
+                        :Germany
+                        :UID_1
+                        :Cert2
+                        :Cert5
+                        :UID_3
+                      )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CertifiableEntity
+                :Certificate
+                :Country
+                :RevocationList
+                :UID
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ContractingCertificate
+                :DeveloperCertificate
+                :EGovernmentCertificate
+                :EMailCertificate
+              )
+] .
+[ rdfs:subPropertyOf :holdsCertificateIssuedBy ;
+  owl:propertyChain ( :holdsCertificate
+                      :issuedBy
+                    )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Person_1
+                        :UID_4
+                        :CA_Germany_1
+                        :CA_Austria_1
+                        :Cert1
+                        :UID_5
+                        :RevocationList_Austria_1
+                        :Austria
+                        :Cert4
+                        :Cert3
+                        :Organisation_2
+                        :UID_2
+                        :Organisation_1
+                        :Person_2
+                        :Germany
+                        :UID_1
+                        :Cert2
+                        :Cert5
+                        :UID_3
+                      )
+] .
+
+
+
+
+###  Generated by the OWL API (version 2.2.1.962) http://owlapi.sourceforge.net
+
