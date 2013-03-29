@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -73,7 +74,10 @@ public class Interval extends TemporalEntity {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		// TODO
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.TIME_PREFIX + "Interval"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, "a", WeatherConstants.NAMESPACE_PREFIX + "Hour"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, WeatherConstants.TIME_PREFIX + "hours", String.valueOf(new BigDecimal(time)) + "^^xsd:decimal"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.TIME_PREFIX + "hasDurationDescription", WeatherConstants.NAMESPACE_PREFIX + name));
 		
 		return turtle;
 	}
