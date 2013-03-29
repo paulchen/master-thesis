@@ -1,4 +1,4 @@
-package at.ac.tuwien.auto.thinkhome.weatherimporter.common;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.main;
 
 //TODO javadoc
 public class WeatherImporterException extends Exception {

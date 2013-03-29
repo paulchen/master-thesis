@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.common.WeatherImporterException;
-import at.ac.tuwien.auto.thinkhome.weatherimporter.common.WeatherImporterProperties;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.importer.Importer;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.GeographicalPosition;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Weather;

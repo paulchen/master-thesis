@@ -36,8 +36,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.common.WeatherImporterException;
-import at.ac.tuwien.auto.thinkhome.weatherimporter.common.WeatherImporterProperties;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.main.WeatherImporterException;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.main.WeatherImporterProperties;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.CloudCover;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.DewPoint;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.GeographicalPosition;

@@ -1,9 +1,10 @@
-package at.ac.tuwien.auto.thinkhome.weatherimporter.common;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.main;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
 
 
 // TODO javadoc
