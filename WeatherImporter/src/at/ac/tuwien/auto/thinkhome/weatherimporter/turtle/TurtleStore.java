@@ -13,40 +13,69 @@ public class TurtleStore {
 	}
 	
 	public String printAll() {
-		// TODO simplify statements (e.g. rdf:type -> a etc.)
-		
 		int subjectWidth = 0;
 		int predicateWidth = 0;
 		
 		for(TurtleStatement statement : statements) {
 			subjectWidth = Math.max(subjectWidth, statement.getSubject().length());
 			predicateWidth = Math.max(predicateWidth, statement.getPredicate().length());
+			
+			if(statement.getPredicate().equals("rdf:type")) {
+				statement.setPredicate("a");
+			}
 		}
 
 		subjectWidth += bufferSpace;
 		predicateWidth += bufferSpace;
 		
-		// TODO simplifications (store last subject, last predicate)
 		StringBuffer output = new StringBuffer();
 		
 		String previousSubject = "";
+		String previousPredicate = "";
 		for(TurtleStatement statement : statements) {
+			if(!previousSubject.equals("")) {
+				if(previousSubject.equals(statement.getSubject())) {
+					if(previousPredicate.equals(statement.getPredicate())) {
+						output.append(" ,");
+					}
+					else {
+						output.append(" ;");
+					}
+				}
+				else {
+					output.append(" .");
+				}
+				output.append(System.getProperty("line.separator"));
+			}
+			
 			if(!previousSubject.equals("") && !previousSubject.substring(0, 2).equals("_:") && !statement.getSubject().equals(previousSubject)) {
 				output.append(System.getProperty("line.separator"));
 			}
-			previousSubject = statement.getSubject();
+		
+			if(!previousSubject.equals(statement.getSubject())) {
+				output.append(statement.getSubject());
+				output.append(repeat(" ", subjectWidth - statement.getSubject().length()));
+			}
+			else {
+				output.append(repeat(" ", subjectWidth));
+			}
 			
-			output.append(statement.getSubject());
-			output.append(repeat(" ", subjectWidth - statement.getSubject().length()));
-			
-			output.append(statement.getPredicate());
-			output.append(repeat(" ", predicateWidth - statement.getPredicate().length()));
+			if(!previousPredicate.equals(statement.getPredicate())) {
+				output.append(statement.getPredicate());
+				output.append(repeat(" ", predicateWidth - statement.getPredicate().length()));
+			}
+			else {
+				output.append(repeat(" ", subjectWidth));
+			}
 			
 			output.append(statement.getObject());
 			
-			output.append(" .");
-			output.append(System.getProperty("line.separator"));
+			previousSubject = statement.getSubject();
+			previousPredicate = statement.getPredicate();
 		}
+		
+		output.append(" .");
+		output.append(System.getProperty("line.separator"));
 		
 		return output.toString();
 	}

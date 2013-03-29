@@ -73,4 +73,8 @@ public class TurtleStatement implements Comparable<TurtleStatement> {
 		}
 		return getSubject().compareTo(that.getSubject());
 	}
+
+	public void setPredicate(String predicate) {
+		this.predicate = predicate;
+	}
 }
