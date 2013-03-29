@@ -3,6 +3,7 @@ package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
 
 import java.util.List;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -50,7 +51,13 @@ public class Temperature extends WeatherPhenomenon {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		// TODO
+		String blankNode = Weather.generateBlankNode();
+		
+		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(roundFloat(temperatureValue, WeatherConstants.DECIMALS)) + "f"));
+		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "Celsius"));
+		
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasTemperatureValue", blankNode));
 		
 		return turtle;
 	}
