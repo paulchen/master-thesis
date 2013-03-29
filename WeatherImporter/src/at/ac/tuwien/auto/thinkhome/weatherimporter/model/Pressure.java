@@ -54,8 +54,8 @@ public class Pressure extends WeatherPhenomenon {
 		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(roundFloat(pressureValue, WeatherConstants.DECIMALS)) + "^^xsd:float"));
 		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "hectopascal"));
 		
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasPressureValue", blankNode));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasPressureValue", blankNode));
 		
 		return turtle;
 	}
@@ -97,5 +97,10 @@ public class Pressure extends WeatherPhenomenon {
 	@Override
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }

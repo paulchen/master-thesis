@@ -98,9 +98,9 @@ public class SunPosition extends WeatherPhenomenon {
 		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf((float)roundDouble(elevation, WeatherConstants.DECIMALS)) + "^^xsd:float"));
 		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "degree"));
 		
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasSunDirection", blankNode1));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasSunElevationAngle", blankNode2));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasSunDirection", blankNode1));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasSunElevationAngle", blankNode2));
 		
 		return turtle;
 	}
@@ -130,5 +130,10 @@ public class SunPosition extends WeatherPhenomenon {
 	@Override
 	public Object clone() {
 		return new SunPosition(name, zenith, azimuth);
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }

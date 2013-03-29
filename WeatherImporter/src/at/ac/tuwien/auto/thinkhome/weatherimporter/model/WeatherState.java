@@ -62,18 +62,18 @@ public class WeatherState implements OntologyClass {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherState"));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherState"));
 		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
 			turtle.addAll(phenomenon.getTurtleStatements());
 			
-			// TODO belongsToWeatherState
+			turtle.add(new TurtleStatement(phenomenon.getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "belongsToWeatherState", getTurtleName()));
 		}
 		for(WeatherCondition condition : weatherConditions) {
-			turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + name + "hasCondition", WeatherConstants.NAMESPACE_PREFIX + condition.toString()));
+			turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + name + "hasCondition", WeatherConstants.NAMESPACE_PREFIX + condition.toString()));
 		}
 		
 		if(previousState != null) {
-			turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + previousState.getName(), WeatherConstants.NAMESPACE_PREFIX + "hasNextWeatherState", WeatherConstants.NAMESPACE_PREFIX + name));
+			turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + previousState.getName(), WeatherConstants.NAMESPACE_PREFIX + "hasNextWeatherState", getTurtleName()));
 		}
 		
 		return turtle;
@@ -206,5 +206,10 @@ public class WeatherState implements OntologyClass {
 
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }

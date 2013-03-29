@@ -78,9 +78,9 @@ public class Precipitation extends WeatherPhenomenon {
 		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(roundFloat(intensity, WeatherConstants.DECIMALS)) + "^^xsd:float"));
 		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "millimetresPerHour"));
 		
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasPrecipitationProbability", blankNode1));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasPrecipitationIntensity", blankNode2));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasPrecipitationProbability", blankNode1));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasPrecipitationIntensity", blankNode2));
 		
 		return turtle;
 	}
@@ -125,5 +125,10 @@ public class Precipitation extends WeatherPhenomenon {
 	@Override
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }

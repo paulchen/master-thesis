@@ -14,5 +14,7 @@ public interface OntologyClass {
 	
 	public TurtleStore getTurtleStatements();
 	
+	public String getTurtleName();
+	
 	public String toString();
 }

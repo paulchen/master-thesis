@@ -98,4 +98,9 @@ public class SolarRadiation extends WeatherPhenomenon {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
+	}
 }

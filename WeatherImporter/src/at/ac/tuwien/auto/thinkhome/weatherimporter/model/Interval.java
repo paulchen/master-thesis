@@ -74,10 +74,10 @@ public class Interval extends TemporalEntity {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.TIME_PREFIX + "Interval"));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.TIME_PREFIX + "Interval"));
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, "a", WeatherConstants.NAMESPACE_PREFIX + "Hour"));
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, WeatherConstants.TIME_PREFIX + "hours", String.valueOf(new BigDecimal(time)) + "^^xsd:decimal"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.TIME_PREFIX + "hasDurationDescription", WeatherConstants.NAMESPACE_PREFIX + name));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.TIME_PREFIX + "hasDurationDescription", WeatherConstants.NAMESPACE_PREFIX + name));
 		
 		return turtle;
 	}
@@ -94,5 +94,10 @@ public class Interval extends TemporalEntity {
 	@Override
 	public String toString() {
 		return String.valueOf(time);
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }

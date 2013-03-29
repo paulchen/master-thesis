@@ -28,7 +28,7 @@ public abstract class WeatherSource implements OntologyClass {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "ServiceSource"));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "ServiceSource"));
 		
 		return turtle;
 	}
@@ -41,5 +41,10 @@ public abstract class WeatherSource implements OntologyClass {
 	@Override
 	public String toString() {
 		return getOntClassName() + ":" + name;
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }

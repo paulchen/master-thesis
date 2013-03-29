@@ -63,7 +63,7 @@ public class Instant extends TemporalEntity {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.TIME_PREFIX + "Instant"));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.TIME_PREFIX + "Instant"));
 		
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
@@ -85,7 +85,7 @@ public class Instant extends TemporalEntity {
 		}
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "month", monthString + "^^xsd:gMonth"));
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "year", String.valueOf(new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY))) + "^^xsd:gYear"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.TIME_PREFIX + "inDateTime", WeatherConstants.NAMESPACE_PREFIX + "dateTime0"));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.TIME_PREFIX + "inDateTime", WeatherConstants.NAMESPACE_PREFIX + "dateTime0"));
 		
 		return turtle;
 	}
@@ -98,5 +98,10 @@ public class Instant extends TemporalEntity {
 	@Override
 	public String toString() {
 		return date.toString();
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }

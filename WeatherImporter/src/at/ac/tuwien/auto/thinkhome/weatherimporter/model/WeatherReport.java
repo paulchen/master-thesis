@@ -1,4 +1,5 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -61,7 +62,26 @@ public class WeatherReport implements OntologyClass {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		// TODO
+		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherReport"));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasPriority", String.valueOf(priority)));
+		
+		turtle.addAll(source.getTurtleStatements());
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasSource", source.getTurtleName()));
+		
+		turtle.addAll(startTime.getTurtleStatements());
+		turtle.addAll(endTime.getTurtleStatements());
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasStartTime", startTime.getTurtleName()));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasEndTime", endTime.getTurtleName()));
+		
+		turtle.addAll(position.getTurtleStatements());
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "location", position.getTurtleName()));
+		
+		turtle.addAll(observationTime.getTurtleStatements());
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasObservationTime", observationTime.getTurtleName()));
+		
+		if(previousReport != null) {
+			weatherState.setPreviousState(previousReport.getState());
+		}
 		turtle.addAll(weatherState.getTurtleStatements());
 		
 		return turtle;
@@ -137,5 +157,10 @@ public class WeatherReport implements OntologyClass {
 
 	public void setPreviousReport(WeatherReport previousReport) {
 		this.previousReport = previousReport;
+	}
+
+	@Override
+	public String getTurtleName() {
+		return WeatherConstants.NAMESPACE_PREFIX + name;
 	}
 }
