@@ -6,7 +6,10 @@ public final class WeatherConstants {
 	public static final String NAMESPACE_PREFIX = "weather:";
 	
 	public static final String WGS84 = "http://www.w3.org/2003/01/geo/wgs84_pos#";
+	public static final String WGS84_PREFIX = "wgs:";
+	
 	public static final String TIME = "http://www.w3.org/2006/time#";
+	public static final String TIME_PREFIX = "time:";
 	
 	public static final String MUO_NAMESPACE = "http://purl.oclc.org/NET/muo/muo#";
 	public static final String MUO_PREFIX = "muo:";
