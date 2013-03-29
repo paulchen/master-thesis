@@ -44,7 +44,7 @@ public class Main {
 		if(args[0].equals("turtle")) {
 			Weather weather = fetchData(properties);
 			TurtleStore turtle = weather.getTurtleStatements();
-			turtle.printAll();
+			System.out.println(turtle.printAll());
 			return;
 		}
 		

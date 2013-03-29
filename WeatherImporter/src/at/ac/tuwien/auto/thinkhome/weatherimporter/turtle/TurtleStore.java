@@ -12,29 +12,30 @@ public class TurtleStore {
 		this.statements = new LinkedHashSet<TurtleStatement>();
 	}
 	
-	public void printAll() {
+	public String printAll() {
 		// TODO simplify statements (e.g. rdf:type -> a etc.)
-		// TODO sort statements
-		// TODO dump
 		
 		int subjectWidth = 0;
 		int predicateWidth = 0;
-		int objectWidth = 0;
 		
 		for(TurtleStatement statement : statements) {
 			subjectWidth = Math.max(subjectWidth, statement.getSubject().length());
 			predicateWidth = Math.max(predicateWidth, statement.getPredicate().length());
-			objectWidth = Math.max(objectWidth, statement.getObject().length());
 		}
 
 		subjectWidth += bufferSpace;
 		predicateWidth += bufferSpace;
-		objectWidth += bufferSpace;
 		
 		// TODO simplifications (store last subject, last predicate)
 		// TODO separation lines
+		StringBuffer output = new StringBuffer();
+		
+		String previousSubject = "";
 		for(TurtleStatement statement : statements) {
-			StringBuffer output = new StringBuffer();
+			if(!previousSubject.equals("") && !previousSubject.substring(0, 2).equals("_:") && !statement.getSubject().equals(previousSubject)) {
+				output.append(System.getProperty("line.separator"));
+			}
+			previousSubject = statement.getSubject();
 			
 			output.append(statement.getSubject());
 			output.append(repeat(" ", subjectWidth - statement.getSubject().length()));
@@ -43,10 +44,12 @@ public class TurtleStore {
 			output.append(repeat(" ", predicateWidth - statement.getPredicate().length()));
 			
 			output.append(statement.getObject());
-			output.append(repeat(" ", objectWidth - statement.getObject().length()));
 			
-			System.out.println(output);
+			output.append(" .");
+			output.append(System.getProperty("line.separator"));
 		}
+		
+		return output.toString();
 	}
 
 	public void addAll(TurtleStore turtle) {
