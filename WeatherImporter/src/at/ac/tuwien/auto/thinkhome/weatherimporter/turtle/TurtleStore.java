@@ -13,7 +13,7 @@ public class TurtleStore {
 	}
 	
 	public void printAll() {
-		// TODO simplify statements
+		// TODO simplify statements (e.g. rdf:type -> a etc.)
 		// TODO sort statements
 		// TODO dump
 		
@@ -32,6 +32,7 @@ public class TurtleStore {
 		objectWidth += bufferSpace;
 		
 		// TODO simplifications (store last subject, last predicate)
+		// TODO separation lines
 		for(TurtleStatement statement : statements) {
 			StringBuffer output = new StringBuffer();
 			
