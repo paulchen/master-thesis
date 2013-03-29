@@ -67,9 +67,9 @@ public class GeographicalPosition implements OntologyClass {
 		TurtleStore turtle = new TurtleStore();
 		
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "point0", "a", WeatherConstants.WGS84_PREFIX + "Point"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "point0", WeatherConstants.WGS84_PREFIX + "lat", String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "f")));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "point0", WeatherConstants.WGS84_PREFIX + "lon", String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "f")));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "point0", WeatherConstants.WGS84_PREFIX + "alt", String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "f")));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "point0", WeatherConstants.WGS84_PREFIX + "lat", String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "^^xsd:float")));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "point0", WeatherConstants.WGS84_PREFIX + "lon", String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "^^xsd:float")));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "point0", WeatherConstants.WGS84_PREFIX + "alt", String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "^^xsd:float")));
 		
 		return turtle;
 	}

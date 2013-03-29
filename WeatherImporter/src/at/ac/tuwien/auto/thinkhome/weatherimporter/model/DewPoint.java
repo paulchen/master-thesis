@@ -52,7 +52,7 @@ public class DewPoint extends WeatherPhenomenon {
 		*/
 		
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasDewPointValue", String.valueOf(roundFloat(dewPointValue, WeatherConstants.DECIMALS) + "f")));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasDewPointValue", String.valueOf(roundFloat(dewPointValue, WeatherConstants.DECIMALS) + "^^xsd:float")));
 		
 		return turtle;
 	}
