@@ -39,11 +39,11 @@ public class GeographicalPosition implements OntologyClass {
 		this.longitude = longitude;
 	}
 
-	protected float getAltitude() {
+	public float getAltitude() {
 		return altitude;
 	}
 
-	protected void setAltitude(float altitude) {
+	public void setAltitude(float altitude) {
 		this.altitude = altitude;
 	}
 
