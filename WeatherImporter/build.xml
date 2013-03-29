@@ -16,7 +16,8 @@
     <path id="project.classpath" >
         <!-- <pathelement location="${build.dir}" /> -->
     	<pathelement location="${dist.dir}/WeatherReader.jar" />
-        <pathelement location="${build.test.dir}" />
+    	<pathelement location="${dist.dir}/YrNoPlugin.jar" />
+    	<pathelement location="${build.test.dir}" />
         <fileset dir="${lib.dir}">
             <include name="**/*.jar" />
         	<exclude name="**/pellet/jena/*.jar" />
@@ -58,7 +59,7 @@
 		<property name="classpath" refid="project.classpath" />
 		<echo message="Classpath = ${classpath}" />
 		-->
-	    <java classname="weatherreader.Main" fork="true" classpathref="project.classpath" />
+	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath" />
 	</target>
 
 	<target name="test" depends="compile_test" description="TODO">
@@ -85,13 +86,20 @@
 	
 	<target name="dist" depends="compile">
         <mkdir dir="${dist.dir}" />
-		<jar destfile="${dist.dir}/WeatherReader.jar">
-			<fileset dir="${build.dir}" />
+		<jar destfile="${dist.dir}/WeatherImporter.jar">
+			<fileset dir="${build.dir}">
+			    <exclude name="**/YrNoImporter.class" />
+			</fileset>
 			<manifest>
-				<attribute name="Main-Class" value="weatherreader.Main" />
+				<attribute name="Main-Class" value="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" />
 			</manifest>
 		</jar>
-	</target>
+		<jar destfile="${dist.dir}/YrNoPlugin.jar">
+			<fileset dir="${build.dir}">
+			    <filename name="**/YrNoImporter.class" />
+			</fileset>
+		</jar>
+	</target>	
 	
     <target name="clean" description="Clean build products.">
         <delete dir="${dist.dir}" />
