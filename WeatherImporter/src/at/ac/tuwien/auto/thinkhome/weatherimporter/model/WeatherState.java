@@ -69,7 +69,7 @@ public class WeatherState implements OntologyClass {
 			turtle.add(new TurtleStatement(phenomenon.getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "belongsToWeatherState", getTurtleName()));
 		}
 		for(WeatherCondition condition : weatherConditions) {
-			turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + name + "hasCondition", WeatherConstants.NAMESPACE_PREFIX + condition.toString()));
+			turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasCondition", WeatherConstants.NAMESPACE_PREFIX + condition.toString()));
 		}
 		
 		if(previousState != null) {
