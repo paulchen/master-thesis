@@ -1,4 +1,5 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.importer;
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -52,12 +53,9 @@ import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherPhenomenon;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherState;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Wind;
 
-// TODO move to WeatherImpoter
-// TODO modular style (several jars: data model, executable file, actual importer for a certain weather service)
 // TODO javadoc
 // TODO additional modes: change current weather state, remove/replace data
 // TODO namespace
-// TODO pluggable import package
 public class YrNoImporter implements Importer {
 	private static final String source = "yr_no";
 	private static final int priority = 421;
