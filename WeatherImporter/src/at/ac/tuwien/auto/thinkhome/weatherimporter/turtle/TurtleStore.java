@@ -12,6 +12,7 @@ public class TurtleStore {
 		this.statements = new LinkedHashSet<TurtleStatement>();
 	}
 	
+	// TODO namespaces
 	public String printAll() {
 		int subjectWidth = 0;
 		int predicateWidth = 0;
@@ -60,7 +61,7 @@ public class TurtleStore {
 				output.append(repeat(" ", subjectWidth));
 			}
 			
-			if(!previousPredicate.equals(statement.getPredicate())) {
+			if(!previousSubject.equals(statement.getSubject()) || !previousPredicate.equals(statement.getPredicate())) {
 				output.append(statement.getPredicate());
 				output.append(repeat(" ", predicateWidth - statement.getPredicate().length()));
 			}
