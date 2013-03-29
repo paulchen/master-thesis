@@ -1,6 +1,6 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.turtle;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class TurtleStore {
@@ -9,7 +9,7 @@ public class TurtleStore {
 	private Set<TurtleStatement> statements;
 	
 	public TurtleStore() {
-		this.statements = new HashSet<TurtleStatement>();
+		this.statements = new LinkedHashSet<TurtleStatement>();
 	}
 	
 	public void printAll() {
