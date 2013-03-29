@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -53,6 +55,15 @@ public class Instant extends TemporalEntity {
 		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "year"), onto.createTypedLiteral(String.valueOf(calendar.get(Calendar.YEAR)), XSDDatatype.XSDgYear)));
 		
 		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.TIME + "inDateTime"), dateTime));
+	}
+
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		
+		// TODO
+		
+		return turtle;
 	}
 
 	@Override

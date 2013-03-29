@@ -1,4 +1,6 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -55,6 +57,16 @@ public class WeatherReport implements OntologyClass {
 		weatherState.createIndividuals(onto);
 	}	
 	
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		
+		// TODO
+		turtle.addAll(weatherState.getTurtleStatements());
+		
+		return turtle;
+	}
+
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();

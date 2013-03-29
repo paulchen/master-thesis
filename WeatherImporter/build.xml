@@ -14,11 +14,12 @@
     
 		
     <path id="project.classpath" >
-        <!-- <pathelement location="${build.dir}" /> -->
-    	<pathelement location="${dist.dir}/WeatherReader.jar" />
     	<pathelement location="${dist.dir}/YrNoPlugin.jar" />
     	<pathelement location="${build.test.dir}" />
-        <fileset dir="${lib.dir}">
+        <fileset dir="${dist.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+    	<fileset dir="${lib.dir}">
             <include name="**/*.jar" />
         	<exclude name="**/pellet/jena/*.jar" />
         	<exclude name="**/slf4j*.jar" />
@@ -53,15 +54,35 @@
         </copy>
     </target>
 	
-	<target name="run" depends="dist" description="TODO">
-		<!-- re-enable if you want to debug the classpath -->
-		<!--
+	<target name="fetch" depends="dist" description="TODO">
 		<property name="classpath" refid="project.classpath" />
-		<echo message="Classpath = ${classpath}" />
-		-->
-	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath" />
+	   	<java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true">
+ 	        <arg value="fetch" />
+	        <classpath>
+	            <pathelement path="${classpath}" />
+	        </classpath>
+	    </java>
 	</target>
 
+	<target name="turtle" depends="dist" description="TODO">
+	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath">
+	        <arg value="turtle" />
+	    </java>
+	</target>
+
+		<target name="timestamps" depends="dist" description="TODO">
+	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath">
+	        <arg value="timestamps" />
+	    </java>
+	</target>
+
+
+	<target name="remove" depends="dist" description="TODO">
+	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath">
+	        <arg value="remove" />
+	    </java>
+	</target>
+	
 	<target name="test" depends="compile_test" description="TODO">
         <delete dir="${reports.dir}" />
         <mkdir dir="${reports.dir}" />

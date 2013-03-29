@@ -2,6 +2,9 @@ package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
 
 import java.util.List;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -67,6 +70,16 @@ public class CloudCover extends WeatherPhenomenon {
 		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasCloudAltitude"), blankNode2));
 	}
 
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		// TODO
+		
+		return turtle;
+	}
+	
 	@Override
 	public Individual getOntIndividual() {
 		return individual;

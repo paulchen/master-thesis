@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.importer.Importer;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.GeographicalPosition;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Weather;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
@@ -18,12 +19,13 @@ import com.hp.hpl.jena.rdf.model.RDFWriter;
 import com.hp.hpl.jena.shared.DoesNotExistException;
 
 // TODO javadoc
-// TODO test model (and WeatherReader?) with jUnit?
+// TODO test model (and WeatherImporter?) with jUnit?
 public class Main {
 	private static final String PROPERTIES_FILE = "WeatherReader.properties";
+	private static Logger log;
 	
 	public static void main(String[] args) {
-		Logger log = Logger.getLogger(Main.class);
+		log = Logger.getLogger(Main.class);
 		
 		// TODO document properties file
 		WeatherImporterProperties properties = new WeatherImporterProperties();
@@ -39,6 +41,13 @@ public class Main {
 			System.exit(1);
 		}
 
+		if(args[0].equals("turtle")) {
+			Weather weather = fetchData(properties);
+			TurtleStore turtle = weather.getTurtleStatements();
+			turtle.printAll();
+			return;
+		}
+		
 		OntModel onto = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_TRANS_INF);
 //		onto = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
 		RDFReader arp = onto.getReader("RDF/XML");
@@ -51,6 +60,41 @@ public class Main {
 			System.exit(1);
 		}
 		
+		if(args.length != 1) {
+			log.error("Invalid number of arguments.");
+			System.exit(1);
+		}
+		
+		if(args[0].equals("fetch")) {
+			Weather weather = fetchData(properties);
+			weather.createIndividuals(onto);
+		}
+/*		else if(args[0].equals("turtle")) {
+			// TODO
+		} */
+		else if(args[0].equals("timestamps")) {
+			// TODO
+		}
+		else if(args[0].equals("remove")) {
+			// TODO
+		}
+		else {
+			log.error("Invalid action: " + args[0]);
+			System.exit(1);
+		}
+
+//		RDFWriter writer = onto.getWriter("RDF/XML");
+		RDFWriter writer = onto.getWriter("TURTLE");
+		try {
+			writer.write(onto, new FileWriter(outputFilename), null);
+		}
+		catch (IOException e) {
+			log.error(e.getMessage());
+			System.exit(1);
+		}
+	}
+	
+	private static Weather fetchData(WeatherImporterProperties properties) {
 		try {
 			float latitude = properties.getFloat("latitude");
 			float longitude = properties.getFloat("longitude");
@@ -64,8 +108,7 @@ public class Main {
 			
 			GeographicalPosition position = new GeographicalPosition(latitude, longitude, altitude);
 			
-			Weather weather = importer.fetchWeather(position, properties, forecastHours);
-			weather.createIndividuals(onto);
+			return importer.fetchWeather(position, properties, forecastHours);
 		}
 		catch (WeatherImporterException e) {
 			log.error(e.getMessage());
@@ -73,21 +116,18 @@ public class Main {
 		}
 		catch (ClassNotFoundException e) {
 			log.error("Importer class not found.");
+			System.exit(1);
 		}
 		catch (InstantiationException e) {
 			log.error("Importer class cannot be instantiated.");
+			System.exit(1);
 		}
 		catch (IllegalAccessException e) {
 			log.error("Importer class cannot be instantiated.");
-		}
-		
-		RDFWriter writer = onto.getWriter("RDF/XML");
-		try {
-			writer.write(onto, new FileWriter(outputFilename), null);
-		}
-		catch (IOException e) {
-			log.error(e.getMessage());
 			System.exit(1);
 		}
+		
+		// just to make javac stop complaining about missing "return" statement
+		return null;
 	}
 }

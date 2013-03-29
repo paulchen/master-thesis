@@ -3,6 +3,8 @@ package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
 
 import java.util.List;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -42,6 +44,15 @@ public class Temperature extends WeatherPhenomenon {
  		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
  		
 		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasTemperatureValue"), blankNode));
+	}
+
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		
+		// TODO
+		
+		return turtle;
 	}
 
 	@Override

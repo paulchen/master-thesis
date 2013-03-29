@@ -7,6 +7,8 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -72,6 +74,22 @@ public class WeatherState implements OntologyClass {
 			Individual previousStateIndividual = previousState.getOntIndividual();
 			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherConstants.NAMESPACE + "hasNextWeatherState"), individual));
 		}
+	}
+
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+
+		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
+			turtle.addAll(phenomenon.getTurtleStatements());
+		}
+		for(WeatherCondition condition : weatherConditions) {
+			// TODO
+			// turtle.addAll(condition.getTurtleStatements());		
+		}
+		// TODO
+		
+		return turtle;
 	}
 
 	public List<WeatherPhenomenon> getPhenomenonType(Class<? extends WeatherPhenomenon> type) {

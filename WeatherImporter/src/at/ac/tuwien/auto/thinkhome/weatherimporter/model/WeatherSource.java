@@ -1,5 +1,7 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -19,6 +21,15 @@ public abstract class WeatherSource implements OntologyClass {
 	public void createIndividuals(OntModel onto) {
 		OntClass sensorSourceClass = onto.getOntClass(WeatherConstants.NAMESPACE + "ServiceSource");
 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, sensorSourceClass);
+	}
+
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		
+		// TODO
+		
+		return turtle;
 	}
 
 	@Override

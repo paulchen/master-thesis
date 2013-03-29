@@ -11,8 +11,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-
 import at.ac.tuwien.auto.thinkhome.weatherimporter.main.SunPositionCalculator;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
@@ -232,5 +232,12 @@ public class Weather {
 		}
 		log.debug("");
 	}
-	
+
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		for(WeatherReport report : weatherReports) {
+			turtle.addAll(report.getTurtleStatements());
+		}
+		return turtle;
+	}	
 }

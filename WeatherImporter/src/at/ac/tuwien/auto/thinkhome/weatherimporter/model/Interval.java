@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -65,6 +67,15 @@ public class Interval extends TemporalEntity {
 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, intervalClass);
 		
 		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.TIME + "hasDurationDescription"), hour1));
+	}
+
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		
+		// TODO
+		
+		return turtle;
 	}
 
 	@Override

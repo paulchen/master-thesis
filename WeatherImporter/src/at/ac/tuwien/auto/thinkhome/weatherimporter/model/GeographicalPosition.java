@@ -1,5 +1,7 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -57,6 +59,15 @@ public class GeographicalPosition implements OntologyClass {
 		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "lat"), WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS)));
 		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "long"), WeatherPhenomenon.roundFloat(longitude, WeatherConstants.DECIMALS)));
 		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "alt"), WeatherPhenomenon.roundFloat(altitude, WeatherConstants.DECIMALS)));
+	}
+
+	@Override
+	public TurtleStore getTurtleStatements() {
+		TurtleStore turtle = new TurtleStore();
+		
+		// TODO
+		
+		return turtle;
 	}
 
 	@Override
