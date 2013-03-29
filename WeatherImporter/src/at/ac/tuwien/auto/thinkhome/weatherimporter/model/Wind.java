@@ -3,6 +3,7 @@ package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
 
 import java.util.List;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -58,7 +59,18 @@ public class Wind extends WeatherPhenomenon {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		// TODO
+		String blankNode1 = Weather.generateBlankNode();
+		String blankNode2 = Weather.generateBlankNode();
+		
+		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(roundFloat(windSpeed, WeatherConstants.DECIMALS)) + "f"));
+		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "metresPerSecond"));
+		
+		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(windDirection)));
+		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "degree"));
+		
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasWindSpeed", blankNode1));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasWindDirection", blankNode2));
 		
 		return turtle;
 	}
