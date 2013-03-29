@@ -22,7 +22,7 @@ public class Main {
 		Logger log = Logger.getLogger(Main.class);
 		
 		// TODO document properties file
-		WeatherReaderProperties properties = new WeatherReaderProperties();
+		WeatherImporterProperties properties = new WeatherImporterProperties();
 		String inputFilename = null;
 		String outputFilename = null;
 		try {
@@ -30,7 +30,7 @@ public class Main {
 			inputFilename = properties.getString("input_file");
 			outputFilename = properties.getString("output_file");
 		}
-		catch (WeatherReaderException e) {
+		catch (WeatherImporterException e) {
 			log.error(e.getMessage());
 			System.exit(1);
 		}
@@ -57,11 +57,11 @@ public class Main {
 			
 			List<Integer> forecastHours = properties.getIntArray("forecast_hours");
 	
-			WeatherReader weatherReader = new WeatherReader(latitude, longitude, altitude, lowCloudAltitude, mediumCloudAltitude, highCloudAltitude, forecastHours);
+			WeatherImporter weatherReader = new WeatherImporter(latitude, longitude, altitude, lowCloudAltitude, mediumCloudAltitude, highCloudAltitude, forecastHours);
 			weatherReader.process();
 			weatherReader.createIndividuals(onto);
 		}
-		catch (WeatherReaderException e) {
+		catch (WeatherImporterException e) {
 			log.error(e.getMessage());
 			System.exit(1);
 		}

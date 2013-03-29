@@ -58,7 +58,7 @@ import com.hp.hpl.jena.ontology.OntModel;
 // TODO additional modes: change current weather state, remove/replace data
 // TODO namespace
 // TODO pluggable import package
-public class WeatherReader {
+public class WeatherImporter {
 	private static final String source = "yr_no";
 	private static final int priority = 421;
 	private static final String feedUrl = "http://api.yr.no/weatherapi/locationforecast/1.8/?lat=%lat;lon=%lon;msl=%alt";
@@ -81,7 +81,7 @@ public class WeatherReader {
 	
 	private int reportIndex;
 	
-	public WeatherReader(float latitude, float longitude, int altitude, int lowCloudAltitude, int mediumCloudAltitude, int highCloudAltitude, List<Integer> forecastHours) {
+	public WeatherImporter(float latitude, float longitude, int altitude, int lowCloudAltitude, int mediumCloudAltitude, int highCloudAltitude, List<Integer> forecastHours) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.altitude = altitude;
@@ -94,21 +94,21 @@ public class WeatherReader {
 		Collections.sort(this.forecastHours);
 		forecastPeriod = forecastHours.get(forecastHours.size() - 1)*3600000;
 		
-		log = Logger.getLogger(WeatherReader.class);
+		log = Logger.getLogger(WeatherImporter.class);
 		
 		reportIndex = 0;
 	}
 	
-	private void xmlError(String message) throws WeatherReaderException {
+	private void xmlError(String message) throws WeatherImporterException {
 		error("Error in XML input: " + message);
 	}
 
-	private void error(String message) throws WeatherReaderException {
+	private void error(String message) throws WeatherImporterException {
 		log.error(message);
-		throw new WeatherReaderException(message);
+		throw new WeatherImporterException(message);
 	}
 	
-	private void checkAttributes(Node node, String... requiredAttributes) throws WeatherReaderException {
+	private void checkAttributes(Node node, String... requiredAttributes) throws WeatherImporterException {
 		for(String requiredAttribute : requiredAttributes) {
 			if(node.getAttributes().getNamedItem(requiredAttribute) == null) {
 				xmlError("The node <" + node.getLocalName() + "> node the required attribute '" + requiredAttribute + "'");
@@ -116,7 +116,7 @@ public class WeatherReader {
 		}
 	}
 	
-	private void processWeatherState(Node node) throws WeatherReaderException {
+	private void processWeatherState(Node node) throws WeatherImporterException {
 		reportIndex++;
 		
 		NamedNodeMap attributes = node.getAttributes();
@@ -336,7 +336,7 @@ public class WeatherReader {
 		
 		return list;
 	}
-	private List<WeatherCondition> getWeatherConditions(int number) throws WeatherReaderException {
+	private List<WeatherCondition> getWeatherConditions(int number) throws WeatherImporterException {
 		Map<Integer, List<WeatherCondition>> weatherConditions = new HashMap<Integer, List<WeatherCondition>>();
 		
 		/* according to http://api.yr.no/faq.html */
@@ -365,19 +365,19 @@ public class WeatherReader {
 		weatherConditions.put(23, getWeatherConditionList(WeatherCondition.Sleet, WeatherCondition.Thunder));
 		
 		if(!weatherConditions.containsKey(number)) {
-			throw new WeatherReaderException("Unknown weather condition number: " + number);
+			throw new WeatherImporterException("Unknown weather condition number: " + number);
 		}
 		return weatherConditions.get(number);
 	}
 
-	private void checkDuplicate(Node childNode, Object item) throws WeatherReaderException {
+	private void checkDuplicate(Node childNode, Object item) throws WeatherImporterException {
 		if(item != null) {
 			String elementName = childNode.getLocalName();
 			xmlError("A <location> element has more than one <" + elementName + "> child elements.");
 		}
 	}
 
-	public void process() throws WeatherReaderException {
+	public void process() throws WeatherImporterException {
 		String url = new String(feedUrl);
 		url = url.replaceAll("%lat", String.valueOf(latitude));
 		url = url.replaceAll("%lon", String.valueOf(longitude));
@@ -393,7 +393,7 @@ public class WeatherReader {
 			if(response.getStatusLine().getStatusCode() >= 400 && response.getStatusLine().getStatusCode() < 500) {
 				String error = "Could not fetch weather feed: " + response.getStatusLine().getReasonPhrase();
 				log.error(error);
-				throw new WeatherReaderException(error);
+				throw new WeatherImporterException(error);
 			}
 			HttpEntity entity = response.getEntity();
 			
@@ -415,23 +415,23 @@ public class WeatherReader {
 		}
 		catch (IllegalArgumentException e) {
 			log.error(e.getMessage());
-			throw new WeatherReaderException(e);
+			throw new WeatherImporterException(e);
 		}
 		catch (ParserConfigurationException e) {
 			log.error(e.getMessage());
-			throw new WeatherReaderException(e);
+			throw new WeatherImporterException(e);
 		}
 		catch (SAXException e) {
 			log.error(e.getMessage());
-			throw new WeatherReaderException(e);
+			throw new WeatherImporterException(e);
 		}
 		catch (IOException e) {
 			log.error(e.getMessage());
-			throw new WeatherReaderException(e);
+			throw new WeatherImporterException(e);
 		}
 		catch (XPathExpressionException e) {
 			log.error(e.getMessage());
-			throw new WeatherReaderException(e);
+			throw new WeatherImporterException(e);
 		}
 		
 		log.debug("Found " + nodes.getLength() + " <time> nodes.");
