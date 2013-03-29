@@ -27,7 +27,6 @@ public class TurtleStore {
 		predicateWidth += bufferSpace;
 		
 		// TODO simplifications (store last subject, last predicate)
-		// TODO separation lines
 		StringBuffer output = new StringBuffer();
 		
 		String previousSubject = "";
