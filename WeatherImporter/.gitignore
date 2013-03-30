@@ -5,3 +5,5 @@ dist
 *.ttl
 *.xml
 reports
+bin_instrument
+coverage

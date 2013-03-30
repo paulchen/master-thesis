@@ -8,10 +8,12 @@
     <property name="src.test.dir" value="test" />
     <property name="build.dir" value="bin" />
     <property name="build.test.dir" value="bin_test" />
+    <property name="build.instrument.dir" value="bin_instrument" />
+    <property name="build.coverage.dir" value="coverage" />
     <property name="lib.dir" value="lib" />
     <property name="reports.dir" value="reports" />
     <property name="dist.dir" value="dist" />
-		
+
     <path id="project.classpath" >
     	<pathelement location="${dist.dir}/YrNoPlugin.jar" />
     	<pathelement location="${build.test.dir}" />
@@ -23,8 +25,17 @@
             <exclude name="pellet/pellet-cli.jar" />
             <exclude name="pellet/xsdlib/*.jar" />
             <exclude name="pellet/jena/*.jar" />
+			<exclude name="cobertura/log4j*.jar" />
         </fileset>
     </path>
+    
+    <path id="cobertura.classpath" >
+    	<fileset dir="${lib.dir}/cobertura/">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+    
+    <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
     
     <target name="compile" description="TODO">
         <mkdir dir="${build.dir}" />
@@ -43,6 +54,7 @@
 	
     <target name="compile_test" depends="dist" description="TODO">
         <mkdir dir="${build.test.dir}" />
+        <mkdir dir="${build.instrument.dir}" />
         <javac srcdir="${src.test.dir}" destdir="${build.test.dir}"
 				classpathref="project.classpath"
 				debug="true" deprecation="true"
@@ -53,6 +65,11 @@
                 <include name="*.properties" />
             </fileset>
         </copy>
+		<cobertura-instrument todir="${build.instrument.dir}">
+		    <fileset dir="${build.dir}">
+		        <include name="**/*.class"/>
+		    </fileset>
+		</cobertura-instrument>
     </target>
 	
 	<target name="fetch" depends="dist" description="TODO">
@@ -89,6 +106,7 @@
         <mkdir dir="${reports.dir}" />
 		<property name="classpath" refid="project.classpath" />
 		<junit printsummary="yes">
+		    <classpath location="${build.instrument.dir}" />
 			<classpath>
 				<pathelement path="${classpath}"/>
 			</classpath>
@@ -127,8 +145,18 @@
         <delete dir="${dist.dir}" />
         <delete dir="${build.dir}" />
         <delete dir="${build.test.dir}" />
+        <delete dir="${build.instrument.dir}" />
+        <delete dir="${build.coverage.dir}" />
         <delete dir="${reports.dir}" />
     </target>
     
     <target name="rebuild" depends="clean, compile_test, dist" description="TODO" />
+    
+    <target name="coverage">
+        <mkdir dir="${build.coverage.dir}" />
+       	<cobertura-report destdir="${build.coverage.dir}">
+       	    <fileset dir="${src.dir}" />
+       	    <fileset dir="${src.test.dir}" />
+       	</cobertura-report>
+	</target>
 </project>
