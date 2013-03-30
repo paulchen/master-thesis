@@ -5,6 +5,7 @@ import java.util.Set;
 
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherConstants;
 
+// TODO javadoc
 public class TurtleStore {
 	private final int bufferSpace = 3;
 	

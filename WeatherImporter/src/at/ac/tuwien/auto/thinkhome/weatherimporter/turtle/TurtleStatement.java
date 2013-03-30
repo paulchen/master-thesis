@@ -1,7 +1,6 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.turtle;
 
-// TODO comparable
-// TODO simplification: rdf:type -> a etc.
+// TODO javadoc
 public class TurtleStatement implements Comparable<TurtleStatement> {
 	private String subject;
 	private String predicate;
