@@ -41,8 +41,7 @@ public class WeatherReportTest extends TestCase {
 	private WeatherSource source;
 	private int priority;
 	
-	@Before
-	public void setUp() {
+	private void createOntology() {
 		onto = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
 		RDFReader arp = onto.getReader("RDF/XML");
 		arp.setProperty("embedding", "true");
@@ -54,6 +53,8 @@ public class WeatherReportTest extends TestCase {
 	}
 	
 	private void testConcepts(float startTime, String[] allConcepts, String... expectedConcepts) {
+		createOntology();
+		
 		reportIndex++;
 		
 		Interval startInterval = Interval.getInterval(startTime);
