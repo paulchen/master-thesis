@@ -6,10 +6,8 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
-
 
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.GeographicalPosition;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Instant;
