@@ -82,9 +82,6 @@ public class Main {
 			Weather weather = fetchData(properties);
 			weather.createIndividuals(onto);
 		}
-/*		else if(args[0].equals("turtle")) {
-			// TODO
-		} */
 		else if(args[0].equals("timestamps")) {
 			// TODO
 		}
@@ -96,8 +93,7 @@ public class Main {
 			System.exit(1);
 		}
 
-//		RDFWriter writer = onto.getWriter("RDF/XML");
-		RDFWriter writer = onto.getWriter("TURTLE");
+		RDFWriter writer = onto.getWriter("RDF/XML");
 		try {
 			writer.write(onto, new FileWriter(outputFilename), null);
 		}
