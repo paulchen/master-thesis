@@ -3,6 +3,8 @@ package at.ac.tuwien.auto.thinkhome.weatherimporter.turtle;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherConstants;
+
 public class TurtleStore {
 	private final int bufferSpace = 3;
 	
@@ -12,7 +14,6 @@ public class TurtleStore {
 		this.statements = new LinkedHashSet<TurtleStatement>();
 	}
 	
-	// TODO namespaces
 	public String printAll() {
 		int subjectWidth = 0;
 		int predicateWidth = 0;
@@ -30,6 +31,13 @@ public class TurtleStore {
 		predicateWidth += bufferSpace;
 		
 		StringBuffer output = new StringBuffer();
+		
+		output.append("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n");
+		output.append("@prefix " + WeatherConstants.NAMESPACE_PREFIX + " <" + WeatherConstants.NAMESPACE + "> .\n");
+		output.append("@prefix " + WeatherConstants.TIME_PREFIX + " <" + WeatherConstants.TIME + "> .\n");
+		output.append("@prefix " + WeatherConstants.WGS84_PREFIX + " <" + WeatherConstants.WGS84 + "> .\n");
+		output.append("@prefix " + WeatherConstants.MUO_PREFIX + " <" + WeatherConstants.MUO_NAMESPACE + "> .\n");
+		output.append("\n");
 		
 		String previousSubject = "";
 		String previousPredicate = "";

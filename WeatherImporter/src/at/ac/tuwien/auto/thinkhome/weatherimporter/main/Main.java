@@ -44,7 +44,20 @@ public class Main {
 		if(args[0].equals("turtle")) {
 			Weather weather = fetchData(properties);
 			TurtleStore turtle = weather.getTurtleStatements();
-			System.out.println(turtle.printAll());
+			String output = turtle.printAll();
+			try {
+				FileWriter writer = new FileWriter(properties.getString("turtle_file"));
+				writer.write(output);
+				writer.close();
+			}
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (WeatherImporterException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return;
 		}
 		
