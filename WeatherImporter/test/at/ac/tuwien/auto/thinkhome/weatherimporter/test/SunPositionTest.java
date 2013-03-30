@@ -1,11 +1,11 @@
-package weatherreader.test;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.test;
 
 import org.junit.Test;
 
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.SunPosition;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherPhenomenon;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.test.base.IndividualsTest;
 
-import weatherreader.test.base.IndividualsTest;
 
 // TODO javadoc
 public class SunPositionTest extends IndividualsTest {

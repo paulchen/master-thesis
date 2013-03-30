@@ -1,4 +1,4 @@
-package weatherreader.test;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.test;
 
 import java.util.Arrays;
 import java.util.List;
