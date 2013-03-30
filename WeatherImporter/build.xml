@@ -11,7 +11,6 @@
     <property name="lib.dir" value="lib" />
     <property name="reports.dir" value="reports" />
     <property name="dist.dir" value="dist" />
-    
 		
     <path id="project.classpath" >
     	<pathelement location="${dist.dir}/YrNoPlugin.jar" />
@@ -21,13 +20,15 @@
         </fileset>
     	<fileset dir="${lib.dir}">
             <include name="**/*.jar" />
-        	<exclude name="**/pellet/jena/*.jar" />
-        	<exclude name="**/slf4j*.jar" />
+            <exclude name="pellet/pellet-cli.jar" />
+            <exclude name="pellet/xsdlib/*.jar" />
+            <exclude name="pellet/jena/*.jar" />
         </fileset>
     </path>
     
     <target name="compile" description="TODO">
         <mkdir dir="${build.dir}" />
+        <mkdir dir="${dist.dir}" />
         <javac srcdir="${src.dir}" destdir="${build.dir}"
     			classpathref="project.classpath"
         		debug="true" deprecation="true"
