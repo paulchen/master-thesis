@@ -21,9 +21,6 @@ public class PrecipitationTest extends IndividualsTest {
 		for(int probability=0; probability<=100; probability+=10) {
 			checkPrecipitation(0f, probability, "Precipitation", "NoRain");			
 		}
-		for(int intensity=0; intensity<=100; intensity+=5) {
-			checkPrecipitation((float)intensity, 0, "Precipitation", "NoRain");			
-		}
 	}
 	
 	@Test
