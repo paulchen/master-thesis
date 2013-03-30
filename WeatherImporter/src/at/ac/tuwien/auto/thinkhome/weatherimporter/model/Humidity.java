@@ -55,7 +55,7 @@ public class Humidity extends WeatherPhenomenon {
 		
 		String blankNode = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(roundFloat(humidityValue, WeatherConstants.DECIMALS) + "^^xsd:float")));
+		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(humidityValue, WeatherConstants.DECIMALS) + "\"^^xsd:float")));
 		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "percent"));
 		
 		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));

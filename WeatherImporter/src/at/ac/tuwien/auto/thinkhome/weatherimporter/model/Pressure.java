@@ -51,7 +51,7 @@ public class Pressure extends WeatherPhenomenon {
 		
 		String blankNode = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(roundFloat(pressureValue, WeatherConstants.DECIMALS)) + "^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(pressureValue, WeatherConstants.DECIMALS)) + "\"^^xsd:float"));
 		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "hectopascal"));
 		
 		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));

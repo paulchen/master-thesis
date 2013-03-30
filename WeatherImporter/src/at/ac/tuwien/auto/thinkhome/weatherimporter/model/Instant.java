@@ -77,14 +77,14 @@ public class Instant extends TemporalEntity {
 		if(calendar.get(Calendar.DAY_OF_MONTH) < 10) {
 			dayString += "0";
 		}
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "day", dayString + "^^xsd:gDay"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "day", "\"" + dayString + "\"^^xsd:gDay"));
 		
 		String monthString = "--";
 		if(calendar.get(Calendar.MONTH) < 10) {
 			monthString += "0";
 		}
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "month", monthString + "^^xsd:gMonth"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "year", String.valueOf(new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY))) + "^^xsd:gYear"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "month", "\"" + monthString + "\"^^xsd:gMonth"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "year", "\"" + String.valueOf(new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY))) + "\"^^xsd:gYear"));
 		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.TIME_PREFIX + "inDateTime", WeatherConstants.NAMESPACE_PREFIX + "dateTime0"));
 		
 		return turtle;

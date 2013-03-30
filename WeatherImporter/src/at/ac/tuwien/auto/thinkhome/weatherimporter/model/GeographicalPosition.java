@@ -67,9 +67,9 @@ public class GeographicalPosition implements OntologyClass {
 		TurtleStore turtle = new TurtleStore();
 		
 		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.WGS84_PREFIX + "Point"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "lat", String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "^^xsd:float")));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "lon", String.valueOf(WeatherPhenomenon.roundFloat(longitude, WeatherConstants.DECIMALS) + "^^xsd:float")));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "alt", String.valueOf(WeatherPhenomenon.roundFloat(altitude, WeatherConstants.DECIMALS) + "^^xsd:float")));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "lat", "\"" + String.valueOf(WeatherPhenomenon.roundFloat(latitude, WeatherConstants.DECIMALS) + "\"^^xsd:float")));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "lon", "\"" + String.valueOf(WeatherPhenomenon.roundFloat(longitude, WeatherConstants.DECIMALS) + "\"^^xsd:float")));
+		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "alt", "\"" + String.valueOf(WeatherPhenomenon.roundFloat(altitude, WeatherConstants.DECIMALS) + "\"^^xsd:float")));
 		
 		return turtle;
 	}

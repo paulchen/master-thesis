@@ -76,7 +76,7 @@ public class Interval extends TemporalEntity {
 		
 		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.TIME_PREFIX + "Interval"));
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, "a", WeatherConstants.NAMESPACE_PREFIX + "Hour"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, WeatherConstants.TIME_PREFIX + "hours", String.valueOf(new BigDecimal(time)) + "^^xsd:decimal"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, WeatherConstants.TIME_PREFIX + "hours", "\"" + String.valueOf(new BigDecimal(time)) + "\"^^xsd:decimal"));
 		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.TIME_PREFIX + "hasDurationDescription", WeatherConstants.NAMESPACE_PREFIX + name));
 		
 		return turtle;
