@@ -1,0 +1,9 @@
+*.aux
+*.bbl
+*~
+*.backup
+chapters/*~
+*.toc
+*.pdf
+*.blg
+*.log
