@@ -13,7 +13,6 @@ import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.ibm.icu.text.Collator;
 
 //TODO javadoc
 public class WeatherState implements OntologyClass {
@@ -29,8 +28,7 @@ public class WeatherState implements OntologyClass {
 		Collections.sort(phenomena, new Comparator<WeatherPhenomenon>() {
 			@Override
 			public int compare(WeatherPhenomenon o1, WeatherPhenomenon o2) {
-				Collator collator = Collator.getInstance();
-				return collator.compare(o1.getClass().getName(), o2.getClass().getName());
+				return o1.getClass().getName().compareTo(o2.getClass().getName());
 			}
 		});
 		
