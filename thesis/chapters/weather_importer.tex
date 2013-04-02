@@ -10,7 +10,7 @@ At its current state of development, the Weather Importer obtains data only from
 
 \section{The data model}
 
-The core of the Weather importer is formed by the \texttt{model} package which contains classes that are to be instantiated to carry all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \thinkhomeweather ontology, individuals and statements are generated and added to the ontology.
+The core of the Weather importer is formed by an object-oriented data model that can be found in the \texttt{model} package. This package contains classes that are to be instantiated in order to carry all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \thinkhomeweather ontology, individuals and statements are generated and added to the ontology.
 
 % TODO figure
 The domain model in the package \texttt{model} which resembles the structure of the \thinkhomeweather ontology is depicted in the UML class diagram in figure ?.
@@ -40,13 +40,43 @@ Additionally, there is an enumeration named \texttt{WeatherConditions} having va
 \section{The application}
 \label{sec:importer_application}
 
+The weather importer application basically performs three tasks when being launched: It reads the \thinkhomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file on disk, modifies it in some way and and writes the modified ontology back onto disk into a new file, either in \emph{RDF/XML syntax} or in \emph{Turtle syntax} \cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}.
+
+\subsection{\texttt{fetch} mode}
+
+In \texttt{fetch} mode, the Weather importer reads the \thinkhomeweather ontology in \emph{RDF/XML syntax} from a file on disk using the \emph{Apache Jena} framework\footnote{\url{http://jena.apache.org/}{http://jena.apache.org/}} and fetches weather data for the desired location from a weather service via Internet.
+
+For developing a reference implementation, the Weather importer obtains weather data from \emph{yr.no} as described in section \ref{subsec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilized by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
+
+By calling the method \texttt{createIndividuals()} of that \texttt{Weather} object, the weather data is added \emph{Apache Jena}'s in-memory representation of the ontology. Eventually, the modified ontology is written back to disk in \emph{RDF/XML} syntax.
+
+% TODO reference for linear interpolation?
+% TODO from Wikipedia (http://en.wikipedia.org/wiki/Linear_interpolation): Meijering, Erik (2002), "A chronology of interpolation: from ancient astronomy to modern signal and image processing", Proceedings of the IEEE 90 (3): 319–342, doi:10.1109/5.993400. (http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=993400)
+As most weather services do not provide data for arbitrary points of time, the \texttt{Weather} class provides the method \texttt{normalizeWeatherReports()}. It transforms the data encapsulated by the \texttt{Weather} object in the following ways:
+\begin{itemize}
+  \item Each associated \texttt{WeatherReport} object that covers a period of more than one hour is replaced by several \texttt{WeatherReport} objects, one for each hour. All associated instances of \texttt{WeatherReport} and \texttt{WeatherPhenomenon} are cloned appropriately.
+  \item If there is more than one \texttt{WeatherReport} object covering the same period of time, all data from these objects will be merged into one object; the remaining objects will be discarded.
+  \item In case there is no data for a period of time, it will be calculated using linear interpolation from data before and after the missing period.
+  \item An instance of \texttt{SunPosition} will be associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the PSA algorithm \cite{PSA_algorithm}; the C++ reference implementation of the PSA algorithm\footnote{\href{http://www.psa.es/sdg/sunpos.htm}{http://www.psa.es/sdg/sunpos.htm}} was ported to Java.
+\end{itemize}
+
+% TODO reference for arithmetic mean?
+Additionally, the class \texttt{WeatherState} provides the method \texttt{mergePhenomena()} which merges all instances of \texttt{WeatherPhenomenon} of the same type that are associated to that instance of \texttt{WeatherState}. Actual merging of values takes place in the constructors of the subclasses of \texttt{WeatherPhenomenon}; all current implementations merge values by calculating the arithmetic mean of all values provided.
+
+Both methods provide the developer of an implementation of the interface \texttt{Importer} with more flexibility on how to import weather data: An implementation is not required to provide data for each period of time, each \emph{WeatherReport} object may cover more than one hour and more than one instance of each subclass of \texttt{WeatherPhenomenon} may be associated to each instance of \texttt{WeatherState}. The latter eases merging values from several sources (e.g. an Internet weather service and a set of weather sensors).
+
+
+\subsection{\texttt{timestamps} mode}
+
+\subsection{\texttt{remove} mode}
+
+\subsection{\texttt{turtle} mode}
+
 % ant, jena, pellet -- tested with which versions at the time of writing?
 
 % unit testing: junit, cobertura; test coverage - what is tested, what is omitted
 
 % property file
-
-% data model: UML class diagram, package diagram? describe
 
 % mention javadoc
 
