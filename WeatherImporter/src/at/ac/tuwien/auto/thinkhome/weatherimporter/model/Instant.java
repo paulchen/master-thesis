@@ -62,10 +62,10 @@ public class Instant extends TemporalEntity {
 		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "day"), onto.createTypedLiteral(dayString, XSDDatatype.XSDgDay)));
 		
 		String monthString = "--";
-		if(calendar.get(Calendar.MONTH) < 10) {
+		if(calendar.get(Calendar.MONTH) < 9) {
 			monthString += "0";
 		}
-		monthString += calendar.get(Calendar.MONTH);
+		monthString += (calendar.get(Calendar.MONTH)+1);
 		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "month"), onto.createTypedLiteral(monthString, XSDDatatype.XSDgMonth)));
 		
 		onto.add(onto.createStatement(dateTime, onto.getProperty(WeatherConstants.TIME + "year"), onto.createTypedLiteral(String.valueOf(calendar.get(Calendar.YEAR)), XSDDatatype.XSDgYear)));
@@ -91,14 +91,16 @@ public class Instant extends TemporalEntity {
 		if(calendar.get(Calendar.DAY_OF_MONTH) < 10) {
 			dayString += "0";
 		}
+		dayString += calendar.get(Calendar.DAY_OF_MONTH);
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "day", "\"" + dayString + "\"^^xsd:gDay"));
 		
 		String monthString = "--";
-		if(calendar.get(Calendar.MONTH) < 10) {
+		if(calendar.get(Calendar.MONTH) < 9) {
 			monthString += "0";
 		}
+		monthString += (calendar.get(Calendar.MONTH)+1);
 		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "month", "\"" + monthString + "\"^^xsd:gMonth"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "year", "\"" + String.valueOf(new BigDecimal(calendar.get(Calendar.HOUR_OF_DAY))) + "\"^^xsd:gYear"));
+		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "dateTime0", WeatherConstants.TIME_PREFIX + "year", "\"" + String.valueOf(new BigDecimal(calendar.get(Calendar.YEAR))) + "\"^^xsd:gYear"));
 		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.TIME_PREFIX + "inDateTime", WeatherConstants.NAMESPACE_PREFIX + "dateTime0"));
 		
 		return turtle;
