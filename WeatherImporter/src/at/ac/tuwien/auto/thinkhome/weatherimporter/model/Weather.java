@@ -48,7 +48,7 @@ public class Weather {
 		 * create new instances of WeatherReport and Instant which have
 		 * unique names 
 		 */
-		weatherReports.add(new WeatherReport("weatherReport", new Instant("instant", observationTime), Interval.getInterval(startDate), Interval.getInterval(endDate), priority, source, position, weatherState));
+		weatherReports.add(new WeatherReport("weatherReport", Instant.getInstant(observationTime), Interval.getInterval(startDate), Interval.getInterval(endDate), priority, source, position, weatherState));
 	}
 	
 	public void normalizeWeatherReports() {

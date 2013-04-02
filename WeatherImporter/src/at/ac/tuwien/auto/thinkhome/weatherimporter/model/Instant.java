@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
@@ -19,7 +21,19 @@ public class Instant extends TemporalEntity {
 	private Date date;
 	private Individual individual;
 	
-	public Instant(String name, Date date) {
+	private static Map<Date, Instant> instants;
+	
+	public static Instant getInstant(Date date) {
+		if(instants == null) {
+			instants = new HashMap<Date, Instant>();
+		}
+		if(!instants.containsKey(date)) {
+			instants.put(date, new Instant("instant" + instants.size(), date));
+		}
+		return instants.get(date);
+	}
+	
+	private Instant(String name, Date date) {
 		super();
 		this.name = name;
 		this.date = date;

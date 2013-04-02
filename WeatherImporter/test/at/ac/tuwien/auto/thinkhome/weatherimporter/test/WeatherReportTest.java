@@ -57,7 +57,7 @@ public class WeatherReportTest extends TestCase {
 		
 		Interval startInterval = Interval.getInterval(startTime);
 		Interval endInterval = Interval.getInterval(startTime+1);
-		Instant observationTime = new Instant("instant" + reportIndex, new Date());
+		Instant observationTime = Instant.getInstant(new Date());
 		WeatherState weatherState = new WeatherState("weatherState" + reportIndex);
 		WeatherReport weatherReport = new WeatherReport(
 				"weatherReport" + reportIndex,
