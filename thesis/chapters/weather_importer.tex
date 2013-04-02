@@ -1,14 +1,44 @@
 \chapter{The Weather Importer}
 \label{ch:weather}
 
-% TODO after discussing the ontology creation in chapter ? and online weather services in chapter ? and yr.no in special in section ?, the ontology needs to be populated with data:
-% individuals of certain types having attributes that together comprise all data about 
+% TODO emphasize "Norwegian Meteorological Institute" and/or "yr.no"?
+In previous chapters, two topics are discussed that are relevant for this chapter: Chapter \ref{ch:weather_data} digs into the details of weather services that are available via Internet, with the example of the API by the Norwegian Meteorological Institute (\emph{yr.no}) that is found to best fit the requirements found at the \thinkhome project. Chapter \ref{ch:thinkhomeweather_ontology} describes the design of the \thinkhomeweather ontology. Eventually, the ontology needs to be populated with data, i.e. individuals that comprise the current and future state of the weather at the desired location.
 
-% Java weather importer: only from Internet weather service
+For that process, a standalone Java application has been developed. As its main purpose is to import weather data, it was named \emph{Weather Importer}.
 
-% reference implementation: yr.no; there is an interface called ? that can be implemented to fetch data from any weather service
+At its current state of development, the Weather Importer obtains data only from yr.no in order to provide a reference implementation being both simple and functional, but it is designed to allow simple integration of other weather services that are available via Internet as well as data from local weather sensors.
 
-% describe OntologyClass better
+\section{The data model}
+
+The core of the Weather importer is formed by the \texttt{model} package which contains classes that are to be instantiated to carry all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \thinkhomeweather ontology, individuals and statements are generated and added to the ontology.
+
+% TODO figure
+The domain model in the package \texttt{model} which resembles the structure of the \thinkhomeweather ontology is depicted in the UML class diagram in figure ?.
+
+Other than its name suggests, \texttt{OntologyClass} is an interface that is implemented by every class that corresponds to a concept (class) in the ontology. That interface defines a set of methods which are necessary to export an object's data either to individuals and statements for adding them to the ontology using \emph{Apache Jena} or to a representation of the individuals and statements in \emph{Turtle syntax} (see section \ref{sec:importer_application} below). The methods defined by \emph{OntologyClass} are:
+\begin{itemize}
+  \item \texttt{createIndividuals()} creates individuals and statements holding the data that is stored in the object and adds them to the ontology. The method calls \texttt{createIndividuals()} for any objects that are connected to this object, with the exception of instances of \texttt{WeatherState} and \texttt{WeatherReport} that are linked together via the properties \texttt{previousState} and \texttt{previousReport}, respectively.
+  \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \thinkhomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g. an \texttt{Instant} creates an individual of type \emph{weather:Instant} and one of type \emph{time:DateTimeDescription}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \emph{weather:Instant} individual; the corresponding \emph{time:DateTimeDescription} object can be obtained by querying the ontology for the statement having the \emph{weather:Instant} individual that has been returned as subject and the property \emph{weather:inDateTime} as predicate.
+  \item \texttt{getTurtleStatements()} returns an instance of \texttt{TurtleStore} that contains a set of \texttt{TurtleStatement} objects each representing an RDF triple in \texttt{Turtle syntax}. The instance being returned contains all data that calling \texttt{createIndividuals()} would add to the ontology.
+  \item \texttt{getTurtleName()} returns the qualified name of the individual represented by the object that is used in in the \texttt{TurtleStatement}s returned by calling \texttt{getTurtleStatements()}. In case \texttt{createIndividuals()} creates more than one individual, the method only yields the name of the individual returned by \texttt{getIndividual()}.
+  \item \texttt{toString()} returns a textual representation of the object (for debugging purposes).
+\end{itemize}
+
+The classes inside the package \texttt{model} are:
+\begin{itemize}
+  \item \texttt{GeographicalPosition} resembles the concept \emph{geo:Point} in the \emph{WGS84} vocabulary that is imported into the \thinkhomeweather ontology.
+  \item \texttt{TemporalEntity} corresponds to the concept \emph{time:TemporalEntity} in the \emph{OWL-Time} ontology. The are two sub-classes, \texttt{Instant} and \texttt{Interval} that resemble the concepts \emph{time:Instant} and \emph{time:Interval}, respectively.
+  \item \texttt{WeatherPhenomenon} corresponds to the concept \emph{weather:WeatherPhenomenon} in the \thinkhomeweather ontology. As it is an abstract class, only its subclasses \texttt{CloudCover}, \texttt{DewPoint}, \texttt{Humidity}, \texttt{Precipitation}, \texttt{Pressure}, \texttt{SolarRadiation}, \texttt{SunPosition}, \texttt{Temperature} and \texttt{Wind} that each resemble the corresponding concept in the ontology.
+  \item \texttt{WeatherReport} corresponds to the concept \emph{weather:WeatherReport}.
+  \item \texttt{WeatherSource} corresponds to the concept \emph{weather:WeatherSource}. It is an abstract class and has two subclasses \texttt{SensorSource} and \texttt{ServiceSource} resembling the concepts \emph{weather:SensorSource} and \emph{weather:ServiceSource}, respectively.
+  \item \texttt{WeatherState} corresponds to the concept \emph{weather:WeatherState}.
+  \item \texttt{Weather} corresponds to the concept \emph{weather:Weather}.
+\end{itemize}
+
+Additionally, there is an enumeration named \texttt{WeatherConditions} having values that each correspond to the individuals predefined by the ontology for the concept \emph{weather:WeatherCondition}.
+
+\section{The application}
+\label{sec:importer_application}
 
 % ant, jena, pellet -- tested with which versions at the time of writing?
 
