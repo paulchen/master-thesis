@@ -52,7 +52,7 @@
         </copy>
     </target>
 	
-    <target name="compile_test" depends="dist" description="TODO">
+    <target name="compile_test" depends="compile, dist" description="TODO">
         <mkdir dir="${build.test.dir}" />
         <mkdir dir="${build.instrument.dir}" />
         <javac srcdir="${src.test.dir}" destdir="${build.test.dir}"
@@ -72,7 +72,7 @@
 		</cobertura-instrument>
     </target>
 	
-	<target name="fetch" depends="dist" description="TODO">
+	<target name="fetch" depends="compile, dist" description="TODO">
 		<property name="classpath" refid="project.classpath" />
 	   	<java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true">
  	        <arg value="fetch" />
@@ -82,26 +82,26 @@
 	    </java>
 	</target>
 
-	<target name="turtle" depends="dist" description="TODO">
+	<target name="turtle" depends="compile, dist" description="TODO">
 	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath">
 	        <arg value="turtle" />
 	    </java>
 	</target>
 
-		<target name="timestamps" depends="dist" description="TODO">
+		<target name="timestamps" depends="compile, dist" description="TODO">
 	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath">
 	        <arg value="timestamps" />
 	    </java>
 	</target>
 
 
-	<target name="remove" depends="dist" description="TODO">
+	<target name="remove" depends="compile, dist" description="TODO">
 	    <java classname="at.ac.tuwien.auto.thinkhome.weatherimporter.main.Main" fork="true" classpathref="project.classpath">
 	        <arg value="remove" />
 	    </java>
 	</target>
 	
-	<target name="test" depends="compile_test" description="TODO">
+	<target name="test" depends="compile, dist, compile_test" description="TODO">
         <delete dir="${reports.dir}" />
         <mkdir dir="${reports.dir}" />
 		<property name="classpath" refid="project.classpath" />
@@ -150,9 +150,9 @@
         <delete dir="${reports.dir}" />
     </target>
     
-    <target name="rebuild" depends="clean, compile_test, dist" description="TODO" />
+    <target name="rebuild" depends="clean, compile_test" description="TODO" />
     
-    <target name="coverage">
+    <target name="coverage" depends="compile, dist, compile_test">
         <mkdir dir="${build.coverage.dir}" />
        	<cobertura-report destdir="${build.coverage.dir}">
        	    <fileset dir="${src.dir}" />
