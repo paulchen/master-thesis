@@ -19,7 +19,7 @@ Other than its name suggests, \texttt{OntologyClass} is an interface that is imp
 \begin{itemize}
   \item \texttt{createIndividuals()} creates individuals and statements holding the data that is stored in the object and adds them to the ontology. The method calls \texttt{createIndividuals()} for any objects that are connected to this object, with the exception of instances of \texttt{WeatherState} and \texttt{WeatherReport} that are linked together via the properties \texttt{previousState} and \texttt{previousReport}, respectively.
   \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \thinkhomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g. an \texttt{Instant} creates an individual of type \emph{weather:Instant} and one of type \emph{time:DateTimeDescription}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \emph{weather:Instant} individual; the corresponding \emph{time:DateTimeDescription} object can be obtained by querying the ontology for the statement having the \emph{weather:Instant} individual that has been returned as subject and the property \emph{weather:inDateTime} as predicate.
-  \item \texttt{getTurtleStatements()} returns an instance of \texttt{TurtleStore} that contains a set of \texttt{TurtleStatement} objects each representing an RDF triple in \texttt{Turtle syntax}. The instance being returned contains all data that calling \texttt{createIndividuals()} would add to the ontology.
+  \item \texttt{getTurtleStatements()} returns an instance of \texttt{TurtleStore} that contains a set of \texttt{TurtleStatement} objects each representing an RDF triple in \texttt{Turtle syntax}. The instance being returned contains all data that calling \texttt{createIndividuals()} would add to the ontology. See section \ref{subsec:importer_turtle} for details.
   \item \texttt{getTurtleName()} returns the qualified name of the individual represented by the object that is used in in the \texttt{TurtleStatement}s returned by calling \texttt{getTurtleStatements()}. In case \texttt{createIndividuals()} creates more than one individual, the method only yields the name of the individual returned by \texttt{getIndividual()}.
   \item \texttt{toString()} returns a textual representation of the object (for debugging purposes).
 \end{itemize}
@@ -44,7 +44,7 @@ The weather importer application basically performs three tasks when being launc
 
 \subsection{\texttt{fetch} mode}
 
-In \texttt{fetch} mode, the Weather importer reads the \thinkhomeweather ontology in \emph{RDF/XML syntax} from a file on disk using the \emph{Apache Jena} framework\footnote{\url{http://jena.apache.org/}{http://jena.apache.org/}} and fetches weather data for the desired location from a weather service via Internet.
+In \texttt{fetch} mode, the Weather importer reads the \thinkhomeweather ontology in \emph{RDF/XML syntax} from a file on disk using the \emph{Apache Jena} framework\footnote{\href{http://jena.apache.org/}{http://jena.apache.org/}} and fetches weather data for the desired location from a weather service via Internet.
 
 For developing a reference implementation, the Weather importer obtains weather data from \emph{yr.no} as described in section \ref{subsec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilized by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
 
@@ -63,14 +63,110 @@ As most weather services do not provide data for arbitrary points of time, the \
 % TODO reference for arithmetic mean?
 Additionally, the class \texttt{WeatherState} provides the method \texttt{mergePhenomena()} which merges all instances of \texttt{WeatherPhenomenon} of the same type that are associated to that instance of \texttt{WeatherState}. Actual merging of values takes place in the constructors of the subclasses of \texttt{WeatherPhenomenon}; all current implementations merge values by calculating the arithmetic mean of all values provided.
 
-Both methods provide the developer of an implementation of the interface \texttt{Importer} with more flexibility on how to import weather data: An implementation is not required to provide data for each period of time, each \emph{WeatherReport} object may cover more than one hour and more than one instance of each subclass of \texttt{WeatherPhenomenon} may be associated to each instance of \texttt{WeatherState}. The latter eases merging values from several sources (e.g. an Internet weather service and a set of weather sensors).
-
+Both methods provide the developer of an implementation of the interface \texttt{Importer} with more flexibility on how to import weather data: An implementation is not required to provide data for each period of time, each \texttt{WeatherReport} object may cover more than one hour and more than one instance of each subclass of \texttt{WeatherPhenomenon} may be associated to each instance of \texttt{WeatherState}. The latter eases merging values from several sources (e.g. an Internet weather service and a set of weather sensors).
 
 \subsection{\texttt{timestamps} mode}
 
+% TODO reference to the description of this process in the chapter about the thinkhomeweather ontology?
+As discussed in section ?, there are two ways to update weather data in the \thinkhomeweather ontology:
+\begin{itemize}
+  \item The data can be reobtained using the \texttt{fetch} mode into a copy of the ontology that does not contain any weather data. If it does contain any weather data, it can be removed using the \texttt{remove} mode (see below).
+  \item Alternatively, the timestamps of all instances of the \emph{WeatherReport} concept in order to make them correspond to the current time.
+\end{itemize}
+
+The latter option is implemented in the Weather importer as the \texttt{timestamps} mode. That mode is based on the timestamps of each \emph{WeatherReport} individual being specified by the difference to the current time in hours.
+
+\begin{figure}
+\begin{lstlisting}
+weather:interval0.0         time:hasDurationDescription           weather:hour0.0 .
+weather:interval1.0         time:hasDurationDescription           weather:hour1.0 .
+weather:interval2.0         time:hasDurationDescription           weather:hour2.0 .
+weather:interval3.0         time:hasDurationDescription           weather:hour3.0 .
+weather:interval4.0         time:hasDurationDescription           weather:hour3.0 .
+
+weather:weatherReport2      weather:hasStartTime                  weather:interval2.0 ;
+                            weather:hasEndTime                    weather:interval3.0 .
+
+weather:weatherReport3      weather:hasStartTime                  weather:interval3.0 ;
+                            weather:hasEndTime                    weather:interval4.0 .
+
+weather:weatherReport2      weather:hasObservationTime            weather:instant0 .
+weather:weatherReport2      weather:hasObservationTime            weather:instant0 .
+
+weather:instant0            time:inDateTime                       weather:dateTime0 .
+
+weather:dateTime0           a                                     time:DateTimeDescription ;
+                            time:unitType                         time:unitMinute ;
+                            time:minute                           44 ;
+                            time:hour                             12 ;
+                            time:day                              "---02"^^xsd:gDay ;
+                            time:month                            "--03"^^xsd:gMonth ;
+                            time:year                             "2013"^^xsd:gYear .
+\end{lstlisting}
+\caption{Example statements generated by the Weather importer running in the \texttt{fetch} mode.}
+\label{fig:importer_timestamps1}
+\end{figure}
+
+% TODO fix highlighting
+\begin{figure}
+\begin{lstlisting}[escapechar=!]
+weather:interval0.0         time:hasDurationDescription           weather:hour0.0 .
+weather:interval1.0         time:hasDurationDescription           weather:hour1.0 .
+weather:interval2.0         time:hasDurationDescription           weather:hour2.0 .
+weather:interval3.0         time:hasDurationDescription           weather:hour3.0 .
+weather:interval4.0         time:hasDurationDescription           weather:hour3.0 .
+
+@weather:weatherReport2      weather:hasStartTime                  weather:interval0.0 ;@
+@                            weather:hasEndTime                    weather:interval1.0 .@
+
+@weather:weatherReport3      weather:hasStartTime                  weather:interval1.0 ;@
+@                            weather:hasEndTime                    weather:interval2.0 .@
+
+weather:weatherReport2      weather:hasObservationTime            weather:instant0 .
+weather:weatherReport2      weather:hasObservationTime            weather:instant0 .
+
+weather:instant0            time:inDateTime                       weather:dateTime0 .
+
+weather:dateTime0           a                                     time:DateTimeDescription ;
+                            time:unitType                         time:unitMinute ;
+@                            time:minute                           58 ;                @
+@                            time:hour                             14 ;                @
+                            time:day                              "---02"^^xsd:gDay ;
+                            time:month                            "--03"^^xsd:gMonth ;
+                            time:year                             "2013"^^xsd:gYear .
+\end{lstlisting}
+\caption{Example statements modified by the Weather importer running in the \texttt{timestamps} mode about two hours later; modified statements are highlighted.}
+\label{fig:importer_timestamps2}
+\end{figure}
+
+In \texttt{timestamp} mode, for each \emph{WeatherReport} individual stored in the ontology its observation time is retrieved and the difference to the current time in hours is calculated. This difference is then subtracted from both the individual's start time and end time properties; the difference is added to the individual's observation time. Figure \ref{fig:importer_timestamps1} shows a part of the statements generated by running
+
+the Weather importer in \texttt{fetch} mode; figure \ref{fig:importer_timestamps2} shows the statements that have been modified by the Weather importer running in \texttt{timestamps} mode two hours later.
+
+After the Weather importer has done its work, the \emph{OWL} reasoner must be run using the new data in order to update all knowledge that is generated by reasoning. E.g., in the example shown in figures \ref{fig:importer_timestamps1} and \ref{fig:importer_timestamps2}, an instance of \emph{WeatherState} that was previously reasoned to be an instance of the concept \emph{Forecast2HoursWeatherState} becomes an instance of \emph{CurrentWeatherState}, an instance of \emph{Forecast3HoursWeatherState} becomes an instance of \emph{Forecast1HoursWeatherState} and so on.
+
 \subsection{\texttt{remove} mode}
 
+The \texttt{remove} mode takes an ontology in \emph{RDF/XML syntax} from a file on disk using \emph{Apache Jena}. All weather data is removed and the resulting ontology is written back to a file in \emph{RDF/XML syntax}. This file can then be used as input to the Weather importer's \texttt{fetch} mode.
+
 \subsection{\texttt{turtle} mode}
+\label{subsec:importer_turtle}
+
+The \texttt{turtle} mode is a mode that was created for debugging reasons; in that mode the Weather importer performs the same steps as in the \texttt{fetch} mode, with the following differences:
+\begin{itemize}
+  \item The \thinkhomeweather ontology is not read from a file on disk. Hence, the output consists only of the statements generated from the weather data that is imported.
+  \item The \emph{Apache Jena} framework is not used. This enables a developer to distinguish between an error in the usage of \emph{Apache Jena} or an error somewhere else.
+  \item For better readability, \emph{Turtle syntax} is used for output instead of \emph{RDF/XML}.
+\end{itemize}
+
+The \texttt{turtle} mode is not necessary for productive use of the Weather importer. However, it is kept for providing a demonstrative description of the Weather importer's output and for easing future debugging, if necessary.
+
+% TODO figure
+
+Figure ? shows the two classes \texttt{TurtleStatement} and \texttt{TurtleStore} that provide a data structure for output in \emph{Turtle syntax}. \texttt{TurtleStatement} represents a single RDF statement in turtle syntax; \texttt{TurtleStore} encapsules a set of \texttt{TurtleStatement} objects and provides a method for writing all statements to a file.
+
+% TODO appendix
+\ref{appendix:turtle_output} in the appendix shows a part of the output generated by the Weather importer in \texttt{turtle} mode.
 
 % ant, jena, pellet -- tested with which versions at the time of writing?
 
