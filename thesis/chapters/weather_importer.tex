@@ -6,11 +6,11 @@ In previous chapters, two topics are discussed that are relevant for this chapte
 
 For that process, a standalone Java application has been developed. As its main purpose is to import weather data, it was named \emph{Weather Importer}.
 
-At its current state of development, the Weather Importer obtains data only from yr.no in order to provide a reference implementation being both simple and functional, but it is designed to allow simple integration of other weather services that are available via Internet as well as data from local weather sensors.
+At its current state of development, Weather Importer obtains data only from yr.no in order to provide a reference implementation being both simple and functional, but it is designed to allow simple integration of other weather services that are available via Internet as well as data from local weather sensors.
 
 \section{The data model}
 
-The core of the Weather importer is formed by an object-oriented data model that can be found in the \texttt{model} package. This package contains classes that are to be instantiated in order to carry all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \thinkhomeweather ontology, individuals and statements are generated and added to the ontology.
+The core of Weather importer is formed by an object-oriented data model that can be found in the \texttt{model} package. This package contains classes that are to be instantiated in order to carry all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \thinkhomeweather ontology, individuals and statements are generated and added to the ontology.
 
 % TODO figure
 The domain model in the package \texttt{model} which resembles the structure of the \thinkhomeweather ontology is depicted in the UML class diagram in figure ?.
@@ -40,15 +40,15 @@ Additionally, there is an enumeration named \texttt{WeatherConditions} having va
 \section{The application}
 \label{sec:importer_application}
 
-The weather importer application basically performs three tasks when being launched: It reads the \thinkhomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file on disk, modifies it in some way and and writes the modified ontology back onto disk into a new file, either in \emph{RDF/XML syntax} or in \emph{Turtle syntax} \cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}.
+The Weather importer application basically performs three tasks when being launched: It reads the \thinkhomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file, modifies it in some way and and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{Turtle syntax} \cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}.
 
 \subsection{\texttt{fetch} mode}
 
-In \texttt{fetch} mode, the Weather importer reads the \thinkhomeweather ontology in \emph{RDF/XML syntax} from a file on disk using the \emph{Apache Jena} framework\footnote{\href{http://jena.apache.org/}{http://jena.apache.org/}} and fetches weather data for the desired location from a weather service via Internet.
+In \texttt{fetch} mode, Weather importer reads the \thinkhomeweather ontology in \emph{RDF/XML syntax} from a file using the \emph{Apache Jena} framework\footnote{\href{http://jena.apache.org/}{http://jena.apache.org/}} and fetches weather data for the desired location from a weather service via Internet.
 
-For developing a reference implementation, the Weather importer obtains weather data from \emph{yr.no} as described in section \ref{subsec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilized by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
+For developing a reference implementation, Weather importer obtains weather data from \emph{yr.no} as described in section \ref{subsec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilized by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
 
-By calling the method \texttt{createIndividuals()} of that \texttt{Weather} object, the weather data is added \emph{Apache Jena}'s in-memory representation of the ontology. Eventually, the modified ontology is written back to disk in \emph{RDF/XML} syntax.
+By calling the method \texttt{createIndividuals()} of that \texttt{Weather} object, the weather data is added \emph{Apache Jena}'s in-memory representation of the ontology. Eventually, the modified ontology is written back to a file in \emph{RDF/XML} syntax.
 
 % TODO reference for linear interpolation?
 % TODO from Wikipedia (http://en.wikipedia.org/wiki/Linear_interpolation): Meijering, Erik (2002), "A chronology of interpolation: from ancient astronomy to modern signal and image processing", Proceedings of the IEEE 90 (3): 319–342, doi:10.1109/5.993400. (http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=993400)
@@ -74,7 +74,7 @@ As discussed in section ?, there are two ways to update weather data in the \thi
   \item Alternatively, the timestamps of all instances of the \emph{WeatherReport} concept in order to make them correspond to the current time.
 \end{itemize}
 
-The latter option is implemented in the Weather importer as the \texttt{timestamps} mode. That mode is based on the timestamps of each \emph{WeatherReport} individual being specified by the difference to the current time in hours.
+The latter option is implemented in Weather importer as the \texttt{timestamps} mode. That mode is based on the timestamps of each \emph{WeatherReport} individual being specified by the difference to the current time in hours.
 
 \begin{figure}
 \begin{lstlisting}
@@ -103,7 +103,7 @@ weather:dateTime0           a                                     time:DateTimeD
                             time:month                            "--03"^^xsd:gMonth ;
                             time:year                             "2013"^^xsd:gYear .
 \end{lstlisting}
-\caption{Example statements generated by the Weather importer running in the \texttt{fetch} mode.}
+\caption{Example statements generated by Weather importer running in the \texttt{fetch} mode.}
 \label{fig:importer_timestamps1}
 \end{figure}
 
@@ -135,38 +135,36 @@ weather:dateTime0           a                                     time:DateTimeD
                             time:month                            "--03"^^xsd:gMonth ;
                             time:year                             "2013"^^xsd:gYear .
 \end{lstlisting}
-\caption{Example statements modified by the Weather importer running in the \texttt{timestamps} mode about two hours later; modified statements are highlighted.}
+\caption{Example statements modified by Weather importer running in the \texttt{timestamps} mode about two hours later; modified statements are highlighted.}
 \label{fig:importer_timestamps2}
 \end{figure}
 
-In \texttt{timestamp} mode, for each \emph{WeatherReport} individual stored in the ontology its observation time is retrieved and the difference to the current time in hours is calculated. This difference is then subtracted from both the individual's start time and end time properties; the difference is added to the individual's observation time. Figure \ref{fig:importer_timestamps1} shows a part of the statements generated by running
+In \texttt{timestamp} mode, for each \emph{WeatherReport} individual stored in the ontology its observation time is retrieved and the difference to the current time in hours is calculated. This difference is then subtracted from both the individual's start time and end time properties; the difference is added to the individual's observation time. Figure \ref{fig:importer_timestamps1} shows a part of the statements generated by running Weather importer in \texttt{fetch} mode; figure \ref{fig:importer_timestamps2} shows the statements that have been modified by Weather importer running in \texttt{timestamps} mode two hours later.
 
-the Weather importer in \texttt{fetch} mode; figure \ref{fig:importer_timestamps2} shows the statements that have been modified by the Weather importer running in \texttt{timestamps} mode two hours later.
-
-After the Weather importer has done its work, the \emph{OWL} reasoner must be run using the new data in order to update all knowledge that is generated by reasoning. E.g., in the example shown in figures \ref{fig:importer_timestamps1} and \ref{fig:importer_timestamps2}, an instance of \emph{WeatherState} that was previously reasoned to be an instance of the concept \emph{Forecast2HoursWeatherState} becomes an instance of \emph{CurrentWeatherState}, an instance of \emph{Forecast3HoursWeatherState} becomes an instance of \emph{Forecast1HoursWeatherState} and so on.
+After Weather importer has finished, the \emph{OWL} reasoner must be run using the new data in order to update all knowledge that is generated by reasoning. E.g., in the example shown in figures \ref{fig:importer_timestamps1} and \ref{fig:importer_timestamps2}, an instance of \emph{WeatherState} that was previously reasoned to be an instance of the concept \emph{Forecast2HoursWeatherState} becomes an instance of \emph{CurrentWeatherState}, an instance of \emph{Forecast3HoursWeatherState} becomes an instance of \emph{Forecast1HoursWeatherState} and so on.
 
 \subsection{\texttt{remove} mode}
 
-The \texttt{remove} mode takes an ontology in \emph{RDF/XML syntax} from a file on disk using \emph{Apache Jena}. All weather data is removed and the resulting ontology is written back to a file in \emph{RDF/XML syntax}. This file can then be used as input to the Weather importer's \texttt{fetch} mode.
+The \texttt{remove} mode takes an ontology in \emph{RDF/XML syntax} from a file using \emph{Apache Jena}. All weather data is removed and the resulting ontology is written back to a file in \emph{RDF/XML syntax}. This file can then be used as input to Weather importer's \texttt{fetch} mode.
 
 \subsection{\texttt{turtle} mode}
 \label{subsec:importer_turtle}
 
-The \texttt{turtle} mode is a mode that was created for debugging reasons; in that mode the Weather importer performs the same steps as in the \texttt{fetch} mode, with the following differences:
+The \texttt{turtle} mode is a mode that was created for debugging reasons; in that mode Weather importer performs the same steps as in the \texttt{fetch} mode, with the following differences:
 \begin{itemize}
-  \item The \thinkhomeweather ontology is not read from a file on disk. Hence, the output consists only of the statements generated from the weather data that is imported.
+  \item The \thinkhomeweather ontology is not read from a file. Hence, the output consists only of the statements generated from the weather data that is imported.
   \item The \emph{Apache Jena} framework is not used. This enables a developer to distinguish between an error in the usage of \emph{Apache Jena} or an error somewhere else.
   \item For better readability, \emph{Turtle syntax} is used for output instead of \emph{RDF/XML}.
 \end{itemize}
 
-The \texttt{turtle} mode is not necessary for productive use of the Weather importer. However, it is kept for providing a demonstrative description of the Weather importer's output and for easing future debugging, if necessary.
+The \texttt{turtle} mode is not necessary for productive use of Weather importer. However, it is kept for providing a demonstrative description of Weather importer's output and for easing future debugging, if necessary.
 
 % TODO figure
 
 Figure ? shows the two classes \texttt{TurtleStatement} and \texttt{TurtleStore} that provide a data structure for output in \emph{Turtle syntax}. \texttt{TurtleStatement} represents a single RDF statement in turtle syntax; \texttt{TurtleStore} encapsules a set of \texttt{TurtleStatement} objects and provides a method for writing all statements to a file.
 
 % TODO appendix
-\ref{appendix:turtle_output} in the appendix shows a part of the output generated by the Weather importer in \texttt{turtle} mode.
+\ref{appendix:turtle_output} in the appendix shows a part of the output generated by Weather importer in \texttt{turtle} mode.
 
 % ant, jena, pellet -- tested with which versions at the time of writing?
 
