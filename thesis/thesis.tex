@@ -28,6 +28,7 @@
 \usepackage{mdframed}
 \usepackage{longtable}
 \usepackage{listings}
+\usepackage{xspace}
 
 \thesistitle{A Weather Ontology for Predictive Control in Smart Homes}
 %\thesissubtitle{Optional Subtitle} % optional
@@ -55,11 +56,32 @@
 \newcommand{\uml}[1]{\texttt{#1}}
 \newcommand{\cd}{\textsf{Class Diagram}}
 
-\newcommand{\thinkhome}{\emph{ThinkHome }}
-\newcommand{\thinkhomeweather}{\emph{ThinkHomeWeather }}
-\newcommand{\methontology}{\emph{METHONTOLOGY }}
+\newcommand{\thinkhome}{\emph{ThinkHome}\xspace}
+\newcommand{\thinkhomeweather}{\emph{ThinkHomeWeather}\xspace}
+\newcommand{\methontology}{\emph{METHONTOLOGY}\xspace}
 
 \newcommand{\chapterquotation}[2]{\hfill\parbox{0.5\textwidth}{\raggedleft\noindent\textit{#1}\\--\enskip #2}}
+
+\makeatletter
+\newenvironment{btHighlight}[1][]
+{\begingroup\tikzset{bt@Highlight@par/.style={#1}}\begin{lrbox}{\@tempboxa}}
+{\end{lrbox}\bt@HL@box[bt@Highlight@par]{\@tempboxa}\endgroup}
+
+\newcommand\btHL[1][]{%
+  \begin{btHighlight}[#1]\bgroup\aftergroup\bt@HL@endenv%
+}
+\def\bt@HL@endenv{%
+  \end{btHighlight}%   
+  \egroup
+}
+\newcommand{\bt@HL@box}[2][]{%
+  \tikz[#1]{%
+    \pgfpathrectangle{\pgfpoint{1pt}{0pt}}{\pgfpoint{\wd #2}{\ht #2}}%
+    \pgfusepath{use as bounding box}%
+    \node[anchor=base west, fill=orange!30,outer sep=0pt,inner xsep=1pt, inner ysep=0pt, rounded corners=0pt, minimum height=\ht\strutbox+1pt,#1]{\raisebox{1pt}{\strut}\strut\usebox{#2}};
+  }%
+}
+\makeatother
 
 \begin{document}
 
