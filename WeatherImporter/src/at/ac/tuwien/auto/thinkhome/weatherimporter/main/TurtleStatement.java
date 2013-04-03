@@ -10,6 +10,10 @@ public class TurtleStatement implements Comparable<TurtleStatement> {
 		this.subject = subject;
 		this.predicate = predicate;
 		this.object = object;
+		
+		if(predicate.equals("rdf:type")) {
+			this.predicate = "a";
+		}
 	}
 
 	protected String getSubject() {
@@ -71,9 +75,5 @@ public class TurtleStatement implements Comparable<TurtleStatement> {
 			return getPredicate().compareTo(that.getPredicate());
 		}
 		return getSubject().compareTo(that.getSubject());
-	}
-
-	public void setPredicate(String predicate) {
-		this.predicate = predicate;
 	}
 }

@@ -22,10 +22,6 @@ public class TurtleStore {
 		for(TurtleStatement statement : statements) {
 			subjectWidth = Math.max(subjectWidth, statement.getSubject().length());
 			predicateWidth = Math.max(predicateWidth, statement.getPredicate().length());
-			
-			if(statement.getPredicate().equals("rdf:type")) {
-				statement.setPredicate("a");
-			}
 		}
 
 		subjectWidth += bufferSpace;
