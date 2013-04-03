@@ -7,3 +7,4 @@ dist
 reports
 bin_instrument
 coverage
+cobertura.ser
