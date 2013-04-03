@@ -1,4 +1,4 @@
-package at.ac.tuwien.auto.thinkhome.weatherimporter.turtle;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.main;
 
 // TODO javadoc
 public class TurtleStatement implements Comparable<TurtleStatement> {

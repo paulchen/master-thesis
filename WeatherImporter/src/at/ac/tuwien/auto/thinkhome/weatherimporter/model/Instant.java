@@ -7,8 +7,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
-import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStatement;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStore;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.Individual;

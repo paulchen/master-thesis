@@ -7,8 +7,8 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStatement;
-import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStatement;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStore;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;

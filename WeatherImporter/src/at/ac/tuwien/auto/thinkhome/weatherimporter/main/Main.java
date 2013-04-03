@@ -6,10 +6,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.importer.Importer;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.GeographicalPosition;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Weather;
-import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;

@@ -11,8 +11,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.main.SunPositionCalculator;
-import at.ac.tuwien.auto.thinkhome.weatherimporter.turtle.TurtleStore;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStore;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
@@ -189,12 +188,9 @@ public class Weather {
 		printWeatherReports("Weather reports after normalization", weatherReports);
 		
 		// add sun position data
-		SunPositionCalculator sunPositionCalculator = new SunPositionCalculator(position);
 		for(WeatherReport report : weatherReports) {
 			Date date = new Date((long)(new Date().getTime() + report.getStartTime().getTime()*3600000));
-			SunPosition position = sunPositionCalculator.calculate(date);
-			position.setName("sunPosition" + report.getStartTime());
-			report.getState().addPhenomenon(position);
+			report.getState().addPhenomenon(new SunPosition("sunPosition" + report.getStartTime(), position, date));
 		}
 		
 		printWeatherReports("Final weather states after normalization including sun position data", weatherReports);

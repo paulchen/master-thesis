@@ -1,4 +1,4 @@
-package at.ac.tuwien.auto.thinkhome.weatherimporter.turtle;
+package at.ac.tuwien.auto.thinkhome.weatherimporter.main;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
