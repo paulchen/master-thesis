@@ -19,11 +19,11 @@ import com.hp.hpl.jena.shared.DoesNotExistException;
 // TODO test model (and WeatherImporter?) with jUnit?
 /**
  * This is the Main class of <em>WeatherImporter</em>. It contains the
- * {@link #main(String)} method. Purpose of this class is to read command line
+ * {@link #main(String[])} method. Purpose of this class is to read command line
  * arguments and settings from the properties file. Based on this input, other
  * classes will be instantiated and their methods will be called in order to
  * perform the requested task.
- * 
+ * <br><br>
  * Please refer to the properties file for documentation about its settings.
  * 
  * @author Paul Staroch
@@ -44,7 +44,7 @@ public class Main {
 	 * settings from the properties file. Based on this input, other classes
 	 * will be instantiated and their methods will be called in order to perform
 	 * the requested task.
-	 * 
+	 * <br><br>
 	 * Any error lead to an exit code > 0.
 	 * 
 	 * @param args
