@@ -1,8 +1,8 @@
 #!/bin/bash
 
 FACTOR=4
-FILES="turtlestore.dia"
-#FILES="*.dia"
+#FILES="turtlestore.dia"
+FILES="*.dia"
 
 for file in $FILES; do
 	dia --export blubb.png $file > /dev/null 2>&1
