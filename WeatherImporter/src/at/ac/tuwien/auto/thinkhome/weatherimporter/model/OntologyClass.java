@@ -10,7 +10,7 @@ import com.hp.hpl.jena.ontology.OntModel;
 public interface OntologyClass {
 	public void createIndividuals(OntModel onto);
 
-	public Individual getOntIndividual();
+	public Individual getIndividual();
 	
 	public TurtleStore getTurtleStatements();
 	

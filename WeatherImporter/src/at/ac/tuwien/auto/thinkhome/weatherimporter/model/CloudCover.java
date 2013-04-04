@@ -91,7 +91,7 @@ public class CloudCover extends WeatherPhenomenon {
 	}
 	
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 

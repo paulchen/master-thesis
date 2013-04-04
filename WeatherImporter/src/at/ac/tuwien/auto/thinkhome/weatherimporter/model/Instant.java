@@ -107,7 +107,7 @@ public class Instant extends TemporalEntity {
 	}
 
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 	

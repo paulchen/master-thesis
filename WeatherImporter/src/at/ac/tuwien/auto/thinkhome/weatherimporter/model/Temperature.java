@@ -63,7 +63,7 @@ public class Temperature extends WeatherPhenomenon {
 	}
 
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 

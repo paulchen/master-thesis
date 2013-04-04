@@ -58,7 +58,7 @@ public class DewPoint extends WeatherPhenomenon {
 	}
 
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 

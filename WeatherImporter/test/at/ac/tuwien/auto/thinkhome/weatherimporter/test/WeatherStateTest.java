@@ -58,7 +58,7 @@ public class WeatherStateTest extends TestCase {
 		state.createIndividuals(onto);
 		
 		for(String concept : allConcepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(state.getOntIndividual(), RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(state.getIndividual(), RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
 		}		
 	}
 	

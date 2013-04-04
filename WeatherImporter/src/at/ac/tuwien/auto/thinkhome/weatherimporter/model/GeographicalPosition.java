@@ -75,7 +75,7 @@ public class GeographicalPosition implements OntologyClass {
 	}
 
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 

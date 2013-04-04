@@ -39,18 +39,18 @@ public class WeatherReport implements OntologyClass {
 		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasPriority"), priority));
 		
 		source.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSource"), source.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSource"), source.getIndividual()));
 
 		startTime.createIndividuals(onto);
 		endTime.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasStartTime"), startTime.getOntIndividual()));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasEndTime"), endTime.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasStartTime"), startTime.getIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasEndTime"), endTime.getIndividual()));
 		
 		position.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "location"), position.getOntIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "location"), position.getIndividual()));
 		
 		observationTime.createIndividuals(onto);
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasObservationTime"), observationTime.getOntIndividual()));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasObservationTime"), observationTime.getIndividual()));
 
 		if(previousReport != null) {
 			weatherState.setPreviousState(previousReport.getState());
@@ -151,7 +151,7 @@ public class WeatherReport implements OntologyClass {
 	}
 
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 

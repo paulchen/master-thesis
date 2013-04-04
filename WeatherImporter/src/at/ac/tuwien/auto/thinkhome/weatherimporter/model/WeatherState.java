@@ -108,7 +108,7 @@ public class WeatherState implements OntologyClass {
 		
 		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
 			phenomenon.createIndividuals(onto);
-			onto.add(onto.createStatement(phenomenon.getOntIndividual(), onto.getProperty(WeatherConstants.NAMESPACE + "belongsToWeatherState"), individual));
+			onto.add(onto.createStatement(phenomenon.getIndividual(), onto.getProperty(WeatherConstants.NAMESPACE + "belongsToWeatherState"), individual));
 		}
 		
 		for(WeatherCondition condition : weatherConditions) {
@@ -116,12 +116,12 @@ public class WeatherState implements OntologyClass {
 		}
 		
 		if(previousState != null) {
-			Individual previousStateIndividual = previousState.getOntIndividual();
+			Individual previousStateIndividual = previousState.getIndividual();
 			onto.add(onto.createStatement(previousStateIndividual, onto.getProperty(WeatherConstants.NAMESPACE + "hasNextWeatherState"), individual));
 		}
 	}
 
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 

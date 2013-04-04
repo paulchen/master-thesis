@@ -83,7 +83,7 @@ public class Interval extends TemporalEntity {
 	}
 
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual;
 	}
 

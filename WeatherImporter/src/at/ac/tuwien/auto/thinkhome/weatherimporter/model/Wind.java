@@ -76,7 +76,7 @@ public class Wind extends WeatherPhenomenon {
 	}
 
 	@Override
-	public Individual getOntIndividual() {
+	public Individual getIndividual() {
 		return individual; 
 	}
 

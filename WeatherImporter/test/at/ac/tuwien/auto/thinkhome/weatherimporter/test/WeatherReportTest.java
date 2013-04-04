@@ -69,7 +69,7 @@ public class WeatherReportTest extends TestCase {
 		List<String> expected = Arrays.asList(expectedConcepts);
 		
 		for(String concept : allConcepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(weatherReport.getOntIndividual(), RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(weatherReport.getIndividual(), RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
 		}
 	}
 	
