@@ -38,13 +38,13 @@ public class Temperature extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(temperatureValue, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.MUO_NAMESPACE + "degrees-Celsius")));
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), roundFloat(temperatureValue, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.MUO_NAMESPACE + "degrees-Celsius")));
 		
- 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
- 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+ 		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
+ 		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
  		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasTemperatureValue"), blankNode));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasTemperatureValue"), blankNode));
 	}
 
 	@Override
@@ -53,11 +53,11 @@ public class Temperature extends WeatherPhenomenon {
 		
 		String blankNode = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(temperatureValue, WeatherConstants.DECIMALS)) + "\"^^xsd:float"));
-		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "degrees-Celsius"));
+		turtle.add(new TurtleStatement(blankNode, Weather.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(temperatureValue, Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode, Weather.MUO_PREFIX + "measuredIn", Weather.MUO_PREFIX + "degrees-Celsius"));
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasTemperatureValue", blankNode));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasTemperatureValue", blankNode));
 		
 		return turtle;
 	}
@@ -69,7 +69,7 @@ public class Temperature extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "temperature=" + roundFloat(temperatureValue, WeatherConstants.DECIMALS);
+		return "temperature=" + roundFloat(temperatureValue, Weather.DECIMALS);
 	}
 
 	@Override
@@ -103,6 +103,6 @@ public class Temperature extends WeatherPhenomenon {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

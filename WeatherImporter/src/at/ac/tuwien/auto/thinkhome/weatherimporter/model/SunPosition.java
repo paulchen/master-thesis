@@ -81,9 +81,9 @@ public class SunPosition extends WeatherPhenomenon {
 	public String toString() {
 		String output = "sunPosition=[";
 		
-		output += "azimuth=" + roundDouble(azimuth, WeatherConstants.DECIMALS) + "; ";
-		output += "zenith=" + roundDouble(zenith, WeatherConstants.DECIMALS) + "; ";
-		output += "elevation=" + roundDouble(elevation, WeatherConstants.DECIMALS);
+		output += "azimuth=" + roundDouble(azimuth, Weather.DECIMALS) + "; ";
+		output += "zenith=" + roundDouble(zenith, Weather.DECIMALS) + "; ";
+		output += "elevation=" + roundDouble(elevation, Weather.DECIMALS);
 		output += "]";
 		
 		return output;
@@ -92,18 +92,18 @@ public class SunPosition extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), (int)roundDouble(azimuth, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.MUO_NAMESPACE + "degree")));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), (int)roundDouble(azimuth, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.MUO_NAMESPACE + "degree")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), (float)roundDouble(elevation, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.MUO_NAMESPACE + "degree")));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), (float)roundDouble(elevation, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.MUO_NAMESPACE + "degree")));
 		
- 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
- 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+ 		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
+ 		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
  		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunDirection"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSunElevationAngle"), blankNode2));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasSunDirection"), blankNode1));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasSunElevationAngle"), blankNode2));
 	}
 
 	@Override
@@ -113,15 +113,15 @@ public class SunPosition extends WeatherPhenomenon {
 		String blankNode1 = Weather.generateBlankNode();
 		String blankNode2 = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf((int)roundDouble(azimuth, WeatherConstants.DECIMALS))));
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "degree"));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "numericalValue", String.valueOf((int)roundDouble(azimuth, Weather.DECIMALS))));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn", Weather.MUO_PREFIX + "degree"));
 		
-		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf((float)roundDouble(elevation, WeatherConstants.DECIMALS)) + "\"^^xsd:float"));
-		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "degree"));
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "numericalValue", "\"" + String.valueOf((float)roundDouble(elevation, Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "measuredIn", Weather.MUO_PREFIX + "degree"));
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasSunDirection", blankNode1));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasSunElevationAngle", blankNode2));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasSunDirection", blankNode1));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasSunElevationAngle", blankNode2));
 		
 		return turtle;
 	}
@@ -155,7 +155,7 @@ public class SunPosition extends WeatherPhenomenon {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 	
 	private void calculatePosition(GeographicalPosition position, Date date) {

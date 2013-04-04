@@ -14,7 +14,7 @@ import org.mindswap.pellet.jena.PelletReasonerFactory;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.CloudCover;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Precipitation;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Temperature;
-import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherConstants;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Weather;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherPhenomenon;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherState;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Wind;
@@ -58,7 +58,7 @@ public class WeatherStateTest extends TestCase {
 		state.createIndividuals(onto);
 		
 		for(String concept : allConcepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(state.getIndividual(), RDF.type, onto.getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, onto.listStatements(state.getIndividual(), RDF.type, onto.getOntClass(Weather.NAMESPACE + concept)).toSet().size());
 		}		
 	}
 	

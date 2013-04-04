@@ -41,18 +41,18 @@ public class Wind extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(windSpeed, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "metresPerSecond")));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), roundFloat(windSpeed, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.NAMESPACE + "metresPerSecond")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), windDirection));
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.MUO_NAMESPACE + "degree")));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), windDirection));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.MUO_NAMESPACE + "degree")));
 		
- 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
- 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+ 		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
+ 		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
  		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindSpeed"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasWindDirection"), blankNode2));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasWindSpeed"), blankNode1));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasWindDirection"), blankNode2));
 	}
 
 	@Override
@@ -62,15 +62,15 @@ public class Wind extends WeatherPhenomenon {
 		String blankNode1 = Weather.generateBlankNode();
 		String blankNode2 = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(windSpeed, WeatherConstants.DECIMALS)) + "\"^^xsd:float"));
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "metresPerSecond"));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(windSpeed, Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn", Weather.NAMESPACE_PREFIX + "metresPerSecond"));
 		
-		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(windDirection)));
-		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "degree"));
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "numericalValue", String.valueOf(windDirection)));
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "measuredIn", Weather.MUO_PREFIX + "degree"));
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasWindSpeed", blankNode1));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasWindDirection", blankNode2));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasWindSpeed", blankNode1));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasWindDirection", blankNode2));
 		
 		return turtle;
 	}
@@ -85,7 +85,7 @@ public class Wind extends WeatherPhenomenon {
 		String output;
 		
 		output = "wind=[";
-		output += "speed=" + roundFloat(windSpeed, WeatherConstants.DECIMALS) + ";";
+		output += "speed=" + roundFloat(windSpeed, Weather.DECIMALS) + ";";
 		output += "direction=" + windDirection + "]";
 		
 		return output;
@@ -127,6 +127,6 @@ public class Wind extends WeatherPhenomenon {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

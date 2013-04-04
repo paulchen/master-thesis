@@ -34,10 +34,10 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
+		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
 		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasDewPointValue"), roundFloat(dewPointValue, WeatherConstants.DECIMALS)));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasDewPointValue"), roundFloat(dewPointValue, Weather.DECIMALS)));
 	}
 	
 	@Override
@@ -47,12 +47,12 @@ public class DewPoint extends WeatherPhenomenon {
 		/* TODO
 		String blankNode = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "numericalValue", String.valueOf(coverage)));
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "okta"));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "numericalValue", String.valueOf(coverage)));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn", Weather.NAMESPACE_PREFIX + "okta"));
 		*/
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasDewPointValue", "\"" + String.valueOf(roundFloat(dewPointValue, WeatherConstants.DECIMALS) + "\"^^xsd:float")));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasDewPointValue", "\"" + String.valueOf(roundFloat(dewPointValue, Weather.DECIMALS) + "\"^^xsd:float")));
 		
 		return turtle;
 	}
@@ -64,7 +64,7 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "dewPoint=" + roundFloat(dewPointValue, WeatherConstants.DECIMALS);
+		return "dewPoint=" + roundFloat(dewPointValue, Weather.DECIMALS);
 	}
 
 	private float getDewPointValue() {
@@ -98,6 +98,6 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

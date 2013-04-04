@@ -60,24 +60,24 @@ public class Interval extends TemporalEntity {
 	
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass hourClass = onto.getOntClass(WeatherConstants.NAMESPACE + "Hour");
-		Individual hour1 = onto.createIndividual(WeatherConstants.NAMESPACE + "hour" + time, hourClass);
-		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(WeatherConstants.TIME + "hours"), new BigDecimal(time)));
+		OntClass hourClass = onto.getOntClass(Weather.NAMESPACE + "Hour");
+		Individual hour1 = onto.createIndividual(Weather.NAMESPACE + "hour" + time, hourClass);
+		onto.add(onto.createLiteralStatement(hour1, onto.getProperty(TIME + "hours"), new BigDecimal(time)));
 		
-		Resource intervalClass = onto.getResource(WeatherConstants.TIME + "Interval");
-		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, intervalClass);
+		Resource intervalClass = onto.getResource(TIME + "Interval");
+		individual = onto.createIndividual(Weather.NAMESPACE + name, intervalClass);
 		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.TIME + "hasDurationDescription"), hour1));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(TIME + "hasDurationDescription"), hour1));
 	}
 
 	@Override
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.TIME_PREFIX + "Interval"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, "a", WeatherConstants.NAMESPACE_PREFIX + "Hour"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + "hour" + time, WeatherConstants.TIME_PREFIX + "hours", "\"" + String.valueOf(new BigDecimal(time)) + "\"^^xsd:decimal"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.TIME_PREFIX + "hasDurationDescription", WeatherConstants.NAMESPACE_PREFIX + "hour" + time));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", TIME_PREFIX + "Interval"));
+		turtle.add(new TurtleStatement(Weather.NAMESPACE_PREFIX + "hour" + time, "a", Weather.NAMESPACE_PREFIX + "Hour"));
+		turtle.add(new TurtleStatement(Weather.NAMESPACE_PREFIX + "hour" + time, TIME_PREFIX + "hours", "\"" + String.valueOf(new BigDecimal(time)) + "\"^^xsd:decimal"));
+		turtle.add(new TurtleStatement(getTurtleName(), TIME_PREFIX + "hasDurationDescription", Weather.NAMESPACE_PREFIX + "hour" + time));
 		
 		return turtle;
 	}
@@ -98,6 +98,6 @@ public class Interval extends TemporalEntity {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

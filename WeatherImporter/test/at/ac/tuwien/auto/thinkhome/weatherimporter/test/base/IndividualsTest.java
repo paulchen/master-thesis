@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherConstants;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Weather;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherPhenomenon;
 import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherState;
 
@@ -54,7 +54,7 @@ public abstract class IndividualsTest extends TestCase {
 		List<String> expected = Arrays.asList(expectedConcepts);
 
 		for(String concept : concepts) {
-			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon.getIndividual(), RDF.type, getOnto().getOntClass(WeatherConstants.NAMESPACE + concept)).toSet().size());
+			assertEquals(expected.contains(concept) ? 1 : 0, getOnto().listStatements(weatherPhenomenon.getIndividual(), RDF.type, getOnto().getOntClass(Weather.NAMESPACE + concept)).toSet().size());
 		}
 	}
 }

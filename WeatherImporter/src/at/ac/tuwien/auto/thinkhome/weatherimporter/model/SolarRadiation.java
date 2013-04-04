@@ -36,13 +36,13 @@ public class SolarRadiation extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(radiationValue, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "wattsPerSquareMeter")));
+		onto.add(onto.createLiteralStatement(blankNode, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), roundFloat(radiationValue, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.NAMESPACE + "wattsPerSquareMeter")));
 		
- 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
- 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+ 		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
+ 		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
  		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSolarRadiationValue"), blankNode));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasSolarRadiationValue"), blankNode));
 	}
 
 	@Override
@@ -51,11 +51,11 @@ public class SolarRadiation extends WeatherPhenomenon {
 		
 		String blankNode = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(radiationValue, WeatherConstants.DECIMALS)) + "\"^^xsd:float"));
-		turtle.add(new TurtleStatement(blankNode, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "wattsPerSquareMeter"));
+		turtle.add(new TurtleStatement(blankNode, Weather.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(radiationValue, Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode, Weather.MUO_PREFIX + "measuredIn", Weather.NAMESPACE_PREFIX + "wattsPerSquareMeter"));
 		
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(WeatherConstants.NAMESPACE_PREFIX + name, WeatherConstants.NAMESPACE_PREFIX + "hasSolarRadiationValue", blankNode));
+		turtle.add(new TurtleStatement(Weather.NAMESPACE_PREFIX + name, "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(Weather.NAMESPACE_PREFIX + name, Weather.NAMESPACE_PREFIX + "hasSolarRadiationValue", blankNode));
 				
 		return turtle;
 	}
@@ -67,7 +67,7 @@ public class SolarRadiation extends WeatherPhenomenon {
 
 	@Override
 	public String toString() {
-		return "solarRadiation=" + roundFloat(radiationValue, WeatherConstants.DECIMALS);
+		return "solarRadiation=" + roundFloat(radiationValue, Weather.DECIMALS);
 	}
 
 	private Float getRadiationValue() {
@@ -101,6 +101,6 @@ public class SolarRadiation extends WeatherPhenomenon {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

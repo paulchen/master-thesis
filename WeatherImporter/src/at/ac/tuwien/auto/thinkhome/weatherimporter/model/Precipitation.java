@@ -51,18 +51,18 @@ public class Precipitation extends WeatherPhenomenon {
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(probability, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.NAMESPACE + "percent")));
+		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), roundFloat(probability, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.NAMESPACE + "percent")));
 		
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "numericalValue"), roundFloat(intensity, WeatherConstants.DECIMALS)));
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(WeatherConstants.MUO_NAMESPACE + "measuredIn"), onto.getResource(WeatherConstants.MUO_NAMESPACE + "millimetresPerHour")));
+		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), roundFloat(intensity, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.MUO_NAMESPACE + "millimetresPerHour")));
 		
- 		OntClass weatherPhenomenonClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherPhenomenon");
- 		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherPhenomenonClass);
+ 		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
+ 		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
  		
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasPrecipitationProbability"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasPrecipitationIntensity"), blankNode2));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasPrecipitationProbability"), blankNode1));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasPrecipitationIntensity"), blankNode2));
 	}
 
 	@Override
@@ -72,15 +72,15 @@ public class Precipitation extends WeatherPhenomenon {
 		String blankNode1 = Weather.generateBlankNode();
 		String blankNode2 = Weather.generateBlankNode();
 		
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(probability, WeatherConstants.DECIMALS)) + "\"^^xsd:float"));
-		turtle.add(new TurtleStatement(blankNode1, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.NAMESPACE_PREFIX + "percent"));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(probability, Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn", Weather.NAMESPACE_PREFIX + "percent"));
 		
-		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(intensity, WeatherConstants.DECIMALS)) + "\"^^xsd:float"));
-		turtle.add(new TurtleStatement(blankNode2, WeatherConstants.MUO_PREFIX + "measuredIn", WeatherConstants.MUO_PREFIX + "millimetresPerHour"));
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "numericalValue", "\"" + String.valueOf(roundFloat(intensity, Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "measuredIn", Weather.MUO_PREFIX + "millimetresPerHour"));
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasPrecipitationProbability", blankNode1));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasPrecipitationIntensity", blankNode2));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasPrecipitationProbability", blankNode1));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasPrecipitationIntensity", blankNode2));
 		
 		return turtle;
 	}
@@ -95,8 +95,8 @@ public class Precipitation extends WeatherPhenomenon {
 		String output;
 		
 		output = "precipitation=[";
-		output += "intensity=" + roundFloat(intensity, WeatherConstants.DECIMALS) + ";";
-		output += "probability=" + roundFloat(probability, WeatherConstants.DECIMALS) + "]";
+		output += "intensity=" + roundFloat(intensity, Weather.DECIMALS) + ";";
+		output += "probability=" + roundFloat(probability, Weather.DECIMALS) + "]";
 		
 		return output;
 	}
@@ -129,6 +129,6 @@ public class Precipitation extends WeatherPhenomenon {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

@@ -20,15 +20,15 @@ public abstract class WeatherSource implements OntologyClass {
 	
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass sensorSourceClass = onto.getOntClass(WeatherConstants.NAMESPACE + "ServiceSource");
-		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, sensorSourceClass);
+		OntClass sensorSourceClass = onto.getOntClass(Weather.NAMESPACE + "ServiceSource");
+		individual = onto.createIndividual(Weather.NAMESPACE + name, sensorSourceClass);
 	}
 
 	@Override
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "ServiceSource"));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "ServiceSource"));
 		
 		return turtle;
 	}
@@ -45,6 +45,6 @@ public abstract class WeatherSource implements OntologyClass {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

@@ -33,24 +33,24 @@ public class WeatherReport implements OntologyClass {
 	}
 	
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherReportClass = onto.getOntClass(WeatherConstants.NAMESPACE + "WeatherReport");
-		individual = onto.createIndividual(WeatherConstants.NAMESPACE + name, weatherReportClass);
+		OntClass weatherReportClass = onto.getOntClass(Weather.NAMESPACE + "WeatherReport");
+		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherReportClass);
 		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasPriority"), priority));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasPriority"), priority));
 		
 		source.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasSource"), source.getIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasSource"), source.getIndividual()));
 
 		startTime.createIndividuals(onto);
 		endTime.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasStartTime"), startTime.getIndividual()));
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasEndTime"), endTime.getIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasStartTime"), startTime.getIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasEndTime"), endTime.getIndividual()));
 		
 		position.createIndividuals(onto);
-		onto.add(onto.createStatement(individual, onto.getProperty(WeatherConstants.WGS84 + "location"), position.getIndividual()));
+		onto.add(onto.createStatement(individual, onto.getProperty(GeographicalPosition.WGS84 + "location"), position.getIndividual()));
 		
 		observationTime.createIndividuals(onto);
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(WeatherConstants.NAMESPACE + "hasObservationTime"), observationTime.getIndividual()));
+		onto.add(onto.createLiteralStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasObservationTime"), observationTime.getIndividual()));
 
 		if(previousReport != null) {
 			weatherState.setPreviousState(previousReport.getState());
@@ -62,22 +62,22 @@ public class WeatherReport implements OntologyClass {
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", WeatherConstants.NAMESPACE_PREFIX + "WeatherReport"));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasPriority", String.valueOf(priority)));
+		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherReport"));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasPriority", String.valueOf(priority)));
 		
 		turtle.addAll(source.getTurtleStatements());
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasSource", source.getTurtleName()));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasSource", source.getTurtleName()));
 		
 		turtle.addAll(startTime.getTurtleStatements());
 		turtle.addAll(endTime.getTurtleStatements());
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasStartTime", startTime.getTurtleName()));
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasEndTime", endTime.getTurtleName()));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasStartTime", startTime.getTurtleName()));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasEndTime", endTime.getTurtleName()));
 		
 		turtle.addAll(position.getTurtleStatements());
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.WGS84_PREFIX + "location", position.getTurtleName()));
+		turtle.add(new TurtleStatement(getTurtleName(), GeographicalPosition.WGS84_PREFIX + "location", position.getTurtleName()));
 		
 		turtle.addAll(observationTime.getTurtleStatements());
-		turtle.add(new TurtleStatement(getTurtleName(), WeatherConstants.NAMESPACE_PREFIX + "hasObservationTime", observationTime.getTurtleName()));
+		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasObservationTime", observationTime.getTurtleName()));
 		
 		if(previousReport != null) {
 			weatherState.setPreviousState(previousReport.getState());
@@ -161,6 +161,6 @@ public class WeatherReport implements OntologyClass {
 
 	@Override
 	public String getTurtleName() {
-		return WeatherConstants.NAMESPACE_PREFIX + name;
+		return Weather.NAMESPACE_PREFIX + name;
 	}
 }

@@ -3,7 +3,9 @@ package at.ac.tuwien.auto.thinkhome.weatherimporter.main;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import at.ac.tuwien.auto.thinkhome.weatherimporter.model.WeatherConstants;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.model.GeographicalPosition;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.model.TemporalEntity;
+import at.ac.tuwien.auto.thinkhome.weatherimporter.model.Weather;
 
 // TODO javadoc
 public class TurtleStore {
@@ -30,10 +32,10 @@ public class TurtleStore {
 		StringBuffer output = new StringBuffer();
 		
 		output.append("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n");
-		output.append("@prefix " + WeatherConstants.NAMESPACE_PREFIX + " <" + WeatherConstants.NAMESPACE + "> .\n");
-		output.append("@prefix " + WeatherConstants.TIME_PREFIX + " <" + WeatherConstants.TIME + "> .\n");
-		output.append("@prefix " + WeatherConstants.WGS84_PREFIX + " <" + WeatherConstants.WGS84 + "> .\n");
-		output.append("@prefix " + WeatherConstants.MUO_PREFIX + " <" + WeatherConstants.MUO_NAMESPACE + "> .\n");
+		output.append("@prefix " + Weather.NAMESPACE_PREFIX + " <" + Weather.NAMESPACE + "> .\n");
+		output.append("@prefix " + TemporalEntity.TIME_PREFIX + " <" + TemporalEntity.TIME + "> .\n");
+		output.append("@prefix " + GeographicalPosition.WGS84_PREFIX + " <" + GeographicalPosition.WGS84 + "> .\n");
+		output.append("@prefix " + Weather.MUO_PREFIX + " <" + Weather.MUO_NAMESPACE + "> .\n");
 		output.append("\n");
 		
 		String previousSubject = "";
