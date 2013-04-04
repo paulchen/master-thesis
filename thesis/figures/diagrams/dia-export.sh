@@ -9,6 +9,6 @@ for file in $FILES; do
 	HEIGHT=`identify blubb.png |sed -e "s/^[^x]*x//g;s/ .*//g"`
 	rm blubb.png
 	NEW_HEIGHT=$((HEIGHT*FACTOR))
-	dia --export ${file/dia/png} -s x$NEW_HEIGHT $file
+	dia --export ${file/\.dia/\.png} -s x$NEW_HEIGHT $file
 done
 
