@@ -16,8 +16,21 @@ All classes belonging to \emph{Weather Importer} include comments suitable for u
 
 The core of \emph{Weather Importer} is formed by an object-oriented data model that can be found in the \texttt{model} package. This package contains classes that are to be instantiated in order to carry all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \thinkhomeweather ontology, individuals and statements are generated and added to the ontology.
 
-% TODO figure
-The domain model in the package \texttt{model} which resembles the structure of the \thinkhomeweather ontology is depicted in the UML class diagram in figure ?.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/diagrams/importer-model.png}
+\caption{The domain model used in \emph{Weather importer}. See figure \ref{fig:importer_model2} for a simplified diagram that shows only the most important classes.}
+\label{fig:importer_model1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\textwidth]{figures/diagrams/importer-model-simple.png}
+\caption{The most important classes of the domain model used in \emph{Weather importer}. Refer to figure \ref{fig:importer_model1} for a diagram showing all classes.}
+\label{fig:importer_model2}
+\end{figure}
+
+The domain model in the package \texttt{model} which resembles the structure of the \thinkhomeweather ontology is depicted in the UML class diagram in figure \ref{fig:importer_model1}; to give an overview, figure \ref{fig:importer_model2} shows a simplified class diagram that shows only the most important classes \texttt{Weather}, \texttt{WeatherReport}, \texttt{WeatherState} and \texttt{WeatherPhenomenon}.
 
 Other than its name suggests, \texttt{OntologyClass} is an interface that is implemented by every class that corresponds to a concept (class) in the ontology. That interface defines a set of methods which are necessary to export an object's data either to individuals and statements for adding them to the ontology using \emph{Apache Jena} or to a representation of the individuals and statements in \emph{Turtle syntax} (see section \ref{sec:importer_application} below). The methods defined by \emph{OntologyClass} are:
 \begin{itemize}
