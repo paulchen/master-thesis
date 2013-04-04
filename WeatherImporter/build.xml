@@ -13,7 +13,8 @@
     <property name="lib.dir" value="lib" />
     <property name="reports.dir" value="reports" />
     <property name="dist.dir" value="dist" />
-
+    <property name="javadoc.dir" value="javadoc" />
+    
     <path id="project.classpath" >
     	<pathelement location="${dist.dir}/YrNoPlugin.jar" />
     	<pathelement location="${build.test.dir}" />
@@ -148,6 +149,7 @@
         <delete dir="${build.instrument.dir}" />
         <delete dir="${build.coverage.dir}" />
         <delete dir="${reports.dir}" />
+        <delete dir="${javadoc.dir}" />
     </target>
     
     <target name="rebuild" depends="clean, compile_test" description="TODO" />
@@ -158,5 +160,9 @@
        	    <fileset dir="${src.dir}" />
        	    <fileset dir="${src.test.dir}" />
        	</cobertura-report>
+	</target>
+	
+	<target name="javadoc" description="TODO">
+		<javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}" classpathref="project.classpath" access="protected" Windowtitle="Weather importer documentation" />
 	</target>
 </project>
