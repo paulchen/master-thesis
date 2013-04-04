@@ -19,7 +19,7 @@ import com.hp.hpl.jena.shared.DoesNotExistException;
 // TODO javadoc
 // TODO test model (and WeatherImporter?) with jUnit?
 public class Main {
-	private static final String PROPERTIES_FILE = "WeatherReader.properties";
+	private static final String PROPERTIES_FILE = "WeatherImporter.properties";
 	private static Logger log;
 	
 	public static void main(String[] args) {
