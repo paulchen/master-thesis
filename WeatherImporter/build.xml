@@ -163,6 +163,12 @@
 	</target>
 	
 	<target name="javadoc" description="TODO">
-		<javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}" classpathref="project.classpath" access="protected" Windowtitle="Weather importer documentation" />
+		<javadoc sourcepath="${src.dir}"
+		    destdir="${javadoc.dir}"
+		    classpathref="project.classpath"
+		    access="protected"
+		    Windowtitle="Weather importer documentation"
+		    overview="${src.dir}/overview.html"
+		    />
 	</target>
 </project>
