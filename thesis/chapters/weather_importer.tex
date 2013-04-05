@@ -61,7 +61,7 @@ The \emph{Weather Importer} application basically performs three tasks when bein
 
 The application depends on the \emph{Apache Jena} framework\footnote{\href{http://jena.apache.org/}{http://jena.apache.org/}} (successfully tested with 2.10.0). For the unit tests (see section \ref{sec:importer_tests}, \emph{JUnit}\footnote{\href{http://junit.org/}{http://junit.org/}} (4.11), the \emph{Pellet} OWL 2 reasoner\footnote{\href{http://clarkparsia.com/pellet/}{http://clarkparsia.com/pellet/}} (2.3.0) and \emph{Cobertura}\footnote{\href{http://cobertura.sourceforge.net/}{http://cobertura.sourceforge.net/}} (1.9.4.1). The version numbers given in parentheses give the versions of the most recent releases of the libraries at the time of writing. Newer releases may work, but have not been tested.
 
-\emph{Weather Importer} comes with a build script for \emph{Apache Ant}\footnote{\href{http://ant.apache.org/}{http://ant.apache.org/}} that provides target defintions for compiling, running and testing the application:
+\emph{Weather Importer} comes with a build script for \emph{Apache Ant}\footnote{\href{http://ant.apache.org/}{http://ant.apache.org/}} that provides target definitions for compiling, running and testing the application:
 
 \begin{itemize}
   % TODO reference JAR files?
@@ -80,7 +80,7 @@ Various parameters of \emph{Weather Importer} are configurable using a \emph{pro
 \label{subsec:importer_fetch}
 In \texttt{fetch} mode, \emph{Weather Importer} reads the \thinkhomeweather ontology in \emph{RDF/XML syntax} from a file using the \emph{Apache Jena} framework and fetches weather data for the desired location from a weather service via Internet.
 
-For developing the reference implementation that is found in the class \texttt{YrNoImporter}, \emph{Weather Importer} obtains weather data from \emph{yr.no} as described in section \ref{subsec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilized by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
+For developing the reference implementation that is found in the class \texttt{YrNoImporter}, \emph{Weather Importer} obtains weather data from \emph{yr.no} as described in section \ref{subsec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilized by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather()} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
 
 By calling the method \texttt{createIndividuals()} of that \texttt{Weather} object, the weather data is added \emph{Apache Jena}'s in-memory representation of the ontology. Eventually, the modified ontology is written back to a file in \emph{RDF/XML} syntax.
 
@@ -91,7 +91,7 @@ As most weather services do not provide data for arbitrary points of time, the \
   \item Each associated \texttt{WeatherReport} object that covers a period of more than one hour is replaced by several \texttt{WeatherReport} objects, one for each hour. All associated instances of \texttt{WeatherReport} and \texttt{WeatherPhenomenon} are cloned appropriately.
   \item If there is more than one \texttt{WeatherReport} object covering the same period of time, all data from these objects will be merged into one object; the remaining objects will be discarded.
   \item In case there is no data for a period of time, it will be calculated using linear interpolation from data before and after the missing period.
-  \item An instance of \texttt{SunPosition} will be associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the PSA algorithm \cite{PSA_algorithm}; the C++ reference implementation of the PSA algorithm\footnote{\href{http://www.psa.es/sdg/sunpos.htm}{http://www.psa.es/sdg/sunpos.htm}} was ported to Java.
+  \item An instance of \texttt{SunPosition} will be associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the \emph{PSA algorithm} \cite{PSA_algorithm}; the C++ reference implementation of the \emph{PSA algorithm}\footnote{\href{http://www.psa.es/sdg/sunpos.htm}{http://www.psa.es/sdg/sunpos.htm}} was ported to Java.
 \end{itemize}
 
 % TODO reference for arithmetic mean?
@@ -150,11 +150,11 @@ weather:interval2.0         time:hasDurationDescription           weather:hour2.
 weather:interval3.0         time:hasDurationDescription           weather:hour3.0 .
 weather:interval4.0         time:hasDurationDescription           weather:hour3.0 .
 
-@weather:weatherReport2      weather:hasStartTime                  weather:interval0.0 ;@
-@                            weather:hasEndTime                    weather:interval1.0 .@
+@@weather:weatherReport2      weather:hasStartTime                  weather:interval0.0 ;@@
+@@                            weather:hasEndTime                    weather:interval1.0 .@@
 
-@weather:weatherReport3      weather:hasStartTime                  weather:interval1.0 ;@
-@                            weather:hasEndTime                    weather:interval2.0 .@
+@@weather:weatherReport3      weather:hasStartTime                  weather:interval1.0 ;@@
+@@                            weather:hasEndTime                    weather:interval2.0 .@@
 
 weather:weatherReport2      weather:hasObservationTime            weather:instant0 .
 weather:weatherReport2      weather:hasObservationTime            weather:instant0 .
@@ -163,8 +163,8 @@ weather:instant0            time:inDateTime                       weather:dateTi
 
 weather:dateTime0           a                                     time:DateTimeDescription ;
                             time:unitType                         time:unitMinute ;
-@                            time:minute                           58 ;                @
-@                            time:hour                             14 ;                @
+@@                            time:minute                           58 ;                @@
+@@                            time:hour                             14 ;                @@
                             time:day                              "---02"^^xsd:gDay ;
                             time:month                            "--03"^^xsd:gMonth ;
                             time:year                             "2013"^^xsd:gYear .
@@ -200,7 +200,7 @@ The \texttt{turtle} mode is not necessary for productive use of \emph{Weather Im
 \label{fig:importer_turtlestore}
 \end{figure}
 
-Figure \ref{fig:importer_turtlestore} shows the two classes \texttt{TurtleStatement} and \texttt{TurtleStore} that provide a data structure for output in \emph{Turtle syntax}. \texttt{TurtleStatement} represents a single RDF statement in turtle syntax; \texttt{TurtleStore} encapsules a set of \texttt{TurtleStatement} objects and provides a method for writing all statements to a file.
+Figure \ref{fig:importer_turtlestore} shows the two classes \texttt{TurtleStatement} and \texttt{TurtleStore} that provide a data structure for output in \emph{Turtle syntax}. \texttt{TurtleStatement} represents a single RDF statement in turtle syntax; \texttt{TurtleStore} encapsulates a set of \texttt{TurtleStatement} objects and provides a method for writing all statements to a file.
 
 \ref{sec:appendix_turtle_output} in the appendix shows a part of the output generated by \emph{Weather Importer} in \texttt{turtle} mode.
 
