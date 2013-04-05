@@ -14,15 +14,18 @@
 
 % TODO reference paper: Building legal ontologies with METHONTOLOGY and WebODE
 
-The previous chapters covered all aspects that have to be analyzed in order to build a completely new ontology from scratch: Chapter \ref{ch:weather_data} discussed all details about weather data necessary for the \thinkhome weather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gave an overview over existing work regarding ontologies in the domain of weather data. As none of the existing ontologies fit the needs of an ontology for \thinkhome, chapter  \ref{ch:development_approaches} analyzed some of the most popular approaches for building ontologies from scratch. Among those \methontology was identified as the best suitable approach. % TODO citation for methontology?
+The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \thinkhome weather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of an ontology for \thinkhome, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyzes some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
 
-Based on these findings, this chapter describes the process of building the \thinkhome weather ontology in detail. The structure follows the steps in the ontology development process introduced by \methontology as described in detail in chapter \ref{sec:methontology}.
+Based on these insights, this chapter describes the process of designing the \thinkhome weather ontology in detail. The development process follows the steps proposed by \methontology as described in chapter \ref{sec:methontology}.
+
+\section*{Conventions}
+\addcontentsline{toc}{section}{Conventions}
 
 % TODO move this paragraph about conventions somewhere else?
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/template.png}
-  \label{fig:diagram_example}
   \caption{Example diagram}
+  \label{fig:diagram_example}
 \end{figure}
 
 \definecolor{convention_color1}{HTML}{99CCFF}
@@ -31,16 +34,28 @@ Based on these findings, this chapter describes the process of building the \thi
 \definecolor{convention_color4}{HTML}{FFFF66}
 \definecolor{convention_color_bg4}{HTML}{AAAAAA}
 
-All diagrams in this chapter showing parts of an ontology follow these conventions:
+All diagrams in this chapter showing parts of an ontology adhere to the following conventions, as seen in the example diagram shown in figure \ref{fig:diagram_example}:
 \begin{itemize}
-  \item \emph{Concepts} are shown as ellipses filled with the color \texttt{\textcolor{convention_color1}{\#99CCFF}}.
-  \item \emph{Instances} are shown as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
-  \item \emph{Blank nodes} are shown as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
-  \item \emph{Literals} are shown as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
-  \item \emph{Properties in the RDF(S) namespace} are shown as dashed lines. Their caption is written in italics.
-  \item \emph{Properties in other namespaces} are shown as solid lines. Their caption is not written in italics.
+  \item \emph{Concepts} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color1}{\#99CCFF}}.
+  \item \emph{Instances} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
+  \item \emph{Blank nodes} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
+  \item \emph{Literals} are drawn as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
+  \item \emph{Properties in the RDF(S) namespace} are drawn as dashed lines. Their caption is written in \emph{italics}.
+  \item \emph{Properties in other namespaces} are drawn as solid lines. Their caption is \emph{not} written in \emph{italics}.
 \end{itemize}
-Figure \ref{fig:diagram_example} shows an example of a diagram containing all relevant elements.
+
+% TODO cite chapter 6 of OWL 101?
+The naming conventions for identifiers within the ontology are as follows:
+\begin{itemize}
+  % TODO cite OWL?
+  \item Two concepts, instances and/or properties may not have the same name as this is required by \emph{OWL} and avoids confusion.
+  \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{WeatherState} and \emph{weatherstate} in the name namespace is possible in \emph{OWL}, but leads to confusion.
+  \item Identifiers may only consist of upper and lower case ASCII letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z} and numerical digits from \emph{0} to \emph{9}, i.e. all identifiers must match the regular expression \texttt{\^[A-za-z0-9]+\$}.
+  % TODO cite camelCase
+  \item Names that are built from more than one word are written in \emph{camel case}\cite{CamelCase}, e.g. the concept representing a weather state is named \emph{WeatherState} and the property that expresses an instance of \emph{WeatherState} belongs to an instance of another concept will be named \emph{hasWeatherState}.
+  \item 
+\end{itemize}
+
 
 \section{Specification}
 \label{sec:ontology_specification}
