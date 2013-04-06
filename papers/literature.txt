@@ -173,3 +173,6 @@ NEW:
 * 05090039.pdf
   Dave Binkley, Marcia Davis, Dawn Lawrie, Christopher Morrell: To CamelCase or Under_score
 
+* ORequirementsSpecification.pdf
+  Mari Carmen Suárez-Figueroa, Asunción Gómez-Pérez, and Boris Villazón-Terrazas: How to write and use the Ontology Requirements Specification Document
+
