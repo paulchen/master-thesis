@@ -1,8 +1,7 @@
-\chapter{The ThinkHomeWeather ontology}
+\chapter{The \thinkhomeweather ontology}
 \label{ch:thinkhomeweather_ontology}
 
 % TODO put all names of steps according to \methontology into \emph
-% TODO ontology - naming conventions
 % TODO mention - this chapter does not cover the ontology development process as it was done; instead, it presents the completed documents that were created in that processs.
 % TODO mention second paper about methontology (the one that describes all artefacts created when building the chemical ontology)
 
@@ -18,10 +17,10 @@ The previous chapters cover all topics that require discussion before being able
 
 Based on these insights, this chapter describes the process of designing the \thinkhome weather ontology in detail. The development process follows the steps proposed by \methontology as described in chapter \ref{sec:methontology}.
 
-\section*{Conventions}
-\addcontentsline{toc}{section}{Conventions}
+\section{Conventions}
+\label{sec:ontology_conventions}
+% TODO? \addcontentsline{toc}{section}{Conventions}
 
-% TODO move this paragraph about conventions somewhere else?
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/template.png}
   \caption{Example diagram}
@@ -40,76 +39,99 @@ All diagrams in this chapter showing parts of an ontology adhere to the followin
   \item \emph{Instances} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
   \item \emph{Blank nodes} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
   \item \emph{Literals} are drawn as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
-  % TODO cite RDF, RDFS
-  \item \emph{Properties in the RDF(S) namespace} are drawn as dashed lines. Their caption is written in \emph{italics}.
+  % TODO remove citations?
+  \item \emph{Properties in the RDF\cite{RDF} and RDFS\cite{RDFS} namespace} are drawn as dashed lines. Their caption is written in \emph{italics}.
   \item \emph{Properties in other namespaces} are drawn as solid lines. Their caption is \emph{not} written in \emph{italics}.
 \end{itemize}
 
 % TODO cite chapter 6 of OWL 101?
 The naming conventions for identifiers within the ontology are as follows:
 \begin{itemize}
-  % TODO cite OWL?
-  \item Two concepts, instances and/or properties may not have the same name as this is required by \emph{OWL} and avoids confusion.
+  \item Two concepts, instances and/or properties may not have the same name as this is required by \emph{OWL}\cite{OWL} and avoids confusion.
   \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{WeatherState} and \emph{weatherstate} in the name namespace is possible in \emph{OWL}, but leads to confusion.
   \item Identifiers may only consist of upper and lower case ASCII letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z} and numerical digits from \emph{0} to \emph{9}, i.e. all identifiers must match the regular expression \texttt{\^[A-za-z0-9]+\$}.
-  % TODO cite camelCase
   \item Names that are built from more than one word are written in \emph{camel case}\cite{CamelCase}, e.g. the concept representing a weather state is named \emph{WeatherState} and the property that expresses an instance of \emph{WeatherState} belongs to an instance of another concept will be named \emph{hasWeatherState}.
-  \item 
+  \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g. \emph{WeatherState} or \emph{WeatherReport}.
+  \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongsTo}, followed by the name of the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongsTo}, followed by the inverse property's \emph{range}, and vice versa. As an alternative to the prefix \emph{belongsTo}, the prefix \emph{is} in conjunction with the suffix \emph{Of} and the inverse property's \emph{domain} may be used.
+  
+  E.g. the name of a property with the domain \emph{WeatherReport} and the range \emph{WeatherState} has the name \emph{hasWeatherState}. If \emph{hasWeatherState} has an inverse property, it will have the name \emph{belongsToWeatherReport} or \emph{isWeatherStateOf}.
 \end{itemize}
 
 
 \section{Specification}
 \label{sec:ontology_specification}
 
-Specification, the first step proposed by \methontology, aims at creating an \emph{ontology specification document} using natural language. That document must include at least the intended purpose of the ontology, the level of 
-formality and the ontology's scope.
+% TODO put document template in other chapter
+Specification, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in chapter \ref{sec:methontology} and uses the document template taken from \cite{ORSD}.
 
-The contents of the ontology specification document are based on the knowledge acquired in the previous chapters about related work (chapter \ref{ch:existing_work}) and weather data (chapter \ref{ch:weather_data}). Competency questions are taken from section \ref{sec:weather_information}.
+
+% TODO move down to section "Knowledge acquisition"
+All knowledge used in the document is taken from the previous chapters, augmented with additional specifications where needed. Hence, sources of knowledge are:
+
+\begin{itemize}
+  \item Weather data that is available from Internet services (see section \ref{sec:internet_services}).
+  \item Weather data that is available from local weather sensors (see section \ref{sec:weather_sensors}).
+  \item Existing ontologies that cover the domain of weather data (see chapter \ref{ch:existing_work}).
+  \item Information about weather in general, e.g. the \emph{Glossary of Meteorology} by the \emph{American Meteorological Society}\footnote{\href{http://www.ametsoc.org/}{http://www.ametsoc.org/}}\cite{GlossaryOfMeteorology}.
+\end{itemize}
 
 % TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
-\begin{mdframed}
+\begin{mdframed}[linewidth=.6pt]
 \setlength{\parindent}{0pt}
-\MakeUppercase{\textbf{Ontology requirements specification document}}
+\vspace{.3cm}
+
+\MakeUppercase{\textbf{Ontology Requirements Specification Document}}
 
 \vspace{.5cm}
 
-\textbf{Domain}: Weather data
+\textbf{Name}: \thinkhomeweather
 
 \vspace{.2cm}
 
-\textbf{Date}: 2012 % TODO
+\textbf{Purpose}: The ontology covers data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be acquired from both Internet services as well as from weather sensors mounted at the desired location. This weather data will enable the \textit{ThinkHome} system to make decisions based on current and future weather conditions.
 
 \vspace{.2cm}
 
-\textbf{Purpose}: The ontology shall cover data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be aquired from both internet services as well as from weather sensors mounted to a building. This weather data will enable the \textit{ThinkHome} system to make decisions based on current and future weather conditions.
-
-\vspace{.2cm}
-
-\textbf{Level of formality}: semi-informal % TODO citations for uschold & gruninger, 1996; uschuld & king (enterprise ontology)
-
-\vspace{.2cm}
-
-\textbf{Scope}:
+\textbf{Scope}: The ontology has to cover a set of five core concepts from the domain of weather data:
 
 \begin{itemize}
   \item \emph{Weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, solar radiation, and the sun's position.
   \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
-  \item \emph{Weather report}: Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
-  \item \emph{Weather report source}: Source where the data belonging to a weather report has been obtained from (either a internet weather service or a local weather sensor).
+  \item \emph{Weather report}: Summarizes all data acquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
+  \item \emph{Weather report source}: Source where the data belonging to a weather report has been obtained from (either an Internet weather service or a local weather sensor).
 \end{itemize}
 
 \vspace{.2cm}
 
-\textbf{Sources of knowledge}: % TODO reference more literature (e.g. for types of twilight)
+\textbf{Implementation language}: The ontology is implemented in \emph{OWL 2.0}\cite{OWL}.
+
+\vspace{.2cm}
+
+\textbf{Intended end-users}: The ontology is part of the \thinkhome project. Hence, any user of the \thinkhome project is a user of the \thinkhomeweather ontology. \thinkhome aims at providing home automation to \emph{house occupants}; therefore, every occupant of a house is a possible end user for \thinkhomeweather. However, he/she will never have to deal with any ontology. \thinkhome is ought to make decisions on itself based on the knowledge acquired from the \thinkhomeweather ontology. Only the \emph{developers of \thinkhome} have to deal with the ontology itself.
+
+\vspace{.2cm}
+
+\textbf{Intended uses}: The ontology shall provide knowledge to \thinkhome about the current and future state of the weather in order to enable \thinkhome to make decisions based on that knowledge.
+
+\vspace{.2cm}
+
+\textbf{Ontology requirements}:
+
+\vspace{.2cm}
+
+\setlength{\leftskip}{.5cm}
+
+\textbf{Non-functional requirements}:
+
 \begin{itemize}
-  \item Weather data that is available from internet services (see section \ref{sec:internet_services}).
-  \item Weather data that is available from local weather sensors (see section \ref{sec:weather_sensors}).
-  \item Existing ontologies that cover the domain of weather data (see chapter \ref{ch:existing_work}).
-  \item Information about weather in general, e.g. the Glossary of Meteorology by the American Meteorological Society. % TODO citation, more literature
+  \item The ontology must adhere to the naming conventions presented in section \ref{sec:ontology_conventions} regarding the identifiers that may be used for classes, properties and individuals.
+  \item The ontology must be documented thoroughly in order to make it easily reusable.
+  \item The ontology must re-use existing ontologies wherever possible.
 \end{itemize}
 
-\textbf{Competency questions}:
+\textbf{Functional requirements}: The functional requirements are covered by the competency questions that the ontology shall be able to answer (see section \ref{sec:weather_information}):
+
 \begin{itemize}
   \item What is the current weather situation?
   \item What will the weather situation be in one hour, in two hours, …, in 24 hours?
@@ -127,11 +149,25 @@ The contents of the ontology specification document are based on the knowledge a
   \item When will it outside be colder than inside the house? When will it be warmer?
 \end{itemize}
 
+\setlength{\leftskip}{0cm}
+
+\vspace{.2cm}
+
+\textbf{Pre-glossary of terms}: These are all terms that can be extracted from the competency questions, in alphabetical order:
+
+24 hours, airing, current weather, frost, future weather, humidity, humidity rise, humidity fall, irrigation, minimum, maximum, rain, room temperature, severe weather, sunshine, sun protection, temperature, temperature rise, temperature fall, weather change, wind speed.
+
+\setlength{\leftskip}{0cm}
+
 \end{mdframed}
 
 \vspace{.5cm}
 
-In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements. Section \ref{sec:ontology_evaluation} evaluates if the ontology that has been developed fits the specification and what the ontology's shortcomings are.
+In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements, if possible. Section \ref{sec:ontology_evaluation} evaluates if the resulting ontology fits the specification and which shortcomings the ontology comes with.
+
+
+% TODO CONTINUE FROM HERE
+
 
 \section{Knowledge Aquisition}
 
