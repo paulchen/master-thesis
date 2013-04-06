@@ -18,10 +18,16 @@
 
 \usepackage{comment}
 
-\usepackage{ngerman}
-\usepackage[ngerman]{babel}
+\usepackage[toc,xindy]{glossaries}
+\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}} % for making the first word of each glossary term upper case
+\renewcommand{\glsseeitemformat}[1]{\Glsentrytext{#1}}
+
+\makeglossary
+
+\input{glossary}
+
+\usepackage[english]{babel,varioref}	% Querverweise
 \usepackage{bibgerm,cite}       % Deutsche Bezeichnungen, Automatisches Zusammenfassen von Literaturstellen
-\usepackage[ngerman]{varioref}  % Querverweise
 % to use the german charset include cp850 for MS-DOS, ansinew for Windows and latin1 for Linux.
 % \usepackage[latin1]{inputenc}
 
@@ -203,6 +209,9 @@
 \appendix
 
 \input{chapters/appendix_listings}
+
+\glossarystyle{altlisthypergroup}
+\printglossaries
 
 \bibliographystyle{unsrt}
 \bibliography{references}

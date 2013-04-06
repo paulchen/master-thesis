@@ -62,18 +62,8 @@ The naming conventions for identifiers within the ontology are as follows:
 \label{sec:ontology_specification}
 
 % TODO put document template in other chapter
-Specification, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in chapter \ref{sec:methontology} and uses the document template taken from \cite{ORSD}.
+\emph{Specification}, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in chapter \ref{sec:methontology} and uses the document template taken from \cite{ORSD}.
 
-
-% TODO move down to section "Knowledge acquisition"
-All knowledge used in the document is taken from the previous chapters, augmented with additional specifications where needed. Hence, sources of knowledge are:
-
-\begin{itemize}
-  \item Weather data that is available from Internet services (see section \ref{sec:internet_services}).
-  \item Weather data that is available from local weather sensors (see section \ref{sec:weather_sensors}).
-  \item Existing ontologies that cover the domain of weather data (see chapter \ref{ch:existing_work}).
-  \item Information about weather in general, e.g. the \emph{Glossary of Meteorology} by the \emph{American Meteorological Society}\footnote{\href{http://www.ametsoc.org/}{http://www.ametsoc.org/}}\cite{GlossaryOfMeteorology}.
-\end{itemize}
 
 % TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
 \begin{mdframed}[linewidth=.6pt]
@@ -95,7 +85,7 @@ All knowledge used in the document is taken from the previous chapters, augmente
 \textbf{Scope}: The ontology has to cover a set of five core concepts from the domain of weather data:
 
 \begin{itemize}
-  \item \emph{Weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, solar radiation, and the sun's position.
+  \item \Gls{weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, solar radiation, and the sun's position.
   \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
   \item \emph{Weather report}: Summarizes all data acquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
@@ -165,28 +155,28 @@ All knowledge used in the document is taken from the previous chapters, augmente
 
 In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements, if possible. Section \ref{sec:ontology_evaluation} evaluates if the resulting ontology fits the specification and which shortcomings the ontology comes with.
 
+\section{Knowledge Acquisition}
 
-% TODO CONTINUE FROM HERE
-
-
-\section{Knowledge Aquisition}
-
-The step of knowledge aquisition is already described in the previous chapters \ref{ch:existing_work} and \ref{ch:weather_data}. These chapters discuss in detail:
+The second step proposed by \methontology is \emph{Knowledge Acquisition}. All knowledge required to build the \thinkhomeweather ontology is presented in the chapters \ref{ch:existing_work} and \ref{ch:weather_data}. These chapters discuss in detail:
 
 \begin{itemize}
   \item Which weather data are relevant for \thinkhome?
-  \item Which weather data are available from sensors and internet services? How can this data be acquired?
+  \item Which weather data are available from sensors (section \ref{sec:weather_sensors}) and Internet services (section \ref{sec:internet_services})? How can this data be acquired?
   \item Which data do not have any use for \thinkhomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
   \item What knowledge about weather in general is required to build an appropriate ontology? % TODO check if this is available in the previous chapters
 \end{itemize}
 
-\section{Conceptualization}
+Furthermore, chapter \ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g. the \emph{Glossary of Meteorology}\footnote{\url{http://glossary.ametsoc.org/wiki/Main\_Page}{http://glossary.ametsoc.org/wiki/Main\_Page}} by the \emph{American Meteorological Society}\footnote{\href{http://www.ametsoc.org/}{http://www.ametsoc.org/}}\cite{GlossaryOfMeteorology}.
 
-In the conceptualization step, the domain knowledge is structured in a conceptial model that describes the problem and its solution in terms of the domain vocabulary identified in the specification step. At first, a complete Glossary of Terms is built that covers all concepts, instances, attributes and binary relations.
+\section{Conceptualisation}
+
+In the third step of \methontology, the \emph{Conceptualisation} step, the domain knowledge is structured into a conceptional model that describes the problem and its solution in terms of the domain vocabulary that has been identified in the \emph{Specification} process.
+
+The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes and binary relations that will form the ontology.
 
 \subsection{Glossary of Terms}
 
-The terms in this table are arranged in alphabetical order.
+The terms in this table are arranged in alphabetical order. Unless noted otherwise, 
 
 % TODO repeat header on every page?
 % TODO references between glossary items; e.g. from 'civil twilight' to 'twilight'
