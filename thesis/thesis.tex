@@ -24,6 +24,7 @@
 \renewcommand{\glsseeitemformat}[1]{\Glsentrytext{#1}}
 \newcommand{\Egls}[1]{\emph{\Gls{#1}}}
 \newcommand{\egls}[1]{\emph{\gls{#1}}}
+\renewcommand{\glsseelastsep}{\space\emph{and}\space}
 
 \makeglossary
 
@@ -213,6 +214,8 @@
 
 \input{chapters/appendix_listings}
 
+% TODO remove
+\glsaddall
 \glossarystyle{altlisthypergroup}
 \printglossaries
 
