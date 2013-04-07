@@ -45,6 +45,7 @@ All diagrams in this chapter showing parts of an ontology adhere to the followin
 \end{itemize}
 
 % TODO cite chapter 6 of OWL 101?
+% TODO naming conventions in the document
 The naming conventions for identifiers within the ontology are as follows:
 \begin{itemize}
   \item Two concepts, instances and/or properties may not have the same name as this is required by \emph{OWL}\cite{OWL} and avoids confusion.
@@ -64,6 +65,7 @@ The naming conventions for identifiers within the ontology are as follows:
 % TODO put document template in other chapter
 \emph{Specification}, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in chapter \ref{sec:methontology} and uses the document template taken from \cite{ORSD}.
 
+\vspace{1em}
 
 % TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
 \begin{mdframed}[linewidth=.6pt]
@@ -82,14 +84,15 @@ The naming conventions for identifiers within the ontology are as follows:
 
 \vspace{.2cm}
 
-\textbf{Scope}: The ontology has to cover a set of five core concepts from the domain of weather data:
+\textbf{Scope}: The ontology has to cover a set of six core concepts from the domain of weather data:
 
 \begin{itemize}
-  \item \Egls{weather phenomenon}: Represents a certain weather element. Relevant weather elements are temperature, humidity, dew point, wind speed and direction, precipitation intensity and probability, atmospheric pressure, cloud cover, solar radiation, and the sun's position.
-  \item \emph{Weather condition}: Overall state of the weather: sun, light clouds, partly cloudy, cloudy, fog, rain, snow, sleet, thunder.
+  \item \emph{weather phenomenon}: Represents a certain weather element. Relevant weather elements are \emph{temperature}, \emph{humidity}, \emph{dew point}, \emph{wind speed} and \emph{direction}, \emph{precipitation intensity} and \emph{probability}, \emph{atmospheric pressure}, \emph{cloud cover}, \emph{solar radiation}, and the \emph{sun's position}.
+  \item \emph{Weather condition}: Overall state of the weather: \emph{sun}, \emph{light clouds}, \emph{partly cloudy}, \emph{cloudy}, \emph{fog}, \emph{rain}, \emph{snow}, \emph{sleet}, \emph{thunder}.
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
-  \item \emph{Weather report}: Summarizes all data acquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report.
-  \item \emph{Weather report source}: Source where the data belonging to a weather report has been obtained from (either an Internet weather service or a local weather sensor).
+  \item \emph{Weather report}: Summarizes all data acquired at a certain time about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}.
+  \item \emph{Weather report source}: Source where the data belonging to a \emph{weather report} has been obtained from (either an Internet weather service or a local weather sensor).
+  \item \emph{Weather}: Summarizes all weather data that is available; each \emph{weather report} is linked to \emph{Weather}.
 \end{itemize}
 
 \vspace{.2cm}
@@ -157,16 +160,16 @@ In the following sections, the \thinkhomeweather ontology is built in a way to m
 
 \section{Knowledge Acquisition}
 
-The second step proposed by \methontology is \emph{Knowledge Acquisition}. All knowledge required to build the \thinkhomeweather ontology is presented in the chapters \ref{ch:existing_work} and \ref{ch:weather_data}. These chapters discuss in detail:
+The second step proposed by \methontology is \emph{Knowledge Acquisition}. All knowledge required to build the \thinkhomeweather ontology is presented in the chapters~\ref{ch:existing_work} and~\ref{ch:weather_data}. These chapters discuss in detail:
 
 \begin{itemize}
   \item Which weather data are relevant for \thinkhome?
-  \item Which weather data are available from sensors (section \ref{sec:weather_sensors}) and Internet services (section \ref{sec:internet_services})? How can this data be acquired?
+  \item Which weather data are available from sensors (section~\ref{sec:weather_sensors}) and Internet services (section~\ref{sec:internet_services})? How can this data be acquired?
   \item Which data do not have any use for \thinkhomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
   \item What knowledge about weather in general is required to build an appropriate ontology? % TODO check if this is available in the previous chapters
 \end{itemize}
 
-Furthermore, chapter \ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g. the \emph{Glossary of Meteorology}\footnote{\url{http://glossary.ametsoc.org/wiki/Main\_Page}{http://glossary.ametsoc.org/wiki/Main\_Page}} by the \emph{American Meteorological Society}\footnote{\href{http://www.ametsoc.org/}{http://www.ametsoc.org/}}\cite{GlossaryOfMeteorology}.
+Furthermore, chapter~\ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g. the \emph{Glossary of Meteorology}\footnote{\href{http://glossary.ametsoc.org/wiki/Main\_Page}{http://glossary.ametsoc.org/wiki/Main\_Page}} by the \emph{American Meteorological Society}\footnote{\href{http://www.ametsoc.org/}{http://www.ametsoc.org/}}\cite{GlossaryOfMeteorology}.
 
 \section{Conceptualisation}
 
@@ -176,222 +179,50 @@ The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of T
 
 \subsection{Glossary of Terms}
 
-The terms in this table are arranged in alphabetical order. Unless noted otherwise, 
+When describing the scope of \thinkhomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions six top-level concepts of the ontology: \Egls{weather}, \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these six concepts.
 
-\begin{comment}
-  Cloud & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  Fog & One of the 8 predefined weather conditions; see \emph{Weather condition}. & Individual \\
-  Light clouds & One of the 8 predefined weather conditions; see \emph{weather condition}. & Indivdual \\
-  Partly cloudy & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  Rain & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  Sleet & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  Snow & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  Sun & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  Thunder & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-\end{comment}
 
-% TODO repeat header on every page?
-% TODO references between glossary items; e.g. from 'civil twilight' to 'twilight'
-% TODO add sub-concepts for weather state
-% TODO add binary relations
-% TODO hPa, degrees Celsius, metres per second, MSL
-% TODO where do all the values come from?
-% TODO mention WGS84 for lat, lon, alt
-\begin{longtable}{|p{0.25\textwidth}|p{0.6\textwidth}|p{0.1\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Description} & \textbf{Type} \\
-  \hline\hline
-  Above room temperature & Temperature of more than 25 and less than or equal to 30 degrees Celsius; see \emph{Temperature}. & Concept \\
-  \hline
-  Altitude & Height above \emph{MSL}\footnote{\emph{Mean sea level}} in metres. & Instance attribute \\ % TODO remove footnote?
-  \hline
-  Astronomical twilight & During astronomical twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\ % TODO reference
-  \hline
-  Atmospheric pressure & & Concept \\ % TODO
-  \hline
-  Below room temperature & Temperature of more than or equal to 10 and less than 20 degrees Celsius; see \emph{Temperature}. & Concept \\
-  \hline
-  Calm & Wind speed below 1 m/s; see \emph{Wind}. & Concept \\
-  \hline
-  Civil twilight & During civil twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\
-  \hline
-  Clear sky & Cloud coverage is reported as to be 0 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
-  \hline
-  Cloud & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  \hline
-  Cloud cover & Concept describing the current cloud coverage in okta (integer numbers from 0 to 9); see \emph{okta}. Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast} and \emph{Unknown cloud cover}. & Concept \\
-  \hline
-  Cold & Temperature of more than or equal to 0 and less than 10 degrees Celsius; see \emph{Temperature}. & Concept \\
-  \hline
-  Current weather report & Weather report describing the current weather; see \emph{Weather report}. & Concept \\
-  \hline
-  Current weather report from sensor & \emph{Current weather report} compiled from data from a \emph{Sensor source}; see \emph{Weather report}. & Concept \\
-  \hline
-  Current weather report from service & \emph{Current weather report} compiled from data from a \emph{Service source}; see \emph{Weather report}. & Concept \\
-  \hline
-  Day & During the day, the sun is exactly at or above the horizon. & Concept \\
-  \hline
-  Dew point & & Concept \\ % TODO
-  \hline
-  Directional wind & Wind including a direction; see \emph{Wind}. & Concept \\
-  \hline
-  Dry & Relative humidity of at least 30 and less than 40 percent; see \emph{Humidity}. & Concept \\
-  \hline
-  East wind & Wind approximately coming from the East, e.g. originating from a direction of at least 45 and less than 135 degrees; see \emph{Wind}. & Concept \\
-  \hline
-  End time & The time a weather report is valid until, relative to the weather report's observation time; see \emph{Weather report}. & Instance attribute \\
-  \hline
-  Extremely heavy rain & More than 50 and at most 100 mm/h precipitation per hour. & Concept \\
-  \hline
-  Fog & One of the 8 predefined weather conditions; see \emph{Weather condition}. & Individual \\
-  \hline
-  Forecast weather report & Weather report for some time after the \emph{Observation time}; see \emph{Weather report}. & Concept \\
-  \hline
-  Frost & Temperature below 0 degrees Celsius; see \emph{Temperature}. & Concept \\
-  \hline
-  Heat & Temperature above 30 degrees Celsius; see \emph{Temperature}. & Concept \\
-  \hline
-  Heavy rain & More than 20 and at most 50 mm/h precipitation per hour. & Concept \\
-  \hline
-  High pressure & Atmospheric pressure of at least 1018 and less than 1028 hPa; see \emph{Atmospheric pressure}. & Concept \\
-  \hline
-  High radiation & Solar radiation of at least $500 W/m^2$ and less than $750 W/m^2$. & Concept \\
-  \hline
-  Humidity & & Concept \\ % TODO
-  \hline
-  Hurricane & Wind with a speed of at least 32 m/s. & Concept \\
-  \hline
-  Latitude & Latitude of the position a weather report is valid for; see \emph{Weather report}. & \\ % TODO degrees
-  \hline
-  Light clouds & One of the 8 predefined weather conditions; see \emph{weather condition}. & Indivdual \\
-  \hline
-  Light rain & More than 0 and at most 5 mm/h precipitation per hour. & Concept \\
-  \hline
-  Light wind & Wind with a speed of at least 1 and less than 10 m/s. & Concept \\
-  \hline
-  Location & Geographical position a weather report is valid for, given by \emph{Altitude}, \emph{Longitude} and \emph{Latitude}; see \emph{Weather report}. & Concept \\
-  \hline
-  Longitude & Longitude of the position a weather report is valid for; see \emph{Weather report}. & \\ % TODO degrees
-  \hline
-  Long range weather report & Weather report describing a forecast for a point of time more than 12 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
-  \hline
-  Low pressure & Atmospheric pressure of at least 998 and less than 1008 hPa; see \emph{Atmospheric pressure}. & Concept \\
-  \hline
-  Low radiation & Solar radiation of more than $0 W/m^2$ and less than $250 W/m^2$. & Concept \\
-  \hline
-  Medium radiation & Solar radiation of more than $250 W/m^2$ and less than $500 W/m^2$. & Concept \\
-  \hline
-  Medium rain & More than 5 and at most 0 mm/h precipitation per hour. & Concept \\
-  \hline
-  Medium range weather report & Weather report describing a forecast for a point of time more than 3 hours and at most 12 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
-  \hline
-  Moist & Relative humidity of more than 70 and at most 80 percent; see \emph{Humidity}. & Concept \\
-  \hline
-  Mostly cloudy & Cloud coverage is reported as to be 5, 6 or 7 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
-  \hline
-  Nautical twilight & During astronomical twilight, the sun is more than 6 degrees and no more than 12 degrees below horizon; see \emph{Sun position}. & Concept \\
-  \hline
-  Night & Sun is more than 18 degrees below horizon; see \emph{Sun position}. & Concept \\
-  \hline
-  No radiation & No solar radiation ($0 W/m^2$); see \emph{Solar radiation}. & Concept \\
-  \hline
-  No rain & No precipitation (because the chance or the intensity of precipitation is 0); see \emph{Precipitation}. & Concept \\
-  \hline
-  Normal humidity & Relative humidity of at least 40 and at most 70 percent; see \emph{Humidity}. & Concept \\
-  \hline
-  Normal pressure & Atmospheric pressure of at least 1008 and less than 1018 hPa; see \emph{Atmospheric pressure}.& \\
-  \hline
-  North wind & Wind approximately coming from the East, e.g. originating from a direction of at least 315 or less than 45 degrees; see \emph{Wind}. & Concept \\
-  \hline
-  Observation time & Time when the weather data was collected from the weather sensor or the Internet weather service. & Instance attribute \\
-  \hline
-  Okta & Unit of measurement that specifies the amount of cloud cover on a range from 0 (\emph{Clear sky}) to 8 (\emph{Overcast}); a value of 9 represents an \emph{Unknown cloud cover}; see \emph{Cloud cover}. & Individual \\ % TODO reference
-  \hline
-  Overcast & Cloud coverage is reported as to be 8 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
-  \hline
-  Partly cloudy & Cloud coverage is reported as to be 1, 2, 3 or 4 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
-  \hline
-  Partly cloudy & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  \hline
-  Precipitation & & Concept \\ % TODO
-  \hline
-  Priority & An integer value indicating which weather report for a certain period of time is to be preferred over another weather report for the same period of time. & Instance attribute \\
-  \hline
-  Rain & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  \hline
-  Room temperature & Temperature of at least 20 and at most 25 degrees Celsius. & Concept \\
-  \hline
-  Sensor source & A sensor offering some kind of weather data. & Concept \\
-  \hline
-  Service source & An Internet weather service offering some kind of weather data. & Concept \\
-  \hline
-  Short range weather report & Weather report describing a forecast for a point of time at most 3 hours in the future relative to the \emph{Observation time}; see \emph{Weather report}. & Concept \\
-  \hline
-  Sleet & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  \hline
-  Snow & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  \hline
-  Solar twilight & During solar twilight, the sun is above horizon, but less than 6 degrees above; see \emph{Sun position}. & Concept \\
-  \hline
-  South wind & Wind approximately coming from the South, e.g. originating from a direction of at least 135 and less than 225 degrees; see \emph{Wind}. & Concept \\
-  \hline
-  Start time & The time a weather report is valid from, relative to the weather report's observation time; see \emph{Weather report}. & Instance attribute \\
-  \hline
-  Storm & Wind with a speed of at least 20 m/s. & Concept \\
-  \hline
-  Strong wind & Wind with a speed of at least 10 and less than 20 m/s. & Concept \\
-  \hline
-  Sun & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  \hline
-  Sun from east & The direction of the sun's position of more than 45 and at most 135 degrees. & Concept \\
-  \hline
-  Sun from north & The direction of the sun's position of more than 315 or at most 45 degrees. & Concept \\
-  \hline
-  Sun from south & The direction of the sun's position of more than 135 and at most 225 degrees. & Concept \\
-  \hline
-  Sun from west & The direction of the sun's position of more than 225 and at most 315 degrees. & Concept \\
-  \hline
-  Sun position & Position of the sun, given by its elevation above horizon and its direction. & Concept \\ % TODO degrees
-  \hline
-  Sun radiation & & Concept \\ % TODO
-  \hline
-  Temperature & & Concept \\ % TODO
-  \hline
-  Thunder & One of the 8 predefined weather conditions; see \emph{weather condition}. & Individual \\
-  \hline
-  Tropical storm rain & More than 100 mm/h precipitation per hour. & Concept \\
-  \hline
-  Unknown cloud cover & Cloud coverage is reported as to be 9 okta; see \emph{Okta} and \emph{Cloud cover}. & Concept \\
-  \hline
-  Very dry & Relative humidity of less than 30 percent; see \emph{Humidity}. & Concept \\
-  \hline
-  Very high pressure & Atmospheric pressure of at least 1028 hPa; see \emph{Atmospheric pressure}. & Concept \\
-  \hline
-  Very high radiation & Solar radiation of more than $750 W/m^2$. & Concept \\
-  \hline
-  Very low pressure & Atmospheric pressure of less than 998 hPa; see \emph{Atmospheric pressure}. & Concept \\
-  \hline
-  Very moist & Relative humidity of more than 80 percent; see \emph{Humidity}. & Concept \\
-  \hline
-  Weather condition & Overall state of the weather, represented by (a combination of) these individuals: \emph{Sun}, \emph{Light clouds}, \emph{Partly cloudy}, \emph{Cloudy}, \emph{Fog}, \emph{Rain}, \emph{Snow}, \emph{Sleet}, and \emph{Thunder}. & Concept \\
-  \hline
-  Weather phenomenon & Represents a certain weather element. Relevant weather elements are \emph{Temperature}, \emph{Humidity}, \emph{Dew point}, \emph{Wind}, \emph{Precipitation}, \emph{Atmospheric pressure}, \emph{Cloud cover}, \emph{Solar radiation}, and the \emph{Sun position}. & Concept \\
-  \hline
-  Weather report & Summarizes all data aquired at a certain time about the current weather or the weather some time in the future. Exactly one weather state is linked to each weather report. & Concept \\ % TODO related concepts
-  \hline
-  Weather report from sensor & A weather report containing data coming from one or more sensors; see \emph{Weather report} and \emph{Sensor source}. & Concept \\
-  \hline
-  Weather report from service & A weather report containing data coming from an Internet weather service; see \emph{Weather report} and \emph{Service source}. & Concept \\
-  \hline
-  Weather report source & A source for weather data, either a set of weather sensors or an Internet weather service; see \emph{Weather report}, \emph{Sensor source} and \emph{Service source}. & Concept \\
-  \hline
-  Weather state & & \\
-  \hline
-  West wind & Wind approximately coming from the East, e.g. originating from a direction of at least 225 and less than 315 degrees; see \emph{Wind}. & Concept \\
-  \hline
-  Wind & & Concept \\ % TODO
-  \hline
-\end{longtable}
+In this section, only a list of terms is given; the complete \emph{Glossary of Terms} with short descriptions of each term can be found in the appendix~\ref{main} which starts on page~\pageref{main}.
+
+\paragraph{Concepts:}
+
+% TODO link to section/subsection?
+Section~\ref{ch:weather_data} discusses each weather element that is used in \thinkhomeweather and categories in which its instances can be grouped into. In the ontology, all weather elements are represented by concepts that sub-concepts of \Egls{weather phenomenon}. All categories of weather elements are in turn sub-concepts of the weather elements' concepts.
+
+% TODO where do sub-concepts of weather report come from?
+Hence, the concepts that can be found in \thinkhomeweather are:
+\begin{itemize}
+  \item \Egls{weather}
+  \item \Egls{weather report}: \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}
+  \item \Egls{weather state}
+  \item \Egls{weather phenomenon}:
+    \begin{itemize}
+      \item \Egls{atmospheric pressure}: \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, \Egls{very high pressure}
+      \item \Egls{cloud cover}: \Egls{clear sky}, \Egls{partly cloudy}, \Egls{mostly cloudy}, \Egls{overcast}, \Egls{unknown cloud cover}.
+      \item \Egls{dew point}.
+      \item \Egls{humidity}: \Egls{very dry}, \Egls{dry}, \Egls{normal humidity}, \Egls{moist}, \Egls{very moist}.
+      \item \Egls{precipitation}: \Egls{no rain}, \Egls{light rain}, \Egls{medium rain}, \Egls{heavy rain}, \Egls{extremely heavy rain}, \Egls{tropical storm rain}.
+      \item \Egls{solar radiation}: \Egls{no radiation}, \Egls{low radiation}, \Egls{medium radiation}, \Egls{high radiation}, \Egls{very high radiation}.
+      \item \Egls{sun position}: \Egls{day}, \Egls{solar twilight}, \Egls{twilight}, \Egls{civil twilight}, \Egls{nautical twilight}, \Egls{astronomical twilight}, \Egls{night}, \Egls{sun from north}, \Egls{sun from east}, \Egls{sun from south}, \Egls{sun from west}.
+      \item \Egls{temperature}: \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{room temperature}, \Egls{above room temperature}, \Egls{heat}.
+      \item \Egls{wind}: \Egls{directional wind}, \Egls{north wind}, \Egls{east wind}, \Egls{south wind}, \Egls{west wind}, \Egls{calm}, \Egls{light wind}, \Egls{strong wind}, \Egls{storm}, \Egls{hurricane}.
+    \end{itemize}
+  \item \Egls{weather condition}
+\end{itemize}
+
+\paragraph{Relations:}
+
+Instances of the concepts are associated with binary relations, which are:
+
+\begin{itemize}
+  \item 
+\end{itemize}
+
+% TODO
+
+\paragraph{Individuals:}
+
+The only predefined individuals are instances of the concept \Egls{weather condition}; they represent the overall state of the weather for a certain \Egls{weather state}. These individuals are: \emph{Cloud}, \emph{Fog}, \emph{Light clouds}, \emph{Partly cloudy}, \emph{Rain}, \emph{Sleet}, \emph{Snow}, \emph{Sun}, and \emph{Thunder}.
 
 \subsection{Concept-classification trees}
 \label{sec:concept_classification_trees}
