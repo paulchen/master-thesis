@@ -7,3 +7,7 @@ chapters/*~
 *.pdf
 *.blg
 *.log
+*.glg
+*.glo
+*.gls
+*.xdy
