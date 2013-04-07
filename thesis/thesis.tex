@@ -17,10 +17,13 @@
 \usetikzlibrary{arrows,automata}
 
 \usepackage{comment}
+\usepackage[squaren,thinspace,mediumqspace]{SIunits}
 
 \usepackage[toc,xindy]{glossaries}
 \renewcommand{\glsnamefont}[1]{\makefirstuc{#1}} % for making the first word of each glossary term upper case
 \renewcommand{\glsseeitemformat}[1]{\Glsentrytext{#1}}
+\newcommand{\Egls}[1]{\emph{\Gls{#1}}}
+\newcommand{\egls}[1]{\emph{\gls{#1}}}
 
 \makeglossary
 
