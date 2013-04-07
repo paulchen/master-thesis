@@ -1,6 +1,6 @@
 all: thesis.pdf
 
-thesis.pdf: thesis.tex chapters/*.tex references.bib
+thesis.pdf: *.tex chapters/*.tex references.bib 
 	pdflatex thesis
 	bibtex thesis
 	makeglossaries thesis
