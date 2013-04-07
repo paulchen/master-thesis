@@ -193,8 +193,7 @@ Section~\ref{ch:weather_data} discusses each weather element that is used in \th
 Hence, the concepts that can be found in \thinkhomeweather are:
 \begin{itemize}
   \item \Egls{weather}
-  \item \Egls{weather report}: \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}
-  \item \Egls{weather state}
+  \item \Egls{weather condition}
   \item \Egls{weather phenomenon}:
     \begin{itemize}
       \item \Egls{atmospheric pressure}: \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, \Egls{very high pressure}
@@ -207,7 +206,9 @@ Hence, the concepts that can be found in \thinkhomeweather are:
       \item \Egls{temperature}: \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{room temperature}, \Egls{above room temperature}, \Egls{heat}.
       \item \Egls{wind}: \Egls{directional wind}, \Egls{north wind}, \Egls{east wind}, \Egls{south wind}, \Egls{west wind}, \Egls{calm}, \Egls{light wind}, \Egls{strong wind}, \Egls{storm}, \Egls{hurricane}.
     \end{itemize}
-  \item \Egls{weather condition}
+  \item \Egls{weather report}: \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}
+  \item \Egls{weather source}: \Egls{sensor source}, \Egls{service source}.
+  \item \Egls{weather state}
 \end{itemize}
 
 \paragraph{Relations:}
@@ -215,10 +216,11 @@ Hence, the concepts that can be found in \thinkhomeweather are:
 Instances of the concepts are associated with binary relations, which are:
 
 \begin{itemize}
-  \item 
+  \item \egls{has source} and \egls{is source of} which connect instances of \Egls{weather report} and \Egls{weather source}.
+  \item \egls{has weather state} and \egls{belongs to weather report} which connect instances of \Egls{weather report} and \Egls{weather state}.
+  \item \egls{has condition} which connects instances of \Egls{weather state} and \Egls{weather condition}.
+  \item \egls{has weather phenomenon} and \egls{belongs to state} which connect instances of \Egls{weather state} and \Egls{weather phenomenon}.
 \end{itemize}
-
-% TODO
 
 \paragraph{Individuals:}
 
