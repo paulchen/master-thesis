@@ -1,7 +1,7 @@
 \newglossaryentry{temperature}{
   name={temperature},
   description={TODO},
-  see={TODO}
+  see={weather phenomenon,room temperature,above room temperature,heat,below room temperature,frost,cold}
 }
 \newglossaryentry{room temperature}{
   name={room temperature},
@@ -39,7 +39,7 @@
 \newglossaryentry{sun position}{
   name={sun position},
   description={The position of the sun, given by its elevation above horizon and its direction},
-  see={day,night,twilight,solar twilight,nautical twilight,astronomical twilight,civil twilight,sun from east,sun from south,sun from west,sun from north,twilight}
+  see={day,night,twilight,solar twilight,nautical twilight,astronomical twilight,civil twilight,sun from east,sun from south,sun from west,sun from north,twilight,weather phenomenon}
 }
 \newglossaryentry{day}{
   name={day},
@@ -57,7 +57,7 @@
   see={sun position,day}
 }
 \newglossaryentry{twilight}{
-  name={astronomical twilight},
+  name={twilight},
   description={During twilight, the sun is not at or above horizon and at most 18 degrees below horizon},
   see={sun position,astronomical twilight,civil twilight,nautical twilight}
 }
@@ -102,7 +102,7 @@
 \newglossaryentry{atmospheric pressure}{
   name={atmospheric pressure},
   description={TODO},
-  see={} % TODO reference subconcepts
+  see={weather phenomenon,very low pressure,low pressure,average pressure,high pressure,very high pressure}
 }
 \newglossaryentry{very low pressure}{
   name={very low pressure},
@@ -131,10 +131,11 @@
 }
 
 
+% TODO reference
 \newglossaryentry{wind}{
   name={wind},
   description={TODO},
-  see={TODO} % TODO subconcepts
+  see={directional wind,calm,light wind,strong wind,storm,hurricane,weather phenomenon}
 }
 \newglossaryentry{directional wind}{
   name={directional wind},
@@ -172,7 +173,7 @@
   see={wind}
 }
 \newglossaryentry{strong wind}{
-  name={light wind},
+  name={strong wind},
   description={Wind with a speed of at least 10 and less than 20\metre\per\second},
   see={wind}
 }
@@ -191,7 +192,7 @@
 \newglossaryentry{cloud cover}{
   name={cloud cover},
   description={Concept describing the current cloud coverage in \emph{okta} (integer numbers from 0 to 9). Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast} and \emph{Unknown cloud cover}},
-  see={okta,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover}
+  see={okta,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover,weather phenomenon}
 }
 \newglossaryentry{okta}{
   name={okta},
@@ -204,7 +205,7 @@
   see={okta,cloud cover}
 }
 \newglossaryentry{partly cloudy}{
-  name={mostly cloudy},
+  name={partly cloudy},
   description={Cloud coverage is reported as to be 1, 2, 3 or 4$\:$\emph{okta}}
   see={okta,cloud cover}
 }
@@ -299,14 +300,14 @@
 \newglossaryentry{dew point}{
   name={dew point},
   description={TODO},
-  see={}
+  see={weather phenomenon}
 }
 
 
 \newglossaryentry{humidity}{
   name={humidity},
   description={TODO},
-  see={} % TODO add subconcepts
+  see={weather phenomenon,very dry,dry,normal humidity,moist,very moist}
 }
 \newglossaryentry{very dry}{
   name={very dry},
@@ -340,10 +341,10 @@
 \newglossaryentry{precipitation}{
   name={precipitation},
   description={TODO},
-  see={} % TODO subconcepts
+  see={no rain,light rain,medium rain,heavy rain,extremely heavy rain,weather phenomenon}
 }
 \newglossaryentry{no rain}{
-  name={medium rain},
+  name={no rain},
   description={No precipitation (because the chance or the intensity of precipitation is 0)},
   see={precipitation}
 }
@@ -377,7 +378,7 @@
 \newglossaryentry{solar radiation}{
   name={solar radiation},
   description={TODO},
-  see={TODO}
+  see={weather phenomenon,no radiation,low radiation,medium radiation,high radiation,very high radiation}
 }
 \newglossaryentry{no radiation}{
   name={no radiation},
@@ -387,6 +388,11 @@
 \newglossaryentry{low radiation}{
   name={low radiation},
   description={Solar radiation of more than 0\watt\per\squaren\metre and less than 250\watt\per\squaren\metre},
+  see={solar radiation}
+}
+\newglossaryentry{medium radiation}{
+  name={medium radiation},
+  description={Solar radiation of at least 250\watt\per\squaren\metre and less than 500\watt\per\squaren\metre},
   see={solar radiation}
 }
 \newglossaryentry{high radiation}{
@@ -418,8 +424,8 @@
 }
 \newglossaryentry{altitude}{
   name={altitude},
-  description={Height above \emph{MSL} of the \emph{location} the \emph{weather report} is valid for, in metres},
-  see={weather report,msl,location} % TODO msl
+  description={Height above \emph{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{weather report} is valid for, in metres},
+  see={weather report,location}
 }
 
 
@@ -453,6 +459,6 @@
 \newglossaryentry{weather state}{
   name={weather state},
   description={TODO},
-  see={weather report,weather phenomenon} % TODO more links?
+  see={weather report,weather phenomenon}
 }
 
