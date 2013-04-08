@@ -273,25 +273,45 @@
   description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than 12 hours in the future relative to the \emph{observation time}},
   see={weather report,forecast weather report,observation time}
 }
-\newglossaryentry{observation time}{% TODO property?
+\newglossaryentry{observation time}{
   name={observation time},
-  description={Time when the weather data was collected from the weather sensor or the Internet weather service},
-  see={weather report,start time,end time}
+  description={The time when the weather data was collected from the weather sensor or the Internet weather service, given by an instance of the concept \emph{Instant} from \emph{OWL-Time}\cite{owl-time}},
+  see={weather report,has observation time}
 }
-\newglossaryentry{start time}{% TODO property?
+\newglossaryentry{has observation time}{
+  name={observation time},
+  description={An object property of \emph{Weather report} that specifies the report's \emph{observation time}},
+  see={weather report,observation time}
+}
+\newglossaryentry{start time}{
   name={start time},
-  description={The time a \emph{Weather report} is valid from, relative to the \emph{Weather report}'s \emph{Observation time}},
-  see={weather report,end time,observation time}
+  description={The time a \emph{Weather report} is valid from, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{start time}},
+  see={weather report,has start time,end time,observation time}
 }
-\newglossaryentry{end time}{% TODO property?
+\newglossaryentry{end time}{
   name={end time},
-  description={The time a \emph{Weather report} is valid until, relative to the \emph{Weather report}'s \emph{Observation time}},
-  see={weather report,start time,observation time}
+  description={The time a \emph{Weather report} is valid until, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{end time}},
+  see={weather report,has end time,start time,observation time}
 }
-\newglossaryentry{priority}{% TODO property?
+\newglossaryentry{has start time}{
+  name={has start time},
+  description={An object property of \emph{weather report} that specifies the report's \emph{start time}},
+  see={weather report,start time, has end time,observation time}
+}
+\newglossaryentry{has end time}{
+  name={has end time},
+  description={An object property of \emph{weather report} that specifies the report's \emph{end time}},
+  see={weather report,end time,has start time,observation time}
+}
+\newglossaryentry{priority}{
   name={priority},
   description={An integer value indicating which \emph{weather report} for a certain period of time is to be preferred over another \emph{weather report} for the same period of time},
-  see={weather report}
+  see={weather report,has priority}
+}
+\newglossaryentry{has priority}{
+  name={has priority},
+  description={A data property of \emph{weather report} that specifies the report's \emph{priority}},
+  see={weather report,priority}
 }
 
 
@@ -405,9 +425,9 @@
 }
 
 
-\newglossaryentry{location}{% TODO concept?
+\newglossaryentry{location}{
   name={location},
-  description={Geographical position a \emph{weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}},
+  description={An object property of \emph{weather report} that specifies the geographical position the \emph{weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}; links to an instance of the concept \emph{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}},
   see={weather report,latitude,longitude,altitude}
 }
 \newglossaryentry{latitude}{
@@ -469,36 +489,36 @@
 
 \newglossaryentry{has source}{
   name={has source},
-  description={TODO},
-  see={}
+  description={Object property that links instances of \emph{Weather report} and \emph{Weather source}; inverse property of \emph{is source of}},
+  see={weather report,weather source,is source of}
 }
 \newglossaryentry{is source of}{
   name={is source of},
-  description={TODO},
-  see={}
+  description={Object property that links instances of \emph{Weather report} and \emph{Weather source}; inverse property of \emph{has source}},
+  see={weather report,weather source,has source}
 }
 \newglossaryentry{has weather state}{
   name={has weather state},
-  description={TODO},
-  see={}
+  description={Object property that links instances of \emph{Weather report} and \emph{Weather state}; inverse property of \emph{belongs to weather report}},
+  see={weather report,weather state,belongs to weather report}
 }
 \newglossaryentry{belongs to weather report}{
   name={belongs to weather report},
-  description={TODO},
-  see={}
+  description={Object property that links instances of \emph{Weather report} and \emph{Weather state}; inverse property of \emph{has weather state}},
+  see={weather report,weather state,has weather state}
 }
 \newglossaryentry{has condition}{
   name={has condition},
-  description={TODO},
-  see={}
+  description={Object property that links instances of \emph{Weather state} and \emph{Weather condition}; does not have an inverse property},
+  see={weather state,weather condition}
 }
 \newglossaryentry{has weather phenomenon}{
   name={has weather phenomenon},
-  description={TODO},
-  see={}
+  description={Object property that links instances of \emph{Weather state} and \emph{Weather phenomenon}; inverse property of \emph{belongs to state}},
+  see={weather state,weather phenomenon,belongs to state}
 }
 \newglossaryentry{belongs to state}{
   name={belongs to state},
-  description={TODO},
-  see={}
+  description={Object property that links instances of \emph{Weather state} and \emph{Weather phenomenon}; inverse property of \emph{has weather phenomenon}},
+  see={weather state,weather phenomenon,has weather phenomenon}
 }

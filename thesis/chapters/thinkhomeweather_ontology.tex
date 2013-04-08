@@ -80,7 +80,7 @@ The naming conventions for identifiers within the ontology are as follows:
 
 \vspace{.2cm}
 
-\textbf{Purpose}: The ontology covers data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be acquired from both Internet services as well as from weather sensors mounted at the desired location. This weather data will enable the \textit{ThinkHome} system to make decisions based on current and future weather conditions.
+\textbf{Purpose}: The ontology covers data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be acquired from both Internet services as well as from weather sensors mounted at the desired location. This weather data will enable the \thinkhome system to make decisions based on current and future weather conditions.
 
 \vspace{.2cm}
 
@@ -88,7 +88,7 @@ The naming conventions for identifiers within the ontology are as follows:
 
 \begin{itemize}
   \item \emph{weather phenomenon}: Represents a certain weather element. Relevant weather elements are \emph{temperature}, \emph{humidity}, \emph{dew point}, \emph{wind speed} and \emph{direction}, \emph{precipitation intensity} and \emph{probability}, \emph{atmospheric pressure}, \emph{cloud cover}, \emph{solar radiation}, and the \emph{sun's position}.
-  \item \emph{Weather condition}: Overall state of the weather: \emph{sun}, \emph{light clouds}, \emph{partly cloudy}, \emph{cloudy}, \emph{fog}, \emph{rain}, \emph{snow}, \emph{sleet}, \emph{thunder}.
+  \item \emph{Weather condition}: Overall state of the weather given by a simple verbal description: \emph{sun}, \emph{light clouds}, \emph{partly cloudy}, \emph{cloudy}, \emph{fog}, \emph{rain}, \emph{snow}, \emph{sleet}, \emph{thunder}.
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
   \item \emph{Weather report}: Summarizes all data acquired at a certain time about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}.
   \item \emph{Weather report source}: Source where the data belonging to a \emph{weather report} has been obtained from (either an Internet weather service or a local weather sensor).
@@ -101,6 +101,7 @@ The naming conventions for identifiers within the ontology are as follows:
 
 \vspace{.2cm}
 
+% TODO reformulate
 \textbf{Intended end-users}: The ontology is part of the \thinkhome project. Hence, any user of the \thinkhome project is a user of the \thinkhomeweather ontology. \thinkhome aims at providing home automation to \emph{house occupants}; therefore, every occupant of a house is a possible end user for \thinkhomeweather. However, he/she will never have to deal with any ontology. \thinkhome is ought to make decisions on itself based on the knowledge acquired from the \thinkhomeweather ontology. Only the \emph{developers of \thinkhome} have to deal with the ontology itself.
 
 \vspace{.2cm}
@@ -189,7 +190,14 @@ In this section, only a list of terms is given; the complete \emph{Glossary of T
 % TODO link to section/subsection?
 Section~\ref{ch:weather_data} discusses each weather element that is used in \thinkhomeweather and categories in which its instances can be grouped into. In the ontology, all weather elements are represented by concepts that sub-concepts of \Egls{weather phenomenon}. All categories of weather elements are in turn sub-concepts of the weather elements' concepts.
 
-% TODO where do sub-concepts of weather report come from?
+A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
+
+If the \egls{weather report} describes the current weather, it is a \Egls{current weather report}; if it describes the future weather, it is a \Egls{forecast weather report}. Depending on how far the \Egls{weather report}'s start time lies into the future, it is a \Egls{short range weather report} (at most 3 hours in the future), a \Egls{medium range weather report} (more than 3 hours and less than 12 hours in the future) or a \Egls{long range weather report} (more than 12 hours in the future).
+
+If the source of weather data is a \Egls{sensor source}, the corresponding \Egls{weather report} is a \Egls{weather report from sensor}; otherwise (if the source of weather data is a \Egls{service source}), it is a \Egls{weather report from service}.
+
+A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from sensor} is a \Egls{current weather report from sensor}. A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from service} is a \Egls{current weather report from service}.
+
 Hence, the concepts that can be found in \thinkhomeweather are:
 \begin{itemize}
   \item \Egls{weather}
@@ -206,14 +214,14 @@ Hence, the concepts that can be found in \thinkhomeweather are:
       \item \Egls{temperature}: \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{room temperature}, \Egls{above room temperature}, \Egls{heat}.
       \item \Egls{wind}: \Egls{directional wind}, \Egls{north wind}, \Egls{east wind}, \Egls{south wind}, \Egls{west wind}, \Egls{calm}, \Egls{light wind}, \Egls{strong wind}, \Egls{storm}, \Egls{hurricane}.
     \end{itemize}
-  \item \Egls{weather report}: \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}
+  \item \Egls{weather report}: \Egls{weather report from sensor}, \Egls{weather report from service}, \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}
   \item \Egls{weather source}: \Egls{sensor source}, \Egls{service source}.
   \item \Egls{weather state}
 \end{itemize}
 
 \paragraph{Relations:}
 
-Instances of the concepts are associated with binary relations, which are:
+Instances of the concepts are associated to each other with binary relations, which are:
 
 \begin{itemize}
   \item \egls{has source} and \egls{is source of} which connect instances of \Egls{weather report} and \Egls{weather source}.
@@ -221,6 +229,10 @@ Instances of the concepts are associated with binary relations, which are:
   \item \egls{has condition} which connects instances of \Egls{weather state} and \Egls{weather condition}.
   \item \egls{has weather phenomenon} and \egls{belongs to state} which connect instances of \Egls{weather state} and \Egls{weather phenomenon}.
 \end{itemize}
+
+The following relations link instances of concepts from other ontologies than \thinkhomeweather to instances of concepts inside the ontology: \egls{has start time}, \egls{has end time}, \egls{has observation time}, and \egls{location}.
+
+The only data property in \thinkhomeweather is \egls{has priority} which specifies an integer value indicating which \Egls{weather report} for a certain period of time is to be preferred over another \Egls{weather report} for the same period of time.
 
 \paragraph{Individuals:}
 
