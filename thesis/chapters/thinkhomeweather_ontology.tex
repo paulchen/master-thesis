@@ -191,11 +191,13 @@ Section~\ref{ch:weather_data} discusses each weather element that is used in \th
 
 A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
 
-If the \egls{weather report} describes the current weather, it is a \Egls{current weather report}; if it describes the future weather, it is a \Egls{forecast weather report}. Depending on how far the \Egls{weather report}'s start time lies into the future, it is a \Egls{short range weather report} (at most 3 hours in the future), a \Egls{medium range weather report} (more than 3 hours and less than 12 hours in the future) or a \Egls{long range weather report} (more than 12 hours in the future).
+If the \egls{weather report} describes the current weather, it is a \Egls{current weather report}; if it describes the future weather, it is a \Egls{forecast weather report}. Depending on how far the \Egls{weather report}'s \egls{start time} lies into the future, it is a \Egls{short range weather report} (at most 3 hours in the future), a \Egls{medium range weather report} (more than 3 hours and less than 12 hours in the future) or a \Egls{long range weather report} (at least 12 hours in the future). % TODO additional concepts
 
 If the source of weather data is a \Egls{sensor source}, the corresponding \Egls{weather report} is a \Egls{weather report from sensor}; otherwise (if the source of weather data is a \Egls{service source}), it is a \Egls{weather report from service}.
 
 A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from sensor} is a \Egls{current weather report from sensor}. A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from service} is a \Egls{current weather report from service}.
+
+% TODO additional sub-concepts of Weather states
 
 Hence, these are the concepts that can be found in \thinkhomeweather are:
 \begin{itemize}
@@ -212,9 +214,9 @@ Hence, these are the concepts that can be found in \thinkhomeweather are:
       \item \Egls{temperature}: \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{room temperature}, \Egls{above room temperature}, \Egls{heat}.
       \item \Egls{wind}: \Egls{directional wind}, \Egls{north wind}, \Egls{east wind}, \Egls{south wind}, \Egls{west wind}, \Egls{calm}, \Egls{light wind}, \Egls{strong wind}, \Egls{storm}, \Egls{hurricane}.
     \end{itemize}
-  \item \Egls{weather report}: \Egls{weather report from sensor}, \Egls{weather report from service}, \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}
+  \item \Egls{weather report}: \Egls{weather report from sensor}, \Egls{weather report from service}, \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report} % TODO additional concepts
   \item \Egls{weather source}: \Egls{sensor source}, \Egls{service source}.
-  \item \Egls{weather state}
+  \item \Egls{weather state} % TODO additional concepts
 \end{itemize}
 
 \paragraph{Relations:}
@@ -226,6 +228,7 @@ Instances of the concepts are associated to each other with binary relations, wh
   \item \egls{has weather state} and \egls{belongs to weather report} which connect instances of \Egls{weather report} and \Egls{weather state}.
   \item \egls{has condition} which connects instances of \Egls{weather state} and \Egls{weather condition}.
   \item \egls{has weather phenomenon} and \egls{belongs to state} which connect instances of \Egls{weather state} and \Egls{weather phenomenon}.
+  \item \egls{has previous weather state} and \egls{has next weather state} which connect two instances of \Egls{weather state}.
 \end{itemize}
 
 The following relations link instances of concepts from other ontologies than \thinkhomeweather to instances of concepts inside the ontology: \egls{has start time}, \egls{has end time}, \egls{has observation time}, and \egls{location}.
@@ -234,12 +237,12 @@ The only data property in \thinkhomeweather is \egls{has priority} which specifi
 
 \paragraph{Individuals:}
 
-The only predefined individuals are instances of the concept \Egls{weather condition}; they represent the overall state of the weather for a certain \Egls{weather state}. These individuals are: \emph{Cloud}, \emph{Fog}, \emph{Light clouds}, \emph{Partly cloudy}, \emph{Rain}, \emph{Sleet}, \emph{Snow}, \emph{Sun}, and \emph{Thunder}.
+The only predefined individuals are instances of the concept \Egls{weather condition}; they represent the overall state of the weather for a certain \Egls{weather state}. These individuals are: \emph{cloud}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{snow}, \emph{sun}, and \emph{thunder}.
 
 \subsection{Concept-classification trees}
 \label{sec:concept_classification_trees}
 
-As stated in section~\ref{sec:ontology_glossary}, there are fix top-level concepts; all other concepts are sub-concepts to these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These trees are presented in this section.
+As stated in section~\ref{sec:ontology_glossary}, there are fix top-level concepts; all other concepts are sub-concepts to these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These \emph{Concept-classification trees} are presented in this section.
 
 A \Egls{weather condition} does not have any sub-concepts. Hence, its classification tree which is shown in figure~\ref{fig:tree_weather_condition} looks rather simple.
 
@@ -315,211 +318,211 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
   \label{fig:tree_wind}
 \end{figure}
 
+A \Egls{weather report} has two attributes that define its main characteristics: \egls{has start time} and \egls{has source}. As discussed in section~\ref{sec:ontology_glossary}, a number of sub-concepts is defined in order to reflect different values of these two attributes. The resulting concept-classification tree is shown in figure~\ref{fig:tree_weather_report}.
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Weather report}
-
-% TODO get rid of timed weather report
-There are two main attributes for a \emph{Weather report}: Its \emph{Start date} and its \emph{Source}. A number of sub-concepts is defined in order to reflect different values of these two attributes:
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=\textwidth]{figures/diagrams/weather-report.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{weather report}}
+  \label{fig:tree_weather_report}
+\end{figure}
 
-The concepts \emph{Short range forecast}, \emph{Medium range forecast} and \emph{Long range forecast} each do have sub-concepts which have been omitted from the above diagram for clarity. These sub-concepts are:
+The concepts \Egls{short range weather report}, \Egls{medium range weather report} and \Egls{long range weather report} each do have sub-concepts which have been omitted from the above diagram for clarity. These sub-concepts are:
 \begin{itemize}
-  \item \emph{Short range forecast}: \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} and \emph{Forecast 3 hours weather report} for weather reports describing the weather in one, two and three hours, respectively.
-  \item \emph{Medium range forecast}: \emph{Forecast 6 hour weather report} and \emph{Forecast 9 hours weather report} for weather reports describing the weather in 6 and 9 hours, respectively.
-  \item \emph{Long range forecast}: \emph{Forecast 12 hour weather report}, \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report} and \emph{Forecast 25 hours weather report} for weather reports describing the weather in 12, 15, 18, 21 and 24 hours, respectively.
+  \item \Egls{short range weather report}: \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} and \emph{Forecast 3 hours weather report} for weather reports describing the weather in one, two and three hours, respectively.
+  \item \Egls{medium range weather report}: \emph{Forecast 6 hour weather report} and \emph{Forecast 9 hours weather report} for weather reports describing the weather in 6 and 9 hours, respectively.
+  \item \Egls{long range weather report}: \emph{Forecast 12 hour weather report}, \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report} and \emph{Forecast 24 hours weather report} for weather reports describing the weather in 12, 15, 18, 21 and 24 hours, respectively.
 \end{itemize}
 
-\subsubsection{Weather report source}
+A \Egls{weather source} can either be a \Egls{sensor source} or a \Egls{service source} (see figure~\ref{fig:tree_weather_source}).
 
-A \emph{Weather report source} can either be a \emph{Sensor source} or a \emph{Service source}:
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.5\textwidth]{figures/diagrams/weather-report-source.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{weather source}}
+  \label{fig:tree_weather_source}
+\end{figure}
 
-\subsubsection{Weather state}
+A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see figure~\ref{fig:tree_weather_state}): % TODO mention concepts and add them to the glossary
 
-% TODO reformulate this
-A \emph{Weather state} collects all \emph{Weather phenomena} for a certain \emph{Weather report}. Because of this, sub-concepts of \emph{Weather state} can be introduced that reflect certain combination of related instances of \emph{Weather phenomenon}:
-
-\begin{center}
+\begin{figure}
+  \centering
+  % TODO diagram is incomplete
   \includegraphics[width=.3\textwidth]{figures/diagrams/weather-state.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{weather state}}
+  \label{fig:tree_weather_state}
+\end{figure}
 
 \subsection{Binary relations diagram}
 \label{sec:binary_relations_diagram}
 
-The binary relations diagram shows all binary relations between concepts in the ontology in a clear manner:
+The purpose of a \emph{Binary relations diagram} is to present all binary relations between concepts in the ontology (see figure~\ref{fig:binary_relations}).
 
-% TODO link "Weather condition" to "Weather state"
-\begin{center}
-  \includegraphics[width=\textwidth]{figures/diagrams/binary-relations.png}
-\end{center}
+% TODO add previous/next weather state
+\begin{figure}
+  \centering
+  \includegraphics[width=.8\textwidth]{figures/diagrams/binary-relations.png}
+  \caption{Binary relations diagram of \thinkhomeweather}
+  \label{fig:binary_relations}
+\end{figure}
 
 \subsection{Concept dictionaries}
 
-A concept dictionary lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section \ref{sec:concept_classification_trees}.
+A \emph{Concept dictionary} lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section~\ref{sec:concept_classification_trees}.
 
-In the following tables, only the root concepts as shown in the concept-classification trees above are described in case the sub-concepts have the same instances, class attributes, instance attributes and relations as their respective super-concepts.
+In the following tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
 
 \subsubsection{Weather condition}
 
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+\begin{longtable}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \textbf{Name} & \textbf{Instances} & \textbf{Relations} \\
   \hline\hline
-  Weather condition & Cloud\newline Fog\newline Partly cloudy\newline Mostly cloudy\newline Rain\newline Sleet\newline Snow\newline Sun\newline Thunder & - & - & has condition \\
+  \Egls{weather condition} & \emph{cloud}, \emph{fog}, \emph{partly cloudy}, \emph{mostly cloudy}, \emph{rain}, \emph{sleet}, \emph{snow}, \emph{sun}, \emph{thunder} & \egls{has condition} \\
   \hline
 \end{longtable}
 
 \subsubsection{Weather phenomenon}
 
-% TODO
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+\begin{longtable}{|p{.25\textwidth}|p{.3\textwidth}|p{.35\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \textbf{Name} & \textbf{Instance attributes} & \textbf{Relations} \\
   \hline
-  Atmospheric pressure & - & - & Pressure value & belongs to state,\newline has weather phenomenon \\
+  \Egls{atmospheric pressure} & \egls{has pressure value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-  Dew point & - & - & Dew point value & belongs to state,\newline has weather phenomenon \\
+  \Egls{dew point} & \egls{has dew point value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-  Humidity & - & - & Humidity value & belongs to state,\newline has weather phenomenon \\
+  \Egls{humidity} & \egls{has humidity value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-  Sun position & - & - & Sun elevation angle,\newline Sun direction & belongs to state,\newline has weather phenomenon \\
+  \Egls{precipitation} & \egls{has precipitation intensity},\newline \egls{has precipitation probability} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-  Sun radiation & - & - & Sun radiation value & belongs to state,\newline has weather phenomenon \\
+  \Egls{sun position} & \egls{has sun elevation angle},\newline \egls{has sun direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-  Temperature & - & - & Temperature value & belongs to state,\newline has weather phenomenon \\
+  \Egls{solar radiation} & \egls{has solar radiation value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-  Weather phenomenon & - & - & - & belongs to state,\newline has weather phenomenon \\
+  \Egls{temperature} & \egls{has temperature value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-  Wind & - & - & Wind speed,\newline Wind direction & belongs to state,\newline has weather phenomenon \\
+  \Egls{weather phenomenon} & - & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{wind} & \egls{has wind speed},\newline \egls{has wind direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
 \end{longtable}
 
 \subsubsection{Weather report}
 
-% TODO insert Altitude, Latitude, Longitude, start time, end time, observation time, priority somewhere else
-% TODO add Location to binary-relations diagram?
-% TODO 
-
-% TODO 
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \textbf{Name} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  Weather report & - & - & - & has source,\newline is source of,\newline has weather state,\newline belongs to weather report \\
+  \Egls{weather report} & \Egls{has priority}, \Egls{location}, \newline \Egls{has start time}, \Egls{has end time},\newline \Egls{has observation time}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \\
   \hline
 \end{longtable}
 
 \subsubsection{Weather state}
 
-% TODO
+% TODO sub-concepts
 \begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  Weather state & - & - & - & has condition,\newline belongs to weather report,\newline has weather state,\newline belongs to state,\newline has weather phenomenon\\
+  \Egls{weather state} & - & - & - & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon}\\
   \hline
 \end{longtable}
 
-\subsubsection{Weather report source}
+\subsubsection{Weather source}
 
-% TODO
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+\begin{longtable}{|p{0.3\textwidth}|p{0.6\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \textbf{Name} & \textbf{Relations} \\
   \hline\hline
-  Weather report source & - & - & - & is source of,\newline has source \\
+  \Egls{weather source} & \egls{is source of}, \egls{has source} \\
+  \hline
+  \Egls{sensor source} & \egls{is source of}, \egls{has source} \\
+  \hline
+  \Egls{service source} & \egls{is source of}, \egls{has source} \\
   \hline
 \end{longtable}
 
 \subsection{Binary relations table}
 
-The binary relation table specifies all relations from section \ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
+The \emph{Binary relation table} specifies all relations from section~\ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
 
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+\begin{longtable}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
   \hline\hline
-  belongs to state & Weather phenomenon & Weather state & 1 & has weather phenomenon \\
+  \egls{belongs to state} & \Egls{weather phenomenon} & \Egls{weather state} & $1$ & \egls{has weather phenomenon} \\
   \hline
-  belongs to report & Weather state & Weather report & 1 & has weather state \\
+  \egls{belongs to weather report} & \Egls{weather state} & \Egls{weather report} & $1$ & \egls{has weather state} \\
   \hline
-  has condition & Weather state & Weather condition & N & - \\
+  \egls{has condition} & \Egls{weather state} & \Egls{weather condition} & $N$ & - \\
   \hline
-  has next weather report & Weather report & Weather report & 1 & has previous weather report \\
+  \egls{has next weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has previous weather state} \\
   \hline
-  has previous weather report & Weather report & Weather report & 1 & has next weather report \\
+  \egls{has previous weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has next weather state} \\
   \hline
-  has source & Weather report & Weather report source & 1 & is source of \\
+  \egls{has source} & \Egls{weather report} & \Egls{weather source} & $1$ & \egls{is source of} \\
   \hline
-  has weather phenomenon & Weather state & Weather phenomenon & N & belongs to state \\
+  \egls{has weather phenomenon} & \Egls{weather state} & \Egls{weather phenomenon} & $N$ & \egls{belongs to state} \\
   \hline
-  has weather state & Weather report & Weather state & 1 & belongs to report \\
+  \egls{has weather state} & \Egls{weather report} & \Egls{weather state} & $1$ & \egls{belongs to weather report} \\
   \hline
-  is source of & Weather report source & Weather report & N & has source \\
+  \egls{is source of} & \Egls{weather source} & \Egls{weather report} & $N$ & \egls{has source} \\
   \hline
 \end{longtable}
 
 \subsection{Instance attribute tables}
 \label{subsec:instance_attribute_tables}
 
-% TODO add these attributes to the Glossary of Terms
+% TODO add instant, interval and temporalentity to glossary
 
 % TODO description of what is going on here
 % TODO
 
-% TODO describe percent unit somewhere
-% TODO describe datatypes somewhere
-% TODO describe units somewhere
+The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. \emph{time:instant} and \emph{time:interval} refer to the types \emph{Instant} and \emph{Interval} from the \emph{OWL-Time}  ontology\cite{owl-time}.
+
+% TODO remove times and location from here as they are not instance attributes
 \begin{longtable}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
   \hline
   \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
   \hline\hline
-  Altitude & Location & Decimal & \emph{any values allowed} & Metres & $(1, 1)$ \\
+  \egls{alt} & \Egls{location} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
   \hline
-  Cloud altitude & Cloud cover & Decimal & \emph{any values allowed} & Metres & $(1, 1)$ \\
+  \egls{has cloud altitude} & \Egls{cloud cover} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
   \hline
-  Cloud cover & Cloud cover & Integer & $[0, 9]$ & Okta & $(1, 1)$ \\
+  \egls{has cloud cover} & \Egls{cloud cover} & \emph{xsd:integer} & $[0, 9]$ & \Egls{okta} & $(1, 1)$ \\
   \hline
-  Dew point value & Dew point & Decimal & \emph{any values allowed} & Degrees Celsius & $(1, 1)$ \\
+  \egls{has dew point value} & \Egls{dew point} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
   \hline
-  End time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
+  \egls{has end time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  Humidity value & Humidity & Percent & $[0, 1]$ & - & $(1, 1)$ \\
+  \egls{has humidity value} & \Egls{humidity} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
   \hline
-  Latitude & Location & Decimal & $[-90, 90]$ & Degrees & $(1, 1)$ \\
+  \egls{lat} & \Egls{location} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
   \hline
-  Longitude & Location & Decimal & $[-180, 180]$ & Degrees & $(1, 1)$ \\
+  \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \degree\space(degrees) & $(1, 1)$ \\
   \hline
-  Observation time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
+  \egls{observation time} & \Egls{weather report} & \emph{time:instant} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  Precipitation intensity & Precipitation & Decimal & $[0, \infty)$ & Millimetres per hour & $(1, 1)$ \\
+  \egls{has precipitation intensity} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, \infty)$ & \milli\metre\per\hour & $(1, 1)$ \\
   \hline
-  Precipitation probability & Precipitation & Decimal & $[0, 1]$ & Percent & $(1, 1)$ \\
+  \egls{has precipitation probability} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
   \hline
-  Pressure value & Atmospheric pressure & Decimal & $[0, \infty)$ & Hectopascal & $(1, 1)$ \\
+  \egls{has pressure value} & \Egls{atmospheric pressure} & \emph{xsd:decimal} & $[0, \infty)$ & \hecto\pascal & $(1, 1)$ \\
   \hline
-  Start time & Weather report & Time & \emph{any values allowed} & - & $(1, 1)$ \\
+  \egls{has start time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  Sun direction & Sun position & Decimal & $[0, 360)$ & Degrees & $(1, 1)$ \\
+  \egls{has solar radiation value} & \Egls{solar radiation} & \emph{time:decimal} & $[0, \infty)$ & \watt\per\squaren\meter & $(1, 1)$ \\
   \hline
-  Sun elevation angle & Sun position & Decimal & $[-90, 90]$ & Degrees & $(1, 1)$ \\
+  \egls{has sun direction} & \Egls{sun position} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
   \hline
-  Temperature value & Temperature & Decimal & \emph{any values allowed} & Degrees Celsius & $(1, 1)$ \\
+  \egls{has sun elevation angle} & \Egls{sun position} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
   \hline
-  Wind direction & Wind & Decimal & $[0, 360)$ & Degrees & $(1, 1)$ \\
+  \egls{has temperature value} & \Egls{temperature} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
   \hline
-  Wind speed & Wind & Decimal & $[0, \infty)$ & Metres per second & $(1, 1)$ \\
+  \egls{has wind direction} & \Egls{wind} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
+  \hline
+  \egls{has wind speed} & \Egls{wind} & \emph{xsd:decimal} & $[0, \infty)$ & \metre\per\second & $(1, 1)$ \\
   \hline
 \end{longtable}
 
@@ -535,6 +538,7 @@ There are no logical axioms that will be encoded into the ontology, hence there 
 
 % TODO missing section: constants?
 
+% TODO are those actually class attributes?
 \subsection{Formula tables} % TODO rules?
 
 Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \emph{Very low pressure}, \emph{Low pressure}, \emph{Normal pressure}, \emph{High pressure} and \emph{Very high pressure} are all sub-concepts of \emph{Atmospheric pressure}. They all differ by the value of the instance attribute \emph{has pressure value} that every instance of \emph{Atmospheric pressure} has.
@@ -875,7 +879,7 @@ To ensure that the reasoning of all sub-concepts of \emph{Weather phenomenon}, \
 During the implementation step, the ontologies listed in section \ref{sec:integration} need to be imported and integrated. Their use implies the application of certain patterns required by the ontologies.
 
 % TODO reference OWL-Time
-\emph{OWL-Time} defines the concept \emph{TemporalEntity} and its sub-concepts \emph{Instant} and \emph{Interval}. Although \emph{Start time} and \emph{End time} of a \emph{Weather report} are actually \emph{Instant}s, these times are specified using \emph{Interval}s. The duration of such an interval represents the duration between the \emph{Observation time} of the \emph{Weather report} and the time that is to be expressed. This results in the structure shown in figure \ref{fig:owl_time1}. The duration is rounded to full hours. Hence, there are simple rules for defining concepts for a \emph{Weather report} for forecasts in an arbitrary number of hours.
+\emph{OWL-Time} defines the concept \emph{TemporalEntity} and its sub-concepts \emph{Instant} and \emph{Interval}. Although \emph{Start time} and \emph{End time} of a \emph{Weather report} are actually \emph{Instant}s (WHY?), these times are specified using \emph{Interval}s. The duration of such an interval represents the duration between the \emph{Observation time} of the \emph{Weather report} and the time that is to be expressed. This results in the structure shown in figure \ref{fig:owl_time1}. The duration is rounded to full hours. Hence, there are simple rules for defining concepts for a \emph{Weather report} for forecasts in an arbitrary number of hours.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/owl-time1.png}

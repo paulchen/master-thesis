@@ -264,12 +264,12 @@
 }
 \newglossaryentry{medium range weather report}{
   name={medium range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than 3 hours and at most 12 hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than 3 hours and less than 12 hours in the future relative to the \emph{observation time}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{long range weather report}{
   name={long range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than 12 hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least 12 hours in the future relative to the \emph{observation time}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{observation time}{
@@ -426,21 +426,21 @@
 \newglossaryentry{location}{
   name={location},
   description={An object property of \emph{weather report} that specifies the geographical position the \emph{weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}; links to an instance of the concept \emph{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}},
-  see={weather report,latitude,longitude,altitude}
+  see={weather report,lat,long,alt}
 }
-\newglossaryentry{latitude}{
-  name={latitude},
-  description={Latitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
+\newglossaryentry{lat}{
+  name={lat},
+  description={Latitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator}, % TODO mention: property from WGS84; reference WGS84
   see={weather report,location}
 }
-\newglossaryentry{longitude}{
-  name={longitude},
-  description={Longitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
+\newglossaryentry{long}{
+  name={long},
+  description={Longitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian}, % TODO mention: property from WGS84; reference WGS84
   see={weather report,location}
 }
-\newglossaryentry{altitude}{
-  name={altitude},
-  description={Height above \emph{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{weather report} is valid for, in metres},
+\newglossaryentry{alt}{
+  name={alt},
+   description={Height above \emph{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{weather report} is valid for, in metres}, % TODO mention: property from WGS84; reference WGS84
   see={weather report,location}
 }
 
@@ -513,4 +513,82 @@
   name={belongs to state},
   description={Object property that links instances of \emph{Weather state} and \emph{Weather phenomenon}; inverse property of \emph{has weather phenomenon}},
   see={weather state,weather phenomenon,has weather phenomenon}
+}
+
+% TODO
+\newglossaryentry{has cloud altitude}{
+  name={has cloud altitude},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has cloud cover}{
+  name={has cloud cover},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has dew point value}{
+  name={has dew point value},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has humidity value}{
+  name={has humidity value},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has precipitation probability}{
+  name={has precipitation probability},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has precipitation intensity}{
+  name={has precipitation intensity},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has pressure value}{
+  name={has pressure value},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has solar radiation value}{
+  name={has solar radiation value},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has sun direction}{
+  name={has sun direction},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has sun elevation angle}{
+  name={has sun elevation angle},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has temperature value}{
+  name={has temperature value},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has wind direction}{
+  name={has wind direction},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has wind speed}{
+  name={has wind speed},
+  description={TODO},
+  see={}
+}
+
+\newglossaryentry{has previous weather state}{
+  name={has previous weather state},
+  description={TODO},
+  see={}
+}
+\newglossaryentry{has next weather state}{
+  name={has next weather state},
+  description={TODO},
+  see={}
 }
