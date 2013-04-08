@@ -173,6 +173,9 @@ Furthermore, chapter~\ref{ch:existing_work} covers existing ontologies that cove
 
 \section{Conceptualisation}
 
+% TODO name all step
+% TODO mention that logical axioms, formula tables, logical axioms have been skipped as they are not relevant for \thinkhomeweather (describe them and describe why they are not part)
+
 In the third step of \methontology, the \emph{Conceptualisation} step, the domain knowledge is structured into a conceptional model that describes the problem and its solution in terms of the domain vocabulary that has been identified in the \emph{Specification} process.
 
 The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes and binary relations that will form the ontology.
@@ -210,7 +213,7 @@ Hence, these are the concepts that can be found in \thinkhomeweather are:
       \item \Egls{humidity}: \Egls{very dry}, \Egls{dry}, \Egls{normal humidity}, \Egls{moist}, \Egls{very moist}.
       \item \Egls{precipitation}: \Egls{no rain}, \Egls{light rain}, \Egls{medium rain}, \Egls{heavy rain}, \Egls{extremely heavy rain}, \Egls{tropical storm rain}.
       \item \Egls{solar radiation}: \Egls{no radiation}, \Egls{low radiation}, \Egls{medium radiation}, \Egls{high radiation}, \Egls{very high radiation}.
-      \item \Egls{sun position}: \Egls{day}, \Egls{solar twilight}, \Egls{twilight}, \Egls{civil twilight}, \Egls{nautical twilight}, \Egls{astronomical twilight}, \Egls{night}, \Egls{sun from north}, \Egls{sun from east}, \Egls{sun from south}, \Egls{sun from west}.
+      \item \Egls{sun position}: \Egls{day}, \Egls{solar twilight}, \Egls{sun below horizon}, \Egls{twilight}, \Egls{civil twilight}, \Egls{nautical twilight}, \Egls{astronomical twilight}, \Egls{night}, \Egls{sun from north}, \Egls{sun from east}, \Egls{sun from south}, \Egls{sun from west}.
       \item \Egls{temperature}: \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{room temperature}, \Egls{above room temperature}, \Egls{heat}.
       \item \Egls{wind}: \Egls{directional wind}, \Egls{north wind}, \Egls{east wind}, \Egls{south wind}, \Egls{west wind}, \Egls{calm}, \Egls{light wind}, \Egls{strong wind}, \Egls{storm}, \Egls{hurricane}.
     \end{itemize}
@@ -372,6 +375,8 @@ A \emph{Concept dictionary} lists all concepts together with their names, instan
 
 In the following tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
 
+% TODO move all tables starting from here to the appendix
+
 \subsubsection{Weather condition}
 
 \begin{longtable}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
@@ -528,6 +533,7 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
 
 \subsection{Class attribute tables}
 
+\begin{comment}
 % TODO ?
 The ontology does not contain any class attributes, hence there is no table describing the class attributes' properties.
 
@@ -555,16 +561,166 @@ then Normal pressure(?X)
 \end{verbatim}
 
 As a long list of such rules becomes apparently confusing, the relevant information is summarized in a table. In the case of the super-concept \emph{Atmospheric pressure}, this table has three columns: One that takes the name of the super-concept, one takes the name of the sub-concept and one the value range of the instance attribute \emph{has pressure value}. For the sub-concept \emph{Normal pressure}, this table evolves:
+\end{comment}
 
 % TODO 
-\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+\begin{longtable}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
   \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has pressure value} \\
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
   \hline\hline
-  Atmospheric pressure & Normal pressure & $[1008, 1018)$ \\
+  \Egls{atmospheric pressure} & \Egls{very low pressure} & \egls{has pressure value} & $< 998$ \\
   \hline
+  \Egls{atmospheric pressure} & \Egls{low pressure} & \egls{has pressure value} &  $[998, 1008)$ \\
+  \hline
+  \Egls{atmospheric pressure} & \Egls{average pressure} & \egls{has pressure value} &  $[1008, 1018)$ \\
+  \hline
+  \Egls{atmospheric pressure} & \Egls{high pressure} & \egls{has pressure value} &  $[1018, 1028)$ \\
+  \hline
+  \Egls{atmospheric pressure} & \Egls{very high pressure} & \egls{has pressure value} &  $\geq 1028$ \\
+  \hline\hline
+  \Egls{cloud cover} & \Egls{clear sky} & \egls{has cloud cover} & 0 \\
+  \hline
+  \Egls{cloud cover} & \Egls{partly cloudy} & \egls{has cloud cover} & 1, 2, 3, 4 \\
+  \hline
+  \Egls{cloud cover} & \Egls{mostly cloudy} & \egls{has cloud cover} & 5, 6, 7 \\
+  \hline
+  \Egls{cloud cover} & \Egls{overcast} & \egls{has cloud cover} & 8 \\
+  \hline
+  \Egls{cloud cover} & \Egls{unknown cloud cover} & \egls{has cloud cover} & 9 \\
+  \hline\hline
+  \Egls{humidity} & \Egls{very dry} & \egls{has humidity value} & $< 0.3$ \\
+  \hline
+  \Egls{humidity} & \Egls{dry} & \egls{has humidity value} & $[0.3, 0.4)$ \\
+  \hline
+  \Egls{humidity} & \Egls{normal humidity} & \egls{has humidity value} & $[0.4, 0.7]$ \\
+  \hline
+  \Egls{humidity} & \Egls{moist} & \egls{has humidity value} & $(0.7, 0.8]$ \\
+  \hline
+  \Egls{humidity} & \Egls{very moist} & \egls{has humidity value} & $> 0.8$ \\
+  \hline\hline
+  % TODO precipitation probability
+  \Egls{precipitation} & \Egls{no rain} & \egls{has precipitation intensity} & - \\
+  \hline
+%  \Egls{precipitation} & No rain & - & $0$ \\
+%  \hline
+  \Egls{precipitation} & \Egls{light rain} & \egls{has precipitation intensity} & $(0, 5]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{medium rain} & \egls{has precipitation intensity} & $(5, 20]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{heavy rain} & \egls{has precipitation intensity} & $(20, 50]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{extremely heavy rain} & \egls{has precipitation intensity} & $(50, 100]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{tropical storm rain} & \egls{has precipitation intensity} & $> 100$ \\
+  \hline\hline
+  \Egls{solar radiation} & \Egls{no radiation} & \egls{has solar radiation value} & $0$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{low radiation} & \egls{has solar radiation value} & $(0, 250)$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{medium radiation} & \egls{has solar radiation value} & $[250, 500)$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{high radiation} & \egls{has solar radiation value} & $[500, 750)$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{very high radiation} & \egls{has solar radiation value} & $\geq 750$ \\
+  \hline\hline
+  \Egls{sun position} & \egls{sun from north} & \egls{has sun direction} & $(0, 45]\cup(315, 360)$ \\
+  \hline
+  \Egls{sun position} & \egls{sun from east} & \egls{has sun direction} & $(45, 135]$ \\
+  \hline
+  \Egls{sun position} & \egls{sun from south} & \egls{has sun direction} & $(135, 225]$ \\
+  \hline
+  \Egls{sun position} & \egls{sun from west} & \egls{has sun direction} & $(225, 315]$ \\
+  \hline
+  \Egls{sun position} & \egls{day} & \egls{has sun elevation angle} & $[0, 90]$ \\
+  \hline
+  \Egls{sun position} & \egls{solar twilight} & \egls{has sun elevation angle} & $[0, 6)$ \\
+  \hline
+  \Egls{sun position} & \egls{sun below horizon} & \egls{has sun elevation angle} & $[-90, 0)$ \\
+  \hline
+  \Egls{sun position} & \egls{twilight} & \egls{has sun elevation angle} & $[-18, 0)$ \\
+  \hline
+  \Egls{sun position} & \egls{civil twilight} & \egls{has sun elevation angle} & $[-6, 0)$ \\
+  \hline
+  \Egls{sun position} & \egls{nautical twilight} & \egls{has sun elevation angle} & $[-12, -6)$ \\
+  \hline
+  \Egls{sun position} & \egls{astronomical twilight} & \egls{has sun elevation angle} & $[-18, -12)$ \\
+  \hline
+  \Egls{sun position} & \egls{night} & \egls{has sun elevation angle} & $[-90, -18)$ \\
+  \hline\hline
+  \Egls{temperature} & \egls{frost} & \egls{has temperature value} & $< 0$ \\
+  \hline
+  \Egls{temperature} & \egls{cold} & \egls{has temperature value} & $[0, 10)$ \\
+  \hline
+  \Egls{temperature} & \egls{below room temperature} & \egls{has temperature value} & $[10, 20)$ \\
+  \hline
+  \Egls{temperature} & \egls{room temperature} & \egls{has temperature value} & $[20, 25]$ \\
+  \hline
+  \Egls{temperature} & \egls{above room temperature} & \egls{has temperature value} & $(25, 30]$ \\
+  \hline
+  \Egls{temperature} & \egls{heat} & \egls{has temperature value} & $> 30$ \\
+  \hline\hline
+  \Egls{wind} & \egls{directional wind} & \egls{has wind direction} & $[0, 360)$ \\
+  \hline
+  \Egls{wind} & \egls{north wind} & \egls{has wind direction} & $[0, 45)\cup(315,360)$ \\
+  \hline
+  \Egls{wind} & \egls{east wind} & \egls{has wind direction} & $[45, 135)$ \\
+  \hline
+  \Egls{wind} & \egls{south wind} & \egls{has wind direction} & $[135, 225)$ \\
+  \hline
+  \Egls{wind} & \egls{west wind} & \egls{has wind direction} & $[225, 315)$ \\
+  \hline
+  \Egls{wind} & \egls{calm} & \egls{has wind speed} & $[0, 1)$ \\
+  \hline
+  \Egls{wind} & \egls{light wind} & \egls{has wind speed} & $[1, 10)$ \\
+  \hline
+  \Egls{wind} & \egls{strong wind} & \egls{has wind speed} & $[10, 20)$ \\
+  \hline
+  \Egls{wind} & \egls{storm} & \egls{has wind speed} & $\geq 20$ \\
+  \hline
+  \Egls{wind} & \egls{hurricane} & \egls{has wind speed} & $\geq 32$ \\
+  \hline\hline
+  % TODO actually instances
+  \egls{weather report} & \Egls{current weather report} & \egls{has start time} & $0$ \\
+  \hline
+  \egls{weather report} & \Egls{forecast weather report} & \egls{has start time} & $> 0$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 1 hour weather report} & \egls{has start time} & $1$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 2 hours weather report} & \egls{has start time} & $2$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 3 hours weather report} & \egls{has start time} & $3$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 6 hours weather report} & \egls{has start time} & $6$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 9 hours weather report} & \egls{has start time} & $9$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 12 hours weather report} & \egls{has start time} & $12$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 15 hours weather report} & \egls{has start time} & $15$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 18 hours weather report} & \egls{has start time} & $18$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 21 hours weather report} & \egls{has start time} & $21$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 24 hours weather report} & \egls{has start time} & $24$ \\
+  \hline
+  \egls{weather report} & \Egls{short range weather report} & \egls{has start time} & $(0, 3]$ \\
+  \hline
+  \egls{weather report} & \Egls{medium range weather report} & \egls{has start time} & $(3, 12)$ \\
+  \hline
+  \egls{weather report} & \Egls{long range weather report} & \egls{has start time} & $\geq 12$ \\
+  \hline
+  \egls{weather report} & \Egls{weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
+  \hline
+  \egls{weather report} & \Egls{weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
+  \hline
+  \egls{current weather report} & \Egls{current weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
+  \hline
+  \egls{current weather report} & \Egls{current weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
 \end{longtable}
+% TODO sub-concepts of weather state
 
+\begin{comment}
 There are sub-concepts defined by restrictions on more than one instance attribute. In such a case, columns are added to the respective table as needed. For instance, sub-concepts of \emph{Wind} have restrictions on both the instance attribute \emph{has wind speed} and on the instance attribute \emph{has wind direction}. In that case, the table has four columns: Super-concept, sub-concept, \emph{has wind speed} and \emph{has wind direction}.
 
 If there is more than one row for a certain sub-concept, these rows specify alternatives: The instance of the super-concept is an instance of the sub-concept, if any of the restrictions in the respective rows holds.
@@ -574,231 +730,6 @@ If the value of an instance attribute is not significant for an instance of the 
 % TODO reference?
 In the following sections, for each concept-classification tree shown above, the respective table is given.
 
-\subsubsection{Atmospheric pressure}
-
-\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has pressure value} \\
-  \hline\hline
-  Atmospheric pressure & Very low pressure & $< 998$ \\
-  \hline
-  Atmospheric pressure & Low pressure & $[998, 1008)$ \\
-  \hline
-  Atmospheric pressure & Normal pressure & $[1008, 1018)$ \\
-  \hline
-  Atmospheric pressure & High pressure & $[1018, 1028)$ \\
-  \hline
-  Atmospheric pressure & Very high pressure & $\geq 1028$ \\
-  \hline
-\end{longtable}
-
-\subsubsection{Cloud cover}
-
-\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has cloud cover} \\
-  \hline\hline
-  Cloud cover & Clear sky & 0 \\
-  \hline
-  Cloud cover & Partly cloudy & 1, 2, 3, 4 \\
-  \hline
-  Cloud cover & Mostly cloudy & 5, 6, 7 \\
-  \hline
-  Cloud cover & Overcast & 8 \\
-  \hline
-  Cloud cover & Unknown cloud cover & 9 \\
-  \hline
-\end{longtable}
-
-\subsubsection{Humidity}
-
-\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has humidity value} \\
-  \hline\hline
-  Humidity & Very dry & $< 0.3$ \\
-  \hline
-  Humidity & Dry & $[0.3, 0.4)$ \\
-  \hline
-  Humidity & Normal humidity & $[0.4, 0.7]$ \\
-  \hline
-  Humidity & Moist & $(0.7, 0.8]$ \\
-  \hline
-  Humidity & Very moist & $> 0.8$ \\
-  \hline
-\end{longtable}
-
-\subsubsection{Precipitation}
-
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has precipitation\newline probability} & \textbf{has precipitation\newline intensity} \\
-  \hline\hline
-  Precipitation & No rain & $0$ & - \\
-  \hline
-  Precipitation & No rain & - & $0$ \\
-  \hline
-  Precipitation & Light rain & $(0, 1]$ & $(0, 5]$ \\
-  \hline
-  Precipitation & Medium rain & $(0, 1]$ & $(5, 20]$ \\
-  \hline
-  Precipitation & Heavy rain & $(0, 1]$ & $(20, 50]$ \\
-  \hline
-  Precipitation & Extremely heavy rain & $(0, 1]$ & $(50, 100]$ \\
-  \hline
-  Precipitation & Tropical storm rain & $(0, 1]$ & $> 100$ \\
-  \hline
-\end{longtable}
-
-\subsubsection{Solar radiation}
-
-\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has solar\newline radiation value} \\
-  \hline\hline
-  Solar radiation & No radiation & $0$ \\
-  \hline
-  Solar radiation & Low radiation & $(0, 250)$ \\
-  \hline
-  Solar radiation & Medium radiation & $[250, 500)$ \\
-  \hline
-  Solar radiation & High radiation & $[500, 750)$ \\
-  \hline
-  Solar radiation & Very high radiation & $\geq 750$ \\
-  \hline
-\end{longtable}
-
-\subsubsection{Sun position}
-
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has sun\newline direction} & \textbf{has sun\newline elevation angle} \\
-  \hline\hline
-  Sun position & Sun from north & $(0, 45]$ & - \\
-  \hline
-  Sun position & Sun from north & $(315, 360)$ & - \\
-  \hline
-  Sun position & Sun from east & $(45, 135]$ & - \\
-  \hline
-  Sun position & Sun from south & $(135, 225]$ & - \\
-  \hline
-  Sun position & Sun from west & $(225, 315]$ & - \\
-  \hline
-  Sun position & Day & - & $[0, 90]$ \\
-  \hline
-  Sun position & Solar twilight & - & $[0, 6)$ \\
-  \hline
-  Sun position & Sun below horizon & - & $[-90, 0)$ \\
-  \hline
-  Sun position & Twilight & - & $[-18, 0)$ \\
-  \hline
-  Sun position & Civil twilight & - & $[-6, 0)$ \\
-  \hline
-  Sun position & Nautical twilight & - & $[-12, -6)$ \\
-  \hline
-  Sun position & Astronomical twilight & - & $[-18, -12)$ \\
-  \hline
-  Sun position & Night & - & $[-90, -18)$ \\
-  \hline
-\end{longtable}
-
-\subsubsection{Temperature}
-
-\begin{longtable}{|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has temperature\newline value} \\
-  \hline\hline
-  Temperature & Frost & $< 0$ \\
-  \hline
-  Temperature & Cold & $[0, 10)$ \\
-  \hline
-  Temperature & Below room temperature & $[10, 20)$ \\
-  \hline
-  Temperature & Room temperature & $[20, 25]$ \\
-  \hline
-  Temperature & Above room temperature & $(25, 30]$ \\
-  \hline
-  Temperature & Heat & $> 30$ \\
-  \hline
-\end{longtable}
-
-\subsubsection{Wind}
-
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has wind\newline speed} & \textbf{has wind\newline direction} \\
-  \hline\hline
-  Wind & Directional wind & - & $[0, 360)$ \\
-  \hline
-  Wind & North wind & - & $[0, 45)$ \\
-  \hline
-  Wind & North wind & - & $(315, 360)$ \\
-  \hline
-  Wind & East wind & - & $[45, 135)$ \\
-  \hline
-  Wind & South wind & - & $[135, 225)$ \\
-  \hline
-  Wind & West wind & - & $[225, 315)$ \\
-  \hline
-  Wind & Calm & $[0, 1)$ & - \\
-  \hline
-  Wind & Light wind & $[1, 10)$ & - \\
-  \hline
-  Wind & Strong wind & $[10, 20)$ & - \\
-  \hline
-  Wind & Storm & $\geq 20$ & - \\
-  \hline
-  Wind & Hurricane & $\geq 32$ & - \\
-  \hline
-\end{longtable}
-
-\subsubsection{Weather report}
-
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{has start time} & \textbf{has source} \\
-  \hline\hline
-  Weather report & Current weather report & $0$ & - \\
-  \hline
-  Weather report & Forecast weather report & $> 0$ & - \\
-  \hline
-  Weather report & Forecast 1 hour weather report & $1$ & - \\
-  \hline
-  Weather report & Forecast 2 hours weather report & $2$ & - \\
-  \hline
-  Weather report & Forecast 3 hours weather report & $3$ & - \\
-  \hline
-  Weather report & Forecast 6 hours weather report & $6$ & - \\
-  \hline
-  Weather report & Forecast 9 hours weather report & $9$ & - \\
-  \hline
-  Weather report & Forecast 12 hours weather report & $12$ & - \\
-  \hline
-  Weather report & Forecast 15 hours weather report & $15$ & - \\
-  \hline
-  Weather report & Forecast 18 hours weather report & $18$ & - \\
-  \hline
-  Weather report & Forecast 21 hours weather report & $21$ & - \\
-  \hline
-  Weather report & Forecast 24 hours weather report & $24$ & - \\
-  \hline
-  Weather report & Short range weather report & $(0, 3]$ & - \\
-  \hline
-  Weather report & Medium range weather report & $(3, 12)$ & - \\
-  \hline
-  Weather report & Long range weather report & $\geq 12$ & - \\
-  \hline
-  Weather report & Weather report from sensor & - & \emph{any instance of Weather sensor} \\
-  \hline
-  Weather report & Weather report from service & - & \emph{any instance of Weather service} \\
-  \hline
-  Weather report & Current weather report from sensor & $0$ & \emph{any instance of Weather sensor} \\
-  \hline
-  Weather report & Current weather report from service & $0$ & \emph{any instance of Weather service} \\
-  \hline
-\end{longtable}
-
-% TODO sub-concepts of weather state
 
 \subsection{Instance tables}
 
@@ -827,6 +758,8 @@ In the following sections, for each concept-classification tree shown above, the
   Thunder & Weather condition & - & - \\
   \hline
 \end{longtable}
+
+\end{comment}
 
 \section{Integration}
 \label{sec:integration}
