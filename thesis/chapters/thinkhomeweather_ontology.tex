@@ -92,11 +92,11 @@ The naming conventions for identifiers within the ontology are as follows:
   \item \emph{Weather state}: Summarizes all weather phenomena for a certain time. 
   \item \emph{Weather report}: Summarizes all data acquired at a certain time about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}.
   \item \emph{Weather report source}: Source where the data belonging to a \emph{weather report} has been obtained from (either an Internet weather service or a local weather sensor).
-  \item \emph{Weather}: Summarizes all weather data that is available; each \emph{weather report} is linked to \emph{Weather}.
 \end{itemize}
 
 \vspace{.2cm}
 
+% TODO pellet reasoner, protege
 \textbf{Implementation language}: The ontology is implemented in \emph{OWL 2.0}\cite{OWL}.
 
 \vspace{.2cm}
@@ -179,9 +179,9 @@ In the third step of \methontology, the \emph{Conceptualisation} step, the domai
 The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes and binary relations that will form the ontology.
 
 \subsection{Glossary of Terms}
+\label{sec:ontology_glossary}
 
-When describing the scope of \thinkhomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions six top-level concepts of the ontology: \Egls{weather}, \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these six concepts.
-
+When describing the scope of \thinkhomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \emph{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these five concepts.
 
 In this section, only a list of terms is given; the complete \emph{Glossary of Terms} with short descriptions of each term can be found in the appendix~\ref{main} which starts on page~\pageref{main}.
 
@@ -198,9 +198,8 @@ If the source of weather data is a \Egls{sensor source}, the corresponding \Egls
 
 A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from sensor} is a \Egls{current weather report from sensor}. A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from service} is a \Egls{current weather report from service}.
 
-Hence, the concepts that can be found in \thinkhomeweather are:
+Hence, these are the concepts that can be found in \thinkhomeweather are:
 \begin{itemize}
-  \item \Egls{weather}
   \item \Egls{weather condition}
   \item \Egls{weather phenomenon}:
     \begin{itemize}
@@ -241,75 +240,87 @@ The only predefined individuals are instances of the concept \Egls{weather condi
 \subsection{Concept-classification trees}
 \label{sec:concept_classification_trees}
 
-All concepts from the Glossary of Terms can be organized into five categories. Each of these categories has one root concept. These are \emph{Weather condition}, \emph{Weather phenomenon}, \emph{Weather report}, \emph{Weather report source} and \emph{Weather state}. All other concepts are sub-concepts of one of these five root concepts. The trees resulting from the structure are presented below.
+As stated in section~\ref{sec:ontology_glossary}, there are fix top-level concepts; all other concepts are sub-concepts to these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These trees are presented in this section.
 
-\subsubsection{Weather condition}
+A \Egls{weather condition} does not have any sub-concepts. Hence, its classification tree which is shown in figure~\ref{fig:tree_weather_condition} looks rather simple.
 
-A \emph{Weather condition} represents a simple verbal description of the weather state at a certain time. As it does not have any sub-concepts, the diagram showing this classification tree looks rather simple:
+\begin{figure}
+  \centering
+  \includegraphics[width=.3\textwidth]{figures/diagrams/weather-condition.png}
+  \caption{Concept-classification tree for \Egls{weather condition}}
+  \label{fig:tree_weather_condition}
+\end{figure}
 
-\begin{center}
-  \includegraphics[width=.4\textwidth]{figures/diagrams/weather-condition.png}
-\end{center}
+A \Egls{weather phenomenon} represents a certain weather element. Every specific weather element is a sub-concept of \Egls{weather phenomenon}; the evolving tree is shown in~\ref{fig:tree_weather_phenomenon}. For sake of clarity, this tree is broken up to several diagrams; all sub-concepts of sub-concepts of \Egls{weather phenomenon} are not shown in~\ref{fig:tree_weather_phenomenon}. There is a separate diagram for each sub-concept of \Egls{weather phenomenon}: \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}), \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}), \Egls{humidity} (figure~\ref{fig:tree_humidity}), \Egls{precipitation} (figure~\ref{fig:tree_precipitation}), \Egls{solar radiation} (figure~\ref{fig:tree_solar_radiation}), \Egls{sun position} (figure~\ref{fig:tree_sun_position}), \Egls{temperature} (figure~\ref{fig:tree_temperature}), and \Egls{wind} (figure~\ref{fig:tree_wind}). The diagram for \Egls{dew point} is not shown as that concept does not have any sub-concepts; hence its concept-classification tree consists of a single node.
 
-\subsubsection{Weather phenomenon}
-
-A \emph{Weather phenomenon} represents a certain weather element, e.g. temperature or humidity. Every specific weather element is a sub-concept of \emph{Weather phenomenon}. Hence, this tree evolves:
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/weather-phenomenon.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{weather phenomenon}}
+  \label{fig:tree_weather_phenomenon}
+\end{figure}
 
-Every of these sub-concepts again has sub-concepts for different states of the weather elements. For the sake of clarity, these concepts are not shown in the diagram above. See the diagrams below for details.
-
-The only sub-concept of \emph{Weather phenomenon} that does not have any sub-concepts is \emph{Dew point}. The diagram showing a tree that consists of only one node for \emph{Dew point} is omitted.
-
-\paragraph{Atmospheric pressure}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/atmospheric-pressure.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{atmospheric pressure}}
+  \label{fig:tree_atmospheric_pressure}
+\end{figure}
 
-\paragraph{Cloud cover}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/cloud-cover.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{cloud cover}}
+  \label{fig:tree_cloud_cover}
+\end{figure}
 
-\paragraph{Humidity}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/humidity.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{humidity}}
+  \label{fig:tree_humidity}
+\end{figure}
 
-\paragraph{Precipitation}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/precipitation.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{precipitation}}
+  \label{fig:tree_precipitation}
+\end{figure}
 
-\paragraph{Solar radiation}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/solar-radiation.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{solar radiation}}
+  \label{fig:tree_solar_radiation}
+\end{figure}
 
-\paragraph{Sun position}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/sun-position.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{sun position}}
+  \label{fig:tree_sun_position}
+\end{figure}
 
-\paragraph{Temperature}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/temperature.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{temperature}}
+  \label{fig:tree_temperature}
+\end{figure}
 
-\paragraph{Wind}
-
-\begin{center}
+\begin{figure}
+  \centering
   \includegraphics[width=\textwidth]{figures/diagrams/wind.png}
-\end{center}
+  \caption{Concept-classification tree for \Egls{wind}}
+  \label{fig:tree_wind}
+\end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Weather report}
 
