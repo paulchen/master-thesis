@@ -1,3 +1,4 @@
+% TODO siunitx package
 \newglossaryentry{temperature}{
   name={temperature},
   description={Sub-concept of \emph{Weather phenomenon} representing temperature. Sub-concepts are \emph{Frost}, \emph{Cold}, \emph{Below room temperature}, \emph{Room temperature}, \emph{Above room temperature}, and \emph{Heat}},
@@ -36,6 +37,7 @@
 
 
 % TODO sub-concepts of sun position: "sub-concept of..."
+% TODO siunitx package
 \newglossaryentry{sun position}{
   name={sun position},
   description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon and its direction. Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction.},
@@ -103,6 +105,7 @@
 }
 
 
+
 \newglossaryentry{atmospheric pressure}{
   name={atmospheric pressure},
   description={Sub-concept of \emph{Weather phenomenon} representing atmospheric pressure. Sub-concepts are \emph{Very low pressure}, \emph{Low pressure}, \emph{Average pressure}, \emph{High pressure}, and \emph{Very high pressure}},
@@ -110,30 +113,29 @@
 }
 \newglossaryentry{very low pressure}{
   name={very low pressure},
-  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of less than \unit{998}\hecto\pascal},
+  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of less than \SI{998}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{low pressure}{
   name={low pressure},
-  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least 998 and less than \unit{1008}\hecto\pascal},
+  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \num{998} and less than \SI{1008}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{average pressure}{
   name={average pressure},
-  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least 1008 and less than \unit{1018}\hecto\pascal},
+  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \num{1008} and less than \SI{1018}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{high pressure}{
   name={high pressure},
-  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least 1018 and less than \unit{1028}\hecto\pascal},
+  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \num{1018} and less than \SI{1028}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{very high pressure}{
   name={very high pressure},
-  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \unit{1028}\hecto\pascal},
+  description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \SI{1028}{\hecto\pascal}},
   see={atmospheric pressure}
 }
-
 
 \newglossaryentry{wind}{
   name={wind},
@@ -167,31 +169,32 @@
 }
 \newglossaryentry{calm}{
   name={calm},
-  description={Sub-concept of \emph{Wind} representing wind with a speed below \unit{1}\metre\per\second},
+  description={Sub-concept of \emph{Wind} representing wind with a speed below \SI{1}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{light wind}{
   name={light wind},
-  description={Sub-concept of \emph{Wind} representing wind with a speed of at least 1 and less than \unit{10}\metre\per\second},
+  description={Sub-concept of \emph{Wind} representing wind with a speed of at least \num{1} and less than \SI{10}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{strong wind}{
   name={strong wind},
-  description={Sub-concept of \emph{Wind} representing wind with a speed of at least 10 and less than \unit{20}\metre\per\second},
+  description={Sub-concept of \emph{Wind} representing wind with a speed of at least \num{10} and less than \SI{20}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{storm}{
   name={storm},
-  description={Sub-concept of \emph{Wind} representing wind  with a speed of at least \unit{20}\metre\per\second},
+  description={Sub-concept of \emph{Wind} representing wind  with a speed of at least \SI{20}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{hurricane}{
   name={hurricane},
-  description={Sub-concept of \emph{Wind} representing wind with a speed of at least \unit{32}\metre\per\second},
+  description={Sub-concept of \emph{Wind} representing wind with a speed of at least \SI{32}{\metre\per\second}},
   see={wind}
 }
 
 
+% TODO use siunitx package here
 \newglossaryentry{cloud cover}{
   name={cloud cover},
   description={Sub-concept of \emph{Weather phenomenon} describing the current cloud coverage in \emph{okta} (integer numbers from 0 to 9). Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast}, and \emph{Unknown cloud cover}},
@@ -263,7 +266,7 @@
   description={Sub-concept of \emph{Weather report} for some time after its \emph{observation time}},
   see={weather report,observation time,short range weather report,medium range weather report,long range weather report}
 }
-\newglossaryentry{short range weather report}{
+\newglossaryentry{short range weather report}{ % TODO use siunitx package here
   name={short range weather report},
   description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most 3 hours in the future relative to the \emph{observation time}},
   see={weather report,forecast weather report,observation time}
@@ -326,7 +329,7 @@
   see={weather phenomenon}
 }
 
-
+% TODO use siunitx package here
 \newglossaryentry{humidity}{
   name={humidity},
   description={Sub-concept of \emph{Weather phenomenon} representing the relative humidity of the air. Sub-concepts are \emph{Very dry}, \emph{Dry}, \emph{Normal humidity}, \emph{Moist}, and \emph{Very moist}},
@@ -359,7 +362,7 @@
 }
 
 
-
+% TODO siunitx package
 \newglossaryentry{precipitation}{
   name={precipitation},
   description={Sub-concept of \emph{Weather phenomenon} that describes precipitation (intensity and probability). Sub-concepts are \emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain}, and \emph{Tropical storm rain}},
@@ -372,27 +375,27 @@
 }
 \newglossaryentry{light rain}{
   name={light rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 0 and at most \unit{5}\milli\metre\per\hour},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 0 and at most \SI{5}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{medium rain}{
   name={medium rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 5 and at most \unit{20}\milli\metre\per\hour},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 5 and at most \SI{20}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{heavy rain}{
   name={heavy rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 20 and at most \unit{50}\milli\metre\per\hour},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 20 and at most \SI{50}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{extremely heavy rain}{
   name={extremely heavy rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 50 and at most \unit{100}\milli\metre\per\hour},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 50 and at most \SI{100}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{tropical storm rain}{
   name={tropical storm rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than \unit{100}\milli\metre\per\hour},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than \SI{100}{\milli\metre\per\hour}},
   see={precipitation}
 }
 
@@ -404,27 +407,27 @@
 }
 \newglossaryentry{no radiation}{
   name={no radiation},
-  description={Sub-concept of \emph{Solar radiation} describing the absence of any solar radiation (\unit{0}\watt\per\squaren\metre)},
+  description={Sub-concept of \emph{Solar radiation} describing the absence of any solar radiation (\SI{0}{\watt\per\square\metre})},
   see={solar radiation}
 }
 \newglossaryentry{low radiation}{
   name={low radiation},
-  description={Sub-concept of \emph{Solar radiation} describing solar radiation of more than \unit{0}\watt\per\squaren\metre and less than \unit{250}\watt\per\squaren\metre},
+  description={Sub-concept of \emph{Solar radiation} describing solar radiation of more than \SI{0}{\watt\per\square\metre} and less than \SI{250}{\watt\per\square\metre}},
   see={solar radiation}
 }
 \newglossaryentry{medium radiation}{
   name={medium radiation},
-  description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \unit{250}\watt\per\squaren\metre and less than \unit{500}\watt\per\squaren\metre},
+  description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \SI{250}{\watt\per\square\metre} and less than \SI{500}{\watt\per\square\metre}},
   see={solar radiation}
 }
 \newglossaryentry{high radiation}{
   name={high radiation},
-  description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \unit{500}\watt\per\squaren\metre and less than \unit{750}\watt\per\squaren\metre},
+  description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \SI{500}{\watt\per\square\metre} and less than \SI{750}{\watt\per\square\metre}},
   see={solar radiation}
 }
 \newglossaryentry{very high radiation}{
   name={very high radiation},
-  description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \unit{750}\watt\per\squaren\metre},
+  description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \SI{750}{\watt\per\square\metre}},
   see={solar radiation}
 }
 

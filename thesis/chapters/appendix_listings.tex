@@ -107,45 +107,46 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
   \hline\hline
-  \egls{alt} & \Egls{location} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
+  \egls{alt} & \Egls{location} & \emph{xsd:decimal} & \emph{any values allowed} & \si{\metre} & $(1, 1)$ \\
   \hline
-  \egls{has cloud altitude} & \Egls{cloud cover} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
+  \egls{has cloud altitude} & \Egls{cloud cover} & \emph{xsd:decimal} & \emph{any values allowed} & \si{\metre} & $(1, 1)$ \\
   \hline
   \egls{has cloud cover} & \Egls{cloud cover} & \emph{xsd:integer} & $[0, 9]$ & \Egls{okta} & $(1, 1)$ \\
   \hline
-  \egls{has dew point value} & \Egls{dew point} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
+  \egls{has dew point value} & \Egls{dew point} & \emph{xsd:decimal} & \emph{any values allowed} & \si{\celsius} & $(1, 1)$ \\
   \hline
   \egls{has end time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
   \egls{has humidity value} & \Egls{humidity} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
   \hline
-  \egls{lat} & \Egls{location} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
+  \egls{lat} & \Egls{location} & \emph{xsd:decimal} & $[-90, 90]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
   \hline
-  \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \degree\space(degrees) & $(1, 1)$ \\
+  \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
   \hline
   \egls{observation time} & \Egls{weather report} & \emph{time:instant} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  \egls{has precipitation intensity} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, \infty)$ & \milli\metre\per\hour & $(1, 1)$ \\
+  \egls{has precipitation intensity} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, \infty)$ & \si{\milli\metre\per\hour} & $(1, 1)$ \\
   \hline
   \egls{has precipitation probability} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
   \hline
-  \egls{has pressure value} & \Egls{atmospheric pressure} & \emph{xsd:decimal} & $[0, \infty)$ & \hecto\pascal & $(1, 1)$ \\
+  \egls{has pressure value} & \Egls{atmospheric pressure} & \emph{xsd:decimal} & $[0, \infty)$ & \si{\hecto\pascal} & $(1, 1)$ \\
   \hline
   \egls{has start time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
-  \egls{has solar radiation value} & \Egls{solar radiation} & \emph{time:decimal} & $[0, \infty)$ & \watt\per\squaren\meter & $(1, 1)$ \\
+  \egls{has solar radiation value} & \Egls{solar radiation} & \emph{time:decimal} & $[0, \infty)$ & \si{\watt\per\square\meter} & $(1, 1)$ \\
   \hline
-  \egls{has sun direction} & \Egls{sun position} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
+  \egls{has sun direction} & \Egls{sun position} & \emph{xsd:decimal} & $[0, 360)$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
   \hline
-  \egls{has sun elevation angle} & \Egls{sun position} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
+  \egls{has sun elevation angle} & \Egls{sun position} & \emph{xsd:decimal} & $[-90, 90]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
   \hline
-  \egls{has temperature value} & \Egls{temperature} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
+  \egls{has temperature value} & \Egls{temperature} & \emph{xsd:decimal} & \emph{any values allowed} & \si{\celsius} & $(1, 1)$ \\
   \hline
-  \egls{has wind direction} & \Egls{wind} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
+  \egls{has wind direction} & \Egls{wind} & \emph{xsd:decimal} & $[0, 360)$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
   \hline
-  \egls{has wind speed} & \Egls{wind} & \emph{xsd:decimal} & $[0, \infty)$ & \metre\per\second & $(1, 1)$ \\
+  \egls{has wind speed} & \Egls{wind} & \emph{xsd:decimal} & $[0, \infty)$ & \si{\metre\per\second} & $(1, 1)$ \\
   \hline
 \end{longtable}
+
 
 \subsection{Class attributes}
 \label{subsec:appendix_class_attributes}

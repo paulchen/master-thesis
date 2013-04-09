@@ -452,39 +452,38 @@ In the following sections, for each concept-classification tree shown above, the
 % TODO citation for first sentence?
 One of the goals when designing an ontology is to reuse existing ontologies where possible. It the domain of \thinkhomeweather, four areas have been identified where existing ontologies can be reused: These are location data, measurement units, weather concepts and specifications of date and time. Chapter \ref{ch:existing_work} sheds some light on existing ontologies around the domain of weather data. In this section, the ontologies that have found to be eligible for reuse within \thinkhomeweather are presented.
 
-\paragraph{Location data}
+\paragraph{Location data:}
 
 For location data, the \emph{W3C Semantic Web Interest Group}\footnote{\href{http://www.w3.org/2001/sw/interest/}{http://www.w3.org/2001/sw/interest/}} developed the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}. It introduces a concept called \emph{Spatial thing} and its attributes \egls{lat}, \egls{long} and \egls{alt} according to the \emph{WGS-84 geodetic reference system}\cite{WGS84}. However, the vocabulary contains some data properties that are incorrectly defined to be annotation properties. Thus, they must be redefined to be data properties whenever used in an ontology.
 
-\paragraph{Weather concepts}
+\paragraph{Weather concepts:}
 
 The \emph{SWEET} ontology\cite{SWEET}\footnote{\href{http://sweet.jpl.nasa.gov/ontology/}{http://sweet.jpl.nasa.gov/ontology/}} developed by the \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}\footnote{\href{http://www.jpl.nasa.gov/}{http://www.jpl.nasa.gov/}} offers a wide range of concepts, attributes and individuals for environmental and atmospherical phenomena, including all units that may be used in weather data ontologies. \emph{SWEET} is designed in a highly modular manner; there is a single \emph{OWL} file that provides definitions of measurement units. However, any file that is part of \emph{SWEET} depends on a number of other files belonging to that ontology and these in turn have dependencies. Thus, importing one of \emph{SWEET}'s \emph{OWL} files entails the import of a large number of other files; a simple ontology like \thinkhomeweather becomes hard to handle. Hence, reusing \emph{SWEET} is not an option.
 
-Besides SWEET, there is no ontology containing weather concepts that has been determined to be appropriate for use within the \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
+Besides \emph{SWEET}, there is no ontology providing weather concepts that has been determined to be appropriate for use in the \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
 
-\paragraph{Units of measurement}
+\paragraph{Units of measurement:}
 
 \newcommand{\muo}{\emph{MUO}}
 The \emph{Measurement Units Ontology}\footnote{\href{http://idi.fundacionctic.org/muo/muo-vocab.html}{http://idi.fundacionctic.org/muo/muo-vocab.html}}\cite{MUO} is a simple and light-weight approach to enrich measurement values in an ontology with appropriate units. Some of the most important units are pre-defined, others can easily be added when needed. The \emph{Measurement Units Ontology} (\muo) is still work in progress, however it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, \muo can be imported into any ontology without problems.
 
 Besides the \emph{Measurement Units Ontology}, several other ontologies have been examined, but all of them have shortcomings that render their use in the \thinkhomeweather ontology impossible. These ontologies are:
 \begin{itemize}
-  \item \textbf{\emph{SWEET}:} Besides concepts, attributes and individuals for atmospherical phenomena, \emph{SWEET} also comes with support for literals more precisely specified by units. However, as mentioned above, \emph{SWEET} is an ontology that is inappropriate for use in \thinkhomeweather.
+  \item \textbf{\emph{SWEET}}: Besides concepts, attributes and individuals for atmospherical phenomena, \emph{SWEET} also comes with support for literals more precisely specified by units. However, as mentioned above, \emph{SWEET} is an ontology that is inappropriate for use in \thinkhomeweather.
   
-  \item \textbf{\emph{QUDT}:} \emph{QUDT}\footnote{\href{http://www.qudt.org/}{http://www.qudt.org/}}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an \emph{OWL} ontology. However, \emph{QUDT} does not work in \protege together with the \emph{Pellet} reasoner. Using \emph{QUDT} would require several changes to its \emph{OWL} files. Hence, it cannot be used in the \thinkhomeweather ontology.
+  \item \textbf{\emph{QUDT}}: \emph{QUDT}\footnote{\href{http://www.qudt.org/}{http://www.qudt.org/}}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an \emph{OWL} ontology. However, \emph{QUDT} does not work in \protege together with the \emph{Pellet} reasoner. Using \emph{QUDT} would require several changes to its \emph{OWL} files. Hence, it cannot be used in the \thinkhomeweather ontology.
   
-  \item \textbf{\emph{QUOMOS}:} The \emph{OASIS Quantities and Units of Measure Ontology Standard} (\emph{QUOMOS})\footnote{\href{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}} is a project that aims at developing ``an ontology for quantities, systems of measurement units, and base dimensions for use across multiple industries''. However, as no deliverables have been released at the time of writing, it cannot be used in \thinkhomeweather.
+  \item \textbf{\emph{QUOMOS}}: The \emph{OASIS Quantities and Units of Measure Ontology Standard} (\emph{QUOMOS})\footnote{\href{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}} is a project that aims at developing ``an ontology for quantities, systems of measurement units, and base dimensions for use across multiple industries''. However, as no deliverables have been released at the time of writing, it cannot be used in \thinkhomeweather.
   
-  \item \textbf{OBO Foundry Initiative:} The \emph{OBO Foundry Initiative}\footnote{\href{http://obofoundry.org/}{http://obofoundry.org/}} is an initiative that aims at collecting ontologies for use in the biomedical domain. The list of \emph{The Open Biological and Biomedical Ontologies} (abbreviated by \emph{OBO}) includes an ontology for units of measurements\footnote{\href{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}}\footnote{\href{http://code.google.com/p/unit-ontology/}{http://code.google.com/p/unit-ontology/}}. This ontology apparently covers most of the units that are used in the \thinkhomeweather ontology. However, it lacks any documentation and hence cannot be used in \thinkhomeweather.
+  \item \textbf{OBO Foundry Initiative}: The \emph{OBO Foundry Initiative}\footnote{\href{http://obofoundry.org/}{http://obofoundry.org/}} is an initiative that aims at collecting ontologies for use in the biomedical domain. The list of \emph{The Open Biological and Biomedical Ontologies} (abbreviated by \emph{OBO}) includes an ontology for units of measurements\footnote{\href{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}}\footnote{\href{http://code.google.com/p/unit-ontology/}{http://code.google.com/p/unit-ontology/}}. This ontology apparently covers most of the units that are used in the \thinkhomeweather ontology. However, it lacks any documentation and hence cannot be used in \thinkhomeweather.
   
-  \item 
-  % TODO mention http://www.semantic-web-journal.net/sites/default/files/swj177_7.pdf
+  \item \text{OM}: The \emph{Ontology of Units of Measure and Related Concepts} (\emph{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. It is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfill in \thinkhomeweather; furthermore, at the time when \cite{OM} was published, development of \thinkhomeweather had already completed. Hence, \emph{OM} was not taken into account for being used in the \thinkhomeweather ontology.
 \end{itemize}
 
 % TODO move performance loss to a later chapter
-Although the \emph{Measurement Units Ontology} has the shortcoming of making OWL reasoning clearly slower, it is the only ontology that has been determined to be usable in the \thinkhomeweather ontology flawlessly.
+Although the \emph{Measurement Units Ontology} does come with a few shortcomings (see section~\label{sec:implementation}), it is the ontology that has been identified to be the the one that fits \thinkhomeweather requirements best.
 
-\paragraph{Date and time}
+\paragraph{Date and time:}
 
 % TODO reference W3C consortium
 % TODO reference W3C working draft definition
