@@ -92,8 +92,38 @@ In the following tables, sub-concepts having the same instances, class attribute
   \hline
 \end{longtable}
 
-\subsection{Instance attribute tables}
-\label{subsec:appendix_instance_attribute_tables}
+\subsection{Binary relations table}
+\label{subsec:appendix_binary_relations_table}
+
+% TODO
+The \emph{Binary relation table} specifies all relations from section~\ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
+
+\begin{longtable}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
+  \hline\hline
+  \egls{belongs to state} & \Egls{weather phenomenon} & \Egls{weather state} & $1$ & \egls{has weather phenomenon} \\
+  \hline
+  \egls{belongs to weather report} & \Egls{weather state} & \Egls{weather report} & $1$ & \egls{has weather state} \\
+  \hline
+  \egls{has condition} & \Egls{weather state} & \Egls{weather condition} & $N$ & - \\
+  \hline
+  \egls{has next weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has previous weather state} \\
+  \hline
+  \egls{has previous weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has next weather state} \\
+  \hline
+  \egls{has source} & \Egls{weather report} & \Egls{weather source} & $1$ & \egls{is source of} \\
+  \hline
+  \egls{has weather phenomenon} & \Egls{weather state} & \Egls{weather phenomenon} & $N$ & \egls{belongs to state} \\
+  \hline
+  \egls{has weather state} & \Egls{weather report} & \Egls{weather state} & $1$ & \egls{belongs to weather report} \\
+  \hline
+  \egls{is source of} & \Egls{weather source} & \Egls{weather report} & $N$ & \egls{has source} \\
+  \hline
+\end{longtable}
+
+\subsection{Instance attributes table}
+\label{subsec:appendix_instance_attributes_table}
 
 % TODO add instant, interval and temporalentity to glossary
 
@@ -148,7 +178,7 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
 \end{longtable}
 
 
-\subsection{Class attributes}
+\subsection{Class attribute tables}
 \label{subsec:appendix_class_attributes}
 
 % TODO description
@@ -310,8 +340,8 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
 \end{longtable}
 % TODO sub-concepts of weather state
 
-\subsection{Instance tables}
-\label{subsec:appendix_instance_tables}
+\subsection{Instances table}
+\label{subsec:appendix_instances_table}
 
 % TODO description of what is going on here
 % TODO
@@ -336,36 +366,6 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   Sun & Weather condition & - & - \\
   \hline
   Thunder & Weather condition & - & - \\
-  \hline
-\end{longtable}
-
-\subsection{Binary relations table}
-\label{subsec:appendix_binary_relations_table}
-
-% TODO
-The \emph{Binary relation table} specifies all relations from section~\ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
-
-\begin{longtable}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
-  \hline\hline
-  \egls{belongs to state} & \Egls{weather phenomenon} & \Egls{weather state} & $1$ & \egls{has weather phenomenon} \\
-  \hline
-  \egls{belongs to weather report} & \Egls{weather state} & \Egls{weather report} & $1$ & \egls{has weather state} \\
-  \hline
-  \egls{has condition} & \Egls{weather state} & \Egls{weather condition} & $N$ & - \\
-  \hline
-  \egls{has next weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has previous weather state} \\
-  \hline
-  \egls{has previous weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has next weather state} \\
-  \hline
-  \egls{has source} & \Egls{weather report} & \Egls{weather source} & $1$ & \egls{is source of} \\
-  \hline
-  \egls{has weather phenomenon} & \Egls{weather state} & \Egls{weather phenomenon} & $N$ & \egls{belongs to state} \\
-  \hline
-  \egls{has weather state} & \Egls{weather report} & \Egls{weather state} & $1$ & \egls{belongs to weather report} \\
-  \hline
-  \egls{is source of} & \Egls{weather source} & \Egls{weather report} & $N$ & \egls{has source} \\
   \hline
 \end{longtable}
 
