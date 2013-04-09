@@ -176,3 +176,34 @@ NEW:
 * ORequirementsSpecification.pdf
   Mari Carmen Suárez-Figueroa, Asunción Gómez-Pérez, and Boris Villazón-Terrazas: How to write and use the Ontology Requirements Specification Document
 
+
+NEW (2013-04-09):
+
+* methontology.pdf
+  Ascunion Gomez-Perez, Mariano Fernandez, Antonio J. de Vicente: Towards a Method to Conceptualize Domain Ontologies
+
+* The-Development-of-Ontology-for-Metabolic-Pathways-Using-METHONTOLOGY.pdf
+  Yuslina Zakaria, Safaai Deris, Muhammad Razib Othman: The Development of Ontology for Metabolic Pathways Using METHONTOLOGY 
+
+* 151-753-1-PB.pdf
+  Marlos Silva, Endhe Elias, Evandro Costa, Ig Ibert Bittencourt, Heitor Barros, Leandro Dias da Silva, Alan Pedro da Silva, Douglas Véras: Combining Methontology and Ontology Driven Approach to Build an Educational Ontology
+
+* ejeg-volume8-issue2-article203.pdf
+  Fred Freitas, Zacharias Candeias Jr and Heiner Stuckenschmidt: A new Usage for Semantic Technologies for eGovernment: Checking Official Documents’ Consistency
+
+* 04624172.pdf
+  Jinsoo Park, Kimoon Sung, Sewon Moon: Developing Graduation Screen Ontology based on the METHONTOLOGY Approach
+
+* Context-aware semantic AS Selection.pdf
+  Andrés Iglesias-Pérez, Marino Linaje, Juan Carlos Preciado, Fernando Sánchez-Figueroa, Elena Gómez-Martínez, Rafael González-Cabero, José Ángel Martínez-Usero: A Context-Aware Semantic Approach for the Effective Selection of an Assistive Software
+
+* cap_2008_CMPU_Using.pdf
+  F. J. López-Pellicer, L. M. Vilches-Blázquez, J. Nogueras-Iso, O. Corcho, M. A. Bernabé, A. F. Rodríguez: Using a hybrid approach for the development of an ontology in the hydrographical domain
+
+* Ontologys_Crossed_Life_Cycles.pdf
+  Mariano Fernández López, Asunción Gómez Pérez, and María Dolores Rojas Amaya: Ontology’s Crossed Life Cycles
+
+* Smith.pdf
+  Richard A. Smith: DESIGNING A CARTOGRAPHIC ONTOLOGY FOR USE WITH EXPERT SYSTEMS
+
+
