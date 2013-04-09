@@ -182,6 +182,11 @@ NEW:
 * 04591590.pdf
   Atilla Elçi, Behnam Rahnama, Saman Kamran: Defining a Strategy to Select Either of Closed/Open World Assumptions on Semantic Robots
 
+* (KA)2_Building_Ontologies.pdf
+  V. RICHARD BENJAMINS, DIETER FENSEL AND STEFAN DECKER, ASUNCION GOMEZ PEREZ: (KA)2 : building ontologies for the Internet :a mid-term report
+
+* 1-s2.0-S0169023X0900007X-main.pdf
+  Elena Simperl: Reusing ontologies on the Semantic Web: A feasibility study
 
 NEW (2013-04-09):
 
