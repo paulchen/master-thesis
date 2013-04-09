@@ -384,7 +384,7 @@ An \emph{Instance attributes table} lists all instance attributes in \thinkhomew
 \subsection{Class attributes table}
 \label{subsec:class_attributes_table}
 
-Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{normal pressure}, \Egls{high pressure} and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
+Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure} and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
 
 These concepts are summarized in the \emph{Class attributes table} in the appendix in section~\ref{subsec:appendix_class_attributes}.
 
@@ -414,7 +414,7 @@ Besides \emph{SWEET}, there is no ontology providing weather concepts that has b
 
 \newcommand{\muo}{\emph{MUO}\xspace}
 
-All instances of \egls{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to appendix~\ref{subsec:appendix_instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \egls{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. \si{\degree F} and \si{\celsius} for the \emph{Temperature value}) the unit being used shall be added to the attribute value.
+All instances of \Egls{weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to appendix~\ref{subsec:appendix_instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \Egls{weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. \si{\degree F} and \si{\celsius} for the \emph{temperature value}) the unit being used shall be added to the attribute value.
 
 As the use of units of measurement is a topic that occurs in many ontologies, there are several different approaches to cope with it.
 
@@ -454,7 +454,7 @@ The \thinkhomeweather ontology is implemented in OWL using \protege 4.1 together
 
 To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}\footnote{\href{http://junit.org/}{http://junit.org/}} is used (see section~\ref{sec:importer_tests}). Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
 
-During implementation of \thinkhomeweather in \emph{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{Weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \emph{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
+During implementation of \thinkhomeweather in \emph{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \emph{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
 
 
 \subsection{Imported ontologies}
