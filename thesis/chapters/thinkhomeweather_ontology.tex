@@ -454,7 +454,9 @@ One of the goals when designing an ontology is to reuse existing ontologies wher
 
 \paragraph{Location data:}
 
-For location data, the \emph{W3C Semantic Web Interest Group}\footnote{\href{http://www.w3.org/2001/sw/interest/}{http://www.w3.org/2001/sw/interest/}} developed the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}. It introduces a concept called \emph{Spatial thing} and its attributes \egls{lat}, \egls{long} and \egls{alt} according to the \emph{WGS-84 geodetic reference system}\cite{WGS84}. However, the vocabulary contains some data properties that are incorrectly defined to be annotation properties. Thus, they must be redefined to be data properties whenever used in an ontology.
+Each \Egls{weather report} is valid for a certain location on Earth, given by \emph{latitude}, \emph{longitude} and \emph{altitude}. To handle such location data, the \emph{W3C Semantic Web Interest Group}\footnote{\href{http://www.w3.org/2001/sw/interest/}{http://www.w3.org/2001/sw/interest/}} developed the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}. It introduces a concept called \emph{Spatial thing} and its attributes \egls{lat}, \egls{long} and \egls{alt} according to the \emph{WGS-84 geodetic reference system}\cite{WGS84}.
+
+However, the vocabulary contains some data properties that are incorrectly defined to be annotation properties. Thus, they must be redefined to be data properties whenever used in an ontology.
 
 \paragraph{Weather concepts:}
 
@@ -465,6 +467,11 @@ Besides \emph{SWEET}, there is no ontology providing weather concepts that has b
 \paragraph{Units of measurement:}
 
 \newcommand{\muo}{\emph{MUO}}
+
+All instances of \egls{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to appendix~\ref{subsec:appendix_instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \egls{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. \si{\degree F} and \si{\celsius} for the \emph{Temperature value}) the unit being used shall be added to the attribute value.
+
+As the use of units of measurement is a topic that occurs in many ontologies, there are several different approaches to cope with it.
+
 The \emph{Measurement Units Ontology}\footnote{\href{http://idi.fundacionctic.org/muo/muo-vocab.html}{http://idi.fundacionctic.org/muo/muo-vocab.html}}\cite{MUO} is a simple and light-weight approach to enrich measurement values in an ontology with appropriate units. Some of the most important units are pre-defined, others can easily be added when needed. The \emph{Measurement Units Ontology} (\muo) is still work in progress, however it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, \muo can be imported into any ontology without problems.
 
 Besides the \emph{Measurement Units Ontology}, several other ontologies have been examined, but all of them have shortcomings that render their use in the \thinkhomeweather ontology impossible. These ontologies are:
@@ -477,72 +484,73 @@ Besides the \emph{Measurement Units Ontology}, several other ontologies have bee
   
   \item \textbf{OBO Foundry Initiative}: The \emph{OBO Foundry Initiative}\footnote{\href{http://obofoundry.org/}{http://obofoundry.org/}} is an initiative that aims at collecting ontologies for use in the biomedical domain. The list of \emph{The Open Biological and Biomedical Ontologies} (abbreviated by \emph{OBO}) includes an ontology for units of measurements\footnote{\href{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}}\footnote{\href{http://code.google.com/p/unit-ontology/}{http://code.google.com/p/unit-ontology/}}. This ontology apparently covers most of the units that are used in the \thinkhomeweather ontology. However, it lacks any documentation and hence cannot be used in \thinkhomeweather.
   
-  \item \text{OM}: The \emph{Ontology of Units of Measure and Related Concepts} (\emph{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. It is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfill in \thinkhomeweather; furthermore, at the time when \cite{OM} was published, development of \thinkhomeweather had already completed. Hence, \emph{OM} was not taken into account for being used in the \thinkhomeweather ontology.
+  \item \textbf{OM}: The \emph{Ontology of Units of Measure and Related Concepts} (\emph{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. It is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfill in \thinkhomeweather; furthermore, at the time when \cite{OM} was published, development of \thinkhomeweather had already completed. Hence, \emph{OM} was not taken into account for being used in the \thinkhomeweather ontology.
 \end{itemize}
 
 % TODO move performance loss to a later chapter
-Although the \emph{Measurement Units Ontology} does come with a few shortcomings (see section~\label{sec:implementation}), it is the ontology that has been identified to be the the one that fits \thinkhomeweather requirements best.
+Although the \emph{Measurement Units Ontology} does come with a few shortcomings (see section~\ref{sec:implementation}), it is the ontology that has been identified to be the the one that fits \thinkhomeweather requirements best.
 
 \paragraph{Date and time:}
 
-% TODO reference W3C consortium
-% TODO reference W3C working draft definition
-% TODO reference http://www.w3.org/TR/owl-time/
-For specifying temporal properties, the W3C consortium offers a working draft of \emph{OWL-Time}, a \emph{Time Ontology in OWL}. It defines the concept called \emph{TemporalEntity} that can either be an \emph{Instant} or an \emph{Interval}. Using appropriate attributes, the properties of a \emph{TemporalEntity} are specified. Although \emph{OWL-Time} is in the state of a working draft since September 2006, the main concepts and attributes that will be reused by other ontologies are expected not to change in any way.
+The attributes \egls{has start time}, \egls{has end time} and \egls{has observation time} of the concept \Egls{weather state} need to encode date and time information in an appropriate way.
 
-% TODO mention meta-ontology
+For specifying temporal properties, the \emph{World Wide Web consortium} (\emph{W3C})\footnote{\href{http://www.w3.org/}{http://www.w3.org/}} offers a \emph{working draft}\cite{w3c-process} of \emph{OWL-Time}\cite{owl-time}, a \emph{Time Ontology in OWL}. It defines the concept called \emph{TemporalEntity} that can either be an \emph{instant} or an \emph{interval}. Using appropriate attributes, the properties of a \emph{TemporalEntity} are specified. Although \emph{OWL-Time} is in the state of a \emph{working draft} since September 2006, the main concepts and attributes that will be reused by other ontologies are likely to remain unchanged in future releases of that ontology.
+
+\vspace{1em}
 
 Section \ref{sec:implementation} describes the reuse of the aforementioned ontologies within the \thinkhomeweather ontology in detail.
 
 \section{Implementation}
 \label{sec:implementation}
 
-After exhaustive analysis and structurization in the previous sections, the step of implementing the ontology has become a straight-forward task.
+After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
-% TODO reference OWL, Protege, Pellet
-% TODO \emph{} for names
-The \thinkhomeweather ontology is implemented in OWL using Protege 4.1 together with the Pellet OWL 2 Reasoner. Pellet includes Pellint, an ontology performance tool that uses a set of patterns to find possible performance problems in an OWL ontology. Pellint has been used for locating problems and led to a few improvements boosting reasoning performance.
+The \thinkhomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \emph{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}\footnote{\href{http://weblog.clarkparsia.com/2008/07/02/pellint-an-ontology-repair-tool/}{http://weblog.clarkparsia.com/2008/07/02/pellint-an-ontology-repair-tool/}}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \emph{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
 
-To ensure that the reasoning of all sub-concepts of \emph{Weather phenomenon}, \emph{Weather state} and \emph{Weather report} works correctly, a JUnit is used. Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
+To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}\footnote{\href{http://junit.org/}{http://junit.org/}} is used (see section~\ref{sec:importer_tests}). Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
 
 \subsection{Imported ontologies}
 
-During the implementation step, the ontologies listed in section \ref{sec:integration} need to be imported and integrated. Their use implies the application of certain patterns required by the ontologies.
+During the implementation step, the ontologies listed in section \ref{sec:integration} need to be imported and integrated. Their use necessitates the application of certain patterns required by these ontologies.
 
-% TODO reference OWL-Time
-\emph{OWL-Time} defines the concept \emph{TemporalEntity} and its sub-concepts \emph{Instant} and \emph{Interval}. Although \emph{Start time} and \emph{End time} of a \emph{Weather report} are actually \emph{Instant}s (WHY?), these times are specified using \emph{Interval}s. The duration of such an interval represents the duration between the \emph{Observation time} of the \emph{Weather report} and the time that is to be expressed. This results in the structure shown in figure \ref{fig:owl_time1}. The duration is rounded to full hours. Hence, there are simple rules for defining concepts for a \emph{Weather report} for forecasts in an arbitrary number of hours.
+\vspace{1em}
+
+\emph{OWL-Time}\cite{owl-time} defines the concept \egls{temporal entity} and its sub-concepts \egls{instant} and \egls{interval}, both having a self-explanatory name. The properties \egls{has start time}, \egls{has end time} and \egls{has observation time} of \egls{weather report} represent instants; however, only \egls{has observation time} is implemented to link an instance of \egls{instant} to a \Egls{weather report}. For \egls{start time} and \egls{end time}, instances of \egls{interval} are used. Such an instance represents the interval between the \egls{observation time} and the time the \Egls{weather report} is valid from/until (in hours). This simplifies reasoning of the sub-concepts of \Egls{weather report} which depend on the report's \egls{start time}; e.g. an instance of \emph{Forecast 1 hour weather report} can be defined as an instance of \Egls{weather report} having a \egls{start time} of \num{1} (hours).
+
+Figure~\ref{fig:owl_time1} shows a \Egls{weather report} together with its with \egls{start time} and \egls{end time}; figure~\ref{fig:owl_time2} displays a \Egls{weather report} together with its \egls{observation time}. The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times are given in \emph{UTC}.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/owl-time1.png}
-  \caption{An instance of \emph{Current weather report} together with start time and end time.}
+  \caption{An instance of \Egls{current weather report} together with \egls{start time} and \egls{end time}.}
   \label{fig:owl_time1}
 \end{figure}
-
-The \emph{Observation time} of a \emph{Weather report} is specified using an \emph{Instant} as defined by \emph{OWL-time}. See figure \ref{fig:owl_time2} for the resulting structure.
 
 % TODO figure 5.2: interval -> Interval
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/owl-time2.png}
   % TODO no line break inside the date string
-  \caption{An instance of \emph{Weather report} together with its observation time (2012-06-16 14:30).}
+  \caption{An instance of \Egls{weather report} together with its \egls{observation time} (\texttt{2012-06-16~14:30}).}
   \label{fig:owl_time2}
 \end{figure}
 
-The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times must be given in UTC.
+\vspace{1em}
 
-% TODO reference unit ontology
-All instances of \emph{Weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to section \ref{subsec:instance_attribute_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \emph{Weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. $^\circ$F and $^\circ$C for the \emph{Temperature value}), concepts, attributes and instances from the \emph{Measurement Units Ontology} (MUO) are re-used to add unit information. MUO forces the use of a certain pattern that is shown in figure . % TODO reference figure
+Figure~? shows how an instance of \Egls{temperature} would be implemented if no ontology for units of measurements would be used. With the introduction of the \emph{Measurement Units Ontology} (\muo), the data property and the literal are removed; an object property that is a sub-property of \emph{Quality value} (which is defined by \muo) takes the place of the data property. It links to a blank node which in turn has two properties: \emph{Measured in} and \emph{numericalValue}. The property \emph{Measured in} is an object property that refers to the unit being used which is represented by an instance of \muo's concept \emph{Unit of measurement}. Using the data property \emph{numericalValue}, the literal is connected to the blank node. The resulting pattern is seen in figure~?. % TODO reference figures
 
-% TODO reference WGS-84
-The \emph{Basic Geo (WGS84 lat/long) Vocabulary} by the \emph{W3C Semantic Web Interest Group} defines the concept \emph{Point} together with the attributes \emph{lat} (latitude), \emph{long} (longitude) and \emph{alt} (altitude). Furthermore, the attribute \emph{location} offers the possibility of connecting a \emph{Point} to any instance of some concept. See figure \label{fig:wgs84} for the structure that results from this. % TODO reference figure
+\muo is an ontology that is easy to implement in an already-existing ontology. However, 
+
+\vspace{1em}
+
+Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/wgs84.png}
-  \caption{An instance of \emph{Weather report} together with its location (Vienna, Austria: $48.21 ^{\circ} N$, $16.37 ^{\circ} E$, $171 m$ above MSL.}
-  \label{fig:owl_time}
+  \caption{An instance of \emph{Weather report} together with its location (Vienna, Austria: $48.21 \si{\degree} N$, $16.37 \si{\degree} E$, $171 m$ above MSL.}
+  \label{fig:owl_wgs84}
 \end{figure}
 
-% TODO document completed ontology thoroughly
+% TODO document completed ontology? one paragraph about the result
+
 \subsection{Naming conventions}
 
 During the implementation of the \thinkhomeweather ontology, it is necessary to define strict naming conventions for concepts, individuals and attributes; some of these conventions have already been applied to previous steps of developing the ontology:
@@ -561,6 +569,7 @@ During the implementation of the \thinkhomeweather ontology, it is necessary to 
 
 In section \ref{sec:weather_information} and in the ontology specification document, a set of competency questions is presented. In order to verify whether the \thinkhomeweather works as intended, this section now examines if all competency questions can be answered by the ontology.
 
+% TODO verify non-functional requirements
 % TODO
 \begin{itemize}
   \item \textbf{What is the current weather situation?}\\
