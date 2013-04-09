@@ -375,106 +375,13 @@ A \emph{Concept dictionary} lists all concepts together with their names, instan
 
 In the following tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
 
-% TODO move all tables starting from here to the appendix
-
-\subsubsection{Weather condition}
-
-\begin{longtable}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Instances} & \textbf{Relations} \\
-  \hline\hline
-  \Egls{weather condition} & \emph{cloud}, \emph{fog}, \emph{partly cloudy}, \emph{mostly cloudy}, \emph{rain}, \emph{sleet}, \emph{snow}, \emph{sun}, \emph{thunder} & \egls{has condition} \\
-  \hline
-\end{longtable}
-
-\subsubsection{Weather phenomenon}
-
-\begin{longtable}{|p{.25\textwidth}|p{.3\textwidth}|p{.35\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Instance attributes} & \textbf{Relations} \\
-  \hline
-  \Egls{atmospheric pressure} & \egls{has pressure value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{dew point} & \egls{has dew point value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{humidity} & \egls{has humidity value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{precipitation} & \egls{has precipitation intensity},\newline \egls{has precipitation probability} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{sun position} & \egls{has sun elevation angle},\newline \egls{has sun direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{solar radiation} & \egls{has solar radiation value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{temperature} & \egls{has temperature value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{weather phenomenon} & - & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-  \Egls{wind} & \egls{has wind speed},\newline \egls{has wind direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-\end{longtable}
-
-\subsubsection{Weather report}
-
-\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
-  \hline\hline
-  \Egls{weather report} & \Egls{has priority}, \Egls{location}, \newline \Egls{has start time}, \Egls{has end time},\newline \Egls{has observation time}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \\
-  \hline
-\end{longtable}
-
-\subsubsection{Weather state}
-
-% TODO sub-concepts
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
-  \hline\hline
-  \Egls{weather state} & - & - & - & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon}\\
-  \hline
-\end{longtable}
-
-\subsubsection{Weather source}
-
-\begin{longtable}{|p{0.3\textwidth}|p{0.6\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Relations} \\
-  \hline\hline
-  \Egls{weather source} & \egls{is source of}, \egls{has source} \\
-  \hline
-  \Egls{sensor source} & \egls{is source of}, \egls{has source} \\
-  \hline
-  \Egls{service source} & \egls{is source of}, \egls{has source} \\
-  \hline
-\end{longtable}
+% TODO reference appendix
 
 \subsection{Binary relations table}
 
 The \emph{Binary relation table} specifies all relations from section~\ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
 
-\begin{longtable}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
-  \hline\hline
-  \egls{belongs to state} & \Egls{weather phenomenon} & \Egls{weather state} & $1$ & \egls{has weather phenomenon} \\
-  \hline
-  \egls{belongs to weather report} & \Egls{weather state} & \Egls{weather report} & $1$ & \egls{has weather state} \\
-  \hline
-  \egls{has condition} & \Egls{weather state} & \Egls{weather condition} & $N$ & - \\
-  \hline
-  \egls{has next weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has previous weather state} \\
-  \hline
-  \egls{has previous weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has next weather state} \\
-  \hline
-  \egls{has source} & \Egls{weather report} & \Egls{weather source} & $1$ & \egls{is source of} \\
-  \hline
-  \egls{has weather phenomenon} & \Egls{weather state} & \Egls{weather phenomenon} & $N$ & \egls{belongs to state} \\
-  \hline
-  \egls{has weather state} & \Egls{weather report} & \Egls{weather state} & $1$ & \egls{belongs to weather report} \\
-  \hline
-  \egls{is source of} & \Egls{weather source} & \Egls{weather report} & $N$ & \egls{has source} \\
-  \hline
-\end{longtable}
+% TODO reference appendix
 
 \subsection{Instance attribute tables}
 \label{subsec:instance_attribute_tables}
@@ -486,52 +393,11 @@ The \emph{Binary relation table} specifies all relations from section~\ref{sec:b
 
 The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. \emph{time:instant} and \emph{time:interval} refer to the types \emph{Instant} and \emph{Interval} from the \emph{OWL-Time}  ontology\cite{owl-time}.
 
-% TODO remove times and location from here as they are not instance attributes
-\begin{longtable}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
-  \hline
-  \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
-  \hline\hline
-  \egls{alt} & \Egls{location} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
-  \hline
-  \egls{has cloud altitude} & \Egls{cloud cover} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
-  \hline
-  \egls{has cloud cover} & \Egls{cloud cover} & \emph{xsd:integer} & $[0, 9]$ & \Egls{okta} & $(1, 1)$ \\
-  \hline
-  \egls{has dew point value} & \Egls{dew point} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
-  \hline
-  \egls{has end time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
-  \hline
-  \egls{has humidity value} & \Egls{humidity} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
-  \hline
-  \egls{lat} & \Egls{location} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
-  \hline
-  \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \degree\space(degrees) & $(1, 1)$ \\
-  \hline
-  \egls{observation time} & \Egls{weather report} & \emph{time:instant} & \emph{any values allowed} & - & $(1, 1)$ \\
-  \hline
-  \egls{has precipitation intensity} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, \infty)$ & \milli\metre\per\hour & $(1, 1)$ \\
-  \hline
-  \egls{has precipitation probability} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
-  \hline
-  \egls{has pressure value} & \Egls{atmospheric pressure} & \emph{xsd:decimal} & $[0, \infty)$ & \hecto\pascal & $(1, 1)$ \\
-  \hline
-  \egls{has start time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
-  \hline
-  \egls{has solar radiation value} & \Egls{solar radiation} & \emph{time:decimal} & $[0, \infty)$ & \watt\per\squaren\meter & $(1, 1)$ \\
-  \hline
-  \egls{has sun direction} & \Egls{sun position} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
-  \hline
-  \egls{has sun elevation angle} & \Egls{sun position} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
-  \hline
-  \egls{has temperature value} & \Egls{temperature} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
-  \hline
-  \egls{has wind direction} & \Egls{wind} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
-  \hline
-  \egls{has wind speed} & \Egls{wind} & \emph{xsd:decimal} & $[0, \infty)$ & \metre\per\second & $(1, 1)$ \\
-  \hline
-\end{longtable}
+% TODO reference appendix
 
 \subsection{Class attribute tables}
+
+% TODO reference appendix
 
 \begin{comment}
 % TODO ?
@@ -563,162 +429,6 @@ then Normal pressure(?X)
 As a long list of such rules becomes apparently confusing, the relevant information is summarized in a table. In the case of the super-concept \emph{Atmospheric pressure}, this table has three columns: One that takes the name of the super-concept, one takes the name of the sub-concept and one the value range of the instance attribute \emph{has pressure value}. For the sub-concept \emph{Normal pressure}, this table evolves:
 \end{comment}
 
-% TODO 
-\begin{longtable}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
-  \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
-  \hline\hline
-  \Egls{atmospheric pressure} & \Egls{very low pressure} & \egls{has pressure value} & $< 998$ \\
-  \hline
-  \Egls{atmospheric pressure} & \Egls{low pressure} & \egls{has pressure value} &  $[998, 1008)$ \\
-  \hline
-  \Egls{atmospheric pressure} & \Egls{average pressure} & \egls{has pressure value} &  $[1008, 1018)$ \\
-  \hline
-  \Egls{atmospheric pressure} & \Egls{high pressure} & \egls{has pressure value} &  $[1018, 1028)$ \\
-  \hline
-  \Egls{atmospheric pressure} & \Egls{very high pressure} & \egls{has pressure value} &  $\geq 1028$ \\
-  \hline\hline
-  \Egls{cloud cover} & \Egls{clear sky} & \egls{has cloud cover} & 0 \\
-  \hline
-  \Egls{cloud cover} & \Egls{partly cloudy} & \egls{has cloud cover} & 1, 2, 3, 4 \\
-  \hline
-  \Egls{cloud cover} & \Egls{mostly cloudy} & \egls{has cloud cover} & 5, 6, 7 \\
-  \hline
-  \Egls{cloud cover} & \Egls{overcast} & \egls{has cloud cover} & 8 \\
-  \hline
-  \Egls{cloud cover} & \Egls{unknown cloud cover} & \egls{has cloud cover} & 9 \\
-  \hline\hline
-  \Egls{humidity} & \Egls{very dry} & \egls{has humidity value} & $< 0.3$ \\
-  \hline
-  \Egls{humidity} & \Egls{dry} & \egls{has humidity value} & $[0.3, 0.4)$ \\
-  \hline
-  \Egls{humidity} & \Egls{normal humidity} & \egls{has humidity value} & $[0.4, 0.7]$ \\
-  \hline
-  \Egls{humidity} & \Egls{moist} & \egls{has humidity value} & $(0.7, 0.8]$ \\
-  \hline
-  \Egls{humidity} & \Egls{very moist} & \egls{has humidity value} & $> 0.8$ \\
-  \hline\hline
-  % TODO precipitation probability
-  \Egls{precipitation} & \Egls{no rain} & \egls{has precipitation intensity} & - \\
-  \hline
-%  \Egls{precipitation} & No rain & - & $0$ \\
-%  \hline
-  \Egls{precipitation} & \Egls{light rain} & \egls{has precipitation intensity} & $(0, 5]$ \\
-  \hline
-  \Egls{precipitation} & \Egls{medium rain} & \egls{has precipitation intensity} & $(5, 20]$ \\
-  \hline
-  \Egls{precipitation} & \Egls{heavy rain} & \egls{has precipitation intensity} & $(20, 50]$ \\
-  \hline
-  \Egls{precipitation} & \Egls{extremely heavy rain} & \egls{has precipitation intensity} & $(50, 100]$ \\
-  \hline
-  \Egls{precipitation} & \Egls{tropical storm rain} & \egls{has precipitation intensity} & $> 100$ \\
-  \hline\hline
-  \Egls{solar radiation} & \Egls{no radiation} & \egls{has solar radiation value} & $0$ \\
-  \hline
-  \Egls{solar radiation} & \Egls{low radiation} & \egls{has solar radiation value} & $(0, 250)$ \\
-  \hline
-  \Egls{solar radiation} & \Egls{medium radiation} & \egls{has solar radiation value} & $[250, 500)$ \\
-  \hline
-  \Egls{solar radiation} & \Egls{high radiation} & \egls{has solar radiation value} & $[500, 750)$ \\
-  \hline
-  \Egls{solar radiation} & \Egls{very high radiation} & \egls{has solar radiation value} & $\geq 750$ \\
-  \hline\hline
-  \Egls{sun position} & \egls{sun from north} & \egls{has sun direction} & $(0, 45]\cup(315, 360)$ \\
-  \hline
-  \Egls{sun position} & \egls{sun from east} & \egls{has sun direction} & $(45, 135]$ \\
-  \hline
-  \Egls{sun position} & \egls{sun from south} & \egls{has sun direction} & $(135, 225]$ \\
-  \hline
-  \Egls{sun position} & \egls{sun from west} & \egls{has sun direction} & $(225, 315]$ \\
-  \hline
-  \Egls{sun position} & \egls{day} & \egls{has sun elevation angle} & $[0, 90]$ \\
-  \hline
-  \Egls{sun position} & \egls{solar twilight} & \egls{has sun elevation angle} & $[0, 6)$ \\
-  \hline
-  \Egls{sun position} & \egls{sun below horizon} & \egls{has sun elevation angle} & $[-90, 0)$ \\
-  \hline
-  \Egls{sun position} & \egls{twilight} & \egls{has sun elevation angle} & $[-18, 0)$ \\
-  \hline
-  \Egls{sun position} & \egls{civil twilight} & \egls{has sun elevation angle} & $[-6, 0)$ \\
-  \hline
-  \Egls{sun position} & \egls{nautical twilight} & \egls{has sun elevation angle} & $[-12, -6)$ \\
-  \hline
-  \Egls{sun position} & \egls{astronomical twilight} & \egls{has sun elevation angle} & $[-18, -12)$ \\
-  \hline
-  \Egls{sun position} & \egls{night} & \egls{has sun elevation angle} & $[-90, -18)$ \\
-  \hline\hline
-  \Egls{temperature} & \egls{frost} & \egls{has temperature value} & $< 0$ \\
-  \hline
-  \Egls{temperature} & \egls{cold} & \egls{has temperature value} & $[0, 10)$ \\
-  \hline
-  \Egls{temperature} & \egls{below room temperature} & \egls{has temperature value} & $[10, 20)$ \\
-  \hline
-  \Egls{temperature} & \egls{room temperature} & \egls{has temperature value} & $[20, 25]$ \\
-  \hline
-  \Egls{temperature} & \egls{above room temperature} & \egls{has temperature value} & $(25, 30]$ \\
-  \hline
-  \Egls{temperature} & \egls{heat} & \egls{has temperature value} & $> 30$ \\
-  \hline\hline
-  \Egls{wind} & \egls{directional wind} & \egls{has wind direction} & $[0, 360)$ \\
-  \hline
-  \Egls{wind} & \egls{north wind} & \egls{has wind direction} & $[0, 45)\cup(315,360)$ \\
-  \hline
-  \Egls{wind} & \egls{east wind} & \egls{has wind direction} & $[45, 135)$ \\
-  \hline
-  \Egls{wind} & \egls{south wind} & \egls{has wind direction} & $[135, 225)$ \\
-  \hline
-  \Egls{wind} & \egls{west wind} & \egls{has wind direction} & $[225, 315)$ \\
-  \hline
-  \Egls{wind} & \egls{calm} & \egls{has wind speed} & $[0, 1)$ \\
-  \hline
-  \Egls{wind} & \egls{light wind} & \egls{has wind speed} & $[1, 10)$ \\
-  \hline
-  \Egls{wind} & \egls{strong wind} & \egls{has wind speed} & $[10, 20)$ \\
-  \hline
-  \Egls{wind} & \egls{storm} & \egls{has wind speed} & $\geq 20$ \\
-  \hline
-  \Egls{wind} & \egls{hurricane} & \egls{has wind speed} & $\geq 32$ \\
-  \hline\hline
-  % TODO actually instances
-  \egls{weather report} & \Egls{current weather report} & \egls{has start time} & $0$ \\
-  \hline
-  \egls{weather report} & \Egls{forecast weather report} & \egls{has start time} & $> 0$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 1 hour weather report} & \egls{has start time} & $1$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 2 hours weather report} & \egls{has start time} & $2$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 3 hours weather report} & \egls{has start time} & $3$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 6 hours weather report} & \egls{has start time} & $6$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 9 hours weather report} & \egls{has start time} & $9$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 12 hours weather report} & \egls{has start time} & $12$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 15 hours weather report} & \egls{has start time} & $15$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 18 hours weather report} & \egls{has start time} & $18$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 21 hours weather report} & \egls{has start time} & $21$ \\
-  \hline
-  \egls{weather report} & \emph{Forecast 24 hours weather report} & \egls{has start time} & $24$ \\
-  \hline
-  \egls{weather report} & \Egls{short range weather report} & \egls{has start time} & $(0, 3]$ \\
-  \hline
-  \egls{weather report} & \Egls{medium range weather report} & \egls{has start time} & $(3, 12)$ \\
-  \hline
-  \egls{weather report} & \Egls{long range weather report} & \egls{has start time} & $\geq 12$ \\
-  \hline
-  \egls{weather report} & \Egls{weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
-  \hline
-  \egls{weather report} & \Egls{weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
-  \hline
-  \egls{current weather report} & \Egls{current weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
-  \hline
-  \egls{current weather report} & \Egls{current weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
-\end{longtable}
-% TODO sub-concepts of weather state
 
 \begin{comment}
 There are sub-concepts defined by restrictions on more than one instance attribute. In such a case, columns are added to the respective table as needed. For instance, sub-concepts of \emph{Wind} have restrictions on both the instance attribute \emph{has wind speed} and on the instance attribute \emph{has wind direction}. In that case, the table has four columns: Super-concept, sub-concept, \emph{has wind speed} and \emph{has wind direction}.
@@ -733,59 +443,43 @@ In the following sections, for each concept-classification tree shown above, the
 
 \subsection{Instance tables}
 
-% TODO description of what is going on here
 % TODO
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
-  \hline
-  \textbf{Instance name} & \textbf{Concept name} & \textbf{Attribute} & \textbf{Values} \\
-  \hline\hline
-  Cloud & Weather condition & - & - \\
-  \hline
-  Fog & Weather condition & - & - \\
-  \hline
-  Partly cloudy & Weather condition & - & - \\
-  \hline
-  Mostly cloudy & Weather condition & - & - \\
-  \hline
-  Rain & Weather condition & - & - \\
-  \hline
-  Sleet & Weather condition & - & - \\
-  \hline
-  Snow & Weather condition & - & - \\
-  \hline
-  Sun & Weather condition & - & - \\
-  \hline
-  Thunder & Weather condition & - & - \\
-  \hline
-\end{longtable}
-
 \end{comment}
 
 \section{Integration}
 \label{sec:integration}
 
-One of the goals of the \thinkhomeweather ontology is to keep an eye on existing ontologies to be re-used. While analyzing the problem domain, it quickly became clear that there are four areas where already existing ontologies could be reused: Location data, measuremenr units, date/time specifications and weather concepts. Chapter \ref{ch:existing_work} already sheds some light on existing ontologies around the domain of weather data. In this section, the ontologies being short-listed for reuse within \thinkhomeweather are summarized.
+% TODO citation for first sentence?
+One of the goals when designing an ontology is to reuse existing ontologies where possible. It the domain of \thinkhomeweather, four areas have been identified where existing ontologies can be reused: These are location data, measurement units, weather concepts and specifications of date and time. Chapter \ref{ch:existing_work} sheds some light on existing ontologies around the domain of weather data. In this section, the ontologies that have found to be eligible for reuse within \thinkhomeweather are presented.
 
-% TODO reference: website, WGS84
-For location data, the W3C Semantic Web Interest Group offers a \emph{Basic Geo (WGS84 lat/long) Vocabulary}. It introduces a concept called \emph{Spatial thing} that can have \emph{latitude}, \emph{longitude} and \emph{altitude} according to the WGS 84 geodetic reference system. However, the vocabulary contains some data properties that are incorrectly defined as annotation property. This shortcoming needs to be overriden in any ontology that uses this vocabulary.
+\paragraph{Location data}
 
-% TODO reference SWEET
-NASA's SWEET ontology offers a wide range of concepts, attributes and individuals for environmental and atmospherical phenomena, including all units that may be used within a weather data ontology. SWEET is designed in a highly modular manner. Units can be found in a single OWL file. However, importing one of SWEET's OWL files into an ontology entails the import of a large number of other OWL files. As this makes any simple ontology using SWEET hard to handle, reusing SWEET is not an option.
+For location data, the \emph{W3C Semantic Web Interest Group}\footnote{\href{http://www.w3.org/2001/sw/interest/}{http://www.w3.org/2001/sw/interest/}} developed the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}. It introduces a concept called \emph{Spatial thing} and its attributes \egls{lat}, \egls{long} and \egls{alt} according to the \emph{WGS-84 geodetic reference system}\cite{WGS84}. However, the vocabulary contains some data properties that are incorrectly defined to be annotation properties. Thus, they must be redefined to be data properties whenever used in an ontology.
+
+\paragraph{Weather concepts}
+
+The \emph{SWEET} ontology\cite{SWEET}\footnote{\href{http://sweet.jpl.nasa.gov/ontology/}{http://sweet.jpl.nasa.gov/ontology/}} developed by the \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}\footnote{\href{http://www.jpl.nasa.gov/}{http://www.jpl.nasa.gov/}} offers a wide range of concepts, attributes and individuals for environmental and atmospherical phenomena, including all units that may be used in weather data ontologies. \emph{SWEET} is designed in a highly modular manner; there is a single \emph{OWL} file that provides definitions of measurement units. However, any file that is part of \emph{SWEET} depends on a number of other files belonging to that ontology and these in turn have dependencies. Thus, importing one of \emph{SWEET}'s \emph{OWL} files entails the import of a large number of other files; a simple ontology like \thinkhomeweather becomes hard to handle. Hence, reusing \emph{SWEET} is not an option.
 
 Besides SWEET, there is no ontology containing weather concepts that has been determined to be appropriate for use within the \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
 
-% TODO reference: http://forge.morfeo-project.org/wiki_en/index.php/Units_of_measurement_ontology
+\paragraph{Units of measurement}
+
 % TODO reference: http://idi.fundacionctic.org/muo/muo-vocab.html
-The \emph{Measurement Units Ontology} is a simple and light-weight approach to enrich measurement values with appropriate units. Some of the most important units are pre-defined, all others can easily be added. The \emph{Measurement Units Ontology} (MUO) is still work in progress. However, it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, MUO can be imported into any ontology without problems.
+The \emph{Measurement Units Ontology}\footnote{\href{http://idi.fundacionctic.org/muo/muo-vocab.html}{http://idi.fundacionctic.org/muo/muo-vocab.html}}\cite{MUO} is a simple and light-weight approach to enrich measurement values in an ontology with appropriate units. Some of the most important units are pre-defined, all others can easily be added. The \emph{Measurement Units Ontology} (MUO) is still work in progress. However, it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, MUO can be imported into any ontology without problems.
 
 Besides the \emph{Measurement Units Ontology}, several other ontologies have been examined, but all of them came with shortcomings that led to the decision not to use them in the \thinkhomeweather ontology. These ontologies are:
 \begin{itemize}
   \item \textbf{SWEET:} Besides concepts, attributes and individuals for atmospherical phenomena, SWEET also comes with support for literals more precisely specified by units. However, as mentioned above importing any part of SWEET entails the import of a large number of OWL files that makes handling a ontology using SWEET difficult. Hence, SWEET is not used for introducing units into the \thinkhomeweather ontology.
-  \item \textbf{QUDT:} \emph{QUDT}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an OWL ontology. However, \emph{QUDT} does not work in \protege together with the Pellet reasoner. Using \emph{QUDT} would require several changes to the OWL files. Hence, it cannot be used in the \thinkhomeweather ontology. % TODO reference http://www.qudt.org/
-  \item \textbf{QUOMOS:} The \emph{OASIS Quantities and Units of Measure Ontology Standard} (\emph{QUOMOS}) aims at developing ``an ontology for quantities, systems of measurement units, and base dimensions for use across multiple industries''. However, at the time of writing, there is no release of any OWL ontology yet. % TODO reference https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=quomos
+  \item \textbf{QUDT:} \emph{QUDT}\footnote{\href{http://www.qudt.org/}{http://www.qudt.org/}}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an OWL ontology. However, \emph{QUDT} does not work in \protege together with the \emph{Pellet} reasoner. Using \emph{QUDT} would require several changes to its \emph{OWL} files. Hence, it cannot be used in the \thinkhomeweather ontology.
+  \item \textbf{QUOMOS:} The \emph{OASIS Quantities and Units of Measure Ontology Standard} (\emph{QUOMOS})\footnote{\href{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}} aims at developing ``an ontology for quantities, systems of measurement units, and base dimensions for use across multiple industries''. However, at the time of writing, as no deliverables have been released, it cannot be used in \thinkhomeweather.
   \item \textbf{OBO Foundry Initiative:} The \emph{OBO Foundry Initiative} is an initiative that aims at collecting ontologies for use in the biomedical domain. The list of \emph{The Open Biological and Biomedical Ontologies} (abbreviated by \emph{OBO}) includes an ontology for units of measurements. This ontology apparently covers most of the units that are used in the \thinkhomeweather ontology. However, it lacks any documentation and hence cannot be used in \thinkhomeweather. % TODO reference http://obofoundry.org/ and http://obofoundry.org/cgi-bin/detail.cgi?id=unit and http://code.google.com/p/unit-ontology/
+  % TODO mention http://www.semantic-web-journal.net/sites/default/files/swj177_7.pdf
 \end{itemize}
+
+% TODO move performance loss to a later chapter
 Although the \emph{Measurement Units Ontology} has the shortcoming of making OWL reasoning clearly slower, it is the only ontology that has been determined to be usable in the \thinkhomeweather ontology flawlessly.
+
+\paragraph{Date and time}
 
 % TODO reference W3C consortium
 % TODO reference W3C working draft definition

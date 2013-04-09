@@ -1,11 +1,372 @@
 % TODO
-% TODO change name to 'sample data'?
-\chapter{Listings}
+\chapter{Tables and listings}
 \label{ch:listings}
 
 % TODO
 
-This appendix contains sample data that is referenced from other chapters.
+This appendix contains tables and listings that are referenced from other chapters.
+
+\section{Conceptualisation tables for \thinkhomeweather}
+\label{sec:appendix_conceptualisation}
+
+% TODO description
+
+% TODO reorder
+\subsection{Concept dictionaries}
+\label{subsec:appendix_concept_dictionaries}
+
+A \emph{Concept dictionary} lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section~\ref{sec:concept_classification_trees}.
+
+In the following tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
+
+% TODO move all tables starting from here to the appendix
+
+\subsubsection{Weather condition}
+
+\begin{longtable}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Relations} \\
+  \hline\hline
+  \Egls{weather condition} & \emph{cloud}, \emph{fog}, \emph{partly cloudy}, \emph{mostly cloudy}, \emph{rain}, \emph{sleet}, \emph{snow}, \emph{sun}, \emph{thunder} & \egls{has condition} \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather phenomenon}
+
+\begin{longtable}{|p{.25\textwidth}|p{.3\textwidth}|p{.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instance attributes} & \textbf{Relations} \\
+  \hline
+  \Egls{atmospheric pressure} & \egls{has pressure value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{dew point} & \egls{has dew point value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{humidity} & \egls{has humidity value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{precipitation} & \egls{has precipitation intensity},\newline \egls{has precipitation probability} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{sun position} & \egls{has sun elevation angle},\newline \egls{has sun direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{solar radiation} & \egls{has solar radiation value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{temperature} & \egls{has temperature value} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{weather phenomenon} & - & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+  \Egls{wind} & \egls{has wind speed},\newline \egls{has wind direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather report}
+
+\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  \Egls{weather report} & \Egls{has priority}, \Egls{location}, \newline \Egls{has start time}, \Egls{has end time},\newline \Egls{has observation time}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather state}
+
+% TODO sub-concepts
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \hline\hline
+  \Egls{weather state} & - & - & - & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon}\\
+  \hline
+\end{longtable}
+
+\subsubsection{Weather source}
+
+\begin{longtable}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Relations} \\
+  \hline\hline
+  \Egls{weather source} & \egls{is source of}, \egls{has source} \\
+  \hline
+  \Egls{sensor source} & \egls{is source of}, \egls{has source} \\
+  \hline
+  \Egls{service source} & \egls{is source of}, \egls{has source} \\
+  \hline
+\end{longtable}
+
+\subsection{Instance attribute tables}
+\label{subsec:appendix_instance_attribute_tables}
+
+% TODO add instant, interval and temporalentity to glossary
+
+% TODO description of what is going on here
+% TODO
+
+The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. \emph{time:instant} and \emph{time:interval} refer to the types \emph{Instant} and \emph{Interval} from the \emph{OWL-Time}  ontology\cite{owl-time}.
+
+% TODO remove times and location from here as they are not instance attributes
+\begin{longtable}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+  \hline
+  \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
+  \hline\hline
+  \egls{alt} & \Egls{location} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
+  \hline
+  \egls{has cloud altitude} & \Egls{cloud cover} & \emph{xsd:decimal} & \emph{any values allowed} & \metre & $(1, 1)$ \\
+  \hline
+  \egls{has cloud cover} & \Egls{cloud cover} & \emph{xsd:integer} & $[0, 9]$ & \Egls{okta} & $(1, 1)$ \\
+  \hline
+  \egls{has dew point value} & \Egls{dew point} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
+  \hline
+  \egls{has end time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
+  \hline
+  \egls{has humidity value} & \Egls{humidity} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
+  \hline
+  \egls{lat} & \Egls{location} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
+  \hline
+  \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \degree\space(degrees) & $(1, 1)$ \\
+  \hline
+  \egls{observation time} & \Egls{weather report} & \emph{time:instant} & \emph{any values allowed} & - & $(1, 1)$ \\
+  \hline
+  \egls{has precipitation intensity} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, \infty)$ & \milli\metre\per\hour & $(1, 1)$ \\
+  \hline
+  \egls{has precipitation probability} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
+  \hline
+  \egls{has pressure value} & \Egls{atmospheric pressure} & \emph{xsd:decimal} & $[0, \infty)$ & \hecto\pascal & $(1, 1)$ \\
+  \hline
+  \egls{has start time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
+  \hline
+  \egls{has solar radiation value} & \Egls{solar radiation} & \emph{time:decimal} & $[0, \infty)$ & \watt\per\squaren\meter & $(1, 1)$ \\
+  \hline
+  \egls{has sun direction} & \Egls{sun position} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
+  \hline
+  \egls{has sun elevation angle} & \Egls{sun position} & \emph{xsd:decimal} & $[-90, 90]$ & \degree\space(degrees) & $(1, 1)$ \\
+  \hline
+  \egls{has temperature value} & \Egls{temperature} & \emph{xsd:decimal} & \emph{any values allowed} & \celsius & $(1, 1)$ \\
+  \hline
+  \egls{has wind direction} & \Egls{wind} & \emph{xsd:decimal} & $[0, 360)$ & \degree\space(degrees) & $(1, 1)$ \\
+  \hline
+  \egls{has wind speed} & \Egls{wind} & \emph{xsd:decimal} & $[0, \infty)$ & \metre\per\second & $(1, 1)$ \\
+  \hline
+\end{longtable}
+
+\subsection{Class attributes}
+\label{subsec:appendix_class_attributes}
+
+% TODO description
+
+% TODO 
+\begin{longtable}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
+  \hline\hline
+  \Egls{atmospheric pressure} & \Egls{very low pressure} & \egls{has pressure value} & $< 998$ \\
+  \hline
+  \Egls{atmospheric pressure} & \Egls{low pressure} & \egls{has pressure value} &  $[998, 1008)$ \\
+  \hline
+  \Egls{atmospheric pressure} & \Egls{average pressure} & \egls{has pressure value} &  $[1008, 1018)$ \\
+  \hline
+  \Egls{atmospheric pressure} & \Egls{high pressure} & \egls{has pressure value} &  $[1018, 1028)$ \\
+  \hline
+  \Egls{atmospheric pressure} & \Egls{very high pressure} & \egls{has pressure value} &  $\geq 1028$ \\
+  \hline\hline
+  \Egls{cloud cover} & \Egls{clear sky} & \egls{has cloud cover} & 0 \\
+  \hline
+  \Egls{cloud cover} & \Egls{partly cloudy} & \egls{has cloud cover} & 1, 2, 3, 4 \\
+  \hline
+  \Egls{cloud cover} & \Egls{mostly cloudy} & \egls{has cloud cover} & 5, 6, 7 \\
+  \hline
+  \Egls{cloud cover} & \Egls{overcast} & \egls{has cloud cover} & 8 \\
+  \hline
+  \Egls{cloud cover} & \Egls{unknown cloud cover} & \egls{has cloud cover} & 9 \\
+  \hline\hline
+  \Egls{humidity} & \Egls{very dry} & \egls{has humidity value} & $< 0.3$ \\
+  \hline
+  \Egls{humidity} & \Egls{dry} & \egls{has humidity value} & $[0.3, 0.4)$ \\
+  \hline
+  \Egls{humidity} & \Egls{normal humidity} & \egls{has humidity value} & $[0.4, 0.7]$ \\
+  \hline
+  \Egls{humidity} & \Egls{moist} & \egls{has humidity value} & $(0.7, 0.8]$ \\
+  \hline
+  \Egls{humidity} & \Egls{very moist} & \egls{has humidity value} & $> 0.8$ \\
+  \hline\hline
+  % TODO precipitation probability
+  \Egls{precipitation} & \Egls{no rain} & \egls{has precipitation intensity} & - \\
+  \hline
+%  \Egls{precipitation} & No rain & - & $0$ \\
+%  \hline
+  \Egls{precipitation} & \Egls{light rain} & \egls{has precipitation intensity} & $(0, 5]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{medium rain} & \egls{has precipitation intensity} & $(5, 20]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{heavy rain} & \egls{has precipitation intensity} & $(20, 50]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{extremely heavy rain} & \egls{has precipitation intensity} & $(50, 100]$ \\
+  \hline
+  \Egls{precipitation} & \Egls{tropical storm rain} & \egls{has precipitation intensity} & $> 100$ \\
+  \hline\hline
+  \Egls{solar radiation} & \Egls{no radiation} & \egls{has solar radiation value} & $0$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{low radiation} & \egls{has solar radiation value} & $(0, 250)$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{medium radiation} & \egls{has solar radiation value} & $[250, 500)$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{high radiation} & \egls{has solar radiation value} & $[500, 750)$ \\
+  \hline
+  \Egls{solar radiation} & \Egls{very high radiation} & \egls{has solar radiation value} & $\geq 750$ \\
+  \hline\hline
+  \Egls{sun position} & \egls{sun from north} & \egls{has sun direction} & $(0, 45]\cup(315, 360)$ \\
+  \hline
+  \Egls{sun position} & \egls{sun from east} & \egls{has sun direction} & $(45, 135]$ \\
+  \hline
+  \Egls{sun position} & \egls{sun from south} & \egls{has sun direction} & $(135, 225]$ \\
+  \hline
+  \Egls{sun position} & \egls{sun from west} & \egls{has sun direction} & $(225, 315]$ \\
+  \hline
+  \Egls{sun position} & \egls{day} & \egls{has sun elevation angle} & $[0, 90]$ \\
+  \hline
+  \Egls{sun position} & \egls{solar twilight} & \egls{has sun elevation angle} & $[0, 6)$ \\
+  \hline
+  \Egls{sun position} & \egls{sun below horizon} & \egls{has sun elevation angle} & $[-90, 0)$ \\
+  \hline
+  \Egls{sun position} & \egls{twilight} & \egls{has sun elevation angle} & $[-18, 0)$ \\
+  \hline
+  \Egls{sun position} & \egls{civil twilight} & \egls{has sun elevation angle} & $[-6, 0)$ \\
+  \hline
+  \Egls{sun position} & \egls{nautical twilight} & \egls{has sun elevation angle} & $[-12, -6)$ \\
+  \hline
+  \Egls{sun position} & \egls{astronomical twilight} & \egls{has sun elevation angle} & $[-18, -12)$ \\
+  \hline
+  \Egls{sun position} & \egls{night} & \egls{has sun elevation angle} & $[-90, -18)$ \\
+  \hline\hline
+  \Egls{temperature} & \egls{frost} & \egls{has temperature value} & $< 0$ \\
+  \hline
+  \Egls{temperature} & \egls{cold} & \egls{has temperature value} & $[0, 10)$ \\
+  \hline
+  \Egls{temperature} & \egls{below room temperature} & \egls{has temperature value} & $[10, 20)$ \\
+  \hline
+  \Egls{temperature} & \egls{room temperature} & \egls{has temperature value} & $[20, 25]$ \\
+  \hline
+  \Egls{temperature} & \egls{above room temperature} & \egls{has temperature value} & $(25, 30]$ \\
+  \hline
+  \Egls{temperature} & \egls{heat} & \egls{has temperature value} & $> 30$ \\
+  \hline\hline
+  \Egls{wind} & \egls{directional wind} & \egls{has wind direction} & $[0, 360)$ \\
+  \hline
+  \Egls{wind} & \egls{north wind} & \egls{has wind direction} & $[0, 45)\cup(315,360)$ \\
+  \hline
+  \Egls{wind} & \egls{east wind} & \egls{has wind direction} & $[45, 135)$ \\
+  \hline
+  \Egls{wind} & \egls{south wind} & \egls{has wind direction} & $[135, 225)$ \\
+  \hline
+  \Egls{wind} & \egls{west wind} & \egls{has wind direction} & $[225, 315)$ \\
+  \hline
+  \Egls{wind} & \egls{calm} & \egls{has wind speed} & $[0, 1)$ \\
+  \hline
+  \Egls{wind} & \egls{light wind} & \egls{has wind speed} & $[1, 10)$ \\
+  \hline
+  \Egls{wind} & \egls{strong wind} & \egls{has wind speed} & $[10, 20)$ \\
+  \hline
+  \Egls{wind} & \egls{storm} & \egls{has wind speed} & $\geq 20$ \\
+  \hline
+  \Egls{wind} & \egls{hurricane} & \egls{has wind speed} & $\geq 32$ \\
+  \hline\hline
+  % TODO actually instances
+  \egls{weather report} & \Egls{current weather report} & \egls{has start time} & $0$ \\
+  \hline
+  \egls{weather report} & \Egls{forecast weather report} & \egls{has start time} & $> 0$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 1 hour weather report} & \egls{has start time} & $1$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 2 hours weather report} & \egls{has start time} & $2$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 3 hours weather report} & \egls{has start time} & $3$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 6 hours weather report} & \egls{has start time} & $6$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 9 hours weather report} & \egls{has start time} & $9$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 12 hours weather report} & \egls{has start time} & $12$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 15 hours weather report} & \egls{has start time} & $15$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 18 hours weather report} & \egls{has start time} & $18$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 21 hours weather report} & \egls{has start time} & $21$ \\
+  \hline
+  \egls{weather report} & \emph{Forecast 24 hours weather report} & \egls{has start time} & $24$ \\
+  \hline
+  \egls{weather report} & \Egls{short range weather report} & \egls{has start time} & $(0, 3]$ \\
+  \hline
+  \egls{weather report} & \Egls{medium range weather report} & \egls{has start time} & $(3, 12)$ \\
+  \hline
+  \egls{weather report} & \Egls{long range weather report} & \egls{has start time} & $\geq 12$ \\
+  \hline
+  \egls{weather report} & \Egls{weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
+  \hline
+  \egls{weather report} & \Egls{weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
+  \hline
+  \egls{current weather report} & \Egls{current weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
+  \hline
+  \egls{current weather report} & \Egls{current weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
+\end{longtable}
+% TODO sub-concepts of weather state
+
+\subsection{Instance tables}
+\label{subsec:appendix_instance_tables}
+
+% TODO description of what is going on here
+% TODO
+\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Instance name} & \textbf{Concept name} & \textbf{Attribute} & \textbf{Values} \\
+  \hline\hline
+  Cloud & Weather condition & - & - \\
+  \hline
+  Fog & Weather condition & - & - \\
+  \hline
+  Partly cloudy & Weather condition & - & - \\
+  \hline
+  Mostly cloudy & Weather condition & - & - \\
+  \hline
+  Rain & Weather condition & - & - \\
+  \hline
+  Sleet & Weather condition & - & - \\
+  \hline
+  Snow & Weather condition & - & - \\
+  \hline
+  Sun & Weather condition & - & - \\
+  \hline
+  Thunder & Weather condition & - & - \\
+  \hline
+\end{longtable}
+
+\subsection{Binary relations table}
+\label{subsec:appendix_binary_relations_table}
+
+% TODO
+The \emph{Binary relation table} specifies all relations from section~\ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
+
+\begin{longtable}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
+  \hline\hline
+  \egls{belongs to state} & \Egls{weather phenomenon} & \Egls{weather state} & $1$ & \egls{has weather phenomenon} \\
+  \hline
+  \egls{belongs to weather report} & \Egls{weather state} & \Egls{weather report} & $1$ & \egls{has weather state} \\
+  \hline
+  \egls{has condition} & \Egls{weather state} & \Egls{weather condition} & $N$ & - \\
+  \hline
+  \egls{has next weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has previous weather state} \\
+  \hline
+  \egls{has previous weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has next weather state} \\
+  \hline
+  \egls{has source} & \Egls{weather report} & \Egls{weather source} & $1$ & \egls{is source of} \\
+  \hline
+  \egls{has weather phenomenon} & \Egls{weather state} & \Egls{weather phenomenon} & $N$ & \egls{belongs to state} \\
+  \hline
+  \egls{has weather state} & \Egls{weather report} & \Egls{weather state} & $1$ & \egls{belongs to weather report} \\
+  \hline
+  \egls{is source of} & \Egls{weather source} & \Egls{weather report} & $N$ & \egls{has source} \\
+  \hline
+\end{longtable}
 
 \section{Output of \emph{Weather Importer} in \emph{Turtle syntax}}
 \label{sec:appendix_turtle_output}
