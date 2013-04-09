@@ -568,65 +568,36 @@ Thus, all non-functional requirements are met by \thinkhomeweather.
 
 \thinkhomeweather meets its functional requirements if it provides answers to all competency questions. This section evaluates if answers are provided and how answers can be drawn from the ontology.
 
+For the following questions, \thinkhomeweather can give straight answers:
 \begin{itemize}
-  \item \textbf{What is the current weather situation?}\\
-    The current weather situation is represented by an instance of \Egls{current weather report}, an instance of \Egls{weather state} connected to it via the property \Egls{has weather state}, the instances of \Egls{Weather condition} linked to the \Egls{weather state} using the property \egls{has condition} and all instances of \Egls{weather phenomenon} associated with the \Egls{weather state} via the property \egls{has weather phenomenon}. These instances together with the values of their instance attributes provide information about the current weather state.
-    
-  \item \textbf{What will the weather situation be in one hour, in two hours, …, in 24 hours?}\\
-    The weather situation in one hour is represented by an instance of \emph{Forecast 1 hour weather report} together with associated instances of \Egls{weather state}, \Egls{weather condition} and \Egls{weather phenomenon}. These instances provide information about the weather situation in one hour in the same way as information is provided about the current weather situation.\\
-    The weather situations in 2, 3, 6, 9, 12, 15, 18, 21, and 24 hours are provided in the same way.
-    
-  \item \textbf{What is the current temperature, humidity, wind speed, …?}\\
-    The current weather situation is represented by an instance of \Egls{current weather report}. Using the property \egls{has weather state}, an instance of \Egls{weather state} is connected. This \Egls{weather state} has an arbitrary number of instances of \Egls{weather phenomenon} linked to it via the property \egls{has weather phenomenon}. These instances of \Egls{weather phenomenon} provide current measurement values for all weather elements implemented in the ontology.\\
-    Furthermore, instances of \Egls{weather condition} are linked to the \Egls{current weather report} using the property \egls{has condition}.
-    
-  \item \textbf{What will be the temperature, humidity, wind speed, … in one hour, in two hours, …, in 24 hours?}\\
-    The ontology can answer questions about weather elements in future weather situations in the same way it answers them about weather elements in the current weather situation.
-    
-  \item \textbf{What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?}\\ % TODO reference open world assumption
-    Due to the \emph{Open World Assumption} (\emph{OWL}), it is not possible for an \emph{OWL} reasoner to determine minimum or maximum values of a set of values where values can be added. However, any program that accesses the ontology can find minimum and maximum values.
-    
-  \item \textbf{Will the weather change? Will the temperature, humidity, … rise or fall?}\\ % TODO HM
-    The \thinkhomeweather ontology does not link consecutive instances of \emph{Weather report} or \emph{Weather state} to each other. Hence, the ontology does not provide any information about weather changes. Again, any program using the ontology can get data about all weather situations and compare them in order to find out if the weather will change or if the measurement value of a certain weather element will rise or fall.
-    
-  \item \textbf{Does it rain? Will it rain in the next hours? Will it rain today?}\\
-    If precipitation data is available, every instance of \Egls{weather state} has a property \egls{has weather phenomenon} that links an instance of \Egls{precipitation} to it. The attributes of that instance provide values for chance and intensity of rain. There are several sub-concepts of \Egls{precipitation} (\Egls{no rain}, \Egls{light rain}, \Egls{medium rain}, \Egls{heavy rain}, \Egls{extremely heavy rain} and \Egls{tropical storm rain}).\\
-    Furthermore, there are sub-concepts of \Egls{weather state} regarding precipitation which are \Egls{no rain weather}, \Egls{rainy weather} and \Egls{very rainy weather}. These concepts provide general knowledge about precipitation for the respective \Egls{weather state}.\\
-    Although the \thinkhomeweather ontology cannot tell whether it will rain in the next 24 hours, it can tell if it will be raining at a certain time in the next 24 hours. Any program using the ontology can use this information and draw conclusions based on it.
-    
-  \item \textbf{Will there be sunshine today?}\\
-    Again, the \thinkhomeweather ontology only provides data about sunshine at certain points of time. A proposition like ``There will be sunshine today'' can only be made by a program using \thinkhomeweather.\\
-    There are several concepts providing information about the sun's state. First of all, there is the concept \emph{Sun position} that specifies the elevation angle of the sun above horizon and the direction of the sun. The sub-concept \emph{Day} of \emph{Sun position} states whether sunshine is possible at all. \emph{Sun below horizon}, another sub-concept of \emph{Sun position} represents the sun at a position below the horizon, hence sunshine is not possible at all.\\
-    Cloud coverage is another factor for sunshine being possible. The concept \emph{Cloud cover} together with its sub-concepts \emph{Clear sky}, \emph{Party cloudy}, \emph{Mostly cloudy} and \emph{Overcast} specifies cloud coverage with regard to sunshine.\\
-    At last, the instance \emph{Sun} of \emph{Weather condition} indicates (possible) sunshine.
-    
-  \item \textbf{Do we need to irrigate the garden?}\\
-    To decide whether irrigation is necessary, the instances of the concept \emph{Precipitation} together with its sub-concepts (\emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain} and \emph{Tropical storm rain}) can be used that provide information about chance and intensity of precipitation for certain \emph{Weather states}. Furthermore, there are sub-concepts of \emph{Weather state} that provide information about precipitation (\emph{No rain weather}, \emph{Rainy weather} and \emph{Very rainy weather}).\\
-    Any program using the \thinkhomeweather ontology can collect data for several instances of \emph{Weather report} and \emph{Weather state} and use the acquired data to decide whether to irrigate the garden or not.
-    
-  \item \textbf{Will there be severe weather?}\\
-    To determine whether there is severe weather, one can use the sub-concept \emph{Severe weather} of the concept \emph{Weather state}. Alternatively, the instances of \emph{Weather phenomenon} linked to the \emph{Weather state} via the property \emph{has weather phenomenon} can be used (especially its sub-concepts \emph{Wind} and \emph{Precipitation} and their respective sub-concepts).\\
-    Anything that goes beyond a single \emph{Weather report} or \emph{Weather state} must be processed in an external program.
-    
-  \item \textbf{Will temperature drop/stay below $0^\circ C$?}\\
-    For a certain \emph{Weather state}, temperature is below $0^\circ C$ if an instance of \emph{Frost} is linked to it via the property \emph{has weather phenomenon}. However, determining whether there is any \emph{Weather state} with an instance of \emph{Frost} linked to it must be again done in an external program as the \thinkhomeweather ontology does not provide that functionality.
-    
-  \item \textbf{When can we open windows and when do we have to keep them shut?}\\ % TODO alphabetical order
-    There a several sub-concepts of \emph{Weather state} which indicate that opening or closing windows makes sense or is necessary; these are \emph{Fair weather}, \emph{Airing weather}, \emph{Pleasant temperature weather}, \emph{Windy weather}, \emph{Very windy weather}, \emph{Severe weather}, \emph{Hot weather}, \emph{Cold weather} and \emph{Thunderstorm}. Furthermore, all instances of \emph{Weather phenomenon} linked to a certain instance of \emph{Weather state} together with their respective attributes can be used to decide whether to open or close the windows.\\
-    Again, anything that goes beyond a single \emph{Weather report} or \emph{Weather state} must be processed in an external program.
-    
-  \item \textbf{When do we need sun protection?}\\
-    Sun protection is only necessary if there is sunshine (see question ``Will there be sunshine today?'' above). Furthermore, it is relevant from which direction the sun is shining; this information is provided by the concept \emph{Sun position} and its property \emph{has sun direction}. There are four sub-concepts (\emph{Sun from North}, \emph{Sun from East}, \emph{Sun from South} and \emph{Sun from West}) that indicate the approximate direction.\\
-    Furthermore, one must pay attention to the fact that strong wind can break awnings. The concept \emph{Wind} and its property \emph{has wind speed} can be used to know whether there is wind that may be too strong; \emph{Wind} has the sub-concepts \emph{Strong wind}, \emph{Storm} and \emph{Hurricane} for simplifying that decision.\\
-    \emph{Weather state} has three relevant sub-concepts: \emph{Windy weather}, \emph{Stormy weather} and \emph{No awning weather}. The latter is introduced especially with awnings in mind that can be broken by strong wind.
-    
-  \item \textbf{When will it outside be colder than inside the house? When will it be warmer?}\\
-    The sub-concept \emph{Room temperature} of \emph{Temperature} represents a temperature of at least $20^\circ C$ and at most $25^\circ C$. Temperatures above are represented by \emph{Above room temperature} (at most $30^\circ C$) and \emph{Heat} (everything above). Temperatures below are represented by \emph{Below room temperature} (at least $10^\circ C$), \emph{Cold} (at least $0^\circ C$ and less than $10^\circ C$) and \emph{Frost} (everything below $0^\circ C$).\\
-    Furthermore, there is a sub-concept \emph{Pleasant temperature weather} of \emph{Weather state} that represents a weather state with a temperature of at least $10^\circ C$ and at most $30^\circ C$.\\
-    Again, anything that goes beyond a single \emph{Weather report} or \emph{Weather state} must be processed in an external program.
+  \item What is the current weather situation?
+  \item What will the weather situation be in one hour, in two hours, …, in 24 hours?
+  \item What is the current temperature, humidity, wind speed, …?
+  \item What will be the temperature, humidity, wind speed, … in one hour, in two hours, …, in 24 hours?
+  \item Does it rain?
+\end{itemize}
+To answer any of these questions, the relevant instance of \Egls{weather report} must be identified. Via the property \egls{has weather state}, an instance of \Egls{weather state} is connected to it; this instance has in turn an arbitrary number of \egls{has weather phenomenon} properties each linking to an instance of \Egls{weather phenomenon}. The information from these instances of \Egls{weather phenomenon} provide the desired answer.
+
+However, there are questions that cannot be answered by \thinkhomeweather as writing rules to infer answers would be too complicated in \emph{OWL}:
+\begin{itemize}
+  \item Will the weather change? Will the temperature, humidity, … rise or fall?
+  \item Do we need to irrigate the garden?
 \end{itemize}
 
-The \thinkhomeweather ontology can answer most competency questions satisfactorily. Anything that cannot be answered using the \thinkhomeweather ontology (everything that includes more than one \emph{Weather report} or \emph{Weather state}) is difficult or impossible in OWL. These questions can only be answered using external programs that use data from the \thinkhomeweather ontology. However, the ontology provides all relevant data for answering all questions.
+% TODO reference open world assumption
+Furthermore, there are questions that cannot be answered using an \emph{OWL} ontology due to the \emph{Open World Assumption} (\emph{OWA}). For instance, an \emph{OWL} reasoner cannot determine that some attribute value is the lowest one as it does not know whether there may be another value it does not know about; the reasoner only knows about the presence of individuals and attribute values, but nothing about their absence.
 
-Hence, the ontology constructed in the previous sections complies with its specification in section \ref{sec:ontology_specification}.
+\begin{itemize}
+  \item What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?
+  \item Will it rain in the next hours? Will it rain today?
+  \item Will there be sunshine today?
+  \item Will there be severe weather?
+  \item Will temperature drop/stay below \SI{0}{\celsius}?
+  \item When can we open windows and when do we have to keep them shut?
+  \item When do we need sun protection?
+  \item When will it outside be colder than inside the house? When will it be warmer?
+\end{itemize}
 
+However, for each of the above competency questions, whether a direct answer can be given or not, \thinkhomeweather can provide all available data; an external program that does not rely on the \emph{Open World Assumption} can access this data and generate an answer.
+
+Hence, the ontology constructed in this chapter complies with its specification in section \ref{sec:ontology_specification}.
