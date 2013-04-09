@@ -176,6 +176,9 @@ NEW:
 * ORequirementsSpecification.pdf
   Mari Carmen Suárez-Figueroa, Asunción Gómez-Pérez, and Boris Villazón-Terrazas: How to write and use the Ontology Requirements Specification Document
 
+* swj177_7.pdf
+  Carsten Keßler, Mathieu d’Aquin, Stefan Dietze: Ontology of Units of Measure and Related Concepts
+
 
 NEW (2013-04-09):
 
