@@ -322,3 +322,108 @@ When will it outside be colder than inside the house? When will it be warmer? & 
 \label{table:competency_questions}
 \caption{Assignment of competency questions to weather element(s)}
 \end{table}
+
+
+\begin{comment}
+\subsection{Weather data}
+\label{subsec:weather_data_yr_no}
+
+% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
+For an arbitrary request, one must specify latitude and logitude (in degrees, nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a URL of the format
+
+% TODO move this definition to some other position
+% TODO improve formatting of lstlisting environments
+\lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
+\begin{lstlisting}
+http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}
+http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>;msl=<altitude>
+\end{lstlisting}
+
+is built, e.g.
+
+\begin{lstlisting}
+http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
+\end{lstlisting}
+
+% TODO explicitly name lat, lon, msl for Vienna
+for the city of Vienna, Austria. A GET request to this URL returns an XML document conforming to the XML Schema definition that can be found
+% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema
+online.
+
+The structure of the XML document is as follows (attributes are omitted for better readability):
+
+\begin{lstlisting}
+<weatherdata>
+	<meta>
+		<model />
+	</meta>
+	<product>
+		/* ... */
+	</product>
+</weatherdata>
+\end{lstlisting}
+
+The attributes of the <model> element specify when the forecast has been created, when it will be updated for the next time and what date and time of the first and the last forecast returned are.
+
+There is an arbitrary number of <time> elements that are children of the <product> element. Every <time> element represents the weather forecast for a certain period of time. Each <time> element has a <location> element that has a child element for each weather property.
+
+This is a typical <time> element:
+
+\begin{lstlisting}
+<time datatype="forecast" from="2011-10-17T09:00:00Z" to="2011-10-17T09:00:00Z">
+	<location altitude="171" latitude="48.2100" longitude="16.3700">
+		<temperature id="TTT" unit="celcius" value="8.5" />
+		<windDirection id="dd" deg="140.3" name="SE" />
+		<windSpeed id="ff" mps="4.5" beaufort="3" name="Lett bris" />
+		<humidity value="45.1" unit="percent" />
+		<pressure id="pr" unit="hPa" value="1027.6" />
+		<cloudiness id="NN" percent="0.0" />
+		<fog id="FOG" percent="0.0" />
+		<lowClouds id="LOW" percent="0.0" />
+		<mediumClouds id="MEDIUM" percent="0.0" />
+		<highClouds id="HIGH" percent="0.0" />
+	</location>
+</time>
+\end{lstlisting}
+
+% TODO format names?
+% TODO group names (e.g. for temperature, humidity, clouds, ...)?
+The names of the elements that are allowed to be children of the <location> element are: groundCover, pressure, maximumPrecipitation, highestTemperature, lowestTemperature, precipitation, fog, cloudiness, lowClouds, mediumClouds, highClouds, temperature, dewpointTemperature, minTemperatureDay, minTemperatureNight, maxTemperatureDay, maxTemperatureNight, uv, tidalwater, currentDirection, maxWaveHeight, surfaceTemperature, waveDirection, wavePeriod, waveHeight, humidity, bias, numberofobservations, meanabsoluteerror, score, windDirection, windSpeed, maxWindSpeed, stateOfTheSea, snowDepth, weather, symbol, forest-fire, windProbability, temperatureProbability and symbolProbability.
+
+None of the child elements are required. However, for most places of the world, the XML document contains <location> elements having two different sets of child elements:
+
+\begin{itemize}
+  \item Some <location> elements have the child elements temperature, windDirection, windSpeed, humidity, pressure, cloudiness, fog, lowClouds, mediumClouds and highClouds (as shown above). The values of the attributes from and to of the enclosing <time> element are equal.
+  \item Some <location> elements have the child elements precipitation and symbol; the values of the attributes from and to of the enclosing <time> element differ by three to six hours; such an element looks like this:
+\end{itemize}
+
+\begin{lstlisting}
+<time datatype="forecast" from="2011-10-17T03:00:00Z" to="2011-10-17T09:00:00Z">
+	<location altitude="171" latitude="48.2100" longitude="16.3700">
+		<precipitation unit="mm" value="0.0" />
+		<symbol id="SUN" number="1" />
+	</location>
+</time>
+\end{lstlisting}
+
+The content of the XML document covers a period of nine days, starting at the current day.
+
+\subsection{Position of the sun}
+\label{subsec:sun_position}
+
+% TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
+Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon will be provided. The angle of the sun at solar noon is also given.
+
+However, these data are inappropriate for use within the \thinkhomeweather ontology as every \emph{Weather state} may be linked to an instance of \emph{Sun position}. \emph{Sun position} has two attributes which are \emph{has sun elevation angle} and \emph{has sun direction} that specify the sun's position. However, none of these values can be calculated from the data provided by \emph{yr.no}.
+
+% TODO reference PSA algorithm: http://www.sciencedirect.com/science/article/pii/S0038092X00001560
+% TODO reference SPA algorithm:  Reda, I.; Andreas, A. (2003): Solar Position Algorithm for Solar Radiation Applications. NREL Report No. TP-560-34302, Revised January 2008
+% TODO reference http://www.psa.es/sdg/sunpos.htm - terms of use?
+% TODO give informations about precision of PSA and SPA
+There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time. The \emph{SPA algorithm} is a rather complicated algorithm, but it yields results with uncertainities of less than 0.0003 degrees. A simpler algorithm is the \emph{PSA algorithm}. Its results differ from the actual values more than the ones calculated by the \emph{SPA algorithm}. As approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology, the \emph{PSA algorithm} is suitable for use by the \emph{WeatherReader} application. There are even complete implementations of PSA in C++ that can easily be ported to Java.
+\end{comment}

@@ -19,7 +19,6 @@ Based on these insights, this chapter describes the process of designing the \th
 
 \section{Conventions}
 \label{sec:ontology_conventions}
-% TODO? \addcontentsline{toc}{section}{Conventions}
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/template.png}
@@ -39,23 +38,20 @@ All diagrams in this chapter showing parts of an ontology adhere to the followin
   \item \emph{Instances} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
   \item \emph{Blank nodes} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
   \item \emph{Literals} are drawn as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
-  % TODO remove citations?
   \item \emph{Properties in the RDF\cite{RDF} and RDFS\cite{RDFS} namespace} are drawn as dashed lines. Their caption is written in \emph{italics}.
   \item \emph{Properties in other namespaces} are drawn as solid lines. Their caption is \emph{not} written in \emph{italics}.
 \end{itemize}
 
 % TODO cite chapter 6 of OWL 101?
-% TODO naming conventions in the document
 The naming conventions for identifiers within the ontology are as follows:
 \begin{itemize}
-  \item Two concepts, instances and/or properties may not have the same name as this is required by \emph{OWL}\cite{OWL} and avoids confusion.
-  \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{WeatherState} and \emph{weatherstate} in the name namespace is possible in \emph{OWL}, but leads to confusion.
-  \item Identifiers may only consist of upper and lower case ASCII letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z} and numerical digits from \emph{0} to \emph{9}, i.e. all identifiers must match the regular expression \texttt{\^[A-za-z0-9]+\$}.
-  \item Names that are built from more than one word are written in \emph{camel case}\cite{CamelCase}, e.g. the concept representing a weather state is named \emph{WeatherState} and the property that expresses an instance of \emph{WeatherState} belongs to an instance of another concept will be named \emph{hasWeatherState}.
-  \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g. \emph{WeatherState} or \emph{WeatherReport}.
-  \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongsTo}, followed by the name of the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongsTo}, followed by the inverse property's \emph{range}, and vice versa. As an alternative to the prefix \emph{belongsTo}, the prefix \emph{is} in conjunction with the suffix \emph{Of} and the inverse property's \emph{domain} may be used.
+  \item Two concepts, instances and/or properties may not have the same identifier as this is required by \emph{OWL}\cite{OWL}\footnote{Using one identifier for more than one concept, instance and properties is possible in \emph{OWL} if an adequate number of namespaces is used. However, \thinkhomeweather uses a single namespace.} and avoids confusion.
+  \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{Weather State} and \emph{weather state} in the name namespace is possible in \emph{OWL}, but leads to confusion.
+  \item Identifiers may only consist of upper and lower case ASCII letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z}), numerical digits from \emph{0} to \emph{9} and spaces, i.e. all identifiers must match the regular expression \texttt{\^[A-za-z0-9~]+\$}.
+  \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g. \emph{Weather state} or \emph{Weather report}.
+  \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongs to}, followed by the name of the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongs to}, followed by the inverse property's \emph{range}, and vice versa. As an alternative to the prefix \emph{belongs to}, the prefix \emph{is} in conjunction with the suffix \emph{of} and the inverse property's \emph{domain} may be used.
   
-  E.g. the name of a property with the domain \emph{WeatherReport} and the range \emph{WeatherState} has the name \emph{hasWeatherState}. If \emph{hasWeatherState} has an inverse property, it will have the name \emph{belongsToWeatherReport} or \emph{isWeatherStateOf}.
+  E.g. the name of a property with the domain \emph{Weather report} and the range \emph{Weather state} has the name \emph{has weather state}. If \emph{has weather state} has an inverse property, it will have the name \emph{belongs to weather report} or \emph{is weather state of}.
 \end{itemize}
 
 
@@ -487,7 +483,6 @@ Besides the \emph{Measurement Units Ontology}, several other ontologies have bee
   \item \textbf{OM}: The \emph{Ontology of Units of Measure and Related Concepts} (\emph{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. It is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfill in \thinkhomeweather; furthermore, at the time when \cite{OM} was published, development of \thinkhomeweather had already completed. Hence, \emph{OM} was not taken into account for being used in the \thinkhomeweather ontology.
 \end{itemize}
 
-% TODO move performance loss to a later chapter
 Although the \emph{Measurement Units Ontology} does come with a few shortcomings (see section~\ref{sec:implementation}), it is the ontology that has been identified to be the the one that fits \thinkhomeweather requirements best.
 
 \paragraph{Date and time:}
@@ -537,7 +532,7 @@ Figure~\ref{fig:owl_time1} shows a \Egls{weather report} together with its with 
 
 Figure~? shows how an instance of \Egls{temperature} would be implemented if no ontology for units of measurements would be used. With the introduction of the \emph{Measurement Units Ontology} (\muo), the data property and the literal are removed; an object property that is a sub-property of \emph{Quality value} (which is defined by \muo) takes the place of the data property. It links to a blank node which in turn has two properties: \emph{Measured in} and \emph{numericalValue}. The property \emph{Measured in} is an object property that refers to the unit being used which is represented by an instance of \muo's concept \emph{Unit of measurement}. Using the data property \emph{numericalValue}, the literal is connected to the blank node. The resulting pattern is seen in figure~?. % TODO reference figures
 
-\muo is an ontology that is easy to implement in an already-existing ontology. However, 
+\muo is an ontology that is easy to implement in an already-existing ontology. Its major drawback in the case of \thinkhomeweather is that it affects reasoning time negatively. Repeated tests showed that reasoning time increased by about $30 \%$ when introducing \muo. However, the slowdown caused by \muo is accepted in favour of the usage of units of measurement.
 
 \vspace{1em}
 
@@ -545,29 +540,27 @@ Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather repo
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/diagrams/wgs84.png}
-  \caption{An instance of \emph{Weather report} together with its location (Vienna, Austria: $48.21 \si{\degree} N$, $16.37 \si{\degree} E$, $171 m$ above MSL.}
+  \caption{An instance of \emph{Weather report} together with its location (Vienna, Austria: $48.21 \si{\degree} N$, $16.37 \si{\degree} E$, $171 m$ above \emph{MSL}.}
   \label{fig:owl_wgs84}
 \end{figure}
 
+During implementation of \thinkhomeweather in \emph{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{Weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \egls{hasStartTime}. Hence, in the \emph{OWL} implementation, all identifiers match the regular expression \texttt{\^[A-za-z0-9]+\$}.
+
 % TODO document completed ontology? one paragraph about the result
-
-\subsection{Naming conventions}
-
-During the implementation of the \thinkhomeweather ontology, it is necessary to define strict naming conventions for concepts, individuals and attributes; some of these conventions have already been applied to previous steps of developing the ontology:
-
-\begin{itemize}
-  \item All concepts, instances and attributes share one namespace, regardless of capitalization; e.g. there is no pair of a concept and an instance that shares the same name. There is also no pair of a concept and an instance which names only differ in their capitalization.
-  \item Only upper case and lower case letters from A to Z, numbers from 0 to 9, underscores (\texttt{\_}) and dashes (\texttt{-}) may occur in the name of a concept, an instance or an attribute. Hence, all names match the regular expression \texttt{\^{}[A-Za-z0-9\textbackslash -\_]\$}.
-  \item Names built from more than one word are written in \emph{Camel case}, e.g. \emph{Weather phenomenon} becomes \emph{WeatherPhenomenon} and \emph{is source of} becomes \emph{isSourceOf}. % TODO reference to camel case definition?
-  \item Concept names start with a capital letter and only appear in singular. There is no concept name \emph{Weather phenomena}, only \emph{WeatherPhenomenon}.
-  \item Attribute names start with a lower-case letter. Attribute names are always built from more than one word and the first word must be a verb; see \emph{isSourceOf} or \emph{hasWeatherCondition}.
-\end{itemize}
 
 
 \section{Evaluation}
 \label{sec:ontology_evaluation}
 
-In section \ref{sec:weather_information} and in the ontology specification document, a set of competency questions is presented. In order to verify whether the \thinkhomeweather works as intended, this section now examines if all competency questions can be answered by the ontology.
+In section~\ref{sec:weather_information} and in the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification}, a set of requirements is presented. In order to verify whether \thinkhomeweather meets all requirements, this section examines if all non-functional requirements (section~\ref{sec:evaluation_non_functional}) and functional requirements (section~\ref{sec:evaluation_functional}) are met.
+
+\subsection{Non-functional requirements}
+\label{sec:evaluation_non_functional}
+
+% TODO
+
+\subsection{Functional requirements}
+\label{sec:evaluation_functional}
 
 % TODO verify non-functional requirements
 % TODO
@@ -620,125 +613,3 @@ The \thinkhomeweather ontology can answer most competency questions satisfactori
 
 Hence, the ontology constructed in the previous sections complies with its specification in section \ref{sec:ontology_specification}.
 
-\section{Fetching data}
-
-% TODO describe fetching weather data from yr.no
-% TODO describe algorithms for calculation of the position of the sun
-% TODO perhaps split into two categories (one for weather data and one for the sun's position according to one of the two available algorithms, see SunPositionCalculator's source code
-
-% TODO reference section/subsection instead of chapter?
-As discussed in chapter \ref{ch:weather_data}, among all internet services that have been analyzed, \emph{yr.no} is the API that best fits the requirements for the \thinkhomeweather ontology. This section covers acquisition of weather data from that service in detail.
-
-% TODO reference Jena framework
-A Java application called \emph{WeatherReader} was developed. It processes weather data in two steps:
-
-\begin{itemize}
-  \item In the first step, the application uses the API of \emph{yr.no} to fetch weather data(see \ref{subsec:weather_data_yr_no}). Additionally, sun position data is calculated (see \ref{subsec:sun_position}). Data is stored in a specially built domain model. % See figure \ref{...} for the UML class diagram of the domain model used by \emph{WeatherReader}.
-  \item The second step, individuals are created based on the weather data that has been previously acquired. This results in a new ontology based on the \thinkhomeweather ontology enriched by appropriate individuals.
-\end{itemize}
-
-% TODO UML class diagram of the domain model used by \emph{WeatherReader}.
-
-Using a configuration file, \emph{WeatherReader} is fully customizable regarding OWL files and location.
-
-\subsection{Weather data}
-\label{subsec:weather_data_yr_no}
-
-% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
-For an arbitrary request, one must specify latitude and logitude (in degrees, nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a URL of the format
-
-% TODO move this definition to some other position
-% TODO improve formatting of lstlisting environments
-\lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
-\begin{lstlisting}
-http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>
-\end{lstlisting}
-
-or
-
-\begin{lstlisting}
-http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>;msl=<altitude>
-\end{lstlisting}
-
-is built, e.g.
-
-\begin{lstlisting}
-http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
-\end{lstlisting}
-
-% TODO explicitly name lat, lon, msl for Vienna
-for the city of Vienna, Austria. A GET request to this URL returns an XML document conforming to the XML Schema definition that can be found
-% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema
-online.
-
-The structure of the XML document is as follows (attributes are omitted for better readability):
-
-\begin{lstlisting}
-<weatherdata>
-	<meta>
-		<model />
-	</meta>
-	<product>
-		/* ... */
-	</product>
-</weatherdata>
-\end{lstlisting}
-
-The attributes of the <model> element specify when the forecast has been created, when it will be updated for the next time and what date and time of the first and the last forecast returned are.
-
-There is an arbitrary number of <time> elements that are children of the <product> element. Every <time> element represents the weather forecast for a certain period of time. Each <time> element has a <location> element that has a child element for each weather property.
-
-This is a typical <time> element:
-
-\begin{lstlisting}
-<time datatype="forecast" from="2011-10-17T09:00:00Z" to="2011-10-17T09:00:00Z">
-	<location altitude="171" latitude="48.2100" longitude="16.3700">
-		<temperature id="TTT" unit="celcius" value="8.5" />
-		<windDirection id="dd" deg="140.3" name="SE" />
-		<windSpeed id="ff" mps="4.5" beaufort="3" name="Lett bris" />
-		<humidity value="45.1" unit="percent" />
-		<pressure id="pr" unit="hPa" value="1027.6" />
-		<cloudiness id="NN" percent="0.0" />
-		<fog id="FOG" percent="0.0" />
-		<lowClouds id="LOW" percent="0.0" />
-		<mediumClouds id="MEDIUM" percent="0.0" />
-		<highClouds id="HIGH" percent="0.0" />
-	</location>
-</time>
-\end{lstlisting}
-
-% TODO format names?
-% TODO group names (e.g. for temperature, humidity, clouds, ...)?
-The names of the elements that are allowed to be children of the <location> element are: groundCover, pressure, maximumPrecipitation, highestTemperature, lowestTemperature, precipitation, fog, cloudiness, lowClouds, mediumClouds, highClouds, temperature, dewpointTemperature, minTemperatureDay, minTemperatureNight, maxTemperatureDay, maxTemperatureNight, uv, tidalwater, currentDirection, maxWaveHeight, surfaceTemperature, waveDirection, wavePeriod, waveHeight, humidity, bias, numberofobservations, meanabsoluteerror, score, windDirection, windSpeed, maxWindSpeed, stateOfTheSea, snowDepth, weather, symbol, forest-fire, windProbability, temperatureProbability and symbolProbability.
-
-None of the child elements are required. However, for most places of the world, the XML document contains <location> elements having two different sets of child elements:
-
-\begin{itemize}
-  \item Some <location> elements have the child elements temperature, windDirection, windSpeed, humidity, pressure, cloudiness, fog, lowClouds, mediumClouds and highClouds (as shown above). The values of the attributes from and to of the enclosing <time> element are equal.
-  \item Some <location> elements have the child elements precipitation and symbol; the values of the attributes from and to of the enclosing <time> element differ by three to six hours; such an element looks like this:
-\end{itemize}
-
-\begin{lstlisting}
-<time datatype="forecast" from="2011-10-17T03:00:00Z" to="2011-10-17T09:00:00Z">
-	<location altitude="171" latitude="48.2100" longitude="16.3700">
-		<precipitation unit="mm" value="0.0" />
-		<symbol id="SUN" number="1" />
-	</location>
-</time>
-\end{lstlisting}
-
-The content of the XML document covers a period of nine days, starting at the current day.
-
-\subsection{Position of the sun}
-\label{subsec:sun_position}
-
-% TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
-Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon will be provided. The angle of the sun at solar noon is also given.
-
-However, these data are inappropriate for use within the \thinkhomeweather ontology as every \emph{Weather state} may be linked to an instance of \emph{Sun position}. \emph{Sun position} has two attributes which are \emph{has sun elevation angle} and \emph{has sun direction} that specify the sun's position. However, none of these values can be calculated from the data provided by \emph{yr.no}.
-
-% TODO reference PSA algorithm: http://www.sciencedirect.com/science/article/pii/S0038092X00001560
-% TODO reference SPA algorithm:  Reda, I.; Andreas, A. (2003): Solar Position Algorithm for Solar Radiation Applications. NREL Report No. TP-560-34302, Revised January 2008
-% TODO reference http://www.psa.es/sdg/sunpos.htm - terms of use?
-% TODO give informations about precision of PSA and SPA
-There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time. The \emph{SPA algorithm} is a rather complicated algorithm, but it yields results with uncertainities of less than 0.0003 degrees. A simpler algorithm is the \emph{PSA algorithm}. Its results differ from the actual values more than the ones calculated by the \emph{SPA algorithm}. As approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology, the \emph{PSA algorithm} is suitable for use by the \emph{WeatherReader} application. There are even complete implementations of PSA in C++ that can easily be ported to Java.
