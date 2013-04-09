@@ -169,12 +169,11 @@ Furthermore, chapter~\ref{ch:existing_work} covers existing ontologies that cove
 
 \section{Conceptualisation}
 
-% TODO name all step
-% TODO mention that logical axioms, formula tables, logical axioms have been skipped as they are not relevant for \thinkhomeweather (describe them and describe why they are not part)
-
 In the third step of \methontology, the \emph{Conceptualisation} step, the domain knowledge is structured into a conceptional model that describes the problem and its solution in terms of the domain vocabulary that has been identified in the \emph{Specification} process.
 
-The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes and binary relations that will form the ontology.
+The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes and binary relations that will form the ontology. Besides the glossary, this section covers \emph{Concept-classification trees} (section~\ref{sec:concept_classification_trees}), \emph{Binary relationship diagrams} (section~\ref{subsec:binary_relations_diagram}), \emph{Concept dictionaries} (section~\ref{subsec:binary_relations_diagram}), \emph{Binary relations tables} (section~\ref{subsec:binary_relations_table}), \emph{Instance attribute tables} (section~\ref{subsec:binary_relations_table}) and \emph{Class attribute tables} (section~\ref{subsec:class_attribute_tables}). \emph{Constant tables}, \emph{Formal axiom tables} and \emph{Rules tables} have been omitted as the components described by these tables do not appear in \thinkhomeweather. The \emph{Constants table} is not presented explicitly in this document as it would only repeat the individuals that can be found in other tables, e.g. the \emph{Concept dictionary} of \egls{weather condition} in the appendix in section~\ref{subsec:appendix_concept_dictionaries}.
+
+In this section, only those deliverables are presented that are necessary to fully understand the structure of \thinkhomeweather. All tables that have only been created for the sake of completeness can be found in appendix~\ref{sec:appendix_conceptualisation}.
 
 \subsection{Glossary of Terms}
 \label{sec:ontology_glossary}
@@ -353,7 +352,7 @@ A \Egls{weather state} represents the set of weather phenomena that belong to a 
 \end{figure}
 
 \subsection{Binary relations diagram}
-\label{sec:binary_relations_diagram}
+\label{subsec:binary_relations_diagram}
 
 The purpose of a \emph{Binary relations diagram} is to present all binary relations between concepts in the ontology (see figure~\ref{fig:binary_relations}).
 
@@ -366,6 +365,7 @@ The purpose of a \emph{Binary relations diagram} is to present all binary relati
 \end{figure}
 
 \subsection{Concept dictionaries}
+\label{subsec:concept_dictionaries}
 
 A \emph{Concept dictionary} lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section~\ref{sec:concept_classification_trees}.
 
@@ -374,6 +374,7 @@ In the following tables, sub-concepts having the same instances, class attribute
 % TODO reference appendix
 
 \subsection{Binary relations table}
+\label{subsec:binary_relations_table}
 
 The \emph{Binary relation table} specifies all relations from section~\ref{sec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
 
@@ -392,6 +393,7 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
 % TODO reference appendix
 
 \subsection{Class attribute tables}
+\label{subsec:class_attribute_tables}
 
 % TODO reference appendix
 
