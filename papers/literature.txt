@@ -179,6 +179,9 @@ NEW:
 * swj177_7.pdf
   Carsten Keßler, Mathieu d’Aquin, Stefan Dietze: Ontology of Units of Measure and Related Concepts
 
+* 04591590.pdf
+  Atilla Elçi, Behnam Rahnama, Saman Kamran: Defining a Strategy to Select Either of Closed/Open World Assumptions on Semantic Robots
+
 
 NEW (2013-04-09):
 
