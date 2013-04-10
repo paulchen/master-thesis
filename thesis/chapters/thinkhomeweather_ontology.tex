@@ -458,20 +458,36 @@ During the implementation step, the ontologies listed in section \ref{sec:integr
 Figure~\ref{fig:owl_time1} shows a \Egls{weather report} together with its with \egls{start time} and \egls{end time}; figure~\ref{fig:owl_time2} displays a \Egls{weather report} together with its \egls{observation time}. The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times are given in \emph{UTC}.
 
 \begin{figure}
+  \centering
   \includegraphics[width=\textwidth]{figures/diagrams/owl-time1.png}
-  \caption{An instance of \Egls{current weather report} together with \egls{start time} and \egls{end time}.}
+  \caption{An instance of \Egls{current weather report} together with \egls{start time} and \egls{end time}}
   \label{fig:owl_time1}
 \end{figure}
 
 \begin{figure}
+  \centering
   \includegraphics[width=\textwidth]{figures/diagrams/owl-time2.png}
-  \caption{An instance of \Egls{weather report} together with its \egls{observation time} (\texttt{2012-06-16~14:30}).}
+  \caption{An instance of \Egls{weather report} together with its \egls{observation time} (\texttt{2012-06-16~14:30})}
   \label{fig:owl_time2}
 \end{figure}
 
 \vspace{1em}
 
-Figure~? shows how an instance of \Egls{temperature} would be implemented if no ontology for units of measurements would be used. With the introduction of the \emph{Measurement Units Ontology} (\muo), the data property and the literal are removed; an object property that is a sub-property of \emph{Quality value} (which is defined by \muo) takes the place of the data property. It links to a blank node which in turn has two properties: \emph{Measured in} and \emph{numericalValue}. The property \emph{Measured in} is an object property that refers to the unit being used which is represented by an instance of \muo's concept \emph{Unit of measurement}. Using the data property \emph{numericalValue}, the literal is connected to the blank node. The resulting pattern is seen in figure~?. % TODO reference figures
+Figure~\ref{fig:muo1} shows how an instance of \Egls{temperature} would be implemented if no ontology for units of measurements would be used. With the introduction of the \emph{Measurement Units Ontology} (\muo), the data property and the literal are removed; an object property that is a sub-property of \emph{Quality value} (which is defined by \muo) takes the place of the data property. It links to a blank node which in turn has two properties: \emph{Measured in} and \emph{numericalValue}. The property \emph{Measured in} is an object property that refers to the unit being used which is represented by an instance of \muo's concept \emph{Unit of measurement}. Using the data property \emph{numericalValue}, the literal is connected to the blank node. The resulting pattern is seen in figure~\ref{fig:muo2}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.5\textwidth]{figures/diagrams/muo1.png}
+  \caption{An instance of \Egls{temperature} together with the property \egls{has temperature value} representing a temperature of \SI{17.2}{\celsius} (without using a unit ontology)}
+  \label{fig:muo1}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.9\textwidth]{figures/diagrams/muo2.png}
+  \caption{An instance of \Egls{temperature} together with the property \egls{has temperature value} representing a temperature of \SI{17.2}{\celsius} (using \muo)}
+  \label{fig:muo2}
+\end{figure}
 
 \muo is an ontology that is easy to implement in an already-existing ontology. Its major drawback in the case of \thinkhomeweather is that it affects reasoning time negatively. Repeated tests showed that reasoning time increased by about $30 \%$ when introducing \muo. However, the slowdown caused by \muo is accepted in favour of the usage of units of measurement.
 
@@ -480,6 +496,7 @@ Figure~? shows how an instance of \Egls{temperature} would be implemented if no 
 Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded.
 
 \begin{figure}
+  \centering
   \includegraphics[width=\textwidth]{figures/diagrams/wgs84.png}
   \caption{An instance of \Egls{weather report} together with its \egls{location} (Vienna, Austria: N~\SI{48.21}{\degree}, E~\SI{16.37}{\degree}, \SI{171}{\metre} above \emph{MSL}).}
   \label{fig:owl_wgs84}
