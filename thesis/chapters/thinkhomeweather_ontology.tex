@@ -1,13 +1,11 @@
 \chapter{The \thinkhomeweather ontology}
 \label{ch:thinkhomeweather_ontology}
 
-% TODO mention second paper about methontology (the one that describes all artefacts created when building the chemical ontology)
 
 % TODO check if the things mentioned here are properly covered in the chapters referred
 
 % TODO elaborate steps more?
 
-% TODO reference paper: Building legal ontologies with METHONTOLOGY and WebODE
 
 The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \thinkhomeweather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of an ontology for \thinkhome, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
 
@@ -54,7 +52,6 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 \section{Specification}
 \label{sec:ontology_specification}
 
-% TODO put document template in other chapter
 \emph{Specification}, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in chapter \ref{sec:methontology} and uses the document template taken from \cite{ORSD}.
 
 \vspace{1em}
@@ -292,7 +289,7 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
 
 \begin{figure}
   \centering
-  \includegraphics[width=.8\textwidth]{figures/diagrams/sun-position.png}
+  \includegraphics[width=\textwidth]{figures/diagrams/sun-position.png}
   \caption{Concept-classification tree for \Egls{sun position}}
   \label{fig:tree_sun_position}
 \end{figure}
@@ -336,13 +333,12 @@ A \Egls{weather source} can either be a \Egls{sensor source} or a \Egls{service 
   \label{fig:tree_weather_source}
 \end{figure}
 
-A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see figure~\ref{fig:tree_weather_state}): % TODO mention concepts and add them to the glossary
+A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see section~\ref{sec:ontology_glossary}). The resulting tree is seen in figure~\ref{fig:tree_weather_state}.
 
 \begin{figure}
   \centering
-  % TODO diagram is incomplete
-  \includegraphics[width=.3\textwidth]{figures/diagrams/weather-state.png}
-  \caption{Concept-classification tree for \Egls{weather state}}
+  \includegraphics[width=\textwidth]{figures/diagrams/weather-state.png}
+  \caption{Concept-classification tree for \Egls{weather state}. All properties are of type \emph{rdfs:subClassOf}}
   \label{fig:tree_weather_state}
 \end{figure}
 
@@ -351,7 +347,6 @@ A \Egls{weather state} represents the set of weather phenomena that belong to a 
 
 The purpose of a \emph{Binary relations diagram} is to present all binary relations between concepts in the ontology (see figure~\ref{fig:binary_relations}).
 
-% TODO add previous/next weather state
 \begin{figure}
   \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/binary-relations.png}
