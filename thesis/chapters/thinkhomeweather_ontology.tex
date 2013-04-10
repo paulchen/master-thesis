@@ -1,19 +1,15 @@
 \chapter{The \thinkhomeweather ontology}
 \label{ch:thinkhomeweather_ontology}
 
-% TODO put all names of steps according to \methontology into \emph
-% TODO mention - this chapter does not cover the ontology development process as it was done; instead, it presents the completed documents that were created in that processs.
 % TODO mention second paper about methontology (the one that describes all artefacts created when building the chemical ontology)
 
 % TODO check if the things mentioned here are properly covered in the chapters referred
-
-% TODO rename: belongsToWeatherReport -> belongsToReport
 
 % TODO elaborate steps more?
 
 % TODO reference paper: Building legal ontologies with METHONTOLOGY and WebODE
 
-The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \thinkhomeweather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of an ontology for \thinkhome, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyzes some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
+The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \thinkhomeweather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of an ontology for \thinkhome, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
 
 Based on these insights, this chapter describes the process of designing the \thinkhomeweather ontology in detail. The development process follows the steps proposed by \methontology as described in chapter \ref{sec:methontology}.
 
@@ -42,8 +38,8 @@ All diagrams in this chapter showing parts of an ontology adhere to the followin
   \item \emph{Properties in other namespaces} are drawn as solid lines. Their caption is \emph{not} written in \emph{italics}.
 \end{itemize}
 
-% TODO cite chapter 6 of OWL 101?
-The naming conventions for identifiers within the ontology are as follows:
+Every ontology should stick to a set of naming conventions that are explicitly stated \cite{Ontology101}. The conventions for \thinkhomeweather are as follows:
+
 \begin{itemize}
   \item Two concepts, instances and/or properties may not have the same identifier as this is required by \emph{OWL}\cite{OWL}\footnote{Using one identifier for more than one concept, instance and properties is possible in \emph{OWL} if an adequate number of namespaces is used. However, \thinkhomeweather uses a single namespace.} and avoids confusion.
   \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{Weather State} and \emph{weather state} in the name namespace is possible in \emph{OWL}, but leads to confusion.
@@ -96,8 +92,7 @@ The naming conventions for identifiers within the ontology are as follows:
 
 \vspace{.2cm}
 
-% TODO reformulate
-\textbf{Intended end-users}: The ontology is part of the \thinkhome project. Hence, any user of the \thinkhome project is a user of the \thinkhomeweather ontology. \thinkhome aims at providing home automation to \emph{house occupants}; therefore, every occupant of a house is a possible end user for \thinkhomeweather. However, he/she will never have to deal with any ontology. \thinkhome is ought to make decisions on itself based on the knowledge acquired from the \thinkhomeweather ontology. Only the \emph{developers of \thinkhome} have to deal with the ontology itself.
+\textbf{Intended end-users}: The ontology is part of the \thinkhome project; hence, any end-user of the \thinkhome project is an end-user of the \thinkhomeweather ontology. As \thinkhome aims at providing home automation to \emph{house occupants}, intended end-users of \thinkhomeweather are these occupants.
 
 \vspace{.2cm}
 
@@ -189,13 +184,13 @@ Section~\ref{ch:weather_data} discusses each weather element that is used in \th
 
 A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
 
-If the \egls{weather report} describes the current weather, it is a \Egls{current weather report}; if it describes the future weather, it is a \Egls{forecast weather report}. Depending on how far the \Egls{weather report}'s \egls{start time} lies into the future, it is a \Egls{short range weather report} (at most 3 hours in the future), a \Egls{medium range weather report} (more than 3 hours and less than 12 hours in the future) or a \Egls{long range weather report} (at least 12 hours in the future). % TODO additional concepts
+If the \egls{weather report} describes the current weather, it is a \Egls{current weather report}; if it describes the future weather, it is a \Egls{forecast weather report}. Depending on how far the \Egls{weather report}'s \egls{start time} lies ahead, it is a \Egls{short range weather report} (at most 3 hours in the future), a \Egls{medium range weather report} (more than 3 hours and less than 12 hours in the future) or a \Egls{long range weather report} (at least 12 hours in the future). Furthermore, there are sub-concepts of \egls{weather report}, each having a \egls{start time} of 1, 2, 3, 6, 9, 12, 15, 18, or 24 hours; these concepts are named \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} etc., respectively.
 
 If the source of weather data is a \Egls{sensor source}, the corresponding \Egls{weather report} is a \Egls{weather report from sensor}; otherwise (if the source of weather data is a \Egls{service source}), it is a \Egls{weather report from service}.
 
 A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from sensor} is a \Egls{current weather report from sensor}. A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from service} is a \Egls{current weather report from service}.
 
-% TODO additional sub-concepts of Weather states
+Several sub-concepts of \Egls{weather state} describe certain combinations of instances of \Egls{weather phenomenon} being associated with a \Egls{weather state}. These concepts are listed below; refer to the glossary in appendix~\ref{main} for their definitions.
 
 Hence, these are the concepts that can be found in \thinkhomeweather are:
 \begin{itemize}
@@ -212,9 +207,9 @@ Hence, these are the concepts that can be found in \thinkhomeweather are:
       \item \Egls{temperature}: \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{room temperature}, \Egls{above room temperature}, \Egls{heat}.
       \item \Egls{wind}: \Egls{directional wind}, \Egls{north wind}, \Egls{east wind}, \Egls{south wind}, \Egls{west wind}, \Egls{calm}, \Egls{light wind}, \Egls{strong wind}, \Egls{storm}, \Egls{hurricane}.
     \end{itemize}
-  \item \Egls{weather report}: \Egls{weather report from sensor}, \Egls{weather report from service}, \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report} % TODO additional concepts
+  \item \Egls{weather report}: \Egls{weather report from sensor}, \Egls{weather report from service}, \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}, \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report}, …, \emph{Forecast 24 hours weather report}
   \item \Egls{weather source}: \Egls{sensor source}, \Egls{service source}.
-  \item \Egls{weather state} % TODO additional concepts
+  \item \Egls{weather state}: \egls{airing weather}, \egls{calm weather}, \egls{clear weather}, \egls{cloudy weather}, \egls{cold weather}, \egls{dry weather}, \egls{fair weather}, \egls{hot weather}, \egls{moist weather}, \egls{no rain weather}, \egls{pleasant temperature weather}, \egls{rainy weather}, \egls{severe weather}, \egls{sun protection weather}, \egls{thunderstorm}, \egls{very rainy weather}, \egls{windy weather}
 \end{itemize}
 
 \paragraph{Relations:}
