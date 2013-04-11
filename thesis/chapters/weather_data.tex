@@ -323,6 +323,7 @@ When will it outside be colder than inside the house? When will it be warmer? & 
 \caption{Assignment of competency questions to weather element(s)}
 \end{table}
 
+\lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
 
 \begin{comment}
 \subsection{Weather data}
@@ -333,7 +334,6 @@ For an arbitrary request, one must specify latitude and logitude (in degrees, no
 
 % TODO move this definition to some other position
 % TODO improve formatting of lstlisting environments
-\lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
 \begin{lstlisting}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>
 \end{lstlisting}
