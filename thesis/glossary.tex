@@ -1,9 +1,7 @@
-% TODO add instant, interval and temporalentity to glossary and refer to them in thinkhomeweather_ontology.owl
-
 \newglossaryentry{temperature}{
   name={temperature},
-  description={Sub-concept of \emph{Weather phenomenon} representing temperature. Sub-concepts are \emph{Frost}, \emph{Cold}, \emph{Below room temperature}, \emph{Room temperature}, \emph{Above room temperature}, and \emph{Heat}},
-  see={weather phenomenon,frost,cold,below room temperature,room temperature,above room temperature,heat}
+  description={Sub-concept of \emph{Weather phenomenon} representing temperature. The temperature value is specified using the property \emph{has temperature value}. Sub-concepts are \emph{Frost}, \emph{Cold}, \emph{Below room temperature}, \emph{Room temperature}, \emph{Above room temperature}, and \emph{Heat}},
+  see={weather phenomenon,has temperature value,frost,cold,below room temperature,room temperature,above room temperature,heat}
 }
 \newglossaryentry{room temperature}{
   name={room temperature},
@@ -39,8 +37,8 @@
 
 \newglossaryentry{sun position}{
   name={sun position},
-  description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon and its direction. Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction.},
-  see={weather phenomenon,day,solar twilight,twilight,civil twilight,nautical twilight,astronomical twilight,night,sun from north,sun from east,sun from south,sun from west}
+  description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon (specified by the property \emph{has sun elevation angle} and its direction \emph{has sun direction}. Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction.},
+  see={weather phenomenon,has sun elevation angle,has sun direction,day,solar twilight,twilight,civil twilight,nautical twilight,astronomical twilight,night,sun from north,sun from east,sun from south,sun from west}
 }
 \newglossaryentry{day}{
   name={day},
@@ -107,8 +105,8 @@
 
 \newglossaryentry{atmospheric pressure}{
   name={atmospheric pressure},
-  description={Sub-concept of \emph{Weather phenomenon} representing atmospheric pressure. Sub-concepts are \emph{Very low pressure}, \emph{Low pressure}, \emph{Average pressure}, \emph{High pressure}, and \emph{Very high pressure}},
-  see={weather phenomenon,very low pressure,low pressure,average pressure,high pressure,very high pressure}
+  description={Sub-concept of \emph{Weather phenomenon} representing atmospheric pressure. The value is specified using the property \emph{has pressure value}. Sub-concepts are \emph{Very low pressure}, \emph{Low pressure}, \emph{Average pressure}, \emph{High pressure}, and \emph{Very high pressure}},
+  see={weather phenomenon,has pressure value,very low pressure,low pressure,average pressure,high pressure,very high pressure}
 }
 \newglossaryentry{very low pressure}{
   name={very low pressure},
@@ -138,8 +136,8 @@
 
 \newglossaryentry{wind}{
   name={wind},
-  description={Sub-concept of \emph{Weather phenomenon} representing wind (speed and direction, the latter is optional). Sub-concepts are \emph{Directional wind}, \emph{North wind}, \emph{East wind}, \emph{South wind}, and \emph{West wind} for the wind direction, and \emph{Calm}, \emph{Light wind}, \emph{Strong wind}, \emph{Storm}, and \emph{Hurricane} for the wind speed},
-  see={weather phenomenon,directional wind,north wind,east wind,south wind,west wind,calm,light wind,strong wind,storm,hurricane}
+  description={Sub-concept of \emph{Weather phenomenon} representing wind (speed and direction, the latter is optional). Wind speed is given using the property \emph{has wind speed}; wind direction is specified using \emph{has wind direction}. Sub-concepts are \emph{Directional wind}, \emph{North wind}, \emph{East wind}, \emph{South wind}, and \emph{West wind} for the wind direction, and \emph{Calm}, \emph{Light wind}, \emph{Strong wind}, \emph{Storm}, and \emph{Hurricane} for the wind speed},
+  see={weather phenomenon,has wind speed,has wind direction,directional wind,north wind,east wind,south wind,west wind,calm,light wind,strong wind,storm,hurricane}
 }
 \newglossaryentry{directional wind}{
   name={directional wind},
@@ -195,8 +193,8 @@
 
 \newglossaryentry{cloud cover}{
   name={cloud cover},
-  description={Sub-concept of \emph{Weather phenomenon} describing the current cloud coverage in \emph{okta} (integer numbers from \num{0} to \num{9}). Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast}, and \emph{Unknown cloud cover}},
-  see={weather phenomenon,okta,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover}
+  description={Sub-concept of \emph{Weather phenomenon} describing the current cloud coverage in \emph{okta} (integer numbers from \num{0} to \num{9}) which is given using the property \emph{has cloud cover}; the altitude of the cloud layer is given by the property \emph{has cloud altitude}. Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast}, and \emph{Unknown cloud cover}},
+  see={weather phenomenon,has cloud cover,has cloud altitude,okta,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover}
 }
 \newglossaryentry{okta}{
   name={okta},
@@ -282,7 +280,7 @@
 \newglossaryentry{observation time}{
   name={observation time},
   description={The time when the weather data was collected from the weather sensor or the Internet weather service, given by an instance of the concept \emph{Instant} from \emph{OWL-Time}\cite{owl-time}},
-  see={weather report,has observation time}
+  see={weather report,has observation time,instant}
 }
 \newglossaryentry{has observation time}{
   name={has observation time},
@@ -292,12 +290,12 @@
 \newglossaryentry{start time}{
   name={start time},
   description={The time a \emph{Weather report} is valid from, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{start time}},
-  see={weather report,has start time,end time,observation time}
+  see={weather report,has start time,end time,observation time,interval}
 }
 \newglossaryentry{end time}{
   name={end time},
   description={The time a \emph{Weather report} is valid until, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{end time}},
-  see={weather report,has end time,start time,observation time}
+  see={weather report,has end time,start time,observation time,interval}
 }
 \newglossaryentry{has start time}{
   name={has start time},
@@ -323,14 +321,14 @@
 
 \newglossaryentry{dew point}{
   name={dew point},
-  description={Sub-concept of \emph{Weather phenomenon} that describes the dew point},
-  see={weather phenomenon}
+  description={Sub-concept of \emph{Weather phenomenon} that describes the dew point. The value is given using the property \emph{has dew point value}},
+  see={weather phenomenon,has dew point value}
 }
 
 \newglossaryentry{humidity}{
   name={humidity},
-  description={Sub-concept of \emph{Weather phenomenon} representing the relative humidity of the air. Sub-concepts are \emph{Very dry}, \emph{Dry}, \emph{Normal humidity}, \emph{Moist}, and \emph{Very moist}},
-  see={weather phenomenon,very dry,dry,normal humidity,moist,very moist}
+  description={Sub-concept of \emph{Weather phenomenon} representing the relative humidity of the air; the humidity value is specified using the property \emph{has humidity value}. Sub-concepts are \emph{Very dry}, \emph{Dry}, \emph{Normal humidity}, \emph{Moist}, and \emph{Very moist}},
+  see={weather phenomenon,has humidity value,very dry,dry,normal humidity,moist,very moist}
 }
 \newglossaryentry{very dry}{
   name={very dry},
@@ -361,8 +359,8 @@
 
 \newglossaryentry{precipitation}{
   name={precipitation},
-  description={Sub-concept of \emph{Weather phenomenon} that describes precipitation (intensity and probability). Sub-concepts are \emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain}, and \emph{Tropical storm rain}},
-  see={weather phenomenon,no rain,light rain,medium rain,heavy rain,extremely heavy rain,tropical storm rain}
+  description={Sub-concept of \emph{Weather phenomenon} that describes precipitation (intensity and probability). Intensity is specified by the property \emph{has precipitation intensity}, probability by \emph{has precipitation probability}. Sub-concepts are \emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain}, and \emph{Tropical storm rain}},
+  see={weather phenomenon,has precipitation intensity,has precipitation probability,no rain,light rain,medium rain,heavy rain,extremely heavy rain,tropical storm rain}
 }
 \newglossaryentry{no rain}{
   name={no rain},
@@ -398,8 +396,8 @@
 
 \newglossaryentry{solar radiation}{
   name={solar radiation},
-  description={Sub-concept of \emph{Weather phenomenon} representing solar radiation. Sub-concepts are \emph{No radiation}, \emph{Low radiation}, \emph{Mediumr radiation}, \emph{High radiation}, and \emph{Very high radiation}},
-  see={weather phenomenon,no radiation,low radiation,medium radiation,high radiation,very high radiation}
+  description={Sub-concept of \emph{Weather phenomenon} representing solar radiation; the value is specified using the property \emph{has solar radiation value}. Sub-concepts are \emph{No radiation}, \emph{Low radiation}, \emph{Mediumr radiation}, \emph{High radiation}, and \emph{Very high radiation}},
+  see={weather phenomenon,has solar radiation value,no radiation,low radiation,medium radiation,high radiation,very high radiation}
 }
 \newglossaryentry{no radiation}{
   name={no radiation},
@@ -520,98 +518,97 @@
   see={weather state,weather phenomenon,has weather phenomenon}
 }
 
-% TODO
 \newglossaryentry{has cloud altitude}{
   name={has cloud altitude},
-  description={TODO},
-  see={}
+  description={Property that specifies the cloud altitude of a cloud layer represented by an instance of \emph{Cloud cover}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={cloud cover}
 }
 \newglossaryentry{has cloud cover}{
   name={has cloud cover},
-  description={TODO},
-  see={}
+  description={Property that specifies the cloud coverage of a cloud layer represented by an instance of \emph{Cloud cover}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={cloud cover}
 }
 \newglossaryentry{has dew point value}{
   name={has dew point value},
-  description={TODO},
-  see={}
+  description={Property that specifies the dew point value of an instance of \emph{Dew point}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={dew point}
 }
 \newglossaryentry{has humidity value}{
   name={has humidity value},
-  description={TODO},
-  see={}
+  description={Property that specifies the humidity value of an instance of \emph{Humidity}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={humidity}
 }
 \newglossaryentry{has precipitation probability}{
   name={has precipitation probability},
-  description={TODO},
-  see={}
+  description={Property that specifies the precipitation probability of an instance of \emph{Precipitation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={precipitation}
 }
 \newglossaryentry{has precipitation intensity}{
   name={has precipitation intensity},
-  description={TODO},
-  see={}
+  description={Property that specifies the precipitation intensity of an instance of \emph{Precipitation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={precipitation}
 }
 \newglossaryentry{has pressure value}{
   name={has pressure value},
-  description={TODO},
-  see={}
+  description={Property that specifies the pressure value of an instance of \emph{Atmospheric pressure}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={atmospheric pressure}
 }
 \newglossaryentry{has solar radiation value}{
   name={has solar radiation value},
-  description={TODO},
-  see={}
+  description={Property that specifies the solar radiation value of an instance of \emph{Solar radiation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={solar radiation}
 }
 \newglossaryentry{has sun direction}{
   name={has sun direction},
-  description={TODO},
-  see={}
+  description={Property that specifies the sun's direction of an instance of \emph{Sun position}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={sun position}
 }
 \newglossaryentry{has sun elevation angle}{
   name={has sun elevation angle},
-  description={TODO},
-  see={}
+  description={Property that specifies the sun's elevation angle (the sun's height above horizon) of an instance of \emph{Sun position}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={sun position}
 }
 \newglossaryentry{has temperature value}{
   name={has temperature value},
-  description={TODO},
-  see={}
+  description={Property that specifies the temperature value of an instance of \emph{Temperature}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={temperature}
 }
 \newglossaryentry{has wind direction}{
   name={has wind direction},
-  description={TODO},
-  see={}
+  description={Property that specifies the wind direction of an instance of \emph{Wind}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={wind}
 }
 \newglossaryentry{has wind speed}{
   name={has wind speed},
-  description={TODO},
-  see={}
+  description={Property that specifies the wind speed of an instance of \emph{Wind}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  see={wind}
 }
 
 \newglossaryentry{has previous weather state}{
   name={has previous weather state},
-  description={TODO},
-  see={}
+  description={Property that links an instance of \emph{Weather state} to the immediately preceding instance concerning their \emph{start time}s, if such an instance exists. Both this property and its reverse property \emph{has next weather state} are functional properties},
+  see={weather state,has next weather state}
 }
 \newglossaryentry{has next weather state}{
   name={has next weather state},
-  description={TODO},
-  see={}
+  description={Property that links an instance of \emph{Weather state} to the immediately succeeding instance concerning their \emph{start time}s, if such an instance exists. Both this property and its reverse property \emph{has previous weather state} are functional properties},
+  see={weather state,has previous weather state}
 }
 
 \newglossaryentry{instant}{
   name={instant},
-  description={TODO},
-  see={}
+  description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}\cite{owl-time} that specifies an instant},
+  see={temporal entity,interval}
 }
 \newglossaryentry{interval}{
   name={interval},
-  description={TODO},
-  see={}
+  description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}\cite{owl-time} that specifies a period of time by its length (not start and end time)},
+  see={temporal entity,instant}
 }
 \newglossaryentry{temporal entity}{
   name={temporal entity},
-  description={TODO},
-  see={}
+  description={Concept defined by \emph{OWL-Time}\cite{owl-time}; either an \emph{Instant} or an \emph{Interval}},
+  see={instant,interval}
 }
 
 \newglossaryentry{calm weather}{
