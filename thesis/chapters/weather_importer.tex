@@ -216,15 +216,24 @@ Section~\ref{sec:appendix_turtle_output} in the appendix shows a part of the out
 \label{sec:importer_tests}
 
 % TODO footnotes again?
-\emph{Weather Importer} incorporates a set of \emph{JUnit} tests that covers reasoning in the \thinkhomeweather ontology and the application itself. The following test categories are implemented:
+\emph{Weather Importer} incorporates a set of \emph{JUnit}\footnote{\href{http://junit.org/}{http://junit.org/}} tests that covers reasoning in the \thinkhomeweather ontology and the application itself. For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used.
+
+The following test categories are implemented:
 \begin{itemize}
-  \item Tests for OWL reasoning concerning single individuals of the ontology; e.g. an instance of \texttt{WeatherPhenomenon} that has a \texttt{hasTemperatureValue} property must be reasoned to be an instance of \texttt{Temperature}.
-  \item Tests that involve reasoning for instances of several concepts; e.g. correct reasoning of \texttt{CalmWeather}.
+  \item Tests for \emph{OWL} reasoning concerning single individuals of the ontology; e.g. an instance of \Egls{weather phenomenon} that has a \egls{has temperature value} property must be reasoned to be an instance of \egls{temperature}.
+  \item Tests that involve reasoning for instances of several concepts; e.g. correct reasoning of \Egls{calm weather}.
   \item Tests for the import of weather data from \yrno.
   \item Tests for the output in \emph{Turtle syntax}.
 \end{itemize}
 
 % TODO mention untested parts
+\begin{comment}
+The following parts of the application are not covered by unit tests:
 
-% TODO footnotes again?
-For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used.
+\begin{itemize}
+  \item bla
+  \item blubb
+  \item foo
+  \item bar
+\end{itemize}
+\end{comment}
