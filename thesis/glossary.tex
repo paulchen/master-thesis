@@ -1,6 +1,5 @@
-% TODO add instant, interval and temporalentity to glossary
+% TODO add instant, interval and temporalentity to glossary and refer to them in thinkhomeweather_ontology.owl
 
-% TODO siunitx package
 \newglossaryentry{temperature}{
   name={temperature},
   description={Sub-concept of \emph{Weather phenomenon} representing temperature. Sub-concepts are \emph{Frost}, \emph{Cold}, \emph{Below room temperature}, \emph{Room temperature}, \emph{Above room temperature}, and \emph{Heat}},
@@ -8,38 +7,36 @@
 }
 \newglossaryentry{room temperature}{
   name={room temperature},
-  description={Sub-concept of \emph{Temperature} representing a temperature of least 20 and at most 25 degrees Celsius},
+  description={Sub-concept of \emph{Temperature} representing a temperature of least \num{20} and at most \SI{25}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{above room temperature}{
   name={abobe room temperature},
-  description={Sub-concept of \emph{Temperature} representing a temperature of more than 25 and less than or equal to 30 degrees Celsius},
+  description={Sub-concept of \emph{Temperature} representing a temperature of more than \num{25} and less than or equal to \SI{30}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{below room temperature}{
   name={below room temperature},
-  description={Sub-concept of \emph{Temperature} representing a temperature of more than or equal to 10 and less than 20 degrees Celsius},
+  description={Sub-concept of \emph{Temperature} representing a temperature of more than or equal to \num{10} and less than \SI{20}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{cold}{
   name={cold},
-  description={Sub-concept of \emph{Temperature} representing a temperature  of more than or equal to 0 and less than 10 degrees Celsius},
+  description={Sub-concept of \emph{Temperature} representing a temperature of more than or equal to \num{0} and less than \SI{10}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{frost}{
   name={frost},
-  description={Sub-concept of \emph{Temperature} representing a temperature  below 0 degrees Celsius},
+  description={Sub-concept of \emph{Temperature} representing a temperature below \SI{0}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{heat}{
   name={heat},
-  description={Sub-concept of \emph{Temperature} representing a temperature  above 30 degrees Celsius},
+  description={Sub-concept of \emph{Temperature} representing a temperature above \SI{30}{\celsius}},
   see={temperature}
 }
 
 
-% TODO sub-concepts of sun position: "sub-concept of..."
-% TODO siunitx package
 \newglossaryentry{sun position}{
   name={sun position},
   description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon and its direction. Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction.},
@@ -47,62 +44,62 @@
 }
 \newglossaryentry{day}{
   name={day},
-  description={During the day, the sun is exactly at or above the horizon},
+  description={Sub-concept of \emph{sun position} that represents the sun being exactly at or above the horizon},
   see={sun position}
 }
 \newglossaryentry{night}{
   name={night},
-  description={The sun is more than 18 degrees below horizon},
+  description={Sub-concept of \emph{sun position} that represents the sun being more than \num{18} degrees below horizon},
   see={sun position}
 }
 \newglossaryentry{solar twilight}{
   name={solar twilight},
-  description={During solar twilight, the sun is above horizon, but less than 6 degrees above},
+  description={Sub-concept of \emph{sun position} that represents the sun being above horizon, but less than \num{6} degrees above},
   see={sun position,day}
 }
 \newglossaryentry{sun below horizon}{
   name={sun below horizon},
-  description={The sun is below the horizon},
+  description={Sub-concept of \emph{sun position} that represents the sun being below the horizon},
   see={sun position,night,twilight}
 }
 \newglossaryentry{twilight}{
   name={twilight},
-  description={During twilight, the sun is not at or above horizon and at most 18 degrees below horizon},
+  description={Sub-concept of \emph{sun position} that represents the sun being below horizon and at most \num{18} degrees below horizon},
   see={sun position,civil twilight,nautical twilight,astronomical twilight}
 }
 \newglossaryentry{civil twilight}{
   name={civil twilight},
-  description={During civil twilight, the sun is not at or above horizon and at most 6 degrees below horizon},
+  description={Sub-concept of \emph{sun position} that represents the sun being below horizon and at most \num{6} degrees below horizon},
   see={sun position,twilight}
 }
 \newglossaryentry{nautical twilight}{
   name={nautical twilight},
-  description={During nautical twilight, the sun is more than 6 degrees and no more than 12 degrees below horizon},
+  description={Sub-concept of \emph{sun position} that represents the sun being more than \num{6} degrees and no more than \num{12} degrees below horizon},
   see={sun position,twilight}
 }
 \newglossaryentry{astronomical twilight}{
   name={astronomical twilight},
-  description={During astronomical twilight, the sun is more than 12 degrees and no more than 18 degrees below horizon},
+  description={Sub-concept of \emph{sun position} that represents the sun being more than \num{12} degrees and no more than \num{18} degrees below horizon},
   see={sun position,twilight}
 }
 \newglossaryentry{sun from north}{
   name={sun from north},
-  description={The direction of the sun's position of more than 315 or at most 45 degrees},
+  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{315} or at most \num{45} degrees},
   see={sun position}
 }
 \newglossaryentry{sun from east}{
   name={sun from east},
-  description={The direction of the sun's position of more than 45 and at most 135 degrees},
+  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{45} and at most \num{135} degrees},
   see={sun position}
 }
 \newglossaryentry{sun from south}{
   name={sun from south},
-  description={The direction of the sun's position of more than 135 and at most 225 degrees},
+  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{135} and at most \num{225} degrees},
   see={sun position}
 }
 \newglossaryentry{sun from west}{
   name={sun from west},
-  description={The direction of the sun's position of more than 225 and at most 315 degrees},
+  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{225} and at most \num{315} degrees},
   see={sun position}
 }
 
@@ -151,22 +148,22 @@
 }
 \newglossaryentry{north wind}{
   name={north wind},
-  description={Sub-concept of \emph{Wind} representing wind approximately coming from the north, e.g. originating from a direction of at least 315 or less than 45 degrees},
+  description={Sub-concept of \emph{Wind} representing wind approximately coming from the north, e.g. originating from a direction of at least \num{315} or less than \num{45} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{east wind}{
   name={east wind},
-  description={Sub-concept of \emph{Wind} representing wind approximately coming from the east, e.g. originating from a direction of at least 45 and less than 135 degrees},
+  description={Sub-concept of \emph{Wind} representing wind approximately coming from the east, e.g. originating from a direction of at least \num{45} and less than \num{135} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{south wind}{
   name={south wind},
-  description={Sub-concept of \emph{Wind} representing wind approximately coming from the south, e.g. originating from a direction of at least 135 and less than 225 degrees},
+  description={Sub-concept of \emph{Wind} representing wind approximately coming from the south, e.g. originating from a direction of at least \num{135} and less than \num{225} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{west wind}{
   name={wind wind},
-  description={Sub-concept of \emph{Wind} representing wind  approximately coming from the wind, e.g. originating from a direction of at least 225 and less than 315 degrees},
+  description={Sub-concept of \emph{Wind} representing wind  approximately coming from the wind, e.g. originating from a direction of at least \num{225} and less than \num{315} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{calm}{
@@ -196,40 +193,39 @@
 }
 
 
-% TODO use siunitx package here
 \newglossaryentry{cloud cover}{
   name={cloud cover},
-  description={Sub-concept of \emph{Weather phenomenon} describing the current cloud coverage in \emph{okta} (integer numbers from 0 to 9). Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast}, and \emph{Unknown cloud cover}},
+  description={Sub-concept of \emph{Weather phenomenon} describing the current cloud coverage in \emph{okta} (integer numbers from \num{0} to \num{9}). Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast}, and \emph{Unknown cloud cover}},
   see={weather phenomenon,okta,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover}
 }
 \newglossaryentry{okta}{
   name={okta},
-  description={Unit of measurement that specifies the amount of \emph{cloud cover} on a range from 0 (\emph{Clear sky}) to 8 (\emph{Overcast}); a value of 9 represents an \emph{Unknown cloud cover}},
+  description={Unit of measurement that specifies the amount of \emph{cloud cover} on a range from \num{0} (\emph{Clear sky}) to \num{8} (\emph{Overcast}); a value of \num{9} represents an \emph{Unknown cloud cover}},
   see={cloud cover,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover}
 }
 \newglossaryentry{clear sky}{
   name={clear sky},
-  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be 0$\:$\emph{okta}},
-  see={okta,cloud cover}
+  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{0}$\:$\emph{okta}},
+   see={okta,cloud cover}
 }
 \newglossaryentry{partly cloudy}{
   name={partly cloudy},
-  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be 1, 2, 3 or 4$\:$\emph{okta}},
+  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{1}, \num{2}, \num{3}, or \num{4}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 \newglossaryentry{mostly cloudy}{
   name={mostly cloudy},
-  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be 5, 6, or 7$\:$\emph{okta}},
+  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{5}, \num{6}, or \num{7}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 \newglossaryentry{overcast}{
   name={overcast},
-  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be 8$\:$\emph{okta}},
+  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{8}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 \newglossaryentry{unknown cloud cover}{
   name={unknown cloud cover},
-  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be 9$\:$\emph{okta}},
+  description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{9}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 
@@ -268,19 +264,19 @@
   description={Sub-concept of \emph{Weather report} for some time after its \emph{observation time}},
   see={weather report,observation time,short range weather report,medium range weather report,long range weather report}
 }
-\newglossaryentry{short range weather report}{ % TODO use siunitx package here
+\newglossaryentry{short range weather report}{ % TODO mention forecast 1 hour weather state etc. here
   name={short range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most 3 hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most \num{3} hours in the future relative to the \emph{observation time}},
   see={weather report,forecast weather report,observation time}
 }
-\newglossaryentry{medium range weather report}{
+\newglossaryentry{medium range weather report}{ % TODO mention forecast 1 hour weather state etc. here
   name={medium range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than 3 hours and less than 12 hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than \num{3} hours and less than \num{12} hours in the future relative to the \emph{observation time}},
   see={weather report,forecast weather report,observation time}
 }
-\newglossaryentry{long range weather report}{
+\newglossaryentry{long range weather report}{ % TODO mention forecast 1 hour weather state etc. here
   name={long range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least 12 hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least \num{12} hours in the future relative to the \emph{observation time}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{observation time}{
@@ -331,7 +327,6 @@
   see={weather phenomenon}
 }
 
-% TODO use siunitx package here
 \newglossaryentry{humidity}{
   name={humidity},
   description={Sub-concept of \emph{Weather phenomenon} representing the relative humidity of the air. Sub-concepts are \emph{Very dry}, \emph{Dry}, \emph{Normal humidity}, \emph{Moist}, and \emph{Very moist}},
@@ -339,32 +334,31 @@
 }
 \newglossaryentry{very dry}{
   name={very dry},
-  description={Sub-concept of \emph{Humidity} describing relative humidity of less than 30 percent},
+  description={Sub-concept of \emph{Humidity} describing relative humidity of less than \num{30} percent},
   see={humidity}
 }
 \newglossaryentry{dry}{
   name={dry},
-  description={Sub-concept of \emph{Humidity} describing relative humidity of at least 30 and less than 40 percent},
+  description={Sub-concept of \emph{Humidity} describing relative humidity of at least \num{30} and less than \num{40} percent},
   see={humidity}
 }
 \newglossaryentry{normal humidity}{
   name={normal humidity},
-  description={Sub-concept of \emph{Humidity} describing relative humidity of at least 40 and at most 70 percent},
+  description={Sub-concept of \emph{Humidity} describing relative humidity of at least \num{40} and at most \num{70} percent},
   see={humidity}
 }
 \newglossaryentry{moist}{
   name={moist},
-  description={Sub-concept of \emph{Humidity} describing relative humidity of more than 70 and at most 80 percent},
+  description={Sub-concept of \emph{Humidity} describing relative humidity of more than \num{70} and at most \num{80} percent},
   see={humidity}
 }
 \newglossaryentry{very moist}{
   name={very moist},
-  description={Sub-concept of \emph{Humidity} describing relative humidity of more than 80 percent},
+  description={Sub-concept of \emph{Humidity} describing relative humidity of more than \num{80} percent},
   see={humidity}
 }
 
 
-% TODO siunitx package
 \newglossaryentry{precipitation}{
   name={precipitation},
   description={Sub-concept of \emph{Weather phenomenon} that describes precipitation (intensity and probability). Sub-concepts are \emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain}, and \emph{Tropical storm rain}},
@@ -372,32 +366,32 @@
 }
 \newglossaryentry{no rain}{
   name={no rain},
-  description={Sub-concept of \emph{Precipitation} representing absence precipitation (because either the intensity of precipitation is 0)},
+  description={Sub-concept of \emph{Precipitation} representing absence precipitation (because either the intensity of precipitation is \num{0})},
   see={precipitation}
 }
 \newglossaryentry{light rain}{
   name={light rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 0 and at most \SI{5}{\milli\metre\per\hour}},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{0} and at most \SI{5}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{medium rain}{
   name={medium rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 5 and at most \SI{20}{\milli\metre\per\hour}},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{5} and at most \SI{20}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{heavy rain}{
   name={heavy rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 20 and at most \SI{50}{\milli\metre\per\hour}},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{20} and at most \SI{50}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{extremely heavy rain}{
   name={extremely heavy rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than 50 and at most \SI{100}{\milli\metre\per\hour}},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{50} and at most \SI{100}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{tropical storm rain}{
   name={tropical storm rain},
-  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than 0 and an intensity of more than \SI{100}{\milli\metre\per\hour}},
+  description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \SI{100}{\milli\metre\per\hour}},
   see={precipitation}
 }
 
