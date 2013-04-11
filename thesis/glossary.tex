@@ -229,7 +229,7 @@
 
 \newglossaryentry{weather report}{
   name={weather report},
-  description={Concept that summarizes all data aquired at a certain \emph{observation time} for a certain \emph{location} from a \emph{weather source}, about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}},
+  description={Concept that summarizes all data acquired at a certain \emph{observation time} for a certain \emph{location} from a \emph{weather source}, about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}},
   see={weather state,current weather report,forecast weather report,weather source,observation time,start time,end time,location}
 }
 \newglossaryentry{current weather report}{
@@ -262,19 +262,19 @@
   description={Sub-concept of \emph{Weather report} for some time after its \emph{observation time}},
   see={weather report,observation time,short range weather report,medium range weather report,long range weather report}
 }
-\newglossaryentry{short range weather report}{ % TODO mention forecast 1 hour weather state etc. here
+\newglossaryentry{short range weather report}{
   name={short range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most \num{3} hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most \num{3} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report}, and \emph{Forecast 3 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
-\newglossaryentry{medium range weather report}{ % TODO mention forecast 1 hour weather state etc. here
+\newglossaryentry{medium range weather report}{
   name={medium range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than \num{3} hours and less than \num{12} hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than \num{3} hours and less than \num{12} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 6 hours weather report}, \emph{Forecast 9 hours weather report}, and \emph{Forecast 12 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
-\newglossaryentry{long range weather report}{ % TODO mention forecast 1 hour weather state etc. here
+\newglossaryentry{long range weather report}{
   name={long range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least \num{12} hours in the future relative to the \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least \num{12} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report}, and \emph{Forecast 24 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{observation time}{
@@ -433,17 +433,17 @@
 }
 \newglossaryentry{lat}{
   name={lat},
-  description={Latitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator}, % TODO mention: property from WGS84; reference WGS84
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the latitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
   see={weather report,location}
 }
 \newglossaryentry{long}{
   name={long},
-  description={Longitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian}, % TODO mention: property from WGS84; reference WGS84
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the longitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
   see={weather report,location}
 }
 \newglossaryentry{alt}{
   name={alt},
-   description={Height above \emph{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{weather report} is valid for, in metres}, % TODO mention: property from WGS84; reference WGS84
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the height above \emph{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{weather report} is valid for, in metres},
   see={weather report,location}
 }
 
