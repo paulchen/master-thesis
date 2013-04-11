@@ -428,23 +428,28 @@
 
 \newglossaryentry{location}{
   name={location},
-  description={An object property of \emph{weather report} that specifies the geographical position the \emph{weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}; links to an instance of the concept \emph{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}},
+  description={An object property of \emph{weather report} the geographical position the \emph{weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}; links to an instance of the concept \emph{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}},
   see={weather report,lat,long,alt}
+}
+\newglossaryentry{point}{
+  name={point},
+  description={A concept defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} representing a location which is given by \emph{altitude}, \emph{longitude} and \emph{latitude}. It is connected from an entity using the property \emph{location}},
+  see={lat,long,alt,location}
 }
 \newglossaryentry{lat}{
   name={lat},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the latitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
-  see={weather report,location}
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the latitude of the \emph{point} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
+  see={weather report,point}
 }
 \newglossaryentry{long}{
   name={long},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the longitude of the \emph{location} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
-  see={weather report,location}
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the longitude of the \emph{point} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
+  see={weather report,point}
 }
 \newglossaryentry{alt}{
   name={alt},
   description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the height above \emph{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{weather report} is valid for, in metres},
-  see={weather report,location}
+  see={weather report,point}
 }
 
 
