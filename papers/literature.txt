@@ -191,6 +191,9 @@ NEW:
 * Uncertainty_prediction.pdf
   T.N. Palmer: Predicting uncertainty in forecasts of weather and climate
 
+* 127953.pdf
+  Harvey Stern: THE ACCURACY OF WEATHER FORECASTS FOR MELBOURNE, AUSTRALIA
+
 
 NEW (2013-04-09):
 
