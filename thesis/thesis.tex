@@ -72,8 +72,10 @@
 
 % define page numbering styles
 \makepagestyle{numberCorner}
-\makeevenfoot{numberCorner}{\thepage}{}{}
-\makeoddfoot{numberCorner}{}{}{\thepage}
+\makeevenhead{numberCorner}{\thepage}{}{\leftmark}
+\makeoddhead{numberCorner}{\rightmark}{}{\thepage}
+\makeevenfoot{numberCorner}{}{}{}
+\makeoddfoot{numberCorner}{}{}{}
 
 % define custom macros for specific formats or names
 \newcommand{\uml}[1]{\texttt{#1}}
