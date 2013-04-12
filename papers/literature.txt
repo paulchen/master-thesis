@@ -188,6 +188,10 @@ NEW:
 * 1-s2.0-S0169023X0900007X-main.pdf
   Elena Simperl: Reusing ontologies on the Semantic Web: A feasibility study
 
+* Uncertainty_prediction.pdf
+  T.N. Palmer: Predicting uncertainty in forecasts of weather and climate
+
+
 NEW (2013-04-09):
 
 * methontology.pdf
