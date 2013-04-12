@@ -1,18 +1,15 @@
 \chapter*{Abstract}
 
-In the past few years, the idea of creating smart homes has gained popularity.
-A smart home possesses some kind of intelligence that allows it to take work from the its inhabitants.
-The overall goal is to increase the inhabitants' comfort, but energy use and costs will be reduced as well.
+In the past few years, the idea of creating \emph{Smart Home}s has gained popularity. A \emph{Smart Home} possesses some kind of intelligence that allows it to take work from the its inhabitants. The overall goal is to increase the inhabitants' comfort, but energy use and costs will be reduced as well.
 
-The aim of the \textit{ThinkHome} project \cite{CR2011-TH_Journal} \cite{CR2010-DEST_ThinkHome} is to design smart homes that are able to decrease energy consumption.
-For making control decisions, \textit{ThinkHome} is capable of processing input data from various sources.
-In the context of the \textit{ThinkHome} project, this thesis aims at constructing an OWL ontology for weather information, containing data about both current conditions and weather forecasts.
-The data described by this ontology will enable the \textit{ThinkHome} system to make decisions based on current and future weather conditions.
+The aim of the \thinkhome project is to design \emph{Smart Home}s that are able to decrease energy consumption. For making control decisions, \thinkhome is capable of processing input data from various sources.
 
-At first, the thesis will determine in which particular ways weather data can be used within \textit{ThinkHome}. Furthermore, possible sources for weather data will be analyzed. Primary sources will be weather services that are that are accessible via Internet. Optionally, local weather stations can provide further data about current weather conditions. A set of Internet-based sources for weather information will be reviewed for their suitability for use within the \textit{ThinkHome} project.
+In the context of the \thinkhome project, this thesis aims at constructing an \emph{OWL} ontology for weather information, containing data about both current conditions and weather forecasts. The data described by this ontology will enable the \thinkhome system to make decisions based on current and future weather conditions.
+
+At first, the thesis will determine in which particular ways weather data can be used within \thinkhome. Furthermore, possible sources for weather data will be analysed. Primary sources will be weather services that are that are accessible via Internet. Optionally, local weather stations will be able to provide further data about current weather conditions. A set of Internet-based sources for weather data will be reviewed for their suitability for use within the \thinkhome project.
 
 Afterwards, existing ontologies will be reviewed for their structure, advantages and disadvantages in order to acquire ideas being suitable to be re-used. Several well-known approaches for building new ontologies from scratch will be discussed in detail.
 
-The thesis will follow Methontology \cite{Methontology}, the best-fitting of these approaches, to build an \textit{OWL} ontology that covers both the weather data being available and the concepts required to perform weather-related tasks within \textit{ThinkHome} while always keeping the possibility of simple and efficient \textit{OWL reasoning} in mind.
+The thesis will follow \methontology, the best-fitting of these approaches, to build \thinkhomeweather, an \textit{OWL} ontology that covers both the weather data being available and the concepts required to perform weather-related tasks within \thinkhome while always keeping the possibility of simple and efficient \textit{OWL reasoning} in mind.
 
-Based on that ontology, a weather module for the \textit{ThinkHome} project will be developed. That module will gather data from weather services and local weather stations and transform it into a representation that complies to the \textit{ThinkHome} \textit{OWL} ontology. Furthermore, an interface between the weather module and \textit{ThinkHome}'s multi-agent system will be created. That interface will enable the multi-agent system to use weather information in order to make appropriate control decisions.
+Eventually, \emph{Weather Importer}, a Java application, will be developed that gathers data from weather services and local weather stations and transforms it to comply with the \thinkhomeweather ontology.
