@@ -2,24 +2,21 @@
 \chapter{Tables and listings}
 \label{ch:listings}
 
-% TODO
-
 This appendix contains tables and listings that are referenced from other chapters.
 
 \section{Conceptualisation tables for \thinkhomeweather}
 \label{sec:appendix_conceptualisation}
 
-% TODO description
+In order to keep the documentation of \thinkhomeweather clear, a set of tables is omitted from section~\ref{sec:ontology_concept}. This section contains these tables in case they are needed for reference.
 
-% TODO reorder
 \subsection{Concept dictionaries}
 \label{subsec:appendix_concept_dictionaries}
 
-A \emph{Concept dictionary} lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section~\ref{sec:concept_classification_trees}.
+A \emph{Concept dictionary} (see section~\ref{subsec:concept_dictionaries}) lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section~\ref{sec:concept_classification_trees}.
 
-In the following tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
+In the following tables, some sub-concepts having the same instances, class attributes, instance attributes and relations as their respective super-concepts are omitted; e.g. the tables contain only the concept \Egls{atmospheric pressure}, but not \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, and \Egls{very high pressure}. Refer to section~\ref{sec:ontology_glossary} and to the glossary in appendix~\ref{main} for details about the concepts which are omitted here.
 
-% TODO move all tables starting from here to the appendix
+Furthermore, any columns that are not filled with any content in any row are omitted.
 
 \subsubsection{Weather condition}
 
@@ -63,18 +60,17 @@ In the following tables, sub-concepts having the same instances, class attribute
   \hline
   \textbf{Name} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
-  \Egls{weather report} & \Egls{has priority}, \Egls{location}, \newline \Egls{has start time}, \Egls{has end time},\newline \Egls{has observation time}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \\
+  \egls{weather report} & \egls{has priority}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \newline \egls{location}, \newline \egls{has start time}, \egls{has end time},\newline \egls{has observation time} \\
   \hline
 \end{longtable}
 
 \subsubsection{Weather state}
 
-% TODO sub-concepts
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|p{0.167\textwidth}|}
+\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Instances} & \textbf{Class\newline attributes} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
+  \textbf{Name} & \textbf{Relations} \\
   \hline\hline
-  \Egls{weather state} & - & - & - & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon}\\
+  \Egls{weather state} & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon}\\
   \hline
 \end{longtable}
 
@@ -95,8 +91,7 @@ In the following tables, sub-concepts having the same instances, class attribute
 \subsection{Binary relations table}
 \label{subsec:appendix_binary_relations_table}
 
-% TODO
-The \emph{Binary relation table} specifies all relations from section~\ref{subsec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
+The \emph{Binary relations table} (see section~\ref{subsec:binary_relations_table}) specifies all relations from section~\ref{subsec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
 
 \begin{longtable}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
   \hline
@@ -108,11 +103,17 @@ The \emph{Binary relation table} specifies all relations from section~\ref{subse
   \hline
   \egls{has condition} & \Egls{weather state} & \Egls{weather condition} & $N$ & - \\
   \hline
+  \egls{has end time} & \Egls{weather report} & \Egls{interval} & $1$ & - \\
+  \hline
+  \egls{has observation time} & \Egls{weather report} & \Egls{instant} & $1$ & - \\
+  \hline
   \egls{has next weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has previous weather state} \\
   \hline
   \egls{has previous weather state} & \Egls{weather report} & \Egls{weather report} & $1$ & \egls{has next weather state} \\
   \hline
   \egls{has source} & \Egls{weather report} & \Egls{weather source} & $1$ & \egls{is source of} \\
+  \hline
+  \egls{has start time} & \Egls{weather report} & \Egls{interval} & $1$ & - \\
   \hline
   \egls{has weather phenomenon} & \Egls{weather state} & \Egls{weather phenomenon} & $N$ & \egls{belongs to state} \\
   \hline
@@ -120,19 +121,17 @@ The \emph{Binary relation table} specifies all relations from section~\ref{subse
   \hline
   \egls{is source of} & \Egls{weather source} & \Egls{weather report} & $N$ & \egls{has source} \\
   \hline
+  \egls{location} & \Egls{weather report} & \Egls{point} & $1$ & - \\
+  \hline
 \end{longtable}
 
 \subsection{Instance attributes table}
 \label{subsec:appendix_instance_attributes_table}
 
-% TODO add instant, interval and temporalentity to glossary
+The \emph{Instance attributes table} (see section~\ref{subsec:instance_attributes_table}) lists all instance attributes in \thinkhomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality.
 
-% TODO description of what is going on here
-% TODO
+The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \thinkhomeweather.
 
-The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. \emph{time:instant} and \emph{time:interval} refer to the types \emph{Instant} and \emph{Interval} from the \emph{OWL-Time}  ontology\cite{owl-time}.
-
-% TODO remove times and location from here as they are not instance attributes
 \begin{longtable}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
   \hline
   \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
@@ -145,23 +144,13 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \egls{has dew point value} & \Egls{dew point} & \emph{xsd:decimal} & \emph{any values allowed} & \si{\celsius} & $(1, 1)$ \\
   \hline
-  \egls{has end time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
-  \hline
   \egls{has humidity value} & \Egls{humidity} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
-  \hline
-  \egls{lat} & \Egls{location} & \emph{xsd:decimal} & $[-90, 90]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
-  \hline
-  \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
-  \hline
-  \egls{observation time} & \Egls{weather report} & \emph{time:instant} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
   \egls{has precipitation intensity} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, \infty)$ & \si{\milli\metre\per\hour} & $(1, 1)$ \\
   \hline
   \egls{has precipitation probability} & \Egls{precipitation} & \emph{xsd:decimal} & $[0, 1]$ & - & $(1, 1)$ \\
   \hline
   \egls{has pressure value} & \Egls{atmospheric pressure} & \emph{xsd:decimal} & $[0, \infty)$ & \si{\hecto\pascal} & $(1, 1)$ \\
-  \hline
-  \egls{has start time} & \Egls{weather report} & \emph{time:interval} & \emph{any values allowed} & - & $(1, 1)$ \\
   \hline
   \egls{has solar radiation value} & \Egls{solar radiation} & \emph{time:decimal} & $[0, \infty)$ & \si{\watt\per\square\meter} & $(1, 1)$ \\
   \hline
@@ -175,15 +164,22 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \egls{has wind speed} & \Egls{wind} & \emph{xsd:decimal} & $[0, \infty)$ & \si{\metre\per\second} & $(1, 1)$ \\
   \hline
+  \egls{lat} & \Egls{location} & \emph{xsd:decimal} & $[-90, 90]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
+  \hline
+  \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
+  \hline
 \end{longtable}
 
 
 \subsection{Class attribute tables}
 \label{subsec:appendix_class_attributes}
 
-% TODO description
+Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure} and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
 
-% TODO 
+These concepts are summarized in the \emph{Class attributes table} below. As in the \emph{Instance attributes tables} in section~\ref{subsec:appendix_instance_attributes_table}, this table does not respect the use of \muo; no units are specified.
+
+This table belongs to section~\ref{subsec:class_attributes_table}.
+
 \begin{longtable}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
   \hline
   \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
@@ -198,15 +194,15 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \Egls{atmospheric pressure} & \Egls{very high pressure} & \egls{has pressure value} &  $\geq 1028$ \\
   \hline\hline
-  \Egls{cloud cover} & \Egls{clear sky} & \egls{has cloud cover} & 0 \\
+  \Egls{cloud cover} & \Egls{clear sky} & \egls{has cloud cover} & $0$ \\
   \hline
-  \Egls{cloud cover} & \Egls{partly cloudy} & \egls{has cloud cover} & 1, 2, 3, 4 \\
+  \Egls{cloud cover} & \Egls{partly cloudy} & \egls{has cloud cover} & $1$, $2$, $3$, $4$ \\
   \hline
-  \Egls{cloud cover} & \Egls{mostly cloudy} & \egls{has cloud cover} & 5, 6, 7 \\
+  \Egls{cloud cover} & \Egls{mostly cloudy} & \egls{has cloud cover} & $5$, $6$, $7$ \\
   \hline
-  \Egls{cloud cover} & \Egls{overcast} & \egls{has cloud cover} & 8 \\
+  \Egls{cloud cover} & \Egls{overcast} & \egls{has cloud cover} & $8$ \\
   \hline
-  \Egls{cloud cover} & \Egls{unknown cloud cover} & \egls{has cloud cover} & 9 \\
+  \Egls{cloud cover} & \Egls{unknown cloud cover} & \egls{has cloud cover} & $9$ \\
   \hline\hline
   \Egls{humidity} & \Egls{very dry} & \egls{has humidity value} & $< 0.3$ \\
   \hline
@@ -218,20 +214,18 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \Egls{humidity} & \Egls{very moist} & \egls{has humidity value} & $> 0.8$ \\
   \hline\hline
-  % TODO precipitation probability
-  \Egls{precipitation} & \Egls{no rain} & \egls{has precipitation intensity} & - \\
+  % TODO format this appropriately
+  \Egls{precipitation} & \Egls{no rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & 0 \newline 0 \\
   \hline
-%  \Egls{precipitation} & No rain & - & $0$ \\
-%  \hline
-  \Egls{precipitation} & \Egls{light rain} & \egls{has precipitation intensity} & $(0, 5]$ \\
+  \Egls{precipitation} & \Egls{light rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $(0, 5]$ \newline $(0, 1]$ \\
   \hline
-  \Egls{precipitation} & \Egls{medium rain} & \egls{has precipitation intensity} & $(5, 20]$ \\
+  \Egls{precipitation} & \Egls{medium rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $(5, 20]$ \newline $(0, 1]$ \\
   \hline
-  \Egls{precipitation} & \Egls{heavy rain} & \egls{has precipitation intensity} & $(20, 50]$ \\
+  \Egls{precipitation} & \Egls{heavy rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $(20, 50]$ \newline $(0, 1]$ \\
   \hline
-  \Egls{precipitation} & \Egls{extremely heavy rain} & \egls{has precipitation intensity} & $(50, 100]$ \\
+  \Egls{precipitation} & \Egls{extremely heavy rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $(50, 100]$ \newline $(0, 1]$ \\
   \hline
-  \Egls{precipitation} & \Egls{tropical storm rain} & \egls{has precipitation intensity} & $> 100$ \\
+  \Egls{precipitation} & \Egls{tropical storm rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $> 100$ \newline $(0, 1]$ \\
   \hline\hline
   \Egls{solar radiation} & \Egls{no radiation} & \egls{has solar radiation value} & $0$ \\
   \hline
@@ -299,7 +293,12 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \Egls{wind} & \egls{hurricane} & \egls{has wind speed} & $\geq 32$ \\
   \hline\hline
-  % TODO actually instances
+  \egls{weather report} & \Egls{short range weather report} & \egls{has start time} & $(0, 3]$ \\
+  \hline
+  \egls{weather report} & \Egls{medium range weather report} & \egls{has start time} & $(3, 12)$ \\
+  \hline
+  \egls{weather report} & \Egls{long range weather report} & \egls{has start time} & $\geq 12$ \\
+  \hline
   \egls{weather report} & \Egls{current weather report} & \egls{has start time} & $0$ \\
   \hline
   \egls{weather report} & \Egls{forecast weather report} & \egls{has start time} & $> 0$ \\
@@ -324,12 +323,6 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \egls{weather report} & \emph{Forecast 24 hours weather report} & \egls{has start time} & $24$ \\
   \hline
-  \egls{weather report} & \Egls{short range weather report} & \egls{has start time} & $(0, 3]$ \\
-  \hline
-  \egls{weather report} & \Egls{medium range weather report} & \egls{has start time} & $(3, 12)$ \\
-  \hline
-  \egls{weather report} & \Egls{long range weather report} & \egls{has start time} & $\geq 12$ \\
-  \hline
   \egls{weather report} & \Egls{weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
   \hline
   \egls{weather report} & \Egls{weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
@@ -338,44 +331,43 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \egls{current weather report} & \Egls{current weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
 \end{longtable}
-% TODO sub-concepts of weather state
 
 \subsection{Instances table}
 \label{subsec:appendix_instances_table}
 
-% TODO description of what is going on here
-% TODO
+An \emph{Instances table} lists all predefined instances that can be found in an ontology. Refer to section~\ref{subsec:instances_table} for details.
+
 \begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
   \hline
   \textbf{Instance name} & \textbf{Concept name} & \textbf{Attribute} & \textbf{Values} \\
   \hline\hline
-  Cloud & Weather condition & - & - \\
+  Cloud & \Egls{weather condition} & - & - \\
   \hline
-  Fog & Weather condition & - & - \\
+  Fog & \Egls{weather condition} & - & - \\
   \hline
-  Partly cloudy & Weather condition & - & - \\
+  Partly cloudy & \Egls{weather condition} & - & - \\
   \hline
-  Mostly cloudy & Weather condition & - & - \\
+  Mostly cloudy & \Egls{weather condition} & - & - \\
   \hline
-  Rain & Weather condition & - & - \\
+  Rain & \Egls{weather condition} & - & - \\
   \hline
-  Sleet & Weather condition & - & - \\
+  Sleet & \Egls{weather condition} & - & - \\
   \hline
-  Snow & Weather condition & - & - \\
+  Snow & \Egls{weather condition} & - & - \\
   \hline
-  Sun & Weather condition & - & - \\
+  Sun & \Egls{weather condition} & - & - \\
   \hline
-  Thunder & Weather condition & - & - \\
+  Thunder & \Egls{weather condition} & - & - \\
   \hline
 \end{longtable}
 
 \section{Output of \emph{Weather Importer} in \emph{Turtle syntax}}
 \label{sec:appendix_turtle_output}
 
-% TODO
-This is a part of the output generated by \emph{Weather Importer} run in \texttt{fetch} mode on April 4, 2013 at ?. Only statements about the first two individuals of type \emph{WeatherReport} and the individuals that are connected to them via object properties are included. See section \ref{subsec:importer_turtle} for details.
+This is a part of the output generated by \emph{Weather Importer} run in \texttt{turtle} mode on April 4, 2013 at 14:56. Only statements about the first two individuals of type \Egls{weather report} and the individuals that are connected to them via object properties (excluding \egls{has next weather state})  are included. See section \ref{subsec:importer_turtle} for details.
 
-% TODO
+\vspace{1em}
+
 \begin{lstlisting}
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix weather: <http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#> .
