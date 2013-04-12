@@ -61,7 +61,7 @@ This section digs into the details of a number of popular weather services that 
 \subsection{Available Internet services}
 \label{sec:internet_services}
 
-There is a tremendous amount of services providing weather data over the Internet\footnote{No website has been found that compiles a comprehensive list of Internet weather services; however, there are websites that discuss various services, e.g. \url{http://www.nws.noaa.gov/im/more.htm}, \url{http://lifehacker.com/5897973/five-best-weather-web-sites}, or \url{http://michaelwelburn.com/2011/11/02/comparing-weather-apis/}}. However, only a small number of them is suitable for use in a context as in can be found \thinkhome. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
+There is a tremendous amount of services providing weather data over the Internet\footnote{No website has been found that compiles a comprehensive list of Internet weather services; however, there are websites that discuss various services, e.g. \href{http://www.nws.noaa.gov/im/more.htm}{http://www.nws.noaa.gov/im/more.htm}, \href{http://lifehacker.com/5897973/five-best-weather-web-sites}{http://lifehacker.com/5897973/five-best-weather-web-sites}, or \href{http://michaelwelburn.com/2011/11/02/comparing-weather-apis/}{http://michaelwelburn.com/2011/11/02/comparing-weather-apis/}}. However, only a small number of them is suitable for use in a context as in can be found \thinkhome. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
 
 The access to Internet weather services in \thinkhome is implemented in Java, hence an important question about a certain weather service is whether in can easily be accessed from within a Java program.
 
@@ -70,20 +70,28 @@ For evaluation of Internet weather services, the following aspects are examined:
 \begin{itemize}
   \item \textbf{Coverage area:} Which part of the world is covered by the weather service?\\
   In order to keep things simple, a service covering a larger part of the world is preferred over a service covering a smaller part.
+  
   \item \textbf{Data format:} In what format is weather data being delivered? Can it be easily parsed and processed?\\
-  A data format that is easier to handle on the client-side is preferred over a data format that requires more complicated handling. While \emph{XML}\cite{XML} can be handled natively within many programming languages including Java, JSON may require an additional library (e.g. in Java). There may even be data formats that require the development of a new parser.% TODO references
+  A data format that is easier to handle on the client-side is preferred over a data format that requires more complicated handling. While \emph{XML}\cite{XML} can be handled natively within many programming languages including Java, \emph{JSON}\footnote{\href{http://tools.ietf.org/html/rfc4627}{http://tools.ietf.org/html/rfc4627}} may require an additional library in some languages such as Java\footnote{\emph{JSON} libraries for Java include \emph{JSON-lib} (\href{http://json-lib.sourceforge.net/}{http://json-lib.sourceforge.net/}), \emph{FlexJSON} (\href{http://flexjson.sourceforge.net/}{http://flexjson.sourceforge.net/}) and \emph{Gson} (\href{https://code.google.com/p/google-gson/}{https://code.google.com/p/google-gson/})}, while \emph{PHP} comes with built-in support for \emph{JSON}\footnote{\href{http://www.php.net/manual/en/book.json.php}{http://www.php.net/manual/en/book.json.php}}. There may even be data formats that require the development of a new parser.
+  
   \item \textbf{Data access:} How does the access to weather data work? How is data requested and how is the answer being received?\\
-  The less complicated a request is, the better the service suits the requirements. Requests in HTTP are preferred due to the simplicity of performing requests on the client side in Java using the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}.
+  The less complicated a request is, the better the service suits the requirements. Requests in \emph{HTTP} are preferred due to the simplicity of performing requests on the client side in Java using the \emph{Apache HttpComponents project}\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}.
+  
   \item \textbf{Access restrictions, terms of use:} Is the service available freely or is the access restricted? Are credentials (e.g. a username and a password or an access key) required for access? If yes, can the credentials be obtained in a simple way or does that entail a complicated procedure? Are there any access fees for academic or commercial use?\\
   A service being less restricted is preferred over a service coming with more restrictions.
+  
   \item \textbf{Documentation:} Is there any documentation for this service? Does it cover all aspects or are there some features that are undocumented?\\
   Of course, a service without documentation is unsuitable. A better documented service is always preferred over a service that is less documented.
+  
   \item \textbf{Stability:} Can one expect the service to remain unchanged over a reasonable amount of time (e.g. several years)? If there will be future changes, will they be announced? How long will they be announced in advance?\\
   A stable service is preferred over an unstable one. A better handling of changes is preferred over a worse handling of changes.
+  
   \item \textbf{Weather elements:} Which weather elements (e.g. temperature, relative humidity, dew point etc.) are covered by the service?\\
   A weather service covering a wider range of weather elements is preferred over a service covering a smaller range.
-  \item \textbf{Timeframe:} Are forecasts available? If yes, how detailled are these forecasts? How far into the future are forecasts available? What is the interval between two forecasts?\\
+  
+  \item \textbf{Time frame:} Are forecasts available? If yes, how detailed are these forecasts? How far into the future are forecasts available? What is the interval between two forecasts?\\
   Forecasts for at least 48 hours are mandatory. Over the next 48 hours, there should be at least six forecasts with an interval of at most eight hours between two consecutive forecasts. A weather service covering a longer period than 48 hours into the future and/or more than six forecasts within the next 48 hours is preferred.
+  
   \item \textbf{Weather updates:} How often is the weather data being updated?\\
   The data should be updated at least every six hours. A service having a shorter update interval is preferred over a service having a longer interval.
 \end{itemize}
@@ -91,152 +99,288 @@ For evaluation of Internet weather services, the following aspects are examined:
 In the following sections, some of the most popular Internet weather services are evaluated. In addition to the aspects listed above, some general information is provided (operator and web page). These sections aim at determining which Internet weather service best fits the given requirements. Furthermore, based on which weather elements are provided by various services, a set of weather elements is determined that will be used in the ontology. Including weather elements that are not available from any weather services are useless.
 
 % TODO where do the informations in this sections come from?
+\paragraph{Weather services being evaluated}
+
+Figure~\ref{table:weather_data1} lists all weather services that have been evaluated together with their operator and web page.
+
+% TODO operators in emphs?
+\begin{figure}
+\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Operator} & \textbf{Web page} \\
+  \hline\hline
+  \textbf{DWD} & \emph{Deutscher Wetterdienst} (\emph{DWD}, ``German weather service'') & \href{http://www.dwd.de/}{http://www.dwd.de/} \\
+  \hline
+  \textbf{Yahoo! Weather} & \emph{Yahoo! Inc.} & \href{http://developer.yahoo.com/weather/}{http://developer.yahoo.com/weather/} \\
+  \hline
+  \textbf{World Weather Online} & World Weather Online & \href{http://www.worldweatheronline.com}{http://www.worldweatheronline.com}\\
+  \hline
+  \textbf{Google Weather Feed} & Google Inc. & none (not publicly advertised API) \\
+  \hline
+  \textbf{yr.no} & Meteorologisk institutt (Norwegian Meteorological Institute), Norsk rikskringkasting AS (NRK, Norwegian Broadcasting Corporation) & \href{http://api.yr.no/}{http://api.yr.no/} \\
+  \hline
+  \textbf{METAR} & Airports around the world & \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/} \\ % TODO correct?
+  \hline
+  \textbf{NWS} & National Weather Service\footnote{part of \emph{NOAA}, \emph{National Oceanic and Atmospheric Administration}} & \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/} \\ % TODO href for NOAA
+  \hline
+  \textbf{Weather Underground} & Weather Underground & \href{http://www.wunderground.com/weather/api/}{http://www.wunderground.com/weather/api/} \\
+  \hline
+  \textbf{Weather.com} & The Weather Channel, LLC & \href{http://www.weather.com/services/xmloap.html}{http://www.weather.com/services/xmloap.html} \\
+  \hline
+\end{longtable}
+\vspace{.5em}
+\caption{Names, operators and web pages of all weather services that have been evaluated.}
+\label{table:weather_data1}
+\end{figure}
+
+\begin{figure}
+\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Coverage area} \\
+  \hline\hline
+  \textbf{DWD} & Worldwide (current weather data); Germany and large cities around the world (forecasts) \\
+  \hline
+  \textbf{Yahoo! Weather} & Worldwide \\
+  \hline
+  \textbf{World Weather Online} & Worldwide \\
+  \hline
+  \textbf{Google Weather Feed} & Worldwide \\
+  \hline
+  \textbf{yr.no} & Worldwide \\
+  \hline
+  \textbf{METAR} & Worldwide \\
+  \hline
+  \textbf{NWS} & Only US \\
+  \hline
+  \textbf{Weather Underground} & Worldwide \\
+  \hline
+  \textbf{Weather.com} & Worldwide \\
+  \hline
+\end{longtable}
+\vspace{.5em}
+\caption{Coverage areas of weather services.}
+\label{table:weather_data2}
+\end{figure}
+
+% TODO reference FTP, RSS?
+\begin{figure}
+\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Data format} & \textbf{Data access} \\
+  \hline\hline
+  \textbf{DWD} & \emph{SYNOP}\footnote{\emph{Surface Synoptic Observations}: \href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \emph{FTP} \\
+  \hline
+  \textbf{Yahoo! Weather} & \emph{RSS} feed & \emph{HTTP} \\
+  \hline
+  \textbf{World Weather Online} & \emph{XML}, \emph{JSON}, \emph{JSON-P}, \emph{CSV} & \emph{HTTP} \\ % TODO references
+  \hline
+  \textbf{Google Weather Feed} & \emph{XML} & \emph{HTTP} \\
+  \hline
+  \textbf{yr.no} & \emph{XML} & \emph{HTTP} \\
+  \hline
+  \textbf{METAR} & Format standardised by \emph{ICAO}\footnote{TODO}; not human-readable. Parsers for various programming languages are available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}} & Via HTML from \emph{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO footnote
+  \hline
+  \textbf{NWS} & \emph{XML} & \emph{SOAP}, \emph{REST} \\ % TODO references
+  \hline
+  \textbf{Weather Underground} & \emph{JSON}, \emph{XML} & \emph{HTTP} \\
+  \hline
+  \textbf{Weather.com} & \emph{JSON}, \emph{XML} & \emph{HTTP} \\
+  \hline
+\end{longtable}
+\vspace{.5em}
+\caption{Data formats and protocols for data access of weather services.}
+\label{table:weather_data3}
+\end{figure}
+
+\begin{figure}
+\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Access restrictions, terms of use} \\
+  \hline\hline
+  \textbf{DWD} & An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within projects like \thinkhome.\\
+  \hline
+  \textbf{Yahoo! Weather} & Free for use for individuals and non-profit organizations, providing attribution required. No statement about commercial use anywhere in the documentation.\\
+  \hline
+  \textbf{World Weather Online} & An account must be created for accessing both the Free API and the Premium API. The Free API is free to use for personal and commercial use, credits must be given to World Weather Online. Costs for the Premium API start at 20 US dollars per month.\\
+  \hline
+  \textbf{Google Weather Feed} & No account required; terms of use unknown (does not have an explicitely stated licence due to being an inofficial interface) \\
+  \hline
+  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}\footnote{\emph{Creative Commons Attribution 3.0} \href{http://creativecommons.org/licenses/by/3.0}{http://creativecommons.org/licenses/by/3.0}}\\
+  \hline
+  \textbf{METAR} & Unknown \\ % TODO ?
+  \hline
+  \textbf{NWS} & \\ % TODO
+  \hline
+  \textbf{Weather Underground} & Account creation is mandatory; available for personal, non-commercial use (public API); custom weather services are available \\
+  \hline
+  \textbf{Weather.com} & An account is mandatory; the creation process is complicated \\
+  \hline
+\end{longtable}
+\vspace{.5em}
+\caption{Access restrictions and terms of use for weather services.}
+\label{table:weather_data4}
+\end{figure}
+
+\begin{figure}
+\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Stability} \\
+  \hline\hline
+  \textbf{DWD} & A few changes every weeks which are announced via email at least one week in advance; data required by \thinkhome has never been changed during the last six months.\\
+  \hline
+  \textbf{Yahoo! Weather} & Unknown \\
+  \hline
+  \textbf{World Weather Online} & Unknown \\
+  \hline
+  \textbf{Google Weather Feed} & Discontinued \\ % TODO reference; explain why included
+  \hline
+  \textbf{yr.no} & New releases of the API one or two times per year; the old API remains in operation a few months after the release of a new one. Announcements are made on the web page. A less frequently changing API with \emph{long term support} is available.\\
+  \hline
+  \textbf{METAR} & Stable. \\ % TODO \emph{METAR} is standardized by \emph{ICAO}. It was introduced in 1968 and has been modified a numer of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
+  \hline
+  \textbf{NWS} & Small changes every few months with announcements via \emph{RSS}. Most of the interface remains unchanged in the long run.\\
+  \hline
+  \textbf{Weather Underground} & The has been a recent API change; the overall stability is unknown. \\
+  \hline
+  \textbf{Weather.com} & Unknown \\
+  \hline
+\end{longtable}
+\vspace{.5em}
+\caption{Stability of weather services.}
+\label{table:weather_data5}
+\end{figure}
+
+\begin{figure}
+\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Weather elements} \\
+  \hline\hline
+  \textbf{DWD} & Temperature, relative humidity, wind speed and direction, precipitation, atmospheric pressure, cloud coverage (current weather). Temperature and weather condition (forecasts).\\
+  \hline
+  \textbf{Yahoo! Weather} & Temperature, wind chill, speed and direction, relative humidity, visibility, atmospheric pressure, sunrise, and sunset times (current weather). Temperature and weather condition (forecast).\\
+  \hline
+  \textbf{World Weather Online} & Temperature, wind speed and direction, relative humidity, and precipitation intensity (Free API). Additionally dew point, chance of precipitation and atmospheric pressure (forecast).\\
+  \hline
+  \textbf{Google Weather Feed} & Temperature, humidity (only current weather), weather condition.\\
+  \hline
+  \textbf{yr.no} & Temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, fog.\\
+  \hline
+  \textbf{METAR} & Temperature, dew point, wind speed and direction, precipitation, cloud coverage, visibility, and atmospheric pressure. \\
+  \hline
+  \textbf{NWS} & \\ % TODO
+  \hline
+  \textbf{Weather Underground} & Minimum and maximum temperature, weather condition (public API); more data via custom weather services \\
+  \hline
+  \textbf{Weather.com} & Temperature, humidity, precipitation, wind speed and direction, sunrise and sunset times, and the weather condition (current weather and forecasts); atmospheric pressure, visibility, and dew point (current weather only) \\
+  \hline
+\end{longtable}
+\vspace{.5em}
+\caption{Weather elements provided by weather services.}
+\label{table:weather_data6}
+\end{figure}
+
+\begin{figure}
+\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Time frame} & \textbf{Weather updates} \\
+  \hline\hline
+  \textbf{DWD} & 72 hours & Every few hours \\
+  \hline
+  \textbf{Yahoo! Weather} & 48 hours (only one forecast per day) & Every few hours \\
+  \hline
+  \textbf{World Weather Online} & Five days & Every \num{3} to \num{4} hours \\
+  \hline
+  \textbf{Google Weather Feed} & 72 hours (only one forecast per day) & Every few hours \\
+  \hline
+  \textbf{yr.no} & Nine days (four forecasts per day) & Every few hours \\
+  \hline
+  \textbf{METAR} & Only current weather data & Once per hour \\
+  \hline
+  \textbf{NWS} & ? & About once per hour \\ % TODO
+  \hline
+  \textbf{Weather Underground} & Five days (one forecast per day) & Every few hours \\
+  \hline
+  \textbf{Weather.com} & Five days & Every few hours \\
+  \hline
+\end{longtable}
+\vspace{.5em}
+\caption{Time frame of forecast data and frequency of weather updates at weather services.}
+\label{table:weather_data7}
+\end{figure}
+
+% TODO documentation
+
+\begin{comment}
+% TODO
+
+DWD:
+  \item \textbf{Data format:} Current weather data is available in SYNOP format (Surface Synoptic Observations) \footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}}. A Java parser may be time-consuming to implement. Forecasts are available as weather maps, tables and text (not machine-readable).
+
+  \item \textbf{Data access:} Via FTP (supported in Java by the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}).
+
+
+
+
+
+
+
 
 \paragraph{DWD}
 
 \begin{itemize}
-  \item \textbf{Operator:} \emph{Deutscher Wetterdienst} (\emph{DWD}, ``German weather service'')
-  \item \textbf{Web page:} \href{http://www.dwd.de/}{http://www.dwd.de/}
-  \item \textbf{Coverage area:} Current weather data is available worldwide, forecasts are available within Germany and only for large cities outside Germany.
-  \item \textbf{Data format:} Current weather data is available in SYNOP format (Surface Synoptic Observations) \footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}}. A Java parser may be time-consuming to implement. Forecasts are available as weather maps, tables and text (not machine-readable).
-  \item \textbf{Data access:} Via FTP (supported in Java by the Apache HttpComponents project\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}).
-  \item \textbf{Access restrictions, terms of use:} An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within projects like \thinkhome.
   \item \textbf{Documentation:} There is extensive documentation 
-  \item \textbf{Stability:} Every few weeks there are a few changes to the data format. However, data required by \thinkhome has never been changed during the last six months. Changes are announced via email at least one week in advance.
-  \item \textbf{Weather elements:} Temperature, relative humidity, wind speed and direction, precipitation, atmospheric pressure, cloud coverage. Forecasts only include temperature and the overall weather condition.
-  \item \textbf{Timeframe:} Forecasts are available for 72 hours into the future.
-  \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
 
 \paragraph{Yahoo! Weather}
 
 \begin{itemize}
-  \item \textbf{Operator:} \emph{Yahoo! Inc.}
-  \item \textbf{Web page:} \href{http://developer.yahoo.com/weather/}{http://developer.yahoo.com/weather/}
-  \item \textbf{Coverage area:} Worldwide coverage.
-  \item \textbf{Data format:} RSS feed.
-  \item \textbf{Data access:} Via HTTP.
-  \item \textbf{Access restrictions, terms of use:} Free for use for individuals and non-profit organizations, providing attribution required. No statement about commercial use anywhere in the documentation.
   \item \textbf{Documentation:} Full documentation is available.
-  \item \textbf{Stability:} It is unknown whether this API is subject to change or not.
-  \item \textbf{Weather elements:} Data about current weather state includes temperature, wind chill, speed and direction, relative humidity, visibility, atmospheric pressure, sunrise and sunset times. Forecasts only include temperature and an overall weather condition.
-  \item \textbf{Timeframe:} Forecasts are available for 48 hours, but only one forecast per day.
-  \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
 
 \paragraph{World Weather Online}
 
 \begin{itemize}
-  \item \textbf{Operator:} World Weather Online
-  \item \textbf{Web page:} \href{http://www.worldweatheronline.com}{http://www.worldweatheronline.com}
-  \item \textbf{Coverage area:} Worldwide coverage.
-  \item \textbf{Data format:} Data is available in XML, JSON, JSON-P and CSV formats.
-  \item \textbf{Data access:} Via HTTP.
-  \item \textbf{Access restrictions, terms of use:} An account must be created for accessing both the Free API and the Premium API. The Free API is free to use for personal and commercial use, credits must be given to World Weather Online. Costs for the Premium API start at 20 US dollars per month.
   \item \textbf{Documentation:} Full documentation is available.
-  \item \textbf{Stability:} It is unknown whether the APIs are subject to change or not.
-  \item \textbf{Weather elements:} Free API offers temperature, wind speed and direction, relative humidity and precipitation intensity. Premium API additionally offers dew point, chance of precipitation and atmospheric pressure.
-  \item \textbf{Timeframe:} The Free API offers daily forecasts over a range of five days, the Premium API comes with % TODO
-  \item \textbf{Weather updates:} Weather data is updated every 3 to 4 hours.
 \end{itemize}
 
 \paragraph{Google Weather Feed}
 
 \begin{itemize}
-  \item \textbf{Operator:} Google Inc.
-  \item \textbf{Web page:} As Google's weather feed is not a publicly advertised API, there is no web page for it.
-  \item \textbf{Coverage area:} Worldwide coverage.
-  \item \textbf{Data format:} XML feed.
-  \item \textbf{Data access:} Via HTTP.
-  \item \textbf{Access restrictions, terms of use:} There is no explicit licence for this API as it is an inofficial interface. Hence, usage of this API within any project is probably not allowed at all.
   \item \textbf{Documentation:} No official documentation available. The inofficial documentation being available from third-party websites is sufficient for properly using Google's weather feed.
-  \item \textbf{Stability:} It is unknown whether the API is subject to change or not. It must be expected that it may be changed without prior notice.
-  \item \textbf{Weather elements:} Temperature, humidity (not included in forecasts) and the overall weather condition.
-  \item \textbf{Timeframe:} Daily forecasts are available over the next 72 hours.
-  \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
 
 \paragraph{yr.no}
 
 \begin{itemize}
-  \item \textbf{Operator:} Meteorologisk institutt (Norwegian Meteorological Institute), Norsk rikskringkasting AS (NRK, Norwegian Broadcasting Corporation)
-  \item \textbf{Web page:} \href{http://api.yr.no/}{http://api.yr.no/}
-  \item \textbf{Coverage area:} Worldwide.
-  \item \textbf{Data format:} XML.
-  \item \textbf{Data access:} Via HTTP.
-  \item \textbf{Access restrictions, terms of use:} Data is available under a Creative Commons licence (CC-BY 3.0\footnote{\href{http://creativecommons.org/licenses/by/3.0}{http://creativecommons.org/licenses/by/3.0}})
   \item \textbf{Documentation:} Full documentation is available.
-  \item \textbf{Stability:} There are new releases of the API one or two times per year. The old API remains in operation a few months after a new version has been released. New releases are announced on the web page of the API.\\
-  Additionally, there is a \emph{long time support} weather API that changes less frequent.
-  \item \textbf{Weather elements:} Temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, fog.
-  \item \textbf{Timeframe:} Forecasts for nine days in advance, interval of six hours between two forecasts.
-  \item \textbf{Weather updates:} Weather data is updated every few hours.
 \end{itemize}
 
 \paragraph{METAR}
 
-% TODO references
 \begin{itemize}
-  \item \textbf{Operator:} Airports around the world.
-  \item \textbf{Web page:} \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/}
-  \item \textbf{Coverage area:} Worldwide coverage.
-  \item \textbf{Data format:} The \emph{METAR} format is standardized by \emph{ICAO} (\emph{International Civil Aviation Organization}). It is not human-readable. Parsers for various programming languages are available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}}.
-  \item \textbf{Data access:} Via HTML from \emph{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available.
-  \item \textbf{Access restrictions, terms of use:} % TODO nothing stated anywhere?
   \item \textbf{Documentation:} \emph{METAR} is well documented as it is used around the world.
-  \item \textbf{Stability:} \emph{METAR} is standardized by \emph{ICAO}. It was introduced in 1968 and has been modified a numer of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
-  \item \textbf{Weather elements:} Among others, temperature, dew point, wind speed and direction, precipitation, cloud coverage, visibility and atmospheric pressure are provided.
-  \item \textbf{Timeframe:} Only current data, no forecasts.
-  \item \textbf{Weather updates:} \emph{METAR}s are updated once per hour.
 \end{itemize}
+
 
 \paragraph{National Weather Service}
 
 \begin{itemize}
-  \item \textbf{Operator:} National Weather Service (part of \emph{NOAA}, \emph{National Oceanic and Atmospheric Administration})
-  \item \textbf{Web page:} \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/}
-  \item \textbf{Coverage area:} Only US.
-  \item \textbf{Data format:} XML feed.
-  \item \textbf{Data access:} Via SOAP or REST.
-  \item \textbf{Access restrictions, terms of use:} % TODO
   \item \textbf{Documentation:} Full documentation is available.
-  \item \textbf{Stability:} Small changes are applied every few months, although most of the interface remains unchanged in the long run. Changes are announced via an RSS feed.
-  \item \textbf{Weather elements:} % TODO
-  \item \textbf{Timeframe:} % TODO
-  \item \textbf{Weather updates:} Weather data is updated about once per hour. 
 \end{itemize}
 
 \paragraph{Weather Underground}
 
 \begin{itemize}
-  \item \textbf{Operator:} Weather Underground
-  \item \textbf{Web page:} \href{http://www.wunderground.com/weather/api/}{http://www.wunderground.com/weather/api/}
-  \item \textbf{Coverage area:} Worldwide coverage.
-  \item \textbf{Data format:} JSON and XML are available.
-  \item \textbf{Data access:} Via HTTP.
-  \item \textbf{Access restrictions, terms of use:} The public API is only available for personal, non-commercial use. Account creation is mandatory. Custom weather services are available.
   \item \textbf{Documentation:} Full documentation is available.
-  \item \textbf{Stability:} There has been a change to a new API during the last months. Although it can be expected that the new API will stay there for a while, it must be expected that a change of API will always be possible.
-  \item \textbf{Weather elements:} Only an overall weather condition and minimum and maximum temperatures are available. Custom weather services include more data.
-  \item \textbf{Timeframe:} Daily forecasts for five days.
-  \item \textbf{Weather updates:} Updated every few hours.
 \end{itemize}
 
 \paragraph{Weather.com}
 
 \begin{itemize}
-  \item \textbf{Operator:} The Weather Channel, LLC
-  \item \textbf{Web page:} \href{http://www.weather.com/services/xmloap.html}{http://www.weather.com/services/xmloap.html}
-  \item \textbf{Coverage area:} Worldwide coverage.
-  \item \textbf{Data format:} XML or JSON.
-  \item \textbf{Data access:} Via HTTP.
-  \item \textbf{Access restrictions, terms of use:} For accessing the API, an account must be created in a complicated process. 
   \item \textbf{Documentation:} Full documentation is available.
-  \item \textbf{Stability:} It is unknown whether the API is subject to change or not.
-  \item \textbf{Weather elements:} Temperature, humidity, precipitation, wind speed and direction, sunrise and sunset times and the overall weather condition. Furthermore, the current weather report includes atmospheric pressure, visibility and dew point.
-  \item \textbf{Timeframe:} Forecasts are available for five days.
-  \item \textbf{Weather updates:} Updated every few hours.
 \end{itemize}
+
+\end{comment}
 
 \section{Conclusion}
 \label{sec:weather_conclusion}
@@ -252,7 +396,7 @@ In the following sections, some of the most popular Internet weather services ar
   \hline
   World Weather Online & Wide range of data formats & Free API lacks important data \\
   \hline
-  Google Weather Feed & Simple data format (XML) & Unofficial, undocumented API; unknown terms of use; only a small number of available weather elements \\
+  Google Weather Feed & Simple data format (XML) & Unofficial, undocumented API; unknown terms of use; only a small number of available weather elements; discontinued \\
   \hline
   yr.no & Simple data format (XML); available under CC-BY 3.0 & - \\
   \hline
