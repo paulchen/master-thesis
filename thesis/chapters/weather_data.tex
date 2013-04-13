@@ -71,7 +71,7 @@ For evaluation of Internet weather services, the following aspects are examined:
   \item \textbf{Coverage area:} Which part of the world is covered by the weather service?\\
   In order to keep things simple, a service covering a larger part of the world is preferred over a service covering a smaller part.
   
-  \item \textbf{Data format:} In what format is weather data being delivered? Can it be easily parsed and processed?\\
+  \item \textbf{Data format:} In what format is weather data being delivered? Can it be easily parsed and processed?\\ % TODO reference DOM and SAX
   A data format that is easier to handle on the client-side is preferred over a data format that requires more complicated handling. While \emph{XML}\cite{XML} can be handled natively within many programming languages including Java, \emph{JSON}\footnote{\href{http://tools.ietf.org/html/rfc4627}{http://tools.ietf.org/html/rfc4627}} may require an additional library in some languages such as Java\footnote{\emph{JSON} libraries for Java include \emph{JSON-lib} (\href{http://json-lib.sourceforge.net/}{http://json-lib.sourceforge.net/}), \emph{FlexJSON} (\href{http://flexjson.sourceforge.net/}{http://flexjson.sourceforge.net/}) and \emph{Gson} (\href{https://code.google.com/p/google-gson/}{https://code.google.com/p/google-gson/})}, while \emph{PHP} comes with built-in support for \emph{JSON}\footnote{\href{http://www.php.net/manual/en/book.json.php}{http://www.php.net/manual/en/book.json.php}}. There may even be data formats that require the development of a new parser.
   
   \item \textbf{Data access:} How does the access to weather data work? How is data requested and how is the answer being received?\\
@@ -101,11 +101,31 @@ In the following sections, some of the most popular Internet weather services ar
 % TODO where do the informations in this sections come from?
 \paragraph{Weather services being evaluated}
 
-Figure~\ref{table:weather_data1} lists all weather services that have been evaluated together with their operator and web page.
+% TODO reformulate?
+Table~\ref{table:weather_data1} lists all weather services that have been evaluated together with their operator and web page. Although the \emph{Google Weather API} is discontinued, it is included here because \emph{Google} announced its shutdown after the time this evaluation was conducted. The \emph{Google Weather API} serves as an example of a weather service that will not be used because it is no longer available.
+
+Table~\ref{table:weather_data2} shows the coverage areas of the weather services; \emph{DWD} and \emph{Weather Underground} are the only services that do not provide worldwide data.
+
+% TODO reference RSS feeds, JSON-P; JSON-P support in Java? CSV; SYNOP; ICAO; METAR; PyMETAR
+Table~\ref{table:weather_data3} lists all weather services together with the data format they use to provide their data. For the case of Java, \emph{XML}-based formats including \emph{RSS feeds} are preferred because of the built-in support for \emph{XML} by \emph{DOM} and \emph{SAX}. There are libraries for providing \emph{JSON} and \emph{JSON-P} support for Java. \emph{CSV} (\emph{comma separated values}) is a format that can be parsed easily in any language, although using \emph{CSV} leads to more implementation costs than \emph{XML}. There are no libraries available that provide Java support for the \emph{SYNOP} format (\emph{Surface Synoptic Observations}\footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}} which is used by \emph{DWD}; hence this format is unsuitable to be used in a Java application.
+
+% TODO citation(s) for METAR
+\emph{METAR} is a format for reporting weather data that is standardised by the \emph{International Civil Aviation Organisation} (\emph{ICAO})\footnote{\href{http://www.icao.int/Pages/default.aspx}{http://www.icao.int/Pages/default.aspx}}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}} for Python or an implementation for Java\footnote{\href{http://www.feldt.com/work/projects/metar/}{http://www.feldt.com/work/projects/metar/}}.
+
+% TODO NWS, METAR, Weather.com
+Regarding the terms of use that are summarized in table~\ref{table:weather_data4}, there are some services that require the creation of an account (\emph{DWD}, \emph{World Weather Online}, \emph{Weather Underground}, and \emph{Weather.com}) while others don't (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \yrno, and \emph{METAR}). Some services provide all of their data freely (\emph{DWD}, \yrno), others provide the data freely only for non-commercial purposes (\emph{Yahoo! Weather}, \emph{World Weather Online}, and \emph{Weather Underground}); for some services, the terms of use are unknown (\emph{Google Weather Feed}).
+
+Except the ones not providing information about changes (\emph{Yahoo! Weather}, \emph{World Weather Online}, \emph{Weather Underground} and \emph{Weather.com}) and the one being discontinued (\emph{Google Weather Feed}), all weather services declare to perform regular updates to their weather services (see table~\ref{table:weather_data5}). Any changes are announced either on the web pages, via \emph{RSS} feeds or via email.
+
+% TODO table:weather_data6
+% TODO table:weather_data7
+
+% TODO conclusion
 
 % TODO operators in emphs?
-\begin{figure}
-\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Operator} & \textbf{Web page} \\
   \hline\hline
@@ -127,14 +147,15 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{Weather.com} & The Weather Channel, LLC & \href{http://www.weather.com/services/xmloap.html}{http://www.weather.com/services/xmloap.html} \\
   \hline
-\end{longtable}
+\end{tabular}
 \vspace{.5em}
 \caption{Names, operators and web pages of all weather services that have been evaluated.}
 \label{table:weather_data1}
-\end{figure}
+\end{table}
 
-\begin{figure}
-\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Coverage area} \\
   \hline\hline
@@ -156,19 +177,20 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{Weather.com} & Worldwide \\
   \hline
-\end{longtable}
+\end{tabular}
 \vspace{.5em}
 \caption{Coverage areas of weather services.}
 \label{table:weather_data2}
-\end{figure}
+\end{table}
 
 % TODO reference FTP, RSS?
-\begin{figure}
-\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Data format} & \textbf{Data access} \\
   \hline\hline
-  \textbf{DWD} & \emph{SYNOP}\footnote{\emph{Surface Synoptic Observations}: \href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \emph{FTP} \\
+  \textbf{DWD} & \emph{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \emph{FTP} \\
   \hline
   \textbf{Yahoo! Weather} & \emph{RSS} feed & \emph{HTTP} \\
   \hline
@@ -178,7 +200,7 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{yr.no} & \emph{XML} & \emph{HTTP} \\
   \hline
-  \textbf{METAR} & Format standardised by \emph{ICAO}\footnote{TODO}; not human-readable. Parsers for various programming languages are available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}} & Via HTML from \emph{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO footnote
+  \textbf{METAR} & Format standardised by \emph{ICAO}; not human-readable. & Via HTML from \emph{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO footnote
   \hline
   \textbf{NWS} & \emph{XML} & \emph{SOAP}, \emph{REST} \\ % TODO references
   \hline
@@ -186,20 +208,21 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{Weather.com} & \emph{JSON}, \emph{XML} & \emph{HTTP} \\
   \hline
-\end{longtable}
+\end{tabular}
 \vspace{.5em}
 \caption{Data formats and protocols for data access of weather services.}
 \label{table:weather_data3}
-\end{figure}
+\end{table}
 
-\begin{figure}
-\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Access restrictions, terms of use} \\
   \hline\hline
   \textbf{DWD} & An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within projects like \thinkhome.\\
   \hline
-  \textbf{Yahoo! Weather} & Free for use for individuals and non-profit organizations, providing attribution required. No statement about commercial use anywhere in the documentation.\\
+  \textbf{Yahoo! Weather} & Free for use for individuals and non-profit organizations, attribution required. No statement about commercial use anywhere in the documentation.\\
   \hline
   \textbf{World Weather Online} & An account must be created for accessing both the Free API and the Premium API. The Free API is free to use for personal and commercial use, credits must be given to World Weather Online. Costs for the Premium API start at 20 US dollars per month.\\
   \hline
@@ -213,16 +236,17 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{Weather Underground} & Account creation is mandatory; available for personal, non-commercial use (public API); custom weather services are available \\
   \hline
-  \textbf{Weather.com} & An account is mandatory; the creation process is complicated \\
+  \textbf{Weather.com} & An account is mandatory; the creation process is complicated \\ % TODO licence?
   \hline
-\end{longtable}
+\end{tabular}
 \vspace{.5em}
 \caption{Access restrictions and terms of use for weather services.}
 \label{table:weather_data4}
-\end{figure}
+\end{table}
 
-\begin{figure}
-\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Stability} \\
   \hline\hline
@@ -240,18 +264,19 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{NWS} & Small changes every few months with announcements via \emph{RSS}. Most of the interface remains unchanged in the long run.\\
   \hline
-  \textbf{Weather Underground} & The has been a recent API change; the overall stability is unknown. \\
+  \textbf{Weather Underground} & The has been a recent API change; the stability is unknown. \\
   \hline
   \textbf{Weather.com} & Unknown \\
   \hline
-\end{longtable}
+\end{tabular}
 \vspace{.5em}
 \caption{Stability of weather services.}
 \label{table:weather_data5}
-\end{figure}
+\end{table}
 
-\begin{figure}
-\begin{longtable}{|p{.2\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Weather elements} \\
   \hline\hline
@@ -273,14 +298,15 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{Weather.com} & Temperature, humidity, precipitation, wind speed and direction, sunrise and sunset times, and the weather condition (current weather and forecasts); atmospheric pressure, visibility, and dew point (current weather only) \\
   \hline
-\end{longtable}
+\end{tabular}
 \vspace{.5em}
 \caption{Weather elements provided by weather services.}
 \label{table:weather_data6}
-\end{figure}
+\end{table}
 
-\begin{figure}
-\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Time frame} & \textbf{Weather updates} \\
   \hline\hline
@@ -302,11 +328,11 @@ Figure~\ref{table:weather_data1} lists all weather services that have been evalu
   \hline
   \textbf{Weather.com} & Five days & Every few hours \\
   \hline
-\end{longtable}
+\end{tabular}
 \vspace{.5em}
 \caption{Time frame of forecast data and frequency of weather updates at weather services.}
 \label{table:weather_data7}
-\end{figure}
+\end{table}
 
 % TODO documentation
 

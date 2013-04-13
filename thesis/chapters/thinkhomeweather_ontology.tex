@@ -244,7 +244,8 @@ A \Egls{weather condition} does not have any sub-concepts. Hence, its classifica
   \label{fig:tree_weather_condition}
 \end{figure}
 
-A \Egls{weather phenomenon} represents a certain weather element. Every specific weather element is a sub-concept of \Egls{weather phenomenon}; the evolving tree is shown in~\ref{fig:tree_weather_phenomenon}. For sake of clarity, this tree is broken up to several diagrams; all sub-concepts of sub-concepts of \Egls{weather phenomenon} are not shown in~\ref{fig:tree_weather_phenomenon}. There is a separate diagram for each sub-concept of \Egls{weather phenomenon}: \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}), \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}), \Egls{humidity} (figure~\ref{fig:tree_humidity}), \Egls{precipitation} (figure~\ref{fig:tree_precipitation}), \Egls{solar radiation} (figure~\ref{fig:tree_solar_radiation}), \Egls{sun position} (figure~\ref{fig:tree_sun_position}), \Egls{temperature} (figure~\ref{fig:tree_temperature}), and \Egls{wind} (figure~\ref{fig:tree_wind}). The diagram for \Egls{dew point} is not shown as that concept does not have any sub-concepts; hence its concept-classification tree consists of a single node.
+A \Egls{weather phenomenon} represents a certain weather element. Every specific weather element is a sub-concept of \Egls{weather phenomenon}; the evolving tree is shown in~\ref{fig:tree_weather_phenomenon}. For sake of clarity, this tree is broken up to several diagrams; all sub-concepts of sub-concepts of \Egls{weather phenomenon} are not shown in~\ref{fig:tree_weather_phenomenon}. There is a separate diagram for each sub-concept of \Egls{weather phenomenon}: \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}), \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}), \Egls{humidity} (figure~\ref{fig:tree_humidity}), \Egls{precipitation} (figure~\ref{fig:tree_precipitation}), \Egls{solar radiation} (figure~\ref{fig:tree_solar_radiation}), \Egls{sun position} (figure~\ref{fig:tree_sun_position}), \Egls{temperature} (figure~\ref{fig:tree_temperature}), and \Egls{wind} (figure~\ref{fig:tree_wind}). The diagram for \Egls{dew point} is not shown as that concept does not have any sub-concepts;
+ hence its concept-classification tree consists of a single node.
 
 \begin{figure}
   \centering
@@ -402,8 +403,6 @@ The \emph{SWEET} ontology\cite{SWEET}\footnote{\href{http://sweet.jpl.nasa.gov/o
 Besides \emph{SWEET}, there is no ontology providing weather concepts that has been determined to be appropriate for use in the \thinkhomeweather ontology. Hence, \thinkhomeweather defines its own weather concepts.
 
 \paragraph{Units of measurement:}
-
-\newcommand{\muo}{\emph{MUO}\xspace}
 
 All instances of \Egls{weather phenomenon} have one or more attributes specifying details about the weather element that is being represented (refer to appendix~\ref{subsec:appendix_instance_attributes_tables} for details about these attributes). Each of these attributes assigns a numerical value to the \Egls{weather phenomenon}. To avoid confusion by the use of different units for one attribute (e.g. \si{\degree F} and \si{\celsius} for the \emph{temperature value}) the unit being used shall be added to the attribute value.
 
