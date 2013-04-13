@@ -24,7 +24,7 @@ Below are the questions that have been identified to be adequate competency ques
   \item Will there be sunshine today? 
   \item Do we need to irrigate the garden?
   \item Will there be severe weather?
-  \item Will temperature drop/stay below $0^\circ C$?
+  \item Will temperature drop/stay below \SI{0}{\celsius}?
   \item When can we open windows and when do we have to keep them shut?
   \item When do we need sun protection?
   \item When will it outside be colder than inside the house? When will it be warmer?
@@ -117,8 +117,11 @@ Regarding the terms of use that are summarized in table~\ref{table:weather_data4
 
 Except the ones not providing information about changes (\emph{Yahoo! Weather}, \emph{World Weather Online}, \emph{Weather Underground} and \emph{Weather.com}) and the one being discontinued (\emph{Google Weather Feed}), all weather services declare to perform regular updates to their weather services (see table~\ref{table:weather_data5}). Any changes are announced either on the web pages, via \emph{RSS} feeds or via email.
 
-% TODO table:weather_data6
-% TODO table:weather_data7
+% TODO NWS
+Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); from some services, only limited forecasts are available (\emph{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
+
+% TODO NWS
+As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
 
 % TODO conclusion
 
@@ -439,27 +442,29 @@ DWD:
   \label{table:weather_services}
 \end{table}
 
-Table \ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in \ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \emph{yr.no} suits \thinkhome's requirements best. Therefore, it is used for developing a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology that is developed in section \ref{sec:ontology_specification}. See section \ref{subsec:weather_data_yr_no} for details on how to query \emph{yr.no}'s weather API.
+Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \emph{XML} format via \emph{HTTP} and is licenced under \emph{CC-BY 3.0}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
-However, the weather service shall be replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \emph{yr.no} is to be replaced by another weather service, the ontology remains unchanged, but a new program for importing weather data into the ontology must be developed. If the weather service to be used does not support one or more weather elements, they are simply omitted in the program's output.
+Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{subsec:weather_data_yr_no} for details on how to query \yrno's weather API.
 
-The ontology uses these weather elements which are available from most Internet weather services and many weather sensors:
+Nevertheless, the source of weather data shall remain replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \yrno is to be replaced by another weather service, the ontology remains unchanged; only the program that imports weather data must be adapted. If the weather service used does not support one or more weather elements, they are simply omitted in the program's output.
+
+The ontology uses these weather elements which are available from many Internet weather services and many weather sensors:
 \begin{itemize}
   \item Temperature,
   \item relative humidity,
   \item dew point,
   \item cloud cover,
   \item chance and intensity of precipitation,
-  \item speed and direction of window,
+  \item speed and direction of wind,
   \item atmospheric pressure, and
   \item solar radiation.
 \end{itemize}
 
-Furthermore, an overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition (of course, two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used together). These states are taken from the list of symbols used for describing the weather condition in the API of \emph{yr.no}\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
+Furthermore, the overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition; two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used at the same time. These states are taken from the list of symbols used for describing the weather condition in the API of \yrno\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
 
-Additionally, the ontology also supports the position of the sun. However, it is not necessary to obtain the sun's position from an internet service as there are a few algorithms available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section \ref{subsec:sun_position} for details.
+Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section~\ref{subsec:sun_position} for details.
 
-To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section \ref{sec:weather_information} can be answered by the ontology using the provided input data. See table \ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). After developing the ontology, section \ref{sec:ontology_evaluation} will discuss whether this ontology can answer the competency questions.
+To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \thinkhomeweather can actually answer the competency questions.
 
 \begin{table}
 \begin{tabularx}{\textwidth}{|X|X|}
@@ -486,7 +491,7 @@ Do we need to irrigate the garden? & Precipitation, cloud coverage, sun radiatio
 \hline
 Will there be severe weather? & Wind, precipitation, temperature \\
 \hline
-Will temperature drop/stay below $0^\circ C$? & Temperature \\
+Will temperature drop/stay below \SI{0}{\celsius}? & Temperature \\
 \hline
 When can we open windows and when do we have to keep them shut? & Precipitation, wind \\
 \hline
@@ -499,14 +504,13 @@ When will it outside be colder than inside the house? When will it be warmer? & 
 \caption{Assignment of competency questions to weather element(s)}
 \end{table}
 
-\lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
+\section{Weather data}
+\label{sec:weather_data_yr_no}
 
-\begin{comment}
-\subsection{Weather data}
-\label{subsec:weather_data_yr_no}
+This section gives an overview on how requests to the weather API of \yrno work.
 
 % TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
-For an arbitrary request, one must specify latitude and logitude (in degrees, nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a URL of the format
+For an arbitrary request, latitude and longitude must be specified (in degrees; nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a \emph{URL} of the format
 
 % TODO move this definition to some other position
 % TODO improve formatting of lstlisting environments
@@ -520,18 +524,19 @@ or
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longtude>;msl=<altitude>
 \end{lstlisting}
 
-is built, e.g.
+is constructed, e.g.
 
 \begin{lstlisting}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
 \end{lstlisting}
 
+% TODO reference HTTP, GET
 % TODO explicitly name lat, lon, msl for Vienna
-for the city of Vienna, Austria. A GET request to this URL returns an XML document conforming to the XML Schema definition that can be found
-% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema
+for the city of Vienna, Austria. An \emph{HTTP} \emph{GET} request to this \emph{URL} returns an \emph{XML} document conforming to the \emph{XML} Schema definition that can be found
+% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema, XML schema
 online.
 
-The structure of the XML document is as follows (attributes are omitted for better readability):
+The structure of this \emph{XML} document is as follows (attributes are omitted for better readability):
 
 \begin{lstlisting}
 <weatherdata>
@@ -544,12 +549,13 @@ The structure of the XML document is as follows (attributes are omitted for bett
 </weatherdata>
 \end{lstlisting}
 
-The attributes of the <model> element specify when the forecast has been created, when it will be updated for the next time and what date and time of the first and the last forecast returned are.
+The attributes of the \texttt{<model>} element describe when the forecast has been created, when it will be updated for the next time and what date and time of the first and the last forecast returned are.
 
-There is an arbitrary number of <time> elements that are children of the <product> element. Every <time> element represents the weather forecast for a certain period of time. Each <time> element has a <location> element that has a child element for each weather property.
+There is an arbitrary number of \texttt{<time>} elements that are children of the \texttt{<product>} element. Every \texttt{<time>} element represents the weather forecast for a certain period of time. Each \texttt{<time>} element has a \texttt{<location>} element that has a child element for each weather property.
 
-This is a typical <time> element:
+This is a typical \texttt{<time>} element:
 
+% TODO newer content
 \begin{lstlisting}
 <time datatype="forecast" from="2011-10-17T09:00:00Z" to="2011-10-17T09:00:00Z">
 	<location altitude="171" latitude="48.2100" longitude="16.3700">
@@ -569,13 +575,13 @@ This is a typical <time> element:
 
 % TODO format names?
 % TODO group names (e.g. for temperature, humidity, clouds, ...)?
-The names of the elements that are allowed to be children of the <location> element are: groundCover, pressure, maximumPrecipitation, highestTemperature, lowestTemperature, precipitation, fog, cloudiness, lowClouds, mediumClouds, highClouds, temperature, dewpointTemperature, minTemperatureDay, minTemperatureNight, maxTemperatureDay, maxTemperatureNight, uv, tidalwater, currentDirection, maxWaveHeight, surfaceTemperature, waveDirection, wavePeriod, waveHeight, humidity, bias, numberofobservations, meanabsoluteerror, score, windDirection, windSpeed, maxWindSpeed, stateOfTheSea, snowDepth, weather, symbol, forest-fire, windProbability, temperatureProbability and symbolProbability.
+The names of the elements that are allowed to be children of the \texttt{<location>} element are: \texttt{groundCover}, \texttt{pressure}, \texttt{maximumPrecipitation}, \texttt{highestTemperature}, \texttt{lowestTemperature}, \texttt{precipitation}, \texttt{fog}, \texttt{cloudiness}, \texttt{lowClouds}, \texttt{mediumClouds}, \texttt{highClouds}, \texttt{temperature}, \texttt{dewpointTemperature}, \texttt{minTemperatureDay}, \texttt{minTemperatureNight}, \texttt{maxTemperatureDay}, \texttt{maxTemperatureNight}, \texttt{uv}, \texttt{tidalwater}, \texttt{currentDirection}, \texttt{maxWaveHeight}, \texttt{surfaceTemperature}, \texttt{waveDirection}, \texttt{wavePeriod}, \texttt{waveHeight}, \texttt{humidity}, \texttt{bias}, \texttt{numberofobservations}, \texttt{meanabsoluteerror}, \texttt{score}, \texttt{windDirection}, \texttt{windSpeed}, \texttt{maxWindSpeed}, \texttt{stateOfTheSea}, \texttt{snowDepth}, \texttt{weather}, \texttt{symbol}, \texttt{forest-fire}, \texttt{windProbability}, \texttt{temperatureProbability}, and \texttt{symbolProbability}.
 
-None of the child elements are required. However, for most places of the world, the XML document contains <location> elements having two different sets of child elements:
+None of the child elements is required. However, for most places of the world, the \emph{XML} document contains \texttt{<location>} elements having two different sets of child elements:
 
 \begin{itemize}
-  \item Some <location> elements have the child elements temperature, windDirection, windSpeed, humidity, pressure, cloudiness, fog, lowClouds, mediumClouds and highClouds (as shown above). The values of the attributes from and to of the enclosing <time> element are equal.
-  \item Some <location> elements have the child elements precipitation and symbol; the values of the attributes from and to of the enclosing <time> element differ by three to six hours; such an element looks like this:
+  \item Some \texttt{<location>} elements have the child elements \texttt{temperature}, \texttt{windDirection}, \texttt{windSpeed}, \texttt{humidity}, \texttt{pressure}, \texttt{cloudiness}, \texttt{fog}, \texttt{lowClouds}, \texttt{mediumClouds} and \texttt{highClouds} (as shown above). The values of the attributes from and to of the enclosing \texttt{<time>} element are equal.
+  \item Some \texttt{<location>} elements have the child elements \texttt{precipitation} and \texttt{symbol}; the values of the attributes \texttt{from} and \texttt{to} of the enclosing \texttt{<time>} element differ by three to six hours; such an element looks like this:
 \end{itemize}
 
 \begin{lstlisting}
@@ -587,19 +593,25 @@ None of the child elements are required. However, for most places of the world, 
 </time>
 \end{lstlisting}
 
-The content of the XML document covers a period of nine days, starting at the current day.
+The content of the \emph{XML} document covers a period of nine days, starting at the current day.
 
-\subsection{Position of the sun}
-\label{subsec:sun_position}
+% TODO refer to this chapter from ch:weather_importer
+\section{Position of the sun}
+\label{sec:sun_position}
 
 % TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
-Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon will be provided. The angle of the sun at solar noon is also given.
+Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon are provided. The angle of the sun at solar noon is also given.
 
-However, these data are inappropriate for use within the \thinkhomeweather ontology as every \emph{Weather state} may be linked to an instance of \emph{Sun position}. \emph{Sun position} has two attributes which are \emph{has sun elevation angle} and \emph{has sun direction} that specify the sun's position. However, none of these values can be calculated from the data provided by \emph{yr.no}.
+However, these data are inappropriate for use within the \thinkhomeweather ontology. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}.
 
 % TODO reference PSA algorithm: http://www.sciencedirect.com/science/article/pii/S0038092X00001560
 % TODO reference SPA algorithm:  Reda, I.; Andreas, A. (2003): Solar Position Algorithm for Solar Radiation Applications. NREL Report No. TP-560-34302, Revised January 2008
 % TODO reference http://www.psa.es/sdg/sunpos.htm - terms of use?
 % TODO give informations about precision of PSA and SPA
-There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time. The \emph{SPA algorithm} is a rather complicated algorithm, but it yields results with uncertainities of less than 0.0003 degrees. A simpler algorithm is the \emph{PSA algorithm}. Its results differ from the actual values more than the ones calculated by the \emph{SPA algorithm}. As approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology, the \emph{PSA algorithm} is suitable for use by the \emph{WeatherReader} application. There are even complete implementations of PSA in C++ that can easily be ported to Java.
-\end{comment}
+There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time:
+
+\begin{itemize}
+  \item The \emph{SPA algorithm} is an algorithm which is complicated to implement. It is used contexts where precise values are required as it yields results with uncertainities of less than \num{0.0003} degrees.
+  
+  \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}. However, approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology. Hence, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
+\end{itemize}
