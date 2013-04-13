@@ -11,3 +11,5 @@ chapters/*~
 *.glo
 *.gls
 *.xdy
+*.lof
+*.lot
