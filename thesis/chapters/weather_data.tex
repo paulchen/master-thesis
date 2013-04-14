@@ -1,5 +1,3 @@
-% TODO acronyms
-
 \chapter{Weather data}
 \label{ch:weather_data}
 
@@ -9,7 +7,6 @@ Based on the insights acquired from existing work in chapter~\ref{ch:existing_wo
 \section{Weather information}
 \label{sec:weather_information}
 
-% TODO citations for competency questions
 In order to identify which data is required for the \thinkhome ontology (\thinkhomeweather), it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centered around a set of \emph{competency questions}\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
 
 Below are the questions that have been identified to be adequate competency questions for \thinkhomeweather; the list stems from analysis of the processes at a \smarthome that may be influenced by weather.
@@ -35,11 +32,11 @@ These competency questions will again be used in section~\ref{sec:ontology_speci
 
 The idea of providing \thinkhome with future weather data is to enable \thinkhome to prepare for upcoming weather situations. There are Internet weather services that provide forecasts for several days (see section~\ref{sec:internet_services}). However, the further the time described by a forecast lies in the future, the more inaccurate the forecast becomes\cite{forecast_error1,forecast_error2}. Additionally, no decisions in a \smarthome have been identified that require the availability of a forecast about a time more than a few hours in the future. Hence, the period of 24 hours has been chosen as a compromise between the deteriorating accuracy of weather forecasts over time and the time period \thinkhome requires weather data for.
 
-The above competency questions can be answered when the (predicted) state of the weather for particular points of time is known. The state of the weather is given by measurement values of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage etc.\cite{GlossaryOfMeteorology}
+The above competency questions can be answered when the (predicted) state of the weather for particular points of time is known. The state of the weather is given by measurement values of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage and others.\cite{GlossaryOfMeteorology}
 
 A set of measurement value for one or more points of time is called \emph{weather state} from now on.
 
-Apart from weather elements, Internet weather services often provide some information that will be called \emph{weather condition} from now on. Generally speaking, the weather condition is what someone tells you if you ask her about the current weather situation. Examples for the overall weather condition are ``Sun'', ``Rain'', ``Fog'' etc. Some weather conditions can be split up into several conditions, e.g. ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
+Apart from weather elements, Internet weather services often provide some information that will be called \emph{weather condition} from now on. Generally speaking, the weather condition is what someone tells you if you ask her about the current weather situation. Examples for the overall weather condition are ``Sun'', ``Rain'', and ``Fog''. Some weather conditions can be split up into several conditions, e.g. ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
 
 Sources for weather data are weather sensors and weather forecasts. As \thinkhome performs no weather forecasting on its own, forecast data is gathered from weather services via Internet. While data about the current weather state can be obtained from both weather sensors and Internet services, the only source for data about future weather states are Internet services.
 
@@ -57,9 +54,9 @@ Over the past few years, several of \emph{fieldbus} systems have emerged in the 
 
 There are several competing standards for \emph{fieldbus} systems, including:
 \begin{itemize}
-  \item \textbf{Bitbus:} \emph{Bitbus}, created in 1983 by \emph{Intel Corporation}\footnote{\href{http://www.intel.com/}{http://www.intel.com/}}, is the oldest \emph{fieldbus}. In 1991, it was approved as an international standard as \emph{IEEE~1118}\cite{IEEE1118}. It employs \emph{twisted pair} cabling for conecting its components. % TODO link to bitbus or citation?
+  \item \textbf{Bitbus:} \emph{Bitbus}, created in 1983 by \emph{Intel Corporation}\footnote{\href{http://www.intel.com/}{http://www.intel.com/}}, is the oldest \emph{fieldbus}. In 1991, it was approved as an international standard as \emph{IEEE~1118}\cite{IEEE1118}. It employs \emph{twisted pair} cabling for connecting its components. % TODO link to bitbus or citation?
   
-  \item \textbf{KNX:} \emph{KNX}\footnote{\href{http://www.knx.org/}{http://www.knx.org/}} is an international standard (\emph{ISO/IEC 14543-3}\cite{knx_standard}) which is the successor to three previously used \emph{fieldbus} systems, namely \emph{European Home Systems Protocol} (\eacs{EHS}), \emph{BatiBUS} and \emph{European Installation Bus} (\eacs{EIB}). It supports the use of several physical communication medias such as \emph{twisted pair} wiring, \emph{power line} networking, \emph{Ethernet}, \emph{infrared} or \emph{radio}. There is a wide range of devices that can be used for controlling a \emph{KNX} network.
+  \item \textbf{KNX:} \emph{KNX}\footnote{\href{http://www.knx.org/}{http://www.knx.org/}} is an international standard (\emph{ISO/IEC 14543-3}\cite{knx_standard}) which is the successor to three previously used \emph{fieldbus} systems, namely \emph{European Home Systems Protocol} (\eacs{EHS}), \emph{BatiBUS} and \emph{European Installation Bus} (\eacs{EIB}). It supports the use of several physical communication media such as \emph{twisted pair} wiring, \emph{power line} networking, \emph{Ethernet}, \emph{infrared} or \emph{radio}. There is a wide range of devices that can be used for controlling a \emph{KNX} network.
   
   \item \textbf{LonWorks:} Developed by \emph{Echelon Corporation}\footnote{\href{http://www.echelon.com/}{http://www.echelon.com/}} in 1990, \emph{LonWorks}\footnote{\href{http://www.echelon.com/}{http://www.echelon.com/}} (\emph{Local Operating Network}) is a widely used fieldbus standard; since 2008, the technology is standardised as \emph{ISO/IEC~14908}\cite{ISO14908}. \emph{LonWorks} supports \emph{twisted pair} cabling and \emph{power line} networking and can be controlled by any general-purpose processor which can use the \emph{LonTalk} protocol that is employed by \emph{LonWorks}.
   
@@ -72,20 +69,20 @@ There are several competing standards for \emph{fieldbus} systems, including:
 
 Each of the \emph{fieldbus} systems mentioned in section~\ref{sec:fieldbus} provides a variety of sensors. \emph{KNX}, which is an open standard, is used in this section as an example to enumerate the weather sensors that are available for \emph{fieldbus} systems.
 
-\emph{KNX} sensors are available for
+\emph{KNX} weather sensors are available for
 \begin{itemize} % TODO sort alphabetically
+  \item atmospheric pressure (\emph{barometer}),
   \item brightness (\emph{photometer}), % TODO mention in later section: use solar radiation, do not use brightness
-  \item temperature (\emph{thermometer}),
   \item humidity (\emph{hygrometer}),
-  \item wind direction and wind speed (\emph{wind vane} and \emph{anemometer}, respectively),
   \item precipitation (\emph{rain gauge}),
-  \item atmospheric pressure (\emph{barometer}), and
-  \item solar radiation (\emph{pyranometer)}.
+  \item solar radiation (\emph{pyranometer)},
+  \item temperature (\emph{thermometer}), and
+  \item wind direction and wind speed (\emph{wind vane} and \emph{anemometer}, respectively).
 \end{itemize}
 
 There are \emph{weather stations} that provide sensors for a combinations of the above weather elements.
 
-Other sensors that are available under the \emph{KNX} standard include sensors for water, fluid level, smoke or $CO_2$ concentration. However, these are not relevant in the context of \thinkhomeweather as they do not provide weather data.
+Other sensors that are available under the \emph{KNX} standard include sensors for water, fluid level, smoke or \ce{CO2} concentration. However, these are not relevant in the context of \thinkhomeweather as they do not provide weather data.
 
 
 \section{Service data}
@@ -158,7 +155,6 @@ Table~\ref{table:weather_data6} shows which data is available from the weather s
 As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
 
 
-% TODO operators in emphs?
 \begin{table}
 \centering
 \begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
@@ -236,9 +232,9 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & \eacs{XML} & \eacs{HTTP} \\
   \hline
-  \textbf{\acs{METAR}} & Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO footnotes
+  \textbf{\acs{METAR}} & Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page\footnote{\href{http://www.noaa.gov/}{http://www.noaa.gov/}} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO check if footnote is working
   \hline
-  \textbf{\acs{NWS}} & \eacs{XML} & \eacs{SOAP}\cite{SOAP}, \eacs{REST}\cite{REST} \\ % TODO references
+  \textbf{\acs{NWS}} & \eacs{XML} & \eacs{SOAP}\cite{SOAP}, \eacs{REST}\cite{REST} \\
   \hline
   \textbf{Weather Underground} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
   \hline
@@ -454,30 +450,30 @@ DWD:
   \hline \hline
   DWD & - & Data format (\eacs{SYNOP}); forecasts lack important weather elements \\
   \hline
-  Yahoo! Weather & Simple data format (RSS) & Low number of forecasts; forecasts lack important weather elements \\
+  Yahoo! Weather & Simple data format (\eacs{RSS}) & Low number of forecasts; forecasts lack important weather elements \\
   \hline
-  World Weather Online & Wide range of data formats & Free API lacks important data \\
+  World Weather Online & Wide range of data formats & Free \eacs{API} lacks important data \\
   \hline
-  Google Weather Feed & Simple data format (XML) & Unofficial, undocumented API; unknown terms of use; only a small number of available weather elements; discontinued \\
+  Google Weather Feed & Simple data format (\eacs{XML}) & Unofficial, undocumented \eacs{API}; unknown terms of use; only a small number of available weather elements; discontinued \\
   \hline
-  yr.no & Simple data format (XML); available under CC-BY 3.0 & - \\
+  yr.no & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0} & - \\
   \hline
-  METAR & - & Data format (\emph{METAR}); no forecasts \\
+  METAR & - & Data format (\eacs{METAR}); no forecasts \\
   \hline
-  National Weather Service & Simple data format (XML) & No worldwide coverage \\
+  National Weather Service & Simple data format (\eacs{XML}) & No worldwide coverage \\
   \hline
-  Weather Underground & Data formats (XML and JSON) & Public API lacks important data \\
+  Weather Underground & Data formats (\emph{XML} and \eacs{JSON}) & Public \eacs{API} lacks important data \\
   \hline
-  Weather.com & Data formats (XML and JSON) & Complicated account creation \\
+  Weather.com & Data formats (\eacs{XML} and \eacs{JSON}) & Complicated account creation \\
   \hline
   \end{tabularx}
   \caption{Advantages and disadvantages of Internet weather services}
   \label{table:weather_services}
 \end{table}
 
-Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licenced under \emph{CC-BY 3.0}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
+Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
-Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{subsec:weather_data_yr_no} for details on how to query \yrno's weather API.
+Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{subsec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
 
 Nevertheless, the source of weather data shall remain replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \yrno is to be replaced by another weather service, the ontology remains unchanged; only the program that imports weather data must be adapted. If the weather service used does not support one or more weather elements, they are simply omitted in the program's output.
 
@@ -493,7 +489,7 @@ The ontology uses these weather elements which are available from many Internet 
   \item solar radiation.
 \end{itemize}
 
-Furthermore, the overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition; two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used at the same time. These states are taken from the list of symbols used for describing the weather condition in the API of \yrno\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
+Furthermore, the overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition; two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used at the same time. These states are taken from the list of symbols used for describing the weather condition in the \eacs{API} of \yrno\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
 
 Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section~\ref{subsec:sun_position} for details.
 
@@ -540,10 +536,10 @@ When will it outside be colder than inside the house? When will it be warmer? & 
 \section{Weather data}
 \label{sec:weather_data_yr_no}
 
-This section gives an overview on how requests to the weather API of \yrno work.
+This section gives an overview on how requests to the weather \eacs{API} of \yrno work.
 
 % TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
-For an arbitrary request, latitude and longitude must be specified (in degrees; nothern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a \emph{URL} of the format
+For an arbitrary request, latitude and longitude must be specified (in degrees; northern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a \emph{URL} of the format
 
 % TODO move this definition to some other position
 % TODO improve formatting of lstlisting environments
@@ -565,7 +561,7 @@ http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
 
 % TODO reference HTTP, GET
 % TODO explicitly name lat, lon, msl for Vienna
-for the city of Vienna, Austria. An \eacs{HTTP} \emph{GET} request to this \emph{URL} returns an \eacs{XML} document conforming to the \eacs{XML} Schema definition that can be found
+for the city of Vienna, Austria. An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} Schema definition that can be found
 % TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema, XML schema
 online.
 
