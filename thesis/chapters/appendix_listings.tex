@@ -11,28 +11,36 @@ This appendix contains tables and listings that are referenced from other chapte
 
 In order to keep the documentation of \thinkhomeweather clear, a set of tables is omitted from section~\ref{sec:ontology_concept}. This section contains these tables in case they are needed for reference.
 
-\subsection{Concept dictionaries}
-\label{subsec:appendix_concept_dictionaries}
+The tables in this section are:
 
-A \emph{Concept dictionary} (see section~\ref{subsec:concept_dictionaries}) lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees in section~\ref{sec:concept_classification_trees}.
+\begin{itemize}
+  \item \emph{Concept dictionaries} for \Egls{weather condition} (figure~\ref{fig:concept_dict1}), \Egls{weather phenomenon} (figure~\ref{fig:concept_dict2}), \Egls{weather report} (figure~\ref{fig:concept_dict3}), \Egls{weather state} (figure~\ref{fig:concept_dict4}), and \Egls{weather source} (figure~\ref{fig:concept_dict5}); see section~\ref{subsec:concept_dictionaries} for details about \emph{concept dictionaries}.
+  
+  \item The \emph{Binary relations table} in figure~\ref{fig:binary_relations_table}; see section~\ref{subsec:binary_relations_table} for details.
+  
+  \item The \emph{Instance attributes table} in figure~\ref{fig:instance_attributes_table}; see section~\ref{subsec:instance_attributes_table} for details.
+  
+  \item The \emph{Class attributes table} in figure~\ref{fig:class_attributes_table1}, figure~\ref{fig:class_attributes_table2}, and  figure~\ref{fig:class_attributes_table3}; see section~\ref{subsec:class_attributes_table} for details.
+  
+  \item The \emph{Instances table} in figure~\ref{fig:instances_table}; see section~\ref{subsec:instances_table} for details.
+\end{itemize}
 
-In the following tables, some sub-concepts having the same instances, class attributes, instance attributes and relations as their respective super-concepts are omitted; e.g. the tables contain only the concept \Egls{atmospheric pressure}, but not \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, and \Egls{very high pressure}. Refer to section~\ref{sec:ontology_glossary} and to the glossary in appendix~\ref{main} for details about the concepts which are omitted here.
-
-Furthermore, any columns that are not filled with any content in any row are omitted.
-
-\subsubsection{Weather condition}
-
-\begin{longtable}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Relations} \\
   \hline\hline
   \Egls{weather condition} & \emph{cloud}, \emph{fog}, \emph{partly cloudy}, \emph{mostly cloudy}, \emph{rain}, \emph{sleet}, \emph{snow}, \emph{sun}, \emph{thunder} & \egls{has condition} \\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Concept dictionary for \egls{weather condition}}
+\label{fig:concept_dict1}
+\end{table}
 
-\subsubsection{Weather phenomenon}
-
-\begin{longtable}{|p{.25\textwidth}|p{.3\textwidth}|p{.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.25\textwidth}|p{.3\textwidth}|p{.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instance attributes} & \textbf{Relations} \\
   \hline
@@ -54,31 +62,42 @@ Furthermore, any columns that are not filled with any content in any row are omi
   \hline
   \Egls{wind} & \egls{has wind speed},\newline \egls{has wind direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Concept dictionary for \egls{weather phenomenon}}
+\label{fig:concept_dict2}
+\end{table}
 
-\subsubsection{Weather report}
-
-\begin{longtable}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
   \egls{weather report} & \egls{has priority}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \newline \egls{location}, \newline \egls{has start time}, \egls{has end time},\newline \egls{has observation time} \\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Concept dictionary for \egls{weather report}}
+\label{fig:concept_dict3}
+\end{table}
 
-\subsubsection{Weather state}
 
-\begin{longtable}{|p{0.167\textwidth}|p{0.167\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{0.167\textwidth}|p{0.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Relations} \\
   \hline\hline
   \Egls{weather state} & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon}\\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Concept dictionary for \egls{weather state}}
+\label{fig:concept_dict4}
+\end{table}
 
-\subsubsection{Weather source}
 
-\begin{longtable}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Relations} \\
   \hline\hline
@@ -88,14 +107,14 @@ Furthermore, any columns that are not filled with any content in any row are omi
   \hline
   \Egls{service source} & \egls{is source of}, \egls{has source} \\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Concept dictionary for \egls{weather source}}
+\label{fig:concept_dict5}
+\end{table}
 
-\subsection{Binary relations table}
-\label{subsec:appendix_binary_relations_table}
-
-The \emph{Binary relations table} (see section~\ref{subsec:binary_relations_table}) specifies all relations from section~\ref{subsec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any.
-
-\begin{longtable}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
   \hline\hline
@@ -125,16 +144,14 @@ The \emph{Binary relations table} (see section~\ref{subsec:binary_relations_tabl
   \hline
   \egls{location} & \Egls{weather report} & \Egls{point} & $1$ & - \\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Binary relations table}
+\label{fig:binary_relations_table}
+\end{table}
 
-\subsection{Instance attributes table}
-\label{subsec:appendix_instance_attributes_table}
-
-The \emph{Instance attributes table} (see section~\ref{subsec:instance_attributes_table}) lists all instance attributes in \thinkhomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality.
-
-The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \thinkhomeweather.
-
-\begin{longtable}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
   \hline
   \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
   \hline\hline
@@ -170,19 +187,15 @@ The data types \emph{xsd:integer} and \emph{xsd:decimal} refer to the types defi
   \hline
   \egls{long} & \Egls{location} & \emph{xsd:decimal} & $[-180, 180]$ & \si{\degree}\space(degrees) & $(1, 1)$ \\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Instance attributes table}
+\label{fig:instance_attributes_table}
+\end{table}
 
 
-\subsection{Class attribute tables}
-\label{subsec:appendix_class_attributes}
-
-Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure} and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
-
-These concepts are summarized in the \emph{Class attributes table} below. As in the \emph{Instance attributes tables} in section~\ref{subsec:appendix_instance_attributes_table}, this table does not respect the use of \muo; no units are specified.
-
-This table belongs to section~\ref{subsec:class_attributes_table}.
-
-\begin{longtable}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+\begin{table}
+\centering
+\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
   \hline
   \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
   \hline\hline
@@ -228,6 +241,17 @@ This table belongs to section~\ref{subsec:class_attributes_table}.
   \Egls{precipitation} & \Egls{extremely heavy rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $(50, 100]$ \newline $(0, 1]$ \\
   \hline
   \Egls{precipitation} & \Egls{tropical storm rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $> 100$ \newline $(0, 1]$ \\
+  \hline
+\end{tabular}
+\caption{Class attributes table (1)}
+\label{fig:class_attributes_table1}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
   \hline\hline
   \Egls{solar radiation} & \Egls{no radiation} & \egls{has solar radiation value} & $0$ \\
   \hline
@@ -274,6 +298,17 @@ This table belongs to section~\ref{subsec:class_attributes_table}.
   \Egls{temperature} & \egls{above room temperature} & \egls{has temperature value} & $(25, 30]$ \\
   \hline
   \Egls{temperature} & \egls{heat} & \egls{has temperature value} & $> 30$ \\
+  \hline
+\end{tabular}
+\caption{Class attributes table (2)}
+\label{fig:class_attributes_table2}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
   \hline\hline
   \Egls{wind} & \egls{directional wind} & \egls{has wind direction} & $[0, 360)$ \\
   \hline
@@ -332,14 +367,15 @@ This table belongs to section~\ref{subsec:class_attributes_table}.
   \egls{current weather report} & \Egls{current weather report from sensor} & \egls{has source} & \emph{any instance of \Egls{sensor source}} \\
   \hline
   \egls{current weather report} & \Egls{current weather report from service} & \egls{has source} & \emph{any instance of \Egls{service source}} \\
-\end{longtable}
+  \hline
+\end{tabular}
+\caption{Class attributes table (3)}
+\label{fig:class_attributes_table3}
+\end{table}
 
-\subsection{Instances table}
-\label{subsec:appendix_instances_table}
-
-An \emph{Instances table} lists all predefined instances that can be found in an ontology. Refer to section~\ref{subsec:instances_table} for details.
-
-\begin{longtable}{|p{0.2\textwidth}|p{0.2\textwidth}|}
+\begin{table}[t]
+\centering
+\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|}
   \hline
   \textbf{Instance name} & \textbf{Concept name} \\
   \hline\hline
@@ -361,7 +397,12 @@ An \emph{Instances table} lists all predefined instances that can be found in an
   \hline
   Thunder & \Egls{weather condition} \\
   \hline
-\end{longtable}
+\end{tabular}
+\caption{Instances table}
+\label{fig:instances_table}
+\end{table}
+
+\clearpage
 
 \section{Output of \emph{Weather Importer} in \emph{Turtle syntax}}
 \label{sec:appendix_turtle_output}

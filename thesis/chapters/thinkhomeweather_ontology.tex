@@ -361,31 +361,33 @@ The purpose of a \emph{Binary relations diagram} is to present all binary relati
 \subsection{Concept dictionaries}
 \label{subsec:concept_dictionaries}
 
-A \emph{Concept dictionary} lists all concepts together with their names, instances, class attributes, instance attributes and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees from section~\ref{sec:concept_classification_trees}.
+A \emph{Concept dictionary} lists all concepts together with their names, instances, class attributes, instance attributes, and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees from section~\ref{sec:concept_classification_trees}.
 
-In the tables which can be found in the appendix in section~\ref{subsec:appendix_concept_dictionaries}, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
+The tables can be found in the appendix in figure~\ref{fig:concept_dict1} (\Egls{weather phenomenon}), figure~\ref{fig:concept_dict2} (\Egls{weather phenomenon}), figure~\ref{fig:concept_dict3} (\Egls{weather report}), figure~\ref{fig:concept_dict4} (\Egls{weather state}), and figure~\ref{fig:concept_dict5} (\Egls{weather source}). In these tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
 
 \subsection{Binary relations table}
 \label{subsec:binary_relations_table}
 
-The \emph{Binary relation table} specifies all relations from section~\ref{subsec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities and their inverse relations, if any. The table can be found in the appendix section~\ref{subsec:appendix_binary_relations_table}.
+The \emph{Binary relation table} specifies all relations from section~\ref{subsec:binary_relations_diagram} in detail. This includes the relations' names, their source and target concepts, their maximum source cardinalities, and their inverse relations, if any. The table can be found in the appendix in figure~\ref{fig:binary_relations_table}.
 
 \subsection{Instance attributes table}
 \label{subsec:instance_attributes_table}
 
-An \emph{Instance attributes table} lists all instance attributes in \thinkhomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality. The \emph{Instance attributes table} can be found in the appendix in section~\ref{subsec:appendix_instance_attributes_table}.
+An \emph{Instance attributes table} lists all instance attributes in \thinkhomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality. The \emph{Instance attributes table} can be found in the appendix in figure~\ref{fig:instance_attributes_table}.
+
+The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \thinkhomeweather.
 
 \subsection{Class attributes table}
 \label{subsec:class_attributes_table}
 
 Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure} and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
 
-These concepts are summarized in the \emph{Class attributes table} in the appendix in section~\ref{subsec:appendix_class_attributes}.
+These concepts are summarized in the \emph{Class attributes table} in the appendix in figure~\ref{fig:class_attributes_table1}, figure~\ref{fig:class_attributes_table2}, and figure~\ref{fig:class_attributes_table3}. As in the \emph{Instance attributes tables} in section~\ref{subsec:instance_attributes_table}, this table does not respect the use of \muo; no units are specified.
 
 \subsection{Instances table}
 \label{subsec:instances_table}
 
-The only pre-defined instances in \thinkhomeweather are the instances of the concept \Egls{weather condition}. Their details can be found in the \emph{Instance table} in the appendix in section~\ref{subsec:appendix_instances_table}.
+The only pre-defined instances in \thinkhomeweather are the instances of the concept \Egls{weather condition}. Their details can be found in the \emph{Instance table} in the appendix in figure~\ref{fig:instances_table}.
 
 \section{Integration}
 \label{sec:integration}
