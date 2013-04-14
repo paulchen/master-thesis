@@ -48,11 +48,45 @@ However, there there are weather elements no sensor can provide data about, and 
 \section{Sensor data}
 \label{sec:weather_sensors}
 
-% TODO
+While there are stand-alone solutions for fetching weather data from sensors, in many \emph{home automation} systems \emph{fieldbus} systems are used.
 
-\subsection{KNX weather stations}
+\subsection{\emph{Fieldbus} systems}
+\label{sec:fieldbus}
 
-% TODO
+Over the past few years, several of \emph{fieldbus} systems have emerged in the context of \emph{home automation}. A \emph{fieldbus} is a network system for real-time distributed control\cite{fieldbus}, standardised as \emph{IEC~61158}\cite{IEC61158}. A \emph{Programmable Logic Controller} (\eacs{PLC}), a computer which is designed specifically for automation purposes, can utilize a \emph{fieldbus} to retrieve sensor data from \emph{sensors} and send control commands to \emph{actuators}. Among the sensors that are available for \emph{fieldbus} systems, there exist sensors for a wide variety of weather elements such as temperature or humidity. 
+
+There are several competing standards for \emph{fieldbus} systems, including:
+\begin{itemize}
+  \item \textbf{Bitbus:} \emph{Bitbus}, created in 1983 by \emph{Intel Corporation}\footnote{\href{http://www.intel.com/}{http://www.intel.com/}}, is the oldest \emph{fieldbus}. In 1991, it was approved as an international standard as \emph{IEEE~1118}\cite{IEEE1118}. It employs \emph{twisted pair} cabling for conecting its components. % TODO link to bitbus or citation?
+  
+  \item \textbf{KNX:} \emph{KNX}\footnote{\href{http://www.knx.org/}{http://www.knx.org/}} is an international standard (\emph{ISO/IEC 14543-3}\cite{knx_standard}) which is the successor to three previously used \emph{fieldbus} systems, namely \emph{European Home Systems Protocol} (\eacs{EHS}), \emph{BatiBUS} and \emph{European Installation Bus} (\eacs{EIB}). It supports the use of several physical communication medias such as \emph{twisted pair} wiring, \emph{power line} networking, \emph{Ethernet}, \emph{infrared} or \emph{radio}. There is a wide range of devices that can be used for controlling a \emph{KNX} network.
+  
+  \item \textbf{LonWorks:} Developed by \emph{Echelon Corporation}\footnote{\href{http://www.echelon.com/}{http://www.echelon.com/}} in 1990, \emph{LonWorks}\footnote{\href{http://www.echelon.com/}{http://www.echelon.com/}} (\emph{Local Operating Network}) is a widely used fieldbus standard; since 2008, the technology is standardised as \emph{ISO/IEC~14908}\cite{ISO14908}. \emph{LonWorks} supports \emph{twisted pair} cabling and \emph{power line} networking and can be controlled by any general-purpose processor which can use the \emph{LonTalk} protocol that is employed by \emph{LonWorks}.
+  
+  \item \textbf{BACnet:} \emph{BACnet}\footnote{\href{http://www.bacnet.org/}{http://www.bacnet.org/}} (\emph{building automation and control networks}) is another communications protocol which is internationally standardised in \emph{ISO~16484-5}\cite{ISO16484}. It employs several communication means such as \emph{Ethernet}, \emph{BACnet/IP}, \emph{Point-to-point connections} over \emph{RS-232} or \emph{LonWorks}' \emph{LonTalk}.
+  
+  \item \textbf{LCN:} \emph{LCN}\footnote{\href{http://www.lcn.de/}{http://www.lcn.de/}} (\emph{Local Control Network}) is a proprietary home automation system developed by \emph{Issendorf KG} in 1992. \emph{LCN} is organised into \emph{LCN modules} that exchange data over a single data wire and the neutral wire power supply.
+\end{itemize}
+
+\subsection{\emph{KNX} sensors}
+
+Each of the \emph{fieldbus} systems mentioned in section~\ref{sec:fieldbus} provides a variety of sensors. \emph{KNX}, which is an open standard, is used in this section as an example to enumerate the weather sensors that are available for \emph{fieldbus} systems.
+
+\emph{KNX} sensors are available for
+\begin{itemize} % TODO sort alphabetically
+  \item brightness (\emph{photometer}), % TODO mention in later section: use solar radiation, do not use brightness
+  \item temperature (\emph{thermometer}),
+  \item humidity (\emph{hygrometer}),
+  \item wind direction and wind speed (\emph{wind vane} and \emph{anemometer}, respectively),
+  \item precipitation (\emph{rain gauge}),
+  \item atmospheric pressure (\emph{barometer}), and
+  \item solar radiation (\emph{pyranometer)}.
+\end{itemize}
+
+There are \emph{weather stations} that provide sensors for a combinations of the above weather elements.
+
+Other sensors that are available under the \emph{KNX} standard include sensors for water, fluid level, smoke or $CO_2$ concentration. However, these are not relevant in the context of \thinkhomeweather as they do not provide weather data.
+
 
 \section{Service data}
 \label{sec:weather_services}
@@ -73,10 +107,10 @@ For evaluation of Internet weather services, the following aspects are examined:
   In order to keep things simple, a service covering a larger part of the world is preferred over a service covering a smaller part.
   
   \item \textbf{Data format:} In what format is weather data being delivered? Can it be easily parsed and processed?\\
-  A data format that is easier to handle on client-side is preferred over a data format that requires more complicated handling. While \eacs{XML}\cite{XML} can be handled natively within many programming languages including Java (using \eacs{DOM}\footnote{\href{http://docs.oracle.com/javase/7/docs/api/org/w3c/dom/package-summary.html}{http://docs.oracle.com/javase/7/docs/api/org/w3c/dom/package-summary.html}} or \eacs{SAX}\footnote{\href{http://docs.oracle.com/javase/7/docs/api/org/xml/sax/package-summary.html}{http://docs.oracle.com/javase/7/docs/api/org/xml/sax/package-summary.html}}), \emph{JSON}\footnote{\href{http://tools.ietf.org/html/rfc4627}{http://tools.ietf.org/html/rfc4627}} may require an additional library in some languages such as Java\footnote{\emph{JSON} libraries for Java include \emph{JSON-lib} (\href{http://json-lib.sourceforge.net/}{http://json-lib.sourceforge.net/}), \emph{FlexJSON} (\href{http://flexjson.sourceforge.net/}{http://flexjson.sourceforge.net/}) and \emph{Gson} (\href{https://code.google.com/p/google-gson/}{https://code.google.com/p/google-gson/})}, while \emph{PHP} comes with built-in support for \emph{JSON}\footnote{\href{http://www.php.net/manual/en/book.json.php}{http://www.php.net/manual/en/book.json.php}}. There may even be data formats that require the development of a new parser.
+  A data format that is easier to handle on client-side is preferred over a data format that requires more complicated handling. While \eacs{XML}\cite{XML} can be handled natively within many programming languages including Java (using \eacs{DOM}\footnote{\href{http://docs.oracle.com/javase/7/docs/api/org/w3c/dom/package-summary.html}{http://docs.oracle.com/javase/7/docs/api/org/w3c/dom/package-summary.html}} or \eacs{SAX}\footnote{\href{http://docs.oracle.com/javase/7/docs/api/org/xml/sax/package-summary.html}{http://docs.oracle.com/javase/7/docs/api/org/xml/sax/package-summary.html}}), \eacs{JSON}\footnote{\href{http://tools.ietf.org/html/rfc4627}{http://tools.ietf.org/html/rfc4627}} may require an additional library in some languages such as Java\footnote{\eacs{JSON} libraries for Java include \emph{JSON-lib} (\href{http://json-lib.sourceforge.net/}{http://json-lib.sourceforge.net/}), \emph{FlexJSON} (\href{http://flexjson.sourceforge.net/}{http://flexjson.sourceforge.net/}) and \emph{Gson} (\href{https://code.google.com/p/google-gson/}{https://code.google.com/p/google-gson/})}, while \emph{PHP} comes with built-in support for \eacs{JSON}\footnote{\href{http://www.php.net/manual/en/book.json.php}{http://www.php.net/manual/en/book.json.php}}. There may even be data formats that require the development of a new parser.
   
   \item \textbf{Data access:} How does the access to weather data work? How is data requested and how is the answer being received?\\
-  The less complicated a request is, the better the service suits the requirements. Requests in \eacs{HTTP} are preferred due to the simplicity of performing requests on the client side in Java using the \emph{Apache HttpComponents project}\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}.
+  The less complicated a request is, the better the service suits the requirements. Requests in \eacs{HTTP}\footnote{\href{http://tools.ietf.org/html/rfc2616}{http://tools.ietf.org/html/rfc2616}} are preferred due to the simplicity of performing requests on the client side in Java using the \emph{Apache HttpComponents project}\footnote{\href{http://hc.apache.org/}{http://hc.apache.org/}}.
   
   \item \textbf{Access restrictions, terms of use:} Is the service available freely or is the access restricted? Are credentials (e.g. a username and a password or an access key) required for access? If yes, can the credentials be obtained in a simple way or does that entail a complicated procedure? Are there any access fees for academic or commercial use?\\
   A service being less restricted is preferred over a service coming with more restrictions.
@@ -105,26 +139,24 @@ In addition to the aspects listed above, some general information is provided (o
 
 Table~\ref{table:weather_data1} lists all weather services that have been evaluated together with their operators and web pages. \emph{Google Weather API} is discontinued\footnote{\href{http://googleblog.blogspot.co.at/2012/07/spring-cleaning-in-summer.html}{http://googleblog.blogspot.co.at/2012/07/spring-cleaning-in-summer.html}}; it is included here because \emph{Google} announced its shutdown after the time this evaluation was conducted. The \emph{Google Weather API} serves as an example of a weather service that is unsuitable for usage in \thinkhomeweather as it is discontinued.
 
-Table~\ref{table:weather_data2} shows the coverage areas of the weather services; \emph{DWD} and \emph{Weather Underground} are the only services that do not provide worldwide data.
+Table~\ref{table:weather_data2} shows the coverage areas of the weather services; \eacs{DWD} and \emph{Weather Underground} are the only services that do not provide worldwide data.
 
-% TODO reference RSS feeds, JSON-P; JSON-P support in Java? CSV; SYNOP; ICAO; METAR; PyMETAR
-Table~\ref{table:weather_data3} lists all weather services together with the data format they use to provide their data. For the case of Java, \eacs{XML}-based formats including \eacs{RSS} feeds are preferred because of the built-in support for \eacs{XML} by \eacs{DOM} and \eacs{SAX}. There are libraries for providing \emph{JSON} and \emph{JSON-P} support for Java. \emph{CSV} (\emph{comma separated values}) is a format that can be parsed easily in any language, although using \emph{CSV} leads to more implementation costs than \emph{XML}. There are no libraries available that provide Java support for the \emph{SYNOP} format (\emph{Surface Synoptic Observations}\footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}} which is used by \emph{DWD}; hence this format is unsuitable to be used in a Java application.
+Table~\ref{table:weather_data3} lists all weather services together with the data format they use to provide their data. For the case of Java, \eacs{XML}-based formats including \eacs{RSS} feeds are preferred because of the built-in support for \eacs{XML} by \eacs{DOM} and \eacs{SAX}. There are libraries for providing \eacs{JSON} and \eacs{JSONP}\footnote{\href{http://bob.ippoli.to/archives/2005/12/05/remote-json-jsonp/}{http://bob.ippoli.to/archives/2005/12/05/remote-json-jsonp/}} support for Java. \eacs{CSV} (\emph{comma-separated values})\footnote{\href{http://tools.ietf.org/html/rfc4180}{http://tools.ietf.org/html/rfc4180}} is a format that can be parsed easily in any language, although using \eacs{CSV} leads to more implementation costs than \eacs{XML}. There are no libraries available that provide Java support for the \eacs{SYNOP} format (\emph{Surface Synoptic Observations}\footnote{\href{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}{http://weather.unisys.com/wxp/Appendices/Formats/SYNOP.html}} which is used by \eacs{DWD}; hence this format is unsuitable to be used in a Java application.
 
 % TODO citation(s) for METAR
-\emph{METAR} is a format for reporting weather data that is standardised by the \emph{International Civil Aviation Organisation} (\emph{ICAO})\footnote{\href{http://www.icao.int/Pages/default.aspx}{http://www.icao.int/Pages/default.aspx}}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}} for Python or an implementation for Java\footnote{\href{http://www.feldt.com/work/projects/metar/}{http://www.feldt.com/work/projects/metar/}}.
+\eacs{METAR} is a format for reporting weather data that is standardised by the \emph{International Civil Aviation Organisation} (\eacs{ICAO})\footnote{\href{http://www.icao.int/Pages/default.aspx}{http://www.icao.int/Pages/default.aspx}}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g. \emph{PyMETAR}\footnote{\href{http://www.schwarzvogel.de/software-pymetar.shtml}{http://www.schwarzvogel.de/software-pymetar.shtml}} for Python or an implementation for Java\footnote{\href{http://www.feldt.com/work/projects/metar/}{http://www.feldt.com/work/projects/metar/}}.
 
 % TODO NWS, METAR, Weather.com
-Regarding the terms of use that are summarized in table~\ref{table:weather_data4}, there are some services that require the creation of an account (\emph{DWD}, \emph{World Weather Online}, \emph{Weather Underground}, and \emph{Weather.com}) while others don't (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \yrno, and \emph{METAR}). Some services provide all of their data freely (\emph{DWD}, \yrno), others provide the data freely only for non-commercial purposes (\emph{Yahoo! Weather}, \emph{World Weather Online}, and \emph{Weather Underground}); for some services, the terms of use are unknown (\emph{Google Weather Feed}).
+Regarding the terms of use that are summarized in table~\ref{table:weather_data4}, there are some services that require the creation of an account (\eacs{DWD}, \emph{World Weather Online}, \emph{Weather Underground}, and \emph{Weather.com}) while others don't (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \yrno, and \eacs{METAR}). Some services provide all of their data freely (\eacs{DWD}, \yrno), others provide the data freely only for non-commercial purposes (\emph{Yahoo! Weather}, \emph{World Weather Online}, and \emph{Weather Underground}); for some services, the terms of use are unknown (\emph{Google Weather Feed}).
 
-Except the ones not providing information about changes (\emph{Yahoo! Weather}, \emph{World Weather Online}, \emph{Weather Underground} and \emph{Weather.com}) and the one being discontinued (\emph{Google Weather Feed}), all weather services declare to perform regular updates to their weather services (see table~\ref{table:weather_data5}). Any changes are announced either on the web pages, via \emph{RSS} feeds or via email.
-
-% TODO NWS
-Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); from some services, only limited forecasts are available (\emph{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
+Except the ones not providing information about changes (\emph{Yahoo! Weather}, \emph{World Weather Online}, \emph{Weather Underground} and \emph{Weather.com}) and the one being discontinued (\emph{Google Weather Feed}), all weather services declare to perform regular updates to their weather services (see table~\ref{table:weather_data5}). Any changes are announced either on the web pages, via \eacs{RSS} feeds or via email.
 
 % TODO NWS
-As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
+Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); from some services, only limited forecasts are available (\eacs{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
 
-% TODO conclusion
+% TODO NWS
+As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
+
 
 % TODO operators in emphs?
 \begin{table}
@@ -133,9 +165,9 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
   \hline
   \textbf{Name} & \textbf{Operator} & \textbf{Web page} \\
   \hline\hline
-  \textbf{DWD} & \emph{Deutscher Wetterdienst} (\emph{DWD}, ``German weather service'') & \href{http://www.dwd.de/}{http://www.dwd.de/} \\
+  \textbf{DWD} & Deutscher Wetterdienst (\eacs{DWD}, ``German weather service'') & \href{http://www.dwd.de/}{http://www.dwd.de/} \\
   \hline
-  \textbf{Yahoo! Weather} & \emph{Yahoo! Inc.} & \href{http://developer.yahoo.com/weather/}{http://developer.yahoo.com/weather/} \\
+  \textbf{Yahoo! Weather} & Yahoo! Inc. & \href{http://developer.yahoo.com/weather/}{http://developer.yahoo.com/weather/} \\
   \hline
   \textbf{World Weather Online} & World Weather Online & \href{http://www.worldweatheronline.com}{http://www.worldweatheronline.com}\\
   \hline
@@ -143,9 +175,9 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & Meteorologisk institutt (Norwegian Meteorological Institute), Norsk rikskringkasting AS (NRK, Norwegian Broadcasting Corporation) & \href{http://api.yr.no/}{http://api.yr.no/} \\
   \hline
-  \textbf{METAR} & Airports around the world & \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/} \\ % TODO correct?
+  \textbf{\acs{METAR}} & Airports around the world & \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/} \\ % TODO correct?
   \hline
-  \textbf{NWS} & National Weather Service\footnote{part of \emph{NOAA}, \emph{National Oceanic and Atmospheric Administration}} & \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/} \\ % TODO href for NOAA
+  \textbf{\acs{NWS}} & National Weather Service\footnote{part of \eacs{NOAA}, \emph{National Oceanic and Atmospheric Administration}} & \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/} \\ % TODO href for NOAA
   \hline
   \textbf{Weather Underground} & Weather Underground & \href{http://www.wunderground.com/weather/api/}{http://www.wunderground.com/weather/api/} \\
   \hline
@@ -173,9 +205,9 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & Worldwide \\
   \hline
-  \textbf{METAR} & Worldwide \\
+  \textbf{\acs{METAR}} & Worldwide \\
   \hline
-  \textbf{NWS} & Only US \\
+  \textbf{\acs{NWS}} & Only US \\
   \hline
   \textbf{Weather Underground} & Worldwide \\
   \hline
@@ -187,30 +219,30 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
 \label{table:weather_data2}
 \end{table}
 
-% TODO reference FTP, RSS?
+% TODO reference FTP
 \begin{table}
 \centering
 \begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Data format} & \textbf{Data access} \\
   \hline\hline
-  \textbf{DWD} & \emph{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \emph{FTP} \\
+  \textbf{DWD} & \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \eacs{FTP}\footnote{\href{http://tools.ietf.org/html/rfc959}{http://tools.ietf.org/html/rfc959}} \\ % TODO check if footnote is working
   \hline
-  \textbf{Yahoo! Weather} & \emph{RSS} feed & \emph{HTTP} \\
+  \textbf{Yahoo! Weather} & \eacs{RSS} feed & \eacs{HTTP} \\
   \hline
-  \textbf{World Weather Online} & \emph{XML}, \emph{JSON}, \emph{JSON-P}, \emph{CSV} & \emph{HTTP} \\ % TODO references
+  \textbf{World Weather Online} & \eacs{XML}, \eacs{JSON}, \eacs{JSONP}, \eacs{CSV} & \eacs{HTTP} \\
   \hline
-  \textbf{Google Weather Feed} & \emph{XML} & \emph{HTTP} \\
+  \textbf{Google Weather Feed} & \eacs{XML} & \eacs{HTTP} \\
   \hline
-  \textbf{yr.no} & \emph{XML} & \emph{HTTP} \\
+  \textbf{yr.no} & \eacs{XML} & \eacs{HTTP} \\
   \hline
-  \textbf{METAR} & Format standardised by \emph{ICAO}; not human-readable. & Via HTML from \emph{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO footnote
+  \textbf{\acs{METAR}} & Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO footnotes
   \hline
-  \textbf{NWS} & \emph{XML} & \emph{SOAP}, \emph{REST} \\ % TODO references
+  \textbf{\acs{NWS}} & \eacs{XML} & \eacs{SOAP}\cite{SOAP}, \eacs{REST}\cite{REST} \\ % TODO references
   \hline
-  \textbf{Weather Underground} & \emph{JSON}, \emph{XML} & \emph{HTTP} \\
+  \textbf{Weather Underground} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
   \hline
-  \textbf{Weather.com} & \emph{JSON}, \emph{XML} & \emph{HTTP} \\
+  \textbf{Weather.com} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
   \hline
 \end{tabular}
 \vspace{.5em}
@@ -234,9 +266,9 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}\footnote{\emph{Creative Commons Attribution 3.0} \href{http://creativecommons.org/licenses/by/3.0}{http://creativecommons.org/licenses/by/3.0}}\\
   \hline
-  \textbf{METAR} & Unknown \\ % TODO ?
+  \textbf{\acs{METAR}} & Unknown \\ % TODO ?
   \hline
-  \textbf{NWS} & \\ % TODO
+  \textbf{\acs{NWS}} & \\ % TODO
   \hline
   \textbf{Weather Underground} & Account creation is mandatory; available for personal, non-commercial use (public API); custom weather services are available \\
   \hline
@@ -264,9 +296,9 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & New releases of the API one or two times per year; the old API remains in operation a few months after the release of a new one. Announcements are made on the web page. A less frequently changing API with \emph{long term support} is available.\\
   \hline
-  \textbf{METAR} & Stable. \\ % TODO \emph{METAR} is standardized by \emph{ICAO}. It was introduced in 1968 and has been modified a numer of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
+  \textbf{\acs{METAR}} & Stable. \\ % TODO \emph{METAR} is standardized by \eacs{ICAO}. It was introduced in 1968 and has been modified a numer of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
   \hline
-  \textbf{NWS} & Small changes every few months with announcements via \emph{RSS}. Most of the interface remains unchanged in the long run.\\
+  \textbf{\acs{NWS}} & Small changes every few months with announcements via \eacs{RSS}. Most of the interface remains unchanged in the long run.\\
   \hline
   \textbf{Weather Underground} & The has been a recent API change; the stability is unknown. \\
   \hline
@@ -294,9 +326,9 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & Temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, fog.\\
   \hline
-  \textbf{METAR} & Temperature, dew point, wind speed and direction, precipitation, cloud coverage, visibility, and atmospheric pressure. \\
+  \textbf{\acs{METAR}} & Temperature, dew point, wind speed and direction, precipitation, cloud coverage, visibility, and atmospheric pressure. \\
   \hline
-  \textbf{NWS} & \\ % TODO
+  \textbf{\acs{NWS}} & \\ % TODO
   \hline
   \textbf{Weather Underground} & Minimum and maximum temperature, weather condition (public API); more data via custom weather services \\
   \hline
@@ -324,9 +356,9 @@ As seen in table~\ref{weather_data7}, \emph{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & Nine days (four forecasts per day) & Every few hours \\
   \hline
-  \textbf{METAR} & Only current weather data & Once per hour \\
+  \textbf{\acs{METAR}} & Only current weather data & Once per hour \\
   \hline
-  \textbf{NWS} & ? & About once per hour \\ % TODO
+  \textbf{\acs{NWS}} & ? & About once per hour \\ % TODO
   \hline
   \textbf{Weather Underground} & Five days (one forecast per day) & Every few hours \\
   \hline
@@ -420,7 +452,7 @@ DWD:
   \hline
   \textbf{Weather service} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
   \hline \hline
-  DWD & - & Data format (\emph{SYNOP}); forecasts lack important weather elements \\
+  DWD & - & Data format (\eacs{SYNOP}); forecasts lack important weather elements \\
   \hline
   Yahoo! Weather & Simple data format (RSS) & Low number of forecasts; forecasts lack important weather elements \\
   \hline
@@ -443,7 +475,7 @@ DWD:
   \label{table:weather_services}
 \end{table}
 
-Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \emph{XML} format via \emph{HTTP} and is licenced under \emph{CC-BY 3.0}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
+Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licenced under \emph{CC-BY 3.0}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
 Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{subsec:weather_data_yr_no} for details on how to query \yrno's weather API.
 
@@ -533,11 +565,11 @@ http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
 
 % TODO reference HTTP, GET
 % TODO explicitly name lat, lon, msl for Vienna
-for the city of Vienna, Austria. An \emph{HTTP} \emph{GET} request to this \emph{URL} returns an \emph{XML} document conforming to the \emph{XML} Schema definition that can be found
+for the city of Vienna, Austria. An \eacs{HTTP} \emph{GET} request to this \emph{URL} returns an \eacs{XML} document conforming to the \eacs{XML} Schema definition that can be found
 % TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema, XML schema
 online.
 
-The structure of this \emph{XML} document is as follows (attributes are omitted for better readability):
+The structure of this \eacs{XML} document is as follows (attributes are omitted for better readability):
 
 \begin{lstlisting}
 <weatherdata>
@@ -578,7 +610,7 @@ This is a typical \texttt{<time>} element:
 % TODO group names (e.g. for temperature, humidity, clouds, ...)?
 The names of the elements that are allowed to be children of the \texttt{<location>} element are: \texttt{groundCover}, \texttt{pressure}, \texttt{maximumPrecipitation}, \texttt{highestTemperature}, \texttt{lowestTemperature}, \texttt{precipitation}, \texttt{fog}, \texttt{cloudiness}, \texttt{lowClouds}, \texttt{mediumClouds}, \texttt{highClouds}, \texttt{temperature}, \texttt{dewpointTemperature}, \texttt{minTemperatureDay}, \texttt{minTemperatureNight}, \texttt{maxTemperatureDay}, \texttt{maxTemperatureNight}, \texttt{uv}, \texttt{tidalwater}, \texttt{currentDirection}, \texttt{maxWaveHeight}, \texttt{surfaceTemperature}, \texttt{waveDirection}, \texttt{wavePeriod}, \texttt{waveHeight}, \texttt{humidity}, \texttt{bias}, \texttt{numberofobservations}, \texttt{meanabsoluteerror}, \texttt{score}, \texttt{windDirection}, \texttt{windSpeed}, \texttt{maxWindSpeed}, \texttt{stateOfTheSea}, \texttt{snowDepth}, \texttt{weather}, \texttt{symbol}, \texttt{forest-fire}, \texttt{windProbability}, \texttt{temperatureProbability}, and \texttt{symbolProbability}.
 
-None of the child elements is required. However, for most places of the world, the \emph{XML} document contains \texttt{<location>} elements having two different sets of child elements:
+None of the child elements is required. However, for most places of the world, the \eacs{XML} document contains \texttt{<location>} elements having two different sets of child elements:
 
 \begin{itemize}
   \item Some \texttt{<location>} elements have the child elements \texttt{temperature}, \texttt{windDirection}, \texttt{windSpeed}, \texttt{humidity}, \texttt{pressure}, \texttt{cloudiness}, \texttt{fog}, \texttt{lowClouds}, \texttt{mediumClouds} and \texttt{highClouds} (as shown above). The values of the attributes from and to of the enclosing \texttt{<time>} element are equal.
@@ -594,7 +626,7 @@ None of the child elements is required. However, for most places of the world, t
 </time>
 \end{lstlisting}
 
-The content of the \emph{XML} document covers a period of nine days, starting at the current day.
+The content of the \eacs{XML} document covers a period of nine days, starting at the current day.
 
 % TODO refer to this chapter from ch:weather_importer
 \section{Position of the sun}
