@@ -54,7 +54,7 @@ Over the past few years, several of \emph{fieldbus} systems have emerged in the 
 
 There are several competing standards for \emph{fieldbus} systems, including:
 \begin{itemize}
-  \item \textbf{Bitbus:} \emph{Bitbus}, created in 1983 by \emph{Intel Corporation}\footnote{\href{http://www.intel.com/}{http://www.intel.com/}}, is the oldest \emph{fieldbus}. In 1991, it was approved as an international standard as \emph{IEEE~1118}\cite{IEEE1118}. It employs \emph{twisted pair} cabling for connecting its components. % TODO link to bitbus or citation?
+  \item \textbf{Bitbus:} \emph{Bitbus}, created in 1983 by \emph{Intel Corporation}\footnote{\href{http://www.intel.com/}{http://www.intel.com/}}, is the oldest \emph{fieldbus}. In 1991, it was approved as an international standard as \emph{IEEE~1118}\cite{IEEE1118}. It employs \emph{twisted pair} cabling for connecting its components.
   
   \item \textbf{KNX:} \emph{KNX}\footnote{\href{http://www.knx.org/}{http://www.knx.org/}} is an international standard (\emph{ISO/IEC 14543-3}\cite{knx_standard}) which is the successor to three previously used \emph{fieldbus} systems, namely \emph{European Home Systems Protocol} (\eacs{EHS}), \emph{BatiBUS} and \emph{European Installation Bus} (\eacs{EIB}). It supports the use of several physical communication media such as \emph{twisted pair} wiring, \emph{power line} networking, \emph{Ethernet}, \emph{infrared} or \emph{radio}. There is a wide range of devices that can be used for controlling a \emph{KNX} network.
   
@@ -559,10 +559,8 @@ is constructed, e.g.
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
 \end{lstlisting}
 
-% TODO reference HTTP, GET
 % TODO explicitly name lat, lon, msl for Vienna
-for the city of Vienna, Austria. An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} Schema definition that can be found
-% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/schema, XML schema
+for the city of Vienna, Austria. An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} \emph{Schema}\cite{xml-schema} definition that can be found online\footnote{\href{http://api.yr.no/weatherapi/locationforecast/1.8/schema}{http://api.yr.no/weatherapi/locationforecast/1.8/schema}}.
 online.
 
 The structure of this \eacs{XML} document is as follows (attributes are omitted for better readability):
@@ -629,18 +627,15 @@ The content of the \eacs{XML} document covers a period of nine days, starting at
 \label{sec:sun_position}
 
 % TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
-Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon are provided. The angle of the sun at solar noon is also given.
+Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data\footnote{\href{http://api.yr.no/weatherapi/sunrise/1.0/documentation}{http://api.yr.no/weatherapi/sunrise/1.0/documentation}}. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon are provided. The angle of the sun at solar noon is also given.
 
-However, these data are inappropriate for use within the \thinkhomeweather ontology. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}.
+However, these data are inappropriate for use within the \thinkhomeweather ontology. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}. Furthermore, most of the weather services that are available via Internet do not offer any data about the sun's position.
 
-% TODO reference PSA algorithm: http://www.sciencedirect.com/science/article/pii/S0038092X00001560
-% TODO reference SPA algorithm:  Reda, I.; Andreas, A. (2003): Solar Position Algorithm for Solar Radiation Applications. NREL Report No. TP-560-34302, Revised January 2008
-% TODO reference http://www.psa.es/sdg/sunpos.htm - terms of use?
 % TODO give informations about precision of PSA and SPA
 There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time:
 
 \begin{itemize}
-  \item The \emph{SPA algorithm} is an algorithm which is complicated to implement. It is used contexts where precise values are required as it yields results with uncertainities of less than \num{0.0003} degrees.
+  \item The \emph{SPA algorithm}\cite{SPA_algorithm} is an algorithm which is complicated to implement. Hence, it is used only in contexts where precise values are required as it yields results with uncertainties of less than \num{0.0003} degrees.
   
-  \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}. However, approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology. Hence, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
+  \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}\cite{PSA_algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}. However, approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology. Hence, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
 \end{itemize}
