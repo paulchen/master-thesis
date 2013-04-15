@@ -61,21 +61,21 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 % TODO ensure there are no problematic page breaks inside this box (e.g. between the headline 'Scope:' and the first bullet point)
 \begin{mdframed}[linewidth=.6pt]
 \setlength{\parindent}{0pt}
-\vspace{.3cm}
+\vspace{.4cm}
 
 \MakeUppercase{\textbf{Ontology Requirements Specification Document}}
 
-\vspace{.5cm}
+\vspace{.6cm}
 
 \textbf{Name}: \thinkhomeweather
 
-\vspace{.2cm}
+\vspace{.3cm}
 
 \textbf{Purpose}: The ontology covers data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be acquired from both Internet services as well as from weather sensors mounted at the desired location. This weather data will enable the \thinkhome system to make decisions based on current and future weather conditions.
 
-\vspace{.2cm}
+\vspace{.3cm}
 
-\textbf{Scope}: The ontology has to cover a set of six core concepts from the domain of weather data:
+\textbf{Scope}: The ontology has to cover a set of five core concepts from the domain of weather data:
 
 \begin{itemize}
   \item \emph{weather phenomenon}: Represents a certain weather element. Relevant weather elements are \emph{temperature}, \emph{humidity}, \emph{dew point}, \emph{wind speed} and \emph{direction}, \emph{precipitation intensity} and \emph{probability}, \emph{atmospheric pressure}, \emph{cloud cover}, \emph{solar radiation}, and the \emph{sun's position}.
@@ -85,23 +85,24 @@ Every ontology should stick to a set of naming conventions that are explicitly s
   \item \emph{Weather report source}: Source where the data belonging to a \emph{weather report} has been obtained from (either an Internet weather service or a local weather sensor).
 \end{itemize}
 
-\vspace{.2cm}
+\vspace{.3cm}
 
 \textbf{Implementation language}: The ontology is implemented in \emph{OWL 2.0}\cite{OWL} using \protege\footnote{\href{http://protege.stanford.edu/}{http://protege.stanford.edu/}} and the \emph{Pellet reasoner}\footnote{\href{http://clarkparsia.com/pellet/}{http://clarkparsia.com/pellet/}}.
 
-\vspace{.2cm}
+\vspace{.3cm}
 
 \textbf{Intended end-users}: The ontology is part of the \thinkhome project; hence, any end-user of the \thinkhome project is an end-user of the \thinkhomeweather ontology. As \thinkhome aims at providing home automation to \emph{house occupants}, intended end-users of \thinkhomeweather are these occupants.
 
-\vspace{.2cm}
+\vspace{.3cm}
 
 \textbf{Intended uses}: The ontology shall provide knowledge to \thinkhome about the current and future state of the weather in order to enable \thinkhome to make decisions based on that knowledge.
 
-\vspace{.2cm}
+% TODO re-add this vspace?
+\vspace{.3cm}
 
 \textbf{Ontology requirements}:
 
-\vspace{.2cm}
+\vspace{.3cm}
 
 \setlength{\leftskip}{.5cm}
 
