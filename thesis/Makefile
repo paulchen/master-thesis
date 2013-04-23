@@ -3,7 +3,7 @@ DIAGRAMS_DIR	= $(FIGURES_DIR)/diagrams
 
 DIA		= dia
 
-.PHONY: clean figures
+.PHONY: clean figures clean-thesis clean-figures
 
 define dia-command
 $(DIA) --export $@ $<
@@ -27,7 +27,11 @@ $(FIGURES_DIR)/%.eps: $(FIGURES_DIR)/%.dia
 $(DIAGRAMS_DIR)/%.eps: $(DIAGRAMS_DIR)/%.dia
 	$(dia-command)
 
-clean:
+clean: clean-thesis clean-figures
+
+clean-thesis:
 	rm -f *.log *.bbl *.aux *.blg *.log *.out *.toc *~ *.pdf chapters/*~ chapters/*backup *.glg *.glo *.gls *.ilg *.ind *.ist *.xdy *backup *.lof *.lot
+
+clean-figures:
 	find $(FIGURES_DIR) -path $(FIGURES_DIR)/titlepage -prune -o -name "*.eps" -print | xargs rm -f
 
