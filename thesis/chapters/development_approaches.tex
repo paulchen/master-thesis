@@ -1,42 +1,122 @@
-\chapter{Approaches for developing ontologies}
+\chapter{Methodologies for developing ontologies}
 \label{ch:development_approaches}
 
-% TODO references
-There are numerous approaches for building ontologies. All of them strive for avoiding common pitfalls and try to minimize the need for refactorization at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as possible. Knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope. 
+There are numerous methodologies for building ontologies. As this chapter points out, all of them strive for avoiding common pitfalls and try to minimize the need for refactorization at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as early as possible. Knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope. 
 
-This chapter describes some popular approaches for the construction of ontologies. Among the approaches that can be found in literature, the ones shortlisted as candidates for the design of \thinkhomeweather are
-\emph{Ontology 101} by Noy and McGuinness \cite{Ontology101} (section \ref{sec:approach1}),
-the software enginering approach by De Nicola, Missikoff and Navigli \cite{SoftwareEngineeringOntology} (section \ref{sec:approach2}),
-the one by Uschuld and King \cite{UscholdKing} (section \ref{sec:approach3}),
-the one by Grüninger and Fox \cite{GruningerFox} (section \ref{sec:approach4}),
-and \methontology by Gómez-Pérez et al. \cite{Methontology} (section \ref{sec:approach5}).
+This chapter describes some popular methodologies for the construction of ontologies. Among the methodologies that can be found in literature, the ones discussed as candidates for the design of \thinkhomeweather are
 
-These approaches are covered in the following chapters. Each approach is described in detail and its similarities and differences to the other approaches are highlighted. All advantages and disadvantages of each approach are listed. Eventually, that process leads to the decision for one of the approaches that seems to fit the requirements of \thinkhomeweather best.
+\begin{itemize}
+  \item \emph{Ontology 101} by Noy and McGuinness~\cite{Ontology101} (section \ref{subsec:approach1}),
 
-In order to describe each of the approaches appropriately and to improve understanding them, they will be applied to the following domain that shall be covered by an ontology:
+  \item the software enginering approach by De Nicola, Missikoff and Navigli \cite{SoftwareEngineeringOntology} (section \ref{subsec:approach2}),
+  
+  \item the one by Uschuld and King~\cite{UscholdKing} (section \ref{subsec:approach3}),
+  
+  \item the one by Grüninger and Fox~\cite{GruningerFox} (section \ref{subsec:approach4}), and
+  
+  \item \methontology by Gómez-Pérez et al.~\cite{Methontology} (section \ref{subsec:approach5}).
+\end{itemize}
 
-% TODO describe domain
+\section{Evaluating ontology development methodologies}
 
-% TODO criteria about how to "rate" approaches
+The evaluation in this chapter is loosely based on the article by Fernández-López~\cite{MethodologyOverview}. For each methodology, the following topics are discussed in section~\ref{sec:ontology_approaches}:
 
+\begin{itemize}
+  \item \textbf{Description:} Each step of the methodology is presented.
+  
+  \item \textbf{Applications:} Some ontologies that have been developed using the methodology are named, if any.
+  
+  \item \textbf{Analysis:} The methodology is analysed regarding a pre-defined set of criteria (see below).
+\end{itemize}
 
+The criteria used in the \emph{analysis} step are:
 
-\section{Ontology 101}
-\label{sec:approach1}
+% TODO
+\begin{itemize}
+  \item \textbf{C1:} TODO
+  
+  \item \textbf{C2:} TODO
+  
+  \item \textbf{C3:} TODO
+\end{itemize}
 
-\section{A software engineering approach to ontology building}
-\label{sec:approach2}
+Section~\ref{sec:approaches_summary} then compares the methodologies with each other while section~\ref{sec:approaches_conclusion} concludes about the results and comes to a decision regarding the methology which fits the requirements of \thinkhomeweather best and thus will be used for the development of the ontology.
 
-\section{Methodology by Uschold and King}
-\label{sec:approach3}
+As section~\ref{sec:ontology_approaches} focuses on the characteristics of the methodologies required to take a decision in favour of one of the approaches, section~\ref{sec:methontology} then describes the selected approach in a more detailed manner.
 
-\section{Methodology by Grüninger and Fox}
-\label{sec:approach4}
+\subsection{The ontology development approaches}
+\label{sec:ontology_approaches}
 
-\section{METHONTOLOGY}
-\label{sec:approach5}
+\subsection{Ontology 101}
+\label{subsec:approach1}
 
-\begin{comment}
+\subsubsection{Description}
+
+\subsubsection{Applications}
+
+\subsubsection{Analysis}
+
+\subsection{A software engineering approach to ontology building}
+\label{subsec:approach2}
+
+\subsubsection{Description}
+
+\subsubsection{Applications}
+
+\subsubsection{Analysis}
+
+\subsection{Methodology by Uschold and King}
+\label{subsec:approach3}
+
+\subsubsection{Description}
+
+\subsubsection{Applications}
+
+\subsubsection{Analysis}
+
+\subsection{Methodology by Grüninger and Fox}
+\label{subsec:approach4}
+
+\subsubsection{Description}
+
+\subsubsection{Applications}
+
+\subsubsection{Analysis}
+
+\subsection{METHONTOLOGY}
+\label{subsec:approach5}
+
+\subsubsection{Description}
+
+\subsubsection{Applications}
+
+\subsubsection{Analysis}
+
+\section{Summary}
+\label{sec:approaches_summary}
+
+\section{Conclusion}
+\label{sec:approaches_conclusion}
+
+The previous chapters gave detailled insights into some popular approaches of developing ontologies from scratch. Table ? summarizes some of the key charasteristics of these approaches.
+
+% TODO insert table
+
+Considering the characteristics of the development approaches, \methontology was chosen for building the \thinkhomeweather ontology. Thus, \methontology was discussed more thoroughly than the other approaches. The main reasons for that decision were:
+
+% TODO
+\begin{itemize}
+  \item Some reason.
+  \item Some more reason.
+  \item And yet another reason.
+\end{itemize}
+
+Chapter \ref{ch:thinkhomeweather_ontology} describes the process of building the \thinkhomeweather ontology in detail.
+
+\section{\methontology}
+
+As section~\ref{sec:approaches_conclusion} opted for \methontology as the methodology to be used for developing \thinkhomeweather, this section presents \methodology in a more detailed manner.
+
 % TODO mention second paper about methontology (the one that describes all artefacts created when building the chemical ontology)
 % TODO reference paper: Building legal ontologies with METHONTOLOGY and WebODE
 
@@ -215,21 +295,3 @@ Due to its approach that generates a lot of documents, \methontology includes do
 
 \section{Software engineering approach by De Nicola, Missikoff and Navigli}
 
-\section{Conclusion}
-
-The previous chapters gave detailled insights into some popular approaches of developing ontologies from scratch. Table ? summarizes some of the key charasteristics of these approaches.
-
-% TODO insert table
-
-Considering the characteristics of the development approaches, \methontology was chosen for building the \thinkhomeweather ontology. Thus, \methontology was discussed more thoroughly than the other approaches. The main reasons for that decision were:
-
-% TODO
-\begin{itemize}
-  \item Some reason.
-  \item Some more reason.
-  \item And yet another reason.
-\end{itemize}
-
-Chapter \ref{ch:thinkhomeweather_ontology} describes the process of building the \thinkhomeweather ontology in detail.
-
-\end{comment}
