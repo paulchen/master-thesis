@@ -34,4 +34,4 @@ clean-thesis:
 
 clean-figures:
 	find $(FIGURES_DIR) -path $(FIGURES_DIR)/titlepage -prune -o -name "*.eps" -print | xargs rm -f
-
+	find $(FIGURES_DIR) -name "*.pdf" -delete
