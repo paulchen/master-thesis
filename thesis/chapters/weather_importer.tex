@@ -19,14 +19,14 @@ The core of \emph{Weather Importer} is formed by an object-oriented data model t
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/diagrams/importer-model.png}
+\includegraphics[width=\textwidth]{figures/diagrams/importer-model.eps}
 \caption{The domain model used in \emph{Weather importer}. See figure~\ref{fig:importer_model2} for a simplified diagram that shows only the most important classes.}
 \label{fig:importer_model1}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=.5\textwidth]{figures/diagrams/importer-model-simple.png}
+\includegraphics[width=.5\textwidth]{figures/diagrams/importer-model-simple.eps}
 \caption{The most important classes of the domain model used in \emph{Weather importer}. Refer to figure~\ref{fig:importer_model1} for a diagram showing all classes.}
 \label{fig:importer_model2}
 \end{figure}
@@ -37,7 +37,7 @@ Other than its name suggests, \texttt{OntologyClass} is an interface that is imp
 \begin{itemize}
   \item \texttt{createIndividuals()} creates individuals and statements holding the data that is stored in the object and adds them to the ontology. The method calls \texttt{createIndividuals()} for any objects that are connected to this object, with the exception of instances of \texttt{WeatherState} and \texttt{WeatherReport} that are linked together via the properties \texttt{previousState} and \texttt{previousReport}, respectively.
   
-  \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \thinkhomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g. an \texttt{Instant} creates an individual of type \Egls{instant} and one of type \emph{DateTimeDescription}\footnote{\emph{DateTimeDescription} is defined by \emph{OWL-Time} as the concept that represents the timestamp of an \Egls{instant}; the property \emph{inDateTime} links an instance of \emph{DateTimeDescription} to an instance of \Egls{instant}.}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \Egls{instant} individual; the corresponding \emph{DateTimeDescription} object can be obtained by querying the ontology for the statement having the previously returned \Egls{instant} individualas subject and the property \emph{inDateTime} as predicate.
+  \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \thinkhomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g. an \texttt{Instant} creates an individual of type \Egls{instant} and one of type \emph{DateTimeDescription}\footnote{\emph{DateTimeDescription} is defined by \emph{OWL-Time} as the concept that represents the timestamp of an \Egls{instant}; the property \emph{inDateTime} links an instance of \emph{DateTimeDescription} to an instance of \Egls{instant}.}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \Egls{instant} individual; the corresponding \emph{DateTimeDescription} object can be obtained by querying the ontology for the statement having the previously returned \Egls{instant} individual as subject and the property \emph{inDateTime} as predicate.
   
   \item \texttt{getTurtleStatements()} returns an instance of \texttt{TurtleStore} that contains a set of \texttt{TurtleStatement} objects each representing an RDF triple in \texttt{Turtle syntax}. The instance being returned contains all data that calling \texttt{createIndividuals()} would add to the ontology. See section~\ref{subsec:importer_turtle} for details.
   
@@ -204,7 +204,7 @@ The \texttt{turtle} mode is not necessary for productive use of \emph{Weather Im
 
 \begin{figure}
 \centering
-\includegraphics[width=.7\textwidth]{figures/diagrams/turtlestore.png}
+\includegraphics[width=.7\textwidth]{figures/diagrams/turtlestore.eps}
 \caption{Classes used for output in \emph{Turtle syntax}}
 \label{fig:importer_turtlestore}
 \end{figure}
