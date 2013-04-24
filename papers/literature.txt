@@ -72,6 +72,20 @@ Building Ontologies:
 * LawSemWeb2004_CorchoEtAl.pdf
   Oscar Corcho, Mariano Fernández-López, Asunción Gómez-Pérez, Angel López-Cima. Building legal ontologies with METHONTOLOGY and WebODE
 
+* 10.1.1.52.2437.pdf
+  Dean Jones, Trevor Bench-Capon and Pepijn Visser. METHODOLOGIES FOR ONTOLOGY DEVELOPMENT
+
+* paper14.pdf
+  Mohamed Keshk, Sally Chambless. Model Driven Ontology: A New Methodology for Ontology Development
+
+* 9783642247934-c1.pdf
+  Mari Carmen Suarez-Figueroa, Asuncion Gomez-Perez, Mariano Fernandez-Lopez: The NeOn Methodology for Ontology Engineering
+
+* 9fcfd50b23ad37fda7.pdf
+  MARIANO FERNÁNDEZ-LÓPEZ and ASUNCIÓN GÓMEZ-PÉREZ. Overview and analysis of methodologies for building ontologies
+
+* JCR02.pdf
+  Oscar Corcho, Mariano Fernandez-Lopez, Asuncion Gomez-Perez. Methodologies, tools and languages for building ontologies. Where is their meeting point?
 
 
 OWL, RDF, RDFS:
