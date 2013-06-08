@@ -242,3 +242,6 @@ NEW (2013-04-09):
 * p14_boehm.pdf
   Barry W. Boehm: A Spiral Model of Software Development and Enhancement
 
+* Evandro.PDF
+  de Barros Costa, Evandro. Um modelo de ambiente interativo de aprendizagem baseado numa arquitetura multi-agentes
+
