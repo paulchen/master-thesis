@@ -245,3 +245,10 @@ NEW (2013-04-09):
 * Evandro.PDF
   de Barros Costa, Evandro. Um modelo de ambiente interativo de aprendizagem baseado numa arquitetura multi-agentes
 
+* 01382266.pdf
+  Li Jiang ; Da-you Liu ; Bo Yang. Smart home research
+
+* 2545.pdf
+  Nicole King. Smart Home - A Definition
+
+
