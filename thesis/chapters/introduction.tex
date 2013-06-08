@@ -3,16 +3,40 @@
 
 \section{Motivation}
 
-% TODO what are smart homes
+Over the last years, the idea of designing and building smart homes gained increasing popularity. According to the \emph{Intertek Research \& Testing Centre}\footnote{\href{http://www.its-rtc.com/}{http://www.its-rtc.com/}} who carried out a smart home project named \emph{DTI Smart Home Project}, a smart home is ``a dwelling incorporating a communications network that connects the key electrical appliances and services, and allows them to be remotely controlled, monitored or accessed. Remotely in this context can mean both within the dwelling and from outside the dwelling''~\cite{SmartHomeDefinition,SmartHomeResearch}. By utilizing these components, a smart home can be equipped with some kind of intelligence which enables the home to take work from its inhabitants. The goals that become reachable by that approach are diverse: For instance, smart homes may be aimed at making their inhabitants' lives easier or at reducing the overall energy consumption without any loss of comfort. % TODO some more uses?
+
+% TODO why are smart homes so imporant?
+
+As smart homes comprise a large field of research and development, there are several projects that are aimed at developing infrastructures for smart homes. Some of these projects are:
+\begin{itemize}
+  \item \textbf{Project 1}: …
+  \item \textbf{Project 2}: …
+  \item \textbf{Project 3}: …
+\end{itemize}
+
+This thesis belongs to a smart home project named \thinkhome which is developed at the \emph{Institute of Computer Aided Automation} at the \emph{Vienna University of Technology}\footnote{\href{https://www.auto.tuwien.ac.at/projectsites/thinkhome/overview.html}{https://www.auto.tuwien.ac.at/projectsites/thinkhome/overview.html}}~\cite{CR2011-TH_Journal,CR2010-DEST_ThinkHome}.
+
 % TODO what is thinkhome
 
 \section{Problem statement and goal}
+
+The aim of this thesis is the development of a data model for weather data which will be utilized by \thinkhome. Apart from current weather data, this model will cover future weather data over a range suitable for the use within \thinkhome. This enables \thinkhome to use current and future states of the weather as a source of knowledge for making control decisions. While data about the current weather state can be obtained from various sensors that are installed at the building, data about future weather states must be gathered from weather services that provide forecasts for the desired period. There is a wide range of weather services available over the Internet which can be utilized for this purpose.
 
 % TODO describe
 
 \section{Methodological Approach}
 
-% TODO describe
+There are several existing approaches for providing weather data to smart homes as well as several approaches for covering weather data using (\emph{OWL}) ontologies. These approaches analyzed in order to determine whether they are suitable for being reused for \thinkhome. However, as chapter~\ref{ch:existing_work} discusses, none of them suits \thinkhome's requirements. Thus, the approaches previously analyzed are reviewed for their structure, their advantages and their disadvantages.
+
+Furthermore, a set of weather services that are available via Internet is reviewed, regarding the type of data they provide and whether they suit the requirements of a smart home. Based on these requirements and the data provided by weather sensors and Internet weather services, the data which can be provided to \thinkhome is identified, i.e. a set of weather properties (e.g. temperature or humidity) and the time range that will be covered. One of the services is selected that will later be used to develop a reference implementation for the import of weather data.
+
+% TODO development approaches
+
+% TODO development of the ontology
+
+% TODO reference implementation
+
+% TODO review
 
 \section{Outline}
 
