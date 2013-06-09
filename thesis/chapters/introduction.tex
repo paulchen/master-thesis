@@ -26,15 +26,16 @@ The aim of this thesis is the development of a data model for weather data which
 
 \section{Methodological Approach}
 
+% TODO identify requirements?
+
 There are several existing approaches for providing weather data to smart homes as well as several approaches for covering weather data using (\emph{OWL}) ontologies. These approaches analyzed in order to determine whether they are suitable for being reused for \thinkhome. However, as chapter~\ref{ch:existing_work} discusses, none of them suits \thinkhome's requirements. Thus, the approaches previously analyzed are reviewed for their structure, their advantages and their disadvantages.
 
 Furthermore, a set of weather services that are available via Internet is reviewed, regarding the type of data they provide and whether they suit the requirements of a smart home. Based on these requirements and the data provided by weather sensors and Internet weather services, the data which can be provided to \thinkhome is identified, i.e. a set of weather properties (e.g. temperature or humidity) and the time range that will be covered. One of the services is selected that will later be used to develop a reference implementation for the import of weather data.
 
-% TODO development approaches
+As none of the existing ontologies can be used for \thinkhome, a new ontology is designed. The development process follows one of a set of well-known approaches for ontology development. Therefore, a set of approaches is selected and evaluated. The best suitable approach is identified.
 
-% TODO development of the ontology
+This approach is then applied to the problem domain of weather data. The result is an ontology that satisfies \thinkhome's requirements as far as possible. Furthermore, a reference implementation for the import of weather data from services that are available via Internet is developed. This implementation uses an object-oriented model that stores the weather data and is responsible for converting input data into an appropriate format for \thinkhome. A modular design is preferred in order to simplify the adoption of a different weather service when necessary.
 
-% TODO reference implementation
 
 % TODO review
 
