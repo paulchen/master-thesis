@@ -4,23 +4,121 @@
 The first part of this chapter covers the foundations the thesis builds upon. It gives introductions into all revelant topics, e.g. ontologies, \eacs{RDF} and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which are required in order to fully understand the ideas behind the weather data model which is designed in later chapters.
 
 % TODO repetition: conclude, conclusion
-The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies which may be reused in an ontology for weather data are discussed. The conclusion at the end of this chapter reviews all ontologies that are presented and makes decisions regarding which elements can be used for \thinkhome.
+The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies which may be reused in an ontology for weather data are discussed. The final section of this chapter reviews all ontologies that are presented and identifies elements can be used for \thinkhome.
 
 \section{Foundations}
 
-% TODO what is RDF, RDF/XML, Turtle, XML, OWL, Reasoning, Protege etc.
-% TODO discuss different versions of each standard
+This chapter presents the foundations the work in this thesis builds upon: The concept of an ontology, the \emph{Web Ontology Language} (\eacs{OWL}) and \thinkhome.
 
 \subsection{Ontologies}
 
+% TODO parts of ontologies: concepts, attributes, relations, individuals
+% TODO perhaps: function terms, restrictions, rules, axioms, events
+% TODO reasoning
+% TODO reuse, vocabulary
+In computer science, an ontology represents knowledge as a set of concepts in a certain domain and relationships between pairs of concepts.
+
+% TODO citations
+
+Ontologies are encoded using formal languages. There are many of these \emph{ontology languages} such as \eacs{KIF} (\emph{Knowledge Interchange Format}), \emph{DAML+OIL} -- a successor to \eacs{DAML} (\emph{DARPA Agent Markup Language}) and \eacs{OIL} (\emph{Ontology Interchange Language})) that combines features of both --, \eacs{RDFS} (\emph{RDF Schema}), and \eacs{OWL}. The latter, the \emph{Web Ontology Language}, is used in the \thinkhome project; thus, section~\ref{subsec:owl} gives a brief introduction into \eacs{OWL}.
+
+Over the years, many ontologies have been developed. Some of them define concepts and relations that can be found across many knowledge domains. These ontologies are often imported into other ontologies in order to minimize the effort of creating new ontologies and to simplify interoperability of ontologies. Examples for such ontologies that are implemented in \eacs{OWL} or \emph{RDF Schema} are:
+\begin{itemize} % TODO citations
+  \item \textbf{DOAP}: … % TODO
+  \item \textbf{Dublin Core}: … % TODO
+  \item \textbf{FOAF}: … % TODO
+  \item \textbf{SIOC}: … % TODO
+  \item \textbf{SKOS}: … % TODO
+  \item \textbf{UMBEL}: … % TODO
+\end{itemize}
+
 \subsection{OWL}
+\label{subsec:owl}
+
+% TODO citations
+
+The \emph{Resource Description Framework} (\eacs{RDF}) is a standard model for knowledge representation. It is specified in a set of recommendations by the \emph{W3C consortium}.
+
+% TODO URIs
+
+The data model of \eacs{RDF} incorporates element types named \emph{resources} and \emph{properties} which can be found in ontologies: A resource is some thing that is described by \eacs{RDF}, it corresponds to an individual as it is found in an ontology. Each resource can have an arbitrary number of properties, i.e. \emph{attributes} that associate \emph{literate} values (e.g. numerical values, strings) to the resource or \emph{relations} that link this resource to other resources. Resources and properties are expressed using \emph{statements} (\emph{triples}) which consist of three parts called \emph{subject}, \emph{predicate} and \emph{object}. 
+
+% TODO citation
+To identify resources and properties, \eacs{RDF} uses \eacss{URI} (\emph{Unified Resource Locators}). \eacss{URI} are strings defined by \eacs{RFC} 3986 that uniquely identify things.
+
+% TODO citations
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/rdf_example.pdf}
+\caption{Example of a simple \eacs{RDF} model}
+\label{fig:rdf_example}
+\end{figure}
+
+% TODO figure
+Figure~\ref{fig:rdf_example} depicts a simple example for a piece of knowledge from the domain of weather data expressed using \eacs{RDF}: The resource \texttt{weather:CurrentWeather} represents the current state of the weather. The property \texttt{geo:hasLocation} links the \texttt{weather:CurrentWeather} to the resource \texttt{geo:Vienna} which represents the city of Vienna, Austria; i.e. \texttt{weather:CurrentWeather} describes the weather for Vienna. \texttt{weather:weatherState} has two more properties, \texttt{weather:hasTemperatureValue} and \texttt{weather:hasHumidityValue}, which link two literal values to the resource: a temperature value of \SI{18.2}{\celsius} and a humidity value of $72 \%$. The type \texttt{xsd:float} of both literals is defined by \emph{XML Schema}, one of the several \eacs{XML} schema languages available that define the structure of \eacs{XML} documents.
+
+The complete \eacs{URI} of \texttt{weather:CurrentWeather} is \texttt{http://example.org/weather\#CurrentWeather} and the \eacs{URI} of \texttt{geo:Vienna} is \texttt{http://example.org/geo\#Vienna}. As in \eacs{XML}, parts of \eacss{URI} may be replaced by \emph{prefixes} to avoid frequent recurrence of the same strings. For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in figure~\ref{fig:rdf_example}.
+
+For expressing the data that is represented by an \eacs{RDF} model, several serialization formats are available. The \eacs{RDF} recommendation is based on \emph{RDF/XML} which maps the \eacs{RDF} model to an \eacs{XML} document. The representation of the above example in \emph{RDF/XML} can be seen in figure~\ref{fig:rdfxml_example}. As \emph{RDF/XML} is a rather verbose format which may be difficult to read for humans, the \eacs{N3} (\emph{Notation3}) representation for \eacs{RDF} is available which was developed with human-readability in mind. \emph{Notation3} incorporates some syntax features that go beyond the expressive power of \eacs{RDF}. A subset of \emph{Notation3} named \eacs{Turtle} (\emph{Terse RDF Triple Language}) is available that is limited to the features required to map \eacs{RDF} models. Figure~\ref{fig:turtle_example} shows the above example in \eacs{Turtle} syntax.
+
+\begin{figure} % TODO syntax highlighting
+\begin{lstlisting}
+<?xml version="1.0"?>
+<rdf:RDF xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:geo="http://example.org/geo#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:weather="http://example.org/weather#">
+	<rdf:Description rdf:about="http://example.org/weather#CurrentWeather">
+		<weather:hasTemperatureValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">18.2</weather:hasTemperatureValue>
+		<weather:hasHumidityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">.72</weather:hasHumidityValue>
+		<geo:hasLocation rdf:resource="http://example.org/geo#Vienna" />
+	</rdf:Description>
+</rdf:RDF>
+\end{lstlisting}
+\caption{\eacs{RDF} example from figure~\ref{fig:rdf_example} encoded in \emph{RDF/XML} syntax}
+\label{fig:rdfxml_example}
+\end{figure}
+
+\begin{figure}
+\begin{lstlisting}
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix weather: <http://example.org/weather#> .
+@prefix geo: <http://example.org/geo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+weather:CurrentWeather weather:hasTemperatureValue "18.2"^^xsd:float ;
+    weather:hasHumidityValue ".72"^^xsd:float .
+
+weather:CurrentWeather geo:hasLocation geo:Vienna .
+\end{lstlisting}
+\caption{\eacs{RDF} example from figure~\ref{fig:rdf_example} encoded in \eacs{Turtle} syntax}
+\label{fig:turtle_example}
+\end{figure}
+
+\eacs{RDF} \emph{schema} (\eacs{RDFS}) is a recommendation by the \emph{W3C consortium} that builds upon \eacs{RDF}. It introduces a set of concepts and properties that permits the definition of simple ontologies. 
+
+All things described by \eacs{RDF} are instances of \texttt{rdfs:Resource}, concepts are instances of \texttt{rdfs:Class}, and properties are instances of \texttt{rdfs:Property}. Other concepts introduced by \eacs{RDFS} are \texttt{rdfs:Literal}, \texttt{rdfs:Datatype} and \texttt{rdfs:XMLLiteral}.
+
+The property \texttt{rdfs:domain} states that any resource that has a given property is an instance of one or more classes; the property \texttt{rdfs:range} states that the value of a property is an instance of one or more classes. \texttt{rdfs:type} is used to state that a resource is an instance of a class. Hierarchies of classes can be constructed using the property \texttt{rdfs:subClassOf}: \texttt{C1 rdfs:subClassOf C2} states that any instance of \texttt{C2} is also an instance of \texttt{C1}. \texttt{rdfs:subPropertyOf} is an equivalent that is used for declaring hierachies of properties. Other properties defined by \eacs{RDFS} are \texttt{rdfs:label} and \texttt{rdfs:comment}.
+
+Figure~\ref{fig:rdfs_example} shows the example from figure~\ref{fig:rdf_example}, enriched by some elements that are defined by \eacs{RDFS}. The data model introduces two classes, \texttt{weather:WeatherState} and \texttt{geo:Location}. \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} are instances of \texttt{weather:WeatherState} and \texttt{geo:Location}, respectively. \texttt{geo:hasLocation} is a property with range \texttt{weather:WeatherState} and \texttt{geo:Location}.
+
+Many of the concepts and properties defined are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language based on \eacs{RDF}.
+
+% TODO name of OWL
+% TODO W3C, W3C recommendations
+% TODO OWL 1.1, OWL 2
+% TODO OWL Full, OWL DL, OWL Lite
+% TODO Manchester syntax
+% TODO Protege
+% TODO reasoners: Pellet, RacerPro, FaCT++, HermiT
+% TODO blank nodes
 
 \subsection{ThinkHome}
+
+% TODO
 
 \section{Ontologies for weather data}
 
 % TODO weather data
-% TODO
 
 \subsection{Semantic Sensor Web}
 
