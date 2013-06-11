@@ -118,6 +118,8 @@ Many of the concepts and properties defined are included in the \emph{Web Ontolo
 
 Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among others which are omitted here):
 
+% TODO object properties, datatype properties
+
 % TODO simple examples?
 \begin{itemize}
   \item The properties \texttt{owl:equivalentClass} is used to state that two classes are equivalent while \texttt{owl:allDisjointClasses} states that there is no individual that is an instance of more than one class from a set of classes.
@@ -212,7 +214,51 @@ Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being use
 \subsection{Units of measurements}
 \label{subsec:unit_ontologies}
 
-% TODO Units ontologies
+As the use of units of measurement is a topic that occurs in many ontologies, there are several different approaches to cope with it.
+
+\begin{figure}
+\centering
+\includegraphics[width=.4\textwidth]{figures/diagrams/nounits_example.pdf}
+\caption{Example of a data model lacking units of measurement; the model represents an estate with a length of \SI{50}{metres} and a width of \SI{30}{metres}.}
+\label{fig:nounits_example}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/muo_example.pdf}
+\caption{Example of the use of \muo for the introduction of units of measurements.}
+\label{fig:muo_example}
+\end{figure}
+
+The \emph{Measurement Units Ontology}\footnote{\href{http://idi.fundacionctic.org/muo/muo-vocab.html}{http://idi.fundacionctic.org/muo/muo-vocab.html}}\cite{MUO} is a simple and light-weight approach to enrich measurement values in an ontology with appropriate units. Some of the most important units are pre-defined, others can easily be added when needed. The \emph{Measurement Units Ontology} (\muo) is still work in progress, however it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will remain unchanged. Hence, \muo can be imported into any ontology without problems.
+
+Figure~\ref{fig:nounits_example} shows the representation of an estate with its length and width specified using the datatype properties \texttt{hasLength} and \texttt{hasWidth}. In figure~\ref{fig:muo_example}, \muo is introduced to specify that both length and width are measured in metres: \texttt{hasLength} and \texttt{hasWidth} become object properties which link blank nodes to the individual \texttt{Estate}; \texttt{hasLength} and \texttt{hasWidth} are now both sub-properties of \texttt{muo:Quality value}. Each blank node has two properties, \texttt{muo:numerical value} states the literal value while \texttt{muo:measured in} gives the unit of measurement for the literal value. The unit (\texttt{meter} in this case) is represented by an instance of \texttt{muo:Unit of measurement}.
+
+% TODO \emph{MUO} -> \eacs{MUO}
+% TODO \emph{OM} -> \eacs{OM}
+% TODO analogously for all other ontologies
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/om_example.pdf}
+\caption{Example of the use of \emph{OM} for the introduction of units of measurements.}
+\label{fig:om_example}
+\end{figure}
+
+The \emph{Ontology of Units of Measure and Related Concepts} (\emph{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. Figure~\ref{fig:om_example} shows an example of the usage of \emph{OM}. In this example, the specification the length of the estate is centered around a blank node which is an instance of \texttt{om:Length} which is a subconcept of \texttt{om:Quantity}. The blank node links to \texttt{Estate} using the property \texttt{om:phenomenon} and to another blank node via the property \texttt{om:value} which is an instance of \texttt{om:Measure}. This instance has a datatype property of type \texttt{om:numerical\_value} which specifies the numeric value of the estate's length, while the object property \texttt{om:unit} links to an instance of \texttt{om:Unit} named \texttt{om:meter}. The width of the estate is stated in a similar way.
+
+\emph{OM} is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfil in \thinkhomeweather; furthermore, at the time when the article about OM was published, development of \thinkhomeweather had already completed. Hence, \emph{OM} was not taken into account for being used in the \thinkhomeweather ontology.
+
+Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of Measure and Related Concepts}, several other ontologies have been examined, but all of them have shortcomings that render their use in the \thinkhomeweather ontology impossible. These ontologies are:
+
+\begin{itemize}
+  \item \textbf{\emph{SWEET}}: Besides concepts, attributes and individuals for atmospherical phenomena, \emph{SWEET} also comes with support for literals more precisely specified by units. However, as mentioned above, \emph{SWEET} is an ontology that is inappropriate for use in \thinkhomeweather.
+  
+  \item \textbf{\emph{QUDT}}: \emph{QUDT}\footnote{\href{http://www.qudt.org/}{http://www.qudt.org/}}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an \emph{OWL} ontology. However, \emph{QUDT} does not work in \protege together with the \emph{Pellet} reasoner. Using \emph{QUDT} would require several changes to its \emph{OWL} files. Hence, it cannot be used in the \thinkhomeweather ontology.
+  
+  \item \textbf{\emph{QUOMOS}}: The \emph{OASIS Quantities and Units of Measure Ontology Standard} (\emph{QUOMOS})\footnote{\href{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}{https://www.oasis-open.org/committees/tc\_home.php?wg\_abbrev=quomos}} is a project that aims at developing ``an ontology for quantities, systems of measurement units, and base dimensions for use across multiple industries''. However, as no deliverables have been released at the time of writing, it cannot be used in \thinkhomeweather.
+  
+  \item \textbf{OBO Foundry Initiative}: The \emph{OBO Foundry Initiative}\footnote{\href{http://obofoundry.org/}{http://obofoundry.org/}} is an initiative that aims at collecting ontologies for use in the biomedical domain. The list of \emph{The Open Biological and Biomedical Ontologies} (abbreviated by \emph{OBO}) includes an ontology for units of measurements\footnote{\href{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}{http://obofoundry.org/cgi-bin/detail.cgi?id=unit}}\footnote{\href{http://code.google.com/p/unit-ontology/}{http://code.google.com/p/unit-ontology/}}. This ontology apparently covers most of the units that are used in the \thinkhomeweather ontology. However, it lacks any documentation and hence cannot be used in \thinkhomeweather.
+\end{itemize}
 
 \section{Conclusion}
 
