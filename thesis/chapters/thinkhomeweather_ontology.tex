@@ -393,8 +393,17 @@ The only pre-defined instances in \thinkhomeweather are the instances of the con
 \section{Integration}
 \label{sec:integration}
 
-One of the goals when designing an ontology is to reuse existing ontologies where possible\cite{reuse1,reuse2}. It the domain of \thinkhomeweather, four areas have been identified where existing ontologies can be reused: These are location data, measurement units, weather concepts and specifications of date and time. Chapter \ref{ch:existing_work} sheds some light on existing ontologies around the domain of weather data. In this section, the ontologies that have found to be eligible for reuse within \thinkhomeweather are presented.
+One of the goals when designing an ontology is to reuse existing ontologies where possible\cite{reuse1,reuse2}. Chapter~\ref{ch:existing_work} sheds some light on a selection of existing ontologies around the domain of weather data. In the domain of \thinkhomeweather, four areas have been identified where existing ontologies may be reused. These areas are location data (section~\ref{subsec:location_ontologies}), measurement units (section~\ref{subsec:unit_ontologies}), specifications of date and time (section~\ref{subsec:date_ontologies}) and weather concepts (section~\ref{sec:weather_ontologies}).
 
+The following ontologies have been selected for the import into \thinkhomeweather:
+\begin{itemize}
+  \item \emph{OWL-Time}\cite{owl-time} is used for specifying temporal data (for date and time of a \Egls{weather report}).
+  \item The \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} is used for specifying the location a \Egls{weather report} if valid for.
+  \item The \emph{Measurement Units Ontology}\footnote{\href{http://idi.fundacionctic.org/muo/muo-vocab.html}{http://idi.fundacionctic.org/muo/muo-vocab.html}}\cite{MUO} is used to enrich measurement values of each \Egls{Weather phenomenon} with a unit (e.g. temperature in \si{\celsius}, rain in \si{\milli\metre\per\hour}).
+  \item Unfortunately, no weather ontology has been identified that defines weather concepts in a way that suits \thinkhomeweather's requirements. Hence, \thinkhomeweather defines its own concepts and properties for the domain of weather data.
+\end{itemize}
+
+\begin{comment}
 \paragraph{Location data:}
 
 Each \Egls{weather report} is valid for a certain location on Earth, given by \emph{latitude}, \emph{longitude} and \emph{altitude}. To handle such location data, the \emph{W3C Semantic Web Interest Group}\footnote{\href{http://www.w3.org/2001/sw/interest/}{http://www.w3.org/2001/sw/interest/}} developed the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}. It introduces a concept called \emph{Spatial thing} and its attributes \egls{lat}, \egls{long} and \egls{alt} according to the \emph{WGS-84 geodetic reference system}\cite{WGS84}.
@@ -437,6 +446,7 @@ The attributes \egls{has start time}, \egls{has end time} and \egls{has observat
 For specifying temporal properties, the \emph{World Wide Web consortium} (\emph{W3C})\footnote{\href{http://www.w3.org/}{http://www.w3.org/}} offers a \emph{working draft}\cite{w3c-process} of \emph{OWL-Time}\cite{owl-time}, a \emph{Time Ontology in OWL}. It defines the concept called \Egls{temporal entity} that can either be an \Egls{instant} or an \Egls{interval}. Using appropriate attributes, the properties of a \Egls{temporal entity} are specified. Although \emph{OWL-Time} is in the state of a \emph{working draft} since September 2006, the main concepts and attributes that will be reused by other ontologies are likely to remain unchanged in future releases of that ontology.
 
 \vspace{1em}
+\end{comment}
 
 Section \ref{sec:implementation} describes the reuse of the aforementioned ontologies within the \thinkhomeweather ontology in detail.
 
