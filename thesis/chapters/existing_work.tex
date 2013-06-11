@@ -191,23 +191,23 @@ However, the vocabulary contains some data properties that are incorrectly defin
 
 % The attributes \egls{has start time}, \egls{has end time} and \egls{has observation time} of the concept \Egls{weather state} need to encode date and time information in an appropriate way.
 
-\begin{figure} % TODO
+\begin{figure}
 \centering
-\includegraphics[width=.9\textwidth]{figures/diagrams/wgs84_example.pdf}
-\caption{Example of the use of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}; all concepts and properties in the \texttt{geo} namespace are part of this vocabulary.}
+\includegraphics[width=.9\textwidth]{figures/diagrams/owl_time_example1.pdf}
+\caption{Example of the use of the \emph{OWL-Time} for describing an instant (July 16, 2012 at 14:30).}
 \label{fig:owl_time_example1}
 \end{figure}
 
-\begin{figure} % TODO
+\begin{figure}
 \centering
-\includegraphics[width=.9\textwidth]{figures/diagrams/wgs84_example.pdf}
-\caption{Example of the use of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}; all concepts and properties in the \texttt{geo} namespace are part of this vocabulary.}
+\includegraphics[width=.5\textwidth]{figures/diagrams/owl_time_example2.pdf}
+\caption{Example of the use of the \emph{OWL-Time} for the description of the interval of 90 minutes (one hour and 30 minutes).}
 \label{fig:owl_time_example2}
 \end{figure}
 
 For specifying temporal properties, the \emph{World Wide Web consortium} (\emph{W3C}) offers a \emph{working draft} of \emph{OWL-Time}\cite{owl-time}, a \emph{Time Ontology in OWL}. It defines the concept called \Egls{temporal entity} that can either be an \Egls{instant} or an \Egls{interval}. Using appropriate attributes, the properties of a \Egls{temporal entity} are specified. Although \emph{OWL-Time} is in the state of a \emph{working draft} since September 2006, the main concepts and attributes that will be reused by other ontologies are likely to remain unchanged in future releases of that ontology.
 
-Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being used to specify an instant while figure~\ref{fig:owl_time_example2} demonstrates how an interval is specified using \emph{OWL-Time}.
+Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being used to specify an instant while figure~\ref{fig:owl_time_example2} demonstrates how a time interval is specified using \emph{OWL-Time}.
 
 \subsection{Units of measurements}
 \label{subsec:unit_ontologies}
@@ -216,4 +216,4 @@ Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being use
 
 \section{Conclusion}
 
-As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a data model for \thinkhome. Hence, a completely new ontology is created in chapter~\ref{ch:thinkhomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
+As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a data model for \thinkhome. Hence, a completely new ontology is created in chapter~\ref{ch:thinkhomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} (the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \emph{OWL-Time} and the \emph{Measurement Units Ontology}) will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
