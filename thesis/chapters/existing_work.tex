@@ -173,12 +173,41 @@ This section discusses some ontologies that cover domains that are related to we
 \subsection{Location data}
 \label{subsec:location_ontologies}
 
-% TODO
+% TODO define 'namespace' somewhere
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/wgs84_example.pdf}
+\caption{Example of the use of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}; all concepts and properties in the \texttt{geo} namespace are part of this vocabulary.}
+\label{fig:wgs84_example}
+\end{figure}
+
+To handle geographical location data, the \emph{W3C Semantic Web Interest Group}\footnote{\href{http://www.w3.org/2001/sw/interest/}{http://www.w3.org/2001/sw/interest/}} developed the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}. It introduces a concept called \emph{Spatial thing} and its attributes \egls{lat}, \egls{long} and \egls{alt} according to the \emph{WGS-84 geodetic reference system}\cite{WGS84}. Figure~\ref{fig:wgs84_example} shows an example of how the vocabulary is used.
+
+However, the vocabulary contains some data properties that are incorrectly defined to be annotation properties. Thus, they must be redefined to be data properties whenever used in an \eacs{OWL} ontology.
 
 \subsection{Date and time}
 \label{subsec:date_ontologies}
 
-% TODO
+% The attributes \egls{has start time}, \egls{has end time} and \egls{has observation time} of the concept \Egls{weather state} need to encode date and time information in an appropriate way.
+
+\begin{figure} % TODO
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/wgs84_example.pdf}
+\caption{Example of the use of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}; all concepts and properties in the \texttt{geo} namespace are part of this vocabulary.}
+\label{fig:owl_time_example1}
+\end{figure}
+
+\begin{figure} % TODO
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/wgs84_example.pdf}
+\caption{Example of the use of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}; all concepts and properties in the \texttt{geo} namespace are part of this vocabulary.}
+\label{fig:owl_time_example2}
+\end{figure}
+
+For specifying temporal properties, the \emph{World Wide Web consortium} (\emph{W3C}) offers a \emph{working draft} of \emph{OWL-Time}\cite{owl-time}, a \emph{Time Ontology in OWL}. It defines the concept called \Egls{temporal entity} that can either be an \Egls{instant} or an \Egls{interval}. Using appropriate attributes, the properties of a \Egls{temporal entity} are specified. Although \emph{OWL-Time} is in the state of a \emph{working draft} since September 2006, the main concepts and attributes that will be reused by other ontologies are likely to remain unchanged in future releases of that ontology.
+
+Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being used to specify an instant while figure~\ref{fig:owl_time_example2} demonstrates how an interval is specified using \emph{OWL-Time}.
 
 \subsection{Units of measurements}
 \label{subsec:unit_ontologies}
