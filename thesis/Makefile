@@ -32,9 +32,6 @@ $(FIGURES_DIR)/%.pdf: $(FIGURES_DIR)/%.svg
 $(FIGURES_DIR)/%.svg: $(FIGURES_DIR)/%.dia
 	$(dia-command)
 
-# $(DIAGRAMS_DIR)/%.eps: $(DIAGRAMS_DIR)/%.dia
-#	$(dia-command)
-
 clean: clean-thesis clean-figures
 
 clean-thesis:
