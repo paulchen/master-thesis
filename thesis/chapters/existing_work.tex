@@ -39,8 +39,6 @@ Over the years, many ontologies have been developed. Some of them define concept
 
 The \emph{Resource Description Framework} (\eacs{RDF}) is a standard model for knowledge representation. It is specified in a set of recommendations by the \emph{W3C consortium}.
 
-% TODO URIs
-
 The data model of \eacs{RDF} incorporates element types named \emph{resources} and \emph{properties} which can be found in ontologies: A resource is some thing that is described by \eacs{RDF}, it corresponds to an individual as it is found in an ontology. Each resource can have an arbitrary number of properties, i.e. \emph{attributes} that associate \emph{literate} values (e.g. numerical values, strings) to the resource or \emph{relations} that link this resource to other resources. Resources and properties are expressed using \emph{statements} (\emph{triples}) which consist of three parts called \emph{subject}, \emph{predicate} and \emph{object}. 
 
 % TODO citation
@@ -97,19 +95,56 @@ weather:CurrentWeather geo:hasLocation geo:Vienna .
 
 All things described by \eacs{RDF} are instances of \texttt{rdfs:Resource}, concepts are instances of \texttt{rdfs:Class}, and properties are instances of \texttt{rdfs:Property}. Other concepts introduced by \eacs{RDFS} are \texttt{rdfs:Literal}, \texttt{rdfs:Datatype} and \texttt{rdfs:XMLLiteral}.
 
-The property \texttt{rdfs:domain} states that any resource that has a given property is an instance of one or more classes; the property \texttt{rdfs:range} states that the value of a property is an instance of one or more classes. \texttt{rdfs:type} is used to state that a resource is an instance of a class. Hierarchies of classes can be constructed using the property \texttt{rdfs:subClassOf}: \texttt{C1 rdfs:subClassOf C2} states that any instance of \texttt{C2} is also an instance of \texttt{C1}. \texttt{rdfs:subPropertyOf} is an equivalent that is used for declaring hierachies of properties. Other properties defined by \eacs{RDFS} are \texttt{rdfs:label} and \texttt{rdfs:comment}.
+The property \texttt{rdfs:domain} states that any resource that has a given property is an instance of one or more classes; the property \texttt{rdfs:range} states that the value of a property is an instance of one or more classes. \texttt{rdf:type} (often abbreviated with \texttt{a}) is used to state that a resource is an instance of a class. Hierarchies of classes can be constructed using the property \texttt{rdfs:subClassOf}: \texttt{C1 rdfs:subClassOf C2} states that any instance of \texttt{C2} is also an instance of \texttt{C1}. \texttt{rdfs:subPropertyOf} is an equivalent that is used for declaring hierachies of properties. Other properties defined by \eacs{RDFS} are \texttt{rdfs:label} and \texttt{rdfs:comment}.
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/rdfs_example.pdf}
+\caption{Example of a simple \eacs{RDFS} model}
+\label{fig:rdfs_example}
+\end{figure}
 
 Figure~\ref{fig:rdfs_example} shows the example from figure~\ref{fig:rdf_example}, enriched by some elements that are defined by \eacs{RDFS}. The data model introduces two classes, \texttt{weather:WeatherState} and \texttt{geo:Location}. \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} are instances of \texttt{weather:WeatherState} and \texttt{geo:Location}, respectively. \texttt{geo:hasLocation} is a property with range \texttt{weather:WeatherState} and \texttt{geo:Location}.
 
-Many of the concepts and properties defined are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language based on \eacs{RDF}.
+\eacs{RDFS} comes with reasoning support; e.g. in the above example, the statements
 
-% TODO name of OWL
-% TODO W3C, W3C recommendations
-% TODO OWL 1.1, OWL 2
-% TODO OWL Full, OWL DL, OWL Lite
-% TODO Manchester syntax
-% TODO Protege
-% TODO reasoners: Pellet, RacerPro, FaCT++, HermiT
+\begin{verbatim}
+weather:CurrentWeather rdf:type weather:WeatherState .
+geo:Vienna rdf:type geo:Location .
+\end{verbatim}
+
+could be removed without loss of knowledge. A reasoner can deduct these statements from these:
+
+\begin{verbatim}
+weather:CurrentWeather geo:hasLocation geo:Vienna .
+geo:location rdfs:domain weather:WeatherState .
+geo:location rdfs:range geo:Location .
+\end{verbatim}
+However, as the expressive power of \eacs{RDFS} is rather limited compared to what \eacs{OWL} has to offer, reasoning in \eacs{RDFS} does not have the significance it has in \eacs{OWL}.
+
+% TODO link W3C life cycle for specifications
+
+Many of the concepts and properties defined are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group} of the \emph{W3C consortium}. \eacs{OWL} 1 was first published in July 2002 as a working draft and became a \emph{W3C recommendation} in February 2004; the first working draft of \eacs{OWL} 2 in March 2009 and the \emph{W3C recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012. \eacs{OWL} 2 remains fully compatible to \eacs{OWL} 1, i.e. all \eacs{OWL} 1 ontologies are also \eacs{OWL} 2 ontologies, with unchanged semantics.
+
+Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among others which are omitted here):
+
+\begin{itemize}
+  \item The properties \texttt{owl:equivalentClass} is used to state that two classes are equivalent while \texttt{owl:allDisjointClasses} states that there is no individual that is an instance of more than one class from a set of classes.
+  \item Similarly, the property \texttt{owl:sameAs} defines two individuals to be the same individual and \texttt{owl:differentFrom} states that two individuals can never be the same individual.
+  \item Using the properties \texttt{owl:intersectionOf}, \texttt{owl:unionOf}, and \texttt{owl:complementOf} can be used to describe complex classes in a notation borrowed from set theory (e.g. if there are two classes, \texttt{Man} and \texttt{Woman}, the class \texttt{Person} can be defined as the class union of them).
+  \item Using the properties \texttt{owl:allValuesFrom}, \texttt{owl:someValuesFrom}, and \texttt{owl:hasValue} classes can be defined based on the values of their properties.
+  \item Using the properties \texttt{owl:minCardinality}, \texttt{owl:maxCardinality}, and \texttt{owl:cardinality}, the cardinality of properties per class can be limited.
+  \item Properties can have various characteristics: A property can be inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:propertyDisjointWith}). A property can be reflexive (it relates everything to itself, \texttt{owl:ReflexiveProperty}), irreflexive (no individual can be related to itself, \texttt{owl:IrreflexiveProperty}), functional (every individual can be linked to at most one other individual, \texttt{owl:FunctionalProperty}) or inverse functional (the inverse property is functional, \texttt{owl:InverseFunctionalProperty}).
+\end{itemize}
+
+% TODO citation: the first ontology war (open world assumption)
+% TODO citation: monotonic reasoning
+Reasoning in \texttt{OWL} respects the \emph{open world assumption}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \texttt{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true.
+
+% TODO citations (reasoners, protege, OWL reasoning specifications)
+
+\eacs{OWL} ontologies are often designed using semantic editors like \protege. Common reasoners for \eacs{OWL} include \emph{Pellet}, \emph{RacerPro}, \emph{FaCT++} and \emph{HermiT}. They all implement reasoning as specified by the \eacs{OWL} specification. Implementation specific differences affect details that are not covered by the \eacs{OWL} specification. \protege and \emph{Pellet} are used to develop the weather data model for \thinkhome in chapter~\ref{ch:thinkhomeweather_ontology}.
+
 % TODO blank nodes
 
 \subsection{ThinkHome}
