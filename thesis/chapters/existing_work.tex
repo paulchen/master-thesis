@@ -143,8 +143,11 @@ Reasoning in \texttt{OWL} respects the \emph{open world assumption}. If some sta
 % TODO
 
 \section{Ontologies for weather data}
+\label{sec:weather_ontologies}
 
-% TODO weather data
+This section presents a selection of the ontologies that have been designed to cover the domain of weather data. Possibly one of them can be used for the weather data model of \thinkhome. If not, their advantages and disadvantages are analyzed in order to avoid their shortcomings in \thinkhome and benefit from their advantages.
+
+% TODO other ontologies not mentioned here?
 
 \subsection{Semantic Sensor Web}
 
@@ -163,7 +166,9 @@ Reasoning in \texttt{OWL} respects the \emph{open world assumption}. If some sta
 % TODO
 
 \section{Related ontologies}
+\label{sec:related_ontologies}
 
+This section discusses some ontologies that cover domains that are related to weather data, e.g. location data, temporal data, or units of measurements. These are candidates for being reused by the weather data model of \thinkhome.
 % TODO
 
 \subsection{SWIG Basic Geo (WGS84 lat/long) Vocabulary}
@@ -177,3 +182,5 @@ Reasoning in \texttt{OWL} respects the \emph{open world assumption}. If some sta
 % TODO Units ontologies
 
 \section{Conclusion}
+
+As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a data model for \thinkhome. Hence, a completely new ontology is created in chapter~\ref{ch:thinkhomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
