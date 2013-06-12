@@ -12,11 +12,29 @@ This chapter presents the foundations the work in this thesis builds upon: The c
 
 \subsection{Ontologies}
 
-% TODO parts of ontologies: concepts, attributes, relations, individuals
+In computer science, an ontology represents knowledge as a set of concepts in a certain domain and relationships between pairs of concepts. The basic elements of ontologies -- concepts, properties, and relations -- comprise a shared vocabulary which can be used to model a certain domain.
+
+Each object that is mapped into an ontology is represented by an \emph{individual} (also known as \emph{object}). Individuals of the same type are called \emph{instances} of \emph{concepts} (also called \emph{classes}). Both classes and individuals can have \emph{attributes} that specify their characteristics and properties. Two arbitrary classes or individuals can be related to each other via a \emph{relation}.
+
 % TODO perhaps: function terms, restrictions, rules, axioms, events
-% TODO reasoning
-% TODO reuse, vocabulary
-In computer science, an ontology represents knowledge as a set of concepts in a certain domain and relationships between pairs of concepts.
+Furthermore, ontologies often contain \emph{function terms} (), \emph{restrictions} (), \emph{rules} (), \emph{axioms} (), and \emph{events}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/diagrams/ontology_example.pdf}
+\caption{Example of a simple ontological model}
+\label{fig:ontology_example}
+\end{figure}
+
+Figure~\ref{fig:ontology_example} illustrates the aforementioned elements in a simple ontology: \emph{Person}, \emph{Man}, and \emph{Woman} are concepts. \emph{is subclass of} is a property that defines one concept to be a \emph{sub-concept} of another concept (i.e. \emph{B is subclass of A} states that every instance of \emph{B} is also an instance of \emph{A}). \emph{Brian}, \emph{Maria}, and \emph{Sarah} are individuals; each of them is a instance of a concept which is related via the \emph{is a} relation. \emph{age} is a property of the individuals \emph{Brian}, \emph{Maria}, and \emph{Sarah} and \emph{has parent} is a relation which associates two individuals to each other.
+
+That model states the following facts: Men and women are persons. Brian, age 37, is a man while Maria (age 12) and Sarah (age 32) are women. Maria has two parents, Brian and Sarah.
+
+An important feature of an ontology is the support of automatic reasoning to deduct facts that are not explicitely stated in the data model from the given information. E.g. in the above example, because \emph{Man} and \emph{Woman} are sub-concepts of \emph{Person}, \emph{Brian}, \emph{Maria}, and \emph{Sarah} are instances of \emph{Person}. One could define a relation \emph{has child} that is an inverse property of \emph{has parent}, i.e. \emph{A has child B} iff \emph{B has parent A}; then the statements \emph{Brian has child Maria} and \emph{Sarah has child Maria} can be deducted.
+
+If a concept \emph{Mother} is defined as a \emph{Woman} who has at least one child, \emph{Sarah} can be inferred to be an instance of this concept; the same works for an analogously defined concept \emph{Father} with \emph{Brian} being an instance of. Furthermore, concepts \emph{Daugher} and \emph{Son} can be defined (someone who has at least one parent and is a \emph{Woman} or a \emph{Man}, respectively). Then \emph{Maria} can be inferred to be a \emph{Daughter}. Additionally, properties like \emph{has mother}, \emph{has father}, \emph{has son}, \emph{has daughter} etc. can be defined.
+
+One core principle of an ontology is reusability\cite{reuse1,reuse2}. In order to share knowledge across various systems, ontologies are often reused within other ontologies. Besides the simplification of knowledge sharing, this principle tries to avoid duplicate work and reduces the work that is necessary to create an ontology for a domain.
 
 % TODO citations
 
@@ -191,8 +209,6 @@ However, the vocabulary contains some data properties that are incorrectly defin
 \subsection{Date and time}
 \label{subsec:date_ontologies}
 
-% The attributes \egls{has start time}, \egls{has end time} and \egls{has observation time} of the concept \Egls{weather state} need to encode date and time information in an appropriate way.
-
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{figures/diagrams/owl_time_example1.pdf}
@@ -234,7 +250,6 @@ The \emph{Measurement Units Ontology}\footnote{\href{http://idi.fundacionctic.or
 
 Figure~\ref{fig:nounits_example} shows the representation of an estate with its length and width specified using the datatype properties \texttt{hasLength} and \texttt{hasWidth}. In figure~\ref{fig:muo_example}, \muo is introduced to specify that both length and width are measured in metres: \texttt{hasLength} and \texttt{hasWidth} become object properties which link blank nodes to the individual \texttt{Estate}; \texttt{hasLength} and \texttt{hasWidth} are now both sub-properties of \texttt{muo:Quality value}. Each blank node has two properties, \texttt{muo:numerical value} states the literal value while \texttt{muo:measured in} gives the unit of measurement for the literal value. The unit (\texttt{meter} in this case) is represented by an instance of \texttt{muo:Unit of measurement}.
 
-% TODO analogously for all other ontologies
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{figures/diagrams/om_example.pdf}
