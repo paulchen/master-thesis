@@ -18,7 +18,6 @@
 \definecolor{linkcolor}{HTML}{000088}
 
 \usepackage{url}
-\usepackage[colorlinks=true,linkcolor=linkcolor,urlcolor=linkcolor,citecolor=linkcolor]{hyperref}	% links in pdf
 \usepackage{bookmark}
 \usepackage{graphicx}            			% Figures
 \usepackage{verbatim}            			% Code-Environment
@@ -60,6 +59,12 @@
 \lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
 
 \usepackage{xspace}
+
+\usepackage{threeparttable,booktabs}
+
+% load this package last to avoid any problems with other package
+\usepackage{hyperref}	% links in pdf
+\hypersetup{colorlinks=true,linkcolor=linkcolor,urlcolor=linkcolor,citecolor=linkcolor}
 
 \thesistitle{A Weather Ontology for Predictive Control in Smart Homes}
 %\thesissubtitle{Optional Subtitle} % optional
@@ -231,8 +236,6 @@
 
 \input{chapters/appendix_listings}
 
-% TODO remove
-\glsaddall
 \glossarystyle{altlisthypergroup}
 \printglossaries
 

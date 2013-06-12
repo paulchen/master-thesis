@@ -472,7 +472,7 @@
 \newglossaryentry{weather condition}{
   name={weather condition},
   description={A concept describing the overall state of the weather, represented by (a combination of) these individuals: \emph{Sun}, \emph{Light clouds}, \emph{Partly cloudy}, \emph{Cloudy}, \emph{Fog}, \emph{Rain}, \emph{Snow}, \emph{Sleet}, and \emph{Thunder}},
-  see={weather state}
+  see={weather state,has condition}
 }
 \newglossaryentry{weather phenomenon}{
   name={weather phenomenon},
@@ -671,6 +671,11 @@
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Stormy weather} and \emph{Very rainy weather} at the same time},
   see={weather state,stormy weather,very rainy weather}
 }
+\newglossaryentry{stormy weather}{
+  name={stormy weather},
+  description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Storm} or \emph{Hurricane} via the property \emph{has weather phenomenon}},
+  see={weather state,has weather phenomenon,storm,hurricane}
+}
 \newglossaryentry{thunderstorm}{
   name={thunderstorm},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Severe weather} and is linked to the instance \emph{Thunder} of the concept \emph{Weather condition} via the property \emph{has condition} at the same time},
@@ -679,7 +684,7 @@
 \newglossaryentry{very rainy weather}{
   name={very rainy weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Heavy rain}, \emph{Extremely heavy rain}, or \emph{Tropical storm rain} via the property \emph{has weather phenomenon}. By reasoning, it is a sub-concept of \emph{Rainy weather} as well},
-  see={weather state,has weather condition,rainy weather,heavy rain,extremely heavy rain,tropical storm rain}
+  see={weather state,rainy weather,heavy rain,extremely heavy rain,tropical storm rain}
 }
 \newglossaryentry{windy weather}{
   name={windy weather},

@@ -154,11 +154,12 @@ Except the ones not providing information about changes (\emph{Yahoo! Weather}, 
 Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); from some services, only limited forecasts are available (\eacs{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
 
 % TODO NWS
-As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
+As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
 
 
 \begin{table}
 \centering
+\begin{threeparttable}[b]
 \begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Operator} & \textbf{Web page} \\
@@ -175,13 +176,17 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
   \hline
   \textbf{\acs{METAR}} & Airports around the world & \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/} \\ % TODO correct?
   \hline
-  \textbf{\acs{NWS}} & National Weather Service\footnote{part of \eacs{NOAA}, \emph{National Oceanic and Atmospheric Administration}} & \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/} \\ % TODO href for NOAA
+  \textbf{\acs{NWS}} & National Weather Service\tnote{1} & \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/} \\ % TODO href for NOAA
   \hline
   \textbf{Weather Underground} & Weather Underground & \href{http://www.wunderground.com/weather/api/}{http://www.wunderground.com/weather/api/} \\
   \hline
   \textbf{Weather.com} & The Weather Channel, LLC & \href{http://www.weather.com/services/xmloap.html}{http://www.weather.com/services/xmloap.html} \\
   \hline
 \end{tabular}
+\begin{tablenotes}
+\item[1] part of \eacs{NOAA}, \emph{National Oceanic and Atmospheric Administration}
+\end{tablenotes}
+\end{threeparttable}
 \vspace{.5em}
 \caption{Names, operators and web pages of all weather services that have been evaluated.}
 \label{table:weather_data1}
@@ -220,11 +225,12 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
 % TODO reference FTP
 \begin{table}
 \centering
+\begin{threeparttable}[b]
 \begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Data format} & \textbf{Data access} \\
   \hline\hline
-  \textbf{DWD} & \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \eacs{FTP}\footnote{\href{http://tools.ietf.org/html/rfc959}{http://tools.ietf.org/html/rfc959}} \\ % TODO check if footnote is working
+  \textbf{DWD} & \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \eacs{FTP}\tnote{1} \\
   \hline
   \textbf{Yahoo! Weather} & \eacs{RSS} feed & \eacs{HTTP} \\
   \hline
@@ -234,7 +240,7 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
   \hline
   \textbf{yr.no} & \eacs{XML} & \eacs{HTTP} \\
   \hline
-  \textbf{\acs{METAR}} & Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page\footnote{\href{http://www.noaa.gov/}{http://www.noaa.gov/}} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\ % TODO check if footnote is working
+  \textbf{\acs{METAR}} & Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\
   \hline
   \textbf{\acs{NWS}} & \eacs{XML} & \eacs{SOAP}\cite{SOAP}, \eacs{REST}\cite{REST} \\
   \hline
@@ -243,6 +249,11 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
   \textbf{Weather.com} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
   \hline
 \end{tabular}
+\begin{tablenotes}
+\item[1] \href{http://tools.ietf.org/html/rfc959}{http://tools.ietf.org/html/rfc959}
+\item[2] \href{http://www.noaa.gov/}{http://www.noaa.gov/}
+\end{tablenotes}
+\end{threeparttable}
 \vspace{.5em}
 \caption{Data formats and protocols for data access of weather services.}
 \label{table:weather_data3}
@@ -250,6 +261,7 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
 
 \begin{table}
 \centering
+\begin{threeparttable}[b]
 \begin{tabular}{|p{.2\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Access restrictions, terms of use} \\
@@ -262,7 +274,7 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
   \hline
   \textbf{Google Weather Feed} & No account required; terms of use unknown (does not have an explicitely stated licence due to being an inofficial interface) \\
   \hline
-  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}\footnote{\emph{Creative Commons Attribution 3.0} \href{http://creativecommons.org/licenses/by/3.0}{http://creativecommons.org/licenses/by/3.0}}\\
+  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}\tnote{1}\\
   \hline
   \textbf{\acs{METAR}} & Unknown \\ % TODO ?
   \hline
@@ -273,6 +285,10 @@ As seen in table~\ref{weather_data7}, \eacs{METAR}s only provide current weather
   \textbf{Weather.com} & An account is mandatory; the creation process is complicated \\ % TODO licence?
   \hline
 \end{tabular}
+\begin{tablenotes}
+  \item[1] \emph{Creative Commons Attribution 3.0} \href{http://creativecommons.org/licenses/by/3.0}{http://creativecommons.org/licenses/by/3.0}
+\end{tablenotes}
+\end{threeparttable}
 \vspace{.5em}
 \caption{Access restrictions and terms of use for weather services.}
 \label{table:weather_data4}
@@ -475,7 +491,7 @@ DWD:
 
 Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
-Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{subsec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
+Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
 
 Nevertheless, the source of weather data shall remain replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \yrno is to be replaced by another weather service, the ontology remains unchanged; only the program that imports weather data must be adapted. If the weather service used does not support one or more weather elements, they are simply omitted in the program's output.
 
@@ -493,7 +509,7 @@ The ontology uses these weather elements which are available from many Internet 
 
 Furthermore, the overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition; two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used at the same time. These states are taken from the list of symbols used for describing the weather condition in the \eacs{API} of \yrno\footnote{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}.
 
-Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section~\ref{subsec:sun_position} for details.
+Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section~\ref{sec:sun_position} for details.
 
 To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \thinkhomeweather can actually answer the competency questions.
 
