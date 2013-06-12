@@ -386,21 +386,61 @@ Figure~\ref{fig:methontology_example_binary_relations_table} shows a template fo
 
 \paragraph{Task 6: Instance attributes}
 
-This step yields an \emph{instance attributes table}. That is a table of all \emph{instance attributes} that are listed in the concept dictionary. Each row contains the description of one instance attribute. An instance attribute is an attribute that describes an instance of a concept. Its value may be different for each instance of the concept. The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute.
+This step leads to an \emph{instance attributes table}. That is a table of all \emph{instance attributes} that are listed in the concept dictionary. Each row contains the description of one instance attribute. An instance attribute is an attribute that describes an instance of a concept. Its value may be different for each instance of the concept. The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute.
 
-% TODO template
+\begin{figure}
+\centering
+\begin{tabular}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+  \hline
+  \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
+  \hline\hline
+  … & … & … & … & … & … \\
+  \hline
+\end{tabular}
+\caption{Template for the instance attributes table as proposed by \methontology.}
+\label{fig:methontology_example_instance_attributes}
+\end{figure}
+
+See figure~\ref{fig:methontology_example_instance_attributes} for a template for the instance attributes table.
 
 \paragraph{Task 7: Class attributes}
 
 All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns will be \emph{name}, \emph{concept name} (i.e. the name of the concept where the attribute is defined), \emph{value type}, \emph{value(s)}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, all information about related instance attributes, class attributes, constants, rules and formulae may be specified that are specified in the instance attribute as well.
 
-% TODO template
+\begin{figure}
+\centering
+\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+  \hline
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
+  \hline\hline
+  … & … & … & … \\
+  \hline
+\end{tabular}
+\caption{Template for the class attributes table as proposed by \methontology.}
+\label{fig:methontology_example_class_attributes}
+\end{figure}
+
+Figure~\ref{fig:methontology_example_class_attributes} shows a template for the class attributes table.
 
 \paragraph{Task 8: Constants}
 
 In this step, the \emph{constants table} is created that specifies details about all the constants listed in the glossary of terms. For each constant the following is specified: name, value type, value, the measurement unit for numerical constants and the attributes that can be inferred using the constant.
 
-% TODO template
+% TODO constants table -> instances table?
+\begin{figure}
+\centering
+\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|}
+  \hline
+  \textbf{Instance name} & \textbf{Concept name} \\
+  \hline\hline
+  … & … \\
+  \hline
+\end{tabular}
+\caption{Template for the constants table as proposed by \methontology.}
+\label{fig:methontology_example_constants}
+\end{figure}
+
+Figure~\ref{fig:methontology_example_constants} shows a template for the constants table.
 
 \paragraph{Task 9: Formal axioms}
 
@@ -437,7 +477,7 @@ The task of implementation requires an environment that supports the ontologies 
   \item an automatic maintainer for managing the inclusion, removal or modification of existing definitions.
 \end{itemize}
 
-In the case of the \thinkhomeweather ontology an \emph{OWL} ontology is created using \protege together with the Pellet reasoner.
+In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology is created using \protege together with the Pellet reasoner.
 
 \subsubsection{Evaluation}
 
