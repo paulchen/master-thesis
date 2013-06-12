@@ -2,9 +2,20 @@
 \chapter{Methodologies for developing ontologies}
 \label{ch:development_approaches}
 
-There are numerous methodologies for building ontologies. As this chapter points out, all of them strive for avoiding common pitfalls and try to minimize the need for refactorization at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as early as possible. Knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope. 
+There are numerous methodologies for building ontologies. As this chapter points out, all of them strive for avoiding common pitfalls and try to minimize the need for refactorization at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as early as possible. All methodologies have in common that knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope. 
 
-This chapter describes some popular methodologies for the construction of ontologies. Among the methodologies that can be found in literature, the ones discussed as candidates for the design of \thinkhomeweather are
+In the article about their approach towards ontology design, Noy and McGuinness stated three fundamental rules~\cite{Ontology101} of ontology design. Although the authors only applied them to their own approach, they hand out advice for many design decisions, regardless of which approach is used for the design of the ontology:
+
+\begin{quote}
+\itshape
+1) There is no one correct way to model a domain -- there are always viable alternatives. The best solution almost always depends on the application that you have in mind and the extensions that you anticipate.
+
+2) Ontology development is necessarily an iterative process.
+
+3) Concepts in the ontology should be close to objects (physical or logical) and relationships in your domain of interest. These are most likely to be nouns (objects) or verbs (relationships) in sentences that describe your domain.\normalfont\cite{Ontology101}
+\end{quote}
+
+This chapter discusses some existing methodologies for the construction of ontologies. Among the methodologies that can be found in literature, the ones discussed as candidates for the design of \thinkhomeweather are
 
 \begin{itemize}
   \item \emph{Ontology 101} by Noy and McGuinness~\cite{Ontology101} (section \ref{subsec:approach1}),
@@ -19,8 +30,6 @@ This chapter describes some popular methodologies for the construction of ontolo
 \end{itemize}
 
 There are several other methodologies that are not covered here, such as \emph{Model Driven Ontology}~\cite{ModelDrivenOntology}, the \emph{NeOn Methodology}~\cite{NeOnMethodology}, the approach of Berneras et al. in the context of the \emph{Esprit KACTUS project}~\cite{KACTUSMethodology}, the methodology based on the \emph{SENSUS ontology}~\cite{SENSUSMethodology}, and a method~\cite{FCAMethod} based on \emph{Formal Concept Analysis}~\cite{FormalConceptAnalysis}.
-
-% TODO enumerate the three fundamental rules of ontology design in \cite{Ontology101}
 
 \section{Evaluating ontology development methodologies}
 
