@@ -20,6 +20,7 @@ This chapter describes some popular methodologies for the construction of ontolo
 
 There are several other methodologies that are not covered here, such as \emph{Model Driven Ontology}~\cite{ModelDrivenOntology}, the \emph{NeOn Methodology}~\cite{NeOnMethodology}, the approach of Berneras et al. in the context of the \emph{Esprit KACTUS project}~\cite{KACTUSMethodology}, the methodology based on the \emph{SENSUS ontology}~\cite{SENSUSMethodology}, and a method~\cite{FCAMethod} based on \emph{Formal Concept Analysis}~\cite{FormalConceptAnalysis}.
 
+% TODO enumerate the three fundamental rules of ontology design in \cite{Ontology101}
 
 \section{Evaluating ontology development methodologies}
 
@@ -57,6 +58,30 @@ As section~\ref{sec:ontology_approaches} focuses on the characteristics of the m
 \label{subsec:approach1}
 
 \subsubsection{Description}
+
+In their paper \emph{Ontology Development 101: A Guide to Creating Your First Ontology}\cite{Ontology101}, Noy and McGuiness present an informal and rather intuitive approach for building ontologies from scratch. It is geared towards people without prior knowledge about how to design an ontology and qualifies for demonstrating the essence of ontologies.
+
+The approach is divided into a set of steps:
+\begin{enumerate}
+  \item The domain and scope of the ontology are determined. The preferred way for this is to formulate \emph{competency questions} the ontology should be able to answer.
+  \item Existing ontologies are considered to be reused to avoid doing work that has already been done and to simplify interoperability with other ontologies.
+  \item Important terms in the ontology are enumerated, i.e. a \emph{glossary of terms} is built.
+  \item From the glossary in the previous step, all terms that are classes are identified. They are then related to each other in order to create a \emph{class hierarchy}.
+  \item The next step iterates all classes and tries to identify terms from the glossary which are properties of the classes.
+  \item Then, for the properties the ranges of possible values are specified.
+  \item Finally, instances from the glossary are selected and added to the ontology.
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/ontology101_process.pdf}
+\caption{The workflow proposed by \emph{Ontology 101}.}
+\label{fig:ontology101_process}
+\end{figure}
+
+These steps are not performed one after the other; instead, an iterative process is proposed which iterates the whole set of steps repeatedly. Figure~\ref{fig:ontology101_process} depicts the workflow this process.
+
+Besides the approach itself, \emph{Ontology 101} provides a huge set of rules of thumb which guide the ontology designer towards a well-conceived ontology, advises her of common pitfalls and help her identify both adequate and improper patterns.
 
 \subsubsection{Applications}
 
