@@ -177,6 +177,8 @@ This section describes \methontology as a well-defined approach to perform all a
 
 For each of the activities, only ideas behind them are covered, but their application is omitted. They are applied in chapter \ref{ch:thinkhomeweather_ontology} where \methontology is used to create the \thinkhomeweather ontology.
 
+Each section that describes an activity that involves the creation of some documentation artefact (e.g. a table or a document), a template for the respective artefact is presented.
+
 \subsubsection{Specification}
 
 \methontology defines a precise approach for the development of an ontology. It specifies certain activities that need to be performed, how these activities are performed and in which order. Thus, the activity of \emph{planification} is completed by specifying \methontology itself and the ontology developer is exempted therefrom. Hence, the first step of developing an ontology from scratch is \emph{specification}
@@ -287,6 +289,21 @@ The state of \emph{conceptualization} consists of several tasks as shown in figu
 
 At first, the ontologist builds a \emph{Glossary of Terms}. This glossary includes all the relevant terms of the domain (concepts, instances, attributes, relations etc.). It can be built as a table having the columns \emph{name}, \emph{synonyms}, \emph{acronyms}, \emph{description} (for a natural language description of the term) and \emph{type} (specifying whether the term is a concept, an instance, an attribute, a relation etc.).
 
+\begin{figure}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{.2\textwidth}|p{.2\textwidth}|p{.2\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Acronyms} & \textbf{Description} & \textbf{Type} \\
+  \hline\hline
+  … & … & … & … \\
+  \hline
+\end{tabular}
+\caption{Template for the glossary of terms as proposed by \methontology.}
+\label{fig:methontology_example_glossary}
+\end{figure}
+
+Figure~\ref{fig:methontology_example_glossary} shows a template for the glossary of terms.
+
 \paragraph{Task 2: Concept Taxonomies}
 
 When the glossary of terms contains a sizable number of concepts, these ontologies will be arranged one or more taxonomies that define the concept hierarchy. It is advisable to display the taxonomies in several diagrams.
@@ -303,15 +320,46 @@ When the glossary of terms contains a sizable number of concepts, these ontologi
 
 % TODO error check?
 
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{figures/diagrams/methontology_example_concept_taxonomies.pdf}
+\caption{Example of a concept-classification tree as proposed by \methontology.}
+\label{fig:methontology_example_concept_taxonomies}
+\end{figure}
+
+The concept taxonomies are visualised in \emph{concept-classification trees} which are diagrams that depict the concepts and their taxonomic relations. See figure~\ref{fig:methontology_example_concept_taxonomies} for an example of a concept-classification trees. In case the ontology contains a large number of concepts, the tree may be split into several diagrams.
+
 \paragraph{Task 3: Ad-hoc binary relation diagrams}
 
-In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagrams show all ad-hoc relationships between concepts of the same (or different) concept taxonomy.
+In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagrams show all ad-hoc relationships between concepts of the same (or different) concept taxonomy. Figure~\ref{fig:methontology_example_binary_relations} for an example of a binary relation diagram.
+
+\begin{figure}
+\centering
+\includegraphics[width=.8\textwidth]{figures/diagrams/methontology_example_binary_relations.pdf}
+\caption{Example of a binary relations diagram as proposed by \methontology.}
+\label{fig:methontology_example_binary_relations}
+\end{figure}
 
 % TODO error check
 
 \paragraph{Task 4: Concept dictionary}
 
-The \emph{concept dictionary} contains all domain concepts together with their relations, their instances and their class and instance attributes. All information from the previous steps That dictionary will again be built as a table having appropriate columns.
+The \emph{concept dictionary} contains all domain concepts together with their relations, their instances and their class and instance attributes. All information from the previous steps contribute to this dictionary. It is again be built as a table having appropriate columns. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts.
+
+\begin{figure}
+\centering
+\begin{tabular}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Instances} & \textbf{Relations} \\
+  \hline\hline
+  … & … & … \\
+  \hline
+\end{tabular}
+\caption{Template for the concept dictionary as proposed by \methontology.}
+\label{fig:methontology_example_concept_dictionary}
+\end{figure}
+
+Figure~\ref{fig:methontology_example_concept_dictionary} shows a template for the concept dictionary.
 
 % TODO error check
 
@@ -321,25 +369,50 @@ In this step, for all ad-hoc binary relations details will be specified in a tab
 
 % TODO error check
 
+\begin{figure}
+\centering
+\begin{tabular}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
+  \hline
+  \textbf{Name} & \textbf{Source\newline concept} & \textbf{Target\newline concept} & \textbf{Maximum\newline source\newline cardinality} & \textbf{Inverse\newline relation} \\
+  \hline\hline
+  … & … & … & … & … \\
+  \hline
+\end{tabular}
+\caption{Template for the binary relations table as proposed by \methontology.}
+\label{fig:methontology_example_binary_relations_table}
+\end{figure}
+
+Figure~\ref{fig:methontology_example_binary_relations_table} shows a template for the binary relations table.
+
 \paragraph{Task 6: Instance attributes}
 
 This step yields an \emph{instance attributes table}. That is a table of all \emph{instance attributes} that are listed in the concept dictionary. Each row contains the description of one instance attribute. An instance attribute is an attribute that describes an instance of a concept. Its value may be different for each instance of the concept. The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute.
+
+% TODO template
 
 \paragraph{Task 7: Class attributes}
 
 All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns will be \emph{name}, \emph{concept name} (i.e. the name of the concept where the attribute is defined), \emph{value type}, \emph{value(s)}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, all information about related instance attributes, class attributes, constants, rules and formulae may be specified that are specified in the instance attribute as well.
 
+% TODO template
+
 \paragraph{Task 8: Constants}
 
 In this step, the \emph{constants table} is created that specifies details about all the constants listed in the glossary of terms. For each constant the following is specified: name, value type, value, the measurement unit for numerical constants and the attributes that can be inferred using the constant.
+
+% TODO template
 
 \paragraph{Task 9: Formal axioms}
 
 % TODO
 
+% TODO template
+
 \paragraph{Task 10: Rules}
 
 % TODO
+
+% TODO template
 
 \paragraph{Task 11: Instances}
 
@@ -372,7 +445,11 @@ In the case of the \thinkhomeweather ontology an \emph{OWL} ontology is created 
 
 \subsubsection{Documentation}
 
-During the steps described above, a set of documents is compiled. If generated properly and accurately, these documents describe every detail of the ontology at it was introduced during the ontology development process. Hence, in \methontology, \emph{documentation} is an activity that is automatically performed throughout the whole ontology development process. Once this process has finished, both the ontology and its documentation are ready to use.
+% TODO citation: problems with documentation after development
+
+During the steps described above, a set of documents is compiled. If generated properly and accurately, these documents describe every detail of the ontology. Using this approach, \methontology forces the ontology designer to document throughout the development process. Any problems that come with documentation being created after the development process -- e.g. incomplete or wrong documentation, the ontology designer does not write the documentation herself, or some ideas the designer had in the design process are lost -- are avoided.
+
+Hence, in \methontology, \emph{documentation} is an activity that is not performed explicitely. One the development process has finished, both the ontology and its documentation are ready to use. 
 
 \subsubsection{Maintenance}
 
