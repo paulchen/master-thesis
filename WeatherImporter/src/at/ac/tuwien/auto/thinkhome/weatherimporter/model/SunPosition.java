@@ -17,45 +17,57 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * This class represents data about the position of the sun (azimuth, zenith angle, elevation angle). The zenith angle is automatically calculated from the elevation angle and vice versa (zenith angle = 90 - elevation angle).
+ * This class represents data about the position of the sun (azimuth, zenith
+ * angle, elevation angle). The zenith angle is automatically calculated from
+ * the elevation angle and vice versa (zenith angle = 90 - elevation angle).
  * 
- * This class supports the calculation of the sun position if a geographical position and a date are given. It uses the <a href="http://www.psa.es/sdg/sunpos.htm">PSA algorithm</a>. 
+ * This class supports the calculation of the sun position if a geographical
+ * position and a date are given. It uses the <a
+ * href="http://www.psa.es/sdg/sunpos.htm">PSA algorithm</a>.
  * 
  * @author Paul Staroch
  */
 public class SunPosition extends WeatherPhenomenon {
 	/**
-	 * The azimuth (in degrees, North equals 0 degrees, East equals 90 degrees etc.))
+	 * The azimuth (in degrees, North equals 0 degrees, East equals 90 degrees
+	 * etc.))
 	 */
 	private double azimuth;
-	
+
 	/**
 	 * The zenith angle (in degrees)
 	 */
 	private double zenith;
-	
+
 	/**
 	 * The elevation angle above horizon (in degrees)
 	 */
 	private double elevation;
 
 	/**
-	 * Unique name of the individual that corresponds to this object in the ontology 
+	 * Unique name of the individual that corresponds to this object in the
+	 * ontology
 	 */
 	private String name;
 
 	/**
-	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains
+	 * the main individual in the ontology that has been created by that method
+	 * call.
 	 */
 	private Individual individual;
-	
+
 	/**
-	 * Average radius of Earth in kilometres (required for the calculation of the position of the sun using the PSA algorithm given a geographical position, date and time)
+	 * Average radius of Earth in kilometres (required for the calculation of
+	 * the position of the sun using the PSA algorithm given a geographical
+	 * position, date and time)
 	 */
 	private static final double EARTH_MEAN_RADIUS = 6371.01;
-	
+
 	/**
-	 * The length of an astronomical unit (AU) in kilometres (required for the calculation of the position of the sun using the PSA algorithm given a geographical position, date and time)
+	 * The length of an astronomical unit (AU) in kilometres (required for the
+	 * calculation of the position of the sun using the PSA algorithm given a
+	 * geographical position, date and time)
 	 */
 	private static final double ASTRONOMICAL_UNIT = 149597890;
 
@@ -63,26 +75,34 @@ public class SunPosition extends WeatherPhenomenon {
 	 * Log4j logger
 	 */
 	private Logger log;
-	
+
 	/**
-	 * A constructor that creates an instance of <tt>SunPosition</tt> without setting any of zenith angle, elevation angle or azimuth.
-	 * This constructor is private and is only called by the other constructors.
+	 * A constructor that creates an instance of <tt>SunPosition</tt> without
+	 * setting any of zenith angle, elevation angle or azimuth. This constructor
+	 * is private and is only called by the other constructors.
 	 * 
-	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param name
+	 *            the unique name of the individual in the ontology that
+	 *            corresponds to this object
 	 */
 	private SunPosition(String name) {
 		this.name = name;
-		
-		log = Logger.getLogger(SunPosition.class);		
+
+		log = Logger.getLogger(SunPosition.class);
 	}
-	
+
 	/**
-	 * A constructor that creates an instance of <tt>SunPosition</tt> given its unique name, its zenith angle and its azimuth.
-	 * The elevation angle will be calculated automatically.
+	 * A constructor that creates an instance of <tt>SunPosition</tt> given its
+	 * unique name, its zenith angle and its azimuth. The elevation angle will
+	 * be calculated automatically.
 	 * 
-	 * @param name the unique name of the individual in the ontology that corresponds to this object
-	 * @param zenith the zenith angle 
-	 * @param azimuth the azimuth
+	 * @param name
+	 *            the unique name of the individual in the ontology that
+	 *            corresponds to this object
+	 * @param zenith
+	 *            the zenith angle
+	 * @param azimuth
+	 *            the azimuth
 	 */
 	public SunPosition(String name, double zenith, double azimuth) {
 		this(name);
@@ -93,12 +113,18 @@ public class SunPosition extends WeatherPhenomenon {
 	}
 
 	/**
-	 * A constructor that creates an instance of <tt>SunPosition</tt> given its unique name, a geographical position and a date.
-	 * Azimuth, elevation angle and zenith angle for the position of the sun at the given geographical position at the given date will be calculated using the PSA algorithm.
+	 * A constructor that creates an instance of <tt>SunPosition</tt> given its
+	 * unique name, a geographical position and a date. Azimuth, elevation angle
+	 * and zenith angle for the position of the sun at the given geographical
+	 * position at the given date will be calculated using the PSA algorithm.
 	 * 
-	 * @param name the unique name of the individual in the ontology that corresponds to this object
-	 * @param position a geographical position
-	 * @param date a date
+	 * @param name
+	 *            the unique name of the individual in the ontology that
+	 *            corresponds to this object
+	 * @param position
+	 *            a geographical position
+	 * @param date
+	 *            a date
 	 */
 	public SunPosition(String name, GeographicalPosition position, Date date) {
 		this(name);
@@ -108,7 +134,7 @@ public class SunPosition extends WeatherPhenomenon {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public double getAzimuth() {
 		return azimuth;
 	}
@@ -134,53 +160,77 @@ public class SunPosition extends WeatherPhenomenon {
 		this.elevation = elevation;
 		this.zenith = 90 - elevation;
 	}
-	
+
 	@Override
 	public String toString() {
 		String output = "sunPosition=[";
-		
+
 		output += "azimuth=" + roundDouble(azimuth, Weather.DECIMALS) + "; ";
 		output += "zenith=" + roundDouble(zenith, Weather.DECIMALS) + "; ";
 		output += "elevation=" + roundDouble(elevation, Weather.DECIMALS);
 		output += "]";
-		
+
 		return output;
 	}
 
 	@Override
 	public void createIndividuals(OntModel onto) {
 		Resource blankNode1 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), (int)roundDouble(azimuth, Weather.DECIMALS)));
-		onto.add(onto.createStatement(blankNode1, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.MUO_NAMESPACE + "degree")));
-		
+		onto.add(onto.createLiteralStatement(blankNode1,
+				onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"),
+				(int) roundDouble(azimuth, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode1,
+				onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"),
+				onto.getResource(Weather.MUO_NAMESPACE + "degree")));
+
 		Resource blankNode2 = onto.createResource();
-		onto.add(onto.createLiteralStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"), (float)roundDouble(elevation, Weather.DECIMALS)));
-		onto.add(onto.createStatement(blankNode2, onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"), onto.getResource(Weather.MUO_NAMESPACE + "degree")));
-		
- 		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
- 		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
- 		
-		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasSunDirection"), blankNode1));
-		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasSunElevationAngle"), blankNode2));
+		onto.add(onto.createLiteralStatement(blankNode2,
+				onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"),
+				(float) roundDouble(elevation, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode2,
+				onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"),
+				onto.getResource(Weather.MUO_NAMESPACE + "degree")));
+
+		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE
+				+ "WeatherPhenomenon");
+		individual = onto.createIndividual(Weather.NAMESPACE + name,
+				weatherPhenomenonClass);
+
+		onto.add(onto.createStatement(individual,
+				onto.getProperty(Weather.NAMESPACE + "hasSunDirection"),
+				blankNode1));
+		onto.add(onto.createStatement(individual,
+				onto.getProperty(Weather.NAMESPACE + "hasSunElevationAngle"),
+				blankNode2));
 	}
 
 	@Override
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
-		
+
 		String blankNode1 = Weather.generateBlankNode();
 		String blankNode2 = Weather.generateBlankNode();
-		
-		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "numericalValue", String.valueOf((int)roundDouble(azimuth, Weather.DECIMALS))));
-		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn", Weather.MUO_PREFIX + "degree"));
-		
-		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "numericalValue", "\"" + String.valueOf((float)roundDouble(elevation, Weather.DECIMALS)) + "\"^^xsd:float"));
-		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX + "measuredIn", Weather.MUO_PREFIX + "degree"));
-		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasSunDirection", blankNode1));
-		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasSunElevationAngle", blankNode2));
-		
+
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX
+				+ "numericalValue", String.valueOf((int) roundDouble(azimuth,
+				Weather.DECIMALS))));
+		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX
+				+ "measuredIn", Weather.MUO_PREFIX + "degree"));
+
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX
+				+ "numericalValue", "\""
+				+ String.valueOf((float) roundDouble(elevation,
+						Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode2, Weather.MUO_PREFIX
+				+ "measuredIn", Weather.MUO_PREFIX + "degree"));
+
+		turtle.add(new TurtleStatement(getTurtleName(), "a",
+				Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(),
+				Weather.NAMESPACE_PREFIX + "hasSunDirection", blankNode1));
+		turtle.add(new TurtleStatement(getTurtleName(),
+				Weather.NAMESPACE_PREFIX + "hasSunElevationAngle", blankNode2));
+
 		return turtle;
 	}
 
@@ -191,18 +241,27 @@ public class SunPosition extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
-		zenith = linearDoubleInterpolation(((SunPosition)intervalStartPhenomenon).getZenith(), ((SunPosition)intervalEndPhenomenon).getZenith(), start, end, current);
-		elevation = linearDoubleInterpolation(((SunPosition)intervalStartPhenomenon).getElevation(), ((SunPosition)intervalEndPhenomenon).getElevation(), start, end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end,
+			int current) {
+		zenith = linearDoubleInterpolation(
+				((SunPosition) intervalStartPhenomenon).getZenith(),
+				((SunPosition) intervalEndPhenomenon).getZenith(), start, end,
+				current);
+		elevation = linearDoubleInterpolation(
+				((SunPosition) intervalStartPhenomenon).getElevation(),
+				((SunPosition) intervalEndPhenomenon).getElevation(), start,
+				end, current);
 		azimuth = 90 - elevation;
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end,
+			int current) {
 		SunPosition sunPosition = new SunPosition("sunPosition" + name, 0f, 0f);
-		sunPosition.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
+		sunPosition.interpolate(intervalStartPhenomenon, intervalEndPhenomenon,
+				start, end, current);
 		return sunPosition;
 	}
 
@@ -215,21 +274,26 @@ public class SunPosition extends WeatherPhenomenon {
 	public String getTurtleName() {
 		return Weather.NAMESPACE_PREFIX + name;
 	}
-	
+
 	/**
-	 * This method calculates the position of the sun at the given geographical position at the given date using the PSA algorithm.
+	 * This method calculates the position of the sun at the given geographical
+	 * position at the given date using the PSA algorithm.
 	 * 
-	 * @param position a geographical position
-	 * @param date a date
+	 * @param position
+	 *            a geographical position
+	 * @param date
+	 *            a date
 	 */
 	private void calculatePosition(GeographicalPosition position, Date date) {
 		// Calculate difference in days between the current Julian Day
 		// and JD 2451545.0, which is noon 1 January 2000 Universal Time
 		Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
 		calendar.setTime(date);
-		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		log.debug("Calculating sun position for: " + simpleDateFormat.format(date));
+
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+				"yyyy-MM-dd HH:mm");
+		log.debug("Calculating sun position for: "
+				+ simpleDateFormat.format(date));
 
 		// Calculate time of the day in UT decimal hours
 		double decimalHours = calendar.get(Calendar.HOUR_OF_DAY)
@@ -282,8 +346,8 @@ public class SunPosition extends WeatherPhenomenon {
 		double cosLatitude = Math.cos(latitudeInRadians);
 		double sinLatitude = Math.sin(latitudeInRadians);
 		double cosHourAngle = Math.cos(hourAngle);
-		zenith = (Math.acos(cosLatitude * cosHourAngle
-				* Math.cos(declination) + Math.sin(declination) * sinLatitude));
+		zenith = (Math.acos(cosLatitude * cosHourAngle * Math.cos(declination)
+				+ Math.sin(declination) * sinLatitude));
 		y = -Math.sin(hourAngle);
 		x = Math.tan(declination) * cosLatitude - sinLatitude * cosHourAngle;
 		azimuth = Math.atan2(y, x);
@@ -296,11 +360,11 @@ public class SunPosition extends WeatherPhenomenon {
 				* Math.sin(zenith);
 		zenith = (zenith + parallax) * 180 / Math.PI;
 
-		assert(zenith >= -90f);
-		assert(zenith <= 90f);
-		assert(azimuth >= 0f);
-		assert(azimuth < 360f);
-		
+		assert (zenith >= -90f);
+		assert (zenith <= 90f);
+		assert (azimuth >= 0f);
+		assert (azimuth < 360f);
+
 		elevation = 90 - zenith;
 	}
 }

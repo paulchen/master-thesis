@@ -16,42 +16,55 @@ import com.hp.hpl.jena.ontology.OntModel;
  */
 public class DewPoint extends WeatherPhenomenon {
 	/**
-	 * Unique name of the individual that corresponds to this object in the ontology 
+	 * Unique name of the individual that corresponds to this object in the
+	 * ontology
 	 */
 	private String name;
 
 	/**
-	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains
+	 * the main individual in the ontology that has been created by that method
+	 * call.
 	 */
 	private Individual individual;
-	
+
 	/**
 	 * The dew point value (in degrees Celsius)
 	 */
 	private float dewPointValue;
-	
+
 	/**
-	 * A constructor that creates an instance of <tt>DewPoint</tt> from a set of already existing instances of that class. The dew point value will be set to the arithmetic mean of the dew point values of all these instances.
+	 * A constructor that creates an instance of <tt>DewPoint</tt> from a set of
+	 * already existing instances of that class. The dew point value will be set
+	 * to the arithmetic mean of the dew point values of all these instances.
 	 * 
-	 * @param name the unique name of the individual in the ontology that corresponds to this object
-	 * @param weatherPhenomena a list of instances of <tt>DewPoint</tt> that should be used to create this instance 
+	 * @param name
+	 *            the unique name of the individual in the ontology that
+	 *            corresponds to this object
+	 * @param weatherPhenomena
+	 *            a list of instances of <tt>DewPoint</tt> that should be used
+	 *            to create this instance
 	 */
 	public DewPoint(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
-		
+
 		dewPointValue = 0;
-		for(WeatherPhenomenon phenomenon : weatherPhenomena) {
-			dewPointValue += ((DewPoint)phenomenon).getDewPointValue();
+		for (WeatherPhenomenon phenomenon : weatherPhenomena) {
+			dewPointValue += ((DewPoint) phenomenon).getDewPointValue();
 		}
 		dewPointValue /= weatherPhenomena.size();
 	}
-	
+
 	/**
-	 * A constructor that creates an instance of <tt>DewPoint</tt> given its unique name and its dew point value.
+	 * A constructor that creates an instance of <tt>DewPoint</tt> given its
+	 * unique name and its dew point value.
 	 * 
-	 * @param name the unique name of the individual in the ontology that corresponds to this object
-	 * @param dewPointValue the dew point value
+	 * @param name
+	 *            the unique name of the individual in the ontology that
+	 *            corresponds to this object
+	 * @param dewPointValue
+	 *            the dew point value
 	 */
 	public DewPoint(String name, float dewPointValue) {
 		super();
@@ -61,26 +74,36 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
-		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE + "WeatherPhenomenon");
-		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherPhenomenonClass);
-		
-		onto.add(onto.createLiteralStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasDewPointValue"), roundFloat(dewPointValue, Weather.DECIMALS)));
+		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE
+				+ "WeatherPhenomenon");
+		individual = onto.createIndividual(Weather.NAMESPACE + name,
+				weatherPhenomenonClass);
+
+		onto.add(onto.createLiteralStatement(individual,
+				onto.getProperty(Weather.NAMESPACE + "hasDewPointValue"),
+				roundFloat(dewPointValue, Weather.DECIMALS)));
 	}
-	
+
 	@Override
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
-		
-		/* TODO
-		String blankNode = Weather.generateBlankNode();
-		
-		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "numericalValue", String.valueOf(coverage)));
-		turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn", Weather.NAMESPACE_PREFIX + "okta"));
-		*/
-		
-		turtle.add(new TurtleStatement(getTurtleName(), "a", Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
-		turtle.add(new TurtleStatement(getTurtleName(), Weather.NAMESPACE_PREFIX + "hasDewPointValue", "\"" + String.valueOf(roundFloat(dewPointValue, Weather.DECIMALS) + "\"^^xsd:float")));
-		
+
+		/*
+		 * TODO String blankNode = Weather.generateBlankNode();
+		 * 
+		 * turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX +
+		 * "numericalValue", String.valueOf(coverage))); turtle.add(new
+		 * TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn",
+		 * Weather.NAMESPACE_PREFIX + "okta"));
+		 */
+
+		turtle.add(new TurtleStatement(getTurtleName(), "a",
+				Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
+		turtle.add(new TurtleStatement(getTurtleName(),
+				Weather.NAMESPACE_PREFIX + "hasDewPointValue", "\""
+						+ String.valueOf(roundFloat(dewPointValue,
+								Weather.DECIMALS) + "\"^^xsd:float")));
+
 		return turtle;
 	}
 
@@ -100,16 +123,22 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
-		dewPointValue = linearFloatInterpolation(((DewPoint)intervalStartPhenomenon).getDewPointValue(), ((DewPoint)intervalEndPhenomenon).getDewPointValue(), start, end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end,
+			int current) {
+		dewPointValue = linearFloatInterpolation(
+				((DewPoint) intervalStartPhenomenon).getDewPointValue(),
+				((DewPoint) intervalEndPhenomenon).getDewPointValue(), start,
+				end, current);
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end,
+			int current) {
 		DewPoint dewPoint = new DewPoint("dewPoint" + name, 0f);
-		dewPoint.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
+		dewPoint.interpolate(intervalStartPhenomenon, intervalEndPhenomenon,
+				start, end, current);
 		return dewPoint;
 	}
 
