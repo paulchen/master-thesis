@@ -41,9 +41,6 @@ public abstract class WeatherPhenomenon implements OntologyClass {
 	 * of the current instance for the given &quot;current time&quot; using
 	 * values calculated using linear interpolation.
 	 * 
-	 * @param name
-	 *            the unique name of the newly created instance of
-	 *            <tt>WeatherPhenomenon</tt>
 	 * @param intervalStartPhenomenon
 	 *            instance of <tt>WeatherPhenomenon</tt> for the start time
 	 * @param intervalEndPhenomenon

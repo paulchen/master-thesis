@@ -228,8 +228,8 @@ public class WeatherState implements OntologyClass {
 	 * Adds an list of instance of <tt>WeatherPhenomenon</tt> to the list of
 	 * instances of this class stored in this instance.
 	 * 
-	 * @param phenomenon
-	 *            the instance of <tt>WeatherPhenomenon</tt> that is to be added
+	 * @param phenomena
+	 *            the instances of <tt>WeatherPhenomenon</tt> that are to be added
 	 */
 	public void addPhenomena(List<WeatherPhenomenon> phenomena) {
 		for (WeatherPhenomenon phenomenon : phenomena) {
