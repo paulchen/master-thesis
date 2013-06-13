@@ -58,7 +58,6 @@ public class Main {
 			System.exit(1);
 		}
 
-		// TODO document properties file
 		/* read properties file */
 		WeatherImporterProperties properties = new WeatherImporterProperties();
 		String inputFilename = null;
