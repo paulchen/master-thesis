@@ -1,6 +1,11 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.model;
 
-// TODO document
+/**
+ * This is an enumeration of weather conditions, i.e. terms that describe the overall state of the weather.
+ * 
+ * @author Paul Staroch
+ *
+ */
 public enum WeatherCondition {
 	Cloud,
 	Fog,

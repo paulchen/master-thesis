@@ -11,14 +11,33 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-// TODO javadoc
+/**
+ * This class represents a temperature value.
+ * 
+ * @author Paul Staroch
+ */
 public class Temperature extends WeatherPhenomenon {
-
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
-	private float temperatureValue;
 	
+	/**
+	 * The temperature value (in degrees celsius)
+	 */
+	private float temperatureValue;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
 	
+	/**
+	 * A constructor that creates an instance of <tt>Temperature</tt> from a set of already existing instances of that class. The temperature value will be set to the arithmetic mean of the temperature values of all these instances.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param weatherPhenomena a list of instances of <tt>Temperature</tt> that should be used to create this instance 
+	 */
 	public Temperature(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
@@ -30,6 +49,12 @@ public class Temperature extends WeatherPhenomenon {
 		temperatureValue /= weatherPhenomena.size();
 	}
 	
+	/**
+	 * A constructor that creates an instance of <tt>Temperature</tt> given its unique name and its temperature value.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param temperatureValue the temperature value
+	 */
 	public Temperature(String name, float temperatureValue) {
 		this.name = name;
 		this.temperatureValue = temperatureValue;
@@ -74,8 +99,8 @@ public class Temperature extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		temperatureValue = linearFloatInterpolation(((Temperature)intervalStartPhenomenon).getTemperatureValue(), ((Temperature)intervalEndPhenomenon).getTemperatureValue(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		temperatureValue = linearFloatInterpolation(((Temperature)intervalStartPhenomenon).getTemperatureValue(), ((Temperature)intervalEndPhenomenon).getTemperatureValue(), start, end, current);
 	}
 
 	private float getTemperatureValue() {
@@ -85,9 +110,9 @@ public class Temperature extends WeatherPhenomenon {
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		Temperature temperature = new Temperature("temperature" + name, 0f);
-		temperature.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		temperature.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return temperature;
 	}
 

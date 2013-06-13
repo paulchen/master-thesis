@@ -12,12 +12,39 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 // TODO javadoc
+/**
+ * This class represents data about wind (direction and speed).
+ * 
+ * @author Paul Staroch
+ */
 public class Wind extends WeatherPhenomenon {
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
+	
+	/**
+	 * Wind speed (in metres per second)
+	 */
 	private float windSpeed;
+	
+	/**
+	 * Wind direction (in degrees, North equals 0 degrees, East equals 90 degrees etc.)
+	 */
 	private int windDirection;
 	
+	/**
+	 * A constructor that creates an instance of <tt>Wind</tt> from a set of already existing instances of that class.
+	 * Both wind speed and wind direction will be set to the arithmetic mean of the corresponding values of all these instances 
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param weatherPhenomena a list of instances of <tt>Wind</tt> that should be used to create this instance 
+	 */
 	public Wind(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
@@ -101,17 +128,17 @@ public class Wind extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		windSpeed = linearFloatInterpolation(((Wind)intervalStartPhenomenon).getWindSpeed(), ((Wind)intervalEndPhenomenon).getWindSpeed(), end, current);
-		windDirection = linearIntInterpolation(((Wind)intervalStartPhenomenon).getWindDirection(), ((Wind)intervalEndPhenomenon).getWindDirection(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		windSpeed = linearFloatInterpolation(((Wind)intervalStartPhenomenon).getWindSpeed(), ((Wind)intervalEndPhenomenon).getWindSpeed(), start, end, current);
+		windDirection = linearIntInterpolation(((Wind)intervalStartPhenomenon).getWindDirection(), ((Wind)intervalEndPhenomenon).getWindDirection(), start, end, current);
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		Wind wind = new Wind("wind" + name, 0f, 0);
-		wind.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		wind.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return wind;
 	}
 

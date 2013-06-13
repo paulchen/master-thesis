@@ -12,14 +12,39 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 // TODO javadoc
+/**
+ * This class represents data about precipitation (intensity and probability).
+ * 
+ * @author Paul Staroch
+ */
 public class Precipitation extends WeatherPhenomenon {
-
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+	
+	/**
+	 * The precipitation intensity (in millimetres per hour)
+	 */
 	private float intensity;
+	
+	/**
+	 * The precipitation probability (between 0 and 1)
+	 */
 	private float probability;
 	
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
 
+	/**
+	 * A constructor that creates an instance of <tt>Precipitation</tt> from a set of already existing instances of that class.
+	 * Both precipitation and intensity will be set to the arithmetic mean of the corresponding values of all these instances 
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param weatherPhenomena a list of instances of <tt>Precipitation</tt> that should be used to create this instance 
+	 */
 	public Precipitation(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
@@ -34,6 +59,13 @@ public class Precipitation extends WeatherPhenomenon {
 		probability /= weatherPhenomena.size();
 	}
 
+	/**
+	 * A constructor that creates an instance of <tt>Precipitation</tt> given its unique name, its intensity and its probability.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param intensity the precipitation intensity
+	 * @param probability the precipitation probability
+	 */
 	public Precipitation(String name, float intensity, float probability) {
 		this.name = name;
 		this.intensity = intensity;
@@ -103,17 +135,17 @@ public class Precipitation extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		intensity = linearFloatInterpolation(((Precipitation)intervalStartPhenomenon).getIntensity(), ((Precipitation)intervalEndPhenomenon).getIntensity(), end, current);
-		probability = linearFloatInterpolation(((Precipitation)intervalStartPhenomenon).getProbability(), ((Precipitation)intervalEndPhenomenon).getProbability(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		intensity = linearFloatInterpolation(((Precipitation)intervalStartPhenomenon).getIntensity(), ((Precipitation)intervalEndPhenomenon).getIntensity(), start, end, current);
+		probability = linearFloatInterpolation(((Precipitation)intervalStartPhenomenon).getProbability(), ((Precipitation)intervalEndPhenomenon).getProbability(), start, end, current);
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(
 			String name, WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		Precipitation precipitation = new Precipitation("precipitation" + name, 0f, 0f);
-		precipitation.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		precipitation.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return precipitation;
 	}
 

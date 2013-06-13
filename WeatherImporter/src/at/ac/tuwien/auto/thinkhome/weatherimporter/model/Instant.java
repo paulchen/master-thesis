@@ -15,14 +15,38 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-// TODO javadoc
+/**
+ * This class represents an instant.
+ * 
+ * @author Paul Staroch
+ */
 public class Instant extends TemporalEntity {
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+	
+	/**
+	 * The point of time represented by this instance
+	 */
 	private Date date;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
 	
+	/**
+	 * Map of instances that have already been created. This is necessary in order to create only one instance of <tt>Instant</tt> for each date.
+	 */
 	private static Map<Date, Instant> instants;
-	
+
+	/**
+	 * Retrieves an instance of <tt>Instant</tt> for the given date. The method either returns an instance that has already been created previously or creates a new instance of no instance for the given date has previously been created.
+	 *  
+	 * @param date date for which to return an instance of <tt>Instant</tt>
+	 * @return an instance of <tt>Instant</tt> for the date specified
+	 */
 	public static Instant getInstant(Date date) {
 		if(instants == null) {
 			instants = new HashMap<Date, Instant>();
@@ -33,6 +57,13 @@ public class Instant extends TemporalEntity {
 		return instants.get(date);
 	}
 	
+	/**
+	 * Constructor that creates an instance of <tt>Instant</tt> given its unique name and the date it represents.
+	 * This constructor is private to enforce all instances of <tt>Instant</tt> to be created by the method {@link #getInstant(Date)}.
+	 * 
+	 * @param name unique name which is to be used in the ontology as name for the individual which corresponds to this instance 
+	 * @param date the date this instance of <tt>Instant</tt> represents
+	 */
 	private Instant(String name, Date date) {
 		super();
 		this.name = name;
@@ -47,7 +78,6 @@ public class Instant extends TemporalEntity {
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
 		Resource dateTimeClass = onto.getResource(TIME + "DateTimeDescription");
-		// TODO document why this is unique
 		Individual dateTime = onto.createIndividual(Weather.NAMESPACE + "dateTime0", dateTimeClass);
 		
 		onto.add(onto.createStatement(dateTime, onto.getProperty(TIME + "unitType"), onto.getResource(TIME + "unitMinute")));
@@ -81,7 +111,6 @@ public class Instant extends TemporalEntity {
 		
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
-		// TODO document why this is unique
 		turtle.add(new TurtleStatement(Weather.NAMESPACE_PREFIX + "dateTime0", "a", TIME_PREFIX + "DateTimeDescription"));
 		turtle.add(new TurtleStatement(Weather.NAMESPACE_PREFIX + "dateTime0", TIME_PREFIX + "unitType", TIME_PREFIX + "unitMinute"));
 		turtle.add(new TurtleStatement(Weather.NAMESPACE_PREFIX + "dateTime0", TIME_PREFIX + "minute", String.valueOf(new BigDecimal(calendar.get(Calendar.MINUTE)))));

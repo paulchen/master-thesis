@@ -11,12 +11,33 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-// TODO javadoc
+/**
+ * This class represents a value for solar radiation.
+ * 
+ * @author Paul Staroch
+ */
 public class SolarRadiation extends WeatherPhenomenon {
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+	
+	/**
+	 * The value for solar radiation (in Watts per square metre)
+	 */
 	private float radiationValue;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
 
+	/**
+	 * A constructor that creates an instance of <tt>SolarRadiation</tt> from a set of already existing instances of that class. The radiation value will be set to the arithmetic mean of the radiation values of all these instances.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param weatherPhenomena a list of instances of <tt>SolarRadiation</tt> that should be used to create this instance 
+	 */
 	public SolarRadiation(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
@@ -28,6 +49,12 @@ public class SolarRadiation extends WeatherPhenomenon {
 		radiationValue /= weatherPhenomena.size();
 	}
 	
+	/**
+	 * A constructor that creates an instance of <tt>SolarRadiation</tt> given its unique name and its radiation value.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param pressureValue the radiation value
+	 */
 	public SolarRadiation(String name, float pressureValue) {
 		this.name = name;
 		this.radiationValue = pressureValue;
@@ -76,16 +103,16 @@ public class SolarRadiation extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		radiationValue = linearFloatInterpolation(((SolarRadiation)intervalStartPhenomenon).getRadiationValue(), ((SolarRadiation)intervalEndPhenomenon).getRadiationValue(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		radiationValue = linearFloatInterpolation(((SolarRadiation)intervalStartPhenomenon).getRadiationValue(), ((SolarRadiation)intervalEndPhenomenon).getRadiationValue(), start, end, current);
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		SolarRadiation pressure = new SolarRadiation("solarRadiation" + name, 0f);
-		pressure.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		pressure.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return pressure;
 	}
 

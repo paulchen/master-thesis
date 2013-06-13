@@ -16,29 +16,104 @@ import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStore;
 import com.hp.hpl.jena.ontology.OntModel;
 
 // TODO javadoc
+/**
+ * This class represents everything that is obtained from a weather source at a single time.
+ * 
+ * @author Paul Staroch
+ *
+ */
 public class Weather {
 	public static final int DECIMALS = 2;
+	
+	/**
+	 * URI of the namespace used by the ThinkHomeWeather ontology
+	 */
 	public static final String NAMESPACE = "http://www.semanticweb.org/ontologies/2011/9/ThinkHomeWeather.owl#";
+	
+	/**
+	 * Prefix to be used for the namespace which is used by the ThinkHomeWeather ontology
+	 */
 	public static final String NAMESPACE_PREFIX = "weather:";
 	
+	/**
+	 * URI of the namespace used by the MUO ontology (Measurement Units Ontology)
+	 */
 	public static final String MUO_NAMESPACE = "http://purl.oclc.org/NET/muo/muo#";
+	
+	/**
+	 * Prefix to be used for the namespace which is used by the MUO ontology
+	 */
 	public static final String MUO_PREFIX = "muo:";
 	
+	/**
+	 * URI of the unit "metre" in the MUO ontology
+	 */
 	public static final String UNIT_METER = "http://purl.oclc.org/NET/muo/ucum/unit/length/meter";
+	
+	/**
+	 * URI of the unit "degrees Celsius" in the MUO ontology
+	 */
 	public static final String UNIT_DEGREES_CELSIUS = "http://purl.oclc.org/NET/muo/ucum/unit/temperature/degree-Celsius";
+	
+	/**
+	 * URI of the unit "degrees" in the MUO ontology
+	 */
 	public static final String UNIT_DEGREE = "http://purl.oclc.org/NET/muo/ucum/unit/plane-angle/degree";
+	
+	/**
+	 * URI of the unit "percent" in the MUO ontology
+	 */
 	public static final String UNIT_PERCENT = "http://purl.oclc.org/NET/muo/ucum/unit/fraction/percent";
 	
+	/**
+	 * Date when the data in this weather instance has been obtained from its source
+	 */
 	private Date observationTime;
+	
+	/**
+	 * Priority of all data represented by this instance
+	 */
 	private int priority;
+	
+	/**
+	 * Source of the data represented by this instance
+	 */
 	private WeatherSource source;
+	
+	/**
+	 * The geographical position all data represented by this instance is valid for 
+	 */
 	private GeographicalPosition position;
+	
+	/**
+	 * Collection of all associated instances of {@link WeatherReport}
+	 */
 	private List<WeatherReport> weatherReports;	
+	
+	/**
+	 * List of integers that specify for which points of time weather reports shall be obtained (in hours, relative to the current time)
+	 */
 	private List<Integer> forecastHours;
+	
+	/**
+	 * Point of time of the last weather report to be obtained (calculated from <tt>forecastHours</tt>)
+	 */
 	private int maxHour;
 	
+	/**
+	 * Log4j logger
+	 */
 	private Logger log;
 	
+	/**
+	 * The constructor for the class.
+	 * 
+	 * @param observationTime the time all data represented by this instance was obtained
+	 * @param priority priority of all data represented by this instance
+	 * @param source the source for all data represented by this instance
+	 * @param position the geographical position the data represented by this instance is valid for 
+	 * @param forecastHours a list of integers that specify for which points of time weather reports shall be obtained (in hours, relative to the current time)
+	 */
 	public Weather(Date observationTime, int priority, WeatherSource source,
 			GeographicalPosition position, List<Integer> forecastHours) {
 		super();
@@ -54,6 +129,13 @@ public class Weather {
 		log = Logger.getLogger(Weather.class);
 	}
 	
+	/**
+	 * Adds a new weather report to the list of weather reports managed by this instance
+	 * 
+	 * @param startDate start of the period the new weather report is valid for 
+	 * @param endDate end of the period the new weather report is valid for
+	 * @param weatherState weather state that contains all weather data for the new weather report
+	 */
 	public void newWeatherReport(Date startDate, Date endDate, WeatherState weatherState) {
 		/* we can use non-unique names here as normalizeWeatherReports() will
 		 * create new instances of WeatherReport and Instant which have
@@ -62,6 +144,16 @@ public class Weather {
 		weatherReports.add(new WeatherReport("weatherReport", Instant.getInstant(observationTime), Interval.getInterval(startDate), Interval.getInterval(endDate), priority, source, position, weatherState));
 	}
 	
+	/**
+	 * Performs a &quot;normalization&quot; on all data stored in this class by performing the following steps:
+	 * 
+	 * <ul>
+	 * <li>Weather reports that are valid for more than one hour are splitted into several weather reports, each valid for one hour</li>
+	 * <li>Weather reports which are valid for the same time are merged</li>
+	 * <li>Missing weather reports are interpolated</li>
+	 * <li>Sun position data is added to each weather report</li>
+	 * </ul>
+	 */
 	public void normalizeWeatherReports() {
 		log.debug("Normalizing weather reports...");
 		
@@ -95,7 +187,7 @@ public class Weather {
 		phenomenonClasses.add(SunPosition.class);
 		phenomenonClasses.add(CloudCover.class);
 		
-		/* merge weather states */
+		/* merge weather reports */
 		Map<Integer, WeatherReport> newWeatherReports = new HashMap<Integer, WeatherReport>();
 		for(int a=0; a<=maxHour; a++) {
 			newWeatherReports.put(a, new WeatherReport("weatherReport" + a, null, Interval.getInterval(a), Interval.getInterval(a+1), 0, null, null, new WeatherState("weatherState" + a)));
@@ -149,10 +241,10 @@ public class Weather {
 					WeatherPhenomenon thisValue = currentState.getPhenomenonType(clazz).get(0);
 					for(int b=start; b<a; b++) {
 						if(newWeatherReports.get(b).getState().containsPhenomenonType(clazz)) {
-							newWeatherReports.get(b).getState().getPhenomenonType(clazz).get(0).interpolate(lastWeatherPhenomenon, thisValue, a, b);
+							newWeatherReports.get(b).getState().getPhenomenonType(clazz).get(0).interpolate(lastWeatherPhenomenon, thisValue, start, a, b);
 						}
 						else {
-							newWeatherReports.get(b).getState().addPhenomenon(currentState.getPhenomenonType(clazz).get(0).createInterpolatedPhenomenon(String.valueOf(b), lastWeatherPhenomenon, thisValue, a, b));
+							newWeatherReports.get(b).getState().addPhenomenon(currentState.getPhenomenonType(clazz).get(0).createInterpolatedPhenomenon(String.valueOf(b), lastWeatherPhenomenon, thisValue, start, a, b));
 						}
 					}
 					
@@ -208,6 +300,11 @@ public class Weather {
 		printWeatherReports("Final weather states after normalization including sun position data", weatherReports);
 	}
 
+	/**
+	 * Creates invididuals for the data stored in this instance and adds them to the ontology being specified 
+	 *  
+	 * @param ontology ontology where to add the individuals to
+	 */
 	public void createIndividuals(OntModel ontology) {
 		WeatherReport previousReport = null;
 		for(WeatherReport report : weatherReports) {
@@ -217,7 +314,12 @@ public class Weather {
 		}
 	}
 	
-	
+	/**
+	 * Sends a textual representation of the data of all specified weather reports to Log4j.
+	 * 
+	 * @param description a description which is to be prepended to the output
+	 * @param reports a list of weather reports which are to be dumped via Log4j.
+	 */
 	private void printWeatherReports(String description, Collection<WeatherReport> reports) {
 		log.debug("");		
 		log.debug(description + ":");
@@ -228,6 +330,13 @@ public class Weather {
 		log.debug("");
 	}
 	
+	
+	/**
+	 * Sends a textual representation of the data of all specified weather reports to Log4j.
+	 * 
+	 * @param description a description which is to be prepended to the output
+	 * @param reports a map of weather reports which are to be dumped via Log4j. The reports will be processed in ascending order of the keys in the map.
+	 */
 	private void printWeatherReports(String description, Map<Integer, WeatherReport> reports) {
 		log.debug("");		
 		log.debug(description + ":");
@@ -241,6 +350,11 @@ public class Weather {
 		log.debug("");
 	}
 
+	/**
+	 * Returns a set of Turtle statements that contains all data which is represented by this instance. 
+	 * 
+	 * @return an instance of {@link TurtleStore} that contains all data which is represented by this instance.
+	 */
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 		for(WeatherReport report : weatherReports) {
@@ -249,7 +363,6 @@ public class Weather {
 		return turtle;
 	}
 
-	// TODO sub-optimal?
 	private static int blankNodeId = 0;
 	public static String generateBlankNode() {
 		blankNodeId++;

@@ -6,19 +6,75 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 
-// TODO javadoc
+/**
+ * This class represents a weather report for a certain period of time at a certain location which has been obtained from a certain location.
+ * 
+ * @author Paul Staroch
+ *
+ */
 public class WeatherReport implements OntologyClass {
+	/**
+	 * Time when the data in this weather report has been obtained from the data source.
+	 */
 	private Instant observationTime;
+	
+	/**
+	 * Position this weather report belongs to.
+	 */
 	private GeographicalPosition position;
+	
+	/**
+	 * Instance of {@link WeatherState} which contains all weather data that belongs to this weather report.
+	 */
 	private WeatherState weatherState;
+	
+	/**
+	 * Priority of this weather report.
+	 */
 	private int priority;
+	
+	/**
+	 * Source of the data of this weather report.
+	 */
 	private WeatherSource source;
+	
+	/**
+	 * Beginning of the period of time this weather report is valid for. 
+	 */
 	private Interval startTime;
+
+	/**
+	 * End of the period of time this weather report is valid for. 
+	 */
 	private Interval endTime;
+	
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
+	
+	/**
+	 * Previous weather report obtained at the same time from the same source, if it exists.
+	 */
 	private WeatherReport previousReport;
 	
+	/**
+	 * Constructor for this class.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param observationTime the date when the data represented by this report has been obtained
+	 * @param startTime the start of the period of time the data in this weather report is valid for 
+	 * @param endTime the end of the period of time the data in this weather report is valid for
+	 * @param priority the priority of all data in this weather report
+	 * @param source the source of all data of this weather report
+	 * @param position the geographical position this weather report is valid for
+	 * @param weatherState the instance of <tt>WeatherState</tt> that belongs to this instance; it contains all weather data available for this weather report
+	 */
 	public WeatherReport(String name, Instant observationTime, Interval startTime, Interval endTime,
 			int priority, WeatherSource source, GeographicalPosition position,
 			WeatherState weatherState) {
@@ -32,6 +88,7 @@ public class WeatherReport implements OntologyClass {
 		this.weatherState = weatherState;
 	}
 	
+	@Override
 	public void createIndividuals(OntModel onto) {
 		OntClass weatherReportClass = onto.getOntClass(Weather.NAMESPACE + "WeatherReport");
 		individual = onto.createIndividual(Weather.NAMESPACE + name, weatherReportClass);

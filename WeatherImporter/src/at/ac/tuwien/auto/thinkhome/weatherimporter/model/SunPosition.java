@@ -16,25 +16,74 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-// TODO javadoc
+/**
+ * This class represents data about the position of the sun (azimuth, zenith angle, elevation angle). The zenith angle is automatically calculated from the elevation angle and vice versa (zenith angle = 90 - elevation angle).
+ * 
+ * This class supports the calculation of the sun position if a geographical position and a date are given. It uses the <a href="http://www.psa.es/sdg/sunpos.htm">PSA algorithm</a>. 
+ * 
+ * @author Paul Staroch
+ */
 public class SunPosition extends WeatherPhenomenon {
+	/**
+	 * The azimuth (in degrees, North equals 0 degrees, East equals 90 degrees etc.))
+	 */
 	private double azimuth;
+	
+	/**
+	 * The zenith angle (in degrees)
+	 */
 	private double zenith;
+	
+	/**
+	 * The elevation angle above horizon (in degrees)
+	 */
 	private double elevation;
+
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
 	
+	/**
+	 * Average radius of Earth in kilometres (required for the calculation of the position of the sun using the PSA algorithm given a geographical position, date and time)
+	 */
 	private static final double EARTH_MEAN_RADIUS = 6371.01;
+	
+	/**
+	 * The length of an astronomical unit (AU) in kilometres (required for the calculation of the position of the sun using the PSA algorithm given a geographical position, date and time)
+	 */
 	private static final double ASTRONOMICAL_UNIT = 149597890;
 
+	/**
+	 * Log4j logger
+	 */
 	private Logger log;
 	
+	/**
+	 * A constructor that creates an instance of <tt>SunPosition</tt> without setting any of zenith angle, elevation angle or azimuth.
+	 * This constructor is private and is only called by the other constructors.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 */
 	private SunPosition(String name) {
 		this.name = name;
 		
 		log = Logger.getLogger(SunPosition.class);		
 	}
 	
+	/**
+	 * A constructor that creates an instance of <tt>SunPosition</tt> given its unique name, its zenith angle and its azimuth.
+	 * The elevation angle will be calculated automatically.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param zenith the zenith angle 
+	 * @param azimuth the azimuth
+	 */
 	public SunPosition(String name, double zenith, double azimuth) {
 		this(name);
 		this.name = name;
@@ -43,6 +92,14 @@ public class SunPosition extends WeatherPhenomenon {
 		this.azimuth = azimuth;
 	}
 
+	/**
+	 * A constructor that creates an instance of <tt>SunPosition</tt> given its unique name, a geographical position and a date.
+	 * Azimuth, elevation angle and zenith angle for the position of the sun at the given geographical position at the given date will be calculated using the PSA algorithm.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param position a geographical position
+	 * @param date a date
+	 */
 	public SunPosition(String name, GeographicalPosition position, Date date) {
 		this(name);
 		calculatePosition(position, date);
@@ -78,6 +135,7 @@ public class SunPosition extends WeatherPhenomenon {
 		this.zenith = 90 - elevation;
 	}
 	
+	@Override
 	public String toString() {
 		String output = "sunPosition=[";
 		
@@ -133,18 +191,18 @@ public class SunPosition extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		zenith = linearDoubleInterpolation(((SunPosition)intervalStartPhenomenon).getZenith(), ((SunPosition)intervalEndPhenomenon).getZenith(), end, current);
-		elevation = linearDoubleInterpolation(((SunPosition)intervalStartPhenomenon).getElevation(), ((SunPosition)intervalEndPhenomenon).getElevation(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		zenith = linearDoubleInterpolation(((SunPosition)intervalStartPhenomenon).getZenith(), ((SunPosition)intervalEndPhenomenon).getZenith(), start, end, current);
+		elevation = linearDoubleInterpolation(((SunPosition)intervalStartPhenomenon).getElevation(), ((SunPosition)intervalEndPhenomenon).getElevation(), start, end, current);
 		azimuth = 90 - elevation;
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		SunPosition sunPosition = new SunPosition("sunPosition" + name, 0f, 0f);
-		sunPosition.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		sunPosition.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return sunPosition;
 	}
 
@@ -158,6 +216,12 @@ public class SunPosition extends WeatherPhenomenon {
 		return Weather.NAMESPACE_PREFIX + name;
 	}
 	
+	/**
+	 * This method calculates the position of the sun at the given geographical position at the given date using the PSA algorithm.
+	 * 
+	 * @param position a geographical position
+	 * @param date a date
+	 */
 	private void calculatePosition(GeographicalPosition position, Date date) {
 		// Calculate difference in days between the current Julian Day
 		// and JD 2451545.0, which is noon 1 January 2000 Universal Time

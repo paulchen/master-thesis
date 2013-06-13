@@ -10,12 +10,33 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-// TODO javadoc
+/**
+ * This class represents a value for relative humidity.
+ * 
+ * @author Paul Staroch
+ */
 public class Humidity extends WeatherPhenomenon {
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
+
+	/**
+	 * The humidity value (between 0 and 1)
+	 */
 	private float humidityValue;
 	
+	/**
+	 * A constructor that creates an instance of <tt>Humidity</tt> from a set of already existing instances of that class. The humidity value will be set to the arithmetic mean of the humidity values of all these instances.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param weatherPhenomena a list of instances of <tt>Humidity</tt> that should be used to create this instance 
+	 */
 	public Humidity(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
@@ -27,6 +48,12 @@ public class Humidity extends WeatherPhenomenon {
 		humidityValue /= weatherPhenomena.size();
 	}
 	
+	/**
+	 * A constructor that creates an instance of <tt>Humidity</tt> given its unique name and its humidity value.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param humidityValue the humidity value
+	 */
 	public Humidity(String name, float humidityValue) {
 		super();
 		this.name = name;
@@ -76,16 +103,16 @@ public class Humidity extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		humidityValue = linearFloatInterpolation(((Humidity)intervalStartPhenomenon).getHumidityValue(), ((Humidity)intervalEndPhenomenon).getHumidityValue(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		humidityValue = linearFloatInterpolation(((Humidity)intervalStartPhenomenon).getHumidityValue(), ((Humidity)intervalEndPhenomenon).getHumidityValue(), start, end, current);
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		Humidity humidity = new Humidity("humidity" + name, 0f);
-		humidity.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		humidity.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return humidity;
 	}
 

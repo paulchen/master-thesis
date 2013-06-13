@@ -9,12 +9,33 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 
-// TODO javadoc
+/**
+ * This class represents a dew point value.
+ * 
+ * @author Paul Staroch
+ */
 public class DewPoint extends WeatherPhenomenon {
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
+	
+	/**
+	 * The dew point value (in degrees Celsius)
+	 */
 	private float dewPointValue;
 	
+	/**
+	 * A constructor that creates an instance of <tt>DewPoint</tt> from a set of already existing instances of that class. The dew point value will be set to the arithmetic mean of the dew point values of all these instances.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param weatherPhenomena a list of instances of <tt>DewPoint</tt> that should be used to create this instance 
+	 */
 	public DewPoint(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
@@ -26,6 +47,12 @@ public class DewPoint extends WeatherPhenomenon {
 		dewPointValue /= weatherPhenomena.size();
 	}
 	
+	/**
+	 * A constructor that creates an instance of <tt>DewPoint</tt> given its unique name and its dew point value.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param dewPointValue the dew point value
+	 */
 	public DewPoint(String name, float dewPointValue) {
 		super();
 		this.name = name;
@@ -73,16 +100,16 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		dewPointValue = linearFloatInterpolation(((DewPoint)intervalStartPhenomenon).getDewPointValue(), ((DewPoint)intervalEndPhenomenon).getDewPointValue(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		dewPointValue = linearFloatInterpolation(((DewPoint)intervalStartPhenomenon).getDewPointValue(), ((DewPoint)intervalEndPhenomenon).getDewPointValue(), start, end, current);
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		DewPoint dewPoint = new DewPoint("dewPoint" + name, 0f);
-		dewPoint.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		dewPoint.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return dewPoint;
 	}
 

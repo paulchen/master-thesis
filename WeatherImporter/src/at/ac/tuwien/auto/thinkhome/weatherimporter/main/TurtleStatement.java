@@ -45,29 +45,14 @@ public class TurtleStatement implements Comparable<TurtleStatement> {
 		}
 	}
 
-	/**
-	 * Getter for the subject of the statement.
-	 * 
-	 * @return the subject of the statement
-	 */
 	protected String getSubject() {
 		return subject;
 	}
 
-	/**
-	 * Getter for the predicate of the statement.
-	 * 
-	 * @return the predicate of the statement
-	 */
 	protected String getPredicate() {
 		return predicate;
 	}
 
-	/**
-	 * Getter for the object of the statement.
-	 * 
-	 * @return the object of the statement
-	 */
 	protected String getObject() {
 		return object;
 	}

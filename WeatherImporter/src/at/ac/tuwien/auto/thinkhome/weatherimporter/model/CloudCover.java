@@ -10,14 +10,38 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-// TODO javadoc
+/**
+ * This class represents a cloud layer.
+ * 
+ * @author Paul Staroch
+ */
 public class CloudCover extends WeatherPhenomenon {
+	/**
+	 * Unique name of the individual that corresponds to this object in the ontology 
+	 */
 	private String name;
+	
+	/**
+	 * Altitude of the cloud layer (in metres above sea level)
+	 */
 	private int altitude;
+	
+	/**
+	 * Coverage of the cloud layer (in okta, i.e. a value from 0 to 9)
+	 */
 	private int coverage;
 	
+	/**
+	 * Once {@link #createIndividuals(OntModel)} has been called, this contains the main individual in the ontology that has been created by that method call.
+	 */
 	private Individual individual;
 
+	/**
+	 * A constructor that creates an instance of <tt>CloudCover</tt> from a set of already existing instances of that class. The altitude will be set to the arithmetic mean of the altitudes of all these instances and the coverage will be set to the maximum of all values for the coverage field.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param weatherPhenomena a list of instances of <tt>CloudCover</tt> that should be used to create this instance 
+	 */
 	public CloudCover(String name, List<WeatherPhenomenon> weatherPhenomena) {
 		super(weatherPhenomena);
 		this.name = name;
@@ -33,6 +57,13 @@ public class CloudCover extends WeatherPhenomenon {
 		altitude /= weatherPhenomena.size();
 	}
 
+	/**
+	 * A constructor that creates an instance of <tt>CloudCover</tt> given its unique name, its altitude and its coverage.
+	 * 
+	 * @param name the unique name of the individual in the ontology that corresponds to this object
+	 * @param altitude the altitude of the cloud layer
+	 * @param coverage the coverage of the cloud layer
+	 */
 	public CloudCover(String name, int altitude, int coverage) {
 		super();
 		this.name = name;
@@ -97,17 +128,17 @@ public class CloudCover extends WeatherPhenomenon {
 
 	@Override
 	public void interpolate(WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
-		altitude = linearIntInterpolation(((CloudCover)intervalStartPhenomenon).getAltitude(), ((CloudCover)intervalEndPhenomenon).getAltitude(), end, current);
-		coverage = linearIntInterpolation(((CloudCover)intervalStartPhenomenon).getCoverage(), ((CloudCover)intervalEndPhenomenon).getCoverage(), end, current);
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
+		altitude = linearIntInterpolation(((CloudCover)intervalStartPhenomenon).getAltitude(), ((CloudCover)intervalEndPhenomenon).getAltitude(), start, end, current);
+		coverage = linearIntInterpolation(((CloudCover)intervalStartPhenomenon).getCoverage(), ((CloudCover)intervalEndPhenomenon).getCoverage(), start, end, current);
 	}
 
 	@Override
 	public WeatherPhenomenon createInterpolatedPhenomenon(String name,
 			WeatherPhenomenon intervalStartPhenomenon,
-			WeatherPhenomenon intervalEndPhenomenon, int end, int current) {
+			WeatherPhenomenon intervalEndPhenomenon, int start, int end, int current) {
 		CloudCover cloudCover = new CloudCover("cloudCover" + name, 0, 0);
-		cloudCover.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, end, current);
+		cloudCover.interpolate(intervalStartPhenomenon, intervalEndPhenomenon, start, end, current);
 		return cloudCover;
 	}
 
