@@ -8,6 +8,7 @@ import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStore;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
  * This class represents a dew point value.
@@ -74,35 +75,42 @@ public class DewPoint extends WeatherPhenomenon {
 
 	@Override
 	public void createIndividuals(OntModel onto) {
+		Resource blankNode = onto.createResource();
+		onto.add(onto.createLiteralStatement(blankNode,
+				onto.getProperty(Weather.MUO_NAMESPACE + "numericalValue"),
+				roundFloat(dewPointValue, Weather.DECIMALS)));
+		onto.add(onto.createStatement(blankNode,
+				onto.getProperty(Weather.MUO_NAMESPACE + "measuredIn"),
+				onto.getResource(Weather.MUO_NAMESPACE + "degrees-Celsius")));
+
 		OntClass weatherPhenomenonClass = onto.getOntClass(Weather.NAMESPACE
 				+ "WeatherPhenomenon");
 		individual = onto.createIndividual(Weather.NAMESPACE + name,
 				weatherPhenomenonClass);
 
-		onto.add(onto.createLiteralStatement(individual,
+		onto.add(onto.createStatement(individual,
 				onto.getProperty(Weather.NAMESPACE + "hasDewPointValue"),
-				roundFloat(dewPointValue, Weather.DECIMALS)));
+				blankNode));
 	}
 
 	@Override
 	public TurtleStore getTurtleStatements() {
 		TurtleStore turtle = new TurtleStore();
 
-		/*
-		 * TODO String blankNode = Weather.generateBlankNode();
-		 * 
-		 * turtle.add(new TurtleStatement(blankNode1, Weather.MUO_PREFIX +
-		 * "numericalValue", String.valueOf(coverage))); turtle.add(new
-		 * TurtleStatement(blankNode1, Weather.MUO_PREFIX + "measuredIn",
-		 * Weather.NAMESPACE_PREFIX + "okta"));
-		 */
+		String blankNode = Weather.generateBlankNode();
+
+		turtle.add(new TurtleStatement(blankNode, Weather.MUO_PREFIX
+				+ "numericalValue",
+				"\""
+						+ String.valueOf(roundFloat(dewPointValue,
+								Weather.DECIMALS)) + "\"^^xsd:float"));
+		turtle.add(new TurtleStatement(blankNode, Weather.MUO_PREFIX
+				+ "measuredIn", Weather.MUO_PREFIX + "degrees-Celsius"));
 
 		turtle.add(new TurtleStatement(getTurtleName(), "a",
 				Weather.NAMESPACE_PREFIX + "WeatherPhenomenon"));
 		turtle.add(new TurtleStatement(getTurtleName(),
-				Weather.NAMESPACE_PREFIX + "hasDewPointValue", "\""
-						+ String.valueOf(roundFloat(dewPointValue,
-								Weather.DECIMALS) + "\"^^xsd:float")));
+				Weather.NAMESPACE_PREFIX + "hasDewPointValue", blankNode));
 
 		return turtle;
 	}
