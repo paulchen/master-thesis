@@ -504,32 +504,34 @@ weather:humidity0           a                                     weather:Weathe
                             weather:hasHumidityValue              _:blank6 ;
                             weather:belongsToWeatherState         weather:weatherState0 .
 
+_:blank7                    muo:numericalValue                    "-0.8"^^xsd:float ;
+                            muo:measuredIn                        muo:degrees-Celsius .
 weather:dewPoint0           a                                     weather:WeatherPhenomenon ;
-                            weather:hasDewPointValue              "-0.8"^^xsd:float ;
+                            weather:hasDewPointValue              _:blank7 ;
                             weather:belongsToWeatherState         weather:weatherState0 .
 
-_:blank7                    muo:numericalValue                    "1010.0"^^xsd:float ;
+_:blank8                    muo:numericalValue                    "1010.0"^^xsd:float ;
                             muo:measuredIn                        weather:hectopascal .
 weather:pressure0           a                                     weather:WeatherPhenomenon ;
-                            weather:hasPressureValue              _:blank7 ;
+                            weather:hasPressureValue              _:blank8 ;
                             weather:belongsToWeatherState         weather:weatherState0 .
 
-_:blank8                    muo:numericalValue                    "1.5"^^xsd:float ;
+_:blank9                    muo:numericalValue                    "1.5"^^xsd:float ;
                             muo:measuredIn                        weather:metresPerSecond .
-_:blank9                    muo:numericalValue                    47 ;
+_:blank10                   muo:numericalValue                    47 ;
                             muo:measuredIn                        muo:degree .
 weather:wind0               a                                     weather:WeatherPhenomenon ;
-                            weather:hasWindSpeed                  _:blank8 ;
-                            weather:hasWindDirection              _:blank9 ;
+                            weather:hasWindSpeed                  _:blank9 ;
+                            weather:hasWindDirection              _:blank10 ;
                             weather:belongsToWeatherState         weather:weatherState0 .
 
-_:blank10                   muo:numericalValue                    220 ;
+_:blank11                   muo:numericalValue                    220 ;
                             muo:measuredIn                        muo:degree .
-_:blank11                   muo:numericalValue                    "40.76"^^xsd:float ;
+_:blank12                   muo:numericalValue                    "40.76"^^xsd:float ;
                             muo:measuredIn                        muo:degree .
 weather:sunPosition0.0      a                                     weather:WeatherPhenomenon ;
-                            weather:hasSunDirection               _:blank10 ;
-                            weather:hasSunElevationAngle          _:blank11 ;
+                            weather:hasSunDirection               _:blank11 ;
+                            weather:hasSunElevationAngle          _:blank12 ;
                             weather:belongsToWeatherState         weather:weatherState0 .
 
 weather:weatherState0       weather:hasCondition                  weather:PartlyCloud .
@@ -552,62 +554,64 @@ weather:weatherReport1      weather:hasStartTime                  weather:interv
 
 weather:weatherState1       a                                     weather:WeatherState .
 
-_:blank12                   muo:numericalValue                    "0.0"^^xsd:float ;
-                            muo:measuredIn                        weather:percent .
 _:blank13                   muo:numericalValue                    "0.0"^^xsd:float ;
+                            muo:measuredIn                        weather:percent .
+_:blank14                   muo:numericalValue                    "0.0"^^xsd:float ;
                             muo:measuredIn                        muo:millimetresPerHour .
 weather:precipitation1.0    a                                     weather:WeatherPhenomenon ;
-                            weather:hasPrecipitationProbability   _:blank12 ;
-                            weather:hasPrecipitationIntensity     _:blank13 ;
+                            weather:hasPrecipitationProbability   _:blank13 ;
+                            weather:hasPrecipitationIntensity     _:blank14 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
-_:blank14                   muo:numericalValue                    0 ;
+_:blank15                   muo:numericalValue                    0 ;
                             muo:measuredIn                        weather:okta .
-_:blank15                   muo:numericalValue                    5000 ;
+_:blank16                   muo:numericalValue                    5000 ;
                             muo:measuredIn                        muo:meter .
 weather:cloudCover1.0       a                                     weather:WeatherPhenomenon ;
-                            weather:hasCloudCover                 _:blank14 ;
-                            weather:hasCloudAltitude              _:blank15 ;
+                            weather:hasCloudCover                 _:blank15 ;
+                            weather:hasCloudAltitude              _:blank16 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
-_:blank16                   muo:numericalValue                    "7.6"^^xsd:float ;
+_:blank17                   muo:numericalValue                    "7.6"^^xsd:float ;
                             muo:measuredIn                        muo:degrees-Celsius .
 weather:temperature1        a                                     weather:WeatherPhenomenon ;
-                            weather:hasTemperatureValue           _:blank16 ;
+                            weather:hasTemperatureValue           _:blank17 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
-_:blank17                   muo:numericalValue                    "0.58"^^xsd:float ;
+_:blank18                   muo:numericalValue                    "0.58"^^xsd:float ;
                             muo:measuredIn                        weather:percent .
 weather:humidity1           a                                     weather:WeatherPhenomenon ;
-                            weather:hasHumidityValue              _:blank17 ;
+                            weather:hasHumidityValue              _:blank18 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
+_:blank19                   muo:numericalValue                    "-0.8"^^xsd:float ;
+                            muo:measuredIn                        muo:degrees-Celsius .
 weather:dewPoint1           a                                     weather:WeatherPhenomenon ;
-                            weather:hasDewPointValue              "-0.8"^^xsd:float ;
+                            weather:hasDewPointValue              _:blank19 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
-_:blank18                   muo:numericalValue                    "1010.0"^^xsd:float ;
+_:blank20                   muo:numericalValue                    "1010.0"^^xsd:float ;
                             muo:measuredIn                        weather:hectopascal .
 weather:pressure1           a                                     weather:WeatherPhenomenon ;
-                            weather:hasPressureValue              _:blank18 ;
+                            weather:hasPressureValue              _:blank20 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
-_:blank19                   muo:numericalValue                    "1.5"^^xsd:float ;
+_:blank21                   muo:numericalValue                    "1.5"^^xsd:float ;
                             muo:measuredIn                        weather:metresPerSecond .
-_:blank20                   muo:numericalValue                    47 ;
+_:blank22                   muo:numericalValue                    47 ;
                             muo:measuredIn                        muo:degree .
 weather:wind1               a                                     weather:WeatherPhenomenon ;
-                            weather:hasWindSpeed                  _:blank19 ;
-                            weather:hasWindDirection              _:blank20 ;
+                            weather:hasWindSpeed                  _:blank21 ;
+                            weather:hasWindDirection              _:blank22 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
-_:blank21                   muo:numericalValue                    236 ;
+_:blank23                   muo:numericalValue                    236 ;
                             muo:measuredIn                        muo:degree .
-_:blank22                   muo:numericalValue                    "33.42"^^xsd:float ;
+_:blank24                   muo:numericalValue                    "33.42"^^xsd:float ;
                             muo:measuredIn                        muo:degree .
 weather:sunPosition1.0      a                                     weather:WeatherPhenomenon ;
-                            weather:hasSunDirection               _:blank21 ;
-                            weather:hasSunElevationAngle          _:blank22 ;
+                            weather:hasSunDirection               _:blank23 ;
+                            weather:hasSunElevationAngle          _:blank24 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
 
 weather:weatherState1       weather:hasCondition                  weather:PartlyCloud .
