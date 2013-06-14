@@ -251,4 +251,13 @@ NEW (2013-04-09):
 * 2545.pdf
   Nicole King. Smart Home - A Definition
 
+* HomeOSCHI_cameraready_Final.pdf
+  A.J. Bernheim Brush, Bongshin Lee, Ratul Mahajan, Sharad Agarwal, Stefan Saroiu, Colin Dixon. Home Automation in the Wild: Challenges and Opportunities
+
+* cacm2011-advancing-home.pdf
+  Keith Edwards, Rebecca E. Grinter, Ratul Mahajan, David Wetherall
+
+* smart_environments.pdf
+  MICHAEL C. MOZER. Lessons from an Adaptive Home
+
 
