@@ -1,9 +1,8 @@
 \chapter{Existing work}
 \label{ch:existing_work}
 
-The first part of this chapter covers the foundations the thesis builds upon. It gives introductions into all revelant topics, e.g. ontologies, \eacs{RDF} and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which are required in order to fully understand the ideas behind the weather data model which is designed in later chapters.
+The first part of this chapter covers the foundations the work of this thesis builds upon. It gives introductions into all revelant topics, e.g. ontologies, \eacs{RDF} and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which are required in order to fully understand the ideas behind the weather data model which is designed in later chapters.
 
-% TODO repetition: conclude, conclusion
 The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies which may be reused in an ontology for weather data are discussed. The final section of this chapter reviews all ontologies that are presented and identifies elements can be used for \thinkhome.
 
 \section{Foundations}
@@ -12,12 +11,15 @@ This chapter presents the foundations the work in this thesis builds upon: The c
 
 \subsection{Ontologies}
 
+% TODO citation
 In computer science, an ontology represents knowledge as a set of concepts in a certain domain and relationships between pairs of concepts. The basic elements of ontologies -- concepts, properties, and relations -- comprise a shared vocabulary which can be used to model a certain domain.
 
-Each object that is mapped into an ontology is represented by an \emph{individual} (also known as \emph{object}). Individuals of the same type are called \emph{instances} of \emph{concepts} (also called \emph{classes}). Both classes and individuals can have \emph{attributes} that specify their characteristics and properties. Two arbitrary classes or individuals can be related to each other via a \emph{relation}.
+Each object that is mapped into an ontology is represented by an \emph{individual} (also known as \emph{object}). Individuals of the same type can be defined to be \emph{instances} of \emph{concepts} (also called \emph{classes}). Both classes and individuals can have \emph{attributes} that specify their characteristics and properties. Two arbitrary classes or individuals can be related to each other via a \emph{relation}.
 
-% TODO perhaps: function terms, restrictions, rules, axioms, events
-Furthermore, ontologies often contain \emph{function terms} (), \emph{restrictions} (), \emph{rules} (), \emph{axioms} (), and \emph{events}.
+% TODO descriptions
+Furthermore, ontologies often contain \emph{function terms} (), \emph{restrictions} (), \emph{rules} (), \emph{axioms} (), and \emph{events} ().
+
+\vspace{1em}
 
 \begin{figure}
 \centering
@@ -28,13 +30,17 @@ Furthermore, ontologies often contain \emph{function terms} (), \emph{restrictio
 
 Figure~\ref{fig:ontology_example} illustrates the aforementioned elements in a simple ontology: \emph{Person}, \emph{Man}, and \emph{Woman} are concepts. \emph{is subclass of} is a property that defines one concept to be a \emph{sub-concept} of another concept (i.e. \emph{B is subclass of A} states that every instance of \emph{B} is also an instance of \emph{A}). \emph{Brian}, \emph{Maria}, and \emph{Sarah} are individuals; each of them is a instance of a concept which is related via the \emph{is a} relation. \emph{age} is a property of the individuals \emph{Brian}, \emph{Maria}, and \emph{Sarah} and \emph{has parent} is a relation which associates two individuals to each other.
 
-That model states the following facts: Men and women are persons. Brian, age 37, is a man while Maria (age 12) and Sarah (age 32) are women. Maria has two parents, Brian and Sarah.
+This model states the following facts: Men and women are persons. Brian (age 37) is a man while Maria (age 12) and Sarah (age 32) are women. Maria has two parents, Brian and Sarah.
+
+\vspace{1em}
 
 An important feature of an ontology is the support of automatic reasoning to deduct facts that are not explicitely stated in the data model from the given information. E.g. in the above example, because \emph{Man} and \emph{Woman} are sub-concepts of \emph{Person}, \emph{Brian}, \emph{Maria}, and \emph{Sarah} are instances of \emph{Person}. One could define a relation \emph{has child} that is an inverse property of \emph{has parent}, i.e. \emph{A has child B} if and only if \emph{B has parent A}; then the statements \emph{Brian has child Maria} and \emph{Sarah has child Maria} can be deducted.
 
 If a concept \emph{Mother} is defined as a \emph{Woman} who has at least one child, \emph{Sarah} can be inferred to be an instance of this concept; the same works for an analogously defined concept \emph{Father} with \emph{Brian} being an instance of. Furthermore, concepts \emph{Daugher} and \emph{Son} can be defined (someone who has at least one parent and is a \emph{Woman} or a \emph{Man}, respectively). Then \emph{Maria} can be inferred to be a \emph{Daughter}. Additionally, properties like \emph{has mother}, \emph{has father}, \emph{has son}, \emph{has daughter} etc. can be defined.
 
-One core principle of an ontology is reusability\cite{reuse1,reuse2}. In order to share knowledge across various systems, ontologies are often reused within other ontologies. Besides the simplification of knowledge sharing, this principle tries to avoid duplicate work and reduces the work that is necessary to create an ontology for a domain.
+\vspace{1em}
+
+Another core principle of an ontology is reusability\cite{reuse1,reuse2}. In order to share knowledge across various systems, ontologies are often reused within other ontologies. Besides the simplification of knowledge sharing, this principle tries to avoid duplicate work and reduces the work that is necessary to create an ontology for a domain.
 
 % TODO citations
 
