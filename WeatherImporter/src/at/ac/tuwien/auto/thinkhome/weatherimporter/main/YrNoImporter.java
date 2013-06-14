@@ -68,13 +68,6 @@ public class YrNoImporter implements Importer {
 	private static final String source = "yr_no";
 
 	/**
-	 * Priority to use for the instances of {@link WeatherReport} being created
-	 * during the import
-	 */
-	// TODO move to properties file
-	private static final int priority = 1;
-
-	/**
 	 * URL of the XML feed where the weather data is obtained from;
 	 * <tt>%lat<tt> (for the latitude), <tt>%lon</tt> (for the longitude) and
 	 * <tt>%alt</tt> will automatically be replaced by the respective values
@@ -89,19 +82,9 @@ public class YrNoImporter implements Importer {
 	private static final String schemaLocation = "http://api.yr.no/weatherapi/locationforecast/1.8/schema";
 
 	/**
-	 * altitude for the lowest cloud layer; specified in the properties file
+	 * altitude for the cloud layer; specified in the properties file
 	 */
-	private int lowCloudAltitude;
-
-	/**
-	 * altitude for the middle cloud layer; specified in the properties file
-	 */
-	private int mediumCloudAltitude;
-
-	/**
-	 * altitude for the highest cloud layer; specified in the properties file
-	 */
-	private int highCloudAltitude;
+	private int cloudAltitude;
 
 	/**
 	 * Point of time weather data shall be fetched until, given in hours
@@ -224,7 +207,8 @@ public class YrNoImporter implements Importer {
 		Float precipitationProbability = null;
 		Float precipitationIntensity = null;
 		List<CloudCover> cloudLayers = new ArrayList<CloudCover>();
-
+		CloudCover clouds = null;
+		
 		NodeList child = (NodeList) node.getChildNodes();
 		NodeList children = null;
 		for (int b = 0; b < child.getLength(); b++) {
@@ -251,9 +235,6 @@ public class YrNoImporter implements Importer {
 			xmlError("The <time> element has no child node <location>.");
 		}
 
-		CloudCover lowClouds = null;
-		CloudCover mediumClouds = null;
-		CloudCover highClouds = null;
 		List<WeatherCondition> weatherConditions = null;
 
 		/* process all weather phenomena that belong to this weather state */
@@ -308,39 +289,16 @@ public class YrNoImporter implements Importer {
 					/* will be ignored */
 				} else if (childNode.getLocalName().equals("fog")) {
 					/* will be ignored */
-				} else if (childNode.getLocalName().equals("lowClouds")) {
-					checkDuplicate(childNode, lowClouds);
+				} else if (childNode.getLocalName().equals("lowClouds")
+						|| childNode.getLocalName().equals("mediumClouds")
+						|| childNode.getLocalName().equals("highClouds")) {
 					checkAttributes(childNode, "percent");
 					coverage = Math.round(Float.parseFloat(childNode
 							.getAttributes().getNamedItem("percent")
 							.getNodeValue()) * 8 / 100);
-					if (coverage > 0) {
-						lowClouds = new CloudCover("clouds" + reportIndex
-								+ "_low", lowCloudAltitude, coverage);
-						cloudLayers.add(lowClouds);
-					}
-				} else if (childNode.getLocalName().equals("mediumClouds")) {
-					checkDuplicate(childNode, mediumClouds);
-					checkAttributes(childNode, "percent");
-					coverage = Math.round(Float.parseFloat(childNode
-							.getAttributes().getNamedItem("percent")
-							.getNodeValue()) * 8 / 100);
-					if (coverage > 0) {
-						mediumClouds = new CloudCover("clouds" + reportIndex
-								+ "_medium", mediumCloudAltitude, coverage);
-						cloudLayers.add(mediumClouds);
-					}
-				} else if (childNode.getLocalName().equals("highClouds")) {
-					checkDuplicate(childNode, highClouds);
-					checkAttributes(childNode, "percent");
-					coverage = Math.round(Float.parseFloat(childNode
-							.getAttributes().getNamedItem("percent")
-							.getNodeValue()) * 8 / 100);
-					if (coverage > 0) {
-						highClouds = new CloudCover("clouds" + reportIndex
-								+ "_high", highCloudAltitude, coverage);
-						cloudLayers.add(highClouds);
-					}
+					clouds = new CloudCover("clouds" + reportIndex
+							+ "_low", cloudAltitude, coverage);
+					cloudLayers.add(clouds);
 				} else if (childNode.getLocalName().equals("precipitation")) {
 					checkDuplicate(childNode, precipitationIntensity);
 					checkAttributes(childNode, "unit", "value");
@@ -385,9 +343,9 @@ public class YrNoImporter implements Importer {
 			}
 		}
 
-		if (lowClouds == null && mediumClouds == null && highClouds == null) {
+		if (clouds == null) {
 			cloudLayers.add(new CloudCover("clouds" + reportIndex,
-					mediumCloudAltitude, 0));
+					cloudAltitude, 0));
 		}
 		if (humidityValue != null && temperatureValue != null) {
 			dewPointValue = temperatureValue - 20 * (1 - humidityValue);
@@ -581,9 +539,7 @@ public class YrNoImporter implements Importer {
 		 * This method accesses the API of yr.no and processes the XML document
 		 * that is returned.
 		 */
-		lowCloudAltitude = properties.getInt("low_clouds");
-		mediumCloudAltitude = properties.getInt("medium_clouds");
-		highCloudAltitude = properties.getInt("high_clouds");
+		cloudAltitude = properties.getInt("cloud_altitude");
 
 		forecastPeriod = Collections.max(forecastHours) * 3600000;
 		reportIndex = 0;
@@ -634,8 +590,8 @@ public class YrNoImporter implements Importer {
 			XPathExpression datapointExpression = xpath
 					.compile("/weatherdata/product/time");
 
-			weather = new Weather(new Date(), priority, new ServiceSource(
-					source), position, forecastHours);
+			weather = new Weather(new Date(), properties.getInt("priority"),
+					new ServiceSource(source), position, forecastHours);
 			nodes = (NodeList) datapointExpression.evaluate(document,
 					XPathConstants.NODESET);
 		} catch (IllegalArgumentException e) {
