@@ -132,7 +132,8 @@ geo:location rdfs:range geo:Location .
 \end{verbatim}
 However, as the expressive power of \eacs{RDFS} is rather limited compared to what \eacs{OWL} has to offer, reasoning in \eacs{RDFS} does not have the significance it has in \eacs{OWL}.
 
-Many of the concepts and properties defined are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}\footnote{\href{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}. \eacs{OWL} 2 remains fully compatible to \eacs{OWL} 1, i.e. all \eacs{OWL} 1 ontologies are also \eacs{OWL} 2 ontologies, with unchanged semantics.
+Many of the concepts and properties defined are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}\footnote{\href{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
+\eacs{OWL} 2 remains fully compatible to \eacs{OWL} 1, i.e. all \eacs{OWL} 1 ontologies are \eacs{OWL} 2 ontologies as well, with unchanged semantics.
 
 Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among others which are omitted here):
 
@@ -160,7 +161,14 @@ Reasoning in \texttt{OWL} respects the \emph{open world assumption}. If some sta
 
 \subsection{ThinkHome}
 
-% TODO
+% TODO more detailed description (in the next chapter):
+% repeat statements from introduction
+% knowledge base:
+% * name all categories of data in the knowledge base together with a short description
+% * OWL, JENA
+% agents:
+% * name all types of agents with a short description
+% * JADE, JADEX, JACK
 
 \section{Ontologies for weather data}
 \label{sec:weather_ontologies}
@@ -257,7 +265,8 @@ Figure~\ref{fig:nounits_example} shows the representation of an estate with its 
 \label{fig:om_example}
 \end{figure}
 
-The \emph{Ontology of Units of Measure and Related Concepts} (\eacs{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. Figure~\ref{fig:om_example} shows an example of the usage of \eacs{OM}. In this example, the specification the length of the estate is centered around a blank node which is an instance of \texttt{om:Length} which is a subconcept of \texttt{om:Quantity}. The blank node links to \texttt{Estate} using the property \texttt{om:phenomenon} and to another blank node via the property \texttt{om:value} which is an instance of \texttt{om:Measure}. This instance has a datatype property of type \texttt{om:numerical\_value} which specifies the numeric value of the estate's length, while the object property \texttt{om:unit} links to an instance of \texttt{om:Unit} named \texttt{om:meter}. The width of the estate is stated in a similar way.
+The \emph{Ontology of Units of Measure and Related Concepts} (\eacs{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. Figure~\ref{fig:om_example} shows an example of the usage of \eacs{OM}. In this example, the specification the length of the estate is centered around a blank node which is an instance of \texttt{om:Length} which is a subconcept of \texttt{om:Quantity}. The blank node links to \texttt{Estate} using the property \texttt{om:phenomenon} and to another blank node via the property \texttt{om:value} which is an instance of \texttt{om:Measure}. This instance has a datatype property of type \texttt{om:numerical\_value} which specifies the numeric value of the estate's length, while the object property \texttt{om:unit} links 
+to an instance of \texttt{om:Unit} named \texttt{om:meter}. The width of the estate is stated in a similar way.
 
 \eacs{OM} is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfil in \thinkhomeweather; furthermore, at the time when the article about OM was published, development of \thinkhomeweather had already completed. Hence, \eacs{OM} was not taken into account for being used in the \thinkhomeweather ontology.
 
