@@ -10,7 +10,6 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-// TODO javadoc
 /**
  * This class represents data about precipitation (intensity and probability).
  * 

@@ -15,7 +15,6 @@ import at.ac.tuwien.auto.thinkhome.weatherimporter.main.TurtleStore;
 
 import com.hp.hpl.jena.ontology.OntModel;
 
-// TODO javadoc
 /**
  * This class represents everything that is obtained from a weather source at a
  * single time.
