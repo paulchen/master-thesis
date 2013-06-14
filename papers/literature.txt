@@ -260,4 +260,12 @@ NEW (2013-04-09):
 * smart_environments.pdf
   MICHAEL C. MOZER. Lessons from an Adaptive Home
 
+* chi_ahome.pdf
+  Kietz, J., Patel, S., Jones, B., Price, E., Mynatt, E., Abowd, A. The Georgia Tech Aware Home.
+
+* 40080234.pdf
+  Koskela, T., Väänänen-Vaninio-Mattila, K. Evolution towards smart home environments: empirical evaluation of three user interfaces.
+
+* 01012340.pdf
+  Intille, S. Designing a home of the future.
 
