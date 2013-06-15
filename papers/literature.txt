@@ -269,3 +269,7 @@ NEW (2013-04-09):
 * 01012340.pdf
   Intille, S. Designing a home of the future.
 
+* kif.pdf
+  Michael R. Genesereth, Richard E. Fikes. Knowledge Interchange Format Version 3.0 Reference Manual
+
+
