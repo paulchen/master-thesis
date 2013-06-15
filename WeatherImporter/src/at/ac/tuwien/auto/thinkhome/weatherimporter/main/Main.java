@@ -58,7 +58,6 @@ public class Main {
 			System.exit(1);
 		}
 
-		// TODO document properties file
 		/* read properties file */
 		WeatherImporterProperties properties = new WeatherImporterProperties();
 		String inputFilename = null;
@@ -87,11 +86,9 @@ public class Main {
 				writer.write(output);
 				writer.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println(e.getMessage());
 			} catch (WeatherImporterException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println(e.getMessage());
 			}
 			return;
 		}

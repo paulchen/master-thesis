@@ -1,17 +1,46 @@
 package at.ac.tuwien.auto.thinkhome.weatherimporter.main;
 
-// TODO javadoc
+/**
+ * Represents an ontological statement consisting of subject, predicate, and
+ * object in Turtle syntax. In this class, all three parts of the statement are
+ * represented by instances of <tt>String</tt>.
+ * 
+ * @author Paul Staroch
+ * 
+ */
 public class TurtleStatement implements Comparable<TurtleStatement> {
+	/**
+	 * Subject of the statement
+	 */
 	private String subject;
+
+	/**
+	 * Predicate of the statement; if it is "rdf:type", it is automatically
+	 * replaced by "a".
+	 */
 	private String predicate;
+
+	/**
+	 * Object of the statement
+	 */
 	private String object;
-	
+
+	/**
+	 * The constructor.
+	 * 
+	 * @param subject
+	 *            the subject of the statement
+	 * @param predicate
+	 *            the predicate of the statement
+	 * @param object
+	 *            the object of the statement
+	 */
 	public TurtleStatement(String subject, String predicate, String object) {
 		this.subject = subject;
 		this.predicate = predicate;
 		this.object = object;
-		
-		if(predicate.equals("rdf:type")) {
+
+		if (predicate.equals("rdf:type")) {
 			this.predicate = "a";
 		}
 	}
@@ -27,7 +56,7 @@ public class TurtleStatement implements Comparable<TurtleStatement> {
 	protected String getObject() {
 		return object;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,8 +97,8 @@ public class TurtleStatement implements Comparable<TurtleStatement> {
 
 	@Override
 	public int compareTo(TurtleStatement that) {
-		if(getSubject().equals(that.getSubject())) {
-			if(getPredicate().equals(that.getSubject())) {
+		if (getSubject().equals(that.getSubject())) {
+			if (getPredicate().equals(that.getSubject())) {
 				return getObject().compareTo(that.getObject());
 			}
 			return getPredicate().compareTo(that.getPredicate());

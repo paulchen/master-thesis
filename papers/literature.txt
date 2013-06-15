@@ -251,4 +251,25 @@ NEW (2013-04-09):
 * 2545.pdf
   Nicole King. Smart Home - A Definition
 
+* HomeOSCHI_cameraready_Final.pdf
+  A.J. Bernheim Brush, Bongshin Lee, Ratul Mahajan, Sharad Agarwal, Stefan Saroiu, Colin Dixon. Home Automation in the Wild: Challenges and Opportunities
+
+* cacm2011-advancing-home.pdf
+  Keith Edwards, Rebecca E. Grinter, Ratul Mahajan, David Wetherall
+
+* smart_environments.pdf
+  MICHAEL C. MOZER. Lessons from an Adaptive Home
+
+* chi_ahome.pdf
+  Kietz, J., Patel, S., Jones, B., Price, E., Mynatt, E., Abowd, A. The Georgia Tech Aware Home.
+
+* 40080234.pdf
+  Koskela, T., Väänänen-Vaninio-Mattila, K. Evolution towards smart home environments: empirical evaluation of three user interfaces.
+
+* 01012340.pdf
+  Intille, S. Designing a home of the future.
+
+* kif.pdf
+  Michael R. Genesereth, Richard E. Fikes. Knowledge Interchange Format Version 3.0 Reference Manual
+
 

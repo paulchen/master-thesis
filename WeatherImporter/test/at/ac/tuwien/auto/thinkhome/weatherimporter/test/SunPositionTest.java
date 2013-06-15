@@ -22,29 +22,38 @@ public class SunPositionTest extends IndividualsTest {
 	}
 	
 	@Test
+	public void testSunBelowHorizon() {
+		for(int direction=0; direction<360; direction+=15) {
+			for(int elevation=-90; elevation<0; elevation+=15) {
+				checkSunDirection(direction, elevation, "SunPosition");
+			}
+		}
+	}
+	
+	@Test
 	public void testSunFromNorth() {
 		for(int direction=0; direction<=45; direction+=15) {
-			for(int elevation=-90; elevation<=90; elevation+=15) {
+			for(int elevation=0; elevation<=90; elevation+=15) {
 				checkSunDirection(direction, elevation, "SunPosition", "SunFromNorth");
 			}
 		}
 		for(int direction=316; direction<=360; direction+=15) {
-			for(int elevation=-90; elevation<=90; elevation+=15) {
+			for(int elevation=0; elevation<=90; elevation+=15) {
 				checkSunDirection(direction, elevation, "SunPosition", "SunFromNorth");
 			}
 		}
-		for(int elevation=-90; elevation<=90; elevation+=15) {
+		for(int elevation=0; elevation<=90; elevation+=15) {
 			checkSunDirection(359, elevation, "SunPosition", "SunFromNorth");
 		}
 	}
 	
 	@Test
 	public void testSunFromEast() {
-		for(int elevation=-90; elevation<=90; elevation+=10) {
+		for(int elevation=0; elevation<=90; elevation+=10) {
 			checkSunDirection(46, elevation, "SunPosition", "SunFromEast");
 		}
 		for(int direction=60; direction<=135; direction+=15) {
-			for(int elevation=-90; elevation<=90; elevation+=10) {
+			for(int elevation=0; elevation<=90; elevation+=10) {
 				checkSunDirection(direction, elevation, "SunPosition", "SunFromEast");
 			}
 		}
@@ -52,11 +61,11 @@ public class SunPositionTest extends IndividualsTest {
 	
 	@Test
 	public void testSunFromSouth() {
-		for(int elevation=-90; elevation<=90; elevation+=10) {
+		for(int elevation=0; elevation<=90; elevation+=10) {
 			checkSunDirection(136, elevation, "SunPosition", "SunFromSouth");
 		}
 		for(int direction=150; direction<=225; direction+=15) {
-			for(int elevation=-90; elevation<=90; elevation+=10) {
+			for(int elevation=0; elevation<=90; elevation+=10) {
 				checkSunDirection(direction, elevation, "SunPosition", "SunFromSouth");
 			}
 		}
@@ -64,11 +73,11 @@ public class SunPositionTest extends IndividualsTest {
 	
 	@Test
 	public void testSunFromWest() {
-		for(int elevation=-90; elevation<=90; elevation+=10) {
+		for(int elevation=0; elevation<=90; elevation+=10) {
 			checkSunDirection(226, elevation, "SunPosition", "SunFromWest");
 		}
 		for(int direction=240; direction<=315; direction+=15) {
-			for(int elevation=-90; elevation<=90; elevation+=10) {
+			for(int elevation=0; elevation<=90; elevation+=10) {
 				checkSunDirection(direction, elevation, "SunPosition", "SunFromWest");
 			}
 		}
