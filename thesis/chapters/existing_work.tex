@@ -245,13 +245,13 @@ This section discusses some ontologies that cover domains that are related to we
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{figures/diagrams/wgs84_example.pdf}
-\caption{Example of the use of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}; all concepts and properties in the \texttt{geo} namespace are part of this vocabulary.}
+\caption{Example of the use of the \emph{Basic Geo (WGS84 lat/long) Vocabulary} to specify the location of Vienna, Austria (N~\SI{48.21}{\degree}, E~\SI{16.37}{\degree}, \SI{171}{\metre} above \eacs{MSL}); all concepts and properties in the \texttt{geo} namespace are part of this vocabulary.}
 \label{fig:wgs84_example}
 \end{figure}
 
 To handle geographical location data, the \emph{W3C Semantic Web Interest Group}\footnote{\href{http://www.w3.org/2001/sw/interest/}{http://www.w3.org/2001/sw/interest/}} developed the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}. It introduces a concept called \emph{Spatial thing} and its attributes \egls{lat}, \egls{long} and \egls{alt} according to the \emph{WGS-84 geodetic reference system}\cite{WGS84}. Figure~\ref{fig:wgs84_example} shows an example of how the vocabulary is used.
 
-However, the vocabulary contains some data properties that are incorrectly defined to be annotation properties. Thus, they must be redefined to be data properties whenever used in an \eacs{OWL} ontology.
+As a downside, the vocabulary contains some data properties that are incorrectly defined to be annotation properties. Thus, they must be redefined to be data properties whenever used in an \eacs{OWL} ontology.
 
 \subsection{Date and time}
 \label{subsec:date_ontologies}
@@ -270,7 +270,7 @@ However, the vocabulary contains some data properties that are incorrectly defin
 \label{fig:owl_time_example2}
 \end{figure}
 
-For specifying temporal properties, the \emph{World Wide Web consortium} (\emph{W3C}) offers a \emph{working draft} of \emph{OWL-Time}\cite{owl-time}, a \emph{Time Ontology in OWL}. It defines the concept called \Egls{temporal entity} that can either be an \Egls{instant} or an \Egls{interval}. Using appropriate attributes, the properties of a \Egls{temporal entity} are specified. Although \emph{OWL-Time} is in the state of a \emph{working draft} since September 2006, the main concepts and attributes that will be reused by other ontologies are likely to remain unchanged in future releases of that ontology.
+For specifying temporal properties, the \eacs{W3C} offers a \emph{working draft} of \emph{OWL-Time}\cite{owl-time}, a \emph{Time Ontology in \eacs{OWL}}. It defines the concept called \Egls{temporal entity} that can either be an \Egls{instant} or an \Egls{interval}. Using appropriate attributes, the properties of a \Egls{temporal entity} are specified. Although \emph{OWL-Time} is in the state of a \emph{working draft} since September 2006, the main concepts and attributes that will be reused by other ontologies are likely to remain unchanged in future releases of that ontology.
 
 Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being used to specify an instant while figure~\ref{fig:owl_time_example2} demonstrates how a time interval is specified using \emph{OWL-Time}.
 
@@ -307,7 +307,7 @@ Figure~\ref{fig:nounits_example} shows the representation of an estate with its 
 The \emph{Ontology of Units of Measure and Related Concepts} (\eacs{OM})\footnote{\href{http://www.wurvoc.org/vocabularies/om-1.6/}{http://www.wurvoc.org/vocabularies/om-1.6/}}\cite{OM} is another promising approach for adding measurement units to \emph{OWL} that even provides features like the conversion between different units for the same quantities and representation and checking of formulas. Figure~\ref{fig:om_example} shows an example of the usage of \eacs{OM}. In this example, the specification the length of the estate is centered around a blank node which is an instance of \texttt{om:Length} which is a subconcept of \texttt{om:Quantity}. The blank node links to \texttt{Estate} using the property \texttt{om:phenomenon} and to another blank node via the property \texttt{om:value} which is an instance of \texttt{om:Measure}. This instance has a datatype property of type \texttt{om:numerical\_value} which specifies the numeric value of the estate's length, while the object property \texttt{om:unit} links 
 to an instance of \texttt{om:Unit} named \texttt{om:meter}. The width of the estate is stated in a similar way.
 
-\eacs{OM} is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfil in \thinkhomeweather; furthermore, at the time when the article about OM was published, development of \thinkhomeweather had already completed. Hence, \eacs{OM} was not taken into account for being used in the \thinkhomeweather ontology.
+\eacs{OM} is a rather large ontology (nearly \SI{2.4}{\mebi\byte} in \emph{RDF/XML syntax}) compared to the \thinkhomeweather ontology and related to the purpose it would fulfil in \thinkhomeweather; furthermore, at the time when the article about \eacs{OM} was published, development of \thinkhomeweather had already completed. Hence, \eacs{OM} was not taken into account for being used in the \thinkhomeweather ontology.
 
 Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of Measure and Related Concepts}, several other ontologies have been examined, but all of them have shortcomings that render their use in the \thinkhomeweather ontology impossible. These ontologies are:
 
@@ -323,4 +323,4 @@ Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of
 
 \section{Conclusion}
 
-As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a data model for \thinkhome. Hence, a completely new ontology is created in chapter~\ref{ch:thinkhomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} (the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \emph{OWL-Time} and the \emph{Measurement Units Ontology}) will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
+As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a data model for \thinkhome. Hence, a completely new ontology is created in chapter~\ref{ch:thinkhomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} (the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \emph{OWL-Time}, and the \emph{Measurement Units Ontology}) will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
