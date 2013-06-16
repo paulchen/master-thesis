@@ -1,7 +1,7 @@
 \chapter{Existing work}
 \label{ch:existing_work}
 
-The first part of this chapter covers the foundations the work of this thesis builds upon. It gives introductions into all revelant topics, e.g. ontologies, \eacs{RDF} and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which are required in order to fully understand the ideas behind the weather data model which is designed in later chapters.
+The first part of this chapter covers the foundations the work of this thesis builds upon. It gives introductions into all relevant topics, e.g. ontologies, \eacs{RDF} and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which are required in order to fully understand the ideas behind the weather data model which is designed in later chapters.
 
 The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies which may be reused in an ontology for weather data are discussed. The final section of this chapter reviews all ontologies that are presented and identifies elements can be used for \thinkhome.
 
@@ -10,6 +10,7 @@ The second part sheds light on a selection of existing work regarding weather da
 This chapter presents the foundations the work in this thesis builds upon: The concept of an ontology, the \emph{Web Ontology Language} (\eacs{OWL}) and \thinkhome.
 
 \subsection{Ontologies}
+\label{subsec:ontologies}
 
 % TODO citation
 In computer science, an ontology represents knowledge as a set of concepts in a certain domain and relationships between pairs of concepts. The basic elements of ontologies -- concepts, properties, and relations -- comprise a shared vocabulary which can be used to model a certain domain.
@@ -34,15 +35,15 @@ This model states the following facts: Men and women are persons. Brian (age 37)
 
 \vspace{1em}
 
-An important feature of an ontology is the support of automatic reasoning to deduct facts that are not explicitely stated in the data model from the given information. In order to make reasoning possible, the semantics of data models in ontologies (including \eacs{OWL}) are often based on \emph{Description Logics}~\cite{OWL,SROIQ}. These are a family of logics consisting of decidable parts of first-order predicate logic.
+An important feature of an ontology is the support of automatic reasoning to deduct facts that are not explicitly stated in the data model from the given information. In order to make reasoning possible, the semantics of data models in ontologies (including \eacs{OWL}) are often based on \emph{Description Logics}~\cite{OWL,SROIQ}. These are a family of logics consisting of decidable parts of first-order predicate logic.
 
 In the above example, because \emph{Man} and \emph{Woman} are sub-concepts of \emph{Person}, \emph{Brian}, \emph{Maria}, and \emph{Sarah} are instances of \emph{Person}. One could define a relation \emph{has child} that is an inverse property of \emph{has parent}, i.e. \emph{A has child B} if and only if \emph{B has parent A}; then the statements \emph{Brian has child Maria} and \emph{Sarah has child Maria} can be deducted.
 
-If a concept \emph{Mother} is defined as a \emph{Woman} who has at least one child, \emph{Sarah} can be inferred to be an instance of this concept; the same works for an analogously defined concept \emph{Father} with \emph{Brian} being an instance of. Furthermore, concepts \emph{Daugher} and \emph{Son} can be defined (someone who has at least one parent and is a \emph{Woman} or a \emph{Man}, respectively). Then \emph{Maria} can be inferred to be a \emph{Daughter}. Additionally, properties like \emph{has mother}, \emph{has father}, \emph{has son}, \emph{has daughter} etc. can be defined.
+If a concept \emph{Mother} is defined as a \emph{Woman} who has at least one child, \emph{Sarah} can be inferred to be an instance of this concept; the same works for an analogously defined concept \emph{Father} with \emph{Brian} being an instance of. Furthermore, concepts \emph{Daughter} and \emph{Son} can be defined (someone who has at least one parent and is a \emph{Woman} or a \emph{Man}, respectively). Then \emph{Maria} can be inferred to be a \emph{Daughter}. Additionally, properties like \emph{has mother}, \emph{has father}, \emph{has son}, \emph{has daughter} etc. can be defined.
 
 \vspace{1em}
 
-Another core principle of an ontology is reusability\cite{reuse1,reuse2}. In order to share knowledge across various systems, ontologies are often reused within other ontologies. Besides the simplification of knowledge sharing, ontology reuse tries to avoid duplicate work and reduces the work that is necessary to create a new ontology for a domain.
+Another core principle of an ontology is reusability~\cite{reuse1,reuse2}. In order to share knowledge across various systems, ontologies are often reused within other ontologies. Besides the simplification of knowledge sharing, ontology reuse tries to avoid duplicate work and reduces the work that is necessary to create a new ontology for a domain.
 
 \vspace{1em}
 
@@ -51,7 +52,7 @@ Ontologies are expressed using formal languages. There are many of these \emph{o
 Over the years, many ontologies have been developed. Some of them define concepts and relations that can be found across many knowledge domains. These ontologies are often imported into other ontologies in order to minimize the effort of creating new ontologies and to simplify interoperability of ontologies. Examples for such ontologies that are implemented in \eacs{OWL} or \emph{\eacs{RDF} Schema} are:
 \begin{itemize}
   \item \textbf{\eacs{DOAP}}: \eacs{DOAP}\footnote{\href{https://github.com/edumbill/doap/}{https://github.com/edumbill/doap/}} (\emph{Description of a Project}) is an vocabulary for describing software projects.
-  \item \textbf{Dublin Core}: \emph{Dublin Core}\footnote{\href{http://dublincore.org/}{http://dublincore.org/}}~\cite{rfc5013} is a vocabulary for describing metadata of web documents, physical resources (documents, books etc.) and other objects such as works of art.
+  \item \textbf{Dublin Core}: \emph{Dublin Core}\footnote{\href{http://dublincore.org/}{http://dublincore.org/}}~\cite{rfc5013} is a vocabulary for describing meta data of web documents, physical resources (documents, books etc.) and other objects such as works of art.
   \item \textbf{\eacs{FOAF}}: \eacs{FOAF}\footnote{\href{http://www.foaf-project.org/}{http://www.foaf-project.org/}}~\cite{FOAF} is an ontology for describing social networks. It models persons, the relations between them, their activities and their relations to other objects.
   \item \textbf{\eacs{SIOC}}: The \eacs{SIOC} \footnote{\href{http://xmlns.com/foaf/spec/}{http://xmlns.com/foaf/spec/}}~\cite{SIOC} is a technology built around an ontology for encoding information from Internet discussion methods (message boards, blogs, mailing lists etc.).
   \item \textbf{\eacs{SKOS}}: \eacs{SKOS}\footnote{\href{http://www.w3.org/2004/02/skos/}{http://www.w3.org/2004/02/skos/}} (\emph{Simple Knowledge Organization System})~\cite{SKOS} is a data model for sharing and linking knowledge organisation systems (thesauri, taxonomies, classification schemes and subject heading systems).
@@ -65,7 +66,7 @@ Over the years, many ontologies have been developed. Some of them define concept
 
 The \emph{Resource Description Framework} (\eacs{RDF}) is a standard model for knowledge representation~\cite{RDF}. It is specified in a set of recommendations by the \emph{World Wide Web Consortium} (\eacs{W3C})\footnote{\href{http://www.w3.org/}{http://www.w3.org/}}.
 
-The data model of \eacs{RDF} incorporates element types named \emph{resources} and \emph{properties} which can also be found in ontologies: A resource is some thing that is described by \eacs{RDF}, it corresponds to an individual as it is found in an ontology. Each resource can have an arbitrary number of properties, i.e. \emph{attributes} that associate \emph{literate} values (e.g. numerical values, strings) to the resource or \emph{relations} that link this resource to other resources. Resources and properties are expressed using \emph{statements} (\emph{triples}) which consist of three parts called \emph{subject}, \emph{predicate} and \emph{object}. To identify resources and properties, \eacs{RDF} uses \eacss{URI} (\emph{Unified Resource Locators}). \eacss{URI} are strings defined by \emph{\eacs{RFC} 3986}~\cite{rfc3986} that uniquely identify things.
+In \eacs{RDF}, the term \emph{resources} is used for individuals. Each resource can have an arbitrary number of \emph{properties}, i.e. \emph{attributes} that associate \emph{literate} values (e.g. numerical values, strings) to the resource or \emph{relations} that link this resource to other resources. Resources and properties are expressed using \emph{statements} (\emph{triples}) which consist of three parts called \emph{subject}, \emph{predicate} and \emph{object}. To identify resources and properties, \eacs{RDF} uses \eacss{URI} (\emph{Unified Resource Locators})\footnote{\eacss{URI} are strings defined by \emph{\eacs{RFC} 3986}~\cite{rfc3986} that uniquely identify things.}. In case a resource does not have an identifier, it is a \emph{blank node}.
 
 \begin{figure}
 \centering
@@ -74,21 +75,30 @@ The data model of \eacs{RDF} incorporates element types named \emph{resources} a
 \label{fig:rdf_example}
 \end{figure}
 
-Figure~\ref{fig:rdf_example} depicts a simple example for a piece of knowledge from the domain of weather data expressed using \eacs{RDF}: The resource \texttt{weather:CurrentWeather} represents the current state of the weather. The property \texttt{geo:hasLocation} links the \texttt{weather:CurrentWeather} to the resource \texttt{geo:Vienna} which represents the city of Vienna, Austria; i.e. \texttt{weather:CurrentWeather} describes the weather for Vienna. \texttt{weather:weatherState} has two more properties, \texttt{weather:hasTemperatureValue} and \texttt{weather:hasHumidityValue}, which link two literal values to the resource: a temperature value of \SI{18.2}{\celsius} and a humidity value of $72 \%$. The type \texttt{xsd:float} of both literals is defined by \emph{XML Schema}~\cite{xml-schema,xml-schema-datatypes}, one of the several \eacs{XML} schema languages available that define the structure of \eacs{XML} documents.
+Figure~\ref{fig:rdf_example} depicts a simple example for a piece of knowledge from the domain of weather data expressed using \eacs{RDF}: The resource \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} represents the current state of the weather. The property \texttt{geo:\hspace{0pt}has\hspace{0pt}Location} links the \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} to the resource \texttt{geo:\hspace{0pt}Vienna} which represents the city of Vienna, Austria; i.e. \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} describes the weather for Vienna. \texttt{weather:\hspace{0pt}weather\hspace{0pt}State} has two more properties, \texttt{weather:\hspace{0pt}has\hspace{0pt}Temperature\hspace{0pt}Value} and \texttt{weather:\hspace{0pt}has\hspace{0pt}Humidity\hspace{0pt}Value}, which link two literal values to the resource: a temperature value of \SI{18.2}{\celsius} and a relative humidity value of $72 \%$. The type \texttt{xsd:\hspace{0pt}float} of both literals is defined by \emph{XML Schema}~\cite{xml-schema,xml-schema-datatypes}, one of the several \eacs{XML} schema languages available that define the structure of \eacs{XML} documents.
 
-The complete \eacs{URI} of \texttt{weather:CurrentWeather} is \texttt{http://example.org/weather\#CurrentWeather} and the \eacs{URI} of \texttt{geo:Vienna} is \texttt{http://example.org/geo\#Vienna}. As in \eacs{XML}, parts of \eacss{URI} may be replaced by \emph{prefixes} to avoid frequent recurrence of the same strings. For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in figure~\ref{fig:rdf_example}.
+The complete \eacs{URI} of \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} is \texttt{http://example.org/\hspace{0pt}weather\#\hspace{0pt}CurrentWeather} and the \eacs{URI} of \texttt{geo:\hspace{0pt}Vienna} is \texttt{http://example.org/geo\#Vienna}. As in \eacs{XML}, parts of \eacss{URI} may be replaced by \emph{prefixes} to avoid frequent recurrences of the same strings. For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in figure~\ref{fig:rdf_example}.
 
 For expressing the data that is represented by an \eacs{RDF} model, several serialization formats are available. The \eacs{RDF} recommendation is based on \emph{RDF/XML} which maps the \eacs{RDF} model to an \eacs{XML} document~\cite{RDF_XML}. The representation of the above example in \emph{RDF/XML} can be seen in figure~\ref{fig:rdfxml_example}. As \emph{RDF/XML} is a rather verbose format which may be difficult to read for humans, the \eacs{N3} (\emph{Notation3}) representation for \eacs{RDF} is available which was developed with human-readability in mind~\cite{Notation3}. \emph{Notation3} incorporates some syntax features that go beyond the expressive power of \eacs{RDF}. A subset of \emph{Notation3} named \eacs{Turtle} (\emph{Terse RDF Triple Language}) is available that is limited to the features required to map \eacs{RDF} models~\cite{Turtle}. Figure~\ref{fig:turtle_example} shows the above example in \eacs{Turtle} syntax.
 
 \begin{figure} % TODO syntax highlighting
 \begin{lstlisting}
 <?xml version="1.0"?>
-<rdf:RDF xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:geo="http://example.org/geo#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:weather="http://example.org/weather#">
-	<rdf:Description rdf:about="http://example.org/weather#CurrentWeather">
-		<weather:hasTemperatureValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">18.2</weather:hasTemperatureValue>
-		<weather:hasHumidityValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">.72</weather:hasHumidityValue>
-		<geo:hasLocation rdf:resource="http://example.org/geo#Vienna" />
-	</rdf:Description>
+<rdf:RDF xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:geo="http://example.org/geo#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:weather="http://example.org/weather#">
+  <rdf:Description rdf:about="http://example.org/weather#CurrentWeather">
+    <weather:hasTemperatureValue
+	  rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+      18.2
+    </weather:hasTemperatureValue>
+    <weather:hasHumidityValue
+	  rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+      .72
+    </weather:hasHumidityValue>
+    <geo:hasLocation rdf:resource="http://example.org/geo#Vienna" />
+  </rdf:Description>
 </rdf:RDF>
 \end{lstlisting}
 \caption{\eacs{RDF} example from figure~\ref{fig:rdf_example} encoded in \emph{RDF/XML} syntax}
@@ -111,9 +121,11 @@ weather:CurrentWeather geo:hasLocation geo:Vienna .
 \label{fig:turtle_example}
 \end{figure}
 
-\eacs{RDF} \emph{schema} (\eacs{RDFS}) is a recommendation by the \eacs{W3C} that builds upon \eacs{RDF}~\cite{RDFS}. It introduces a set of concepts and properties that permits the definition of simple ontologies. 
+\vspace{1em}
 
-All things described by \eacs{RDF} are instances of \texttt{rdfs:Resource}, concepts are instances of \texttt{rdfs:Class}, and properties are instances of \texttt{rdfs:Property}. Other concepts introduced by \eacs{RDFS} are \texttt{rdfs:Literal}, \texttt{rdfs:Datatype} and \texttt{rdfs:XMLLiteral}.
+\eacs{RDF} \emph{schema} (\eacs{RDFS}) is a recommendation by the \eacs{W3C} that builds upon \eacs{RDF}~\cite{RDFS}. It introduces a set of concepts and properties adding features that go beyond the expressive power of \eacs{RDF}.
+
+All things described by \eacs{RDF} are instances of \texttt{rdfs:Resource}. Concepts -- which are introduced by \eacs{RDFS} -- are instances of \texttt{rdfs:Class}, and properties are instances of \texttt{rdfs:\hspace{0pt}Property}. Other concepts introduced by \eacs{RDFS} are \texttt{rdfs:\hspace{0pt}Literal}, \texttt{rdfs:\hspace{0pt}Datatype} and \texttt{rdfs:\hspace{0pt}XMLLiteral}.
 
 The property \texttt{rdfs:domain} states that any resource that has a given property is an instance of one or more classes; the property \texttt{rdfs:range} states that the value of a property is an instance of one or more classes. \texttt{rdf:type} (often abbreviated with \texttt{a}) is used to state that a resource is an instance of a class. Hierarchies of classes can be constructed using the property \texttt{rdfs:subClassOf}: \texttt{C1 rdfs:subClassOf C2} states that any instance of \texttt{C2} is also an instance of \texttt{C1}. \texttt{rdfs:subPropertyOf} is an equivalent that is used for declaring hierachies of properties. Other properties defined by \eacs{RDFS} are \texttt{rdfs:label} and \texttt{rdfs:comment}.
 
@@ -124,61 +136,78 @@ The property \texttt{rdfs:domain} states that any resource that has a given prop
 \label{fig:rdfs_example}
 \end{figure}
 
-Figure~\ref{fig:rdfs_example} shows the example from figure~\ref{fig:rdf_example}, enriched by some elements that are defined by \eacs{RDFS}. The data model introduces two classes, \texttt{weather:WeatherState} and \texttt{geo:Location}. \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} are instances of \texttt{weather:WeatherState} and \texttt{geo:Location}, respectively. \texttt{geo:hasLocation} is a property with range \texttt{weather:WeatherState} and \texttt{geo:Location}.
+Figure~\ref{fig:rdfs_example} shows the example from figure~\ref{fig:rdf_example}, enriched by some elements that are introduced by \eacs{RDFS}. The data model introduces two classes, \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and \texttt{geo:\hspace{0pt}Location}. \texttt{weather:\hspace{0pt}CurrentWeather} and \texttt{geo:\hspace{0pt}Vienna} are instances of \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and \texttt{geo:\hspace{0pt}Location}, respectively. \texttt{geo:\hspace{0pt}has\hspace{0pt}Location} is a property with range \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and \texttt{geo:\hspace{0pt}Location}.
 
 \eacs{RDFS} comes with reasoning support~\cite{RDF_semantics}; e.g. in the above example, the statements
 
-\begin{verbatim}
+\begin{lstlisting}
 weather:CurrentWeather rdf:type weather:WeatherState .
 geo:Vienna rdf:type geo:Location .
-\end{verbatim}
+\end{lstlisting}
 
 can be removed without loss of knowledge. A reasoner can deduct them from these statements:
 
-\begin{verbatim}
+\begin{lstlisting}
 weather:CurrentWeather geo:hasLocation geo:Vienna .
 geo:location rdfs:domain weather:WeatherState .
 geo:location rdfs:range geo:Location .
-\end{verbatim}
-However, as the expressive power of \eacs{RDFS} is rather limited compared to what \eacs{OWL} has to offer, reasoning in \eacs{RDFS} does not have the significance it has in \eacs{OWL}.
+\end{lstlisting}
 
-Many of the concepts and properties defined are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}\footnote{\href{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
+\vspace{1em}
+
+Many of the concepts and properties defined by \eacs{RDFS} are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} which is based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}\footnote{\href{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}{http://www.w3.org/2007/OWL/wiki/OWL\_Working\_Group}} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
 \eacs{OWL} 2 remains fully compatible to \eacs{OWL} 1, i.e. all \eacs{OWL} 1 ontologies are \eacs{OWL} 2 ontologies as well, with unchanged semantics.
 
 Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among others which are omitted here):
 
-% TODO object properties, datatype properties
-
-% TODO simple examples?
 \begin{itemize}
+  \item Properties are instances of \texttt{owl:ObjectProperty} or \texttt{owl:DatatypeProperty} (or both); the property is termed \emph{object property} or \emph{datatype property}, respectively. An \emph{object property} links an individual to another individual while a \emph{datatype property} links an individual to a literal value.
   \item The properties \texttt{owl:equivalentClass} is used to state that two classes are equivalent while \texttt{owl:allDisjointClasses} states that there is no individual that is an instance of more than one class from a set of classes.
   \item Similarly, the property \texttt{owl:sameAs} defines two individuals to be the same individual and \texttt{owl:differentFrom} states that two individuals can never be the same individual.
-  \item Using the properties \texttt{owl:intersectionOf}, \texttt{owl:unionOf}, and \texttt{owl:complementOf} can be used to describe complex classes in a notation borrowed from set theory (e.g. if there are two classes, \texttt{Man} and \texttt{Woman}, the class \texttt{Person} can be defined as the class union of them).
-  \item Using the properties \texttt{owl:allValuesFrom}, \texttt{owl:someValuesFrom}, and \texttt{owl:hasValue} classes can be defined based on the values of their properties.
-  \item Using the properties \texttt{owl:minCardinality}, \texttt{owl:maxCardinality}, and \texttt{owl:cardinality}, the cardinality of properties per class can be limited.
-  \item Properties can have various characteristics: A property can be inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:propertyDisjointWith}). A property can be reflexive (it relates everything to itself, \texttt{owl:ReflexiveProperty}), irreflexive (no individual can be related to itself, \texttt{owl:IrreflexiveProperty}), functional (every individual can be linked to at most one other individual, \texttt{owl:FunctionalProperty}) or inverse functional (the inverse property is functional, \texttt{owl:InverseFunctionalProperty}).
+  \item Using the properties \texttt{owl:intersectionOf}, \texttt{owl:unionOf}, and \texttt{owl:\hspace{0pt}complement\hspace{0pt}Of} can be used to describe complex classes in a notation borrowed from set theory (e.g. if there are two classes, \texttt{Man} and \texttt{Woman}, the class \texttt{Person} can be defined as the class union of them).
+  \item Using the properties \texttt{owl:allValuesFrom}, \texttt{owl:someValuesFrom}, and \texttt{owl:\hspace{0pt}has\hspace{0pt}Value} classes can be defined based on the values of their properties.
+  \item Using the properties \texttt{owl:minCardinality}, \texttt{owl:maxCardinality}, and \texttt{owl:\hspace{0pt}cardinality}, the cardinality of properties per class can be limited.
+  \item Properties can have various characteristics: A property can be inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:property\hspace{0pt}Disjoint\hspace{0pt}With}). A property can be reflexive (it relates everything to itself, \texttt{owl:\hspace{0pt}Reflexive\hspace{0pt}Property}), irreflexive (no individual can be related to itself, \texttt{owl:\hspace{0pt}Irreflexive\hspace{0pt}Property}), functional (every individual can be linked to at most one other individual, \texttt{owl:\hspace{0pt}Functional\hspace{0pt}Property}) or inverse functional (the inverse property is functional, \texttt{owl:\hspace{0pt}Inverse\hspace{0pt}Functional\hspace{0pt}Property}).
 \end{itemize}
 
 % TODO citation: the first ontology war (open world assumption)
 % TODO citation: monotonic reasoning
-Reasoning in \texttt{OWL} respects the \emph{open world assumption}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \texttt{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa.
+Reasoning in \eacs{OWL} respects the \emph{open world assumption}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa.
 
 % TODO citations (OWL reasoning specifications)
 
-\eacs{OWL} ontologies are often designed using semantic editors like \protege\footnote{\href{http://protege.stanford.edu/}{http://protege.stanford.edu/}}. Common reasoners for \eacs{OWL} include \emph{Pellet}\footnote{\href{http://clarkparsia.com/pellet/}{http://clarkparsia.com/pellet/}}, \emph{RacerPro}\footnote{\href{http://semanticweb.org/wiki/RacerPro}{http://semanticweb.org/wiki/RacerPro}}, \emph{FaCT++}\footnote{\href{http://owl.man.ac.uk/factplusplus/}{http://owl.man.ac.uk/factplusplus/}} and \emph{HermiT}\footnote{\href{http://www.hermit-reasoner.com/}{http://www.hermit-reasoner.com/}}. They all implement reasoning as specified by the \eacs{OWL} specification. Implementation specific differences affect details that are not covered by the \eacs{OWL} specification. \protege and \emph{Pellet} are used to develop the weather data model for \thinkhome in chapter~\ref{ch:thinkhomeweather_ontology}.
+Queries on \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL} models are often performed using \eacs{SPARQL}, a query language for \eacs{RDF}. Figure~\ref{fig:sparql_example} shows an example for the use of \eacs{SPARQL} to query all temperature values known for Vienna, Austria in the \eacs{RDFS} model depicted in figure~\ref{fig:rdfs_example}.
 
-% TODO blank nodes
+\begin{figure}
+\begin{lstlisting}
+@prefix weather: <http://example.org/weather#>
+@prefix geo: <http://example.org/geo#>
+
+SELECT ?temperature
+WHERE {
+    ?state a weather:WeatherState.
+    ?state geo:Location geo:Vienna.
+    ?state weather:hasTemperatureValue ?temperature.
+}
+\end{lstlisting}
+\caption{\eacs{SPARQL} code to query all known temperature values in the model from figure~\ref{fig:rdf_example}}
+\label{fig:sparql_example}
+\end{figure}
+
+\eacs{OWL} ontologies are often designed using semantic editors like \protege\footnote{\href{http://protege.stanford.edu/}{http://protege.stanford.edu/}}. Common reasoners for \eacs{OWL} include \emph{Pellet}\footnote{\href{http://clarkparsia.com/pellet/}{http://clarkparsia.com/pellet/}}, \emph{RacerPro}\footnote{\href{http://semanticweb.org/wiki/RacerPro}{http://semanticweb.org/wiki/RacerPro}}, \emph{FaCT++}\footnote{\href{http://owl.man.ac.uk/factplusplus/}{http://owl.man.ac.uk/factplusplus/}} and \emph{HermiT}\footnote{\href{http://www.hermit-reasoner.com/}{http://www.hermit-reasoner.com/}}. They all implement reasoning as specified by the \eacs{OWL} specification; implementation specific differences affect details that are not covered by the \eacs{OWL} specification. \protege and \emph{Pellet} are used to develop the weather data model for \thinkhome in chapter~\ref{ch:thinkhomeweather_ontology}.
 
 \subsection{ThinkHome}
 
-% TODO more detailed description (in the next chapter):
-% repeat statements from introduction
-% knowledge base:
-% * name all categories of data in the knowledge base together with a short description
-% * OWL, JENA
-% agents:
-% * name all types of agents with a short description
-% * JADE, JADEX, JACK
+Section~\ref{sec:motivation} gives a short introduction into the basic ideas of \thinkhome. This section goes further into detail into the two main components that form the \thinkhome system: a comprehensive knowledge base and a multi-agent system.
+
+The knowledge base is organised into six sub-categories: \emph{Building} (structure of the building), \emph{Actor} (human system users and software agents), \emph{Comfort} (parameters that affect the users' well-being), \emph{Energy} (energy providers), \emph{Process} (the users' activities), and \emph{Resource} (available equipment). Some parts of the knowledge base are static data (data that is seldom changed, e.g. the structure of the building, user preferences, control rules) while others are dynamic data (data that changes frequently, e.g. the current state of the building, the current state of external influences, recent measurements from sensors, current states of actors). The knowledge base is implemented in \eacs{OWL}. This enables the use of the reasoning capabilities offered by semantic reasoners. With \eacs{SPARQL} a powerful query language for \eacs{OWL} models is available that is suitable for accessing \thinkhome's knowledge base. The \emph{Apache Jena Framework}\footnote{\href{http://jena.apache.org/}{http://jena.apache.org/}} as well as the \emph{Virtuoso Universal Server}\footnote{\href{http://virtuoso.openlinksw.com/}{http://virtuoso.openlinksw.com/}} are environments used by \thinkhome.
+
+% TODO citation: multi-agent system
+% perhaps: M. Wooldridge, An Introduction to Multiagent Systems, John Wiley & Sons, New York, NY, USA, 2nd edition, 2009.
+
+A multi-agent system is both a software paradigm and a method supporting distributed intelligence, interaction and cooperation to work towards predefined goals. \thinkhome incorporates a multi-agent system to implement advanced control strategies. \thinkhome's \emph{agent society} consists of various different agents, each serving a specific purpose: As the core of the agent system, the \emph{Control Agent} is responsible for executing control strategies; it obtains data from various sources to get a global view of the system state, then calculates an appropriate control strategies and initiates its execution. Other agents are the \emph{User Agent} which acts on behalf of a user to provide her with a comfortable environment; the \emph{Global Goals Agent} which enforces global policies towards energy efficiency; the \emph{Context Inference Agent} which sets actions in context with users, location, and time; the \emph{Auxiliary Data Agent} which obtains data from various sources; the \emph{KB Interface Agent} which provides the link between the knowledge base and the multi-agent system and is responsible for data exchange in all parts of the system; and the \emph{BAS Interface Agent} which acts as an interface between the agent society and the automation systems of the smart home.
+
+As for the knowledge base, \thinkhome uses a set of well-established technologies to implement the multi-agent system, such as the \emph{Java Agent DEvelopment Framework}\footnote{\href{http://jade.tilab.com/}{http://jade.tilab.com/}} and the \emph{JACK Intelligent Agents} framework\footnote{\href{http://aosgrp.com/products/jack/}{http://aosgrp.com/products/jack/}}.
 
 \section{Ontologies for weather data}
 \label{sec:weather_ontologies}
