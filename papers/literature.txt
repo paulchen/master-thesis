@@ -275,3 +275,6 @@ NEW (2013-04-09):
 * IEEE-IS01.pdf
   Dieter Fensel & Frank van Harmelen & Ian Horrocks & Deborah L. McGuinness & Peter F. Patel-Schneider. OIL: An Ontology Infrastructure for the Semantic Web
 
+* KR06-009.pdf
+  I. Horrocks and O. Kutz and U. Sattler. The even more irresistible SROIQ
+
