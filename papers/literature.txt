@@ -272,4 +272,6 @@ NEW (2013-04-09):
 * kif.pdf
   Michael R. Genesereth, Richard E. Fikes. Knowledge Interchange Format Version 3.0 Reference Manual
 
+* IEEE-IS01.pdf
+  Dieter Fensel & Frank van Harmelen & Ian Horrocks & Deborah L. McGuinness & Peter F. Patel-Schneider. OIL: An Ontology Infrastructure for the Semantic Web
 
