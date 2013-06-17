@@ -293,4 +293,6 @@ NEW (2013-04-09):
 * Luciano_DDT_July1_2005.pdf
   Joanne S.Luciano. PAX of mind for pathway researchers
 
+* 10.1.1.11.9054.pdf
+  Michael Gruninger and Mark S. Fox. The Role of Competency Questions in Enterprise Engineering
 
