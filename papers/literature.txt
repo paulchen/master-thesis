@@ -287,4 +287,10 @@ NEW (2013-04-09):
 * 05319368.pdf
   Muhammad Shahab Siddiqui, Dr. Zubair A. Shaikh, Dr. Abdul Rahman Memon. Towards the Development of Human Community Ontology
 
+* 10.1007_978-3-540-45248-5_7.pdf
+  Jeffrey Undercoffer, Anupam Joshi, and John Pinkston. Modeling Computer Attacks: An Ontology for Intrusion Detection
+
+* Luciano_DDT_July1_2005.pdf
+  Joanne S.Luciano. PAX of mind for pathway researchers
+
 
