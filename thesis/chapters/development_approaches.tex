@@ -2,9 +2,12 @@
 \chapter{Methodologies for developing ontologies}
 \label{ch:development_approaches}
 
-There are numerous methodologies for building ontologies. As this chapter points out, all of them strive for avoiding common pitfalls and try to minimize the need for refactorization at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as early as possible. All methodologies have in common that knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope. 
+There are numerous methodologies for building ontologies. As this chapter points out, all of them strive for avoiding common pitfalls and try to minimize the need for refactorization at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as early as possible.
 
-In the article about their approach towards ontology design, Noy and McGuinness stated three fundamental rules~\cite{Ontology101} of ontology design. Although the authors only applied them to their own approach, they hand out advice for many design decisions, regardless of which approach is used for the design of the ontology:
+% TODO citation: competency questions?
+All methodologies have in common that knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope. Competency questions are stated at the very beginning of the design process and provide the basis for all further steps towards the ontology. The ontology can be considered complete if it is able to provide answers to all competency questions (except the ones that cannot be answered by an ontology).
+
+In the article about their approach towards ontology design, Noy and McGuinness state three fundamental rules~\cite{Ontology101} of ontology design. Although the authors only apply them to their own approach, they hand out advice for many design decisions, regardless of which approach is used for the design of the ontology:
 
 \begin{quote}
 \itshape
@@ -42,21 +45,21 @@ For each methodology, the following topics are discussed in section~\ref{sec:ont
   
   \item \textbf{Applications:} Some ontologies that have been developed using the methodology are enumerated, if any. Applications may include both cases where the methontology was just applied to provide detailled insights into the methodology itself and cases where the methodology was used for the development of an ontology as part of a project.
   
-  \item \textbf{Analysis:} The methodology is analysed regarding a pre-defined set of criteria (see below).
+  \item \textbf{Analysis:} The methodology is analysed regarding a pre-defined set of criteria (see below):
+    \begin{itemize}
+      \item \textbf{Effort:} Different approaches lead to different efforts for the development of ontologies. Although the minimisation of the effort is not a target of \thinkhomeweather, it is unnecessary to apply an approach which leads to an enormous development effort compared to other methodologies.
+      
+      \item \textbf{Usage:} If an approach is widely used, this may indicate that the approach is considered suitable for ontology development by many designers. The other way, a seldomly applied methodology may be inappropriate for most use cases.
+      
+      \item \textbf{Applicability:} An approach may be limited to certain kinds of domains and be unsuitable for designing \thinkhomeweather.
+      
+      \item \textbf{Strictness:} Due to the fact that there is no one correct way to design an ontology, every approach must leave a certain margin to the ontology designer to decide about implementation details. However, a margin being too wide may lead to an inaccurate or incomplete ontology.
+      
+      \item \textbf{Documentation:} Methodology may enforce the creation of documentation while others delegate the decisions about how the documentation is structured and what is documented to the ontology designer. This may lead to missing, inaccurate, or incomplete documentation.
+    \end{itemize}
 \end{itemize}
 
-The criteria used in the \emph{analysis} step are:
-
-% TODO
-\begin{itemize}
-  \item \textbf{C1:} TODO
-  
-  \item \textbf{C2:} TODO
-  
-  \item \textbf{C3:} TODO
-\end{itemize}
-
-Section~\ref{sec:approaches_summary} then compares the methodologies with each other while section~\ref{sec:approaches_conclusion} concludes about the results and comes to a decision regarding the methology which fits the requirements of \thinkhomeweather best and thus will be used for the development of the ontology.
+Section~\ref{sec:approaches_summary} then compares the methodologies with each other while section~\ref{sec:approaches_conclusion} concludes about the results and comes to a decision regarding the methodology which fits the requirements of \thinkhomeweather best and thus will be used for the development of the ontology. It is possible that this decision is not be unambiguous if more than one approach turns out to be suitable for the present context.
 
 As section~\ref{sec:ontology_approaches} focuses on the characteristics of the methodologies required to take a decision in favour of one of the approaches, section~\ref{sec:methontology} then describes the selected approach in a more detailed manner.
 
@@ -68,7 +71,7 @@ As section~\ref{sec:ontology_approaches} focuses on the characteristics of the m
 
 \subsubsection{Description}
 
-In their paper \emph{Ontology Development 101: A Guide to Creating Your First Ontology}\cite{Ontology101}, Noy and McGuiness present an informal and rather intuitive approach for building ontologies from scratch. It is geared towards people without prior knowledge about how to design an ontology and qualifies for demonstrating the essence of ontologies.
+In their paper \emph{Ontology Development 101: A Guide to Creating Your First Ontology}\cite{Ontology101}, Noy and McGuiness present an informal and rather intuitive approach for building ontologies from scratch. It is geared towards people without or with little prior knowledge about how to design an ontology and qualifies for demonstrating the essence of ontologies.
 
 The approach is divided into a set of steps:
 \begin{enumerate}
@@ -88,50 +91,87 @@ The approach is divided into a set of steps:
 \label{fig:ontology101_process}
 \end{figure}
 
-These steps are not performed one after the other; instead, an iterative process is proposed which iterates the whole set of steps repeatedly. Figure~\ref{fig:ontology101_process} depicts the workflow this process.
+These steps are not strictly performed one after the other; instead, an iterative process is proposed which iterates the whole set of steps repeatedly. Figure~\ref{fig:ontology101_process} depicts the workflow this process.
 
 Besides the approach itself, \emph{Ontology 101} provides a huge set of rules of thumb which guide the ontology designer towards a well-conceived ontology, advises her of common pitfalls and help her identify both adequate and improper patterns.
 
 \subsubsection{Applications}
 
+Applications of \emph{Ontology 101} include a \emph{Human Community Ontology}~\cite{HumanCommunityOntology}, an \emph{Ontology for Intrusion Detection}~\cite{IDSOntology}, and an ontology which is part of \emph{BioPAX}, an effort towards improving knowledge exchange in the research of biological pathways~\cite{BioPAX}.
+
 \subsubsection{Analysis}
+
+\emph{Ontology 101} provides a simple and coherent approach for building ontologies. However, it comes with a few downsides.
+
+\begin{itemize}
+  \item \textbf{Effort:} The effort of applying \emph{Ontology 101} to a certain domain can be considered to be low.
+  
+   \item \textbf{Usage:} The methodology is very often cited in literature to give readers an understanding of the basics of ontology development. However, compared to other methodologies, the number of applications is low.
+  
+  \item \textbf{Applicability:} \emph{Ontology 101} does not state any limitations regarding the use of its approach for arbitrary domains.
+  
+  \item \textbf{Strictness:} The approach does not enforce strict rules and leaves a broad margin to the ontology designer.
+  
+  \item \textbf{Documentation:} \emph{Ontology 101} completely lacks a description on how documentation is generated; this may lead to missing, incomplete, or inaccurate documentation.
+\end{itemize}
 
 \subsection{A software engineering approach to ontology building}
 \label{subsec:approach2}
 
 \subsubsection{Description}
 
+% TODO
+
 \subsubsection{Applications}
 
+% TODO
+
 \subsubsection{Analysis}
+
+% TODO
 
 \subsection{Methodology by Uschold and King}
 \label{subsec:approach3}
 
 \subsubsection{Description}
 
+% TODO
+
 \subsubsection{Applications}
 
+% TODO
+
 \subsubsection{Analysis}
+
+% TODO
 
 \subsection{Methodology by Grüninger and Fox}
 \label{subsec:approach4}
 
 \subsubsection{Description}
 
+% TODO
+
 \subsubsection{Applications}
 
+% TODO
+
 \subsubsection{Analysis}
+
+% TODO
 
 \subsection{METHONTOLOGY}
 \label{subsec:approach5}
 
 \subsubsection{Description}
 
+% TODO
+
 \subsubsection{Applications}
 
 % TODO more details?
-Applications of \methontology include the \emph{Legal Ontology}~\cite{MethontologyLegal}, the \emph{Chemical Ontology}~\cite{MethontologyChemical}, the \emph{Graduation Screen Ontology}~\cite{GraduationScreenOntology}, the \emph{Ontology for Metabolic Pathways}~\cite{MetabolicPathways}, the \emph{Vehicles' Ontology} for checking the consistency of official documents in eGovernment~\cite{VehiclesOntology}, the ontology for a context-aware semantic approach for the effective selection of an assistive software~\cite{AssistiveSoftware} and a cartographic ontology~\cite{CartographicOntology}. Some ontology designers opted for an approach that combines \methontology with another approach, e.g. for the development of an educational ontology~\cite{EducationalOntology} using a combination of \methontology and a Model Driven Approach~\cite{ModelDrivenApproach}. For the development of an ontology in the hydrographical domain~\cite{HydrographicalOntology}, the designers combined the top-down approach of \methontology with a bottom-up approach based on \emph{Formal Concept Analysis}~\cite{FormalConceptAnalysis}.
+Applications of \methontology include the \emph{Legal Ontology}~\cite{MethontologyLegal}, the \emph{Chemical Ontology}~\cite{MethontologyChemical}, the \emph{Graduation Screen Ontology}~\cite{GraduationScreenOntology}, the \emph{Ontology for Metabolic Pathways}~\cite{MetabolicPathways}, the \emph{Vehicles' Ontology} for checking the consistency of official documents in eGovernment~\cite{VehiclesOntology}, the ontology for a context-aware semantic approach for the effective selection of an assistive software~\cite{AssistiveSoftware} and a cartographic ontology~\cite{CartographicOntology}. Some ontology designers opted for an approach that combines \methontology with another approach, e.g. for the development of an educational ontology~\cite{EducationalOntology} using a combination of \methontology and a Model Driven Approach~\cite{ModelDrivenApproach}.
+For the development of an ontology in the hydrographical domain~\cite{HydrographicalOntology}, the designers combined the top-down approach of \methontology with a bottom-up approach based on \emph{Formal Concept Analysis}~\cite{FormalConceptAnalysis}.
 
 \subsubsection{Analysis}
 
