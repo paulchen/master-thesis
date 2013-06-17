@@ -278,3 +278,10 @@ NEW (2013-04-09):
 * KR06-009.pdf
   I. Horrocks and O. Kutz and U. Sattler. The even more irresistible SROIQ
 
+* aswaniNMPC12.pdf
+  Anil Aswani, Neal Master, Jay Taneja, Andrew Kioukov, David Culler, Claire Tomlin. Energy-Efficient Building HVAC Control Using Hybrid System LBMPC
+
+* 05530680.pdf
+  Frauke Oldewurtel, Alessandra Parisio, Colin N. Jones, Manfred Morari, Dimitrios Gyalistras, Markus Gwerder, Vanessa Stauch, Beat Lehmann, Katharina Wirth. Energy Efficient Building Climate Control using Stochastic Model Predictive Control and Weather Predictions
+
+
