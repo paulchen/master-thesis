@@ -284,4 +284,7 @@ NEW (2013-04-09):
 * 05530680.pdf
   Frauke Oldewurtel, Alessandra Parisio, Colin N. Jones, Manfred Morari, Dimitrios Gyalistras, Markus Gwerder, Vanessa Stauch, Beat Lehmann, Katharina Wirth. Energy Efficient Building Climate Control using Stochastic Model Predictive Control and Weather Predictions
 
+* 05319368.pdf
+  Muhammad Shahab Siddiqui, Dr. Zubair A. Shaikh, Dr. Abdul Rahman Memon. Towards the Development of Human Community Ontology
+
 
