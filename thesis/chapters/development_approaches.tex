@@ -2,10 +2,10 @@
 \chapter{Methodologies for developing ontologies}
 \label{ch:development_approaches}
 
-There are numerous methodologies for building ontologies. As this chapter points out, all of them strive for avoiding common pitfalls and try to minimize the need for refactorisation at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as early as possible.
+There are numerous methodologies for building ontologies. As this chapter points out, all of them strive for avoiding common pitfalls~\cite{ontology_pitfalls} and try to minimize the need for refactorisation at late development steps. Each approach forces the ontology designer to determine as many details about the ontology's domain as early as possible.
 
 % TODO citation: competency questions?
-All methodologies have in common that knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope. Competency questions are stated at the very beginning of the design process and provide the basis for all further steps towards the ontology. The ontology can be considered complete if it is able to provide answers to all competency questions (except the ones that cannot be answered by an ontology).
+All methodologies have in common that knowledge acquisition is centered around \emph{competency questions} that roughly define a scope for the ontology and details about that scope~\cite{competency_questions}. Competency questions are stated at the very beginning of the design process and provide the basis for all further steps towards the ontology. The ontology can be considered complete if it is able to provide answers to all competency questions (except the ones that cannot be answered by an ontology).
 
 In the article about their approach towards ontology design, Noy and McGuinness state three fundamental rules~\cite{Ontology101} of ontology design. Although the authors only apply them to their own approach, they hand out advice for many design decisions, regardless of which approach is used for the design of the ontology:
 
@@ -254,10 +254,10 @@ Grüninger and Fox & … & … \\
 \label{table:approaches_comparison}
 \end{figure}
 
-Considering the characteristics of the development approaches, \methontology is chosen for building the \thinkhomeweather ontology. The main reasons for that decision were:
+Considering the characteristics of the development approaches, \methontology is chosen for building the \thinkhomeweather ontology. The main reasons for that decision are:
 
 \begin{itemize}
-  \item Compared to other approaches, the effort of following this methontology acceptable.
+  \item Compared to other approaches, the effort of following this methodology acceptable.
   \item The approach of \methontology enforces the generation of documentation in order to avoid problems regarding missing, incomplete, or inaccurate documentation.
   \item It is widely used for the development of a variety of ontologies. This implies that many ontology developers consider it suitable for the application on many different domains.
 \end{itemize}
@@ -322,60 +322,34 @@ Each section that describes an activity that involves the creation of some docum
 
 During \emph{specification}, an \emph{Ontology Requirements Specification Document} is generated. This document is written in natural language using a set of intermediate representations or using competence questions. It should include
 
-\begin{itemize} % TODO adapt?
-  \item the purpose of the ontology, its intended uses, scenarios of use, end-users etc.,
-  \item the level of formality (highly informal, semi-informal, semi-formal or rigorously formal). % TODO reference to Uschuld & Gruninger 1996
-  \item the scope which includes the set of terms to be represented, its characteristics and its granularity.
+\begin{itemize}
+  \item the name and the purpose of the ontology, its scope, its intended uses, and possible end-users,
+  \item a list of functional requirements (describing the intended functionality of the ontology) and non-functional requirements (describing all intended properties of the ontology not directly related to its functionality), and
+  \item a list of terms that specify the scope of the ontology.
 \end{itemize}
 
 A good ontology specification document has the following properties:
 
-\begin{itemize}
-  \item \textbf{Consision}: Every term is relevant and there are no duplicated or irrelevant terms.
-  \item \textbf{Partial completeness}: % TODO specify?
-  \item \textbf{Consistency}: All terms and their meanings make sense in the domain.
-\end{itemize}
+Figure~\ref{fig:ontology_specification_template} shows a template of an \emph{Ontology Requirements Specification Document}~\cite{ORSD}.
 
-Below there is a template of an \emph{Ontology Requirements Specification Document}\cite{ORSD}:
-
-\vspace{.5cm}
-
-% TODO ensure there are no page breaks inside this box
+\begin{figure}
 \begin{mdframed}[linewidth=.6pt]
 \setlength{\parindent}{0pt}
-\vspace{.4cm}
-
 \MakeUppercase{\textbf{Ontology Requirements Specification Document}}
-
-\vspace{.6cm}
 
 \textbf{Name}: …
 
-\vspace{.3cm}
-
 \textbf{Purpose}: …
-
-\vspace{.3cm}
 
 \textbf{Scope}: …
 
-\vspace{.3cm}
-
 \textbf{Implementation language}: …
-
-\vspace{.3cm}
 
 \textbf{Intended end-users}: …
 
-\vspace{.3cm}
-
 \textbf{Intended uses}: …
 
-\vspace{.3cm}
-
 \textbf{Ontology requirements}: …
-
-\vspace{.3cm}
 
 \setlength{\leftskip}{.5cm}
 
@@ -393,15 +367,13 @@ Below there is a template of an \emph{Ontology Requirements Specification Docume
 
 \setlength{\leftskip}{0cm}
 
-\vspace{.2cm}
-
 \textbf{Pre-glossary of terms}: …
-
-\setlength{\leftskip}{0cm}
 
 \end{mdframed}
 
-% \vspace{.5cm}
+\caption{Template for the \emph{Ontology Requirements Specification Document} of \methontology~\cite{ORSD}}
+\label{fig:ontology_specification_template}
+\end{figure}
 
 \subsubsection{Knowledge Acquisition}
 
