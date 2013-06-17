@@ -10,7 +10,7 @@ At its current state of development, \emph{Weather Importer} obtains data only f
 
 The classes are arranged in two packages, \texttt{model} and \texttt{main}. The \texttt{model} package contains an object-oriented data model for the weather data being processed (see section~\ref{sec:importer_model}). All other classes belong to the \texttt{main} package, including the \texttt{Main} class providing the \texttt{main} method, the classes \texttt{TurtleStatement} and \texttt{TurtleStore} for output in \emph{Turtle syntax}\cite{Turtle} (see section~\ref{subsec:importer_turtle}), the interface \texttt{Importer}, and its reference implementation \texttt{YrNoImporter} (see section~\ref{subsec:importer_fetch}), \texttt{WeatherImporterProperties} which encapsulates the \emph{properties file} (see section~\ref{sec:importer_application}), and \texttt{WeatherImporterException}, an exception class that is used throughout the application.
 
-All classes belonging to \emph{Weather Importer} include comments suitable for use with the \emph{Javadoc Tool}\footnote{\href{http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html}{http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html}}.
+All classes belonging to \emph{Weather Importer} include comments suitable for use with the \emph{Javadoc Tool}~\cite{javadoc}.
 
 \section{The data model}
 \label{sec:importer_model}
@@ -33,7 +33,7 @@ The core of \emph{Weather Importer} is formed by an object-oriented data model t
 
 The domain model in the package \texttt{model} which resembles the structure of the \thinkhomeweather ontology is depicted in the \emph{UML} class diagram in figure~\ref{fig:importer_model1}; to give an overview, figure~\ref{fig:importer_model2} shows a simplified class diagram that shows only the most important classes \texttt{Weather}, \texttt{WeatherReport}, \texttt{WeatherState}, and \texttt{WeatherPhenomenon}.
 
-Other than its name suggests, \texttt{OntologyClass} is an interface that is implemented by every class that corresponds to a concept (class) in the ontology. That interface defines a set of methods which are necessary to export an object's data either to individuals and statements for adding them to the ontology using \emph{Apache Jena}\footnote{\href{http://jena.apache.org/}{http://jena.apache.org/}} or to a representation of the individuals and statements in \emph{Turtle syntax} (see section~\ref{sec:importer_application} below). The methods defined by \texttt{OntologyClass} are:
+Other than its name suggests, \texttt{OntologyClass} is an interface that is implemented by every class that corresponds to a concept (class) in the ontology. That interface defines a set of methods which are necessary to export an object's data either to individuals and statements for adding them to the ontology using \emph{Apache Jena}~\cite{apache_jena} or to a representation of the individuals and statements in \emph{Turtle syntax} (see section~\ref{sec:importer_application} below). The methods defined by \texttt{OntologyClass} are:
 \begin{itemize}
   \item \texttt{createIndividuals()} creates individuals and statements holding the data that is stored in the object and adds them to the ontology. The method calls \texttt{createIndividuals()} for any objects that are connected to this object, with the exception of instances of \texttt{WeatherState} and \texttt{WeatherReport} that are linked together via the properties \texttt{previousState} and \texttt{previousReport}, respectively.
   
@@ -71,18 +71,18 @@ Additionally, there is an enumeration named \texttt{WeatherConditions} having va
 
 The \emph{Weather Importer} application basically performs three tasks when being launched: It reads the \thinkhomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file, modifies it in some way and and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{Turtle syntax}\cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}.
 
-The application depends on the \emph{Apache Jena} framework\footnote{\href{http://jena.apache.org/}{http://jena.apache.org/}} (successfully tested with 2.10.0). For the unit tests (see section~\ref{sec:importer_tests}), \emph{JUnit}\footnote{\href{http://junit.org/}{http://junit.org/}} (4.11), the \emph{Pellet} OWL 2 reasoner\footnote{\href{http://clarkparsia.com/pellet/}{http://clarkparsia.com/pellet/}} (2.3.0) and \emph{Cobertura}\footnote{\href{http://cobertura.sourceforge.net/}{http://cobertura.sourceforge.net/}} (1.9.4.1) are used. The version numbers given in parentheses give the versions of the most recent releases of the libraries at the time of writing. Newer releases may work, but have not been tested.
+The application depends on the \emph{Apache Jena} framework~\cite{apache_jena} (successfully tested with 2.10.0). For the unit tests (see section~\ref{sec:importer_tests}), \emph{JUnit}~\cite{junit} (4.11), the \emph{Pellet} \eacs{OWL} 2 reasoner~\cite{pellet} (2.3.0) and \emph{Cobertura}~\cite{cobertura} (1.9.4.1) are used. The version numbers given in parentheses give the versions of the most recent releases of the libraries at the time of writing. Newer releases may work, but have not been tested.
 
-\emph{Weather Importer} comes with a build script for \emph{Apache Ant}\footnote{\href{http://ant.apache.org/}{http://ant.apache.org/}} that provides target definitions for compiling, running and testing the application:
+\emph{Weather Importer} comes with a build script for \emph{Apache Ant}~\cite{apache_ant} that provides target definitions for compiling, running and testing the application:
 
 \begin{itemize}
-  \item The targets \texttt{compile} and \texttt{compile\_test} compile the application and the \emph{JUnit} test cases, respectively. \texttt{dist} generates two \emph{JAR} files\footnote{\href{http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html}{http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html}}, one containing the application and one for the class that imports weather data from \yrno. \texttt{clean} removes all files and directories generated by the aforementioned targets and the target \texttt{javadoc}; \texttt{rebuild} executes \texttt{clean}, \texttt{compile}, \texttt{dist} and \texttt{compile\_test} consecutively.
+  \item The targets \texttt{compile} and \texttt{compile\_test} compile the application and the \emph{JUnit} test cases, respectively. \texttt{dist} generates two \emph{JAR} files~\cite{jar}, one containing the application and one for the class that imports weather data from \yrno. \texttt{clean} removes all files and directories generated by the aforementioned targets and the target \texttt{javadoc}; \texttt{rebuild} executes \texttt{clean}, \texttt{compile}, \texttt{dist} and \texttt{compile\_test} consecutively.
   \item The targets \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle} launch the application in the respective modes.
   \item The target \texttt{test} runs the \emph{JUnit} test cases; \texttt{coverage} generates a coverage report using \emph{Cobertura}, i.e. an overview about which parts of the application's code are covered by the test cases (see section~\ref{sec:importer_tests} for details).
-  \item The target \texttt{javadoc} generates documentation from comments in the source code using the \emph{Javadoc Tool}\footnote{\href{http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html}{http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html}}.
+  \item The target \texttt{javadoc} generates documentation from comments in the source code using the \emph{Javadoc Tool}~\cite{javadoc}.
 \end{itemize}
 
-Various parameters of \emph{Weather Importer} are configurable using a \emph{properties file}\footnote{\href{http://docs.oracle.com/javase/7/docs/api/java/util/Properties.html\#load(java.io.Reader)}{http://docs.oracle.com/javase/7/docs/api/java/util/Properties.html\#load(java.io.Reader)}} which provides the location for which weather data shall be fetched (given by latitude, longitude and altitude), the timestamps relative to the current time in hours for which instances of \texttt{WeatherReport} shall be created, names of input and output files and the name of the class that fetches weather data. Additional options required by an implementation of the \texttt{Importer} interface may be added.
+Various parameters of \emph{Weather Importer} are configurable using a \emph{properties file}~\cite{java_properties} which provides the location for which weather data shall be fetched (given by latitude, longitude and altitude), the timestamps relative to the current time in hours for which instances of \texttt{WeatherReport} shall be created, names of input and output files and the name of the class that fetches weather data. Additional options required by an implementation of the \texttt{Importer} interface may be added.
 
 \subsection{\texttt{fetch} mode}
 \label{subsec:importer_fetch}
@@ -102,7 +102,7 @@ As most weather services do not provide data for arbitrary points of time, the \
   \item In case there is no data for a period of time, it is calculated using linear interpolation from data before and after the missing period\cite{maths}.
   
   % TODO reference section about sun position
-  \item An instance of \texttt{SunPosition} is associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the \emph{PSA algorithm}\cite{PSA_algorithm}; the C++ reference implementation of the \emph{PSA algorithm}\footnote{\href{http://www.psa.es/sdg/sunpos.htm}{http://www.psa.es/sdg/sunpos.htm}} was ported to Java.
+  \item An instance of \texttt{SunPosition} is associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the \emph{PSA algorithm}\cite{PSA_algorithm}; the C++ reference implementation of the \emph{PSA algorithm}~\cite{psa_online} was ported to Java.
 \end{itemize}
 
 Additionally, the class \texttt{WeatherState} provides the method \texttt{mergePhenomena()} which merges all instances of \texttt{WeatherPhenomenon} of the same type that are associated to that instance of \texttt{WeatherState}. Actual merging of values takes place in the constructors of the subclasses of \texttt{WeatherPhenomenon}; all current implementations merge values by calculating the arithmetic mean of all values provided\cite{maths}.
@@ -217,8 +217,7 @@ Section~\ref{sec:appendix_turtle_output} in the appendix shows a part of the out
 \section{Unit tests}
 \label{sec:importer_tests}
 
-% TODO footnotes again?
-\emph{Weather Importer} incorporates a set of \emph{JUnit}\footnote{\href{http://junit.org/}{http://junit.org/}} tests that covers reasoning in the \thinkhomeweather ontology and the application itself. For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used.
+\emph{Weather Importer} incorporates a set of \emph{JUnit}~\cite{junit} tests that covers reasoning in the \thinkhomeweather ontology and the application itself. For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used.
 
 The following test categories are implemented:
 \begin{itemize}
