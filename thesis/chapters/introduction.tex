@@ -14,6 +14,7 @@ In order to fulfil its purpose, a smart home requires three elements: Intelligen
 
 As smart homes comprise a large field of research and development, there exist several projects that are aimed at developing infrastructures for smart homes. Some of these projects are:
 \begin{itemize}
+  % TODO gator tech smart home
   \item \textbf{Mozer's adaptive house}: The \emph{Adaptive House} is an approach that is based on continuous monitoring the building's inhabitants regarding what actions they take and when. Based on observations collected over a certain period of time, the \emph{Adaptive House} tries to predict the inhabitants' behaviour in order to perform the previously monitored actions (e.g. controlling the building's illumination) automatically.~\cite{adaptivehouse}
   \item \textbf{Georgia Tech Aware Home}: The \emph{Georgia Tech Aware Home} is centered around a pre-defined set of use cases that are part of various scenarios such as busy families, ageing in place, or children with special needs. Throughout the building, monitors, input interfaces etc. are placed which provide assistance to the inhabitants. The \emph{Tech Aware Home} is a rather static approach that does not include the idea of learning from the inhabitants.~\cite{techawarehome}
   \item \textbf{eHome}: \emph{eHome} is a project implemented for research purposes in a two-room apartment that is equipped with actors for tasks like turning light on and off, moving curtains etc. Three user interfaces (laptop, TV set and mobile phone) are available for performing the available tasks. \emph{eHome} is not a ``smart home'' in the strict sense, instead ``home automation'' is a better suitable term.~\cite{ehome}
@@ -31,6 +32,8 @@ The use of well-established semantic web technologies for its knowledge base and
 \thinkhome is designed to process input data from various sources. One of possible sources which is not yet implemented is weather data. At the moment \thinkhome's multi-agent system is unable to make control decisions based on current weather conditions such as temperature, humidity, precipitation, or sunshine. Furthermore, \thinkhome does not have any knowledge about future weather conditions such as upcoming sudden changes of weather which may require specific control decisions in advance.
 
 \section{Problem statement and goal}
+
+% TODO mention predictive control papers
 
 The aim of this thesis is the development of a data model for weather data which will be utilized by \thinkhome. Apart from current weather data, this model will cover future weather data over a time range suitable for the use within a smart home. This enables \thinkhome to use current and future states of the weather as a source of knowledge for making control decisions. While data about the current weather state can be obtained from various sensors that are installed at the building, data about future weather states must be obtained from weather services that provide forecasts for the desired period. There is a wide range of weather services available over the Internet which can be utilized for this purpose.
 
