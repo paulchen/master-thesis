@@ -4,29 +4,18 @@
 % TODO uncomment
 % \chapterquotation{If you want a happy ending, that depends, of course, on where you stop your story.}{Orson Welles}
 
-% TODO OM ontology (see section about units of measurements)
-
-% TODO
-
 \section{Summary}
 
 The previous chapters present a weather data model based on an \eacs{OWL} ontology, a Java application for importing data into that model, and all prerequisites leading to these two outcomes.
+
+After chapter~\ref{ch:intro} gives an introduction into the motivation behind the thesis and describes the problem statement, the intended goal and the methodological approach, chapter~\ref{ch:existing_work} digs into the foundations the thesis builds upon: Ontologies, ontology related technologies like \eacs{RDF}, \eacs{RDFS}, or \eacs{OWL}, \thinkhome, already existing ontologies for weather data, and ontologies that cover information related to the domain covered by \thinkhomeweather. Chapter~\ref{ch:weather_data} then focuses on weather data that is available from both locally installed weather sensors as well as from weather services accessible via Internet. This chapter then identifies a set of weather phenomena which \thinkhomeweather shall cover and determines further details about the domain of weather data as used in the present context.
+Of the weather services being discussed, \yrno is selected for providing a reference implementation for the import of weather data into \thinkhomeweather in a later step. Chapter~\ref{ch:development_approaches} sheds light on five different approaches towards the development of new ontologies from scratch. The approaches are compared to each other and one of them, \methontology, is identified as the one that fits the requirements for designing \thinkhomeweather best.
+
+Eventually, chapter~\ref{ch:thinkhomeweather_ontology} applies \methontology to \thinkhomeweather and describes every step in a detailled manner. As the data model itself does not contain any weather data, in chapter~\ref{ch:weather_importer} a Java application is developed which accesses \yrno to retrieve weather data for a certain location, transforms the data being obtained and adds them to the data model of \thinkhomeweather.
+
+\vspace{1em}
+
 % TODO
-
-\begin{comment}
-
-The previous chapters presented blah blah. Chapter ? summarized the current state of the art, chapter ? gave an overview of commonly used 
-
-% TODO
-The result of the thesis is \thinkhomeweather, a weather data model for use within \thinkhome. It features  % TODO
-
-% TODO
-Additionally, the \emph{Weather Importer} which is presented in chapter ? represents a modular Java project for importing weather data from a weather service via Internet into an object-oriented data model. The data can then be filled into the \thinkhomeweather ontology for %TODO what?
-
-% TODO evaluation
-% TODO comparison to other ontologies
-
-\end{comment}
 
 \section{Outlook}
 
@@ -51,30 +40,3 @@ Further performance optimisations may be possible by modifying the internal stru
 \vspace{1cm}
 
 Nevertheless, in its current state, \thinkhomeweather represents an ontology that fully complies with its specification of covering current and future weather data as far as possible. Although being developed to be part of the knowledge base of \thinkhome, it qualifies to be used in other smart home systems as well. Eventually, the employment of \thinkhomeweather in environments other than smart homes is also imaginable.
-
-\begin{comment}
-% TODO reference sections instead of chapters?
-Chapters ?, ? and ? describe some of the shortcomings that come with OWL and all ontologies being used by \thinkhomeweather. The main problems arising are:
-
-% TODO e.g. owl-time not usable
-% TODO units system -- slow, unusable
-% TODO geo ontology
-% TODO bugs in protege
-\begin{itemize}
-  \item First problem.
-  \item Second problem.
-\end{itemize}
-
-OWL will have a long way to go to overcome these shortcomings in order to further ease definition of ontologies that handle specific domains.
-
-% TODO
-
-As discussed in section ?, the performance is not the yellow from the egg.
-
-Use a different reasoner? (Modifications needed)
-
-Change the internal structure without altering symbols that are used internally.
-
-Eliminate unnecessary terms.
-
-\end{comment}
