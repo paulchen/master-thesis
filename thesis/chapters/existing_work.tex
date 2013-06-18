@@ -171,9 +171,8 @@ Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among oth
   \item Properties can have various characteristics: A property can be inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:property\hspace{0pt}Disjoint\hspace{0pt}With}). A property can be reflexive (it relates everything to itself, \texttt{owl:\hspace{0pt}Reflexive\hspace{0pt}Property}), irreflexive (no individual can be related to itself, \texttt{owl:\hspace{0pt}Irreflexive\hspace{0pt}Property}), functional (every individual can be linked to at most one other individual, \texttt{owl:\hspace{0pt}Functional\hspace{0pt}Property}) or inverse functional (the inverse property is functional, \texttt{owl:\hspace{0pt}Inverse\hspace{0pt}Functional\hspace{0pt}Property}).
 \end{itemize}
 
-% TODO citation: the first ontology war (open world assumption)
 % TODO citation: monotonic reasoning
-Reasoning in \eacs{OWL} respects the \emph{open world assumption}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa.
+Reasoning in \eacs{OWL} respects the \emph{open world assumption}~\cite{open_world_assumption}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa.
 
 % TODO citations (OWL reasoning specifications)
 

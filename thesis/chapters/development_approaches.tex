@@ -59,7 +59,7 @@ For each methodology, the following topics are discussed in section~\ref{sec:ont
     \end{itemize}
 \end{itemize}
 
-Section~\ref{sec:approaches_summary} then compares the methodologies with each other while section~\ref{sec:approaches_conclusion} concludes about the results and comes to a decision regarding the methodology which fits the requirements of \thinkhomeweather best and thus will be used for the development of the ontology. It is possible that this decision is not be unambiguous if more than one approach turns out to be suitable for the present context.
+Section~\ref{sec:approaches_conclusion} then compares the methodologies and concludes about the results and comes to a decision regarding the methodology which fits the requirements of \thinkhomeweather best and thus will be used for the development of the ontology. It is possible that this decision is not be unambiguous if more than one approach turns out to be suitable for the present context.
 
 As section~\ref{sec:ontology_approaches} focuses on the characteristics of the methodologies required to take a decision in favour of one of the approaches, section~\ref{sec:methontology} then describes the selected approach in a more detailed manner.
 
@@ -317,6 +317,7 @@ For each of the activities, only ideas behind them are covered, but their applic
 Each section that describes an activity that involves the creation of some documentation artefact (e.g. a table or a document), a template for the respective artefact is presented.
 
 \subsubsection{Specification}
+\label{sec:methontology_specification}
 
 \methontology defines a precise approach for the development of an ontology. It specifies certain activities that need to be performed, how these activities are performed and in which order. Thus, the activity of \emph{planification} is completed by specifying \methontology itself and the ontology developer is exempted therefrom. Hence, the first step of developing an ontology from scratch is \emph{specification}
 
@@ -566,7 +567,7 @@ As ontologies are built for reuse and the wheel shall not be reinvented during t
 
 \subsubsection{Implementation}
 
-% TODO 
+% TODO citation
 The task of implementation requires an environment that supports the ontologies selected in the integration step. Features that should be provided by such an environment are
 
 \begin{itemize}
@@ -582,7 +583,11 @@ In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology~\cite{OWL} 
 
 \subsubsection{Evaluation}
 
-% TODO
+During \emph{evaluation}, verification takes place whether the ontology which has been developed in the previous steps satisfies the requirements that have been specified initially. The ontology must fulfil all functional and non-functional requirements listed the \emph{Ontology Requirements Specification Document} presented in section~\ref{sec:methontology_specification}. In case of a mismatch, the ontology will traverse the activities in the life cycle (\emph{Conceptualisation}, \emph{Formalisation}, \emph{Integration}, \emph{Implementation}, and \emph{Evaluation}) once more.
+
+There may be requirements that an ontology is unable to fulfil due to certain limitations, e.g. the \emph{open world assumption}~\cite{open_world_assumption}. For instance, \eacs{OWL}, which honors the \emph{open world assumption}, cannot tell the absence of an instance of some concept. This leads to cases where an ontology fails to answer a competency question such as ``Does this group only consist of women?''; just because the ontology does not contain an individual which is a man, it does not mean that there is no man; the ontology can only tell that there is no man it knows about.
+
+Evaluation (and specification) must take limitations into account which affect ontologies generally or the ontology language being used.
 
 \subsubsection{Documentation}
 
@@ -590,7 +595,7 @@ In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology~\cite{OWL} 
 
 During the steps described above, a set of documents is compiled. If generated properly and accurately, these documents describe every detail of the ontology. Using this approach, \methontology forces the ontology designer to document throughout the development process. Any problems that come with documentation being created after the development process -- e.g. incomplete or wrong documentation, the ontology designer does not write the documentation herself, or some ideas the designer had in the design process are lost -- are avoided.
 
-Hence, in \methontology, \emph{documentation} is an activity that is not performed explicitely. One the development process has finished, both the ontology and its documentation are ready to use. 
+Hence, in \methontology, \emph{documentation} is an activity that is not performed explicitly. Once the development process has finished, both the ontology and its documentation are ready to use. 
 
 \subsubsection{Maintenance}
 
