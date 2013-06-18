@@ -10,6 +10,7 @@
 
 \section{Summary}
 
+The previous chapters present a weather data model based on an \eacs{OWL} ontology, a Java application for importing data into that model, and all prerequisites leading to these two outcomes.
 % TODO
 
 \begin{comment}
@@ -28,6 +29,28 @@ Additionally, the \emph{Weather Importer} which is presented in chapter ? repres
 \end{comment}
 
 \section{Outlook}
+
+The current version of \thinkhomeweather comes with a few problems that require future work in order to resolve them. Not all of these problems lie in the scope of \thinkhomeweather. The main problems arising are:
+
+\begin{itemize}
+  % TODO mention this somewhere else?
+  \item There are a few situations that expose bugs in \protege and the \emph{Pellet} reasoner. While it is possible to develop ontologies using these technologies which cover a certain domain exactly in the way required by a specification, it is hardly avoidable to run into bugs that manifest themselves in the form of incomprehensible error messages. In that case, During the development of \thinkhomeweather, it has not been possible to track these bugs down in order to find their reason and to fix them. Future work that resolves these bugs may bring the opportunity to implement additional features into \thinkhomeweather that are currently impossible.
+  
+  \item At the time of writing, \emph{OWL-Time}~\cite{owl-time} (see section~\ref{subsec:date_ontologies}) has not reached the state of being a \emph{\eacs{W3C} recommendation}~\cite{w3c-process}; since it was first published more than six years ago, it is a \emph{working draft}. Although it can be assumed that the core concepts and relations defined by \emph{OWL-Time} will not change regarding their syntax and semantics, using technologies that are not yet published as being in a stable state always leaves a stale taste.
+  
+  \item Similar problems arise from the use of the \emph{Basic Geo (\eacs{WGS84} lat/long) Vocabulary}~\cite{wgs84_vocabulary}. This technology has not even been submitted to the \emph{\eacs{W3C} recommendation track} for standardisation. Furthermore, no work on the \emph{\eacs{WGS84} vocabulary} itself has been done since 2006. The \emph{\eacs{W3C} Geospatial Incubator Group} proposed the introduction of \emph{GeoRSS XML} and \emph{Geo OWL} in 2007~\cite{w3c_geo_report1} which are designed to enrich \eacs{RSS}/Atom feeds and \eacs{OWL} ontologies with geographical information. Although \emph{GeoRSS} seems to have gained popularity over the last few years, \emph{Geo OWL} continues to lead a miserable existance. The last reports by the \emph{\eacs{W3C} Geospatial Incubator Group} were published in 2007~\cite{w3c_geo_report1,w3c_geo_report2}. No standard which may be qualified to supersede the \emph{Basic Geo (\eacs{WGS84} lat/long) Vocabulary} has yet been released.
+\end{itemize}
+
+% TODO mention this elsewhere
+Furthermore, \thinkhomeweather suffers performance issues regarding the time required for reasoning. In test runs that were conducted after development, complete reasoning in \protege using the \emph{Pellet reasoner} of the ``empty'' ontology (not containing any individuals denoting weather data) took between $15$ and $30$ seconds and between $45$ and $60$ seconds for the ontology that contains weather data imported using the \emph{Weather Importer} from chapter~\ref{ch:weather_importer} (on a PC equipped with a \emph{Intel Q6600 CPU} running \emph{Ubuntu Linux}). % TODO citations?
+
+One reason for this performance issues is the use of the \muo ontology which increases the reasoning time by about $30 \%$ (see section~\ref{sec:ontology_imports}). Abandonment of this ontology would speed up refactoring, though this would introduce problems regarding literal values without a unit. There are other ontologies which may be used instead of the \muo ontology (see section~\ref{subsec:unit_ontologies}), such as the \eacs{OM} ontology. However, as the \eacs{OM} ontology adds about the same level of complexity to the ontology, it may increase the reasoning time of \thinkhome to the same extend as \muo. It is questionable whether there is a unit ontology that allows faster reasoning than \muo.
+
+Further performance optimisations may be possible by modifying the internal structure of \thinkhome without changing name and semantics of externally accessed concepts. E.g. concepts such as \Egls{weather report}, \Egls{weather state}, and \Egls{weather phenomenon} together with their respective sub-concepts remain part of the ontology while the definitions of these concepts are modified to allow faster reasoning. However, it is unknown to what degree performance gains are possible using this approach.
+
+\vspace{1cm}
+
+Nevertheless, in its current state, \thinkhomeweather represents an ontology that fully complies with its specification of covering current and future weather data as far as possible. Although being developed to be part of the knowledge base of \thinkhome, it qualifies to be used in other smart home systems as well. Eventually, the employment of \thinkhomeweather in environments other than smart homes is also imaginable.
 
 \begin{comment}
 % TODO reference sections instead of chapters?
