@@ -383,7 +383,6 @@ Sources of knowledge are experts, books, handbooks, figures, tables and even oth
 
 \subsubsection{Conceptualisation}
 
-% TODO placement?
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/methontology_tasks.pdf}
   \caption{Tasks of the conceptualisation activity according to \methontology \cite{MethontologyLegal}}
@@ -415,19 +414,15 @@ Figure~\ref{fig:methontology_example_glossary} shows a template for the glossary
 
 \paragraph{Task 2: Concept Taxonomies}
 
-When the glossary of terms contains a sizable number of concepts, these ontologies will be arranged one or more taxonomies that define the concept hierarchy. It is advisable to display the taxonomies in several diagrams.
+Once the glossary of terms contains a sizeable number of concepts, these ontologies will be arranged one or more taxonomies that define the concept hierarchy.
 
-% TODO reference Frame Ontology and OKBC Ontology
 \methontology proposes the use of four taxonomic relations:
-% TODO description
 \begin{enumerate}
-  \item \textbf{Subclass-Of}
-  \item \textbf{Disjoint-Decomposition}
-  \item \textbf{Exhaustive-Decomposition}
-  \item \textbf{Partition}
+  \item \textbf{Subclass-Of}: If a concept $B$ is a \emph{Subclass-Of} a concept $A$, every instance of $B$ is also an instance of $A$.
+  \item \textbf{Disjoint-Decomposition}: A \emph{Disjoint-Decomposition} of a concept $C$ is a set of subclasses of $C$ such that an instance of one of these subclasses can never be a subclass of another of these subclasses, while an instance of $C$ is not necessarily an instance of one of its subclasses.
+  \item \textbf{Exhaustive-Decomposition}: A \emph{Exhaustive-Decomposition} of a concept $C$ is a set of subclasses of $C$ such that every instance of $C$ is an instance of at least one of its subclasses.
+  \item \textbf{Partition}: A \emph{Partition} of $C$ is a set of subclasses of $C$ such that every instance of $C$ is an instance of exactly one of its subclasses.
 \end{enumerate}
-
-% TODO error check?
 
 \begin{figure}
 \centering
@@ -436,11 +431,11 @@ When the glossary of terms contains a sizable number of concepts, these ontologi
 \label{fig:methontology_example_concept_taxonomies}
 \end{figure}
 
-The concept taxonomies are visualised in \emph{concept-classification trees} which are diagrams that depict the concepts and their taxonomic relations. See figure~\ref{fig:methontology_example_concept_taxonomies} for an example of a concept-classification trees. In case the ontology contains a large number of concepts, the tree may be split into several diagrams.
+The concept taxonomies are visualised in \emph{concept-classification trees} which are diagrams that depict the concepts and their taxonomic relations. See figure~\ref{fig:methontology_example_concept_taxonomies} for an example of a concept-classification trees. In case the ontology contains a large number of concepts, the tree may be split into several diagrams in order to keep the trees clear.
 
 \paragraph{Task 3: Ad-hoc binary relation diagrams}
 
-In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagrams show all ad-hoc relationships between concepts of the same (or different) concept taxonomy. Figure~\ref{fig:methontology_example_binary_relations} for an example of a binary relation diagram.
+In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagrams show all ad-hoc relationships between concepts of the same (or different) concept taxonomy. See figure~\ref{fig:methontology_example_binary_relations} for an example of a binary relation diagram.
 
 \begin{figure}
 \centering
@@ -449,11 +444,11 @@ In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagr
 \label{fig:methontology_example_binary_relations}
 \end{figure}
 
-% TODO error check
-
 \paragraph{Task 4: Concept dictionary}
 
-The \emph{concept dictionary} contains all domain concepts together with their relations, their instances and their class and instance attributes. All information from the previous steps contribute to this dictionary. It is again be built as a table having appropriate columns. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts.
+The \emph{concept dictionary} contains all domain concepts together with their relations, their instances and their class attributes (i.e. attributes that describe properties of classes) and instance attributes (i.e. attributes that describe properties of instances). All information from the previous steps contribute to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts.
+
+Figure~\ref{fig:methontology_example_concept_dictionary} shows a template for the concept dictionary.
 
 \begin{figure}
 \centering
@@ -468,15 +463,9 @@ The \emph{concept dictionary} contains all domain concepts together with their r
 \label{fig:methontology_example_concept_dictionary}
 \end{figure}
 
-Figure~\ref{fig:methontology_example_concept_dictionary} shows a template for the concept dictionary.
-
-% TODO error check
-
 \paragraph{Task 5: Ad-hoc binary relation details}
 
-In this step, for all ad-hoc binary relations details will be specified in a tabular manner. The resulting table will have a row for each relation and columns named \emph{relation name}, \emph{source concept}, \emph{source cardinality (max)}, \emph{target concept}, \emph{inverse relation}.
-
-% TODO error check
+In this step, for all ad-hoc binary relations details are specified in a tabular manner. The resulting table has a row for each relation and columns named \emph{relation name}, \emph{source concept}, \emph{source cardinality (max)}, \emph{target concept}, \emph{inverse relation}. Figure~\ref{fig:methontology_example_binary_relations_table} shows a template for the binary relations table.
 
 \begin{figure}
 \centering
@@ -491,11 +480,13 @@ In this step, for all ad-hoc binary relations details will be specified in a tab
 \label{fig:methontology_example_binary_relations_table}
 \end{figure}
 
-Figure~\ref{fig:methontology_example_binary_relations_table} shows a template for the binary relations table.
-
 \paragraph{Task 6: Instance attributes}
 
-This step leads to an \emph{instance attributes table}. That is a table of all \emph{instance attributes} that are listed in the concept dictionary. Each row contains the description of one instance attribute. An instance attribute is an attribute that describes an instance of a concept. Its value may be different for each instance of the concept. The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute.
+This step leads to an \emph{instance attributes table}. That is a table of all \emph{instance attributes} that are listed in the concept dictionary. Each row contains the description of one instance attribute. An instance attribute is an attribute that describes a property of an instance of a concept. Its value may be different for each instance of the concept.
+
+The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute.
+
+See figure~\ref{fig:methontology_example_instance_attributes} for a template for the instance attributes table.
 
 \begin{figure}
 \centering
@@ -510,11 +501,9 @@ This step leads to an \emph{instance attributes table}. That is a table of all \
 \label{fig:methontology_example_instance_attributes}
 \end{figure}
 
-See figure~\ref{fig:methontology_example_instance_attributes} for a template for the instance attributes table.
-
 \paragraph{Task 7: Class attributes}
 
-All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns will be \emph{name}, \emph{concept name} (i.e. the name of the concept where the attribute is defined), \emph{value type}, \emph{value(s)}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, all information about related instance attributes, class attributes, constants, rules and formulae may be specified that are specified in the instance attribute as well.
+All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns will be \emph{name}, \emph{concept name} (i.e. the name of the concept where the attribute is defined), \emph{value type}, \emph{value(s)}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, all information about related instance attributes, class attributes, constants, rules, and formulae may be specified that are specified in the instance attribute as well.
 
 \begin{figure}
 \centering
@@ -533,7 +522,7 @@ Figure~\ref{fig:methontology_example_class_attributes} shows a template for the 
 
 \paragraph{Task 8: Constants}
 
-In this step, the \emph{constants table} is created that specifies details about all the constants listed in the glossary of terms. For each constant the following is specified: name, value type, value, the measurement unit for numerical constants and the attributes that can be inferred using the constant.
+In this step, the \emph{constants table} is created that specifies details about all the constants listed in the glossary of terms. For each constant is specified by its name, its value type, its value, the measurement unit for numerical constants, and the attributes that can be inferred using the constant.
 
 % TODO constants table -> instances table?
 \begin{figure}
@@ -569,16 +558,17 @@ Figure~\ref{fig:methontology_example_constants} shows a template for the constan
 
 \subsubsection{Formalisation}
 
+% TODO wtfwtfwtf
+
 \subsubsection{Integration}
 
 As ontologies are built for reuse and the wheel shall not be reinvented during the creation of a new ontology, the ontologist searches for existing ontologies. The goal is to import ontologies that already define terms that are part of the conceptualisation of the ontology currently being developed.
 
 \subsubsection{Implementation}
 
-% TODO references
+% TODO 
 The task of implementation requires an environment that supports the ontologies selected in the integration step. Features that should be provided by such an environment are
 
-% TODO make description more detailled?
 \begin{itemize}
   \item a lexical and syntactic analyzer to guarantee the absence of lexical and syntactic errors,
   \item an editor for adding, modifying and removing definitions,
@@ -588,7 +578,7 @@ The task of implementation requires an environment that supports the ontologies 
   \item an automatic maintainer for managing the inclusion, removal or modification of existing definitions.
 \end{itemize}
 
-In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology is created using \protege together with the Pellet reasoner.
+In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology~\cite{OWL} is created using \protege~\cite{protege} together with the \emph{Pellet} reasoner\cite{pellet}.
 
 \subsubsection{Evaluation}
 
