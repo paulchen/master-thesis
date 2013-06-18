@@ -311,3 +311,7 @@ NEW (2013-04-09):
 * An e-Business Model Ontology for Modeling e-Business.pdf
   Alexander Osterwalder, Yves Pigneur. An e-Business Model Ontology for Modeling e-Business
 
+* LOAIT07-Proceedings.pdf
+  Rinke Hoekstra, Joost Breuker, Marcello Di Bello, Alexander Boer. The LKIF Core Ontology of Basic Legal Concepts
+
+
