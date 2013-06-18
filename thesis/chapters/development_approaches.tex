@@ -174,7 +174,29 @@ There are various applications of this methodology. Some examples include the \e
 
 \subsubsection{Description}
 
-% TODO
+When Grüninger and Fox began designing their \eacs{TOVE} (\emph{TOronto Visual Enterprise}) \emph{Enterprise Modelling project} based on ontologies, they failed to identify an already existing approach towards ontology development that would suit their needs. In order to overcome this problem, they formulated their own approach~\cite{GruningerFox}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/tove_process.pdf}
+\caption{The workflow proposed by the \eacs{TOVE} methodology~\cite{GruningerFox}.}
+\label{fig:tove_process}
+\end{figure}
+
+
+This approach splits the ontology development process into a set of activities as shown in figure~\ref{fig:tove_process}:
+
+\begin{itemize}
+  \item The \emph{Motivating Scenarios} are a set of use cases the ontology is used for.
+  \item These scenarios lead to \emph{Informal Competency Questions} which are a set of questions that the ontology shall be able to answer once it is completed.
+  % TODO citation first-order logic
+  \item \emph{First Order Logic: Terminology}: In this step, the terminology is specified using first-order logic (or the logic used by the intended ontology language). The terms (objects, attributes, and relations) are derived from the previously formulated competency questions.
+  \item Then, the competency questions are transformed into \emph{Formal Competency Questions} in terms of entailment and consistency problems with respect to the axioms in the ontology.
+  \item \emph{First Order Logic: Axioms}: Now, formal axioms are stated that define the terms and constraints on objects in the ontology using first-order logic.
+  \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e. it can provide answers to all 
+\end{itemize}
+
+Once all these steps are completed, the formal model is implemented using a ontology language (e.g. \eacs{OWL}).
 
 \subsubsection{Applications}
 
@@ -182,19 +204,20 @@ Examples for the application of this methodology are the \emph{ontology of virtu
 
 \subsubsection{Analysis}
 
-% TODO
+The approach proposed by Grüninger and Fox is a rather formal one that is based on first-order logic which forms the base of many ontology languages.
 
 \begin{itemize}
-  \item \textbf{Effort:} % TODO
+  \item \textbf{Effort:} Putting all parts of the ontology being developed into a formal model in first-order logic may turn out to be a tedious task. The 
   
-  \item \textbf{Usage:} % TODO
+  \item \textbf{Usage:} Several applications of this approach can be found in literature. However, there are approaches such as \methontology (see section~\ref{subsec:approach5}) or the approach by Uschold and King (see section+\ref{subsec:approach3}) that are far more popular than this approach.
   
-  \item \textbf{Applicability:} % TODO
+  \item \textbf{Applicability:} There are no limits regarding the domains this approach can be used with.
   
-  \item \textbf{Strictness:} % TODO
+  \item \textbf{Strictness:} This approach defines a strict procedure to follow, but leaves a margin for individual design decisions by the ontology developer.
   
-  \item \textbf{Documentation:} % TODO
+  \item \textbf{Documentation:} This approach does not enforce the creation of documentation; hence problems regarding missing, incomplete, or inaccurate documentation may arise when applying this approach.
 \end{itemize}
+
 
 \subsection{METHONTOLOGY}
 \label{subsec:approach5}
@@ -223,7 +246,7 @@ For the development of an ontology in the hydrographical domain~\cite{Hydrograph
   
   \item \textbf{Applicability:} There are no limits regarding the domains \methontology can be used for.
   
-  \item \textbf{Strictness:} \methontology defines procedure, but leaves a margin for individual design decisions by the ontology developer.
+  \item \textbf{Strictness:} \methontology defines a procedure to follow, but leaves a margin for individual design decisions by the ontology developer.
   
   \item \textbf{Documentation:} \methontology enforces the generation of documents which document the ontology at the time when the proposed steps are performed; documentation is not a step which has to be performed separately. Hence, \methontology avoids many problems regarding the documentation being in an undesirable state.
 \end{itemize}
@@ -239,13 +262,13 @@ The previous section gives detailed insights into some popular methodology of de
 \hline
 \textbf{Methodology} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
 \hline\hline
-Ontology 101 & Simple and coherent approach\newline Low effort & Documentation not enforced \\
+Ontology 101 & Simple and coherent approach\newline Low effort & Documentation not enforced\newline Seldom used \\
 \hline
 Software enginering\newline approach & … & … \\
 \hline
 Uschold and King & … & … \\
 \hline
-Grüninger and Fox & … & … \\
+Grüninger and Fox & Evaluation for completeness & Documentation not enforced\newline Tedious formal approach \\
 \hline
 \methontology & Widely used\newline Documentation is enforced & - \\
 \hline
@@ -581,11 +604,13 @@ The task of implementing the ontology in an ontology language requires an enviro
 
 Together with the implementation, the information about the ontology gathered in section~\ref{subsec:methontology_conceptualisation} is now formalised into the formal model of the ontology language being used.
 
-In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology~\cite{OWL} is created using \protege~\cite{protege} together with the \emph{Pellet} reasoner\cite{pellet}.
+In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology~\cite{OWL} is created using \protege~\cite{protege} together with the \emph{Pellet} reasoner~\cite{pellet}.
 
 \subsubsection{Evaluation}
 
-During \emph{evaluation}, verification takes place whether the ontology which has been developed in the previous steps satisfies the requirements that have been specified initially (see section~\ref{subsec:methontology_specification}). The ontology must fulfil all functional and non-functional requirements listed the \emph{Ontology Requirements Specification Document} presented in section~\ref{subsec:methontology_specification}. In case of a mismatch, the ontology traverses the activities in the life cycle (\emph{Conceptualisation}, \emph{Formalisation}, \emph{Integration}, \emph{Implementation}, and \emph{Evaluation}) once more.
+During \emph{Evaluation}, verification takes place whether all artefacts that have yet been created or updated in the previous steps satisfy the requirements that have been specified initially (see section~\ref{subsec:methontology_specification}). \emph{Evaluation} is not an activity which is performed at the very end of the development process; instead, \emph{Evaluation} takes place whenever an artefact (a diagram, a table, or the implementation of the ontology) is created or updated in order to ensure that mistakes are found as soon as possible.
+
+The completed ontology must fulfil all functional and non-functional requirements listed the \emph{Ontology Requirements Specification Document} presented in section~\ref{subsec:methontology_specification}. In case of a mismatch, the ontology traverses the activities in the life cycle (\emph{Conceptualisation}, \emph{Formalisation}, \emph{Integration}, \emph{Implementation}, and \emph{Evaluation}) once more.
 
 There may be requirements that an ontology is unable to fulfil due to certain limitations, e.g. the \emph{open world assumption}~\cite{open_world_assumption}. For instance, \eacs{OWL}, which honors the \emph{open world assumption}, cannot tell the absence of an instance of some concept. This leads to cases where an ontology fails to answer a competency question such as ``Does this group only consist of women?''; just because the ontology does not contain an individual which is a man, it does not mean that there is no man; the ontology can only tell that there is no man it knows about.
 
