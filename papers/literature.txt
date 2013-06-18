@@ -320,4 +320,6 @@ NEW (2013-04-09):
 * 1-s2.0-S0950584906001029-main.pdf
   Nicolas Anquetil, Káthia M. de Oliveira, Kleiber D. de Sousa, Márcio G. Batista Dias. Software maintenance seen as a knowledge management issue
 
+* 1-s2.0-S0957417407006604-main.pdf
+  Li-Yen Shue, Ching-Wen Chen, Weissor Shiue. The development of an ontology-based expert system for corporate financial rating
 
