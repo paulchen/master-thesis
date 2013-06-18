@@ -299,3 +299,7 @@ NEW (2013-04-09):
 * 05428280.pdf
   Alessia Barbagallo, Antonio De Nicola, Michele Missikoff. eGovernment Ontologies: Social Participation in Building and Evolution
 
+* 05587768.pdf
+  Al-Yahya, M, Alkhalifa, H. ; Bahanshal, A. ; Alodah, I. An ontological model for representing computational lexicons. A componential based approach
+
+
