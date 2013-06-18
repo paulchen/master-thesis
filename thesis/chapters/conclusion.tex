@@ -15,7 +15,7 @@ Eventually, chapter~\ref{ch:thinkhomeweather_ontology} applies \methontology to 
 
 \vspace{1em}
 
-% TODO
+% TODO some more text? e.g. "The final result is ..."
 
 \section{Outlook}
 
@@ -31,7 +31,7 @@ The current version of \thinkhomeweather comes with a few problems that require 
 \end{itemize}
 
 % TODO mention this elsewhere
-Furthermore, \thinkhomeweather suffers performance issues regarding the time required for reasoning. In test runs that were conducted after development, complete reasoning in \protege using the \emph{Pellet reasoner} of the ``empty'' ontology (not containing any individuals denoting weather data) took between $15$ and $30$ seconds and between $45$ and $60$ seconds for the ontology that contains weather data imported using the \emph{Weather Importer} from chapter~\ref{ch:weather_importer} (on a PC equipped with a \emph{Intel Q6600 CPU} running \emph{Ubuntu Linux}). % TODO citations?
+Furthermore, \thinkhomeweather suffers performance issues regarding the time required for reasoning. In test runs that were conducted after development, complete reasoning in \protege using the \emph{Pellet reasoner} of the ``empty'' ontology (not containing any individuals denoting weather data) took between $15$ and $30$ seconds and between $45$ and $60$ seconds for the ontology that contains weather data imported using the \emph{Weather Importer} from chapter~\ref{ch:weather_importer} (on the PC used for development which is equipped with a \emph{Intel Q6600 CPU}~\cite{intel_q6600} running \emph{Ubuntu Linux}~\cite{ubuntu}).
 
 One reason for this performance issues is the use of the \muo ontology which increases the reasoning time by about $30 \%$ (see section~\ref{sec:ontology_imports}). Abandonment of this ontology would speed up refactoring, though this would introduce problems regarding literal values without a unit. There are other ontologies which may be used instead of the \muo ontology (see section~\ref{subsec:unit_ontologies}), such as the \eacs{OM} ontology. However, as the \eacs{OM} ontology adds about the same level of complexity to the ontology, it may increase the reasoning time of \thinkhome to the same extend as \muo. It is questionable whether there is a unit ontology that allows faster reasoning than \muo.
 
