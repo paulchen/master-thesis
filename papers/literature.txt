@@ -308,3 +308,6 @@ NEW (2013-04-09):
 * 10.1007_978-3-642-03507-4_6.pdf
   Michele Missikoff and Francesco Taglino. A Semantic Cooperation and Interoperability Platform for the European Chambers of Commerce
 
+* An e-Business Model Ontology for Modeling e-Business.pdf
+  Alexander Osterwalder, Yves Pigneur. An e-Business Model Ontology for Modeling e-Business
+
