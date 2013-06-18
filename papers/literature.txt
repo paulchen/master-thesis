@@ -314,4 +314,10 @@ NEW (2013-04-09):
 * LOAIT07-Proceedings.pdf
   Rinke Hoekstra, Joost Breuker, Marcello Di Bello, Alexander Boer. The LKIF Core Ontology of Basic Legal Concepts
 
+* 10.1007_s00371-006-0093-4.pdf
+  Mario Gutierrez A., Alejandra Garcia-Rojas, Daniel Thalmann, Frederic Vexo, Laurent Moccozet, Nadia Magnenat-Thalmann, Michela Mortara, Michela Spagnuolo. An ontology of virtual humans
+
+* 1-s2.0-S0950584906001029-main.pdf
+  Nicolas Anquetil, Káthia M. de Oliveira, Kleiber D. de Sousa, Márcio G. Batista Dias. Software maintenance seen as a knowledge management issue
+
 
