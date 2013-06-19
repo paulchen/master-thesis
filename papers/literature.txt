@@ -335,3 +335,6 @@ NEW (2013-04-09):
 * Helal_GTSH_IEEE_Computer_March_2005.pdf
   Sumi Helal, William Mann, Hicham El-Zabadani, Jeffrey King, Youssef Kaddoura, Erwin Jansen. The Gator Tech Smart House: A Programmable Pervasive Space
 
+* IST2_ATHENA.pdf
+  Rainer Ruggaber. ATHENA – ADVANCED TECHNOLOGIES FOR INTEROPERABILITY OF HETEROGENEOUS ENTERPRISE NETWORKS AND THEIR APPLICATIONS
+
