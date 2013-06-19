@@ -220,21 +220,20 @@ Applications of \emph{Ontology 101} include a \emph{Human Community Ontology}~\c
 
 \subsubsection{Description}
 
-% TODO citations
 De~Nicola, Missikoff, and Navigli observed many similarities between creating software artefacts and the development of ontologies~\cite{SoftwareEngineeringOntology}. Therefore, they developed the \eacs{UPON} (\emph{Unified Process for ONtology}) methodology which takes advantage of the \emph{Unified Process}~\cite{UnifiedProcess} and the \emph{Unified Modeling Language} (\eacs{UML})~\cite{UML}, both known from software development.
 
 % TODO figure
 As the \emph{Unified Process}, \eacs{UPON} is \emph{use-case driven}, \emph{iterative}, and \emph{incremental}. As shown in figure~\ref{fig:upon_process}, the \eacs{UPON} \emph{process} consists of \emph{cycles}, \emph{phases}, \emph{iterations}, and \emph{workflows}. The whole process is divided into cycles which each result in a new version of the ontology. Four different phases (\emph{inception}, \emph{elaboration}, \emph{construction}, and \emph{transition}) form each cycle. Each phase in turn is divided into an arbitrary number of iterations; during each iteration, five workflows (\emph{requirements}, \emph{analysis}, \emph{design}, \emph{implementation}, and \emph{test}) take place.
 
-During the \emph{inception phase}, …. The \emph{elaboration phase} …. In the \emph{construction phase} …. Eventually, in the \emph{transition phase} ….
+During the \emph{inception phase}, requirements are captured. The \emph{elaboration phase} comprises the identification and structurisation of fundamental concepts. The \emph{construction phase} involves the creation of elements in the ontology to be created. Eventually, in the \emph{transition phase} testing and evaluation of the work within this cycle takes place.
 
-The \emph{requirements workflow} …. The \emph{analysis workflow} …. The \emph{design workflow} …. The \emph{implementation workflow} …. Finally, the \emph{test workflow} ….
+The \emph{requirements workflow} consists of a set of tasks which analyse the knowledge domain, scope and purpose of the ontology, relevant terms, related use cases and competency questions are identified. These results are the input for the \emph{analysis workflow} which refines concepts and their relations and enriches their description with detailed definitions in order to create a \emph{reference glossary}. The goal of the \emph{design workflow} is to model concepts, concept hierarchies, and domain-specific relationships from the previously created \emph{reference glossary} for their later implementation.
+During the \emph{implementation workflow}, the ontology designed in the previous workflow are translated to an ontology language. Finally, the \emph{test workflow} involves the evaluation of the ontology for \emph{semantic quality} (the absence of contradictory concepts) and \emph{pragmatic quality} (the usefulness of the ontology for the user).
 
-% TODO
+Each of these steps includes the generation of one or more documentation artefacts (e.g. diagrams or tables) that document the results. Hence, once the \eacs{UPON} process is completed, both the ontology and its documentation are completed and match each other. Documentation is not implemented as a separate step to avoid any problems that may arise from such an approach.
 
 \subsubsection{Applications}
 
-% TODO citations
 \eacs{UPON} has been applied to create four different ontologies in the context of the \emph{Athena Integrated Project}~\cite{AthenaProject}. Furthermore, applications of \eacs{UPON} include an ontology representing word meaning~\cite{upon_example1}, an ontology for mapping individuals and their relationships in a social network~\cite{upon_example2} and the \emph{LD-CAST reference ontology} which is part of a project that aims at developing a semantic cooperation and interoperability platform for the \emph{European Chambers of Commerce}~\cite{upon_example3,ld_cast}.
 
 \subsubsection{Analysis}
@@ -242,15 +241,15 @@ The \emph{requirements workflow} …. The \emph{analysis workflow} …. The \emp
 The \eacs{UPON} approach is a deeply structured approach that applies well-established technologies from software development to the field of ontology design. While this approach leads to well-designed ontologies and works well for developing large environments, in the case of \thinkhome it is possibly an over-engineered approach.
 
 \begin{itemize}
-  \item \textbf{Effort:} % TODO
+  \item \textbf{Effort:} Due to its process which consists of many single steps which generate a huge number of artefacts, the application of the \eacs{UPON} methodology leads to a greater effort compared to other approaches such as \methontology (see section~\ref{subsec:approach5}. The smaller the ontology to be developed is, the larger the difference becomes. As \thinkhomeweather can be considered to be a rather small ontology, \eacs{UPON} may be unsuitable for its design.
   
-   \item \textbf{Usage:} The paper proposing the \eacs{UPON} methodology~\cite{SoftwareEngineeringOntology} gets cited often; however, due to its enormous effort, it is hard to find use cases for it.
+   \item \textbf{Usage:} The paper proposing the \eacs{UPON} methodology~\cite{SoftwareEngineeringOntology} gets cited often; however, due to its enormous effort, it is harder to find use cases for it compared to other approaches.
 
-  \item \textbf{Applicability:} % TODO
+  \item \textbf{Applicability:} There are no limitations regarding the application of this approach to various domains.
   
-  \item \textbf{Strictness:} % TODO
+  \item \textbf{Strictness:} The \eacs{UPON} approach is a very strict process, but nevertheless leaves some margin to the ontology designer for individual design decisions.
   
-  \item \textbf{Documentation:} % TODO
+  \item \textbf{Documentation:} Every step during the design process involves the generation of documentation artefacts.
 \end{itemize}
 
 \subsection{METHONTOLOGY}
@@ -292,7 +291,7 @@ The previous section gives detailed insights into some popular methodology of de
 
 \begin{figure}
 \centering
-\begin{tabularx}{\textwidth}{|X|X|X|} % TODO
+\begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
 \textbf{Methodology} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
 \hline\hline
@@ -302,7 +301,7 @@ Uschold and King & Simple, straight-forward approach & Documentation not enforce
 \hline
 Ontology 101 & Simple and easily comprehensible approach\newline Low effort & Documentation not enforced\newline Seldom used \\
 \hline
-\eacs{UPON} & … & Huge development effort \\
+\eacs{UPON} & Incorporates best practices from software development & Huge development effort \\
 \hline
 \methontology & Widely used\newline Documentation is enforced & - \\
 \hline
