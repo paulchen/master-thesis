@@ -332,3 +332,6 @@ NEW (2013-04-09):
 * 1-s2.0-S0378778811004105-main.pdf 
   Frauke Oldewurtel, Alessandra Parisio, Colin N. Jones, Dimitrios Gyalistras, Markus Gwerder, Vanessa Stauch, Beat Lehmann, Manfred Morari. Use of model predictive control and weather forecasts for energy efficient building climate control
 
+* Helal_GTSH_IEEE_Computer_March_2005.pdf
+  Sumi Helal, William Mann, Hicham El-Zabadani, Jeffrey King, Youssef Kaddoura, Erwin Jansen. The Gator Tech Smart House: A Programmable Pervasive Space
+
