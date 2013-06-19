@@ -323,3 +323,7 @@ NEW (2013-04-09):
 * 1-s2.0-S0957417407006604-main.pdf
   Li-Yen Shue, Ching-Wen Chen, Weissor Shiue. The development of an ontology-based expert system for corporate financial rating
 
+* 1-s2.0-S0378778810003749-main.pdf
+  Samuel Prívara, Jan Siroky, Lukás Ferkl, Jirí Cigler. Model predictive control of a building heating system: The ﬁrst experience
+
+
