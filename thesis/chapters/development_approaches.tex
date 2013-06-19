@@ -19,13 +19,13 @@ In the article about their approach towards ontology design, Noy and McGuinness 
 This chapter discusses some existing methodologies for the construction of ontologies. Among the methodologies that can be found in literature, the ones discussed as candidates for the design of \thinkhomeweather are
 
 \begin{itemize}
-  \item \emph{Ontology 101} by Noy and McGuinness~\cite{Ontology101} (section~\ref{subsec:approach1}),
-
-  \item the \eacs{UPON} (\emph{Unified Process for ONtology building}) methodology by De Nicola, Missikoff and Navigli~\cite{SoftwareEngineeringOntology} (section \ref{subsec:approach2}),
-  
   \item the one by Uschuld and King~\cite{UscholdKing} (section~\ref{subsec:approach3}),
   
-  \item the method used by Grüninger and Fox for the \eacs{TOVE} (\emph{TOronto Visual Enterprise}) ontologies~\cite{GruningerFox} (section~\ref{subsec:approach4}), and
+  \item the method used by Grüninger and Fox for the \eacs{TOVE} (\emph{TOronto Visual Enterprise}) ontologies~\cite{GruningerFox} (section~\ref{subsec:approach4}),
+  
+  \item \emph{Ontology 101} by Noy and McGuinness~\cite{Ontology101} (section~\ref{subsec:approach1}),
+
+  \item the \eacs{UPON} (\emph{Unified Process for ONtology building}) methodology by De Nicola, Missikoff and Navigli~\cite{SoftwareEngineeringOntology} (section \ref{subsec:approach2}), and
   
   \item \methontology by Gómez-Pérez et al.~\cite{Methontology} (section~\ref{subsec:approach5}).
 \end{itemize}
@@ -63,6 +63,105 @@ As section~\ref{sec:ontology_approaches} focuses on the characteristics of the m
 
 \section{The ontology development approaches}
 \label{sec:ontology_approaches}
+
+\subsection{Methodology by Uschold and King}
+\label{subsec:approach3}
+
+\subsubsection{Description}
+
+When Uschold and King published their approach in 1995~\cite{UscholdKing}, it was among the first methodologies proposed towards the development of new ontologies.
+
+% TODO figure
+This approach divides ontology development into a set of stages, as depicted in figure~\ref{fig:uschold}:
+
+\begin{itemize}
+  \item \emph{Identify Purpose}: At the very beginning, the purpose of the ontology needs to be identified: Why is the ontology built, what are its intended uses and what is its scope? A set of \emph{competency questions} are formulated.
+  
+  \item \emph{Building Ontology}: This stage is divided into three sub-stages:
+    \begin{itemize}
+      \item \emph{Ontology Capture}: Concepts and relationships are identified and textually defined. Furthermore, terms which refer to these concepts and relationships are defined.
+      
+      \item \emph{Ontology Coding}: In this step, the representation of the ontology from the \emph{Ontology Capture} stage is transformed into a formal (ontology) language (e.g. \eacs{OWL}), presumably using an ontology development environment (such as \protege).
+      
+      \item \emph{Integrating Existing Ontologies}: As the ontology being developed partly covers the scope of ontologies that are already exist, research has to be done which ontologies can be reused.
+    \end{itemize}
+    
+  \item \emph{Evaluation}: During this stage, it is verified whether the ontology has the ability to fulfil the purpose that was initially identified.
+  
+  \item \emph{Documentation}: Finally, all results from the previous stages must be documented thoroughly. This approach does not enforce documentation throughout the development process; this may lead to incomplete, inaccurate, or missing documentation.
+    
+\end{itemize}
+
+As this approach is one of the first comprehensive methodologies for ontology development, it lacks the experience that has been carried together by ontology designers over the recent years. However, its overall structure matches most of the later approaches; furthermore, it is an easily comprehensible approach.
+
+\subsubsection{Applications}
+
+There are various applications of this methodology. Some examples include the \emph{Enterprise Ontology} which models the domain of business enterprises~\cite{uschold_example1} (probably the most prominent example based on this methodology), the \emph{e-Business Model Ontology} that covers processes found in businesses available over the Web~\cite{uschold_example2}, and the \emph{\eacs{LKIF} Core Ontology of Basic Legal Concepts} (\emph{Legal Knowledge Interchange Format})~\cite{uschold_example3}.
+
+\subsubsection{Analysis}
+
+% TODO
+
+\begin{itemize}
+  \item \textbf{Effort:} % TODO
+  
+   \item \textbf{Usage:} % TODO
+  
+  \item \textbf{Applicability:} % TODO
+  
+  \item \textbf{Strictness:} % TODO
+  
+  \item \textbf{Documentation:} % TODO
+\end{itemize}
+
+\subsection{Methodology by Grüninger and Fox (\eacs{TOVE})}
+\label{subsec:approach4}
+
+\subsubsection{Description}
+
+When Grüninger and Fox began designing their \eacs{TOVE} (\emph{TOronto Visual Enterprise}) \emph{Enterprise Modelling project} based on ontologies, they failed to identify an already existing approach towards ontology development that would suit their needs. In order to overcome this problem, they formulated their own approach~\cite{GruningerFox}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/tove_process.pdf}
+\caption{The workflow proposed by the \eacs{TOVE} methodology~\cite{GruningerFox}.}
+\label{fig:tove_process}
+\end{figure}
+
+
+This approach splits the ontology development process into a set of activities as shown in figure~\ref{fig:tove_process}:
+
+\begin{itemize}
+  \item The \emph{Motivating Scenarios} are a set of use cases the ontology is used for.
+  \item These scenarios lead to \emph{Informal Competency Questions} which are a set of questions that the ontology shall be able to answer once it is completed.
+  % TODO citation first-order logic
+  \item \emph{First Order Logic: Terminology}: In this step, the terminology is specified using first-order logic (or the logic used by the intended ontology language). The terms (objects, attributes, and relations) are derived from the previously formulated competency questions.
+  \item Then, the competency questions are transformed into \emph{Formal Competency Questions} in terms of entailment and consistency problems with respect to the axioms in the ontology.
+  \item \emph{First Order Logic: Axioms}: Now, formal axioms are stated that define the terms and constraints on objects in the ontology using first-order logic.
+  \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e. it can provide answers to all 
+\end{itemize}
+
+Once all these steps are completed, the formal model is implemented using a ontology language (e.g. \eacs{OWL}).
+
+\subsubsection{Applications}
+
+Examples for the application of this methodology are the \emph{ontology of virtual humans}~\cite{tove_example1}, an \emph{ontology for software maintenance}~\cite{tove_example2}, and an ontology that forms the base of an expert system for corporate financial rating~\cite{tove_example3}.
+
+\subsubsection{Analysis}
+
+The approach proposed by Grüninger and Fox is a rather formal one that is based on first-order logic which forms the base of many ontology languages.
+
+\begin{itemize}
+  \item \textbf{Effort:} Putting all parts of the ontology being developed into a formal model in first-order logic may turn out to be a tedious task. The 
+  
+  \item \textbf{Usage:} Several applications of this approach can be found in literature. However, there are approaches such as \methontology (see section~\ref{subsec:approach5}) or the approach by Uschold and King (see section+\ref{subsec:approach3}) that are far more popular than this approach.
+  
+  \item \textbf{Applicability:} There are no limits regarding the domains this approach can be used with.
+  
+  \item \textbf{Strictness:} This approach defines a strict procedure to follow, but leaves a margin for individual design decisions by the ontology developer.
+  
+  \item \textbf{Documentation:} This approach does not enforce the creation of documentation; hence problems regarding missing, incomplete, or inaccurate documentation may arise when applying this approach.
+\end{itemize}
 
 \subsection{Ontology 101}
 \label{subsec:approach1}
@@ -139,85 +238,6 @@ Applications of \eacs{UPON} include an ontology representing word meaning~\cite{
   
   \item \textbf{Documentation:} % TODO
 \end{itemize}
-
-\subsection{Methodology by Uschold and King}
-\label{subsec:approach3}
-
-\subsubsection{Description}
-
-% TODO
-
-\subsubsection{Applications}
-
-There are various applications of this methodology. Some examples include the \emph{Enterprise Ontology} which models the domain of business enterprises~\cite{uschold_example1} (probably the most prominent example based on this methodology), the \emph{e-Business Model Ontology} that covers processes found in businesses available over the Web~\cite{uschold_example2}, and the \emph{\eacs{LKIF} Core Ontology of Basic Legal Concepts} (\emph{Legal Knowledge Interchange Format})~\cite{uschold_example3}.
-
-% TODO
-
-\subsubsection{Analysis}
-
-% TODO
-
-\begin{itemize}
-  \item \textbf{Effort:} % TODO
-  
-   \item \textbf{Usage:} % TODO
-  
-  \item \textbf{Applicability:} % TODO
-  
-  \item \textbf{Strictness:} % TODO
-  
-  \item \textbf{Documentation:} % TODO
-\end{itemize}
-
-\subsection{Methodology by Grüninger and Fox (\eacs{TOVE})}
-\label{subsec:approach4}
-
-\subsubsection{Description}
-
-When Grüninger and Fox began designing their \eacs{TOVE} (\emph{TOronto Visual Enterprise}) \emph{Enterprise Modelling project} based on ontologies, they failed to identify an already existing approach towards ontology development that would suit their needs. In order to overcome this problem, they formulated their own approach~\cite{GruningerFox}.
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/tove_process.pdf}
-\caption{The workflow proposed by the \eacs{TOVE} methodology~\cite{GruningerFox}.}
-\label{fig:tove_process}
-\end{figure}
-
-
-This approach splits the ontology development process into a set of activities as shown in figure~\ref{fig:tove_process}:
-
-\begin{itemize}
-  \item The \emph{Motivating Scenarios} are a set of use cases the ontology is used for.
-  \item These scenarios lead to \emph{Informal Competency Questions} which are a set of questions that the ontology shall be able to answer once it is completed.
-  % TODO citation first-order logic
-  \item \emph{First Order Logic: Terminology}: In this step, the terminology is specified using first-order logic (or the logic used by the intended ontology language). The terms (objects, attributes, and relations) are derived from the previously formulated competency questions.
-  \item Then, the competency questions are transformed into \emph{Formal Competency Questions} in terms of entailment and consistency problems with respect to the axioms in the ontology.
-  \item \emph{First Order Logic: Axioms}: Now, formal axioms are stated that define the terms and constraints on objects in the ontology using first-order logic.
-  \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e. it can provide answers to all 
-\end{itemize}
-
-Once all these steps are completed, the formal model is implemented using a ontology language (e.g. \eacs{OWL}).
-
-\subsubsection{Applications}
-
-Examples for the application of this methodology are the \emph{ontology of virtual humans}~\cite{tove_example1}, an \emph{ontology for software maintenance}~\cite{tove_example2}, and an ontology that forms the base of an expert system for corporate financial rating~\cite{tove_example3}.
-
-\subsubsection{Analysis}
-
-The approach proposed by Grüninger and Fox is a rather formal one that is based on first-order logic which forms the base of many ontology languages.
-
-\begin{itemize}
-  \item \textbf{Effort:} Putting all parts of the ontology being developed into a formal model in first-order logic may turn out to be a tedious task. The 
-  
-  \item \textbf{Usage:} Several applications of this approach can be found in literature. However, there are approaches such as \methontology (see section~\ref{subsec:approach5}) or the approach by Uschold and King (see section+\ref{subsec:approach3}) that are far more popular than this approach.
-  
-  \item \textbf{Applicability:} There are no limits regarding the domains this approach can be used with.
-  
-  \item \textbf{Strictness:} This approach defines a strict procedure to follow, but leaves a margin for individual design decisions by the ontology developer.
-  
-  \item \textbf{Documentation:} This approach does not enforce the creation of documentation; hence problems regarding missing, incomplete, or inaccurate documentation may arise when applying this approach.
-\end{itemize}
-
 
 \subsection{METHONTOLOGY}
 \label{subsec:approach5}
