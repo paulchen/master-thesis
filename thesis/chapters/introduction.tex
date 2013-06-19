@@ -31,9 +31,9 @@ The use of well-established semantic web technologies for its knowledge base and
 
 \thinkhome is designed to process input data from various sources. One of possible sources which is not yet implemented is weather data. At the moment \thinkhome's multi-agent system is unable to make control decisions based on current weather conditions such as temperature, humidity, precipitation, or sunshine. Furthermore, \thinkhome does not have any knowledge about future weather conditions such as upcoming sudden changes of weather which may require specific control decisions in advance.
 
-\section{Problem statement and goal}
+This \emph{Predictive Control} has been the subject of numerous articles in the recent years~\cite{predictive_control1,predictive_control2,predictive_control3}; however, none of these approaches builds upon a knowledge base that is built using an ontological model.
 
-% TODO mention predictive control papers
+\section{Problem statement and goal}
 
 The aim of this thesis is the development of a data model for weather data which will be utilized by \thinkhome. Apart from current weather data, this model will cover future weather data over a time range suitable for the use within a smart home. This enables \thinkhome to use current and future states of the weather as a source of knowledge for making control decisions. While data about the current weather state can be obtained from various sensors that are installed at the building, data about future weather states must be obtained from weather services that provide forecasts for the desired period. There is a wide range of weather services available over the Internet which can be utilized for this purpose.
 
