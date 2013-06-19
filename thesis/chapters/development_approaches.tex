@@ -97,7 +97,7 @@ This approach divides ontology development into a set of stages, as depicted in 
     
 \end{itemize}
 
-As this approach is one of the first comprehensive methodologies for ontology development, it lacks the experience that has been carried together by ontology designers over the recent years. However, its overall structure matches most of the later approaches; furthermore, it is an easily comprehensible approach.
+As this approach is one of the first comprehensive methodologies for ontology development, it lacks the experience that has been carried together by ontology designers over the recent years. The descriptions of the proposed steps hardly dig into details. However, its overall structure matches most of the later approaches; furthermore, it is an easily comprehensible approach.
 
 \subsubsection{Applications}
 
@@ -220,15 +220,26 @@ Applications of \emph{Ontology 101} include a \emph{Human Community Ontology}~\c
 
 \subsubsection{Description}
 
+% TODO citations
+De~Nicola, Missikoff, and Navigli observed many similarities between creating software artefacts and the development of ontologies~\cite{SoftwareEngineeringOntology}. Therefore, they developed the \eacs{UPON} (\emph{Unified Process for ONtology}) methodology which takes advantage of the \emph{Unified Process}~\cite{UnifiedProcess} and the \emph{Unified Modeling Language} (\eacs{UML})~\cite{UML}, both known from software development.
+
+% TODO figure
+As the \emph{Unified Process}, \eacs{UPON} is \emph{use-case driven}, \emph{iterative}, and \emph{incremental}. As shown in figure~\ref{fig:upon_process}, the \eacs{UPON} \emph{process} consists of \emph{cycles}, \emph{phases}, \emph{iterations}, and \emph{workflows}. The whole process is divided into cycles which each result in a new version of the ontology. Four different phases (\emph{inception}, \emph{elaboration}, \emph{construction}, and \emph{transition}) form each cycle. Each phase in turn is divided into an arbitrary number of iterations; during each iteration, five workflows (\emph{requirements}, \emph{analysis}, \emph{design}, \emph{implementation}, and \emph{test}) take place.
+
+During the \emph{inception phase}, …. The \emph{elaboration phase} …. In the \emph{construction phase} …. Eventually, in the \emph{transition phase} ….
+
+The \emph{requirements workflow} …. The \emph{analysis workflow} …. The \emph{design workflow} …. The \emph{implementation workflow} …. Finally, the \emph{test workflow} ….
+
 % TODO
 
 \subsubsection{Applications}
 
-Applications of \eacs{UPON} include an ontology representing word meaning~\cite{upon_example1}, an ontology for mapping individuals and their relationships in a social network~\cite{upon_example2} and the \emph{LD-CAST reference ontology} which is part of a project that aims at developing a semantic cooperation and interoperability platform for the \emph{European Chambers of Commerce}~\cite{upon_example3,ld_cast}.
+% TODO citations
+\eacs{UPON} has been applied to create four different ontologies in the context of the \emph{Athena Integrated Project}~\cite{AthenaProject}. Furthermore, applications of \eacs{UPON} include an ontology representing word meaning~\cite{upon_example1}, an ontology for mapping individuals and their relationships in a social network~\cite{upon_example2} and the \emph{LD-CAST reference ontology} which is part of a project that aims at developing a semantic cooperation and interoperability platform for the \emph{European Chambers of Commerce}~\cite{upon_example3,ld_cast}.
 
 \subsubsection{Analysis}
 
-% TODO
+The \eacs{UPON} approach is a deeply structured approach that applies well-established technologies from software development to the field of ontology design. While this approach leads to well-designed ontologies and works well for developing large environments, in the case of \thinkhome it is possibly an over-engineered approach.
 
 \begin{itemize}
   \item \textbf{Effort:} % TODO
@@ -285,13 +296,13 @@ The previous section gives detailed insights into some popular methodology of de
 \hline
 \textbf{Methodology} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
 \hline\hline
-Ontology 101 & Simple and coherent approach\newline Low effort & Documentation not enforced\newline Seldom used \\
+Uschold and King & Simple, straight-forward approach & Documentation not enforced\newline Shallow descriptions \\
 \hline
-Software enginering\newline approach & … & … \\
+\eacs{TOVE} & Evaluation for completeness & Documentation not enforced\newline Tedious formal approach \\
 \hline
-Uschold and King & … & … \\
+Ontology 101 & Simple and easily comprehensible approach\newline Low effort & Documentation not enforced\newline Seldom used \\
 \hline
-Grüninger and Fox & Evaluation for completeness & Documentation not enforced\newline Tedious formal approach \\
+\eacs{UPON} & … & Huge development effort \\
 \hline
 \methontology & Widely used\newline Documentation is enforced & - \\
 \hline
