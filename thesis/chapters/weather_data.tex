@@ -174,7 +174,7 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \hline
   \textbf{\acs{METAR}} & Airports around the world & \href{http://www.aviationweather.gov/adds/metars/}{http://www.aviationweather.gov/adds/metars/} \\ % TODO correct?
   \hline
-  \textbf{\acs{NWS}} & National Weather Service\tnote{1} & \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/} \\ % TODO href for NOAA
+  \textbf{\acs{NWS}} & National Weather Service\tnote{1} & \href{http://graphical.weather.gov/xml/}{http://graphical.weather.gov/xml/} \\
   \hline
   \textbf{Weather Underground} & Weather Underground & \href{http://www.wunderground.com/weather/api/}{http://www.wunderground.com/weather/api/} \\
   \hline
@@ -182,7 +182,7 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \hline
 \end{tabular}
 \begin{tablenotes}
-\item[1] part of \eacs{NOAA}, \emph{National Oceanic and Atmospheric Administration}
+\item[1] part of \eacs{NOAA} (\emph{National Oceanic and Atmospheric Administration})~\cite{noaa}
 \end{tablenotes}
 \end{threeparttable}
 \vspace{.5em}
@@ -245,6 +245,7 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \textbf{Weather.com} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
   \hline
 \end{tabular}
+\vspace{.5em} % TODO remove this?
 \caption{Data formats and protocols for data access of weather services.}
 \label{table:weather_data3}
 \end{table}
@@ -274,12 +275,14 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \textbf{Weather.com} & An account is mandatory; the creation process is complicated \\ % TODO licence?
   \hline
 \end{tabular}
+\vspace{.5em}
 \caption{Access restrictions and terms of use for weather services.}
 \label{table:weather_data4}
 \end{table}
 
 \begin{table}
 \centering
+\begin{threeparttable}[b]
 \begin{tabular}{|p{.2\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Stability} \\
@@ -290,11 +293,11 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \hline
   \textbf{World Weather Online} & Unknown \\
   \hline
-  \textbf{Google Weather Feed} & Discontinued \\ % TODO reference
+  \textbf{Google Weather Feed} & Discontinued~\cite{google_weather} \\
   \hline
   \textbf{yr.no} & New releases of the API one or two times per year; the old API remains in operation a few months after the release of a new one. Announcements are made on the web page. A less frequently changing API with \emph{long term support} is available.\\
   \hline
-  \textbf{\acs{METAR}} & Stable. \\ % TODO \emph{METAR} is standardized by \eacs{ICAO}. It was introduced in 1968 and has been modified a numer of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
+  \textbf{\acs{METAR}} & Stable.\tnote{1} \\
   \hline
   \textbf{\acs{NWS}} & Small changes every few months with announcements via \eacs{RSS}. Most of the interface remains unchanged in the long run.\\
   \hline
@@ -303,6 +306,10 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \textbf{Weather.com} & Unknown \\
   \hline
 \end{tabular}
+\begin{tablenotes}
+\item[1] \emph{METAR} is standardized by \eacs{ICAO}~\cite{ICAO}. It was introduced in 1968 and has been modified a numer of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
+\end{tablenotes}
+\end{threeparttable}
 \vspace{.5em}
 \caption{Stability of weather services.}
 \label{table:weather_data5}
@@ -540,8 +547,7 @@ When will it outside be colder than inside the house? When will it be warmer? & 
 
 This section gives an overview on how requests to the weather \eacs{API} of \yrno work.
 
-% TODO reference http://api.yr.no/weatherapi/locationforecast/1.8/documentation
-For an arbitrary request, latitude and longitude must be specified (in degrees; northern latitudes and eastern longitudes are represented by positive values). Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a \emph{URL} of the format
+For an arbitrary request, latitude and longitude must be specified (in degrees; northern latitudes and eastern longitudes are represented by positive values)~\cite{yrno_documentation}. Additionally, the altitude above sea level (in metres) may be specified for locations outside Norway. Based on this input data, a \emph{URL} of the format
 
 % TODO move this definition to some other position
 % TODO improve formatting of lstlisting environments
@@ -561,8 +567,7 @@ is constructed, e.g.
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
 \end{lstlisting}
 
-% TODO explicitly name lat, lon, msl for Vienna
-for the city of Vienna, Austria. An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} \emph{Schema}\cite{xml-schema} definition that can be found online~\cite{yrno_schema}.
+for the city of Vienna, Austria (N~\SI {48.21}{\degree }, E~\SI {16.37}{\degree }, \SI {171}{\metre } above \eacs {MSL}). An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} \emph{Schema}\cite{xml-schema} definition that can be found online~\cite{yrno_schema}.
 
 The structure of this \eacs{XML} document is as follows (attributes are omitted for better readability):
 
@@ -627,7 +632,6 @@ The content of the \eacs{XML} document covers a period of nine days, starting at
 \section{Position of the sun}
 \label{sec:sun_position}
 
-% TODO reference http://api.yr.no/weatherapi/sunrise/1.0/documentation
 Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data~\cite{yrno_sunrise}. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon are provided. The angle of the sun at solar noon is also given.
 
 However, these data are inappropriate for use within the \thinkhomeweather ontology. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}. Furthermore, most of the weather services that are available via Internet do not offer any data about the sun's position.
