@@ -329,4 +329,6 @@ NEW (2013-04-09):
 * 1-s2.0-S0378778810000915-main.pdf
   Petru-Daniel Morosan, Romain Bourdais, Didier Dumur, Jean Buisson. Building temperature regulation using a distributed model predictive control
 
+* 1-s2.0-S0378778811004105-main.pdf 
+  Frauke Oldewurtel, Alessandra Parisio, Colin N. Jones, Dimitrios Gyalistras, Markus Gwerder, Vanessa Stauch, Beat Lehmann, Manfred Morari. Use of model predictive control and weather forecasts for energy efficient building climate control
 
