@@ -141,8 +141,7 @@ Table~\ref{table:weather_data2} shows the coverage areas of the weather services
 
 Table~\ref{table:weather_data3} lists all weather services together with the data format they use to provide their data. For the case of Java, \eacs{XML}-based formats including \eacs{RSS} feeds are preferred because of the built-in support for \eacs{XML} by \eacs{DOM} and \eacs{SAX}. There are libraries for providing \eacs{JSON} and \eacs{JSONP}~\cite{jsonp} support for Java. \eacs{CSV} (\emph{comma-separated values})~\cite{rfc4180} is a format that can be parsed easily in any language, although using \eacs{CSV} leads to more implementation costs than \eacs{XML}. There are no libraries available that provide Java support for the \eacs{SYNOP} format (\emph{Surface Synoptic Observations}~\cite{SYNOP} which is used by \eacs{DWD}; hence this format is unsuitable to be used in a Java application.
 
-% TODO citation(s) for METAR
-\eacs{METAR} is a format for reporting weather data that is standardised by the \emph{International Civil Aviation Organisation} (\eacs{ICAO})~\cite{ICAO}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g. \emph{PyMETAR}~\cite{pymetar} for Python or an implementation for Java~\cite{metar-java}.
+\eacs{METAR} is a format for reporting weather data~\cite{metar} that is standardised by the \emph{International Civil Aviation Organisation} (\eacs{ICAO})~\cite{ICAO}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g. \emph{PyMETAR}~\cite{pymetar} for Python or an implementation for Java~\cite{metar-java}.
 
 % TODO NWS, METAR, Weather.com
 Regarding the terms of use that are summarized in table~\ref{table:weather_data4}, there are some services that require the creation of an account (\eacs{DWD}, \emph{World Weather Online}, \emph{Weather Underground}, and \emph{Weather.com}) while others don't (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \yrno, and \eacs{METAR}). Some services provide all of their data freely (\eacs{DWD}, \yrno), others provide the data freely only for non-commercial purposes (\emph{Yahoo! Weather}, \emph{World Weather Online}, and \emph{Weather Underground}); for some services, the terms of use are unknown (\emph{Google Weather Feed}).
@@ -156,7 +155,6 @@ Table~\ref{table:weather_data6} shows which data is available from the weather s
 As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
 
 % TODO web pages -> citations?
-% TODO remove footnotes from tables
 \begin{table}
 \centering
 \begin{threeparttable}[b]
@@ -222,15 +220,13 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
 \label{table:weather_data2}
 \end{table}
 
-% TODO reference FTP
 \begin{table}
 \centering
-\begin{threeparttable}[b]
 \begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Data format} & \textbf{Data access} \\
   \hline\hline
-  \textbf{DWD} & \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \eacs{FTP}\tnote{1} \\
+  \textbf{DWD} & \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \eacs{FTP}\cite{rfc959} \\
   \hline
   \textbf{Yahoo! Weather} & \eacs{RSS} feed & \eacs{HTTP} \\
   \hline
@@ -249,19 +245,12 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \textbf{Weather.com} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
   \hline
 \end{tabular}
-\begin{tablenotes}
-\item[1] \href{http://tools.ietf.org/html/rfc959}{http://tools.ietf.org/html/rfc959}
-\item[2] \href{http://www.noaa.gov/}{http://www.noaa.gov/}
-\end{tablenotes}
-\end{threeparttable}
-\vspace{.5em}
 \caption{Data formats and protocols for data access of weather services.}
 \label{table:weather_data3}
 \end{table}
 
 \begin{table}
 \centering
-\begin{threeparttable}[b]
 \begin{tabular}{|p{.2\textwidth}|p{0.35\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Access restrictions, terms of use} \\
@@ -274,7 +263,7 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \hline
   \textbf{Google Weather Feed} & No account required; terms of use unknown (does not have an explicitely stated licence due to being an inofficial interface) \\
   \hline
-  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}\tnote{1}\\
+  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}~\cite{ccby30}\\
   \hline
   \textbf{\acs{METAR}} & Unknown \\ % TODO ?
   \hline
@@ -285,11 +274,6 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \textbf{Weather.com} & An account is mandatory; the creation process is complicated \\ % TODO licence?
   \hline
 \end{tabular}
-\begin{tablenotes}
-  \item[1] \emph{Creative Commons Attribution 3.0} \href{http://creativecommons.org/licenses/by/3.0}{http://creativecommons.org/licenses/by/3.0}
-\end{tablenotes}
-\end{threeparttable}
-\vspace{.5em}
 \caption{Access restrictions and terms of use for weather services.}
 \label{table:weather_data4}
 \end{table}
@@ -474,7 +458,7 @@ DWD:
   \hline
   Google Weather Feed & Simple data format (\eacs{XML}) & Unofficial, undocumented \eacs{API}; unknown terms of use; only a small number of available weather elements; discontinued \\
   \hline
-  yr.no & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0} & - \\
+  yr.no & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0}~\cite{ccby30} & - \\
   \hline
   METAR & - & Data format (\eacs{METAR}); no forecasts \\
   \hline
@@ -489,7 +473,7 @@ DWD:
   \label{table:weather_services}
 \end{table}
 
-Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
+Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
 Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
 
@@ -640,7 +624,6 @@ None of the child elements is required. However, for most places of the world, t
 
 The content of the \eacs{XML} document covers a period of nine days, starting at the current day.
 
-% TODO refer to this chapter from ch:weather_importer
 \section{Position of the sun}
 \label{sec:sun_position}
 
@@ -655,5 +638,5 @@ There are some algorithms for calculating the sun's position at a certain locati
 \begin{itemize}
   \item The \emph{SPA algorithm}\cite{SPA_algorithm} is an algorithm which is complicated to implement. Hence, it is used only in contexts where precise values are required as it yields results with uncertainties of less than \num{0.0003} degrees.
   
-  \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}\cite{PSA_algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}. However, approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology. Hence, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
+  \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}~\cite{PSA_algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}. However, approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology. Hence, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
 \end{itemize}

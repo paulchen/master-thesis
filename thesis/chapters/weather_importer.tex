@@ -102,7 +102,7 @@ As most weather services do not provide data for arbitrary points of time, the \
   \item In case there is no data for a period of time, it is calculated using linear interpolation from data before and after the missing period\cite{maths}.
   
   % TODO reference section about sun position
-  \item An instance of \texttt{SunPosition} is associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the \emph{PSA algorithm}\cite{PSA_algorithm}; the C++ reference implementation of the \emph{PSA algorithm}~\cite{psa_online} was ported to Java.
+  \item An instance of \texttt{SunPosition} is associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the \emph{PSA algorithm}\cite{PSA_algorithm} (refer to section~\ref{sec:sun_position} for details); the C++ reference implementation of the \emph{PSA algorithm}~\cite{psa_online} was ported to Java.
 \end{itemize}
 
 Additionally, the class \texttt{WeatherState} provides the method \texttt{mergePhenomena()} which merges all instances of \texttt{WeatherPhenomenon} of the same type that are associated to that instance of \texttt{WeatherState}. Actual merging of values takes place in the constructors of the subclasses of \texttt{WeatherPhenomenon}; all current implementations merge values by calculating the arithmetic mean of all values provided\cite{maths}.
