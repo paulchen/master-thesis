@@ -1,5 +1,3 @@
-% TODO acronyms
-
 \chapter{The \thinkhomeweather ontology}
 \label{ch:thinkhomeweather_ontology}
 
@@ -34,16 +32,18 @@ All diagrams in this chapter showing parts of an ontology adhere to the followin
   \item \emph{Instances} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
   \item \emph{Blank nodes} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
   \item \emph{Literals} are drawn as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
-  \item \emph{Properties in the RDF\cite{RDF} and RDFS\cite{RDFS} namespace} are drawn as dashed lines. Their caption is written in \emph{italics}.
+  \item \emph{Properties in the \eacs{RDF}~\cite{RDF} and \eacs{RDFS}~\cite{RDFS} namespace} are drawn as dashed lines. Their caption is written in \emph{italics}.
   \item \emph{Properties in other namespaces} are drawn as solid lines. Their caption is \emph{not} written in \emph{italics}.
 \end{itemize}
 
-Every ontology should stick to a set of naming conventions that are explicitly stated \cite{Ontology101}. The conventions for \thinkhomeweather are as follows:
+These conventions has already been obeyed in chapter~\ref{ch:existing_work}.
+
+Every ontology should stick to a set of naming conventions that are explicitly stated~\cite{Ontology101}. The conventions for \thinkhomeweather are as follows:
 
 \begin{itemize}
-  \item Two concepts, instances and/or properties may not have the same identifier as this is required by \emph{OWL}\cite{OWL}\footnote{Using one identifier for more than one concept, instance and properties is possible in \emph{OWL} if an adequate number of namespaces is used. However, \thinkhomeweather uses a single namespace.} and avoids confusion.
-  \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{Weather State} and \emph{weather state} in the name namespace is possible in \emph{OWL}, but leads to confusion.
-  \item Identifiers may only consist of upper and lower case ASCII letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z}), numerical digits from \emph{0} to \emph{9} and spaces, i.e. all identifiers must match the regular expression \texttt{\textasciicircum[A-za-z0-9~]+\$}.
+  \item Two concepts, instances and/or properties may not have the same identifier as this is required by \eacs{OWL}~\cite{OWL}\footnote{Using one identifier for more than one concept, instance and properties is possible in \eacs{OWL} if an adequate number of namespaces is used. However, \thinkhomeweather uses a single namespace.} and avoids confusion.
+  \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{Weather State} and \emph{weather state} in the name namespace is possible in \eacs{OWL}, but leads to confusion.
+  \item Identifiers may only consist of upper and lower case \eacs{ASCII} letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z}), numerical digits from \emph{0} to \emph{9} and spaces, i.e. all identifiers must match the regular expression \texttt{\textasciicircum[A-za-z0-9~]+\$}.
   \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g. \emph{Weather state} or \emph{Weather report}.
   \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongs to}, followed by the name of the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongs to}, followed by the inverse property's \emph{range}, and vice versa. As an alternative to the prefix \emph{belongs to}, the prefix \emph{is} in conjunction with the suffix \emph{of} and the inverse property's \emph{domain} may be used.
   
@@ -54,7 +54,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 \section{Specification}
 \label{sec:ontology_specification}
 
-\emph{Specification}, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in chapter \ref{sec:methontology} and uses the document template taken from \cite{ORSD}.
+\emph{Specification}, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in chapter \ref{sec:methontology} and uses the document template taken presented in section~\ref{subsec:methontology_specification}~\cite{ORSD}.
 
 \vspace{1em}
 
@@ -87,7 +87,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Implementation language}: The ontology is implemented in \emph{OWL 2.0}\cite{OWL} using \protege~\cite{protege} and the \emph{Pellet reasoner}~\cite{pellet}.
+\textbf{Implementation language}: The ontology is implemented in \emph{\eacs{OWL} 2.0}~\cite{OWL} using \protege~\cite{protege} and the \emph{Pellet reasoner}~\cite{pellet}.
 
 \vspace{.3cm}
 
@@ -174,7 +174,7 @@ In this section, only those deliverables are presented that are necessary to ful
 \subsection{Glossary of Terms}
 \label{sec:ontology_glossary}
 
-When describing the scope of \thinkhomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \emph{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these five concepts.
+When describing the scope of \thinkhomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \eacs{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these five concepts.
 
 In this section, only a list of terms is given; the complete \emph{Glossary of Terms} with short descriptions of each term can be found in the appendix~\ref{main} which starts on page~\pageref{main}.
 
@@ -376,7 +376,7 @@ The \emph{Binary relation table} specifies all relations from section~\ref{subse
 
 An \emph{Instance attributes table} lists all instance attributes in \thinkhomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality. The \emph{Instance attributes table} can be found in the appendix in figure~\ref{fig:instance_attributes_table}.
 
-The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{XML Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \thinkhomeweather.
+The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{\eacs{XML} Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)~\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \thinkhomeweather.
 
 \subsection{Class attributes table}
 \label{subsec:class_attributes_table}
@@ -411,11 +411,11 @@ Section \ref{sec:implementation} describes the reuse of the aforementioned ontol
 
 After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
-The \thinkhomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \emph{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \emph{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
+The \thinkhomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \eacs{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \eacs{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
 
 To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}~\cite{junit} is used (see section~\ref{sec:importer_tests}). Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
 
-During implementation of \thinkhomeweather in \emph{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \emph{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
+During implementation of \thinkhomeweather in \eacs{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \eacs{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
 
 
 \subsection{Imported ontologies}
@@ -507,13 +507,13 @@ For the following questions, \thinkhomeweather can give straight answers:
 \end{itemize}
 To answer any of these questions, the relevant instance of \Egls{weather report} must be identified. Via the property \egls{has weather state}, an instance of \Egls{weather state} is connected to it; this instance has in turn an arbitrary number of \egls{has weather phenomenon} properties each linking to an instance of \Egls{weather phenomenon}. The information from these instances of \Egls{weather phenomenon} provide the desired answer.
 
-However, there are questions that cannot be answered by \thinkhomeweather as writing rules to infer answers would be too complicated in \emph{OWL}:
+However, there are questions that cannot be answered by \thinkhomeweather as writing rules to infer answers would be too complicated in \eacs{OWL}:
 \begin{itemize}
   \item Will the weather change? Will the temperature, humidity, … rise or fall?
   \item Do we need to irrigate the garden?
 \end{itemize}
 
-Furthermore, there are questions that cannot be answered using an \emph{OWL} ontology due to the \emph{Open World Assumption} (\emph{OWA})\cite{open-world-assumption}. For instance, an \emph{OWL} reasoner cannot determine that some attribute value is the lowest one as it does not know whether there may be lower value it does not know anything about; the reasoner only knows about the presence of individuals and attribute values, but nothing about their absence.
+Furthermore, there are questions that cannot be answered using an \eacs{OWL} ontology due to the \emph{Open World Assumption}~\cite{open_world_assumption1}. For instance, an \eacs{OWL} reasoner cannot determine that some attribute value is the lowest one as it does not know whether there may be lower value it does not know anything about; the reasoner only knows about the presence of individuals and attribute values, but nothing about their absence.
 
 \begin{itemize}
   \item What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?

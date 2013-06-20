@@ -170,7 +170,7 @@ Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among oth
   \item Properties can have various characteristics: A property can be inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:property\hspace{0pt}Disjoint\hspace{0pt}With}). A property can be reflexive (it relates everything to itself, \texttt{owl:\hspace{0pt}Reflexive\hspace{0pt}Property}), irreflexive (no individual can be related to itself, \texttt{owl:\hspace{0pt}Irreflexive\hspace{0pt}Property}), functional (every individual can be linked to at most one other individual, \texttt{owl:\hspace{0pt}Functional\hspace{0pt}Property}) or inverse functional (the inverse property is functional, \texttt{owl:\hspace{0pt}Inverse\hspace{0pt}Functional\hspace{0pt}Property}).
 \end{itemize}
 
-Reasoning in \eacs{OWL} respects the \emph{open world assumption}~\cite{open_world_assumption}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa~\cite{MonotonicReasoning}.
+Reasoning in \eacs{OWL} respects the \emph{open world assumption}~\cite{open_world_assumption1,open_world_assumption2}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa~\cite{MonotonicReasoning}.
 
 Queries on \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL} models are often performed using \eacs{SPARQL}, a query language for \eacs{RDF}~\cite{SPARQL}. Figure~\ref{fig:sparql_example} shows an example for the use of \eacs{SPARQL} to query all temperature values known for Vienna, Austria in the \eacs{RDFS} model depicted in figure~\ref{fig:rdfs_example}.
 
@@ -225,7 +225,7 @@ Apart from the weather data models presented here, there exist several approache
 
 \subsection{SWEET}
 
-\eacs{SWEET} is a set of more than 200 ontologies comprising about 6000 concepts~\cite{SWEET2,SWEETWeb}. It is developed by \eacs{NASA}'s \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}~\cite{nasa-jpl}. The initial version which dates back to 2003 is based on \emph{DAML+OIL}~\cite{DAML+OIL,SWEET1}. It structured its ontologies into the following categories (refer to figure~\ref{fig:sweet_structure}:
+\eacs{SWEET} is a set of more than 200 ontologies comprising about 6000 concepts~\cite{SWEET2,SWEETWeb}. It is developed by \eacs{NASA}'s \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}~\cite{nasa-jpl}. The initial version which dates back to 2003 is based on \emph{DAML+OIL}~\cite{DAML+OIL,SWEET1}. It structured its ontologies into the following categories:
 \begin{itemize}
   \item \emph{Earth Realm}: The ``spheres'' (e.g. atmosphere or ocean) of Earth belong to this category.
   \item \emph{Non-Living Element}: This category includes non-living building blocks on nature (e.g. particles or electromagnetic radiation).
