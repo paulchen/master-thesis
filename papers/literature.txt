@@ -125,6 +125,9 @@ State of the art (partly from abstract):
 * A7P2(Raskin).pdf
   Rob Raskin. Semantic Web for Earth and Environmental Terminology (SWEET)
 
+* 1-s2.0-S0098300405001020-main.pdf
+  Robert G. Raskin, Michael J. Pan. Knowledge representation in the semantic web for Earth and environmental terminology (SWEET)
+
 * C+09-SemSOS_CTS.pdf
   Cory A. Henson, Josh K. Pschorr, Amit P. Sheth, and Krishnaprasad Thirunarayan. SemSOS: Semantic Sensor Observation Service
 
