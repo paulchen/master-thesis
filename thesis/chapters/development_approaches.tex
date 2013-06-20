@@ -145,8 +145,7 @@ This approach splits the ontology development process into a set of activities a
 \begin{itemize}
   \item The \emph{Motivating Scenarios} are a set of use cases the ontology is used for.
   \item These scenarios lead to \emph{Informal Competency Questions} which are a set of questions that the ontology shall be able to answer once it is completed.
-  % TODO citation first-order logic
-  \item \emph{First Order Logic: Terminology}: In this step, the terminology is specified using first-order logic (or the logic used by the intended ontology language). The terms (objects, attributes, and relations) are derived from the previously formulated competency questions.
+  \item \emph{First Order Logic: Terminology}: In this step, the terminology is specified using first-order logic (or the logic used by the intended ontology language)~\cite{FirstOrderLogic}. The terms (objects, attributes, and relations) are derived from the previously formulated competency questions.
   \item Then, the competency questions are transformed into \emph{Formal Competency Questions} in terms of entailment and consistency problems with respect to the axioms in the ontology.
   \item \emph{First Order Logic: Axioms}: Now, formal axioms are stated that define the terms and constraints on objects in the ontology using first-order logic.
   \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e. it can provide answers to all 
@@ -653,8 +652,7 @@ As ontologies are built for reuse and the wheel shall not be reinvented during t
 \subsubsection{Implementation}
 \label{subsec:methontology_implementation}
 
-% TODO citation
-The task of implementing the ontology in an ontology language requires an environment that supports the ontologies selected in the integration step. Features that should be provided by such an environment are
+The task of implementing the ontology in an ontology language requires an environment that supports the ontologies selected in the integration step. Features that should be provided by such an environment are~\cite{Methontology}
 
 \begin{itemize}
   \item a lexical and syntactic analyser to guarantee the absence of lexical and syntactic errors,
@@ -681,9 +679,7 @@ Evaluation (and specification) must take limitations into account which affect o
 
 \subsubsection{Documentation}
 
-% TODO citation: problems with documentation after development
-
-During the steps described above, a set of documents is compiled. If generated properly and accurately, these documents describe every detail of the ontology. Using this approach, \methontology forces the ontology designer to document throughout the development process. Any problems that come with documentation being created after the development process -- e.g. incomplete or wrong documentation, the ontology designer does not write the documentation herself, or some ideas the designer had in the design process are lost -- are avoided.
+During the steps described above, a set of documents is compiled. If generated properly and accurately, these documents describe every detail of the ontology. Using this approach, \methontology forces the ontology designer to document throughout the development process. Any problems that come with documentation being created after the development process -- e.g. incomplete or wrong documentation, the ontology designer does not write the documentation herself, or some ideas the designer had in the design process are lost~\cite{SoftwareDocumentationProblems} -- are avoided.
 
 Hence, in \methontology, \emph{documentation} is an activity that is not performed explicitly. Once the development process has finished, both the ontology and its documentation are ready to use. 
 

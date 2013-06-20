@@ -87,7 +87,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Implementation language}: The ontology is implemented in \emph{OWL 2.0}\cite{OWL} using \protege\footnote{\href{http://protege.stanford.edu/}{http://protege.stanford.edu/}} and the \emph{Pellet reasoner}\footnote{\href{http://clarkparsia.com/pellet/}{http://clarkparsia.com/pellet/}}.
+\textbf{Implementation language}: The ontology is implemented in \emph{OWL 2.0}\cite{OWL} using \protege~\cite{protege} and the \emph{Pellet reasoner}~\cite{pellet}.
 
 \vspace{.3cm}
 
@@ -160,7 +160,7 @@ The second step proposed by \methontology is \emph{Knowledge Acquisition}. All k
   \item What knowledge about weather in general is required to build an appropriate ontology? % TODO check if this is available in the previous chapters
 \end{itemize}
 
-Furthermore, chapter~\ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g. the \emph{Glossary of Meteorology}\footnote{\href{http://glossary.ametsoc.org/wiki/Main\_Page}{http://glossary.ametsoc.org/wiki/Main\_Page}} by the \emph{American Meteorological Society}\footnote{\href{http://www.ametsoc.org/}{http://www.ametsoc.org/}}\cite{GlossaryOfMeteorology}.
+Furthermore, chapter~\ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g. the \emph{Glossary of Meteorology}~\cite{GlossaryOfMeteorology} by the \emph{American Meteorological Society}~\cite{AMS}.
 
 \section{Conceptualisation}
 \label{sec:ontology_concept}
@@ -400,8 +400,7 @@ The following ontologies have been selected for the import into \thinkhomeweathe
 \begin{itemize}
   \item \emph{OWL-Time}\cite{owl-time} is used for specifying temporal data (for date and time of a \Egls{weather report}).
   \item The \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} is used for specifying the location a \Egls{weather report} if valid for.
-  % TODO footnote -> citation
-  \item The \emph{Measurement Units Ontology}\footnote{\href{http://idi.fundacionctic.org/muo/muo-vocab.html}{http://idi.fundacionctic.org/muo/muo-vocab.html}}\cite{MUO} (\muo) is used to enrich measurement values of each \Egls{weather phenomenon} with a unit (e.g. temperature in \si{\celsius}, rain in \si{\milli\metre\per\hour}). Although \muo does come with a few shortcomings (see section~\ref{sec:implementation}), it is the ontology that has been identified to be the the one that fits \thinkhomeweather's requirements best.
+  \item The \emph{Measurement Units Ontology}\cite{MUO} (\muo) is used to enrich measurement values of each \Egls{weather phenomenon} with a unit (e.g. temperature in \si{\celsius}, rain in \si{\milli\metre\per\hour}). Although \muo does come with a few shortcomings (see section~\ref{sec:implementation}), it is the ontology that has been identified to be the the one that fits \thinkhomeweather's requirements best.
   \item Unfortunately, no weather ontology has been identified that defines weather concepts in a way that suits \thinkhomeweather's requirements. Hence, \thinkhomeweather defines its own concepts and properties for the domain of weather data.
 \end{itemize}
 
@@ -412,10 +411,9 @@ Section \ref{sec:implementation} describes the reuse of the aforementioned ontol
 
 After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
-% TODO footnote -> citation
-The \thinkhomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \emph{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}\footnote{\href{http://weblog.clarkparsia.com/2008/07/02/pellint-an-ontology-repair-tool/}{http://weblog.clarkparsia.com/2008/07/02/pellint-an-ontology-repair-tool/}}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \emph{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
+The \thinkhomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \emph{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \emph{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
 
-To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}\footnote{\href{http://junit.org/}{http://junit.org/}} is used (see section~\ref{sec:importer_tests}). Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
+To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}~\cite{junit} is used (see section~\ref{sec:importer_tests}). Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
 
 During implementation of \thinkhomeweather in \emph{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \emph{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
 

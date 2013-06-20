@@ -34,7 +34,7 @@ This model states the following facts: Men and women are persons. Brian (age 37)
 
 \vspace{1em}
 
-An important feature of an ontology is the support of automatic reasoning to deduct facts that are not explicitly stated in the data model from the given information. In order to make reasoning possible, the semantics of data models in ontologies (including \eacs{OWL}) are often based on \emph{Description Logics}~\cite{OWL,SROIQ}. These are a family of logics consisting of decidable parts of first-order predicate logic.
+An important feature of an ontology is the support of automatic reasoning to deduct facts that are not explicitly stated in the data model from the given information. In order to make reasoning possible, the semantics of data models in ontologies (including \eacs{OWL}) are often based on \emph{Description Logics}~\cite{OWL,SROIQ}. These are a family of logics consisting of decidable parts of first-order predicate logic~\cite{FirstOrderLogic}.
 
 In the above example, because \emph{Man} and \emph{Woman} are sub-concepts of \emph{Person}, \emph{Brian}, \emph{Maria}, and \emph{Sarah} are instances of \emph{Person}. One could define a relation \emph{has child} that is an inverse property of \emph{has parent}, i.e. \emph{A has child B} if and only if \emph{B has parent A}; then the statements \emph{Brian has child Maria} and \emph{Sarah has child Maria} can be deducted.
 
