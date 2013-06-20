@@ -225,6 +225,27 @@ Apart from the weather data models presented here, there exist several approache
 
 \subsection{SWEET}
 
+% TODO citation SWEETWeb
+\eacs{SWEET} is a set of more than 200 ontologies comprising about 6000 concepts~\cite{SWEET2,SWEETWeb}. It is developed by \eacs{NASA}'s \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}~\cite{nasa-jpl}. The initial version which dates back to 2003 is based on \emph{DAML+OIL}~\cite{DAML+OIL,SWEET1}. It structured its ontologies into the following categories:
+\begin{itemize}
+  \item \emph{Earth Realm}
+  \item \emph{Non-Living Element} 
+  \item \emph{Living Element} 
+  \item \emph{Physical Properties} 
+  \item \emph{Units} 
+  \item \emph{Numerical Entity} 
+  \item \emph{Temporal Entity} 
+  \item \emph{Spatial Entity} 
+  \item \emph{Phenomena}
+\end{itemize}
+
+
+% TODO figure
+Now, \eacs{SWEET} is now implemented in \eacs{OWL}. The current version, \eacs{SWEET} 2.3 which was last updated in 2012 consists of nine top-level concepts (see figure~\ref{fig:sweet_overview}).
+
+Works based on \eacs{SWEET} include work on integrating volcanic and atmospheric data in the context of volcanic eruptions~\cite{sweet_example1}, an ontology of fractures of the Earth's crust~\cite{sweet_example2}, and an extension of \eacs{SWEET} by climate and forecasting terms~\cite{sweet_example3}.
+
+In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualified approach for reusing them in an weather ontology. Units of measurements, temporal definitions, and specifications of geographical positions are supported. However, \eacs{SWEET} comes with a few downside that finally led to the decision not to use them in the weather data model of \thinkhome: …
 % TODO
 
 \section{Related ontologies}
@@ -311,7 +332,7 @@ links to an instance of \texttt{om:Unit} named \texttt{om:meter}. The width of t
 Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of Measure and Related Concepts}, several other ontologies have been examined, but all of them have shortcomings that render their use in the \thinkhomeweather ontology impossible. These ontologies are:
 
 \begin{itemize}
-  \item \textbf{\eacs{SWEET}}: Besides concepts, attributes and individuals for atmospherical phenomena, \eacs{SWEET} also comes with support for literals more precisely specified by units~\cite{SWEET}. However, as mentioned above, \eacs{SWEET} is an ontology that is inappropriate for use in \thinkhomeweather.
+  \item \textbf{\eacs{SWEET}}: Besides concepts, attributes and individuals for atmospherical phenomena, \eacs{SWEET} also comes with support for literals more precisely specified by units~\cite{SWEET1}. However, as mentioned above, \eacs{SWEET} is an ontology that is inappropriate for use in \thinkhomeweather.
   
   \item \textbf{\eacs{QUDT}}: \eacs{QUDT}, a set of ontologies for \emph{Quantities, Units, Dimensions and Data Types in OWL and XML}, is a promising approach for adding support for units to an \emph{OWL} ontology~\cite{QUDT}. However, \eacs{QUDT} does not work in \protege together with the \emph{Pellet} reasoner. Using \eacs{QUDT} would require several changes to its \emph{OWL} files. Hence, it cannot be used in the \thinkhomeweather ontology.
   
