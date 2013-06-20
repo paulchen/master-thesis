@@ -225,22 +225,20 @@ Apart from the weather data models presented here, there exist several approache
 
 \subsection{SWEET}
 
-% TODO citation SWEETWeb
-\eacs{SWEET} is a set of more than 200 ontologies comprising about 6000 concepts~\cite{SWEET2,SWEETWeb}. It is developed by \eacs{NASA}'s \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}~\cite{nasa-jpl}. The initial version which dates back to 2003 is based on \emph{DAML+OIL}~\cite{DAML+OIL,SWEET1}. It structured its ontologies into the following categories:
+\eacs{SWEET} is a set of more than 200 ontologies comprising about 6000 concepts~\cite{SWEET2,SWEETWeb}. It is developed by \eacs{NASA}'s \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}~\cite{nasa-jpl}. The initial version which dates back to 2003 is based on \emph{DAML+OIL}~\cite{DAML+OIL,SWEET1}. It structured its ontologies into the following categories (refer to figure~\ref{fig:sweet_structure}:
 \begin{itemize}
-  \item \emph{Earth Realm}
-  \item \emph{Non-Living Element} 
-  \item \emph{Living Element} 
-  \item \emph{Physical Properties} 
-  \item \emph{Units} 
-  \item \emph{Numerical Entity} 
-  \item \emph{Temporal Entity} 
-  \item \emph{Spatial Entity} 
-  \item \emph{Phenomena}
+  \item \emph{Earth Realm}: The ``spheres'' (e.g. atmosphere or ocean) of Earth belong to this category.
+  \item \emph{Non-Living Element}: This category includes non-living building blocks on nature (e.g. particles or electromagnetic radiation).
+  \item \emph{Living Element}: All plants and animal species belong to this category.
+  \item \emph{Physical Properties}: This category contains physical properties (e.g. temperature or height).
+  \item \emph{Units}: This category comprises units of measurement for all literal values used in the ontologies.
+  \item \emph{Numerical Entity}: This category includes numerical extents (e.g. interval or point) and numerical relations (e.g. greatherThan or max).
+  \item \emph{Temporal Entity}: This category includes ontologies that cover the temporal domain: temporal extents (e.g. duration or season) and temporal relations (e.g. after or before).
+  \item \emph{Spatial Entity}: Ontologies that cover the spatial domain fall into this category: spatial extents (e.g. country or equator) and spatial relations (e.g. above or northOf).
+  \item \emph{Phenomena}: This category contains ontologies that define transient events; a phenomenon that is described by such an ontology crosses bounds of other ontology domains (e.g. hurricane or terrorist event).
 \end{itemize}
 
-% TODO figure
-Now, \eacs{SWEET} is now implemented in \eacs{OWL}. The current version, \eacs{SWEET} 2.3 which was last updated in 2012 consists of nine top-level concepts (see figure~\ref{fig:sweet_overview}).
+Now, \eacs{SWEET} is now implemented in \eacs{OWL}. The current version, \eacs{SWEET} 2.3 was last updated in 2012.
 
 Works based on \eacs{SWEET} include work on integrating volcanic and atmospheric data in the context of volcanic eruptions~\cite{sweet_example1}, an ontology of fractures of the Earth's crust~\cite{sweet_example2}, and an extension of \eacs{SWEET} by climate and forecasting terms~\cite{sweet_example3}.
 
@@ -248,11 +246,12 @@ In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualifie
 \begin{itemize}
   \item Although \eacs{SWEET} is separated into a large number of ontologies, there are many dependencies between ontologies. Importing a single ontology into an \eacs{OWL} ontology causes the import of all of its dependencies, the import of all dependencies of all dependencies etc. It is impossible to import one ontology from \eacs{SWEET} without importing dozens of other ontologies.
   
-  \item … % TODO doesn't cover forecasts, 
+  \item \eacs{SWEET} does not currently cover future events.
   
-  \item … % TODO doesn't cover many of the required weather elements
+  \item \eacs{SWEET} does not cover all weather elements that are relevant.
 \end{itemize}
-% TODO
+
+Extensions to the \eacs{SWEET} ontologies in order adress the second and the third issue would be possible; an extension of \eacs{SWEET} to include forecast data already exists~\cite{sweet_example3}. However, as a large number of extensions would be necessary, it was decided not to use any parts of \eacs{SWEET} for \thinkhome and to build a new ontology from scratch instead.
 
 \section{Related ontologies}
 \label{sec:related_ontologies}
