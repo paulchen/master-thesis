@@ -338,3 +338,6 @@ NEW (2013-04-09):
 * IST2_ATHENA.pdf
   Rainer Ruggaber. ATHENA – ADVANCED TECHNOLOGIES FOR INTEROPERABILITY OF HETEROGENEOUS ENTERPRISE NETWORKS AND THEIR APPLICATIONS
 
+* 10.1.1.14.4579.pdf
+  Raffaella Bernardi. Monotonic Reasoning from a Proof-Theoretic Perspective
+
