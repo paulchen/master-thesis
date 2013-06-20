@@ -347,3 +347,6 @@ NEW (2013-04-09):
 * 01607376.pdf
   Joachim Bayer and Dirk Muthig. A View-Based Approach for Improving Software Documentation Practices
 
+* p1-fox.pdf
+  Peter Fox, Deborah McGuinness, Robert Raskin, Krishna Sinha. A volcano erupts: semantically mediated integration of heterogeneous volcanic and atmospheric data
+
