@@ -239,13 +239,19 @@ Apart from the weather data models presented here, there exist several approache
   \item \emph{Phenomena}
 \end{itemize}
 
-
 % TODO figure
 Now, \eacs{SWEET} is now implemented in \eacs{OWL}. The current version, \eacs{SWEET} 2.3 which was last updated in 2012 consists of nine top-level concepts (see figure~\ref{fig:sweet_overview}).
 
 Works based on \eacs{SWEET} include work on integrating volcanic and atmospheric data in the context of volcanic eruptions~\cite{sweet_example1}, an ontology of fractures of the Earth's crust~\cite{sweet_example2}, and an extension of \eacs{SWEET} by climate and forecasting terms~\cite{sweet_example3}.
 
-In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualified approach for reusing them in an weather ontology. Units of measurements, temporal definitions, and specifications of geographical positions are supported. However, \eacs{SWEET} comes with a few downside that finally led to the decision not to use them in the weather data model of \thinkhome: …
+In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualified approach for reusing them in an weather ontology. Units of measurements, temporal definitions, and specifications of geographical positions are supported. However, \eacs{SWEET} comes with a few downside that finally led to the decision not to use them in the weather data model of \thinkhome:
+\begin{itemize}
+  \item Although \eacs{SWEET} is separated into a large number of ontologies, there are many dependencies between ontologies. Importing a single ontology into an \eacs{OWL} ontology causes the import of all of its dependencies, the import of all dependencies of all dependencies etc. It is impossible to import one ontology from \eacs{SWEET} without importing dozens of other ontologies.
+  
+  \item … % TODO doesn't cover forecasts, 
+  
+  \item … % TODO doesn't cover many of the required weather elements
+\end{itemize}
 % TODO
 
 \section{Related ontologies}
