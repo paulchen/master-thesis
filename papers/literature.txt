@@ -350,3 +350,6 @@ NEW (2013-04-09):
 * p1-fox.pdf
   Peter Fox, Deborah McGuinness, Robert Raskin, Krishna Sinha. A volcano erupts: semantically mediated integration of heterogeneous volcanic and atmospheric data
 
+* 1-s2.0-S0191814109000182-main.pdf
+  Jian Zhong, Atilla Aydina, Deborah L. McGuinness. Ontology of fractures
+
