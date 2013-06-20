@@ -341,3 +341,6 @@ NEW (2013-04-09):
 * 10.1.1.14.4579.pdf
   Raffaella Bernardi. Monotonic Reasoning from a Proof-Theoretic Perspective
 
+* 01607376.pdf
+  Joachim Bayer and Dirk Muthig. A View-Based Approach for Improving Software Documentation Practices
+
