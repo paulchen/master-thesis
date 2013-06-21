@@ -7,9 +7,9 @@ Based on the insights acquired from existing work in chapter~\ref{ch:existing_wo
 \section{Weather information}
 \label{sec:weather_information}
 
-In order to identify which data is required for the \thinkhome ontology (\thinkhomeweather), it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centered around a set of \emph{competency questions}\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
+In order to identify which data is required for the \thinkhome ontology (\smarthomeweather), it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centered around a set of \emph{competency questions}\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
 
-Below are the questions that have been identified to be adequate competency questions for \thinkhomeweather; the list stems from analysis of the processes at a \smarthome that may be influenced by weather.
+Below are the questions that have been identified to be adequate competency questions for \smarthomeweather; the list stems from analysis of the processes at a \smarthome that may be influenced by weather.
 
 \begin{itemize}
   \item What is the current weather situation?
@@ -40,7 +40,7 @@ Apart from weather elements, Internet weather services often provide some inform
 
 Sources for weather data are weather sensors and weather forecasts. As \thinkhome performs no weather forecasting on its own, forecast data is gathered from weather services via Internet. While data about the current weather state can be obtained from both weather sensors and Internet services, the only source for data about future weather states are Internet services.
 
-However, there there are weather elements no sensor can provide data about, and there are weather elements that are not available from any of the Internet services presented in section~\ref{sec:weather_services}. Section~\ref{sec:weather_sensors} covers data that can be obtained from weather sensors; section~\ref{sec:weather_services} discusses weather data that can be fetched from Internet services. Based on the findings in these two sections, \ref{sec:weather_conclusion} presents a set of weather elements that are incorporated into \thinkhomeweather.
+However, there there are weather elements no sensor can provide data about, and there are weather elements that are not available from any of the Internet services presented in section~\ref{sec:weather_services}. Section~\ref{sec:weather_sensors} covers data that can be obtained from weather sensors; section~\ref{sec:weather_services} discusses weather data that can be fetched from Internet services. Based on the findings in these two sections, \ref{sec:weather_conclusion} presents a set of weather elements that are incorporated into \smarthomeweather.
 
 \section{Sensor data}
 \label{sec:weather_sensors}
@@ -82,7 +82,7 @@ Each of the \emph{fieldbus} systems mentioned in section~\ref{sec:fieldbus} prov
 
 There are \emph{weather stations} that provide sensors for a combinations of the above weather elements.
 
-Other sensors that are available under the \emph{KNX} standard include sensors for water, fluid level, smoke or \ce{CO2} concentration. However, these are not relevant in the context of \thinkhomeweather as they do not provide weather data.
+Other sensors that are available under the \emph{KNX} standard include sensors for water, fluid level, smoke or \ce{CO2} concentration. However, these are not relevant in the context of \smarthomeweather as they do not provide weather data.
 
 
 \section{Service data}
@@ -135,7 +135,7 @@ In addition to the aspects listed above, some general information is provided (o
 \paragraph{Weather services being evaluated}
 
 % TODO link to DWD?
-Table~\ref{table:weather_data1} lists all weather services that have been evaluated together with their operators, web pages and coverage areas. \emph{Google Weather API} is discontinued~\cite{google_weather}; it is included here because \emph{Google} announced its shutdown after the time this evaluation was conducted. The \emph{Google Weather API} serves as an example of a weather service that is unsuitable for usage in \thinkhomeweather as it is discontinued. \eacs{DWD} and \emph{Weather Underground} are the only services that do not provide worldwide data.
+Table~\ref{table:weather_data1} lists all weather services that have been evaluated together with their operators, web pages and coverage areas. \emph{Google Weather API} is discontinued~\cite{google_weather}; it is included here because \emph{Google} announced its shutdown after the time this evaluation was conducted. The \emph{Google Weather API} serves as an example of a weather service that is unsuitable for usage in \smarthomeweather as it is discontinued. \eacs{DWD} and \emph{Weather Underground} are the only services that do not provide worldwide data.
 
 Table~\ref{table:weather_data3} lists all weather services together with the data format they use to provide their data. For the case of Java, \eacs{XML}-based formats including \eacs{RSS} feeds are preferred because of the built-in support for \eacs{XML} by \eacs{DOM} and \eacs{SAX}. There are libraries for providing \eacs{JSON} and \eacs{JSONP}~\cite{jsonp} support for Java. \eacs{CSV} (\emph{comma-separated values})~\cite{rfc4180} is a format that can be parsed easily in any language, although using \eacs{CSV} leads to more implementation costs than \eacs{XML}. There are no libraries available that provide Java support for the \eacs{SYNOP} format (\emph{Surface Synoptic Observations}~\cite{SYNOP} which is used by \eacs{DWD}; hence this format is unsuitable to be used in a Java application.
 
@@ -482,7 +482,7 @@ DWD:
 
 Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
-Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \thinkhomeweather ontology. See section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
+Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \smarthomeweather ontology. See section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
 
 Nevertheless, the source of weather data shall remain replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \yrno is to be replaced by another weather service, the ontology remains unchanged; only the program that imports weather data must be adapted. If the weather service used does not support one or more weather elements, they are simply omitted in the program's output.
 
@@ -502,7 +502,7 @@ Furthermore, the overall weather condition is added to the ontology. This weathe
 
 Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section~\ref{sec:sun_position} for details.
 
-To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \thinkhomeweather can actually answer the competency questions.
+To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \smarthomeweather can actually answer the competency questions.
 
 \begin{table}
 \begin{tabularx}{\textwidth}{|X|X|}
@@ -634,7 +634,7 @@ The content of the \eacs{XML} document covers a period of nine days, starting at
 
 Besides location-based weather data, \emph{yr.no} offers an interface for retrieving sunrise and sunset data~\cite{yrno_sunrise}. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon are provided. The angle of the sun at solar noon is also given.
 
-However, these data are inappropriate for use within the \thinkhomeweather ontology. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}. Furthermore, most of the weather services that are available via Internet do not offer any data about the sun's position.
+However, these data are inappropriate for use within the \smarthomeweather ontology. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}. Furthermore, most of the weather services that are available via Internet do not offer any data about the sun's position.
 
 % TODO give informations about precision of PSA and SPA
 There are some algorithms for calculating the sun's position at a certain location given by latitude and longitude at a certain time:
@@ -642,5 +642,5 @@ There are some algorithms for calculating the sun's position at a certain locati
 \begin{itemize}
   \item The \emph{SPA algorithm}\cite{SPA_algorithm} is an algorithm which is complicated to implement. Hence, it is used only in contexts where precise values are required as it yields results with uncertainties of less than \num{0.0003} degrees.
   
-  \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}~\cite{PSA_algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}. However, approximate values for the sun's position are appropriate for use in the \thinkhomeweather ontology. Hence, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
+  \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}~\cite{PSA_algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}. However, approximate values for the sun's position are appropriate for use in the \smarthomeweather ontology. Hence, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
 \end{itemize}

@@ -16,7 +16,7 @@ In the article about their approach towards ontology design, Noy and McGuinness 
 3) Concepts in the ontology should be close to objects (physical or logical) and relationships in your domain of interest. These are most likely to be nouns (objects) or verbs (relationships) in sentences that describe your domain.\normalfont\cite{Ontology101}
 \end{quote}
 
-This chapter discusses some existing methodologies for the construction of ontologies. Among the methodologies that can be found in literature, the ones discussed as candidates for the design of \thinkhomeweather are
+This chapter discusses some existing methodologies for the construction of ontologies. Among the methodologies that can be found in literature, the ones discussed as candidates for the design of \smarthomeweather are
 
 \begin{itemize}
   \item the one by Uschuld and King~\cite{UscholdKing} (section~\ref{subsec:approach3}),
@@ -45,11 +45,11 @@ For each methodology, the following topics are discussed in section~\ref{sec:ont
   
   \item \textbf{Analysis:} The methodology is analysed regarding a pre-defined set of criteria (see below):
     \begin{itemize}
-      \item \textbf{Effort:} Different approaches lead to different efforts for the development of ontologies. Although the minimisation of the effort is not a target of \thinkhomeweather, it is unnecessary to apply an approach which leads to an enormous development effort compared to other methodologies.
+      \item \textbf{Effort:} Different approaches lead to different efforts for the development of ontologies. Although the minimisation of the effort is not a target of \smarthomeweather, it is unnecessary to apply an approach which leads to an enormous development effort compared to other methodologies.
       
       \item \textbf{Usage:} If an approach is widely used, this may indicate that the approach is considered suitable for ontology development by many designers. The other way, a seldomly applied methodology may be inappropriate for most use cases.
       
-      \item \textbf{Applicability:} An approach may be limited to certain kinds of domains and be unsuitable for designing \thinkhomeweather.
+      \item \textbf{Applicability:} An approach may be limited to certain kinds of domains and be unsuitable for designing \smarthomeweather.
       
       \item \textbf{Strictness:} Due to the fact that there is no one correct way to design an ontology, every approach must leave a certain margin to the ontology designer to decide about implementation details. However, a margin being too wide may lead to an inaccurate or incomplete ontology.
       
@@ -61,7 +61,7 @@ For each methodology, the following topics are discussed in section~\ref{sec:ont
     \end{itemize}
 \end{itemize}
 
-Section~\ref{sec:approaches_conclusion} then compares the methodologies and concludes about the results and comes to a decision regarding the methodology which fits the requirements of \thinkhomeweather best and thus is used for the development of the ontology. It is possible that this decision is not be unambiguous if more than one approach turns out to be suitable for the present context.
+Section~\ref{sec:approaches_conclusion} then compares the methodologies and concludes about the results and comes to a decision regarding the methodology which fits the requirements of \smarthomeweather best and thus is used for the development of the ontology. It is possible that this decision is not be unambiguous if more than one approach turns out to be suitable for the present context.
 
 As section~\ref{sec:ontology_approaches} focuses on the characteristics of the methodologies required to take a decision in favour of one of the approaches, section~\ref{sec:methontology} then describes the selected approach in a more detailed manner.
 
@@ -262,7 +262,7 @@ Each of these steps includes the generation of one or more documentation artefac
 The \eacs{UPON} approach is a deeply structured approach that applies well-established technologies from software development to the field of ontology design. While this approach leads to well-designed ontologies and works well for developing large environments, in the case of \thinkhome it is possibly an over-engineered approach.
 
 \begin{itemize}
-  \item \textbf{Effort:} Due to its process which consists of many single steps which generate a huge number of artefacts, the application of the \eacs{UPON} methodology leads to a greater effort compared to other approaches such as \methontology (see section~\ref{subsec:approach5}. The smaller the ontology to be developed is, the larger the difference becomes. As \thinkhomeweather can be considered to be a rather small ontology, \eacs{UPON} may be unsuitable for its design.
+  \item \textbf{Effort:} Due to its process which consists of many single steps which generate a huge number of artefacts, the application of the \eacs{UPON} methodology leads to a greater effort compared to other approaches such as \methontology (see section~\ref{subsec:approach5}. The smaller the ontology to be developed is, the larger the difference becomes. As \smarthomeweather can be considered to be a rather small ontology, \eacs{UPON} may be unsuitable for its design.
   
    \item \textbf{Usage:} The paper proposing the \eacs{UPON} methodology~\cite{SoftwareEngineeringOntology} gets cited often; however, due to its enormous effort, it is harder to find use cases for it compared to other approaches.
 
@@ -339,7 +339,7 @@ Ontology 101 & Simple and easily comprehensible approach\newline Low effort & Do
 \label{table:approaches_comparison}
 \end{figure}
 
-Considering the characteristics of the development approaches, \methontology is chosen for building the \thinkhomeweather ontology. The main reasons for that decision are:
+Considering the characteristics of the development approaches, \methontology is chosen for building the \smarthomeweather ontology. The main reasons for that decision are:
 
 \begin{itemize}
   \item Compared to other approaches, the effort of following this methodology acceptable.
@@ -347,11 +347,11 @@ Considering the characteristics of the development approaches, \methontology is 
   \item It is widely used for the development of a variety of ontologies. This implies that many ontology developers consider it suitable for the application on many different domains.
 \end{itemize}
 
-Chapter \ref{ch:thinkhomeweather_ontology} describes the process of building the \thinkhomeweather ontology in detail.
+Chapter \ref{ch:thinkhomeweather_ontology} describes the process of building the \smarthomeweather ontology in detail.
 
 \section{\methontology}
 
-As section~\ref{sec:approaches_conclusion} opted for \methontology as the methodology to be used for developing \thinkhomeweather, this section presents \methontology in a more detailed manner.
+As section~\ref{sec:approaches_conclusion} opted for \methontology as the methodology to be used for developing \smarthomeweather, this section presents \methontology in a more detailed manner.
 
 \vspace{1em}
 
@@ -359,7 +359,7 @@ The inventors of \methontology, Gómez-Pérez et al., perceived absence of a cle
 
 Several papers describe \methontology itself~\cite{Methontology,Methontology2,ORSD}, while others discuss applications of \methontology in the development of ontologies~\cite{MethontologyLegal,MethontologyChemical}.
 
-While the overall approach is the same in all of these articles, there are slight differences regarding the details of each step. For developing the \thinkhomeweather ontology in chapter \ref{ch:thinkhomeweather_ontology}, a variant of \methontology is used that combines aspects from several papers. This methodology is presented in this section. It does not exactly match the methodology presented in any of the papers.
+While the overall approach is the same in all of these articles, there are slight differences regarding the details of each step. For developing the \smarthomeweather ontology in chapter \ref{ch:thinkhomeweather_ontology}, a variant of \methontology is used that combines aspects from several papers. This methodology is presented in this section. It does not exactly match the methodology presented in any of the papers.
 
 % TODO mention IEEE software life cycle paper referenced in \cite{MethontologyLegal}?
 
@@ -396,7 +396,7 @@ Differently to what is shown in figure \ref{fig:methontology1}, \methontology fo
 
 This section describes \methontology as a well-defined approach to perform all activities mentioned above.
 
-For each of the activities, only ideas behind them are covered, but their application is omitted. They are applied in chapter \ref{ch:thinkhomeweather_ontology} where \methontology is used to create the \thinkhomeweather ontology.
+For each of the activities, only ideas behind them are covered, but their application is omitted. They are applied in chapter \ref{ch:thinkhomeweather_ontology} where \methontology is used to create the \smarthomeweather ontology.
 
 Each section that describes an activity that involves the creation of some documentation artefact (e.g. a table or a document), a template for the respective artefact is presented.
 
@@ -665,7 +665,7 @@ The task of implementing the ontology in an ontology language requires an enviro
 
 Together with the implementation, the information about the ontology gathered in section~\ref{subsec:methontology_conceptualisation} is now formalised into the formal model of the ontology language being used.
 
-In the case of the \thinkhomeweather ontology an \eacs{OWL} ontology~\cite{OWL} is created using \protege~\cite{protege} together with the \emph{Pellet} reasoner~\cite{pellet}.
+In the case of the \smarthomeweather ontology an \eacs{OWL} ontology~\cite{OWL} is created using \protege~\cite{protege} together with the \emph{Pellet} reasoner~\cite{pellet}.
 
 \subsubsection{Evaluation}
 

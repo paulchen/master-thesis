@@ -2,7 +2,7 @@
 \chapter{The \emph{Weather Importer}}
 \label{ch:weather_importer}
 
-In previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} digs into the details of weather services that are available via Internet, with the example of the API by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements found at the \thinkhome project. Chapter~\ref{ch:thinkhomeweather_ontology} describes the design of the \thinkhomeweather ontology. Eventually, the ontology needs to be populated with data, i.e. individuals that comprise the current and future state of the weather at the desired location.
+In previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} digs into the details of weather services that are available via Internet, with the example of the API by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements found at the \thinkhome project. Chapter~\ref{ch:thinkhomeweather_ontology} describes the design of the \smarthomeweather ontology. Eventually, the ontology needs to be populated with data, i.e. individuals that comprise the current and future state of the weather at the desired location.
 
 For that process, a standalone Java application has been developed. As its main purpose is to import weather data, it was named \emph{Weather Importer}.
 
@@ -15,7 +15,7 @@ All classes belonging to \emph{Weather Importer} include comments suitable for u
 \section{The data model}
 \label{sec:importer_model}
 
-The core of \emph{Weather Importer} is formed by an object-oriented data model that can be found in the \texttt{model} package. This package contains classes that are to be instantiated in order to encapsulate all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \thinkhomeweather ontology, individuals and statements are generated and added to the ontology.
+The core of \emph{Weather Importer} is formed by an object-oriented data model that can be found in the \texttt{model} package. This package contains classes that are to be instantiated in order to encapsulate all data that is collected from weather sensors and services. After processing the data in a manner that makes it suitable for use within the \smarthomeweather ontology, individuals and statements are generated and added to the ontology.
 
 \begin{figure}
 \centering
@@ -31,13 +31,13 @@ The core of \emph{Weather Importer} is formed by an object-oriented data model t
 \label{fig:importer_model2}
 \end{figure}
 
-The domain model in the package \texttt{model} which resembles the structure of the \thinkhomeweather ontology is depicted in the \emph{UML} class diagram in figure~\ref{fig:importer_model1}; to give an overview, figure~\ref{fig:importer_model2} shows a simplified class diagram that shows only the most important classes \texttt{Weather}, \texttt{WeatherReport}, \texttt{WeatherState}, and \texttt{WeatherPhenomenon}.
+The domain model in the package \texttt{model} which resembles the structure of the \smarthomeweather ontology is depicted in the \emph{UML} class diagram in figure~\ref{fig:importer_model1}; to give an overview, figure~\ref{fig:importer_model2} shows a simplified class diagram that shows only the most important classes \texttt{Weather}, \texttt{WeatherReport}, \texttt{WeatherState}, and \texttt{WeatherPhenomenon}.
 
 Other than its name suggests, \texttt{OntologyClass} is an interface that is implemented by every class that corresponds to a concept (class) in the ontology. That interface defines a set of methods which are necessary to export an object's data either to individuals and statements for adding them to the ontology using \emph{Apache Jena}~\cite{apache_jena} or to a representation of the individuals and statements in \emph{Turtle syntax} (see section~\ref{sec:importer_application} below). The methods defined by \texttt{OntologyClass} are:
 \begin{itemize}
   \item \texttt{createIndividuals()} creates individuals and statements holding the data that is stored in the object and adds them to the ontology. The method calls \texttt{createIndividuals()} for any objects that are connected to this object, with the exception of instances of \texttt{WeatherState} and \texttt{WeatherReport} that are linked together via the properties \texttt{previousState} and \texttt{previousReport}, respectively.
   
-  \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \thinkhomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g. an \texttt{Instant} creates an individual of type \Egls{instant} and one of type \emph{DateTimeDescription}\footnote{\emph{DateTimeDescription} is defined by \emph{OWL-Time} as the concept that represents the timestamp of an \Egls{instant}; the property \emph{inDateTime} links an instance of \emph{DateTimeDescription} to an instance of \Egls{instant}.}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \Egls{instant} individual; the corresponding \emph{DateTimeDescription} object can be obtained by querying the ontology for the statement having the previously returned
+  \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \smarthomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g. an \texttt{Instant} creates an individual of type \Egls{instant} and one of type \emph{DateTimeDescription}\footnote{\emph{DateTimeDescription} is defined by \emph{OWL-Time} as the concept that represents the timestamp of an \Egls{instant}; the property \emph{inDateTime} links an instance of \emph{DateTimeDescription} to an instance of \Egls{instant}.}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \Egls{instant} individual; the corresponding \emph{DateTimeDescription} object can be obtained by querying the ontology for the statement having the previously returned
   \Egls{instant} individual as subject and the property \emph{inDateTime} as predicate.
   
   \item \texttt{getTurtleStatements()} returns an instance of \texttt{TurtleStore} that contains a set of \texttt{TurtleStatement} objects each representing an RDF triple in \texttt{Turtle syntax}. The instance being returned contains all data that calling \texttt{createIndividuals()} would add to the ontology. See section~\ref{subsec:importer_turtle} for details.
@@ -49,11 +49,11 @@ Other than its name suggests, \texttt{OntologyClass} is an interface that is imp
 
 The classes inside the package \texttt{model} are:
 \begin{itemize}
-  \item \texttt{GeographicalPosition} resembles the concept \Egls{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} that is imported into the \thinkhomeweather ontology.
+  \item \texttt{GeographicalPosition} resembles the concept \Egls{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} that is imported into the \smarthomeweather ontology.
   
   \item \texttt{TemporalEntity} corresponds to the concept \Egls{temporal entity} in the \emph{OWL-Time}\cite{owl-time} ontology. The are two sub-classes, \texttt{Instant} and \texttt{Interval} that resemble the concepts \Egls{instant} and \Egls{interval}, respectively.
   
-  \item \texttt{WeatherPhenomenon} corresponds to the concept \Egls{weather phenomenon} in the \thinkhomeweather ontology. As it is an abstract class, only its subclasses \texttt{CloudCover}, \texttt{DewPoint}, \texttt{Humidity}, \texttt{Precipitation}, \texttt{Pressure}, \texttt{SolarRadiation}, \texttt{SunPosition}, \texttt{Temperature} and \texttt{Wind} can be instantiated that each resemble the corresponding concept of the ontology.
+  \item \texttt{WeatherPhenomenon} corresponds to the concept \Egls{weather phenomenon} in the \smarthomeweather ontology. As it is an abstract class, only its subclasses \texttt{CloudCover}, \texttt{DewPoint}, \texttt{Humidity}, \texttt{Precipitation}, \texttt{Pressure}, \texttt{SolarRadiation}, \texttt{SunPosition}, \texttt{Temperature} and \texttt{Wind} can be instantiated that each resemble the corresponding concept of the ontology.
   
   \item \texttt{WeatherReport} corresponds to the concept \Egls{weather report}.
   
@@ -69,7 +69,7 @@ Additionally, there is an enumeration named \texttt{WeatherConditions} having va
 \section{The application}
 \label{sec:importer_application}
 
-The \emph{Weather Importer} application basically performs three tasks when being launched: It reads the \thinkhomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file, modifies it in some way and and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{Turtle syntax}\cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}.
+The \emph{Weather Importer} application basically performs three tasks when being launched: It reads the \smarthomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file, modifies it in some way and and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{Turtle syntax}\cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}.
 
 The application depends on the \emph{Apache Jena} framework~\cite{apache_jena} (successfully tested with 2.10.0). For the unit tests (see section~\ref{sec:importer_tests}), \emph{JUnit}~\cite{junit} (4.11), the \emph{Pellet} \eacs{OWL} 2 reasoner~\cite{pellet} (2.3.0) and \emph{Cobertura}~\cite{cobertura} (1.9.4.1) are used. The version numbers given in parentheses give the versions of the most recent releases of the libraries at the time of writing. Newer releases may work, but have not been tested.
 
@@ -87,7 +87,7 @@ Various parameters of \emph{Weather Importer} are configurable using a \emph{pro
 \subsection{\texttt{fetch} mode}
 \label{subsec:importer_fetch}
 
-In \texttt{fetch} mode, \emph{Weather Importer} reads the \thinkhomeweather ontology in \emph{RDF/XML syntax} from a file using the \emph{Apache Jena} framework and fetches weather data for the desired location from a weather service via Internet.
+In \texttt{fetch} mode, \emph{Weather Importer} reads the \smarthomeweather ontology in \emph{RDF/XML syntax} from a file using the \emph{Apache Jena} framework and fetches weather data for the desired location from a weather service via Internet.
 
 To provide the reference implementation that is found in the class \texttt{YrNoImporter}, \emph{Weather Importer} obtains weather data from \yrno as described in section~\ref{sec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilized by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather()} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
 
@@ -111,8 +111,8 @@ Both methods provide the developer of an implementation of the interface \texttt
 
 \subsection{\texttt{timestamps} mode}
 
-% TODO reference to the description of this process in the chapter about the thinkhomeweather ontology?
-As discussed in section ?, there are two ways to update weather data in the \thinkhomeweather ontology:
+% TODO reference to the description of this process in the chapter about the smarthomeweather ontology?
+As discussed in section ?, there are two ways to update weather data in the \smarthomeweather ontology:
 \begin{itemize}
   \item The data can be reobtained using the \texttt{fetch} mode into a copy of the ontology that does not contain any weather data. If it does contain any weather data, it can be removed using the \texttt{remove} mode (see below).
   \item Alternatively, the timestamps of all instances of the \Egls{weather report} concept in order to make them correspond to the current time.
@@ -196,7 +196,7 @@ In \texttt{remove} mode, the \emph{Weather Importer} takes an ontology in \emph{
 
 The \texttt{turtle} mode is a mode that was created for debugging reasons; in that mode \emph{Weather Importer} performs the same steps as in \texttt{fetch} mode, with the following differences:
 \begin{itemize}
-  \item The \thinkhomeweather ontology is not read from a file. Hence, the output consists only of the statements generated from the weather data that is imported.
+  \item The \smarthomeweather ontology is not read from a file. Hence, the output consists only of the statements generated from the weather data that is imported.
   \item The \emph{Apache Jena} framework is not used. This enables a developer to distinguish between an error in the usage of \emph{Apache Jena} or an error somewhere else.
   \item For better readability, \emph{Turtle syntax} is used for output instead of \emph{RDF/XML}.
 \end{itemize}
@@ -217,7 +217,7 @@ Section~\ref{sec:appendix_turtle_output} in the appendix shows a part of the out
 \section{Unit tests}
 \label{sec:importer_tests}
 
-\emph{Weather Importer} incorporates a set of \emph{JUnit}~\cite{junit} tests that covers reasoning in the \thinkhomeweather ontology and the application itself. For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used.
+\emph{Weather Importer} incorporates a set of \emph{JUnit}~\cite{junit} tests that covers reasoning in the \smarthomeweather ontology and the application itself. For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used.
 
 The following test categories are implemented:
 \begin{itemize}

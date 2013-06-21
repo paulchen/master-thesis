@@ -1,4 +1,4 @@
-\chapter{The \thinkhomeweather ontology}
+\chapter{The \smarthomeweather ontology}
 \label{ch:thinkhomeweather_ontology}
 
 
@@ -7,9 +7,9 @@
 % TODO elaborate steps more?
 
 
-The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \thinkhomeweather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of an ontology for \thinkhome, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
+The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \smarthomeweather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of an ontology for \thinkhome, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
 
-Based on these insights, this chapter describes the process of designing the \thinkhomeweather ontology in detail. The development process follows the steps proposed by \methontology as described in chapter \ref{sec:methontology}.
+Based on these insights, this chapter describes the process of designing the \smarthomeweather ontology in detail. The development process follows the steps proposed by \methontology as described in chapter \ref{sec:methontology}.
 
 \section{Conventions}
 \label{sec:ontology_conventions}
@@ -38,10 +38,10 @@ All diagrams in this chapter showing parts of an ontology adhere to the followin
 
 These conventions has already been obeyed in chapter~\ref{ch:existing_work}.
 
-Every ontology should stick to a set of naming conventions that are explicitly stated~\cite{Ontology101}. The conventions for \thinkhomeweather are as follows:
+Every ontology should stick to a set of naming conventions that are explicitly stated~\cite{Ontology101}. The conventions for \smarthomeweather are as follows:
 
 \begin{itemize}
-  \item Two concepts, instances and/or properties may not have the same identifier as this is required by \eacs{OWL}~\cite{OWL}\footnote{Using one identifier for more than one concept, instance and properties is possible in \eacs{OWL} if an adequate number of namespaces is used. However, \thinkhomeweather uses a single namespace.} and avoids confusion.
+  \item Two concepts, instances and/or properties may not have the same identifier as this is required by \eacs{OWL}~\cite{OWL}\footnote{Using one identifier for more than one concept, instance and properties is possible in \eacs{OWL} if an adequate number of namespaces is used. However, \smarthomeweather uses a single namespace.} and avoids confusion.
   \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{Weather State} and \emph{weather state} in the name namespace is possible in \eacs{OWL}, but leads to confusion.
   \item Identifiers may only consist of upper and lower case \eacs{ASCII} letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z}), numerical digits from \emph{0} to \emph{9} and spaces, i.e. all identifiers must match the regular expression \texttt{\textasciicircum[A-za-z0-9~]+\$}.
   \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g. \emph{Weather state} or \emph{Weather report}.
@@ -67,7 +67,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.6cm}
 
-\textbf{Name}: \thinkhomeweather
+\textbf{Name}: \smarthomeweather
 
 \vspace{.3cm}
 
@@ -91,7 +91,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Intended end-users}: The ontology is part of the \thinkhome project; hence, any end-user of the \thinkhome project is an end-user of the \thinkhomeweather ontology. As \thinkhome aims at providing home automation to \emph{house occupants}, intended end-users of \thinkhomeweather are these occupants.
+\textbf{Intended end-users}: The ontology is part of the \thinkhome project; hence, any end-user of the \thinkhome project is an end-user of the \smarthomeweather ontology. As \thinkhome aims at providing home automation to \emph{house occupants}, intended end-users of \smarthomeweather are these occupants.
 
 \vspace{.3cm}
 
@@ -147,16 +147,16 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.5cm}
 
-In the following sections, the \thinkhomeweather ontology is built in a way to meet all above requirements, if possible. Section \ref{sec:ontology_evaluation} evaluates if the resulting ontology fits the specification and which shortcomings the ontology comes with.
+In the following sections, the \smarthomeweather ontology is built in a way to meet all above requirements, if possible. Section \ref{sec:ontology_evaluation} evaluates if the resulting ontology fits the specification and which shortcomings the ontology comes with.
 
 \section{Knowledge Acquisition}
 
-The second step proposed by \methontology is \emph{Knowledge Acquisition}. All knowledge required to build the \thinkhomeweather ontology is presented in the chapters~\ref{ch:existing_work} and~\ref{ch:weather_data}. These chapters discuss in detail:
+The second step proposed by \methontology is \emph{Knowledge Acquisition}. All knowledge required to build the \smarthomeweather ontology is presented in the chapters~\ref{ch:existing_work} and~\ref{ch:weather_data}. These chapters discuss in detail:
 
 \begin{itemize}
   \item Which weather data are relevant for \thinkhome?
   \item Which weather data are available from sensors (section~\ref{sec:weather_sensors}) and Internet services (section~\ref{sec:internet_services})? How can this data be acquired?
-  \item Which data do not have any use for \thinkhomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
+  \item Which data do not have any use for \smarthomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
   \item What knowledge about weather in general is required to build an appropriate ontology? % TODO check if this is available in the previous chapters
 \end{itemize}
 
@@ -167,21 +167,21 @@ Furthermore, chapter~\ref{ch:existing_work} covers existing ontologies that cove
 
 In the third step of \methontology, the \emph{Conceptualisation} step, the domain knowledge is structured into a conceptional model that describes the problem and its solution in terms of the domain vocabulary that has been identified in the \emph{Specification} process.
 
-The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes and binary relations that will form the ontology. Besides the glossary, this section covers \emph{Concept-classification trees} (section~\ref{sec:concept_classification_trees}), \emph{Binary relationship diagrams} (section~\ref{subsec:binary_relations_diagram}), \emph{Concept dictionaries} (section~\ref{subsec:binary_relations_diagram}), \emph{Binary relations tables} (section~\ref{subsec:binary_relations_table}), \emph{Instance attribute tables} (section~\ref{subsec:binary_relations_table}) and \emph{Class attributes tables} (section~\ref{subsec:class_attributes_table}). \emph{Constant tables}, \emph{Formal axiom tables} and \emph{Rules tables} have been omitted as the components described by these tables do not appear in \thinkhomeweather.
+The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes and binary relations that will form the ontology. Besides the glossary, this section covers \emph{Concept-classification trees} (section~\ref{sec:concept_classification_trees}), \emph{Binary relationship diagrams} (section~\ref{subsec:binary_relations_diagram}), \emph{Concept dictionaries} (section~\ref{subsec:binary_relations_diagram}), \emph{Binary relations tables} (section~\ref{subsec:binary_relations_table}), \emph{Instance attribute tables} (section~\ref{subsec:binary_relations_table}) and \emph{Class attributes tables} (section~\ref{subsec:class_attributes_table}). \emph{Constant tables}, \emph{Formal axiom tables} and \emph{Rules tables} have been omitted as the components described by these tables do not appear in \smarthomeweather.
 
-In this section, only those deliverables are presented that are necessary to fully understand the structure of \thinkhomeweather. All tables that have only been created for the sake of completeness can be found in appendix~\ref{sec:appendix_conceptualisation}.
+In this section, only those deliverables are presented that are necessary to fully understand the structure of \smarthomeweather. All tables that have only been created for the sake of completeness can be found in appendix~\ref{sec:appendix_conceptualisation}.
 
 \subsection{Glossary of Terms}
 \label{sec:ontology_glossary}
 
-When describing the scope of \thinkhomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \eacs{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these five concepts.
+When describing the scope of \smarthomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \eacs{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these five concepts.
 
 In this section, only a list of terms is given; the complete \emph{Glossary of Terms} with short descriptions of each term can be found in the appendix~\ref{main} which starts on page~\pageref{main}.
 
 \paragraph{Concepts:}
 
 % TODO link to section/subsection?
-Section~\ref{ch:weather_data} discusses each weather element that is used in \thinkhomeweather and categories in which its instances can be grouped into. In the ontology, all weather elements are represented by concepts that sub-concepts of \Egls{weather phenomenon}. All categories of weather elements are in turn sub-concepts of the weather elements' concepts.
+Section~\ref{ch:weather_data} discusses each weather element that is used in \smarthomeweather and categories in which its instances can be grouped into. In the ontology, all weather elements are represented by concepts that sub-concepts of \Egls{weather phenomenon}. All categories of weather elements are in turn sub-concepts of the weather elements' concepts.
 
 A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
 
@@ -193,7 +193,7 @@ A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls
 
 Several sub-concepts of \Egls{weather state} describe certain combinations of instances of \Egls{weather phenomenon} being associated with a \Egls{weather state}. These concepts are listed below; refer to the glossary in appendix~\ref{main} for their definitions.
 
-Hence, these are the concepts that can be found in \thinkhomeweather are:
+Hence, these are the concepts that can be found in \smarthomeweather are:
 \begin{itemize}
   \item \Egls{weather condition}
   \item \Egls{weather phenomenon}:
@@ -225,9 +225,9 @@ Instances of the concepts are associated to each other with binary relations, wh
   \item \egls{has previous weather state} and \egls{has next weather state} which connect two instances of \Egls{weather state}.
 \end{itemize}
 
-The following relations link instances of concepts from other ontologies than \thinkhomeweather to instances of concepts inside the ontology: \egls{has start time}, \egls{has end time}, \egls{has observation time}, and \egls{location}.
+The following relations link instances of concepts from other ontologies than \smarthomeweather to instances of concepts inside the ontology: \egls{has start time}, \egls{has end time}, \egls{has observation time}, and \egls{location}.
 
-The only data property in \thinkhomeweather is \egls{has priority} which specifies an integer value indicating which \Egls{weather report} for a certain period of time is to be preferred over another \Egls{weather report} for the same period of time.
+The only data property in \smarthomeweather is \egls{has priority} which specifies an integer value indicating which \Egls{weather report} for a certain period of time is to be preferred over another \Egls{weather report} for the same period of time.
 
 \paragraph{Individuals:}
 
@@ -355,7 +355,7 @@ The purpose of a \emph{Binary relations diagram} is to present all binary relati
 \begin{figure}
   \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/binary-relations.pdf}
-  \caption{Binary relations diagram of \thinkhomeweather}
+  \caption{Binary relations diagram of \smarthomeweather}
   \label{fig:binary_relations}
 \end{figure}
 
@@ -374,48 +374,48 @@ The \emph{Binary relation table} specifies all relations from section~\ref{subse
 \subsection{Instance attributes table}
 \label{subsec:instance_attributes_table}
 
-An \emph{Instance attributes table} lists all instance attributes in \thinkhomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality. The \emph{Instance attributes table} can be found in the appendix in figure~\ref{fig:instance_attributes_table}.
+An \emph{Instance attributes table} lists all instance attributes in \smarthomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality. The \emph{Instance attributes table} can be found in the appendix in figure~\ref{fig:instance_attributes_table}.
 
-The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{\eacs{XML} Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)~\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \thinkhomeweather.
+The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{\eacs{XML} Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)~\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \smarthomeweather.
 
 \subsection{Class attributes table}
 \label{subsec:class_attributes_table}
 
-Many concepts within the \thinkhomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure} and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
+Many concepts within the \smarthomeweather ontology define themselves to be specializations of other concepts. E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure} and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
 
 These concepts are summarized in the \emph{Class attributes table} in the appendix in figure~\ref{fig:class_attributes_table1}, figure~\ref{fig:class_attributes_table2}, and figure~\ref{fig:class_attributes_table3}. As in the \emph{Instance attributes tables} in section~\ref{subsec:instance_attributes_table}, this table does not respect the use of \muo; no units are specified.
 
 \subsection{Instances table}
 \label{subsec:instances_table}
 
-The only pre-defined instances in \thinkhomeweather are the instances of the concept \Egls{weather condition}. Their details can be found in the \emph{Instance table} in the appendix in figure~\ref{fig:instances_table}.
+The only pre-defined instances in \smarthomeweather are the instances of the concept \Egls{weather condition}. Their details can be found in the \emph{Instance table} in the appendix in figure~\ref{fig:instances_table}.
 
 \section{Integration}
 \label{sec:integration}
 
-One of the goals when designing an ontology is to reuse existing ontologies where possible\cite{reuse1,reuse2}. Chapter~\ref{ch:existing_work} sheds some light on a selection of existing ontologies around the domain of weather data. In the domain of \thinkhomeweather, four areas have been identified where existing ontologies may be reused. These areas are location data (section~\ref{subsec:location_ontologies}), measurement units (section~\ref{subsec:unit_ontologies}), specifications of date and time (section~\ref{subsec:date_ontologies}) and weather concepts (section~\ref{sec:weather_ontologies}).
+One of the goals when designing an ontology is to reuse existing ontologies where possible\cite{reuse1,reuse2}. Chapter~\ref{ch:existing_work} sheds some light on a selection of existing ontologies around the domain of weather data. In the domain of \smarthomeweather, four areas have been identified where existing ontologies may be reused. These areas are location data (section~\ref{subsec:location_ontologies}), measurement units (section~\ref{subsec:unit_ontologies}), specifications of date and time (section~\ref{subsec:date_ontologies}) and weather concepts (section~\ref{sec:weather_ontologies}).
 
 % TODO specify where these ontologies will be used
-The following ontologies have been selected for the import into \thinkhomeweather:
+The following ontologies have been selected for the import into \smarthomeweather:
 \begin{itemize}
   \item \emph{OWL-Time}\cite{owl-time} is used for specifying temporal data (for date and time of a \Egls{weather report}).
   \item The \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} is used for specifying the location a \Egls{weather report} if valid for.
-  \item The \emph{Measurement Units Ontology}\cite{MUO} (\muo) is used to enrich measurement values of each \Egls{weather phenomenon} with a unit (e.g. temperature in \si{\celsius}, rain in \si{\milli\metre\per\hour}). Although \muo does come with a few shortcomings (see section~\ref{sec:implementation}), it is the ontology that has been identified to be the the one that fits \thinkhomeweather's requirements best.
-  \item Unfortunately, no weather ontology has been identified that defines weather concepts in a way that suits \thinkhomeweather's requirements. Hence, \thinkhomeweather defines its own concepts and properties for the domain of weather data.
+  \item The \emph{Measurement Units Ontology}\cite{MUO} (\muo) is used to enrich measurement values of each \Egls{weather phenomenon} with a unit (e.g. temperature in \si{\celsius}, rain in \si{\milli\metre\per\hour}). Although \muo does come with a few shortcomings (see section~\ref{sec:implementation}), it is the ontology that has been identified to be the the one that fits \smarthomeweather's requirements best.
+  \item Unfortunately, no weather ontology has been identified that defines weather concepts in a way that suits \smarthomeweather's requirements. Hence, \smarthomeweather defines its own concepts and properties for the domain of weather data.
 \end{itemize}
 
-Section \ref{sec:implementation} describes the reuse of the aforementioned ontologies within the \thinkhomeweather ontology in detail.
+Section \ref{sec:implementation} describes the reuse of the aforementioned ontologies within the \smarthomeweather ontology in detail.
 
 \section{Implementation}
 \label{sec:implementation}
 
 After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
-The \thinkhomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \eacs{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \eacs{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
+The \smarthomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \eacs{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \eacs{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
 
-To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}~\cite{junit} is used (see section~\ref{sec:importer_tests}). Every test case loads the \thinkhomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
+To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}~\cite{junit} is used (see section~\ref{sec:importer_tests}). Every test case loads the \smarthomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
 
-During implementation of \thinkhomeweather in \eacs{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \eacs{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
+During implementation of \smarthomeweather in \eacs{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}\cite{CamelCase}, e.g. \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \eacs{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
 
 
 \subsection{Imported ontologies}
@@ -427,7 +427,7 @@ During the implementation step, the ontologies listed in section \ref{sec:integr
 
 \emph{OWL-Time}\cite{owl-time} defines the concept \Egls{temporal entity} and its sub-concepts \Egls{instant} and \Egls{interval}, both having a self-explanatory name. The properties \egls{has start time}, \egls{has end time} and \egls{has observation time} of \egls{weather report} link to instants; however, only \egls{has observation time} is implemented to link an instance of \Egls{instant} to a \Egls{weather report}. For \egls{has start time} and \egls{has end time}, instances of \Egls{interval} are used. Such an instance represents the interval between the \egls{observation time} and the time the \Egls{weather report} is valid from/until (in hours). This simplifies reasoning of the sub-concepts of \Egls{weather report} which depend on the report's \egls{start time}; e.g. an instance of \emph{Forecast 1 hour weather report} can be defined as an instance of \Egls{weather report} having a \egls{start time} of \num{1} (hours).
 
-Figure~\ref{fig:owl_time1} shows a \Egls{weather report} together with its with \egls{start time} and \egls{end time}; figure~\ref{fig:owl_time2} displays a \Egls{weather report} together with its \egls{observation time}. The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \thinkhomeweather. All times are given in \emph{UTC}.
+Figure~\ref{fig:owl_time1} shows a \Egls{weather report} together with its with \egls{start time} and \egls{end time}; figure~\ref{fig:owl_time2} displays a \Egls{weather report} together with its \egls{observation time}. The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \smarthomeweather. All times are given in \emph{UTC}.
 
 \begin{figure}
   \centering
@@ -461,7 +461,7 @@ Figure~\ref{fig:muo1} shows how an instance of \Egls{temperature} would be imple
   \label{fig:muo2}
 \end{figure}
 
-\muo is an ontology that is easy to implement in an already-existing ontology. Its major drawback in the case of \thinkhomeweather is that it affects reasoning time negatively. Repeated tests showed that reasoning time increased by about $30 \%$ when introducing \muo. However, the slowdown caused by \muo is accepted in favour of the usage of units of measurement.
+\muo is an ontology that is easy to implement in an already-existing ontology. Its major drawback in the case of \smarthomeweather is that it affects reasoning time negatively. Repeated tests showed that reasoning time increased by about $30 \%$ when introducing \muo. However, the slowdown caused by \muo is accepted in favour of the usage of units of measurement.
 
 \vspace{1em}
 
@@ -477,7 +477,7 @@ Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather repo
 \section{Evaluation}
 \label{sec:ontology_evaluation}
 
-After completing the implementation step, this section evaluates \thinkhomeweather regarding all non-functional requirements (section~\ref{sec:evaluation_non_functional}) and functional requirements (section~\ref{sec:evaluation_functional}) from section~\ref{sec:weather_information} and the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification}.
+After completing the implementation step, this section evaluates \smarthomeweather regarding all non-functional requirements (section~\ref{sec:evaluation_non_functional}) and functional requirements (section~\ref{sec:evaluation_functional}) from section~\ref{sec:weather_information} and the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification}.
 
 \subsection{Non-functional requirements}
 \label{sec:evaluation_non_functional}
@@ -485,19 +485,19 @@ After completing the implementation step, this section evaluates \thinkhomeweath
 There are three non-functional requirements:
 
 \begin{itemize}
-  \item \textbf{Naming conventions}: All identifiers in \thinkhomeweather follow the naming conventions stated in section~\ref{sec:ontology_conventions}.
+  \item \textbf{Naming conventions}: All identifiers in \smarthomeweather follow the naming conventions stated in section~\ref{sec:ontology_conventions}.
   \item \textbf{Documentation}: Due to following the \methontology approach, the ontology is well documented at every stage of development.
-  \item \textbf{Usage of other ontologies}: \thinkhomeweather uses the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \muo and \emph{OWL-Time}; no ontology has been found that satisfies the requirements of \thinkhomeweather regarding concepts for weather data.
+  \item \textbf{Usage of other ontologies}: \smarthomeweather uses the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \muo and \emph{OWL-Time}; no ontology has been found that satisfies the requirements of \smarthomeweather regarding concepts for weather data.
 \end{itemize}
 
-Thus, all non-functional requirements are met by \thinkhomeweather.
+Thus, all non-functional requirements are met by \smarthomeweather.
 
 \subsection{Functional requirements}
 \label{sec:evaluation_functional}
 
-\thinkhomeweather meets its functional requirements if it provides answers to all competency questions. This section evaluates if answers are provided and how answers can be drawn from the ontology.
+\smarthomeweather meets its functional requirements if it provides answers to all competency questions. This section evaluates if answers are provided and how answers can be drawn from the ontology.
 
-For the following questions, \thinkhomeweather can give straight answers:
+For the following questions, \smarthomeweather can give straight answers:
 \begin{itemize}
   \item What is the current weather situation?
   \item What will the weather situation be in one hour, in two hours, …, in 24 hours?
@@ -507,7 +507,7 @@ For the following questions, \thinkhomeweather can give straight answers:
 \end{itemize}
 To answer any of these questions, the relevant instance of \Egls{weather report} must be identified. Via the property \egls{has weather state}, an instance of \Egls{weather state} is connected to it; this instance has in turn an arbitrary number of \egls{has weather phenomenon} properties each linking to an instance of \Egls{weather phenomenon}. The information from these instances of \Egls{weather phenomenon} provide the desired answer.
 
-However, there are questions that cannot be answered by \thinkhomeweather as writing rules to infer answers would be too complicated in \eacs{OWL}:
+However, there are questions that cannot be answered by \smarthomeweather as writing rules to infer answers would be too complicated in \eacs{OWL}:
 \begin{itemize}
   \item Will the weather change? Will the temperature, humidity, … rise or fall?
   \item Do we need to irrigate the garden?
@@ -526,6 +526,6 @@ Furthermore, there are questions that cannot be answered using an \eacs{OWL} ont
   \item When will it outside be colder than inside the house? When will it be warmer?
 \end{itemize}
 
-However, for each of the above competency questions, whether a direct answer can be given or not, \thinkhomeweather can provide all available data; an external program that does not rely on the \emph{Open World Assumption} can access this data and generate an answer.
+However, for each of the above competency questions, whether a direct answer can be given or not, \smarthomeweather can provide all available data; an external program that does not rely on the \emph{Open World Assumption} can access this data and generate an answer.
 
 Hence, the ontology constructed in this chapter complies with its specification in section \ref{sec:ontology_specification}.
