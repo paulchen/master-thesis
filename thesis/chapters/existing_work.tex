@@ -207,13 +207,14 @@ As for the knowledge base, \thinkhome uses a set of well-established technologie
 \section{Ontologies for weather data}
 \label{sec:weather_ontologies}
 
-This section presents a selection of the ontologies that have been designed to cover the domain of weather data. Possibly one of them can be used for the weather data model of \thinkhome. If not, their advantages and disadvantages are analyzed in order to avoid their shortcomings in \thinkhome and benefit from their advantages.
+This section presents a selection of the ontologies that have been designed to cover the domain of weather data. Possibly one of them can be used for \smarthomeweather. If not, their advantages and disadvantages are analysed in order to avoid their shortcomings in \smarthomeweather and benefit from their advantages.
 
-Apart from the weather data models presented here, there exist several approaches which incorporate both current and predicted weather data without embodying an ontology. A commonly used approach is the use of a mathematical model that allows the transformation of the problem of predictive control based on weather data to an optimization problem~\cite{NonOntologicalApproach1,NonOntologicalApproach2}. As the structure of these approaches differs greatly from the ontological approach that is found at \thinkhome, these approaches are not covered here.
+This section covers \emph{Semantic Sensor Web}~\ref{subsec:onto1}, the \emph{\eacs{SSN} ontology}~\ref{subsec:onto2}, \emph{SemSOS}~\ref{subsec:onto3}, \emph{NextGen}~\ref{subsec:onto4}, and \emph{\eacs{SWEET}}~\ref{subsec:onto5}. There are several other approaches such as the \emph{SENSEI project}~\cite{sensei} which are not covered here.
+
+Apart from ontology-based weather data models, there exist several approaches which incorporate both current and predicted weather data without embodying an ontology. A commonly used approach is the use of a mathematical model that allows the transformation of the problem of predictive control based on weather data to an optimization problem~\cite{NonOntologicalApproach1,NonOntologicalApproach2}. As the structure of these approaches differs greatly from the ontological approach that is found at \thinkhome, these approaches are not covered here.
 
 \subsection{Semantic Sensor Web}
-
-% TODO citation OGC
+\label{subsec:onto1}
 
 \emph{Sensor Web Enablement} (\eacs{SWE})~\cite{SensorWeb} is an initiative by the \emph{Open Geospatial Consortium} (\eacs{OGC})~\cite{OGC} for building networks of sensors based on Web technologies. Both sensors and archived sensors are intended to be discovered, accessed and optionally controlled using open standard protocols and interfaces. \eacs{SWE} is a suite of standards, each specifying encodings for describing sensors, sensor observations, and/or sensor interface definitions.
 
@@ -225,24 +226,32 @@ The \eacs{SSW} ontology includes temporal data using \emph{OWL-Time} (see sectio
 
 The \eacs{SSW} ontology does not support forecast values, but extending the \eacs{SSW} ontology to implement those would be possible.
 
+Applications of \eacs{SSW} include work on situation awareness based on the metadata specified by \eacs{SSW}~\ref{ssw_example1} and an architecture for a distributed semantic sensor web~\ref{ssw_example2}.
+
 The only part from the \eacs{SSW} ontology that could be reused for \smarthomeweather is the concept \emph{Observations} together with its sub-concepts; however, a number of additional sub-concepts would have to be added. The \emph{Basic (WGS84 lat/long) Vocabulary} and \emph{OWL-Time} can be used by the \smarthomeweather ontology without the use of the \eacs{SSW} ontology. For units of measurements there are other approaches than the \eacs{SSW} approaches available that qualify for being used by \smarthomeweather. Therefore, it was decided not to use the \eacs{SSW} ontology for \smarthomeweather.
 
 \vspace{1em}
 
-% TODO citation SSN-XG, ontology
+\subsection{SSN Ontology}
+\label{subsec:onto2}
 
-Another approach towards semantically enriched sensor network based on \eacs{SWE} is an \emph{\eacs{OWL} 2} ontology created by the \emph{\eacs{W3C} Semantic Sensor Network Incubator group} (\eacs{SSN-XG}) which is referred to as the \emph{\eacs{SSN} Ontology}. 
+Another approach towards semantically enriched sensor network based on \eacs{SWE} is an \emph{\eacs{OWL} 2} ontology created by the \emph{\eacs{W3C} Semantic Sensor Network Incubator group} (\eacs{SSN-XG})~\cite{SSN-XG} which is referred to as the \emph{\eacs{SSN} Ontology}~\cite{ssn_ontology}. 
+
+
 % TODO
 
 \subsection{SemSOS}
+\label{subsec:onto3}
 
 % TODO
 
 \subsection{NextGen}
+\label{subsec:onto4}
 
 % TODO
 
 \subsection{SWEET}
+\label{subsec:onto5}
 
 \eacs{SWEET} is a set of more than 200 ontologies comprising about 6000 concepts~\cite{SWEET2,SWEETWeb}. It is developed by \eacs{NASA}'s \emph{Jet Propulsion Laboratory} at the \emph{California Institute of Technology}~\cite{nasa-jpl}. The initial version which dates back to 2003 is based on \emph{DAML+OIL}~\cite{DAML+OIL,SWEET1}. It structured its ontologies into the following categories:
 \begin{itemize}
