@@ -368,3 +368,7 @@ NEW (2013-04-09):
 * 05067470.pdf
   Krishnaprasad Thirunarayan, Cory A. Henson, and Amit P. Sheth. Situation Awareness via Abductive Reasoning from Semantic Sensor Data: A Preliminary Report
 
+* 2011_02_05_cirp_semantic_web_156.pdf
+  Ken Wenzel, Jörg Riegel, Andreas Schlegel, Matthias Putz. Semantic Web Based Dynamic Energy Analysis and Forecasts in Manufacturing Engineering
+
+
