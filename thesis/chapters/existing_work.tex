@@ -1,13 +1,13 @@
 \chapter{Existing work}
 \label{ch:existing_work}
 
-The first part of this chapter covers the foundations the work of this thesis builds upon. It gives introductions into all relevant topics, e.g. ontologies, \eacs{RDF} and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which are required in order to fully understand the ideas behind the weather data model which is designed in later chapters.
+The first part of this chapter covers the foundations the work of this thesis builds upon. It gives introductions into all relevant topics, e.g. ontologies, \eacs{RDF} and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which serves as an example of a smart home that uses a knowledge base that is built upon a set of ontologies.
 
-The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies which may be reused in an ontology for weather data are discussed. The final section of this chapter reviews all ontologies that are presented and identifies elements can be used for \thinkhome.
+The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies which may be reused in an ontology for weather data are discussed. The final section of this chapter reviews all ontologies that are presented and identifies elements can be used for \smarthomeweather.
 
 \section{Foundations}
 
-This chapter presents the foundations the work in this thesis builds upon: The concept of an ontology, the \emph{Web Ontology Language} (\eacs{OWL}) and \thinkhome.
+This chapter presents the foundations the work in this thesis builds upon: The concept of an ontology, the \emph{Web Ontology Language} (\eacs{OWL}) and smart homes using ontologies using the example of \thinkhome.
 
 \subsection{Ontologies}
 \label{subsec:ontologies}
@@ -46,7 +46,7 @@ Another core principle of an ontology is reusability~\cite{reuse1,reuse2}. In or
 
 \vspace{1em}
 
-Ontologies are expressed using formal languages. There are many of these \emph{ontology languages} such as \eacs{KIF} (\emph{Knowledge Interchange Format})~\cite{KIFReference}, \emph{DAML+OIL}~\cite{DAML+OIL} -- a successor to \eacs{DAML}~\cite{DAML} (\emph{\eacs{DARPA} Agent Markup Language}) and \eacs{OIL} (\emph{Ontology Inference Layer})~\cite{OIL} that combines features of both --, \eacs{RDFS} (\emph{RDF Schema})~\cite{RDFS}, and \eacs{OWL}~\cite{OWL}. The latter, the \emph{Web Ontology Language}, is used in the \thinkhome project; thus, section~\ref{subsec:owl} gives a brief introduction into \eacs{OWL}.
+Ontologies are expressed using formal languages. There are many of these \emph{ontology languages} such as \eacs{KIF} (\emph{Knowledge Interchange Format})~\cite{KIFReference}, \emph{DAML+OIL}~\cite{DAML+OIL} -- a successor to \eacs{DAML}~\cite{DAML} (\emph{\eacs{DARPA} Agent Markup Language}) and \eacs{OIL} (\emph{Ontology Inference Layer})~\cite{OIL} that combines features of both --, \eacs{RDFS} (\emph{RDF Schema})~\cite{RDFS}, and \eacs{OWL}~\cite{OWL}. The latter, the \emph{Web Ontology Language}, is used in the \smarthomeweathr project; thus, section~\ref{subsec:owl} gives a brief introduction into \eacs{OWL}.
 
 Over the years, many ontologies have been developed. Some of them define concepts and relations that can be found across many knowledge domains. These ontologies are often imported into other ontologies in order to minimize the effort of creating new ontologies and to simplify interoperability of ontologies. Examples for such ontologies that are implemented in \eacs{OWL} or \emph{\eacs{RDF} Schema} are:
 \begin{itemize}
@@ -190,10 +190,11 @@ WHERE {
 \label{fig:sparql_example}
 \end{figure}
 
-\eacs{OWL} ontologies are often designed using semantic editors like \protege~\cite{protege}. Common reasoners for \eacs{OWL} include \emph{Pellet}~\cite{pellet}, \emph{RacerPro}~\cite{RacerPro}, \emph{FaCT++}~\cite{factplusplus} and \emph{HermiT}~\cite{hermit}. They all implement reasoning as specified by the \eacs{OWL} specification; implementation specific differences affect details that are not covered by the \eacs{OWL} specification. \protege and \emph{Pellet} are used to develop the weather data model for \thinkhome in chapter~\ref{ch:smarthomeweather_ontology}.
+\eacs{OWL} ontologies are often designed using semantic editors like \protege~\cite{protege}. Common reasoners for \eacs{OWL} include \emph{Pellet}~\cite{pellet}, \emph{RacerPro}~\cite{RacerPro}, \emph{FaCT++}~\cite{factplusplus} and \emph{HermiT}~\cite{hermit}. They all implement reasoning as specified by the \eacs{OWL} specification; implementation specific differences affect details that are not covered by the \eacs{OWL} specification. \protege and \emph{Pellet} are used to develop the \smarthomeweather ontology in chapter~\ref{ch:smarthomeweather_ontology}.
 
 \subsection{ThinkHome}
 
+% TODO rephrase this subsection
 Section~\ref{sec:motivation} gives a short introduction into the basic ideas of \thinkhome. This section goes further into detail into the two main components that form the \thinkhome system: a comprehensive knowledge base and a multi-agent system.
 
 The knowledge base is organised into six sub-categories~\cite{CR2011-TH_Journal,CR2010-DEST_ThinkHome}: \emph{Building} (structure of the building), \emph{Actor} (human system users and software agents), \emph{Comfort} (parameters that affect the users' well-being), \emph{Energy} (energy providers), \emph{Process} (the users' activities), and \emph{Resource} (available equipment). Some parts of the knowledge base are static data (data that is seldom changed, e.g. the structure of the building, user preferences, control rules) while others are dynamic data (data that changes frequently, e.g. the current state of the building, the current state of external influences, recent measurements from sensors, current states of actors). The knowledge base is implemented in \eacs{OWL}. This enables the use of the reasoning capabilities offered by semantic reasoners. With \eacs{SPARQL} a powerful query language for \eacs{OWL} models is available that is suitable for accessing \thinkhome's knowledge base.
@@ -211,7 +212,7 @@ This section presents a selection of the ontologies that have been designed to c
 
 This section covers \emph{Semantic Sensor Web} (section~\ref{subsec:onto1}), the \emph{\eacs{SSN} ontology} (section~\ref{subsec:onto2}), \emph{SemSOS} (section~\ref{subsec:onto3}), \emph{NextGen} (section~\ref{subsec:onto4}), and \emph{\eacs{SWEET}} (section~\ref{subsec:onto5}). There are several other approaches such as in the \emph{SENSEI project}~\cite{sensei} which are not covered here.
 
-Apart from ontology-based weather data models, there exist several approaches which incorporate both current and predicted weather data without embodying an ontology. A commonly used approach is the use of a mathematical model that allows the transformation of the problem of predictive control based on weather data to an optimization problem~\cite{NonOntologicalApproach1,NonOntologicalApproach2}. As the structure of these approaches differs greatly from the ontological approach that is found at \thinkhome, these approaches are not covered here.
+Apart from ontology-based weather data models, there exist several approaches which incorporate both current and predicted weather data without embodying an ontology. A commonly used approach is the use of a mathematical model that allows the transformation of the problem of predictive control based on weather data to an optimization problem~\cite{NonOntologicalApproach1,NonOntologicalApproach2}. As the structure of these approaches differs greatly from the ontological approach that is found at smart home systems like \thinkhome, these approaches are not covered here.
 
 \subsection{Semantic Sensor Web}
 \label{subsec:onto1}
@@ -275,7 +276,7 @@ Now, \eacs{SWEET} is now implemented in \eacs{OWL}. The current version, \eacs{S
 
 Works based on \eacs{SWEET} include work on integrating volcanic and atmospheric data in the context of volcanic eruptions~\cite{sweet_example1}, an ontology of fractures of the Earth's crust~\cite{sweet_example2}, and an extension of \eacs{SWEET} by climate and forecasting terms~\cite{sweet_example3}.
 
-In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualified approach for reusing them in an weather ontology. Units of measurements, temporal definitions, and specifications of geographical positions are supported. However, \eacs{SWEET} comes with a few downside that finally led to the decision not to use them in the weather data model of \thinkhome:
+In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualified approach for reusing them in an weather ontology. Units of measurements, temporal definitions, and specifications of geographical positions are supported. However, \eacs{SWEET} comes with a few downside that finally led to the decision not to use them in \smarthomeweather:
 \begin{itemize}
   \item Although \eacs{SWEET} is separated into a large number of ontologies, there are many dependencies between ontologies. Importing a single ontology into an \eacs{OWL} ontology causes the import of all of its dependencies, the import of all dependencies of all dependencies etc. It is impossible to import one ontology from \eacs{SWEET} without importing dozens of other ontologies.
   
@@ -284,7 +285,7 @@ In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualifie
   \item \eacs{SWEET} does not cover all weather elements that are relevant.
 \end{itemize}
 
-Extensions to the \eacs{SWEET} ontologies in order adress the second and the third issue would be possible; an extension of \eacs{SWEET} to include forecast data already exists~\cite{sweet_example3}. However, as a large number of extensions would be necessary, it was decided not to use any parts of \eacs{SWEET} for \thinkhome and to build a new ontology from scratch instead.
+Extensions to the \eacs{SWEET} ontologies in order address the second and the third issue would be possible; an extension of \eacs{SWEET} to include forecast data already exists~\cite{sweet_example3}. However, as a large number of extensions would be necessary, it was decided not to use any parts of \eacs{SWEET} for \smarthomeweather and to build a new ontology from scratch instead.
 
 \section{Related ontologies}
 \label{sec:related_ontologies}
@@ -382,5 +383,7 @@ Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of
 \section{Conclusion}
 
 % TODO mention advantages and disadvantages of already existing weather ontologies; discuss why they are not suitable for use in \smarthomeweather
+% TODO hint for \smarthomeweather: keep it simple
+% TODO reuse OWL-Time, geo, unit ontology
 
-As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a data model for \thinkhome. Hence, a completely new ontology is created in chapter~\ref{ch:smarthomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} (the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \emph{OWL-Time}, and the \emph{Measurement Units Ontology}) will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
+As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a starting point for \smarthomeweather. Hence, a completely new ontology is created in chapter~\ref{ch:smarthomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} (the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \emph{OWL-Time}, and the \emph{Measurement Units Ontology}) will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
