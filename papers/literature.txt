@@ -356,3 +356,6 @@ NEW (2013-04-09):
 * 10.1007_978-3-540-79996-2_10.pdf
   Mike Botts, George Percivall, Carl Reed, and John Davidson. OGC® Sensor Web Enablement: Overview and High Level Architecture
 
+* SSN-XG_SensorOntology.pdf
+  Michael Comptona, Payam Barnaghib, Luis Bermudezc, Raul Garcıa-Castrod, Oscar Corchod, Simon Coxe, John Graybeal, Manfred Hauswirth, Cory Henson, Arthur Herzog, Vincent Huang, Krzysztof Janowicz, W. David Kelsey1, Danh Le Phuocf, Laurent Leforta, Myriam Leggierif, Holger Neuhaus, Andriy Nikolovl, Kevin Pagem, Alexandre Passantf, Amit Shethg, Kerry Taylora. The SSN Ontology of the W3C Semantic Sensor Network Incubator Group
+
