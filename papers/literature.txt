@@ -359,3 +359,6 @@ NEW (2013-04-09):
 * SSN-XG_SensorOntology.pdf
   Michael Comptona, Payam Barnaghib, Luis Bermudezc, Raul Garcıa-Castrod, Oscar Corchod, Simon Coxe, John Graybeal, Manfred Hauswirth, Cory Henson, Arthur Herzog, Vincent Huang, Krzysztof Janowicz, W. David Kelsey1, Danh Le Phuocf, Laurent Leforta, Myriam Leggierif, Holger Neuhaus, Andriy Nikolovl, Kevin Pagem, Alexandre Passantf, Amit Shethg, Kerry Taylora. The SSN Ontology of the W3C Semantic Sensor Network Incubator Group
 
+* gcn0409.pdf
+  Mirko Presser, Payam M. Barnaghi, Markus Eurich, Claudia Villalonga. The SENSEI Project: Integrating the Physical World with the Digital World of the Network of the Future
+
