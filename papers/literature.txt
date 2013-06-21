@@ -353,3 +353,6 @@ NEW (2013-04-09):
 * 1-s2.0-S0191814109000182-main.pdf
   Jian Zhong, Atilla Aydina, Deborah L. McGuinness. Ontology of fractures
 
+* 10.1007_978-3-540-79996-2_10.pdf
+  Mike Botts, George Percivall, Carl Reed, and John Davidson. OGC® Sensor Web Enablement: Overview and High Level Architecture
+
