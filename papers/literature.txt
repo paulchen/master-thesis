@@ -362,3 +362,9 @@ NEW (2013-04-09):
 * gcn0409.pdf
   Mirko Presser, Payam M. Barnaghi, Markus Eurich, Claudia Villalonga. The SENSEI Project: Integrating the Physical World with the Digital World of the Network of the Future
 
+* 06412239.pdf
+  Hoan-Suk Choi, Woo-Seop Rhee. Distributed semantic sensor web architecture
+
+* 05067470.pdf
+  Krishnaprasad Thirunarayan, Cory A. Henson, and Amit P. Sheth. Situation Awareness via Abductive Reasoning from Semantic Sensor Data: A Preliminary Report
+
