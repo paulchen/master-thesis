@@ -209,7 +209,7 @@ As for the knowledge base, \thinkhome uses a set of well-established technologie
 
 This section presents a selection of the ontologies that have been designed to cover the domain of weather data. Possibly one of them can be used for \smarthomeweather. If not, their advantages and disadvantages are analysed in order to avoid their shortcomings in \smarthomeweather and benefit from their advantages.
 
-This section covers \emph{Semantic Sensor Web} (section~\ref{subsec:onto1}), the \emph{\eacs{SSN} ontology} (section~\ref{subsec:onto2}), \emph{SemSOS} (section~\ref{subsec:onto3}), \emph{NextGen} (section~\ref{subsec:onto4}), and \emph{\eacs{SWEET}} (section~\ref{subsec:onto5}). There are several other approaches such as the \emph{SENSEI project}~\cite{sensei} which are not covered here.
+This section covers \emph{Semantic Sensor Web} (section~\ref{subsec:onto1}), the \emph{\eacs{SSN} ontology} (section~\ref{subsec:onto2}), \emph{SemSOS} (section~\ref{subsec:onto3}), \emph{NextGen} (section~\ref{subsec:onto4}), and \emph{\eacs{SWEET}} (section~\ref{subsec:onto5}). There are several other approaches such as in the \emph{SENSEI project}~\cite{sensei} which are not covered here.
 
 Apart from ontology-based weather data models, there exist several approaches which incorporate both current and predicted weather data without embodying an ontology. A commonly used approach is the use of a mathematical model that allows the transformation of the problem of predictive control based on weather data to an optimization problem~\cite{NonOntologicalApproach1,NonOntologicalApproach2}. As the structure of these approaches differs greatly from the ontological approach that is found at \thinkhome, these approaches are not covered here.
 
@@ -235,13 +235,15 @@ The only part from the \eacs{SSW} ontology that could be reused for \smarthomewe
 \subsection{\eacs{SSN} Ontology}
 \label{subsec:onto2}
 
-Another approach towards semantically enriched sensor network based on \eacs{SWE} is an \emph{\eacs{OWL} 2} ontology created by the \emph{\eacs{W3C} Semantic Sensor Network Incubator group} (\eacs{SSN-XG})~\cite{SSN-XG} which is referred to as the \emph{\eacs{SSN} Ontology}~\cite{ssn_ontology}. 
+Another approach towards semantically enriched sensor network based on \eacs{SWE} is an \emph{\eacs{OWL} 2} ontology created by the \emph{\eacs{W3C} Semantic Sensor Network Incubator group} (\eacs{SSN-XG})~\cite{SSN-XG} which is referred to as the \emph{\eacs{SSN} Ontology}~\cite{ssn_ontology}. The goal of this ontology is to simplify managing, querying, and combining sensors and observation data from different sensor networks. 
 
-% TODO
+The \eacs{SSN} ontology uses \emph{DOLCE-UltraLite}~\cite{dul} as \emph{upper-level ontology}\footnote{An \emph{upper-level ontology} is an ontology that defines very general concepts which are shared between many knowledge domains.~\cite{upper_ontology}}. It defines $41$ concepts and $39$ object properties which are organised into ten modules: \emph{ConstraintBlock} (for defining conditions on a system's or a sensor's operation), \emph{Data} (for encoding any input from sensors), \emph{Device} (for defining devices in the sensor network, mostly sensors), \emph{Deployment} (for specifying the deployment of \emph{Device}s), \emph{MeasuringCapability} (properties of sensors, e.g. accuracy or response time), \emph{OperatingRestriction} (for defining conditions under which the system is expected to operate, e.g. the life time of batteries or maintenance schedules), \emph{PlatformSite} (entities to which other entities -- sensors and other platforms -- can be attached), \emph{Process} (a procedure that changes the system's state in some way, takes some input and yields some output), \emph{Skeleton} (for mapping real-world phenomena, their properties, and their relations to sensors) and \emph{System} (for describing pieces of infrastructure, e.g. the whole network, a component, its subsystems etc.).
+
+When used, the ontology can be used to view at the knowledge base from a number of perspectives: The \emph{sensor perspective} (which sensors are available; what and how do they sense), the \emph{observation perspective} (focusing on observations and related metadata), the \emph{system perspective} (systems of sensors), and the \emph{property perspective} (properties of physical phenomena and how they are sensed).
 
 Work based on the \eacs{SSN} ontology includes its use for the representation of humans and personal devices as sensors~\cite{ssn_example1}, its application in sensing for manufacturing~\cite{ssn_example2}, and as part of a linked data infrastructure for \eacs{SWE}~\cite{ssn_example3}.
 
-% TODO why not use it
+The primary reason for not using the \eacs{SSN} ontology for \smarthomeweather is the fact that it was published later than the development of \smarthomeweather started. Furthermore, for the purpose of \smarthomeweather, the \eacs{SSN} ontology uses a level of abstraction that makes its use in smart homes too complicated. \eacs{SSN} is well engineered towards mapping sensor networks and its observations, but it does not qualify for only representing sensor data without mapping the details of a sensor network. Additionally, forecast data is currently not supported, but an appropriate extension would be possible.
 
 \subsection{SemSOS}
 \label{subsec:onto3}
