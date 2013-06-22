@@ -380,3 +380,6 @@ NEW (2013-04-09):
 * WS02-11-011.pdf
   Adam Pease, Ian Niles, John Li. The Suggested Upper Merged Ontology: A Large Ontology for the Semantic Web and its Applications
 
+* BeHL01.pdf
+  Tim Berners-Lee, James Hendler, Ora Lassila. The Semantic Web
+
