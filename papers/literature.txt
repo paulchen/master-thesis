@@ -386,3 +386,6 @@ NEW (2013-04-09):
 * 34302.pdf
   Ibrahim Reda, Afshin Andreas. Solar Position Algorithm for Solar Radiation Applications
 
+* 9fcfd51086d045e09d.pdf
+  MANUEL BLANCO-MURIEL, DIEGO C. ALARCON-PADILLA, TEODORO LOPEZ-MORATALLA, MARTIN LARA-COIRA. COMPUTING THE SOLAR VECTOR
+
