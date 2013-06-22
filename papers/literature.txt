@@ -383,3 +383,6 @@ NEW (2013-04-09):
 * BeHL01.pdf
   Tim Berners-Lee, James Hendler, Ora Lassila. The Semantic Web
 
+* 34302.pdf
+  Ibrahim Reda, Afshin Andreas. Solar Position Algorithm for Solar Radiation Applications
+
