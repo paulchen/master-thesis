@@ -7,7 +7,7 @@
 % TODO elaborate steps more?
 
 
-The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \smarthomeweather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of an ontology for \thinkhome, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
+The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter \ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \smarthomeweather ontology, what data will be used and where to obtain it. Chapter \ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of a weather data ontology for smart homes, a new ontology is to be designed. Chapter \ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology \cite{Methontology} is identified to be the best suitable approach.
 
 Based on these insights, this chapter describes the process of designing the \smarthomeweather ontology in detail. The development process follows the steps proposed by \methontology as described in chapter \ref{sec:methontology}.
 
@@ -71,7 +71,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Purpose}: The ontology covers data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be acquired from both Internet services as well as from weather sensors mounted at the desired location. This weather data will enable the \thinkhome system to make decisions based on current and future weather conditions.
+\textbf{Purpose}: The ontology covers data about weather phenomena occurring at a certain location somewhere on Earth between the present and 24 hours in the future. Weather data will be acquired from both Internet services as well as from weather sensors mounted at the desired location. This weather data will enable a smart home system using \smarthomeweather to make decisions based on current and future weather conditions.
 
 \vspace{.3cm}
 
@@ -87,15 +87,15 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Implementation language}: The ontology is implemented in \emph{\eacs{OWL} 2.0}~\cite{OWL} using \protege~\cite{protege} and the \emph{Pellet reasoner}~\cite{pellet}.
+\textbf{Implementation language}: The ontology is implemented in \emph{\eacs{OWL}~2.0}~\cite{OWL} using \protege~\cite{protege} and the \emph{Pellet reasoner}~\cite{pellet}.
 
 \vspace{.3cm}
 
-\textbf{Intended end-users}: The ontology is part of the \thinkhome project; hence, any end-user of the \thinkhome project is an end-user of the \smarthomeweather ontology. As \thinkhome aims at providing home automation to \emph{house occupants}, intended end-users of \smarthomeweather are these occupants.
+\textbf{Intended end-users}: End-users of the ontologies are inhabitants of smart homes.
 
 \vspace{.3cm}
 
-\textbf{Intended uses}: The ontology shall provide knowledge to \thinkhome about the current and future state of the weather in order to enable \thinkhome to make decisions based on that knowledge.
+\textbf{Intended uses}: The ontology shall provide knowledge to ontology-based smart home systems about the current and future state of the weather in order to enable the system to make decisions based on that knowledge.
 
 % TODO re-add this vspace?
 \vspace{.3cm}
@@ -154,7 +154,7 @@ In the following sections, the \smarthomeweather ontology is built in a way to m
 The second step proposed by \methontology is \emph{Knowledge Acquisition}. All knowledge required to build the \smarthomeweather ontology is presented in the chapters~\ref{ch:existing_work} and~\ref{ch:weather_data}. These chapters discuss in detail:
 
 \begin{itemize}
-  \item Which weather data are relevant for \thinkhome?
+  \item Which weather data are relevant for smart homes?
   \item Which weather data are available from sensors (section~\ref{sec:weather_sensors}) and Internet services (section~\ref{sec:internet_services})? How can this data be acquired?
   \item Which data do not have any use for \smarthomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
   \item What knowledge about weather in general is required to build an appropriate ontology? % TODO check if this is available in the previous chapters

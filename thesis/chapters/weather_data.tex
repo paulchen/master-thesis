@@ -1,7 +1,7 @@
 \chapter{Weather data}
 \label{ch:weather_data}
 
-Based on the insights acquired from existing work in chapter~\ref{ch:existing_work}, this chapter aims at compiling a set of data elements about the weather which are either necessary for providing useful data to the \thinkhome system or which would add benefit to the data provided. Furthermore, possible sources are evaluated with respect to their suitability for the given context.
+Based on the insights acquired from existing work in chapter~\ref{ch:existing_work}, this chapter aims at compiling a set of data elements about the weather which are either necessary for providing useful data to smart home systems or which would add benefit to the data provided. Furthermore, possible sources are evaluated with respect to their suitability for the given context.
 
 % TODO cite this section in smarthomeweather_ontology.tex
 \section{Weather information}
@@ -30,7 +30,7 @@ Below are the questions that have been identified to be adequate competency ques
 
 These competency questions will again be used in section~\ref{sec:ontology_specification} when the \emph{Ontology requirements specification document} is created.
 
-The idea of providing \thinkhome with future weather data is to enable \thinkhome to prepare for upcoming weather situations. There are Internet weather services that provide forecasts for several days (see section~\ref{sec:internet_services}). However, the further the time described by a forecast lies in the future, the more inaccurate the forecast becomes\cite{forecast_error1,forecast_error2}. Additionally, no decisions in a \smarthome have been identified that require the availability of a forecast about a time more than a few hours in the future. Hence, the period of 24 hours has been chosen as a compromise between the deteriorating accuracy of weather forecasts over time and the time period \thinkhome requires weather data for.
+The idea of providing smart home with future weather data is to enable smart homes to prepare for upcoming weather situations. There are Internet weather services that provide forecasts for several days (see section~\ref{sec:internet_services}). However, the further the time described by a forecast lies in the future, the more inaccurate the forecast becomes\cite{forecast_error1,forecast_error2}. Additionally, no decisions in a \smarthome have been identified that require the availability of a forecast about a time more than a few hours in the future. Hence, the period of 24 hours has been chosen as a compromise between the deteriorating accuracy of weather forecasts over time and the time period smart homes require weather data for.
 
 The above competency questions can be answered when the (predicted) state of the weather for particular points of time is known. The state of the weather is given by measurement values of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage and others.\cite{GlossaryOfMeteorology}
 
@@ -38,7 +38,7 @@ A set of measurement value for one or more points of time is called \emph{weathe
 
 Apart from weather elements, Internet weather services often provide some information that will be called \emph{weather condition} from now on. Generally speaking, the weather condition is what someone tells you if you ask her about the current weather situation. Examples for the overall weather condition are ``Sun'', ``Rain'', and ``Fog''. Some weather conditions can be split up into several conditions, e.g. ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
 
-Sources for weather data are weather sensors and weather forecasts. As \thinkhome performs no weather forecasting on its own, forecast data is gathered from weather services via Internet. While data about the current weather state can be obtained from both weather sensors and Internet services, the only source for data about future weather states are Internet services.
+Sources for weather data are weather sensors and weather forecasts. As smart homes perform no weather forecasting on its own, forecast data is gathered from weather services via Internet. While data about the current weather state can be obtained from both weather sensors and Internet services, the only source for data about future weather states are Internet services.
 
 However, there there are weather elements no sensor can provide data about, and there are weather elements that are not available from any of the Internet services presented in section~\ref{sec:weather_services}. Section~\ref{sec:weather_sensors} covers data that can be obtained from weather sensors; section~\ref{sec:weather_services} discusses weather data that can be fetched from Internet services. Based on the findings in these two sections, \ref{sec:weather_conclusion} presents a set of weather elements that are incorporated into \smarthomeweather.
 
@@ -88,14 +88,14 @@ Other sensors that are available under the \emph{KNX} standard include sensors f
 \section{Service data}
 \label{sec:weather_services}
 
-This section digs into the details of a number of popular weather services that are available over the Internet. In a first step, a number of aspects are identified that are relevant for the use of a weather service in the context of \thinkhome. The weather services are then evaluated regarding these aspects.
+This section digs into the details of a number of popular weather services that are available over the Internet. In a first step, a number of aspects are identified that are relevant for the use of a weather service in the context of smart homes. The weather services are then evaluated regarding these aspects.
 
 \subsection{Available Internet services}
 \label{sec:internet_services}
 
-There is a tremendous amount of services providing weather data over the Internet\footnote{No website has been found that compiles a comprehensive list of Internet weather services; however, there are many websites that discuss various services~\cite{WeatherServices1,WeatherServices2,WeatherServices3}}. However, only a small number of these services is suitable for use in a context as in can be found \thinkhome. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
+There is a tremendous amount of services providing weather data over the Internet\footnote{No website has been found that compiles a comprehensive list of Internet weather services; however, there are many websites that discuss various services~\cite{WeatherServices1,WeatherServices2,WeatherServices3}}. However, only a small number of these services is suitable for use in the context of \smarthomeweather. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
 
-The access to Internet weather services in \thinkhome is implemented in Java, hence an important question about a certain weather service is whether in can easily be accessed from within a Java program.
+The access to Internet weather services in \smarthomeweather is implemented in Java, hence an important question about a certain weather service is whether in can easily be accessed from within a Java program.
 
 For evaluation of Internet weather services, the following aspects are examined:
 
@@ -256,7 +256,7 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \hline
   \textbf{Name} & \textbf{Access restrictions, terms of use} \\
   \hline\hline
-  \textbf{DWD} & An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within projects like \thinkhome.\\
+  \textbf{DWD} & An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within smart home projects.\\
   \hline
   \textbf{Yahoo! Weather} & Free for use for individuals and non-profit organizations, attribution required. No statement about commercial use anywhere in the documentation.\\
   \hline
@@ -287,7 +287,7 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
   \hline
   \textbf{Name} & \textbf{Stability} \\
   \hline\hline
-  \textbf{DWD} & A few changes every weeks which are announced via email at least one week in advance; data required by \thinkhome has never been changed during the last six months.\\
+  \textbf{DWD} & A few changes every weeks which are announced via email at least one week in advance; nothing about the data required by \smarthomeweather has been changed during the last twelve months.\\
   \hline
   \textbf{Yahoo! Weather} & Unknown \\
   \hline
@@ -480,7 +480,7 @@ DWD:
   \label{table:weather_services}
 \end{table}
 
-Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits \thinkhome's requirements best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
+Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits the requirements of smart homes and \smarthomeweather best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
 Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \smarthomeweather ontology. See section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
 
