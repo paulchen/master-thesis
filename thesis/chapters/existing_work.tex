@@ -249,11 +249,6 @@ The primary reason for not using the \eacs{SSN} ontology for \smarthomeweather i
 
 % TODO
 
-\subsection{NextGen}
-\label{subsec:onto4}
-
-% TODO
-
 \subsection{SWEET}
 \label{subsec:onto5}
 
@@ -284,6 +279,17 @@ In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualifie
 \end{itemize}
 
 Extensions to the \eacs{SWEET} ontologies in order address the second and the third issue would be possible; an extension of \eacs{SWEET} to include forecast data already exists~\cite{sweet_example3}. However, as a large number of extensions would be necessary, it was decided not to use any parts of \eacs{SWEET} for \smarthomeweather and to build a new ontology from scratch instead.
+
+\subsection{NextGen}
+\label{subsec:onto4}
+
+\eacs{NextGen} (\emph{Next Generation Air Transport System})~\cite{NextGen} is a large-scale project carried out by the \emph{Federal Aviation Administration} (\eacs{FAA}), an organisation being responsible for all aspects of civil air traffic in the United States~\cite{faa}. The goal of \eacs{NextGen} is to completely reorganise the US airspace to shorten flight paths, save time and fuel, minimise delays, increase capacity, and improve safety. One of the elements that \eacs{NextGen} consists of is \emph{Next Generation Network Enabled Weather} (\eacs{NNEW}) which is designed to provide a comprehensive view on the weather across the country, built from thousands of single weather observations. Once completed, \eacs{NNEW} is expected to reduce weather-related delays in US airspace to the half of its current magnitude; currently, approximately 70 percent of all air traffic delays are attributable to weather~\cite{nnew}.
+
+In order to efficiently process huge amounts of input weather data, \eacs{NNEW} incorporates a knowledge base implemented using a set of ontologies. The \eacs{NNEW} ontology is centered around concepts and relations describing past, current, and future weather phenomena.
+
+The \eacs{NNEW} ontology is built on to of the \eacs{SWEET} ontologies (see section~\ref{subsec:onto5}) to map weather phenomena. Extensions to \eacs{SWEET} include additional weather phenomena and concepts and relations that lead to the \emph{4-D Wx Data Cube} (\emph{Four Dimensional Weather Data Cube}) which uses time as the fourth dimension for the ``location'' of weather observations.
+
+It was decided not to use the \eacs{NNEW} ontology for \smarthomeweather for the same reasons as this decision was made in the case of \eacs{SWEET}. In the context of smart homes, the \eacs{NNEW} ontology appears just as an extension to \eacs{SWEET} and therefore it is not qualified in equal measure. Furthermore, \eacs{NNEW} is still work in progress and no final version is available that could be seen as a standard.
 
 \section{Related ontologies}
 \label{sec:related_ontologies}
