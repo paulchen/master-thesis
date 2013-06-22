@@ -46,7 +46,7 @@ Another core principle of an ontology is reusability~\cite{reuse1,reuse2}. In or
 
 \vspace{1em}
 
-Ontologies are expressed using formal languages. There are many of these \emph{ontology languages} such as \eacs{KIF} (\emph{Knowledge Interchange Format})~\cite{KIFReference}, \emph{DAML+OIL}~\cite{DAML+OIL} -- a successor to \eacs{DAML}~\cite{DAML} (\emph{\eacs{DARPA} Agent Markup Language}) and \eacs{OIL} (\emph{Ontology Inference Layer})~\cite{OIL} that combines features of both --, \eacs{RDFS} (\emph{RDF Schema})~\cite{RDFS}, and \eacs{OWL}~\cite{OWL}. The latter, the \emph{Web Ontology Language}, is used in the \smarthomeweathr project; thus, section~\ref{subsec:owl} gives a brief introduction into \eacs{OWL}.
+Ontologies are expressed using formal languages. There are many of these \emph{ontology languages} such as \eacs{KIF} (\emph{Knowledge Interchange Format})~\cite{KIFReference}, \emph{DAML+OIL}~\cite{DAML+OIL} -- a successor to \eacs{DAML}~\cite{DAML} (\emph{\eacs{DARPA} Agent Markup Language}) and \eacs{OIL} (\emph{Ontology Inference Layer})~\cite{OIL} that combines features of both --, \eacs{RDFS} (\emph{RDF Schema})~\cite{RDFS}, and \eacs{OWL}~\cite{OWL}. The latter, the \emph{Web Ontology Language}, is used in the \smarthomeweather project; thus, section~\ref{subsec:owl} gives a brief introduction into \eacs{OWL}.
 
 Over the years, many ontologies have been developed. Some of them define concepts and relations that can be found across many knowledge domains. These ontologies are often imported into other ontologies in order to minimize the effort of creating new ontologies and to simplify interoperability of ontologies. Examples for such ontologies that are implemented in \eacs{OWL} or \emph{\eacs{RDF} Schema} are:
 \begin{itemize}
@@ -383,7 +383,16 @@ Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of
 \section{Conclusion}
 
 % TODO mention advantages and disadvantages of already existing weather ontologies; discuss why they are not suitable for use in \smarthomeweather
-% TODO hint for \smarthomeweather: keep it simple
-% TODO reuse OWL-Time, geo, unit ontology
 
-As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a starting point for \smarthomeweather. Hence, a completely new ontology is created in chapter~\ref{ch:smarthomeweather_ontology}. However, some of the ontologies or parts of them may be reused in that new ontology; section~\ref{sec:integration} discusses this topic. Some of the ontologies that are mentioned in section~\ref{sec:related_ontologies} (the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \emph{OWL-Time}, and the \emph{Measurement Units Ontology}) will be reused in any case when a model for data outside the domain of weather data is required, e.g. for location data, temporal data, or units of measurements.
+As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a starting point for \smarthomeweather. \emph{Semantic Sensor Web} (section~\ref{subsec:onto1}) …; the \emph{\eacs{SSN} ontology} (section~\ref{subsec:onto2}) …; \emph{SemSOS} (section~\ref{subsec:onto3}) …; \emph{NextGen} (section~\ref{subsec:onto4}) …; and \emph{\eacs{SWEET}} (section~\ref{subsec:onto5}) ….
+
+Thus, a completely new ontology is created (see chapter~\ref{ch:smarthomeweather_ontology}). From the insights gained above, the following aspects are considered for the development of \smarthomeweather:
+
+\begin{itemize}
+  \item Many of the existing weather ontologies are intended to map a whole sensor network. In the case of \smarthomeweather, this is not necessary. To avoid overhead, only observations of weather elements (temperature, humidity etc.) will be covered, not their sensors. One goal of \smarthomeweather is to keep it as sophisticated as required, but as simple as possible.
+  
+  \item The \emph{Basic Geo (WGS84 lat/long) Vocabulary} and \emph{OWL-Time} are used by some of the existing ontologies. This qualifies these vocabularies to adequately model geographical and temporal data in a number of different domains. Hence, both vocabularies will be imported by \smarthomeweather.
+  
+  \item Some ontologies include concepts and properties for representing units of measurement. \smarthomeweather will support units of measurement as well, in fact by using the \emph{Measurements Units Ontology}.
+\end{itemize}
+
