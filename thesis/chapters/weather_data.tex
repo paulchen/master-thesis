@@ -387,7 +387,11 @@ Furthermore, the overall weather condition is added to the ontology. This weathe
 
 Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section~\ref{sec:sun_position} for details.
 
-In case a weather service does not provide a value for the dew point, there are simple means available for calculating that value from the values of temperature and relative humidity~\cite{dew_point_calculation}. Accordingly, the value of relative humidity can be calculated from the values of dew point and temperature using the same method (the case of a missing temperature values, but values of dew point and relative humidity is unlikely).
+In case a weather service does not provide a value for the dew point, there are simple means available for calculating that value from the values of temperature and relative humidity. E.g. the following formula leads to a dew point value with an accuracy sufficient for smart homes~\cite{dew_point_calculation}:
+
+\[t_d \approx t-\left(\frac{100-RH}{5}\right)\]
+
+$t_d$ represents the dew point temperature, $t$ the air temperature and $RH$ the relative humidity in percent (i.e. in the interval $[0,100]$). Accordingly, the value of relative humidity can be calculated from the values of dew point and temperature using the same method (the case of a missing temperature values, but values of dew point and relative humidity is unlikely).
 
 To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \smarthomeweather can actually answer the competency questions.
 
@@ -492,10 +496,7 @@ This is a typical \texttt{<time>} element:
 </time>
 \end{lstlisting}
 
-% TODO format names?
-% TODO group names (e.g. for temperature, humidity, clouds, ...)?
-The names of the elements that are allowed to be children of the \texttt{<location>} element are: \texttt{groundCover}, \texttt{pressure}, \texttt{maximumPrecipitation}, \texttt{highestTemperature}, \texttt{lowestTemperature}, \texttt{precipitation}, \texttt{fog}, \texttt{cloudiness}, \texttt{lowClouds}, \texttt{mediumClouds}, \texttt{highClouds}, \texttt{temperature}, \texttt{dewpointTemperature}, \texttt{minTemperatureDay}, \texttt{minTemperatureNight}, \texttt{maxTemperatureDay}, \texttt{maxTemperatureNight}, \texttt{uv}, \texttt{tidalwater}, \texttt{currentDirection}, \texttt{maxWaveHeight}, \texttt{surfaceTemperature}, \texttt{waveDirection}, \texttt{wavePeriod}, \texttt{waveHeight}, \texttt{humidity}, \texttt{bias}, \texttt{numberofobservations}, \texttt{meanabsoluteerror}, \texttt{score}, \texttt{windDirection}, \texttt{windSpeed}, \texttt{maxWindSpeed}, \texttt{stateOfTheSea}, \texttt{snowDepth}, \texttt{weather}, \texttt{symbol}, \texttt{forest-fire}, \texttt{windProbability}, \texttt{
-temperatureProbability}, and \texttt{symbolProbability}.
+In total, there are $41$ elements that are allowed to be children of the \texttt{<location>} element. The ones that are relevant for \smarthomeweather are: \texttt{pressure}, \texttt{precipitation}, \texttt{cloudiness}, \texttt{lowClouds}, \texttt{mediumClouds}, \texttt{highClouds}, \texttt{temperature}, \texttt{dewpointTemperature}, \texttt{humidity}, \texttt{windDirection}, \texttt{windSpeed}, and \texttt{symbol}. While other elements may occur in the weather reports for some locations (especially for locations within Norway), these are the elements which are used worldwide.
 
 None of the child elements is required. However, for most places of the world, the \eacs{XML} document contains \texttt{<location>} elements having two different sets of child elements:
 
