@@ -76,7 +76,9 @@ In \eacs{RDF}, the term \emph{resources} is used for individuals. Each resource 
 Figure~\ref{fig:rdf_example} depicts a simple example for a piece of knowledge from the domain of weather data expressed using \eacs{RDF}: The resource \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} represents the current state of the weather. The property \texttt{geo:\hspace{0pt}has\hspace{0pt}Location} links the \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} to the resource \texttt{geo:\hspace{0pt}Vienna} which represents the city of Vienna, Austria; i.e. \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} describes the weather for Vienna. \texttt{weather:\hspace{0pt}weather\hspace{0pt}State} has two more properties, \texttt{weather:\hspace{0pt}has\hspace{0pt}Temperature\hspace{0pt}Value} and \texttt{weather:\hspace{0pt}has\hspace{0pt}Humidity\hspace{0pt}Value}, which link two literal values to the resource: a temperature value of \SI{18.2}{\celsius} and a relative humidity value of $72 \%$.
 The type \texttt{xsd:\hspace{0pt}float} of both literals is defined by \emph{XML Schema}~\cite{xml-schema,xml-schema-datatypes}, one of the several \eacs{XML} schema languages available that define the structure of \eacs{XML} documents.
 
-The complete \eacs{URI} of \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} is \texttt{http://example.org/\hspace{0pt}weather\#\hspace{0pt}CurrentWeather} and the \eacs{URI} of \texttt{geo:\hspace{0pt}Vienna} is \texttt{http://example.org/geo\#Vienna}. As in \eacs{XML}, parts of \eacss{URI} may be replaced by \emph{prefixes} to avoid frequent recurrences of the same strings. For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in figure~\ref{fig:rdf_example}.
+The complete \eacs{URI} of \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} is \texttt{http://example.org/\hspace{0pt}weather\#\hspace{0pt}CurrentWeather} and the \eacs{URI} of \texttt{geo:\hspace{0pt}Vienna} is \texttt{http://example.org/geo\#Vienna}. As in \eacs{XML}, parts at the beginning of \eacss{URI} may be replaced by \emph{prefixes} to avoid frequent recurrences of the same strings. The part of the \eacss{URI} replaced by the prefix is called a \emph{namespace} which is used to group \eacss{URI} for elements from the same source together; e.g. all concepts, properties, and individuals defined by \smarthomeweather have identifiers in the same namespace.
+
+For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in figure~\ref{fig:rdf_example}.
 
 For expressing the data that is represented by an \eacs{RDF} model, several serialization formats are available. The \eacs{RDF} recommendation is based on \emph{RDF/XML} which maps the \eacs{RDF} model to an \eacs{XML} document~\cite{RDF_XML}. The representation of the above example in \emph{RDF/XML} can be seen in figure~\ref{fig:rdfxml_example}. As \emph{RDF/XML} is a rather verbose format which may be difficult to read for humans, the \eacs{N3} (\emph{Notation3}) representation for \eacs{RDF} is available which was developed with human-readability in mind~\cite{Notation3}. \emph{Notation3} incorporates some syntax features that go beyond the expressive power of \eacs{RDF}. A subset of \emph{Notation3} named \eacs{Turtle} (\emph{Terse RDF Triple Language}) is available that is limited to the features required to map \eacs{RDF} models~\cite{Turtle}. Figure~\ref{fig:turtle_example} shows the above example in \eacs{Turtle} syntax.
 
@@ -244,11 +246,6 @@ Work based on the \eacs{SSN} ontology includes its use for the representation of
 
 The primary reason for not using the \eacs{SSN} ontology for \smarthomeweather is the fact that it was published later than the development of \smarthomeweather started. Furthermore, for the purpose of \smarthomeweather, the \eacs{SSN} ontology uses a level of abstraction that makes its use in smart homes too complicated. \eacs{SSN} is well engineered towards mapping sensor networks and its observations, but it does not qualify for only representing sensor data without mapping the details of a sensor network. Additionally, forecast data is currently not supported, but an appropriate extension would be possible.
 
-\subsection{SemSOS}
-\label{subsec:onto3}
-
-% TODO
-
 \subsection{SWEET}
 \label{subsec:onto5}
 
@@ -298,8 +295,6 @@ This section discusses some ontologies that cover domains that are related to we
 
 \subsection{Location data}
 \label{subsec:location_ontologies}
-
-% TODO define 'namespace' somewhere
 
 \begin{figure}
 \centering
@@ -384,11 +379,9 @@ Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of
 
 \section{Conclusion}
 
-% TODO mention advantages and disadvantages of already existing weather ontologies; discuss why they are not suitable for use in \smarthomeweather
+As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a starting point for \smarthomeweather.
 
-As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a starting point for \smarthomeweather. \emph{Semantic Sensor Web} (section~\ref{subsec:onto1}) …; the \emph{\eacs{SSN} ontology} (section~\ref{subsec:onto2}) …; \emph{SemSOS} (section~\ref{subsec:onto3}) …; \emph{NextGen} (section~\ref{subsec:onto4}) …; and \emph{\eacs{SWEET}} (section~\ref{subsec:onto5}) ….
-
-Thus, a completely new ontology is created (see chapter~\ref{ch:smarthomeweather_ontology}). From the insights gained above, the following aspects are considered for the development of \smarthomeweather:
+Thus, a completely new ontology is created (see chapter~\ref{ch:smarthomeweather_ontology}). From the insights gained in this chapter from existing weather ontologies, the following aspects are considered for the development of \smarthomeweather:
 
 \begin{itemize}
   \item Many of the existing weather ontologies are intended to map a whole sensor network. In the case of \smarthomeweather, this is not necessary. To avoid overhead, only observations of weather elements (temperature, humidity etc.) will be covered, not their sensors. One goal of \smarthomeweather is to keep it as sophisticated as required, but as simple as possible.
