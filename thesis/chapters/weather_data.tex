@@ -106,7 +106,7 @@ For evaluation of Internet weather services, the following aspects are examined:
   A data format that is easier to handle on client-side is preferred over a data format that requires more complicated handling. While \eacs{XML}~\cite{XML} can be handled natively within many programming languages including Java (using \eacs{DOM}~\cite{DOM} or \eacs{SAX}~\cite{SAX}, \eacs{JSON}~\cite{rfc4627} may require an additional library in some languages such as Java\footnote{\eacs{JSON} libraries for Java include \emph{JSON-lib}~\cite{json-lib}, \emph{FlexJSON}~\cite{flexjson} and \emph{Gson}~\cite{gson}}, while \emph{PHP} comes with built-in support for \eacs{JSON}~\cite{php-json}. There may even be data formats that require the development of a new parser.
   
   \item \textbf{Data access:} How does the access to weather data work? How is data requested and how is the answer being received?\\
-  The less complicated a request is, the better the service suits the requirements. Requests in \eacs{HTTP}~\cite{rfc2616} are preferred due to the simplicity of performing requests on the client side in Java using the \emph{Apache HttpComponents project}~\cite{apache_hc}.
+  The less complicated a request is, the better the service is suitable for \smarthomeweather. Requests in \eacs{HTTP}~\cite{rfc2616} are preferred due to the simplicity of performing requests on the client side in Java using the \emph{Apache HttpComponents project}~\cite{apache_hc}.
   
   \item \textbf{Access restrictions, terms of use:} Is the service available freely or is the access restricted? Are credentials (e.g. a username and a password or an access key) required for access? If yes, can the credentials be obtained in a simple way or does that entail a complicated procedure? Are there any access fees for academic or commercial use?\\
   A service being less restricted is preferred over a service coming with more restrictions.
@@ -176,7 +176,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
 \end{tabular}
 \begin{tablenotes}
-\item[1] not publicly advertised API
+\item[1] not publicly advertised \eacs{API}
 \item[2] part of \eacs{NOAA} (\emph{National Oceanic and Atmospheric Administration})~\cite{noaa}
 \end{tablenotes}
 \end{threeparttable}
@@ -495,7 +495,7 @@ This is a typical \texttt{<time>} element:
 </time>
 \end{lstlisting}
 
-In total, there are $41$ elements that are allowed to be children of the \texttt{<location>} element. The ones that are relevant for \smarthomeweather are: \texttt{pressure}, \texttt{precipitation}, \texttt{cloudiness}, \texttt{lowClouds}, \texttt{mediumClouds}, \texttt{highClouds}, \texttt{temperature}, \texttt{dewpointTemperature}, \texttt{humidity}, \texttt{windDirection}, \texttt{windSpeed}, and \texttt{symbol}. While other elements may occur in the weather reports for some locations (especially for locations within Norway), these are the elements which are used worldwide.
+In total, there are $41$ elements that are allowed to be children of the \texttt{<location>} element. The ones that are relevant for \smarthomeweather are: \texttt{pressure}, \texttt{precipitation}, \texttt{cloudiness}, \texttt{lowClouds}, \texttt{mediumClouds}, \texttt{highClouds}, \texttt{temperature}, \texttt{dewpoint\hspace{0pt}Temperature}, \texttt{humidity}, \texttt{windDirection}, \texttt{windSpeed}, and \texttt{symbol}. While other elements may occur in the weather reports for some locations (especially for locations within Norway), these are the elements which are used worldwide.
 
 None of the child elements is required. However, for most places of the world, the \eacs{XML} document contains \texttt{<location>} elements having two different sets of child elements:
 
