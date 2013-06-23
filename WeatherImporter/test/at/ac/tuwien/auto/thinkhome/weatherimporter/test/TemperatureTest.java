@@ -46,7 +46,7 @@ public class TemperatureTest extends IndividualsTest {
 	
 	@Test
 	public void testHeat() {
-		for(int temperatureValue=301; temperatureValue<=100; temperatureValue+=5) {
+		for(int temperatureValue=301; temperatureValue<=1000; temperatureValue+=5) {
 			checkTemperature(((float)temperatureValue)/10, "Temperature", "Heat");			
 		}
 	}
