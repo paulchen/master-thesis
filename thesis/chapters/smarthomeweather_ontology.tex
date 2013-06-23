@@ -248,39 +248,6 @@ A \Egls{weather condition} does not have any sub-concepts. Hence, its classifica
 
 A \Egls{weather phenomenon} represents a certain weather element. Every specific weather element is a sub-concept of \Egls{weather phenomenon}; the evolving tree is shown in~\ref{fig:tree_weather_phenomenon}. For sake of clarity, this tree is broken up to several diagrams; all sub-concepts of sub-concepts of \Egls{weather phenomenon} are not shown in~\ref{fig:tree_weather_phenomenon}. There is a separate diagram for each sub-concept of \Egls{weather phenomenon}:
 
-\begin{itemize}
-  \item \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}): Depending on the pressure value, an instance of \Egls{atmospheric pressure} is an instance of exactly one of its sub-concepts: \Egls{very low pressure} (pressure value below \SI{998}{\hecto\pascal}), \Egls{low pressure} (at least \SI{998}{\hecto\pascal} and less than \SI{1008}{\hecto\pascal}), \Egls{normal pressure} (at least \SI{1008}{\hecto\pascal} and less than \SI{1018}{\hecto\pascal}), \Egls{high pressure} (at least \SI{1018}{\hecto\pascal} and less than \SI{1028}{\hecto\pascal}), and \Egls{very high pressure} (at least \SI{1028}{\hecto\pascal}).
-  
-  \item \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}): The sub-concepts of \Egls{cloud cover} are defined using different cloud coverage values: \Egls{clear sky} (cloud coverage of \num{0}$\:$\emph{okta}), \Egls{partly cloudy} (\num{1}$\:$\emph{okta} to \num{4}$\:$\emph{okta}), \Egls{mostly cloudy} (\num{5}$\:$\emph{okta} to \num{7}$\:$\emph{okta}), \Egls{overcast} (\num{8}$\:$\emph{okta}) and \Egls{unknown cloud cover} (\num{9}$\:$\emph{okta}).
-  
-  \item \Egls{humidity} (figure~\ref{fig:tree_humidity}): The sub-concepts of \Egls{humidity} are \Egls{very dry} (value of relative humidity of less than \num{30} percent), \Egls{dry} (at least \num{30} percent and less than \num{40} percent), \Egls{normal humidity} (at least \num{40} percent and at most \num{70} percent), \Egls{moist} (more than \num{70} percent and at most \num{80} percent), and \Egls{very moist} (more than \num{80} percent).
-  
-  \item \Egls{precipitation} (figure~\ref{fig:tree_precipitation}): The sub-concepts of \Egls{precipitation} are \Egls{no rain} (precipitation intensity of \SI{0}{\milli\metre\per\hour}), \Egls{light rain} (precipitation intensity of more than \SI{0}{\milli\metre\per\hour} and at most \SI{5}{\milli\metre\per\hour}), \Egls{medium rain} (precipitation intensity of more than \SI{5}{\milli\metre\per\hour} and at most \SI{20}{\milli\metre\per\hour}), \Egls{heavy rain} (precipitation intensity of more than \SI{20}{\milli\metre\per\hour} and at most \SI{50}{\milli\metre\per\hour}), \Egls{extremely heavy rain} (precipitation intensity of more than \SI{50}{\milli\metre\per\hour} and at most \SI{1000}{\milli\metre\per\hour}), and \Egls{tropical storm rain} (precipitation intensity of more than \SI{100}{\milli\metre\per\hour}). For \Egls{no rain}, the precipitation probability is \num{0}; for the other sub-concepts, the precipitation probability is greater than \num{0}.
-  
-  \item \Egls{solar radiation} (figure~\ref{fig:tree_solar_radiation}): In this case, the sub-concepts are \Egls{no radiation} (solar radiation value of \SI{0}{\watt\per\square\meter}), \Egls{low radiation} (solar radiation value of more than \SI{0}{\watt\per\square\meter} and less than \SI{250}{\watt\per\square\meter}), \Egls{medium radiation} (solar radiation value of more than \SI{250}{\watt\per\square\meter} and less than \SI{500}{\watt\per\square\meter}), \Egls{high radiation} (solar radiation value of more than \SI{500}{\watt\per\square\meter} and less than \SI{750}{\watt\per\square\meter}), \Egls{very high radiation} (solar radiation value of more than \SI{750}{\watt\per\square\meter}).
-  
-  \item \Egls{sun position} (figure~\ref{fig:tree_sun_position}): There are sub-concepts that are defined depending on the sun's azimuth angle, while others are defined depending on the sun's elevation above horizon:
-    \begin{itemize}
-      \item Those depending on the azimuth angle are \Egls{sun from north} (azimuth angle of at least \SI{0}{\degree} and at most \SI{45}{\degree} or of more than \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{sun from east} (azimuth angle of more than \SI{45}{\degree} and at most \SI{135}{\degree}), \Egls{sun from south} (azimuth angle of more than \SI{135}{\degree} and at most \SI{225}{\degree}), and \Egls{sun from east} (azimuth angle of more than \SI{225}{\degree} and at most \SI{315}{\degree}).
-      
-      \item The sub-concepts defined via the elevation angle are \Egls{day} (elevation angle of at least \SI{0}{\degree} and at most \SI{90}{\degree}), \Egls{solar twilight} (elevation angle of at least \SI{0}{\degree} and less than \SI{6}{\degree}), \Egls{sun below horizon} (elevation angle of at least \SI{-90}{\degree} and less than \SI{0}{\degree}), \Egls{twilight} (elevation angle of at least \SI{-18}{\degree} and less than \SI{0}{\degree}), \Egls{civil twilight} (elevation angle of at least \SI{-6}{\degree} and less than \SI{0}{\degree}), \Egls{nautical twilight} (elevation angle of at least \SI{-12}{\degree} and less than \SI{-6}{\degree}), \Egls{astronomical twilight} (elevation angle of at least \SI{-18}{\degree} and less than \SI{-12}{\degree}), and \Egls{night} (elevation angle of at least \SI{-90}{\degree} and less than \SI{-18}{\degree}). Refer to the \emph{Glossary of Meteorology} for the definitions of the different states of twilight~\cite{GlossaryOfMeteorology}.
-    \end{itemize}
-  
-  \item \Egls{temperature} (figure~\ref{fig:tree_temperature}): The sub-concepts of \Egls{temperature} are \Egls{frost} (temperature value below \SI{0}{\celsius}), \Egls{cold} (at least \SI{0}{\celsius} and less than \SI{10}{\celsius}), \Egls{below room temperature} (at least \SI{10}{\celsius} and less than \SI{20}{\celsius}), \Egls{room temperature} (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}), \Egls{above room temperature} (more than \SI{25}{\celsius} and at most \SI{30}{\celsius}), and \Egls{heat} (more than \SI{30}{\celsius}).
-  
-  \item \Egls{wind} (figure~\ref{fig:tree_wind}): As for \Egls{sun position}, there are two types of sub-concepts of \Egls{wind} -- those defined by the wind speed and those defined by the wind direction:
-    \begin{itemize}
-      \item If an instance of \Egls{wind} has the property \egls{has wind direction}, it is defined to be an instance of \Egls{directional wind}. This concept in turn has four sub-concepts: \Egls{north wind} (wind direction of at least \SI{0}{\degree} and less than \SI{45}{\degree} or of at least \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{east wind} (at least \SI{45}{\degree} and less than \SI{135}{\degree}), \Egls{south wind} (at least \SI{135}{\degree} and less than \SI{225}{\degree}), and \Egls{east wind} (at least \SI{225}{\degree} and less than \SI{315}{\degree}).
-      
-      \item Depending on the wind speed, there are the sub-concepts \egls{calm} (wind speed of at least \SI{0}{\kilo\metre\per\hour} and less than \SI{1}{\kilo\metre\per\hour}), \egls{light wind} (at least \SI{1}{\kilo\metre\per\hour} and less than \SI{10}{\kilo\metre\per\hour}), \egls{strong wind} (at least \SI{10}{\kilo\metre\per\hour} and less than \SI{20}{\kilo\metre\per\hour}), \egls{storm} (at least \SI{20}{\kilo\metre\per\hour}), and \egls{hurricane} (at least \SI{32}{\kilo\metre\per\hour}).
-      
-    \end{itemize}
-\end{itemize}
-
-There is no separate diagram for \Egls{dew point} as that concept does not have any sub-concepts; hence its concept-classification tree consists of a single node.
-
-Refer to section~\ref{sec:appendix_conceptualisation} in the appendix for a tabular display of the sub-concepts of \Egls{weather phenomenon}.
-
 \begin{figure}
   \centering
   \includegraphics[width=.8\textwidth]{figures/diagrams/weather-phenomenon.pdf}
@@ -288,61 +255,95 @@ Refer to section~\ref{sec:appendix_conceptualisation} in the appendix for a tabu
   \label{fig:tree_weather_phenomenon}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=.8\textwidth]{figures/diagrams/atmospheric-pressure.pdf}
-  \caption{Concept-classification tree for \Egls{atmospheric pressure}}
-  \label{fig:tree_atmospheric_pressure}
-\end{figure}
+\begin{itemize}
+  \item \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}): Depending on the pressure value, an instance of \Egls{atmospheric pressure} is an instance of exactly one of its sub-concepts: \Egls{very low pressure} (pressure value below \SI{998}{\hecto\pascal}), \Egls{low pressure} (at least \SI{998}{\hecto\pascal} and less than \SI{1008}{\hecto\pascal}), \Egls{normal pressure} (at least \SI{1008}{\hecto\pascal} and less than \SI{1018}{\hecto\pascal}), \Egls{high pressure} (at least \SI{1018}{\hecto\pascal} and less than \SI{1028}{\hecto\pascal}), and \Egls{very high pressure} (at least \SI{1028}{\hecto\pascal}).
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/diagrams/atmospheric-pressure.pdf}
+    \caption{Concept-classification tree for \Egls{atmospheric pressure}}
+    \label{fig:tree_atmospheric_pressure}
+  \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=.8\textwidth]{figures/diagrams/cloud-cover.pdf}
-  \caption{Concept-classification tree for \Egls{cloud cover}}
-  \label{fig:tree_cloud_cover}
-\end{figure}
+  \item \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}): The sub-concepts of \Egls{cloud cover} are defined using different cloud coverage values: \Egls{clear sky} (cloud coverage of \num{0}$\:$\emph{okta}), \Egls{partly cloudy} (\num{1}$\:$\emph{okta} to \num{4}$\:$\emph{okta}), \Egls{mostly cloudy} (\num{5}$\:$\emph{okta} to \num{7}$\:$\emph{okta}), \Egls{overcast} (\num{8}$\:$\emph{okta}) and \Egls{unknown cloud cover} (\num{9}$\:$\emph{okta}).
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/diagrams/cloud-cover.pdf}
+    \caption{Concept-classification tree for \Egls{cloud cover}}
+    \label{fig:tree_cloud_cover}
+  \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=.8\textwidth]{figures/diagrams/humidity.pdf}
-  \caption{Concept-classification tree for \Egls{humidity}}
-  \label{fig:tree_humidity}
-\end{figure}
+  \item \Egls{humidity} (figure~\ref{fig:tree_humidity}): The sub-concepts of \Egls{humidity} are \Egls{very dry} (value of relative humidity of less than \num{30} percent), \Egls{dry} (at least \num{30} percent and less than \num{40} percent), \Egls{normal humidity} (at least \num{40} percent and at most \num{70} percent), \Egls{moist} (more than \num{70} percent and at most \num{80} percent), and \Egls{very moist} (more than \num{80} percent).
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/diagrams/humidity.pdf}
+    \caption{Concept-classification tree for \Egls{humidity}}
+    \label{fig:tree_humidity}
+  \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=.8\textwidth]{figures/diagrams/precipitation.pdf}
-  \caption{Concept-classification tree for \Egls{precipitation}}
-  \label{fig:tree_precipitation}
-\end{figure}
+  \item \Egls{precipitation} (figure~\ref{fig:tree_precipitation}): The sub-concepts of \Egls{precipitation} are \Egls{no rain} (precipitation intensity of \SI{0}{\milli\metre\per\hour}), \Egls{light rain} (precipitation intensity of more than \SI{0}{\milli\metre\per\hour} and at most \SI{5}{\milli\metre\per\hour}), \Egls{medium rain} (precipitation intensity of more than \SI{5}{\milli\metre\per\hour} and at most \SI{20}{\milli\metre\per\hour}), \Egls{heavy rain} (precipitation intensity of more than \SI{20}{\milli\metre\per\hour} and at most \SI{50}{\milli\metre\per\hour}), \Egls{extremely heavy rain} (precipitation intensity of more than \SI{50}{\milli\metre\per\hour} and at most \SI{1000}{\milli\metre\per\hour}), and \Egls{tropical storm rain} (precipitation intensity of more than \SI{100}{\milli\metre\per\hour}). For \Egls{no rain}, the precipitation probability is \num{0}; for the other sub-concepts, the precipitation probability is greater than \num{0}.
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/diagrams/precipitation.pdf}
+    \caption{Concept-classification tree for \Egls{precipitation}}
+    \label{fig:tree_precipitation}
+  \end{figure}
+  
+  \item \Egls{solar radiation} (figure~\ref{fig:tree_solar_radiation}): In this case, the sub-concepts are \Egls{no radiation} (solar radiation value of \SI{0}{\watt\per\square\meter}), \Egls{low radiation} (solar radiation value of more than \SI{0}{\watt\per\square\meter} and less than \SI{250}{\watt\per\square\meter}), \Egls{medium radiation} (solar radiation value of more than \SI{250}{\watt\per\square\meter} and less than \SI{500}{\watt\per\square\meter}), \Egls{high radiation} (solar radiation value of more than \SI{500}{\watt\per\square\meter} and less than \SI{750}{\watt\per\square\meter}), \Egls{very high radiation} (solar radiation value of more than \SI{750}{\watt\per\square\meter}).
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/diagrams/solar-radiation.pdf}
+    \caption{Concept-classification tree for \Egls{solar radiation}}
+    \label{fig:tree_solar_radiation}
+  \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=.8\textwidth]{figures/diagrams/solar-radiation.pdf}
-  \caption{Concept-classification tree for \Egls{solar radiation}}
-  \label{fig:tree_solar_radiation}
-\end{figure}
+  \item \Egls{sun position} (figure~\ref{fig:tree_sun_position}): There are sub-concepts that are defined depending on the sun's azimuth angle, while others are defined depending on the sun's elevation above horizon:
+    \begin{itemize}
+      \item Those depending on the azimuth angle are \Egls{sun from north} (azimuth angle of at least \SI{0}{\degree} and at most \SI{45}{\degree} or of more than \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{sun from east} (azimuth angle of more than \SI{45}{\degree} and at most \SI{135}{\degree}), \Egls{sun from south} (azimuth angle of more than \SI{135}{\degree} and at most \SI{225}{\degree}), and \Egls{sun from east} (azimuth angle of more than \SI{225}{\degree} and at most \SI{315}{\degree}).
+      
+      \item The sub-concepts defined via the elevation angle are \Egls{day} (elevation angle of at least \SI{0}{\degree} and at most \SI{90}{\degree}), \Egls{solar twilight} (elevation angle of at least \SI{0}{\degree} and less than \SI{6}{\degree}), \Egls{sun below horizon} (elevation angle of at least \SI{-90}{\degree} and less than \SI{0}{\degree}), \Egls{twilight} (elevation angle of at least \SI{-18}{\degree} and less than \SI{0}{\degree}), \Egls{civil twilight} (elevation angle of at least \SI{-6}{\degree} and less than \SI{0}{\degree}), \Egls{nautical twilight} (elevation angle of at least \SI{-12}{\degree} and less than \SI{-6}{\degree}), \Egls{astronomical twilight} (elevation angle of at least \SI{-18}{\degree} and less than \SI{-12}{\degree}), and \Egls{night} (elevation angle of at least \SI{-90}{\degree} and less than \SI{-18}{\degree}). Refer to the \emph{Glossary of Meteorology} for the definitions of the different states of twilight~\cite{GlossaryOfMeteorology}.
+    \end{itemize}
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/diagrams/sun-position.pdf}
+    \caption{Concept-classification tree for \Egls{sun position}}
+    \label{fig:tree_sun_position}
+  \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{figures/diagrams/sun-position.pdf}
-  \caption{Concept-classification tree for \Egls{sun position}}
-  \label{fig:tree_sun_position}
-\end{figure}
+  \item \Egls{temperature} (figure~\ref{fig:tree_temperature}): The sub-concepts of \Egls{temperature} are \Egls{frost} (temperature value below \SI{0}{\celsius}), \Egls{cold} (at least \SI{0}{\celsius} and less than \SI{10}{\celsius}), \Egls{below room temperature} (at least \SI{10}{\celsius} and less than \SI{20}{\celsius}), \Egls{room temperature} (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}), \Egls{above room temperature} (more than \SI{25}{\celsius} and at most \SI{30}{\celsius}), and \Egls{heat} (more than \SI{30}{\celsius}).
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/diagrams/temperature.pdf}
+    \caption{Concept-classification tree for \Egls{temperature}}
+    \label{fig:tree_temperature}
+  \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=.8\textwidth]{figures/diagrams/temperature.pdf}
-  \caption{Concept-classification tree for \Egls{temperature}}
-  \label{fig:tree_temperature}
-\end{figure}
+  \item \Egls{wind} (figure~\ref{fig:tree_wind}): As for \Egls{sun position}, there are two types of sub-concepts of \Egls{wind} -- those defined by the wind speed and those defined by the wind direction:
+    \begin{itemize}
+      \item If an instance of \Egls{wind} has the property \egls{has wind direction}, it is defined to be an instance of \Egls{directional wind}. This concept in turn has four sub-concepts: \Egls{north wind} (wind direction of at least \SI{0}{\degree} and less than \SI{45}{\degree} or of at least \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{east wind} (at least \SI{45}{\degree} and less than \SI{135}{\degree}), \Egls{south wind} (at least \SI{135}{\degree} and less than \SI{225}{\degree}), and \Egls{east wind} (at least \SI{225}{\degree} and less than \SI{315}{\degree}).
+      
+      \item Depending on the wind speed, there are the sub-concepts \egls{calm} (wind speed of at least \SI{0}{\kilo\metre\per\hour} and less than \SI{1}{\kilo\metre\per\hour}), \egls{light wind} (at least \SI{1}{\kilo\metre\per\hour} and less than \SI{10}{\kilo\metre\per\hour}), \egls{strong wind} (at least \SI{10}{\kilo\metre\per\hour} and less than \SI{20}{\kilo\metre\per\hour}), \egls{storm} (at least \SI{20}{\kilo\metre\per\hour}), and \egls{hurricane} (at least \SI{32}{\kilo\metre\per\hour}).
+      
+    \end{itemize}
+    
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/diagrams/wind.pdf}
+    \caption{Concept-classification tree for \Egls{wind}}
+    \label{fig:tree_wind}
+  \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{figures/diagrams/wind.pdf}
-  \caption{Concept-classification tree for \Egls{wind}}
-  \label{fig:tree_wind}
-\end{figure}
+\end{itemize}
+
+There is no separate diagram for \Egls{dew point} as that concept does not have any sub-concepts; hence its concept-classification tree consists of a single node.
+
+Refer to section~\ref{sec:appendix_conceptualisation} in the appendix for a tabular display of the sub-concepts of \Egls{weather phenomenon}.
 
 A \Egls{weather report} has two attributes that define its main characteristics: \egls{has start time} and \egls{has source}. As discussed in section~\ref{sec:ontology_glossary}, a number of sub-concepts is defined in order to reflect different values of these two attributes. The resulting concept-classification tree is shown in figure~\ref{fig:tree_weather_report}.
 
