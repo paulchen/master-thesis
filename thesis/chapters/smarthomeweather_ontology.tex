@@ -178,8 +178,9 @@ In this section, only a list of terms is given; the complete \emph{Glossary of T
 
 \paragraph{Concepts:}
 
-% TODO link to section/subsection?
-Section~\ref{ch:weather_data} discusses each weather element that is used in \smarthomeweather and categories in which its instances can be grouped into. In the ontology, all weather elements are represented by concepts that sub-concepts of \Egls{weather phenomenon}. All categories of weather elements are in turn sub-concepts of the weather elements' concepts.
+Section~\ref{sec:weather_conclusion} presents the weather elements that are used in \smarthomeweather. In the ontology, weather elements are represented by concepts that are sub-concepts of \Egls{weather phenomenon}, e.g. there is a concept \Egls{temperature} for measurements of temperature, or \Egls{humidity} for measurements of relative humidity.
+
+For all weather elements except \Egls{dew point}, categories are introduced in order to allow easy differentiation of weather observations by their respective measurement values. In the case of \Egls{temperature}, the sub-concepts differ from each other by the observed temperature values. The sub-concepts of \Egls{temperature} are \Egls{frost} (for an observed temperature value of below \SI{0}{\celsius}), \Egls{cold} (at least \SI{0}{\celsius} and less than \SI{10}{\celsius}), \Egls{below room temperature} (at least \SI{10}{\celsius} and less than \SI{20}{\celsius}), \Egls{cold} (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}), \Egls{above room temperature} (more than \SI{25}{\celsius} and at most \SI{30}{\celsius}), and \Egls{heat} (more than \SI{30}{\celsius}). Refer to section~\ref{sec:concept_classification_trees} for the concept-classification trees that result from this approach including the definitions of the respective sub-concepts.
 
 A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
 
@@ -191,7 +192,7 @@ A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls
 
 Several sub-concepts of \Egls{weather state} describe certain combinations of instances of \Egls{weather phenomenon} being associated with a \Egls{weather state}. These concepts are listed below; refer to the glossary in appendix~\ref{main} for their definitions.
 
-Hence, these are the concepts that can be found in \smarthomeweather are:
+Thus, these are the concepts that can be found in \smarthomeweather are:
 \begin{itemize}
   \item \Egls{weather condition}
   \item \Egls{weather phenomenon}:
@@ -245,8 +246,27 @@ A \Egls{weather condition} does not have any sub-concepts. Hence, its classifica
   \label{fig:tree_weather_condition}
 \end{figure}
 
-A \Egls{weather phenomenon} represents a certain weather element. Every specific weather element is a sub-concept of \Egls{weather phenomenon}; the evolving tree is shown in~\ref{fig:tree_weather_phenomenon}. For sake of clarity, this tree is broken up to several diagrams; all sub-concepts of sub-concepts of \Egls{weather phenomenon} are not shown in~\ref{fig:tree_weather_phenomenon}. There is a separate diagram for each sub-concept of \Egls{weather phenomenon}: \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}), \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}), \Egls{humidity} (figure~\ref{fig:tree_humidity}), \Egls{precipitation} (figure~\ref{fig:tree_precipitation}), \Egls{solar radiation} (figure~\ref{fig:tree_solar_radiation}), \Egls{sun position} (figure~\ref{fig:tree_sun_position}), \Egls{temperature} (figure~\ref{fig:tree_temperature}), and \Egls{wind} (figure~\ref{fig:tree_wind}). The diagram for \Egls{dew point} is not shown as that concept does not have any sub-concepts;
- hence its concept-classification tree consists of a single node.
+A \Egls{weather phenomenon} represents a certain weather element. Every specific weather element is a sub-concept of \Egls{weather phenomenon}; the evolving tree is shown in~\ref{fig:tree_weather_phenomenon}. For sake of clarity, this tree is broken up to several diagrams; all sub-concepts of sub-concepts of \Egls{weather phenomenon} are not shown in~\ref{fig:tree_weather_phenomenon}. There is a separate diagram for each sub-concept of \Egls{weather phenomenon}:
+
+\begin{itemize}
+  \item \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}): Depending on the pressure value, an instance of \Egls{atmospheric pressure} is an instance of exactly one of its sub-concepts: \Egls{very low pressure} (pressure value below \SI{998}{\hecto\pascal}), \Egls{low pressure} (at least \SI{998}{\hecto\pascal} and less than \SI{1008}{\hecto\pascal}), \Egls{normal pressure} (at least \SI{1008}{\hecto\pascal} and less than \SI{1018}{\hecto\pascal}), \Egls{high pressure} (at least \SI{1018}{\hecto\pascal} and less than \SI{1028}{\hecto\pascal}), and \Egls{very high pressure} (at least \SI{1028}{\hecto\pascal}).
+  
+  \item \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}): The sub-concepts of \Egls{cloud cover} are defined using different cloud coverage values: \Egls{clear sky} (cloud coverage of \num{0}$\:$\emph{okta}), \Egls{partly cloudy} (\num{1}$\:$\emph{okta} to \num{4}$\:$\emph{okta}), \Egls{mostly cloudy} (\num{5}$\:$\emph{okta} to \num{7}$\:$\emph{okta}), \Egls{overcast} (\num{8}$\:$\emph{okta}) and \Egls{unknown cloud cover} (\num{9}$\:$\emph{okta}).
+  
+  \item \Egls{humidity} (figure~\ref{fig:tree_humidity}): The sub-concepts of \Egls{humidity} are \Egls{very dry} (value of relative humidity of less than \num{30} percent), \Egls{dry} (at least \num{30} percent and less than \num{40} percent), , \Egls{normal humidity} (at least \num{40} percent and at most \num{70} percent), \Egls{moist} (more than \num{70} percent and at most \num{80} percent), and \Egls{very moist} (more than \num{80} percent).
+  
+  \item \Egls{precipitation} (figure~\ref{fig:tree_precipitation}):
+  
+  \item \Egls{solar radiation} (figure~\ref{fig:tree_solar_radiation}):
+  
+  \item \Egls{sun position} (figure~\ref{fig:tree_sun_position}):
+  
+  \item \Egls{temperature} (figure~\ref{fig:tree_temperature}):
+  
+  \item \Egls{wind} (figure~\ref{fig:tree_wind}).
+\end{itemize}
+
+There is no separate diagram for \Egls{dew point} as that concept does not have any sub-concepts; hence its concept-classification tree consists of a single node.
 
 \begin{figure}
   \centering
