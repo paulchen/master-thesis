@@ -12,7 +12,7 @@ In order to keep the documentation of \smarthomeweather clear, a set of tables i
 The tables in this section are:
 
 \begin{itemize}
-  \item \emph{Concept dictionaries} for \Egls{weather condition} (figure~\ref{fig:concept_dict1}), \Egls{weather phenomenon} (figure~\ref{fig:concept_dict2}), \Egls{weather report} (figure~\ref{fig:concept_dict3}), \Egls{weather state} (figure~\ref{fig:concept_dict4}), and \Egls{weather source} (figure~\ref{fig:concept_dict5}); see section~\ref{subsec:concept_dictionaries} for details about \emph{concept dictionaries}.
+  \item \emph{Concept dictionaries} for \Egls{weather condition}, \Egls{weather report}, and \Egls{weather source} (figure~\ref{fig:concept_dict1}), and for \Egls{weather phenomenon} and \Egls{weather state} (figure~\ref{fig:concept_dict2}); see section~\ref{subsec:concept_dictionaries} for details about \emph{concept dictionaries}.
   
   \item The \emph{Binary relations table} in figure~\ref{fig:binary_relations_table}; see section~\ref{subsec:binary_relations_table} for details.
   
@@ -25,14 +25,22 @@ The tables in this section are:
 
 \begin{table}
 \centering
-\begin{tabular}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
+\begin{tabular}{|p{.2\textwidth}|p{.2\textwidth}|p{.5\textwidth}|}
   \hline
   \textbf{Name} & \textbf{Instances} & \textbf{Relations} \\
   \hline\hline
   \Egls{weather condition} & \emph{cloud}, \emph{fog}, \emph{partly cloudy}, \emph{mostly cloudy}, \emph{rain}, \emph{sleet}, \emph{snow}, \emph{sun}, \emph{thunder} & \egls{has condition} \\
+  \hline\hline
+  \Egls{weather state} & & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon} \\
+  \hline\hline
+  \Egls{weather source} & & \egls{is source of}, \egls{has source} \\
+  \hline
+  \Egls{sensor source} & & \egls{is source of}, \egls{has source} \\
+  \hline
+  \Egls{service source} & & \egls{is source of}, \egls{has source} \\
   \hline
 \end{tabular}
-\caption{Concept dictionary for \egls{weather condition}}
+\caption{Concept dictionary for \Egls{weather condition}, \Egls{weather report}, \Egls{weather state}, and \Egls{weather source}}
 \label{fig:concept_dict1}
 \end{table}
 
@@ -59,55 +67,14 @@ The tables in this section are:
   \Egls{weather phenomenon} & - & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
   \hline
   \Egls{wind} & \egls{has wind speed},\newline \egls{has wind direction} & \egls{belongs to state},\newline \egls{has weather phenomenon} \\
-  \hline
-\end{tabular}
-\caption{Concept dictionary for \egls{weather phenomenon}}
-\label{fig:concept_dict2}
-\end{table}
-
-\begin{table}
-\centering
-\begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Instance\newline attributes} & \textbf{Relations} \\
   \hline\hline
   \egls{weather report} & \egls{has priority}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \newline \egls{location}, \newline \egls{has start time}, \egls{has end time},\newline \egls{has observation time} \\
   \hline
-\end{tabular}
-\caption{Concept dictionary for \egls{weather report}}
-\label{fig:concept_dict3}
-\end{table}
-
-
-\begin{table}
-\centering
-\begin{tabular}{|p{0.167\textwidth}|p{0.167\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Relations} \\
-  \hline\hline
-  \Egls{weather state} & \egls{has condition},\newline \egls{belongs to weather report},\newline \egls{has weather state},\newline \egls{belongs to state},\newline \egls{has weather phenomenon}\\
+  \egls{weather report} & \egls{has priority}  & \egls{has source}, \egls{is source of},\newline \egls{has weather state}, \newline \egls{belongs to weather report} \newline \egls{location}, \newline \egls{has start time}, \egls{has end time},\newline \egls{has observation time} \\
   \hline
 \end{tabular}
-\caption{Concept dictionary for \egls{weather state}}
-\label{fig:concept_dict4}
-\end{table}
-
-
-\begin{table}
-\centering
-\begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Relations} \\
-  \hline\hline
-  \Egls{weather source} & \egls{is source of}, \egls{has source} \\
-  \hline
-  \Egls{sensor source} & \egls{is source of}, \egls{has source} \\
-  \hline
-  \Egls{service source} & \egls{is source of}, \egls{has source} \\
-  \hline
-\end{tabular}
-\caption{Concept dictionary for \egls{weather source}}
-\label{fig:concept_dict5}
+\caption{Concept dictionary for \egls{weather phenomenon} and \egls{weather report}}
+\label{fig:concept_dict2}
 \end{table}
 
 \begin{table}

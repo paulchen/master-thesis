@@ -436,7 +436,7 @@ When will it outside be colder than inside the house? When will it be warmer? & 
 \caption{Assignment of competency questions to weather element(s)}
 \end{table}
 
-\section{Weather data}
+\section{Weather data \eacs{API} of \yrno}
 \label{sec:weather_data_yr_no}
 
 This section gives an overview on how requests to the weather \eacs{API} of \yrno work.
@@ -527,8 +527,9 @@ However, these data are inappropriate for use within the \smarthomeweather ontol
 
 There are several algorithms for calculating the sun's position (specified by zenith and azimuth angles) at a certain location given by latitude and longitude at a certain time; two of them are:
 
+% TODO describe PSA algorithm in more detail
 \begin{itemize}
-  \item The \emph{SPA algorithm}~\cite{SPA_algorithm} is an algorithm which is complicated to implement. Hence, it is used only in contexts where precise values are required as it yields results for zenith and azimuth angles with uncertainties of less than \num{0.0003} degrees in the period from 2000~BC to 6000~AD.
+  \item The \emph{SPA algorithm}~\cite{SPA_algorithm} provides results for zenith and azimuth angles with uncertainties of less than \num{0.0003} degrees in the period from 2000~BC to 6000~AD. However, the algorithm which is complicated to implement. Hence, it is used only in contexts that require values of that precision.
   
   \item A algorithm that can be implemented more easily is the \emph{PSA algorithm}~\cite{PSA_algorithm}. Its results differ from the actual values more than the results calculated by the \emph{SPA algorithm}: For the period between 1999 and 2015, the differences per value are smaller than \num{0.01} degrees. As this level of accuracy is sufficient for use in a smart home, the \emph{PSA algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{PSA algorithm} in C++ is available; this implementation can easily be ported to Java.
 \end{itemize}

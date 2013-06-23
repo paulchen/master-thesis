@@ -256,7 +256,7 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
 \end{figure}
 
 \begin{itemize}
-  \item \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}): Depending on the pressure value, an instance of \Egls{atmospheric pressure} is an instance of exactly one of its sub-concepts: \Egls{very low pressure} (pressure value below \SI{998}{\hecto\pascal}), \Egls{low pressure} (at least \SI{998}{\hecto\pascal} and less than \SI{1008}{\hecto\pascal}), \Egls{normal pressure} (at least \SI{1008}{\hecto\pascal} and less than \SI{1018}{\hecto\pascal}), \Egls{high pressure} (at least \SI{1018}{\hecto\pascal} and less than \SI{1028}{\hecto\pascal}), and \Egls{very high pressure} (at least \SI{1028}{\hecto\pascal}).
+  \item \Egls{atmospheric pressure} (figure~\ref{fig:tree_atmospheric_pressure}): Depending on the pressure value, an instance of \Egls{atmospheric pressure} is an instance of exactly one of its sub-concepts: \Egls{very low pressure} (pressure value below \SI{998}{\hecto\pascal}), \Egls{low pressure} (at least \SI{998}{\hecto\pascal} and less than \SI{1008}{\hecto\pascal}), \Egls{average pressure} (at least \SI{1008}{\hecto\pascal} and less than \SI{1018}{\hecto\pascal}), \Egls{high pressure} (at least \SI{1018}{\hecto\pascal} and less than \SI{1028}{\hecto\pascal}), and \Egls{very high pressure} (at least \SI{1028}{\hecto\pascal}).
   
   \begin{figure}
     \centering
@@ -396,7 +396,7 @@ The purpose of a \emph{Binary relations diagram} is to present all binary relati
 
 A \emph{Concept dictionary} lists all concepts together with their names, instances, class attributes, instance attributes, and relations. For the sake of clarity, this table is split up into several tables, one for each of the concept-classification trees from section~\ref{sec:concept_classification_trees}.
 
-The tables can be found in the appendix in figure~\ref{fig:concept_dict1} (\Egls{weather phenomenon}), figure~\ref{fig:concept_dict2} (\Egls{weather phenomenon}), figure~\ref{fig:concept_dict3} (\Egls{weather report}), figure~\ref{fig:concept_dict4} (\Egls{weather state}), and figure~\ref{fig:concept_dict5} (\Egls{weather source}). In these tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
+The tables can be found in the appendix in figure~\ref{fig:concept_dict1} (\Egls{weather condition}, \Egls{weather report}, and \Egls{weather source}) and figure~\ref{fig:concept_dict2} (\Egls{weather phenomenon} and \Egls{weather state}). In these tables, sub-concepts having the same instances, class attributes, instance attributes and relations as their super-concepts are omitted. Furthermore, any columns that are not filled with any content in any row are omitted.
 
 \subsection{Binary relations table}
 \label{subsec:binary_relations_table}
@@ -427,7 +427,6 @@ The only pre-defined instances in \smarthomeweather are the instances of the con
 
 One of the goals when designing an ontology is to reuse existing ontologies where possible\cite{reuse1,reuse2}. Chapter~\ref{ch:existing_work} sheds some light on a selection of existing ontologies around the domain of weather data. In the domain of \smarthomeweather, four areas have been identified where existing ontologies may be reused. These areas are location data (section~\ref{subsec:location_ontologies}), measurement units (section~\ref{subsec:unit_ontologies}), specifications of date and time (section~\ref{subsec:date_ontologies}) and weather concepts (section~\ref{sec:weather_ontologies}).
 
-% TODO specify where these ontologies will be used
 The following ontologies have been selected for the import into \smarthomeweather:
 \begin{itemize}
   \item \emph{OWL-Time}\cite{owl-time} is used for specifying temporal data (for date and time of a \Egls{weather report}).
@@ -519,7 +518,7 @@ There are three non-functional requirements:
 \begin{itemize}
   \item \textbf{Naming conventions}: All identifiers in \smarthomeweather follow the naming conventions stated in section~\ref{sec:ontology_conventions}.
   \item \textbf{Documentation}: Due to following the \methontology approach, the ontology is well documented at every stage of development.
-  \item \textbf{Usage of other ontologies}: \smarthomeweather uses the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \muo and \emph{OWL-Time}; no ontology has been found that satisfies the requirements of \smarthomeweather regarding concepts for weather data.
+  \item \textbf{Usage of other ontologies}: \smarthomeweather imports the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \muo and \emph{OWL-Time}; no ontology has been found that satisfies the requirements of \smarthomeweather regarding concepts for weather data, thus \smarthomeweather defines its own concepts.
 \end{itemize}
 
 Thus, all non-functional requirements are met by \smarthomeweather.
@@ -558,6 +557,6 @@ Furthermore, there are questions that cannot be answered using an \eacs{OWL} ont
   \item When will it outside be colder than inside the house? When will it be warmer?
 \end{itemize}
 
-However, for each of the above competency questions, whether a direct answer can be given or not, \smarthomeweather can provide all available data; an external program that does not rely on the \emph{Open World Assumption} can access this data and generate an answer.
+However, for each of the above competency questions, whether a direct answer can be given or not, \smarthomeweather can provide all available data; an external program (which is not limited by the \emph{Open World Assumption}) can access this data (e.g. using \eacs{SPARQL} queries) and generate an answer.
 
 Hence, the ontology constructed in this chapter complies with its specification in section \ref{sec:ontology_specification}.
