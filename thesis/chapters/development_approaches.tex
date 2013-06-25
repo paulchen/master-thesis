@@ -611,7 +611,7 @@ In this step, the \emph{constants table} is created that specifies details about
   \hline
   \textbf{Constant name} & \textbf{Value type} & \textbf{Value} & \textbf{Measurement unit} \\
   \hline\hline
-  … & … \\
+  … & … & … & … \\
   \hline
 \end{tabular}
 \caption{Template for the constants table as proposed by \methontology.}
@@ -622,15 +622,26 @@ Figure~\ref{fig:methontology_example_constants} shows a template for the constan
 
 \paragraph{Task 9: Formal axioms}
 
-% TODO
+In this task, the ontology designer must determine whether the ontology contains formal axioms. In case it contains any, she must describe these axioms precisely in a \emph{formal axioms table}. For each axiom, this table specifies the name, a description in natural language, the logical expression that formally describes the axiom in first-order logic (or the logic the ontology language intended to use is based upon), and all concepts, attributes, relations, and variables that are referred to in the logical expression. Figure~\ref{fig:methontology_example_axioms} presents a template for the formal axioms table.
 
-% TODO template
+\begin{figure}
+\centering
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
+  \hline
+  \textbf{Axiom name} & \textbf{Description} & \textbf{Expression} & \textbf{Referred\newline concepts} & \textbf{Referred\newline attributes} & \textbf{Referred\newline relations} & \textbf{Variables} \\
+  \hline\hline
+  … & … & … & … & … & … & … \\
+  \hline
+\end{tabularx}
+\caption{Template for the formal axioms table as proposed by \methontology.}
+\label{fig:methontology_example_axioms}
+\end{figure}
 
 \paragraph{Task 10: Rules}
 
-% TODO
+Similary to the task of identifying and describing formal axioms within the ontology, in this step the ontology designer must determine whether the ontology contains any rules. If it contains any, she must build a \emph{rules table} to precisely describe all rules and their properties: Their name, their description, an expression in first-order logic, and all concepts, attributes, relations, and variables involved. In contrast to formal axioms, the expression of rules always has the form \emph{if <conditions> then <consequent>}; \emph{<conditions>} is a conjunction of atoms while \emph{<consequent>} is a single atom.
 
-% TODO template
+For the rules table, the template for the formal axioms table (see figure~\ref{fig:methontology_example_axioms}) can be reused.
 
 \paragraph{Task 11: Instances}
 
@@ -642,11 +653,11 @@ Within an ontology, a set of instances may be predefined. This task involves lis
   \hline
   \textbf{Instance name} & \textbf{Concept name} & \textbf{Attribute} & \textbf{Value(s)} \\
   \hline\hline
-  … & … \\
+  … & … & … & … \\
   \hline
 \end{tabular}
 \caption{Template for the instants table as proposed by \methontology.}
-\label{fig:methontology_instants_constants}
+\label{fig:methontology_instants_instances}
 \end{figure}
 
 \subsubsection{Formalisation}
