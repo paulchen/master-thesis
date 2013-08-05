@@ -287,24 +287,6 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline\hline
   \multirow{9}{*}{\rotatebox{90}{\textbf{Current weather}}} & \textbf{Cloud coverage} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Condition} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Humidity} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Precipitation} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Pressure} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Sunrise, sunset} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Visibility} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Wind} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \hline\hline
-  \multirow{9}{*}{\rotatebox{90}{\textbf{Future weather}}} & \textbf{Cloud coverage} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
   ~ & \textbf{Condition} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
   ~ & \textbf{Humidity} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
@@ -313,24 +295,43 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \cline{2-11}
   ~ & \textbf{Pressure} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Sunrise, sunset} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Sunrise, sunset} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
   ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Visibility} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Visibility} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
   ~ & \textbf{Wind} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \hline\hline
-  \multicolumn{2}{|l||}{\textbf{Forecast range (days)}} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+  \multirow{9}{*}{\rotatebox{90}{\textbf{Future weather}}} & \textbf{Cloud coverage} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Condition} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Humidity} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Precipitation} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Pressure} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Sunrise, sunset} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Visibility} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Wind} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \hline\hline
+  \multicolumn{2}{|l||}{\textbf{Forecast range (days)}} & 3 & 3 & 1 & 0 & $> 7$ & 5 & 5 & 5 & 9 \\
   \hline
-  \multicolumn{2}{|l||}{\textbf{Forecasts per day}} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+  \multicolumn{2}{|l||}{\textbf{Forecasts per day}} & ? & 1 & 1 & - & 1 & ? & 1 & ? & 4 \\ % TODO
   \hline
-  \multicolumn{2}{|l||}{\textbf{Update interval (hours)}} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+  \multicolumn{2}{|l||}{\textbf{Update interval (hours)}} & $< 3$ & $< 3$ & $0.5$ & 1 & 1 & $< 3$ & $< 3$ & 3-4 & $< 3$ \\
   \hline
 \end{tabular}
 
 \end{table}
 
+\begin{comment}
 \begin{table}
 \centering
 \begin{tabular}{|p{.19\textwidth}|p{0.71\textwidth}|}
@@ -359,7 +360,9 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \caption{Weather elements provided by weather services.}
 \label{table:weather_data6}
 \end{table}
+\end{comment}
 
+\begin{comment}
 \begin{table}
 \centering
 \begin{tabular}{|p{.26\textwidth}|p{.39\textwidth}|p{0.23\textwidth}|}
@@ -388,6 +391,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \caption{Time frame of forecast data and frequency of weather updates at weather services.}
 \label{table:weather_data7}
 \end{table}
+\end{comment}
 
 \section{Conclusion}
 \label{sec:weather_conclusion}
