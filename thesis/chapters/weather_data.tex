@@ -145,7 +145,7 @@ Except the ones not providing information about changes (\emph{Yahoo! Weather}, 
 
 Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); from some services, only limited forecasts are available (\eacs{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
 
-As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
+As seen in table~\ref{table:weather_data6}, \eacs{METAR}s only provide current weather data; some services provide forecasts for several days, but give only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, and \emph{Weather Underground}). All weather services provide frequent updates (at least every few hours).
 
 Nearly all weather services discussed provide comprehensive documentation regarding their interfaces and use; the only exception is the \emph{Google Weather Feed} which was an inofficial \eacs{API} and therefore has never had any official documentation.
 
@@ -285,45 +285,45 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   ~ & ~ & \rotatebox{90}{\textbf{DWD}} & \rotatebox{90}{\textbf{Google Weather Feed}} & \rotatebox{90}{\textbf{\acs{METAR}}} & \rotatebox{90}{\textbf{\acs{NWS}}} & \rotatebox{90}{\textbf{Weather.com}} & \rotatebox{90}{\textbf{Weather Underground}} & \rotatebox{90}{\textbf{World Weather Online~}} & \rotatebox{90}{\textbf{Yahoo! Weather}} & \rotatebox{90}{\textbf{yr.no}} \\
   \hline\hline
-  \multirow{10}{*}{\rotatebox{90}{\textbf{Current weather}}} & \textbf{Cloud coverage} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \multirow{10}{*}{\rotatebox{90}{\textbf{Current weather}}} & \textbf{Cloud coverage} & \checkmark & $\times$ & \checkmark & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Condition} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Condition} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Dew point} & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Dew point} & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ \\
   \cline{2-11}
-  ~ & \textbf{Humidity} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Humidity} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Precipitation} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Precipitation} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Pressure} & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Pressure} & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Sunrise, sunset} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Sunrise, sunset} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark \\
   \cline{2-11}
   ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Visibility} & $\times$ & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Visibility} & $\times$ & $\times$ & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ \\
   \cline{2-11}
-  ~ & \textbf{Wind} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Wind} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark \\
   \hline\hline
-  \multirow{10}{*}{\rotatebox{90}{\textbf{Future weather}}} & \textbf{Cloud coverage} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \multirow{10}{*}{\rotatebox{90}{\textbf{Future weather}}} & \textbf{Cloud coverage} & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Condition} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Condition} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Dew point} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Dew point} & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ \\
   \cline{2-11}
-  ~ & \textbf{Humidity} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Humidity} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Precipitation} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Precipitation} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Pressure} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Pressure} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Sunrise, sunset} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Sunrise, sunset} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ & \checkmark \\
   \cline{2-11}
   ~ & \textbf{Temperature} & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Visibility} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+   ~ & \textbf{Visibility} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$dew  \\
   \cline{2-11}
-  ~ & \textbf{Wind} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Wind} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark \\
   \hline\hline
   \multicolumn{2}{|l||}{\textbf{Forecast range (days)}} & 3 & 3 & 0 & $> 7$ & 5 & 5 & 5 & 2& 9 \\
   \hline
@@ -331,71 +331,11 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   \multicolumn{2}{|l||}{\textbf{Update interval (hours)}} & $< 3$ & $< 3$ & $0.5$ & 1 & 1 & $< 3$ & $< 3$ & 3-4 & $< 3$ \\
   \hline
+  % TODO Weather Underground, World Weather Online: more data via custom services
 \end{tabular}
-
-\end{table}
-
-\begin{comment}
-\begin{table}
-\centering
-\begin{tabular}{|p{.19\textwidth}|p{0.71\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Weather elements} \\
-  \hline\hline
-  \textbf{DWD} & Temperature, relative humidity, wind speed and direction, precipitation, atmospheric pressure, cloud coverage (current weather). Temperature and weather condition (forecasts).\\
-  \hline
-  \textbf{Yahoo! Weather} & Temperature, wind chill, speed and direction, relative humidity, visibility, atmospheric pressure, sunrise, and sunset times (current weather). Temperature and weather condition (forecast).\\
-  \hline
-  \textbf{World Weather Online} & Temperature, wind speed and direction, relative humidity, and precipitation intensity (Free API). Additionally dew point, chance of precipitation and atmospheric pressure (forecast).\\
-  \hline
-  \textbf{Google Weather Feed} & Temperature, humidity (only current weather), weather condition.\\
-  \hline
-  \textbf{yr.no} & Temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.\\
-  \hline
-  \textbf{\acs{METAR}} & Temperature, dew point, wind speed and direction, precipitation, cloud coverage, visibility, and atmospheric pressure. \\
-  \hline
-  \textbf{\acs{NWS}} & Temperature, dew point, wind speed and direction, precipitation, and cloud coverage. \\
-  \hline
-  \textbf{Weather Underground} & Minimum and maximum temperature, weather condition (public API); more data via custom weather services \\
-  \hline
-  \textbf{Weather.com} & Temperature, humidity, precipitation, wind speed and direction, sunrise and sunset times, and the weather condition (current weather and forecasts); atmospheric pressure, visibility, and dew point (current weather only) \\
-  \hline
-\end{tabular}
-\caption{Weather elements provided by weather services.}
+\caption{Weather data provided by weather services.}
 \label{table:weather_data6}
 \end{table}
-\end{comment}
-
-\begin{comment}
-\begin{table}
-\centering
-\begin{tabular}{|p{.26\textwidth}|p{.39\textwidth}|p{0.23\textwidth}|}
-  \hline
-  \textbf{Name} & \textbf{Time frame} & \textbf{Weather updates} \\
-  \hline\hline
-  \textbf{DWD} & 72 hours & Every few hours \\
-  \hline
-  \textbf{Yahoo! Weather} & 48 hours (only one forecast per day) & Every few hours \\
-  \hline
-  \textbf{World Weather Online} & Five days & Every \num{3} to \num{4} hours \\
-  \hline
-  \textbf{Google Weather Feed} & 72 hours (only one forecast per day) & Every few hours \\
-  \hline
-  \textbf{yr.no} & Nine days (four forecasts per day) & Every few hours \\
-  \hline
-  \textbf{\acs{METAR}} & Only current weather data & Every 30 minutes \\
-  \hline
-  \textbf{\acs{NWS}} & More than seven days & About once per hour \\
-  \hline
-  \textbf{Weather Underground} & Five days (one forecast per day) & Every few hours \\
-  \hline
-  \textbf{Weather.com} & Five days & Every few hours \\
-  \hline
-\end{tabular}
-\caption{Time frame of forecast data and frequency of weather updates at weather services.}
-\label{table:weather_data7}
-\end{table}
-\end{comment}
 
 \section{Conclusion}
 \label{sec:weather_conclusion}
