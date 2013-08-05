@@ -149,33 +149,30 @@ As seen in table~\ref{table:weather_data6}, \eacs{METAR}s only provide current w
 
 Nearly all weather services discussed provide comprehensive documentation regarding their interfaces and use; the only exception is the \emph{Google Weather Feed} which was an inofficial \eacs{API} and therefore has never had any official documentation.
 
-% TODO table headers: name -> weather service
-% TODO sort weather services alphabetically
-
 \begin{table}
 \centering
 \begin{threeparttable}[b]
 \begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.1\textwidth}|p{0.25\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Operator} & \textbf{Web page} & \textbf{Coverage area} \\
+  \textbf{Weather service} & \textbf{Operator} & \textbf{Web page} & \textbf{Coverage area} \\
   \hline\hline
   \textbf{DWD} & Deutscher Wetterdienst (\eacs{DWD}, ``German weather service'') & \cite{dwd} & Worldwide (current weather data); Germany and large cities around the world (forecasts)  \\
   \hline
-  \textbf{Yahoo! Weather} & Yahoo! Inc. & \cite{yahoo_weather} & Worldwide  \\
-  \hline
-  \textbf{World Weather Online} & World Weather Online & \cite{worldweatheronline} & Worldwide  \\
-  \hline
   \textbf{Google Weather Feed} & Google Inc. & none\tnote{1} & Worldwide \\
-  \hline
-  \textbf{yr.no} & Meteorologisk institutt (Norwegian Meteorological Institute), Norsk rikskringkasting AS (NRK, Norwegian Broadcasting Corporation) & ~\cite{yrno} & Worldwide \\
   \hline
   \textbf{\acs{METAR}} & Airports around the world & \cite{metar_source} & Worldwide \\
   \hline
   \textbf{\acs{NWS}} & National Weather Service\tnote{2} & \cite{nws} & Only US \\
   \hline
+  \textbf{Weather.com} & The Weather Channel, LLC & ~\cite{weather_com} & Worldwide \\
+  \hline
   \textbf{Weather Underground} & Weather Underground & \cite{weather_underground} & Worldwide \\
   \hline
-  \textbf{Weather.com} & The Weather Channel, LLC & ~\cite{weather_com} & Worldwide \\
+  \textbf{World Weather Online} & World Weather Online & \cite{worldweatheronline} & Worldwide  \\
+  \hline
+  \textbf{Yahoo! Weather} & Yahoo! Inc. & \cite{yahoo_weather} & Worldwide  \\
+  \hline
+  \textbf{yr.no} & Meteorologisk institutt (Norwegian Meteorological Institute), Norsk rikskringkasting AS (NRK, Norwegian Broadcasting Corporation) & ~\cite{yrno} & Worldwide \\
   \hline
 \end{tabular}
 \begin{tablenotes}
@@ -187,29 +184,30 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \label{table:weather_data1}
 \end{table}
 
+% TODO consolidate this table (like for the weather elements below)
 \begin{table}
 \centering
 \begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Data format} & \textbf{Data access} \\
+  \textbf{Weather service} & \textbf{Data format} & \textbf{Data access} \\
   \hline\hline
   \textbf{DWD} & \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \eacs{FTP}\cite{rfc959} \\
   \hline
-  \textbf{Yahoo! Weather} & \eacs{RSS} feed & \eacs{HTTP} \\
-  \hline
-  \textbf{World Weather Online} & \eacs{XML}, \eacs{JSON}, \eacs{JSONP}, \eacs{CSV} & \eacs{HTTP} \\
-  \hline
   \textbf{Google Weather Feed} & \eacs{XML} & \eacs{HTTP} \\
-  \hline
-  \textbf{yr.no} & \eacs{XML} & \eacs{HTTP} \\
   \hline
   \textbf{\acs{METAR}} & Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\
   \hline
   \textbf{\acs{NWS}} & \eacs{XML} & \eacs{SOAP}\cite{SOAP}, \eacs{REST}\cite{REST} \\
   \hline
+  \textbf{Weather.com} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
+  \hline
   \textbf{Weather Underground} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
   \hline
-  \textbf{Weather.com} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
+  \textbf{World Weather Online} & \eacs{XML}, \eacs{JSON}, \eacs{JSONP}, \eacs{CSV} & \eacs{HTTP} \\
+  \hline
+  \textbf{Yahoo! Weather} & \eacs{RSS} feed & \eacs{HTTP} \\
+  \hline
+  \textbf{yr.no} & \eacs{XML} & \eacs{HTTP} \\
   \hline
 \end{tabular}
 \caption{Data formats and protocols for data access of weather services.}
@@ -220,25 +218,25 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \centering
 \begin{tabular}{|p{.19\textwidth}|p{0.71\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Access restrictions, terms of use} \\
+  \textbf{Weather service} & \textbf{Access restrictions, terms of use} \\
   \hline\hline
   \textbf{DWD} & An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by DWD. The use of DWD is free for use within smart home projects.\\
   \hline
-  \textbf{Yahoo! Weather} & Free for use for individuals and non-profit organizations, attribution required. No statement about commercial use anywhere in the documentation.\\
-  \hline
-  \textbf{World Weather Online} & An account must be created for accessing both the Free API and the Premium API. The Free API is free to use for personal and commercial use, credits must be given to World Weather Online. Costs for the Premium API start at 20 US dollars per month.\\
-  \hline
   \textbf{Google Weather Feed} & No account required; terms of use unknown (does not have an explicitely stated licence due to being an inofficial interface) \\
-  \hline
-  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}~\cite{ccby30}\\
   \hline
   \textbf{\acs{METAR}} & Freely available without restrictions \\
   \hline
   \textbf{\acs{NWS}} & Freely available without restrictions \\
   \hline
+  \textbf{Weather.com} & An account must be created in a complicated process; licence unclear \\
+  \hline
   \textbf{Weather Underground} & Account creation is mandatory; available for personal, non-commercial use (public API); custom weather services are available \\
   \hline
-  \textbf{Weather.com} & An account must be created in a complicated process; licence unclear \\
+  \textbf{World Weather Online} & An account must be created for accessing both the Free API and the Premium API. The Free API is free to use for personal and commercial use, credits must be given to World Weather Online. Costs for the Premium API start at 20 US dollars per month.\\
+  \hline
+  \textbf{Yahoo! Weather} & Free for use for individuals and non-profit organizations, attribution required. No statement about commercial use anywhere in the documentation.\\
+  \hline
+  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}~\cite{ccby30}\\
   \hline
 \end{tabular}
 \caption{Access restrictions and terms of use for weather services.}
@@ -250,25 +248,25 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \begin{threeparttable}[b]
 \begin{tabular}{|p{.19\textwidth}|p{0.71\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Stability} \\
+  \textbf{Weather service} & \textbf{Stability} \\
   \hline\hline
   \textbf{DWD} & A few changes every weeks which are announced via email at least one week in advance; nothing about the data required by \smarthomeweather has been changed during the last twelve months.\\
   \hline
-  \textbf{Yahoo! Weather} & Unknown \\
-  \hline
-  \textbf{World Weather Online} & Unknown \\
-  \hline
   \textbf{Google Weather Feed} & Discontinued~\cite{google_weather} \\
-  \hline
-  \textbf{yr.no} & New releases of the API one or two times per year; the old API remains in operation a few months after the release of a new one. Announcements are made on the web page. A less frequently changing API with \emph{long term support} is available.\\
   \hline
   \textbf{\acs{METAR}} & Stable.\tnote{1} \\
   \hline
   \textbf{\acs{NWS}} & Small changes every few months with announcements via \eacs{RSS}. Most of the interface remains unchanged in the long run.\\
   \hline
+  \textbf{Weather.com} & Unknown \\
+  \hline
   \textbf{Weather Underground} & The has been a recent API change; the stability is unknown. \\
   \hline
-  \textbf{Weather.com} & Unknown \\
+  \textbf{World Weather Online} & Unknown \\
+  \hline
+  \textbf{Yahoo! Weather} & Unknown \\
+  \hline
+  \textbf{yr.no} & New releases of the API one or two times per year; the old API remains in operation a few months after the release of a new one. Announcements are made on the web page. A less frequently changing API with \emph{long term support} is available.\\
   \hline
 \end{tabular}
 \begin{tablenotes}
@@ -345,23 +343,23 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   \textbf{Weather service} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
   \hline \hline
-  DWD & - & Data format (\eacs{SYNOP}); forecasts lack important weather elements \\
+  \textbf{DWD} & - & Data format (\eacs{SYNOP}); forecasts lack important weather elements \\
   \hline
-  Yahoo! Weather & Simple data format (\eacs{RSS}) & Low number of forecasts; forecasts lack important weather elements \\
+  \textbf{Google Weather Feed} & Simple data format (\eacs{XML}) & Unofficial, undocumented \eacs{API}; unknown terms of use; only a small number of available weather elements; discontinued \\
   \hline
-  World Weather Online & Wide range of data formats & Free \eacs{API} lacks important data \\
+  \textbf{\acs{METAR}} & - & Data format (\eacs{METAR}); no forecasts \\
   \hline
-  Google Weather Feed & Simple data format (\eacs{XML}) & Unofficial, undocumented \eacs{API}; unknown terms of use; only a small number of available weather elements; discontinued \\
+  \textbf{\acs{NWS}} & Simple data format (\eacs{XML}) & No worldwide coverage \\
   \hline
-  yr.no & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0}~\cite{ccby30} & - \\
+  \textbf{Weather.com} & Data formats (\eacs{XML} and \eacs{JSON}) & Complicated account creation \\
   \hline
-  METAR & - & Data format (\eacs{METAR}); no forecasts \\
+  \textbf{Weather Underground} & Data formats (\emph{XML} and \eacs{JSON}) & Public \eacs{API} lacks important data \\
   \hline
-  National Weather Service & Simple data format (\eacs{XML}) & No worldwide coverage \\
+  \textbf{World Weather Online} & Wide range of data formats & Free \eacs{API} lacks important data \\
   \hline
-  Weather Underground & Data formats (\emph{XML} and \eacs{JSON}) & Public \eacs{API} lacks important data \\
+  \textbf{Yahoo! Weather} & Simple data format (\eacs{RSS}) & Low number of forecasts; forecasts lack important weather elements \\
   \hline
-  Weather.com & Data formats (\eacs{XML} and \eacs{JSON}) & Complicated account creation \\
+  \textbf{yr.no} & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0}~\cite{ccby30} & - \\
   \hline
   \end{tabularx}
   \caption{Advantages and disadvantages of Internet weather services}
