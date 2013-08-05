@@ -285,45 +285,49 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   ~ & ~ & \rotatebox{90}{\textbf{DWD}} & \rotatebox{90}{\textbf{Google Weather Feed}} & \rotatebox{90}{\textbf{\acs{METAR}}} & \rotatebox{90}{\textbf{\acs{NWS}}} & \rotatebox{90}{\textbf{Weather.com}} & \rotatebox{90}{\textbf{Weather Underground}} & \rotatebox{90}{\textbf{World Weather Online~}} & \rotatebox{90}{\textbf{Yahoo! Weather}} & \rotatebox{90}{\textbf{yr.no}} \\
   \hline\hline
-  \multirow{9}{*}{\rotatebox{90}{\textbf{Current weather}}} & \textbf{Cloud coverage} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \multirow{10}{*}{\rotatebox{90}{\textbf{Current weather}}} & \textbf{Cloud coverage} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Condition} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Condition} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Humidity} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Dew point} & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Precipitation} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Humidity} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Pressure} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Precipitation} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Sunrise, sunset} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Pressure} & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Visibility} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Wind} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \hline\hline
-  \multirow{9}{*}{\rotatebox{90}{\textbf{Future weather}}} & \textbf{Cloud coverage} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Condition} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Humidity} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Precipitation} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Pressure} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
-  \cline{2-11}
-  ~ & \textbf{Sunrise, sunset} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Sunrise, sunset} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
   ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Visibility} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Visibility} & $\times$ & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-  ~ & \textbf{Wind} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  ~ & \textbf{Wind} & \checkmark & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \hline\hline
-  \multicolumn{2}{|l||}{\textbf{Forecast range (days)}} & 3 & 3 & 1 & 0 & $> 7$ & 5 & 5 & 5 & 9 \\
+  \multirow{10}{*}{\rotatebox{90}{\textbf{Future weather}}} & \textbf{Cloud coverage} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Condition} & \checkmark & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Dew point} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Humidity} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Precipitation} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Pressure} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Sunrise, sunset} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Temperature} & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Visibility} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Wind} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \hline\hline
+  \multicolumn{2}{|l||}{\textbf{Forecast range (days)}} & 3 & 3 & 0 & $> 7$ & 5 & 5 & 5 & 2& 9 \\
   \hline
-  \multicolumn{2}{|l||}{\textbf{Forecasts per day}} & ? & 1 & 1 & - & 1 & ? & 1 & ? & 4 \\ % TODO
+  \multicolumn{2}{|l||}{\textbf{Forecasts per day}} & ? & 1 & - & ? & ? & 1 & ? & ? & 4 \\ % TODO
   \hline
   \multicolumn{2}{|l||}{\textbf{Update interval (hours)}} & $< 3$ & $< 3$ & $0.5$ & 1 & 1 & $< 3$ & $< 3$ & 3-4 & $< 3$ \\
   \hline
