@@ -149,6 +149,9 @@ As seen in table~\ref{table:weather_data7}, \eacs{METAR}s only provide current w
 
 Nearly all weather services discussed provide comprehensive documentation regarding their interfaces and use; the only exception is the \emph{Google Weather Feed} which was an inofficial \eacs{API} and therefore has never had any official documentation.
 
+% TODO table headers: name -> weather service
+% TODO sort weather services alphabetically
+
 \begin{table}
 \centering
 \begin{threeparttable}[b]
@@ -274,6 +277,58 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \end{threeparttable}
 \caption{Stability of weather services.}
 \label{table:weather_data5}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{|l|l||c|c|c|c|c|c|c|c|c|}
+  \hline
+  ~ & ~ & \rotatebox{90}{\textbf{DWD}} & \rotatebox{90}{\textbf{Google Weather Feed}} & \rotatebox{90}{\textbf{\acs{METAR}}} & \rotatebox{90}{\textbf{\acs{NWS}}} & \rotatebox{90}{\textbf{Weather.com}} & \rotatebox{90}{\textbf{Weather Underground}} & \rotatebox{90}{\textbf{World Weather Online~}} & \rotatebox{90}{\textbf{Yahoo! Weather}} & \rotatebox{90}{\textbf{yr.no}} \\
+  \hline\hline
+  \multirow{9}{*}{\rotatebox{90}{\textbf{Current weather}}} & \textbf{Cloud coverage} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Condition} & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Humidity} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Precipitation} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Pressure} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Sunrise, sunset} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Visibility} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Wind} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \hline\hline
+  \multirow{9}{*}{\rotatebox{90}{\textbf{Future weather}}} & \textbf{Cloud coverage} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Condition} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Humidity} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Precipitation} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Pressure} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Sunrise, sunset} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Temperature} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Visibility} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \cline{2-11}
+  ~ & \textbf{Wind} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+  \hline\hline
+  \multicolumn{2}{|l||}{\textbf{Forecast range (days)}} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+  \hline
+  \multicolumn{2}{|l||}{\textbf{Forecasts per day}} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+  \hline
+  \multicolumn{2}{|l||}{\textbf{Update interval (hours)}} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+  \hline
+\end{tabular}
+
 \end{table}
 
 \begin{table}
