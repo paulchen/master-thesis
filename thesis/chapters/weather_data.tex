@@ -184,36 +184,42 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \label{table:weather_data1}
 \end{table}
 
-% TODO consolidate this table (like for the weather elements below)
+% TODO footnotes:
+% TODO DWD: format \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts)
+% TODO METAR: Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\
+
 \begin{table}
 \centering
-\begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.35\textwidth}|}
+\begin{tabular}{|l||l|l|l|l|l|l||l|l|l|l|l|}
   \hline
-  \textbf{Weather service} & \textbf{Data format} & \textbf{Data access} \\
+  ~ & \multicolumn{6}{c||}{\textbf{Data format}} & \multicolumn{5}{c|}{\textbf{Data access}} \\
+  \hline
+  % TODO move citations somewhere else
+  ~ & \rotatebox{90}{\textbf{\eacs{CSV}}} & \rotatebox{90}{\textbf{\eacs{JSON}}} & \rotatebox{90}{\textbf{\eacs{JSONP}}} & \rotatebox{90}{\textbf{\eacs{RSS}}} & \rotatebox{90}{\textbf{\eacs{XML}}} & \rotatebox{90}{\textbf{Custom~}} & \rotatebox{90}{\textbf{\eacs{FTP}}~\cite{rfc959}} & \rotatebox{90}{\textbf{\eacs{HTTP}}} & \rotatebox{90}{\textbf{\eacs{REST}}~\cite{REST}} & \rotatebox{90}{\textbf{\eacs{SOAP}}~\cite{SOAP}} & \rotatebox{90}{\textbf{Custom}} \\
   \hline\hline
-  \textbf{DWD} & \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts) & \eacs{FTP}\cite{rfc959} \\
+  \textbf{DWD} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ \\
   \hline
-  \textbf{Google Weather Feed} & \eacs{XML} & \eacs{HTTP} \\
+  \textbf{Google Weather Feed} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
-  \textbf{\acs{METAR}} & Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\
+  \textbf{\acs{METAR}} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark \\
   \hline
-  \textbf{\acs{NWS}} & \eacs{XML} & \eacs{SOAP}\cite{SOAP}, \eacs{REST}\cite{REST} \\
+  \textbf{\acs{NWS}} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ \\
   \hline
-  \textbf{Weather.com} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
+  \textbf{Weather.com} & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
-  \textbf{Weather Underground} & \eacs{JSON}, \eacs{XML} & \eacs{HTTP} \\
+  \textbf{Weather Underground} & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
-  \textbf{World Weather Online} & \eacs{XML}, \eacs{JSON}, \eacs{JSONP}, \eacs{CSV} & \eacs{HTTP} \\
+  \textbf{World Weather Online} & \checkmark & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
-  \textbf{Yahoo! Weather} & \eacs{RSS} feed & \eacs{HTTP} \\
+  \textbf{Yahoo! Weather} & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
-  \textbf{yr.no} & \eacs{XML} & \eacs{HTTP} \\
+  \textbf{yr.no} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
 \end{tabular}
 \caption{Data formats and protocols for data access of weather services.}
 \label{table:weather_data3}
 \end{table}
-
+  
 \begin{table}
 \centering
 \begin{tabular}{|p{.19\textwidth}|p{0.71\textwidth}|}
