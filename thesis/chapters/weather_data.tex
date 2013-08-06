@@ -184,12 +184,9 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \label{table:weather_data1}
 \end{table}
 
-% TODO footnotes:
-% TODO DWD: format \eacs{SYNOP} (current weather data); not machine-readable weather maps, tables and texts (forecasts)
-% TODO METAR: Format standardised by \eacs{ICAO}; not human-readable. & Via HTML from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available. \\
-
 \begin{table}
 \centering
+\begin{threeparttable}[b]
 \begin{tabular}{|l||l|l|l|l|l|l||l|l|l|l|l|}
   \hline
   ~ & \multicolumn{6}{c||}{\textbf{Data format}} & \multicolumn{5}{c|}{\textbf{Data access}} \\
@@ -197,11 +194,11 @@ Nearly all weather services discussed provide comprehensive documentation regard
   % TODO move citations somewhere else
   ~ & \rotatebox{90}{\textbf{\eacs{CSV}}} & \rotatebox{90}{\textbf{\eacs{JSON}}} & \rotatebox{90}{\textbf{\eacs{JSONP}}} & \rotatebox{90}{\textbf{\eacs{RSS}}} & \rotatebox{90}{\textbf{\eacs{XML}}} & \rotatebox{90}{\textbf{Custom~}} & \rotatebox{90}{\textbf{\eacs{FTP}}~\cite{rfc959}} & \rotatebox{90}{\textbf{\eacs{HTTP}}} & \rotatebox{90}{\textbf{\eacs{REST}}~\cite{REST}} & \rotatebox{90}{\textbf{\eacs{SOAP}}~\cite{SOAP}} & \rotatebox{90}{\textbf{Custom}} \\
   \hline\hline
-  \textbf{DWD} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ \\
+  \textbf{DWD} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark\tnote{1} & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ \\
   \hline
   \textbf{Google Weather Feed} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
-  \textbf{\acs{METAR}} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark \\
+  \textbf{\acs{METAR}} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark\tnote{2} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark\tnote{3} \\
   \hline
   \textbf{\acs{NWS}} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ \\
   \hline
@@ -216,6 +213,12 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \textbf{yr.no} & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & \checkmark & $\times$ & $\times$ & $\times$ \\
   \hline
 \end{tabular}
+\begin{tablenotes}
+\item[1] \eacs{DWD} uses \eacs{SYNOP} (\emph{surface synoptic observations})~\cite{SYNOP} for current weather data, a data format frequently used for weather observations specified by the \eacs{WMO} (\emph{World Meteorological Organization})~\cite{WMO}; furthermore, \eacs{DWD} uses a data format which is not machine-readable consisting of weather maps, tables, and texts for forecasts.
+\item[2] \eacs{METAR} uses its own format standardised by \eacs{ICAO} which is not human readable.
+\item[3] \eacs{METAR}s are available in \eacs{HTML} format from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available.
+\end{tablenotes}
+\end{threeparttable}
 \caption{Data formats and protocols for data access of weather services.}
 \label{table:weather_data3}
 \end{table}
@@ -285,9 +288,10 @@ Nearly all weather services discussed provide comprehensive documentation regard
 
 \begin{table}
 \centering
+\begin{threeparttable}[b]
 \begin{tabular}{|l|l||c|c|c|c|c|c|c|c|c|}
   \hline
-  ~ & ~ & \rotatebox{90}{\textbf{DWD}} & \rotatebox{90}{\textbf{Google Weather Feed}} & \rotatebox{90}{\textbf{\acs{METAR}}} & \rotatebox{90}{\textbf{\acs{NWS}}} & \rotatebox{90}{\textbf{Weather.com}} & \rotatebox{90}{\textbf{Weather Underground}} & \rotatebox{90}{\textbf{World Weather Online~}} & \rotatebox{90}{\textbf{Yahoo! Weather}} & \rotatebox{90}{\textbf{yr.no}} \\
+  ~ & ~ & \rotatebox{90}{\textbf{DWD}} & \rotatebox{90}{\textbf{Google Weather Feed}} & \rotatebox{90}{\textbf{\acs{METAR}}} & \rotatebox{90}{\textbf{\acs{NWS}}} & \rotatebox{90}{\textbf{Weather.com}} & \rotatebox{90}{\textbf{Weather Underground\tnote{1}}} & \rotatebox{90}{\textbf{World Weather Online\tnote{1}~~~}} & \rotatebox{90}{\textbf{Yahoo! Weather}} & \rotatebox{90}{\textbf{yr.no}} \\
   \hline\hline
   \multirow{10}{*}{\rotatebox{90}{\textbf{Current weather}}} & \textbf{Cloud coverage} & \checkmark & $\times$ & \checkmark & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & \checkmark \\
   \cline{2-11}
@@ -325,7 +329,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \cline{2-11}
   ~ & \textbf{Temperature} & \checkmark & $\times$ & $\times$ & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
   \cline{2-11}
-   ~ & \textbf{Visibility} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$dew  \\
+   ~ & \textbf{Visibility} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
   \cline{2-11}
   ~ & \textbf{Wind} & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & \checkmark \\
   \hline\hline
@@ -335,8 +339,11 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   \multicolumn{2}{|l||}{\textbf{Update interval (hours)}} & $< 3$ & $< 3$ & $0.5$ & 1 & 1 & $< 3$ & $< 3$ & 3-4 & $< 3$ \\
   \hline
-  % TODO Weather Underground, World Weather Online: more data via custom services
 \end{tabular}
+\begin{tablenotes}
+\item[1] Further data is available via non-public interfaces which are adapted on customer request.
+\end{tablenotes}
+\end{threeparttable}
 \caption{Weather data provided by weather services.}
 \label{table:weather_data6}
 \end{table}
