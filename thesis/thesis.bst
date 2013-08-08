@@ -763,6 +763,24 @@ FUNCTION {misc}
   empty.misc.check
 }
 
+FUNCTION {online}
+{ output.bibitem
+  editor empty$
+    { organization output }
+    { format.editors output.nonnull }
+  if$
+  format.authors output
+  title howpublished new.block.checkb
+  format.title output
+  howpublished new.block.checka
+  howpublished output
+  format.date output
+  new.block
+  note output
+  fin.entry
+  empty.misc.check
+}
+
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
