@@ -408,7 +408,7 @@ In case a weather service does not provide a value for the dew point, there are 
 
 $t_d$ represents the dew point temperature, $t$ the air temperature and $RH$ the relative humidity in percent (i.e. in the interval $[0,100]$). Accordingly, the value of relative humidity can be calculated from the values of dew point and temperature using the same method (the case of a missing temperature values, but values of dew point and relative humidity is unlikely).
 
-As the atmospheric pressure decreases with increasing altitude above sea level, it is necessary to convert the pressure value observed by a sensor to the equivalent pressure at sea level using the \emph{Barometric formula}. % TODO~\cite{BarometricFormula}: 
+As the atmospheric pressure decreases with increasing altitude above sea level, it is necessary to convert the pressure value observed by a sensor to the equivalent pressure at sea level using the \emph{Barometric formula}~\cite{us76_standard_atmosphere}.
 This is not necessary for many Internet weather services (including \yrno) as these often report the value that has already been converted.
 
 To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \smarthomeweather can actually answer the competency questions.
