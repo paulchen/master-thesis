@@ -154,7 +154,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \begin{table}
 \centering
 \begin{threeparttable}[b]
-\begin{tabular}{|p{.2\textwidth}|p{.3\textwidth}|p{0.1\textwidth}|p{0.25\textwidth}|}
+\begin{tabular}{|p{.26\textwidth}|p{.3\textwidth}|p{0.12\textwidth}|p{0.18\textwidth}|}
   \hline
   \textbf{Weather service} & \textbf{Operator} & \textbf{Web page} & \textbf{Coverage area} \\
   \hline\hline
@@ -353,7 +353,8 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \label{sec:weather_conclusion}
 
 \begin{table}
-  \begin{tabularx}{\textwidth}{|X|X|X|}
+\centering
+\begin{tabular}{|p{.26\textwidth}|p{.3\textwidth}|p{.34\textwidth}|}
   \hline
   \textbf{Weather service} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
   \hline \hline
@@ -365,9 +366,9 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   \textbf{\acs{NWS}} & Simple data format (\eacs{XML}) & No worldwide coverage \\
   \hline
-  \textbf{Weather.com} & Data formats (\eacs{XML} and \eacs{JSON}) & Complicated account creation \\
+  \textbf{Weather.com} & Data formats (\eacs{XML}, \eacs{JSON}) & Complicated account creation \\
   \hline
-  \textbf{Weather Underground} & Data formats (\emph{XML} and \eacs{JSON}) & Public \eacs{API} lacks important data \\
+  \textbf{Weather Underground} & Data formats (\eacs{XML}, \eacs{JSON}) & Public \eacs{API} lacks important data \\
   \hline
   \textbf{World Weather Online} & Wide range of data formats & Free \eacs{API} lacks important data \\
   \hline
@@ -375,9 +376,9 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   \textbf{yr.no} & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0}~\cite{ccby30} & - \\
   \hline
-  \end{tabularx}
-  \caption{Advantages and disadvantages of Internet weather services}
-  \label{table:weather_services}
+\end{tabular}
+\caption{Advantages and disadvantages of Internet weather services}
+\label{table:weather_services}
 \end{table}
 
 Table~\ref{table:weather_services} summarizes the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits the requirements of smart homes and \smarthomeweather best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
@@ -414,7 +415,8 @@ This is not necessary for many Internet weather services (including \yrno) as th
 To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \smarthomeweather can actually answer the competency questions.
 
 \begin{table}
-\begin{tabularx}{\textwidth}{|X|X|}
+\centering
+\begin{tabular}{|p{.45\textwidth}|p{.45\textwidth}|}
 \hline
 \textbf{Competency question} & \textbf{Weather element(s)} \\
 \hline \hline
@@ -446,7 +448,7 @@ When do we need sun protection? & Sun radiation, cloud coverage, sun position \\
 \hline
 When will it outside be colder than inside the house? When will it be warmer? & Temperature \\
 \hline
-\end{tabularx}
+\end{tabular}
 \label{table:competency_questions}
 \caption{Assignment of competency questions to weather element(s)}
 \end{table}
@@ -542,9 +544,8 @@ However, these data are inappropriate for use within the \smarthomeweather ontol
 
 There are several algorithms for calculating the sun's position (specified by zenith and azimuth angles) at a certain location given by latitude and longitude at a certain time; two of them are:
 
-% TODO describe PSA algorithm in more detail
-\begin{itemize} % TODO acronym: SPA
-  \item The \emph{SPA algorithm}~\cite{SPA_algorithm} provides results for zenith and azimuth angles with uncertainties of less than \num{0.0003} degrees in the period from 2000~BC to 6000~AD. However, the algorithm which is complicated to implement. Hence, it is used only in contexts that require values of that precision.
+\begin{itemize}
+  \item The \emph{Solar Position Algorithm} (\eacs{SPA})~\cite{SPA_algorithm} provides results for zenith and azimuth angles with uncertainties of less than \num{0.0003} degrees in the period from 2000~BC to 6000~AD. However, the algorithm which is complicated to implement. Hence, it is used only in contexts that require values of that precision.
   
-  \item A algorithm that can be implemented more easily is the \emph{\acs{PSA} algorithm}~\cite{PSA_algorithm}, named after \emph{Plataforma Solar de Almería}~\cite{PSA} (a centre for the exploration of the use of solar energy situated in the Province of Almería in Spain) where the algorithm was developed. The results provided by this algorithm differ from the actual values more than the results calculated by the \emph{SPA algorithm}: For the period between 1999 and 2015, the differences per value are smaller than \num{0.01} degrees. As this level of accuracy is sufficient for use in a smart home, the \emph{\acs{PSA} algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{\acs{PSA} algorithm} in C++ is available; this implementation can easily be ported to Java.
+  \item An algorithm that can be implemented more easily is the \emph{\acs{PSA} algorithm}~\cite{PSA_algorithm}, named after \emph{Plataforma Solar de Almería}~\cite{PSA} (a centre for the exploration of the use of solar energy situated in the Province of Almería in Spain) where the algorithm was developed. The results provided by this algorithm differ from the actual values more than the results calculated by the \eacs{SPA}: For the period between 1999 and 2015, the differences per value are smaller than \num{0.01} degrees. As this level of accuracy is sufficient for use in a smart home, the \emph{\acs{PSA} algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{\acs{PSA} algorithm} in C++ is available; this implementation can easily be ported to Java.
 \end{itemize}
