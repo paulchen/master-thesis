@@ -389,3 +389,6 @@ NEW (2013-04-09):
 * 9fcfd51086d045e09d.pdf
   MANUEL BLANCO-MURIEL, DIEGO C. ALARCON-PADILLA, TEODORO LOPEZ-MORATALLA, MARTIN LARA-COIRA. COMPUTING THE SOLAR VECTOR
 
+* fielding_dissertation.pdf
+  Roy Thomas Fielding. Architectural Styles and the Design of Network-based Software Architectures
+
