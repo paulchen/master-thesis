@@ -1,12 +1,9 @@
-% TODO clickable links
 % TODO replace "..." by {{ }}
 % TODO acronyms in bibliography
 
-% TODO see bibliography.tex
-
 % TODO harmonize citations
-% TODO W3C -> \acs{W3C}
-@misc{Ontology101,
+% TODO bibtex warnings during compilations
+@misc{Ontology101, ok={},
     author = {Noy, Natalya F. and McGuinness, Deborah L.},
     citeulike-article-id = {909628},
     citeulike-linkout-0 = {http://www.ksl.stanford.edu/people/dlm/papers/ontology101/ontology101-noy-mcguinness.html},
@@ -19,10 +16,10 @@
     year = {2001},
     month = mar,
 }
-@article{SoftwareEngineeringOntology,
+@article{SoftwareEngineeringOntology, ok={},
  author = {De Nicola, Antonio and Missikoff, Michele and Navigli, Roberto},
  title = {A software engineering approach to ontology building},
- journal = {Inf. Syst.},
+ journal = {Information Systems},
  volume = {34},
  issue = {2},
  month = {April},
@@ -37,27 +34,29 @@
  address = {Oxford, UK, UK},
  keywords = {Knowledge representation formalism, Knowledge representation method, Ontology building},
 } 
-@article{CR2011-TH_Journal,
-  author = {Reinisch, Christian and Mario J. Kofler and Felix Iglesias and Wolfgang Kastner},
+@article{CR2011-TH_Journal, ok={},
+  author = {Reinisch, Christian and Kofler, Mario J. and Iglesias, Félix and Kastner, Wolfgang},
   title = {{ThinkHome: Energy Efficiency in Future Smart Homes}},
   journal = {{EURASIP Journal on Embedded Systems}},
   year = {2011},
+  month = jan,
   volume = {2011},
   publisher = {Hindawi Publishing Corporation},
   pdf = {http://www.auto.tuwien.ac.at/~creinisch/papers/ThinkHome-Eurasip11.pdf}
 }
-@inproceedings{CR2010-DEST_ThinkHome,
-  author = {Christian Reinisch and Mario J. Kofler and Wolfgang Kastner},
+@inproceedings{CR2010-DEST_ThinkHome, ok={},
+  author = {Reinisch, Christian and Kofler, Mario J. and Kastner, Wolfgang},
   title = {{ThinkHome: A Smart Home as Digital Ecosystem}},
-  booktitle = {Proceedings of 4th IEEE International Conference on Digital Ecosystems and Technologies (DEST '10)},
+  booktitle = {Proceedings of 4th IEEE International Conference on Digital Ecosystems and Technologies (IEEE DEST 2010)},
   year = {2010},
   pages = {256--261},
   month = apr,
   pdf = {http://www.auto.tuwien.ac.at/~creinisch/papers/ThinkHome-DEST10.pdf}
 }
-@ARTICLE{SemanticSensorWeb, 
-author={Sheth, A. and Henson, C. and Sahoo, S.S.}, 
-journal={Internet Computing, IEEE}, title={Semantic Sensor Web}, 
+@ARTICLE{SemanticSensorWeb, ok={},
+author={Sheth, Amit and Henson, Cory and Sahoo, Satya S.}, 
+journal={Internet Computing, IEEE},
+title={Semantic Sensor Web}, 
 year={2008}, 
 month={July-Aug.}, 
 volume={12}, 
@@ -66,53 +65,22 @@ pages={78 -83},
 keywords={contextual information;semantic metadata;semantic sensor Web;situational knowledge;distributed sensors;semantic Web;semantic networks;}, 
 doi={10.1109/MIC.2008.87}, 
 ISSN={1089-7801},}
-@techreport{SOS,
-    abstract = {{This document specifies the interface to a Sensor Observation Service, hereinafter ” SOS”. The SOS is one of a family of standards and specifications that make up theOGC Sensor Web Enablement activity, hereinafter  ” SWE”. Currently, the otherspecifications that pertain to SWE are Sensor Model Language (SensorML),Observations and Measurements (O\&M), Sensor Planning Service (SPS), TransducerMarkup Language (TML), Sensor Alert Service (SAS), and Web Notification Service(WNS). Work on the predecessor to SOS, Sensor Collection Service (SCS), beganduring the OGC Web Services 1.1 (OWS 1.1) testbed initiative and focused mainly onthe interoperable interface requirements for in-situ sensors and sensor networks. Duringthe OWS 1.2 initiative, the SCS effort focused on the requirements for dynamic remotesensors (and sensor networks) and defined a more explicit interface employingSensorML. The SOS builds on previous SCS efforts and also incorporates an interfaceemploying TML.Suggested additions, 
-changes, and comments on this standard are welcome andencouraged. Such suggestions may be submitted by OGC portal message, email message,or by making suggested changes in an edited copy of this document.This specification deprecates previous versions including version 05-088.}},
-    address = {http://portal.opengeospatial.org/files/?artifact\_id=26667},
-    author = {Na, Arthur and Priest, Mark and Niedzwiadek, Harry and Davidson, John},
-    citeulike-article-id = {3849425},
-    day = {26},
-    edition = {1.0},
-    editor = {Na, Arthur and Priest, Mark},
-    keywords = {ogc, sensor-web, services, sos, specification, swe},
-    month = oct,
-    number = {OGC 06-009r6},
-    organization = {OGC},
-    posted-at = {2009-01-05 13:15:50},
-    priority = {4},
-    title = {{Sensor Observation Service}},
-    year = {2007}
-}
-@INPROCEEDINGS{SemSOS, 
-author={{Henson, C.A. and Pschorr, J.K. and Sheth, A.P. and Thirunarayan, K.}}, 
-booktitle={{Collaborative Technologies and Systems, 2009. CTS '09. International Symposium on}}, title={{SemSOS: Semantic sensor Observation Service}}, 
-year={2009}, 
-month={May}, 
-volume={}, 
-number={}, 
-pages={44 -53}, 
-keywords={Open Geospatial Consortium;Sensor Web Enablement group;Web service specification;interoperability;ontology;rule-based reasoning;semantic knowledge base;semantic sensor observation service;Web services;distributed sensors;formal specification;geographic information systems;inference mechanisms;knowledge based systems;ontologies (artificial intelligence);open systems;semantic Web;}, 
-doi={10.1109/CTS.2009.5067461}, 
-ISSN={},}
-@INPROCEEDINGS{SWEET1,
-    author = {Rob Raskin and Michael Pan},
-    title = {Semantic Web for Earth and Environmental Terminology (SWEET},
-    booktitle = {In Proc. of the Workshop on Semantic Web Technologies for Searching and Retrieving Scientific Data},
+@article{SWEET1, ok={},
+    author = {Raskin, Rob},
+    title = {{Semantic Web for Earth and Environmental Terminology (\acs{SWEET})}},
     year = {2003}
 }
-@article{SWEET2,
-title = {{Knowledge representation in the semantic web for Earth and environmental terminology (SWEET)}},
+@article{SWEET2, ok={},
+title = {{Knowledge representation in the semantic web for Earth and environmental terminology (\acs{SWEET})}},
 journal = {{Computers \& Geosciences}},
 volume = "31",
 number = "9",
 pages = "1119 - 1125",
 year = "2005",
-note = "Application of XML in the Geosciences",
 issn = "0098-3004",
 doi = "DOI: 10.1016/j.cageo.2004.12.004",
 url = "http://www.sciencedirect.com/science/article/pii/S0098300405001020",
-author = "Robert G. Raskin and Michael J. Pan",
+author = {Raskin, Robert G. and Pan, Michael J.},
 keywords = "Ontology",
 keywords = "Classification",
 keywords = "Semantics",
@@ -133,10 +101,10 @@ month = feb,
 howpublished = {{\href{http://www.faa.gov/news/fact\_sheets/news\_story.cfm?newsid=8145}{http://www.faa.gov/news/fact\_sheets/news\_story.cfm?newsid=\hspace{0pt}8145}}},
 note = {{Accessed: 2013-08-08}}
 }
-@inproceedings{Methontology,
+@inproceedings{Methontology, ok={},
   added-at = {2009-02-01T13:50:47.000+0100},
   address = {Stanford, USA},
-  author = {Fernandez-Lopez, Mariano and Gomez-Perez, Asuncion and Juristo, Natalia},
+  author = {Fernández, Mariano and Gómez-Pérez, Asunción and Juristo, Natalia},
   biburl = {http://www.bibsonomy.org/bibtex/209540fe6b15c4b4952913c756dfd9898/lysander07},
   booktitle = {Proceedings of the AAAI97 Spring Symposium },
   interhash = {a7b7ef3bb94617140a70999499a85d1a},
@@ -145,15 +113,15 @@ note = {{Accessed: 2013-08-08}}
   month = {March},
   pages = {33--40},
   timestamp = {2009-02-01T13:50:47.000+0100},
-  title = {METHONTOLOGY: from Ontological Art towards Ontological Engineering},
+  title = {{METHONTOLOGY: from Ontological Art towards Ontological Engineering}},
   year = 1997
 }
-@inproceedings{MethontologyLegal,
+@inproceedings{MethontologyLegal, ok={}
   added-at = {2007-03-20T19:23:25.000+0100},
-  author = {Corcho, O. and Fernández, M. and Gómez-Pérez, A. and López-Cima, A.},
+  author = {Corcho, Oscar and Fernández-López, Mariano and Gómez-Pérez, Asunción and López-Cima, Angel},
   biburl = {http://www.bibsonomy.org/bibtex/275f22585f1d753cb9b88cbfcdb7d7a54/rogargon},
-  booktitle = {Law and the Semantic Web},
-  editor = {Benjamins, R. and Casanovas, P. and Breuker, J. and Gangemi, A.},
+  booktitle = {{Law and the Semantic Web}},
+  editor = {Benjamins, Richard and Casanovas, Pompeu and Breuker, Joost and Gangemi, Aldo},
   interhash = {20038de71549067f6a1fb97c804d0576},
   intrahash = {75f22585f1d753cb9b88cbfcdb7d7a54},
   isbn = {3-540-25063-8},
@@ -163,7 +131,7 @@ note = {{Accessed: 2013-08-08}}
   publisher = {Springer-Verlag},
   series = {LNAI},
   timestamp = {2007-03-20T19:23:25.000+0100},
-  title = {Building Legal Ontologies with METHONTOLOGY and WebODE},
+  title = {{Building Legal Ontologies with METHONTOLOGY and WebODE}},
   year = 2005
 }
 
@@ -292,7 +260,7 @@ keywords = "ΔUT1 "
 }
 @online{RDF, ok={},
   editor = {Klyne, Graham and Carroll, Jeremy J.},
-  title = {{Resource Description Framework (RDF): Concepts and Abstract Syntax. W3C Recommendation, 10~February 2004}},
+  title = {{Resource Description Framework (\acs{RDF}): Concepts and Abstract Syntax. \acs{W3C} Recommendation, 10~February 2004}},
   howpublished = {\href{http://www.w3.org/TR/2004/REC-rdf-concepts-20040210/}{http://www.w3.org/TR/2004/REC-rdf-concepts-20040210/}},
   note = {{Accessed: 2013-08-08. Latest version available at \href{http://www.w3.org/TR/rdf-concepts/}{http://www.w3.org/TR/rdf-concepts/}}}
 }
@@ -1018,7 +986,7 @@ ISSN={1536-1268},}
 }
 @online{psa_online, ok={},
   title={{Plataforma Solar de Almería - PSA Algorithm Files}},
-  howpublished={{http://www.psa.es/sdg/sunpos.htm}}
+  howpublished={{\href{http://www.psa.es/sdg/sunpos.htm}{http://www.psa.es/sdg/sunpos.htm}}}
 }
 @online{PSA, ok={},
   title={{Plataforma Solar de Almería}},
@@ -1041,7 +1009,7 @@ ISSN={1536-1268},}
   note={{Accessed: 2013-08-08}}
 }
 @online{DOAP, ok={},
-  title={{edumbill~/~doap -- \href{RDF} schema for describing software projects}},
+  title={{edumbill~/~doap -- \acs{RDF} schema for describing software projects}},
   howpublished={{\href{https://github.com/edumbill/doap/}{https://github.com/edumbill/doap/}}},
   note={{Accessed: 2013-08-08}}
 }
@@ -1257,7 +1225,7 @@ ISSN={1536-1268},}
 }
 @online{yrno_faq, ok={},
   title={{F.A.Q for api.met.no}},
-  howpublished={{http://api.yr.no/faq.html}},
+  howpublished={{\href{http://api.yr.no/faq.html}{http://api.yr.no/faq.html}}},
   note={{Accessed: 2013-08-08}}
 }
 @online{yrno_schema, ok={},
@@ -1403,7 +1371,7 @@ ISSN={0743-1619},}
 }
 @online{intel_q6600, ok={},
   title={{ARK | Intel\treg Core\ttra2 Quad Processor Q6600 (8M Cache, 2.40 GHz, 1066 MHz FSB)}},
-  howpublished={{\href{http://ark.intel.com/products/29765}http://ark.intel.com/products/29765}},
+  howpublished={{\href{http://ark.intel.com/products/29765}{http://ark.intel.com/products/29765}}},
   note={{Accessed: 2013-08-08}}
 }
 
@@ -1551,7 +1519,8 @@ catalogue-url = { http://nla.gov.au/nla.cat-vn3848470 },
   shorthand    = {{CC-BY 3.0}},
   organization = {{Creative Commons}},
   url          = {{http://creativecommons.org/licenses/by/3.0/}},
-  howpublished = {{http://creativecommons.org/licenses/by/3.0/}}
+  howpublished = {{\href{http://creativecommons.org/licenses/by/3.0/}{http://creativecommons.org/licenses/by/3.0/}}},
+  note         = {{Accessed: 2013-08-09}}
   }
 @online{noaa, ok={},
   title={{NOAA -- National Oceanic and Atmospheric Administration}},
@@ -1745,7 +1714,7 @@ doi={10.1109/ECBS.2006.18},}
 }
 @online{nasa-jpl, ok={},
   title={{Space, Stars, Mars, Earth, Planets and More -- \acs{NASA} Jet Propulsion Laboratory}},
-  howpublished={{\href{http://www.jpl.nasa.gov/}\href{http://www.jpl.nasa.gov/}}},
+  howpublished={{\href{http://www.jpl.nasa.gov/}{http://www.jpl.nasa.gov/}}},
   note={{Accessed: 2013-08-08}}
 }
 @inproceedings{sweet_example1,
@@ -1819,7 +1788,7 @@ pages={175-190}
 }
 @article{ssn_ontology,
 	author = {Michael Compton and Payam Barnaghi and Luis Bermudez and Raul Garcıa-Castro and Oscar Corcho and Simon Cox and John Graybeal and Manfred Hauswirth and Cory Henson and Arthur Herzog and Vincent Huang and Krzysztof Janowicz and W. David Kelsey and Danh Le Phuoc and Laurent Lefort and Myriam Leggieri and Holger Neuhaus and Andriy Nikolov and Kevin Page and Alexandre Passant and Amit Sheth and Kerry Taylor},
-	title = {The SSN Ontology of the W3C Semantic Sensor Network Incubator Group},
+	title = {The \acs{SSN} Ontology of the \acs{W3C} Semantic Sensor Network Incubator Group},
 	journal = {Web Semantics: Science, Services and Agents on the World Wide Web},
 	volume = {17},
 	number = {0},
@@ -1889,7 +1858,7 @@ language={English}
 }
 @online{dul, ok={},
   title={{Ontology:DOLCE+DnS Ultralite -- odp}},
-  howpublished={{\href{http://ontologydesignpatterns.org/wiki/Ontology:DOLCE+DnS\_Ultralite}{http://ontologydesignpatterns.org/wiki/Ontology:DOLCE+DnS\_Ultralite}}},
+  howpublished={{\href{http://ontologydesignpatterns.org/wiki/Ontology:DOLCE+DnS\_Ultralite}{http://ontologydesignpatterns.org/wiki/\hspace{0pt}Ontology:DOLCE+DnS\_Ultralite}}},
   note={{Accessed: 2013-08-08}}
 }
 @INPROCEEDINGS{upper_ontology,
