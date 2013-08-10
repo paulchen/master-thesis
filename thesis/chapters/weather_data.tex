@@ -8,7 +8,7 @@ Based on the insights acquired from existing work in chapter~\ref{ch:existing_wo
 
 In order to identify which data is required for the \smarthomeweather ontology, it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centered around a set of \emph{competency questions}\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
 
-Below are the questions that have been identified to be adequate competency questions for \smarthomeweather; the list stems from analysis of the processes at a \smarthome that may be influenced by weather.
+Below are the questions that have been identified to be adequate competency questions for \smarthomeweather; the list stems from analysis of the processes at a smart home that may be influenced by weather.
 
 \begin{itemize}
   \item What is the current weather situation?
@@ -29,7 +29,7 @@ Below are the questions that have been identified to be adequate competency ques
 
 These competency questions will again be used in section~\ref{sec:ontology_specification} when the \emph{Ontology requirements specification document} is created.
 
-The idea of providing smart home with future weather data is to enable smart homes to prepare for upcoming weather situations. There are Internet weather services that provide forecasts for several days (see section~\ref{sec:internet_services}). However, the further the time described by a forecast lies in the future, the more inaccurate the forecast becomes\cite{forecast_error1,forecast_error2}. Additionally, no decisions in a \smarthome have been identified that require the availability of a forecast about a time more than a few hours in the future. Hence, the period of 24 hours has been chosen as a compromise between the deteriorating accuracy of weather forecasts over time and the time period smart homes require weather data for.
+The idea of providing smart home with future weather data is to enable smart homes to prepare for upcoming weather situations. There are Internet weather services that provide forecasts for several days (see section~\ref{sec:internet_services}). However, the further the time described by a forecast lies in the future, the more inaccurate the forecast becomes\cite{forecast_error1,forecast_error2}. Additionally, no decisions in a smart home have been identified that require the availability of a forecast about a time more than a few hours in the future. Hence, the period of 24 hours has been chosen as a compromise between the deteriorating accuracy of weather forecasts over time and the time period smart homes require weather data for.
 
 The above competency questions can be answered when the (predicted) state of the weather for particular points of time is known. The state of the weather is given by measurement values of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage and others.\cite{GlossaryOfMeteorology}
 
