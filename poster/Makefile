@@ -8,5 +8,5 @@ poster.pdf: poster.tex references.bib
 	pdflatex poster.tex
 
 clean:
-	rm -f poster.pdf poster.aux poster.log poster.nav poster.out poster.snm poster.toc
+	rm -f poster.pdf poster.aux poster.log poster.nav poster.out poster.snm poster.toc poster.bbl poster.blg poster.vrb
 
