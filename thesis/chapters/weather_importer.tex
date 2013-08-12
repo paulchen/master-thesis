@@ -1,11 +1,11 @@
 \chapter{The \emph{Weather Importer}}
 \label{ch:weather_importer}
 
-In previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} digs into the details of weather services that are available via Internet, with the example of the \eacs{API} by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements found at the \smarthomeweather project. Chapter~\ref{ch:smarthomeweather_ontology} describes the design of the \smarthomeweather ontology. Eventually, the ontology needs to be populated with data, i.e. individuals that comprise the current and future state of the weather at the desired location.
+In previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} discusses the details of weather services that are available via Internet, with the example of the \eacs{API} by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements of the \smarthomeweather project. Chapter~\ref{ch:smarthomeweather_ontology} describes the design of the \smarthomeweather ontology. Eventually, the ontology needs to be populated with data, i.e. individuals that comprise the current and future state of the weather at the desired location.
 
 For that process, a standalone Java application has been developed. As its main purpose is to import weather data, it was named \emph{Weather Importer}.
 
-At its current state of development, \emph{Weather Importer} obtains data only from \yrno in order to provide a reference implementation being both simple and functional, but it is designed to allow simple integration of other weather services that are available via Internet as well as data from local weather sensors.
+At its current state of development, \emph{Weather Importer} obtains data only from \yrno in order to provide a reference implementation being both simple and functional, but it is designed to allow the simple integration of other weather services that are available via Internet as well as data from local weather sensors.
 
 The classes are arranged in two packages, \texttt{model} and \texttt{main}. The \texttt{model} package contains an object-oriented data model for the weather data being processed (see section~\ref{sec:importer_model}). All other classes belong to the \texttt{main} package, including the \texttt{Main} class providing the \texttt{main} method, the classes \texttt{TurtleStatement} and \texttt{TurtleStore} for output in \emph{\eacs{Turtle} syntax}~\cite{Turtle} (see section~\ref{subsec:importer_turtle}), the interface \texttt{Importer}, and its reference implementation \texttt{YrNoImporter} (see section~\ref{subsec:importer_fetch}), \texttt{WeatherImporterProperties} which encapsulates the \emph{properties file} (see section~\ref{sec:importer_application}), and \texttt{WeatherImporterException}, an exception class that is used throughout the application.
 
@@ -63,13 +63,13 @@ The classes inside the package \texttt{model} are:
   
   \item \texttt{Weather} has no counterpart in the ontology; it represents a collection of instances of \texttt{WeatherReport} which are obtained from sensors and/or services at the same time.
 \end{itemize}
-
+% 
 Additionally, there is an enumeration named \texttt{WeatherConditions} having values that each correspond to the individuals predefined by the ontology for the concept \Egls{weather condition}.
 
 \section{The application}
 \label{sec:importer_application}
 
-The \emph{Weather Importer} application basically performs three tasks when being launched: It reads the \smarthomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file, modifies it in some way and and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{\eacs{Turtle} syntax}\cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}.
+The \emph{Weather Importer} application basically performs three tasks when being launched: It reads the \smarthomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file, modifies it in some way and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{\eacs{Turtle} syntax}\cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}. % TODO how is the ontology being modified?
 
 The application depends on the \emph{Apache Jena} framework~\cite{apache_jena} (successfully tested with 2.10.0). For the unit tests (see section~\ref{sec:importer_tests}), \emph{JUnit}~\cite{junit} (4.11), the \emph{Pellet} \eacs{OWL} 2 reasoner~\cite{pellet} (2.3.0) and \emph{Cobertura}~\cite{cobertura} (1.9.4.1) are used. The version numbers given in parentheses give the versions of the most recent releases of the libraries at the time of writing. Newer releases may work, but have not been tested.
 
@@ -93,7 +93,7 @@ To provide the reference implementation that is found in the class \texttt{YrNoI
 
 By calling the method \texttt{createIndividuals()} of that \texttt{Weather} object, the weather data is added \emph{Apache Jena}'s in-memory representation of the ontology. Eventually, the modified ontology is written back to a file in \emph{RDF/XML} syntax.
 
-As most weather services do not provide data for arbitrary points of time, the \texttt{Weather} class provides the method \texttt{normalizeWeatherReports()}. It transforms the data encapsulated by the \texttt{Weather} object in the following ways:
+As most weather services do not provide data for arbitrary points in time, the \texttt{Weather} class provides the method \texttt{normalizeWeatherReports()}. It transforms the data encapsulated by the \texttt{Weather} object in the following ways:
 \begin{itemize}
   \item Each associated \texttt{WeatherReport} object that covers a period of more than one hour is replaced by several \texttt{WeatherReport} objects, one for each hour. All associated instances of \texttt{WeatherReport} and \texttt{WeatherPhenomenon} are cloned appropriately.
   
@@ -113,7 +113,7 @@ Both methods provide the developer of an implementation of the interface \texttt
 There are two ways to update weather data in the \smarthomeweather ontology:
 \begin{itemize}
   \item The data can be reobtained using the \texttt{fetch} mode into a copy of the ontology that does not contain any weather data. If it does contain any weather data, it can be removed using the \texttt{remove} mode (see below).
-  \item Alternatively, the timestamps of all instances of the \Egls{weather report} concept in order to make them correspond to the current time.
+  \item Alternatively, the timestamps of all instances of the \Egls{weather report} concept in order to make them correspond to the current time. % TODO something is missing?
 \end{itemize}
 
 The latter option is implemented in \emph{Weather Importer} as the \texttt{timestamps} mode. That mode is based on the timestamps of each \Egls{weather report} individual being specified by the difference to the current time in hours.
@@ -237,13 +237,16 @@ All test cases of \emph{category 1} and \emph{category 2} share the same approac
   
   In the above example of testing \Egls{room temperature}, the created instance of \Egls{weather phenomenon} must be inferred to be an instance of \Egls{weather phenomenon}, \Egls{temperature}, and \Egls{room temperature}. Additionally, it must not be an instance of \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{above room temperature} or \Egls{heat}.
   \item The in-memory representation of \smarthomeweather is destroyed.
-  \item The steps 1 to 5 are repeated to perform another test. When testing \Egls{room temperature}, another temperature value could be chosen or another sub-concept of \Egls{temperature} could be selected. Once the whole range that is intended to be tested, another concept will be tested; \Egls{temperature} is tested in the range from \SI{-100}{\celsius} to \SI{100}{\celsius}, with a resolution of \SI{0.1}{\celsius} between \SI{0}{\celsius} and \SI{30}{\celsius} and \SI{0.5}{\celsius} otherwise.
+  \item The steps 1 to 5 are repeated to perform another test. When testing \Egls{room temperature}, another temperature value could be chosen or another sub-concept of \Egls{temperature} could be selected.
+  Once the whole range that is intended to be tested, another concept will be tested; % TODO rephrase
+  \Egls{temperature} is tested in the range from \SI{-100}{\celsius} to \SI{100}{\celsius}, with a resolution of \SI{0.1}{\celsius} between \SI{0}{\celsius} and \SI{30}{\celsius} and \SI{0.5}{\celsius} otherwise.
 \end{enumerate}
 
 % TODO number of test cases
 During a full test run, the above steps are executed \num{4620} times for \emph{category 1} test cases and \num{2250} times for \emph{category 2} test cases.
 
 % TODO number of test cases
-A test of \emph{category 3} is implemented using a pre-defined snippet containing an \eacs{XML} document as it is returned by the \eacs{API} or \yrno. This snippet is fed into the \emph{Weather Importer} to generate an object-oriented data model. Then it is verified whether this data model contains exactly the data from the snippet. Some of the snippets are invalid, i.e. they contain \eacs{XML} code as \yrno is not allowed to return. In that case, the \emph{Weather Importer} is expected to fail with an appropriate error message. The total number of different snippets used for \emph{category 3} \emph{JUnit} test cases is \num{31}.
+A test of \emph{category 3} is implemented using a pre-defined snippet containing an \eacs{XML} document as it is returned by the \eacs{API} or \yrno. This snippet is fed into the \emph{Weather Importer} to generate an object-oriented data model. Then it is verified whether this data model contains exactly the data from the snippet. Some of the snippets are invalid, i.e. they contain \eacs{XML} code as \yrno is not allowed to return. % TODO last sentence (starting at i.e. unclear)
+In that case, the \emph{Weather Importer} is expected to fail with an appropriate error message. The total number of different snippets used for \emph{category 3} \emph{JUnit} test cases is \num{31}.
 
 During a test of \emph{category 4}, an object-oriented weather data model is generated which is then exported to \eacs{Turtle} syntax. This output is then compared to the expected output. There are \num{12} such test cases.
