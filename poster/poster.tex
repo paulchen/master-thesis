@@ -15,6 +15,7 @@
 \documentclass[final,hyperref={pdfpagelabels=true}]{beamer}
 
 \usepackage{TUINFPST}
+\usepackage{listings}
 
 % TODO remove
 \usepackage{lipsum}
@@ -32,7 +33,7 @@
   Institut für computergestützte Automation\\[0.25\baselineskip]
   Arbeitsbereich: Automation Systems Group\\[0.25\baselineskip]
   BetreuerIn: Ao.Univ.-Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner
-}
+} % TODO mitwirkung
 \titlegraphic{\includegraphics[height=52mm]{figures/183-1.pdf}}
 \date[\today]{\today}
 \subject{epilog}
@@ -86,20 +87,59 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
+\lstset{frame=trbl,basicstyle=\normalsize}
 \begin{document}
 
 % We have a single poster frame.
-\begin{frame}
+\begin{frame}[fragile]
   \begin{columns}[t]
     % ---------------------------------------------------------%
     % Set up a column
     \begin{column}{.45\textwidth}
-      \begin{block}{Block 1}
-        \lipsum[1-3]
+      \begin{block}{Why introduce smart homes?}
+	\emph{Smart homes} are dwellings that are equipped with
+	some kind of intelligence that enables it to perform tasks
+	on its own without human intervention. The components of
+	smart homes are:
+	\begin{itemize}
+	  \item sensors % TODO
+	  \item actuators % TODO
+	  \item controlling unit % TODO
+	  \item communications network % TODO
+	\end{itemize}
+	Areas served by smart homes include … % TODO
+
+	Some of the overall goal of smart homes are:
+	\begin{itemize}
+	  \item Supporting the inhabitants in their routine tasks.
+	  \item Maintaining or increase the inhabitant's comfort.
+          \item Reducing the overall energy consumption.
+        \end{itemize}
       \end{block}
 
-      \begin{block}{Block 2}
-        \lipsum[3-4]
+      \begin{block}{Why use ontologies?}
+        % TODO 
+	% logical model, OWL, ThinkHome
+        \lipsum[2]
+      \end{block}
+
+      \begin{block}{Why add a weather data model?}
+	Without question, weather has a wide influence on a dwelling.
+	Introducing a data model for current and future weather states
+	enables a smart home to utilise various aspects of this
+	influence to make a set of control decisions, e.g.:
+	\begin{itemize}
+	  \item foo
+	  \item bar
+	  \item blah
+	  \item blubb
+	  \item Prepare for severe weather, e.g. by closing windows or retracting awnings.
+	\end{itemize}
+      \end{block}
+
+      \begin{block}{Preliminary work}
+	\lipsum[4]
       \end{block}
     \end{column}
     % ---------------------------------------------------------%
@@ -108,50 +148,71 @@
     % ---------------------------------------------------------%
     % Set up a column 
     \begin{column}{.45\textwidth}
-      \begin{block}{Yet another block}
-        \lipsum[5-7]
+      \begin{block}{The \emph{SmartHomeWeather} ontology}
+	\includegraphics[width=\textwidth]{figures/binary-relations.pdf}
+
+	The \emph{SmartHomeWeather} ontology is built around five top-level concepts which together with their sub-concepts form a model for maintaining data about current and future weather and perform efficient \emph{OWL} reasoning on it:
+	\begin{itemize}
+          \item ...
+          \item ...
+          \item ...
+          \item ...
+          \item ...
+	\end{itemize}
+
+	Sub-concepts of \emph{Weather phenomenon} are defined using \emph{OWL} axioms:
+
+	\begin{lstlisting}
+RoomTemperature :- WeatherPhenomenon and
+        hasTemperature >= 20 and
+        hasTemperature <= 25
+	\end{lstlisting}
+
+	Sub-concepts of \emph{Weather state} are defined in a similar way:
+
+	\begin{lstlisting}
+	WindyWeather :- something
+	\end{lstlisting}
+
+	Due to limitations of \emph{OWL}, some ... are retrieved using \emph{SPARQL} queries: % TODO though not part of \emph{SmartHomeWeather}
+
+	\begin{lstlisting}
+	blah
+	\end{lstlisting}
+
+	\emph{SWRL} rules are used as well:
+
+	\begin{lstlisting}
+	blah
+        \end{lstlisting}
       \end{block}
 
-      \begin{block}{Some math block}
-        \begin{equation}
-          a^2+b^2=c^2
-        \end{equation}
+      \begin{block}{The Weather Importer}
+	\lipsum[6]
       \end{block}
 
-      \begin{block}{Some citations}
-        \alert{Watch out for } \cite{ff2010}
+      \begin{block}{Future work}
+	\lipsum[7]
       \end{block}
 
       \begin{block}{References}
+	% TODO hmmm
         % this is just an example, use BibTeX!
-        \begin{thebibliography}{999}
-          
-        \bibitem[Foo~and~Fu, 2010]{ff2010}
-          Foo, B.; and Fu, B.
-          2010.
-          \newblock {On logical representations of hackerisms}.
-          {\em J.~Log.~Hack.} 1:1--2.
-          
-        \bibitem[Crock~et~al., 2010]{ck2010}
-          Crock, A; Cruft, B.; and Kludge, C.
-          2010.
-          \newblock {Decomposing junk code}.
-          Manuscript.
-          
-        \end{thebibliography}
+
+	% TODO owl, thinkhome, ontologies, ...?
       \end{block}
     \end{column}
     % ---------------------------------------------------------%
     % end the column
   \end{columns}
 
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[inner sep=0pt,xshift=-30cm,yshift=23cm] at (current page.east) {%
-      \begin{postit}%
-        Post-It time!%
-      \end{postit}%
-    }; 
-  \end{tikzpicture}
+%  \begin{tikzpicture}[remember picture,overlay]
+%    \node[inner sep=0pt,xshift=-30cm,yshift=23cm] at (current page.east) {%
+%      \begin{postit}%
+%        Post-It time!%
+%      \end{postit}%
+%    }; 
+%  \end{tikzpicture}
   
 \end{frame}
 
