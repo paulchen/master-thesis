@@ -17,9 +17,6 @@
 \usepackage{TUINFPST}
 \usepackage{listings}
 
-% TODO remove
-\usepackage{lipsum}
- 
 %\title[Computational Intelligence]{Interactive Computer Generated Architecture}
 % if you have a long title looking squeezed on the poster, just force
 % some distance:
@@ -32,8 +29,9 @@
   Technische Universit{\"a}t Wien\\[0.25\baselineskip]
   Institut für computergestützte Automation\\[0.25\baselineskip]
   Arbeitsbereich: Automation Systems Group\\[0.25\baselineskip]
-  BetreuerIn: Ao.Univ.-Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner
-} % TODO mitwirkung
+  BetreuerIn: Ao.Univ.-Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner\\[0.25\baselineskip]
+  AssistentIn: Dipl.-Ing. Mario Kofler
+}
 \titlegraphic{\includegraphics[height=52mm]{figures/183-1.pdf}}
 \date[\today]{\today}
 \subject{epilog}
@@ -56,10 +54,12 @@
 \setbeamercolor{block body}{fg=black,bg=white}
 \setbeamercolor{block title}{fg=TuWienBlue,bg=white}
 
+\definecolor{TuWienBlueLight}{cmyk}{.1,.1,.1,.3}
+
 \setbeamertemplate{block begin}{
   \begin{beamercolorbox}{block title}%
     \begin{tikzpicture}%
-      \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt]{%
+      \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=TuWienBlueLight]{%
         \begin{minipage}[c][2cm]{\linewidth}
           \centering\textbf{\insertblocktitle}
         \end{minipage}
@@ -88,7 +88,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\lstset{frame=trbl,basicstyle=\scriptsize,moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},}
-\lstset{frame=trbl,basicstyle=\normalsize}
+\lstset{frame=trBL,basicstyle=\normalsize}
+
+% \setlength{\parskip}{15em}
+
 \begin{document}
 
 % We have a single poster frame.
@@ -99,29 +102,37 @@
     \begin{column}{.45\textwidth}
       \begin{block}{Why introduce smart homes?}
 	\emph{Smart homes} are dwellings that are equipped with
-	some kind of intelligence that enables it to perform tasks
-	on its own without human intervention. The components of
-	smart homes are:
-	\begin{itemize}
-	  \item sensors % TODO
-	  \item actuators % TODO
-	  \item controlling unit % TODO
-	  \item communications network % TODO
-	\end{itemize}
-	Areas served by smart homes include … % TODO
+	some kind of intelligence that enables them to perform tasks
+	on its own without human intervention. Some of their goals are:
 
-	Some of the overall goal of smart homes are:
 	\begin{itemize}
 	  \item Supporting the inhabitants in their routine tasks.
 	  \item Maintaining or increase the inhabitant's comfort.
           \item Reducing the overall energy consumption.
         \end{itemize}
+
+	Areas served by smart homes include … % TODO
+
+%	Components of smart homes are \emph{sensors} which provide
+%	data about the current state, while \emph{actuators} can
+%	execute various tasks. \emph{Intelligent control} represents
+%	a gateway for managing the systems via an \emph{internal
+%	network}. % TODO replace this by an image or omit it completely?
       \end{block}
 
       \begin{block}{Why use ontologies?}
+	Many smart home systems suffer from several shortcomings, e.g.
+	\begin{itemize}
+	  \item … % TODO
+	  \item … % TODO
+	  \item … % TODO
+	\end{itemize}
+
+	Smart home environments such as \emph{ThinkHome}~\cite{CR2011-TH_Journal}
+	aim to overcome these problems by utilising a knowledge base
+	built using \emph{OWL}.
         % TODO 
 	% logical model, OWL, ThinkHome
-        \lipsum[2]
       \end{block}
 
       \begin{block}{Why add a weather data model?}
@@ -136,10 +147,21 @@
 	  \item blubb
 	  \item Prepare for severe weather, e.g. by closing windows or retracting awnings.
 	\end{itemize}
+
+	Data about weather states is gathered from local sensors and Internet weather services.
       \end{block}
 
       \begin{block}{Preliminary work}
-	\lipsum[4]
+	Evaluation of existing work yielded to the following insights: % TODO
+	\begin{itemize}
+	  \item \emph{METHONTOLOGY} is selected as approach creating a weather data ontology.
+	  \item The weather elements supported by the ontology are temperature, humidity, … % TODO
+	  \item The \emph{API} of the \emph{Norwegian Meteorological Institute} is used as an example for an Internet weather service.
+	\end{itemize}
+      \end{block}
+
+      \begin{block}{The \emph{SmartHomeWeather} ontology}
+	\includegraphics[width=\textwidth]{figures/binary-relations.pdf}
       \end{block}
     \end{column}
     % ---------------------------------------------------------%
@@ -148,9 +170,7 @@
     % ---------------------------------------------------------%
     % Set up a column 
     \begin{column}{.45\textwidth}
-      \begin{block}{The \emph{SmartHomeWeather} ontology}
-	\includegraphics[width=\textwidth]{figures/binary-relations.pdf}
-
+      \begin{block}{The \emph{SmartHomeWeather} ontology (cont.)}
 	The \emph{SmartHomeWeather} ontology is built around five top-level concepts which together with their sub-concepts form a model for maintaining data about current and future weather and perform efficient \emph{OWL} reasoning on it:
 	\begin{itemize}
           \item ...
@@ -174,7 +194,7 @@ RoomTemperature :- WeatherPhenomenon and
 	WindyWeather :- something
 	\end{lstlisting}
 
-	Due to limitations of \emph{OWL}, some ... are retrieved using \emph{SPARQL} queries: % TODO though not part of \emph{SmartHomeWeather}
+	Due to limitations of \emph{OWL} (\emph{Open-World Assumption}), some ... are retrieved using \emph{SPARQL} queries: % TODO though not part of \emph{SmartHomeWeather}
 
 	\begin{lstlisting}
 	blah
@@ -188,16 +208,21 @@ RoomTemperature :- WeatherPhenomenon and
       \end{block}
 
       \begin{block}{The Weather Importer}
-	\lipsum[6]
+	% TODO
       \end{block}
 
       \begin{block}{Future work}
-	\lipsum[7]
+	Interoperation with other data sources:
+	\begin{itemize}
+	  \item … % TODO
+	  \item … % TODO
+	  \item … % TODO
+	\end{itemize}
       \end{block}
 
       \begin{block}{References}
-	% TODO hmmm
-        % this is just an example, use BibTeX!
+	\bibliographystyle{thesis}
+	\bibliography{references}
 
 	% TODO owl, thinkhome, ontologies, ...?
       \end{block}

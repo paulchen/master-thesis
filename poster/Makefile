@@ -2,7 +2,9 @@
 
 all: poster.pdf
 
-poster.pdf: poster.tex
+poster.pdf: poster.tex references.bib
+	pdflatex poster.tex
+	bibtex poster
 	pdflatex poster.tex
 
 clean:
