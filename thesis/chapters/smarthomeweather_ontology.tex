@@ -43,7 +43,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
   \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{Weather State} and \emph{weather state} in the name namespace is possible in \eacs{OWL}, but leads to confusion.
   \item Identifiers may only consist of upper and lower case \eacs{ASCII} letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z}), numerical digits from \emph{0} to \emph{9} and spaces, i.e. all identifiers must match the regular expression \texttt{\textasciicircum[A-za-z0-9~]+\$}.
   \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g. \emph{Weather state} or \emph{Weather report}.
-  \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongs to}, followed by the name of the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongs to}, followed by the inverse property's \emph{range}, and vice versa. As an alternative to the prefix \emph{belongs to}, the prefix \emph{is} in conjunction with the suffix \emph{of} and the inverse property's \emph{domain} may be used.
+  \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongs to}, followed by the name of the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongs to}, followed by the inverse property's \emph{range}. As an alternative to the prefix \emph{belongs to}, the prefix \emph{is} in conjunction with the suffix \emph{of} and the inverse property's \emph{domain} may be used.
   
   E.g. the name of a property with the domain \emph{Weather report} and the range \emph{Weather state} has the name \emph{has weather state}. If \emph{has weather state} has an inverse property, it will have the name \emph{belongs to weather report} or \emph{is weather state of}.
 \end{itemize}
@@ -89,11 +89,11 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Intended end-users}: End-users of the ontologies are inhabitants of smart homes.
+\textbf{Intended end-users}: End-users of the ontologies are inhabitants of smart homes. % TODO is the system itself the end-user?
 
 \vspace{.3cm}
 
-\textbf{Intended uses}: The ontology shall provide knowledge to ontology-based smart home systems about the current and future state of the weather in order to enable the system to make decisions based on that knowledge.
+\textbf{Intended uses}: The ontology shall provide knowledge to ontology-based smart home systems about the current and future weather state in order to enable the system to make decisions based on that knowledge.
 
 % TODO re-add this vspace?
 \vspace{.3cm}
@@ -135,7 +135,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.2cm}
 
-\textbf{Pre-glossary of terms}: These are all terms that can be extracted from the competency questions, in alphabetical order:
+\textbf{Pre-glossary of terms}: These are terms that can be extracted from the competency questions, in alphabetical order:
 
 24 hours, airing, current weather, frost, future weather, humidity, humidity rise, humidity fall, irrigation, minimum, maximum, rain, room temperature, severe weather, sunshine, sun protection, temperature, temperature rise, temperature fall, weather change, wind speed.
 
@@ -155,7 +155,7 @@ The second step proposed by \methontology is \emph{Knowledge Acquisition}. All k
   \item Which weather data are relevant for smart homes?
   \item Which weather data are available from sensors (section~\ref{sec:weather_sensors}) and Internet services (section~\ref{sec:internet_services})? How can this data be acquired?
   \item Which data do not have any use for \smarthomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
-  \item What knowledge about weather in general is required to build an appropriate ontology~(refer to chapter~\ref{ch:weather_data}?
+  \item What knowledge about weather in general is required to build an appropriate ontology~(cf.~\ref{ch:weather_data}?
 \end{itemize}
 
 Furthermore, chapter~\ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g. the \emph{Glossary of Meteorology}~\cite{GlossaryOfMeteorology} by the \emph{American Meteorological Society}~\cite{AMS}.
@@ -174,13 +174,13 @@ In this section, only those deliverables are presented that are necessary to ful
 
 When describing the scope of \smarthomeweather, the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \eacs{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these five concepts.
 
-In this section, only a list of terms is given; the complete \emph{Glossary of Terms} with short descriptions of each term can be found in the appendix~\ref{main} which starts on page~\pageref{main}.
+In this section, only a list of terms is given; the complete \emph{Glossary of Terms} with short descriptions of each term can be found in appendix~\ref{main}.
 
 \paragraph{Concepts:}
 
 Section~\ref{sec:weather_conclusion} presents the weather elements that are used in \smarthomeweather. In the ontology, weather elements are represented by concepts that are sub-concepts of \Egls{weather phenomenon}, e.g. there is a concept \Egls{temperature} for measurements of temperature, or \Egls{humidity} for measurements of relative humidity.
 
-For all weather elements except \Egls{dew point}, categories are introduced in order to allow easy differentiation of weather observations by their respective measurement values. In the case of \Egls{temperature}, the sub-concepts differ from each other by the observed temperature values. The sub-concepts of \Egls{temperature} are \Egls{frost} (for an observed temperature value of below \SI{0}{\celsius}), \Egls{cold} (at least \SI{0}{\celsius} and less than \SI{10}{\celsius}), \Egls{below room temperature} (at least \SI{10}{\celsius} and less than \SI{20}{\celsius}), \Egls{cold} (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}), \Egls{above room temperature} (more than \SI{25}{\celsius} and at most \SI{30}{\celsius}), and \Egls{heat} (more than \SI{30}{\celsius}). Refer to section~\ref{sec:concept_classification_trees} for the concept-classification trees that result from this approach including the definitions of the respective sub-concepts.
+For all weather elements except \Egls{dew point}, categories are introduced in order to allow easy differentiation of weather observations by their respective measurement values. In the case of \Egls{temperature}, the sub-concepts differ from each other by the observed temperature values. The sub-concepts of \Egls{temperature} are \Egls{frost} (for an observed temperature value of below \SI{0}{\celsius}), \Egls{cold} (at least \SI{0}{\celsius} and less than \SI{10}{\celsius}), \Egls{below room temperature} (at least \SI{10}{\celsius} and less than \SI{20}{\celsius}), \Egls{room temperature} (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}), \Egls{above room temperature} (more than \SI{25}{\celsius} and at most \SI{30}{\celsius}), and \Egls{heat} (more than \SI{30}{\celsius}). Refer to section~\ref{sec:concept_classification_trees} for the concept-classification trees that result from this approach including the definitions of the respective sub-concepts.
 
 A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
 
@@ -192,7 +192,7 @@ A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls
 
 Several sub-concepts of \Egls{weather state} describe certain combinations of instances of \Egls{weather phenomenon} being associated with a \Egls{weather state}. These concepts are listed below; refer to the glossary in appendix~\ref{main} for their definitions.
 
-Thus, these are the concepts that can be found in \smarthomeweather are:
+Thus, the concepts that can be found in \smarthomeweather are:
 \begin{itemize}
   \item \Egls{weather condition}
   \item \Egls{weather phenomenon}:
@@ -235,9 +235,9 @@ The only predefined individuals are instances of the concept \Egls{weather condi
 \subsection{Concept-classification trees}
 \label{sec:concept_classification_trees}
 
-As stated in section~\ref{sec:ontology_glossary}, there are fix top-level concepts; all other concepts are sub-concepts to these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These \emph{Concept-classification trees} are presented in this section.
+As stated in section~\ref{sec:ontology_glossary}, there are five top-level concepts; all other concepts are sub-concepts to these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These \emph{Concept-classification trees} are presented in this section.
 
-A \Egls{weather condition} does not have any sub-concepts. Hence, its classification tree which is shown in figure~\ref{fig:tree_weather_condition} looks rather simple.
+A \Egls{weather condition} does not have any sub-concepts. Hence, its classification tree which is shown in figure~\ref{fig:tree_weather_condition} consists of only one element.
 
 \begin{figure}
   \centering
@@ -265,6 +265,7 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
     \label{fig:tree_atmospheric_pressure}
   \end{figure}
 
+  % TODO definition of "okta"
   \item \Egls{cloud cover} (figure~\ref{fig:tree_cloud_cover}): The sub-concepts of \Egls{cloud cover} are defined using different cloud coverage values: \Egls{clear sky} (cloud coverage of \num{0}$\:$\emph{okta}), \Egls{partly cloudy} (\num{1}$\:$\emph{okta} to \num{4}$\:$\emph{okta}), \Egls{mostly cloudy} (\num{5}$\:$\emph{okta} to \num{7}$\:$\emph{okta}), \Egls{overcast} (\num{8}$\:$\emph{okta}) and \Egls{unknown cloud cover} (\num{9}$\:$\emph{okta}).
   
   \begin{figure}
@@ -283,7 +284,7 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
     \label{fig:tree_humidity}
   \end{figure}
 
-  \item \Egls{precipitation} (figure~\ref{fig:tree_precipitation}): The sub-concepts of \Egls{precipitation} are \Egls{no rain} (precipitation intensity of \SI{0}{\milli\metre\per\hour}), \Egls{light rain} (precipitation intensity of more than \SI{0}{\milli\metre\per\hour} and at most \SI{5}{\milli\metre\per\hour}), \Egls{medium rain} (precipitation intensity of more than \SI{5}{\milli\metre\per\hour} and at most \SI{20}{\milli\metre\per\hour}), \Egls{heavy rain} (precipitation intensity of more than \SI{20}{\milli\metre\per\hour} and at most \SI{50}{\milli\metre\per\hour}), \Egls{extremely heavy rain} (precipitation intensity of more than \SI{50}{\milli\metre\per\hour} and at most \SI{1000}{\milli\metre\per\hour}), and \Egls{tropical storm rain} (precipitation intensity of more than \SI{100}{\milli\metre\per\hour}). For \Egls{no rain}, the precipitation probability is \num{0}; for the other sub-concepts, the precipitation probability is greater than \num{0}.
+  \item \Egls{precipitation} (figure~\ref{fig:tree_precipitation}): The sub-concepts of \Egls{precipitation} are \Egls{no rain} (precipitation intensity of \SI{0}{\milli\metre\per\hour}), \Egls{light rain} (precipitation intensity of more than \SI{0}{\milli\metre\per\hour} and at most \SI{5}{\milli\metre\per\hour}), \Egls{medium rain} (precipitation intensity of more than \SI{5}{\milli\metre\per\hour} and at most \SI{20}{\milli\metre\per\hour}), \Egls{heavy rain} (precipitation intensity of more than \SI{20}{\milli\metre\per\hour} and at most \SI{50}{\milli\metre\per\hour}), \Egls{extremely heavy rain} (precipitation intensity of more than \SI{50}{\milli\metre\per\hour} and at most \SI{100}{\milli\metre\per\hour}), and \Egls{tropical storm rain} (precipitation intensity of more than \SI{100}{\milli\metre\per\hour}). For \Egls{no rain}, the precipitation probability is \num{0}; for the other sub-concepts, the precipitation probability is greater than \num{0}.
   
   \begin{figure}
     \centering
@@ -374,6 +375,7 @@ A \Egls{weather state} represents the set of weather phenomena that belong to a 
 
 \begin{figure}
   \centering
+  % TODO description for this figure
   \includegraphics[width=\textwidth]{figures/diagrams/weather-state.pdf}
   \caption{Concept-classification tree for \Egls{weather state}. All properties are of type \emph{rdfs:subClassOf}}
   \label{fig:tree_weather_state}
@@ -408,7 +410,7 @@ The \emph{Binary relation table} specifies all relations from section~\ref{subse
 
 An \emph{Instance attributes table} lists all instance attributes in \smarthomeweather together with the concept where they belong to, their value type and value range, the unit of measurement and their cardinality. The \emph{Instance attributes table} can be found in the appendix in figure~\ref{fig:instance_attributes_table}.
 
-The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{\eacs{XML} Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect use the \emph{Measurements Unit Ontology} (\muo)~\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \smarthomeweather.
+The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{\eacs{XML} Schema}\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect usage of the \emph{Measurements Unit Ontology} (\muo)~\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See section~\ref{sec:ontology_imports} for details about the implementation of \muo in \smarthomeweather.
 
 \subsection{Class attributes table}
 \label{subsec:class_attributes_table}
@@ -440,6 +442,8 @@ Section \ref{sec:implementation} describes the reuse of the aforementioned ontol
 \section{Implementation}
 \label{sec:implementation}
 
+% TODO reasoning
+
 After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
 The \smarthomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \eacs{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \eacs{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
@@ -456,7 +460,7 @@ During the implementation step, the ontologies listed in section \ref{sec:integr
 
 \vspace{1em}
 
-\emph{OWL-Time}\cite{owl-time} defines the concept \Egls{temporal entity} and its sub-concepts \Egls{instant} and \Egls{interval}, both having a self-explanatory name. The properties \egls{has start time}, \egls{has end time} and \egls{has observation time} of \egls{weather report} link to instants; however, only \egls{has observation time} is implemented to link an instance of \Egls{instant} to a \Egls{weather report}. For \egls{has start time} and \egls{has end time}, instances of \Egls{interval} are used. Such an instance represents the interval between the \egls{observation time} and the time the \Egls{weather report} is valid from/until (in hours). This simplifies reasoning of the sub-concepts of \Egls{weather report} which depend on the report's \egls{start time}; e.g. an instance of \emph{Forecast 1 hour weather report} can be defined as an instance of \Egls{weather report} having a \egls{start time} of \num{1} (hours).
+\emph{OWL-Time}\cite{owl-time} defines the concept \Egls{temporal entity} and its sub-concepts \Egls{instant} and \Egls{interval}, both having a self-explanatory name. The properties \egls{has start time}, \egls{has end time} and \egls{has observation time} of \egls{weather report} link to instances of \Egls{temporal entity}; however, only \egls{has observation time} is implemented to link an instance of \Egls{instant} to a \Egls{weather report}. For \egls{has start time} and \egls{has end time}, instances of \Egls{interval} are used. Such an instance represents the interval between the \egls{observation time} and the time the \Egls{weather report} is valid from/until (in hours). This simplifies reasoning of the sub-concepts of \Egls{weather report} which depend on the report's \egls{start time}; e.g. an instance of \emph{Forecast 1 hour weather report} can be defined as an instance of \Egls{weather report} having a \egls{start time} of \num{1} (hours).
 
 Figure~\ref{fig:owl_time1} shows a \Egls{weather report} together with its with \egls{start time} and \egls{end time}; figure~\ref{fig:owl_time2} displays a \Egls{weather report} together with its \egls{observation time}. The \emph{Time Zone Ontology} that comes with \emph{OWL-Time} is not used by \smarthomeweather. All times are given in \emph{UTC}.
 
@@ -496,7 +500,7 @@ Figure~\ref{fig:muo1} shows how an instance of \Egls{temperature} would be imple
 
 \vspace{1em}
 
-Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded.
+Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded. % TODO mention geo ontology
 
 \begin{figure}
   \centering
@@ -508,7 +512,7 @@ Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather repo
 \section{Evaluation}
 \label{sec:ontology_evaluation}
 
-After completing the implementation step, this section evaluates \smarthomeweather regarding all non-functional requirements (section~\ref{sec:evaluation_non_functional}) and functional requirements (section~\ref{sec:evaluation_functional}) from section~\ref{sec:weather_information} and the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification}.
+After completing the implementation step, this section evaluates \smarthomeweather regarding all non-functional requirements and functional requirements from section~\ref{sec:weather_information} and the \emph{Ontology Requirements Specification Document} in section~\ref{sec:ontology_specification}.
 
 \subsection{Non-functional requirements}
 \label{sec:evaluation_non_functional}
@@ -560,3 +564,5 @@ Furthermore, there are questions that cannot be answered using an \eacs{OWL} ont
 However, for each of the above competency questions, whether a direct answer can be given or not, \smarthomeweather can provide all available data; an external program (which is not limited by the \emph{Open World Assumption}) can access this data (e.g. using \eacs{SPARQL} queries) and generate an answer.
 
 Hence, the ontology constructed in this chapter complies with its specification in section \ref{sec:ontology_specification}.
+
+% TODO SPARQL queries/SWRL rules
