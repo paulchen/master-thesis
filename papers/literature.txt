@@ -398,3 +398,6 @@ NEW (2013-04-09):
 * art_2009_LNGC_ApproachToComparing.pdf
   L. M. Vilches-Blázquez, J. A. Ramos, F. J. López-Pellicer, O. Corcho, J. Nogueras-Iso. An approach to comparing different ontologies in the context of hydrographical information
 
+* p2115-brush.pdf
+  A.J. Bernheim Brush, Bongshin Lee, Ratul Mahajan, Sharad Agarwal, Stefan Saroiu, Colin Dixon. Home Automation in the Wild: Challenges and Opportunities
+
