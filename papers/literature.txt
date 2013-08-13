@@ -392,3 +392,6 @@ NEW (2013-04-09):
 * fielding_dissertation.pdf
   Roy Thomas Fielding. Architectural Styles and the Design of Network-based Software Architectures
 
+* ontology-design-fca.pdf
+  Hele-Mai Haav. A Semi-automatic Method to Ontology Design by Using FCA
+
