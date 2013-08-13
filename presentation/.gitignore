@@ -1,0 +1,14 @@
+*.aux
+*.bbl
+*~
+*.backup
+*.toc
+*.pdf
+*.blg
+*.log
+*.glg
+*.glo
+*.gls
+*.xdy
+*.lof
+*.lot
