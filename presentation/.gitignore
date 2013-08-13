@@ -12,3 +12,6 @@
 *.xdy
 *.lof
 *.lot
+*.nav
+*.out
+*.snm

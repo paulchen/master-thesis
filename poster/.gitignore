@@ -12,3 +12,7 @@
 *.xdy
 *.lof
 *.lot
+*.nav
+*.out
+*.snm
+*.vrb
