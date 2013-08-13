@@ -306,7 +306,7 @@ NEW (2013-04-09):
   Al-Yahya, M, Alkhalifa, H. ; Bahanshal, A. ; Alodah, I. An ontological model for representing computational lexicons. A componential based approach
 
 * paper_9.pdf
-  Gregorio D’Agostino, Antonio De Nicola. Gregorio D’Agostino, Antonio De Nicola
+  Gregorio D’Agostino, Antonio De Nicola. Towards Semantic Profiling in Social Networks
 
 * 10.1007_978-3-642-03507-4_6.pdf
   Michele Missikoff and Francesco Taglino. A Semantic Cooperation and Interoperability Platform for the European Chambers of Commerce
