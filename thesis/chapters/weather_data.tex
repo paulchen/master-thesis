@@ -2,7 +2,7 @@
 \chapter{Weather data}
 \label{ch:weather_data}
 
-Based on the insights acquired from existing work in chapter~\ref{ch:existing_work}, this chapter aims at compiling a set of weather data elements which are either necessary for providing useful data on exterior influences to smart home systems or which would add benefit to the data provided. Furthermore, possible sources are evaluated with respect to their suitability for the given context.
+Based on the insights acquired from existing work in Chapter~\ref{ch:existing_work}, this chapter aims at compiling a set of weather data elements which are either necessary for providing useful data on exterior influences to smart home systems or which would add benefit to the data provided. Furthermore, possible sources are evaluated with respect to their suitability for the given context.
 
 \section{Weather information}
 \label{sec:weather_information}
@@ -28,11 +28,11 @@ Below are the questions that have been identified to be adequate competency ques
   \item When will it outside be colder than inside the house? When will it be warmer?
 \end{itemize}
 
-These competency questions will again be used in section~\ref{sec:ontology_specification} when the \emph{Ontology requirements specification document} is created.
+These competency questions will again be used in Section~\ref{sec:ontology_specification} when the \emph{Ontology requirements specification document} is created.
 
-The idea of providing a smart home with future weather data is to enable the system to prepare for upcoming weather situations. There are Internet weather services that provide forecasts for several days (see section~\ref{sec:internet_services}). However, the further the time described by a forecast lies in the future, the more inaccurate the forecast becomes\cite{forecast_error1,forecast_error2}. Additionally, no decisions in a smart home have been identified that require the availability of a forecast about a time more than a few hours in the future. Hence, the period of 24 hours has been chosen as a compromise between the deteriorating accuracy of weather forecasts over time and the time period smart homes require weather data for.
+The idea of providing a smart home with future weather data is to enable the system to prepare for upcoming weather situations. There are Internet weather services that provide forecasts for several days (see Section~\ref{sec:internet_services}). However, the further the time described by a forecast lies in the future, the more inaccurate the forecast becomes~\cite{forecast_error1,forecast_error2}. Additionally, no decisions in a smart home have been identified that require the availability of a forecast about a time more than a few hours in the future. Hence, the period of 24 hours has been chosen as a compromise between the deteriorating accuracy of weather forecasts over time and the time period smart homes require weather data for.
 
-The above competency questions can be answered when the (predicted) state of the weather for particular points of time is known. The state of the weather is given by measurement values of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage and others.\cite{GlossaryOfMeteorology}
+The above competency questions can be answered when the (predicted) state of the weather for particular points of time is known. The state of the weather is given by measurement values of certain \emph{weather elements}. These weather elements are temperature, relative and absolute humidity, dew point temperature, wind speed, wind direction, precipitation, cloud coverage and others.~\cite{GlossaryOfMeteorology}
 
 A set of measurement value for one or more points of time is called \emph{weather state} from now on.
 
@@ -41,7 +41,7 @@ Apart from weather elements, Internet weather services often provide some inform
 Sources for weather data are weather sensors and weather forecasts. As smart homes perform no weather forecasting on its own, forecast data is gathered from weather services via Internet. While data about the current weather state can be obtained from both weather sensors and Internet services, the only source for data about future weather states are Internet services.
 
 % TODO explicitely name weather elements that are not available from any of the Internet weather services
-However, there are weather elements no sensor can provide data about, and there are weather elements that are not available from any of the Internet services presented in section~\ref{sec:weather_services}. Section~\ref{sec:weather_sensors} covers data that can be obtained from weather sensors; section~\ref{sec:weather_services} discusses weather data that can be fetched from Internet services. Based on the findings in these two sections, \ref{sec:weather_conclusion} presents a set of weather elements that are incorporated into \smarthomeweather.
+However, there are weather elements no sensor can provide data about, and there are weather elements that are not available from any of the Internet services presented in Section~\ref{sec:weather_services}. Section~\ref{sec:weather_sensors} covers data that can be obtained from weather sensors; Section~\ref{sec:weather_services} discusses weather data that can be fetched from Internet services. Based on the findings in these two sections, Section~\ref{sec:weather_conclusion} presents a set of weather elements that are incorporated into \smarthomeweather.
 
 \section{Sensor data}
 \label{sec:weather_sensors}
@@ -51,13 +51,13 @@ While there are stand-alone solutions for fetching weather data from sensors, in
 \subsection{\emph{Fieldbus} systems}
 \label{sec:fieldbus}
 
-Over the past few years, several of \emph{fieldbus} systems have emerged in the context of \emph{home automation}. A \emph{fieldbus} is a network system for real-time distributed control\cite{fieldbus}, standardised as \emph{IEC~61158}\cite{IEC61158}. A \emph{Programmable Logic Controller} (\eacs{PLC}), a computer which is designed specifically for automation purposes, can utilise a \emph{fieldbus} to retrieve sensor data from \emph{sensors} and send control commands to \emph{actuators}. Among the sensors that are available for \emph{fieldbus} systems, there exist sensors for a wide variety of weather elements such as temperature or humidity. 
+Over the past few years, several of \emph{fieldbus} systems have emerged in the context of \emph{home automation}. A \emph{fieldbus} is a network system for real-time distributed control~\cite{fieldbus}, standardised as \emph{IEC~61158}~\cite{IEC61158}. A \emph{Programmable Logic Controller} (\eacs{PLC}), a computer which is designed specifically for automation purposes, can utilise a \emph{fieldbus} to retrieve sensor data from \emph{sensors} and send control commands to \emph{actuators}. Among the sensors that are available for \emph{fieldbus} systems, there exist sensors for a wide variety of weather elements such as temperature or humidity. 
 
 There are several competing standards for \emph{fieldbus} systems, including:
 \begin{itemize}
-  \item \textbf{Bitbus:} \emph{Bitbus}, created in 1983 by \emph{Intel Corporation}, is the oldest \emph{fieldbus}. In 1991, it was approved as an international standard as \emph{IEEE~1118}\cite{IEEE1118}. It employs \emph{twisted pair} cabling for connecting its components.
+  \item \textbf{Bitbus:} \emph{Bitbus}, created in 1983 by \emph{Intel Corporation}, is the oldest \emph{fieldbus}. In 1991, it was approved as an international standard as \emph{IEEE~1118}~\cite{IEEE1118}. It employs \emph{twisted pair} cabling for connecting its components.
   
-  \item \textbf{KNX:} \emph{KNX} is an international standard (\emph{ISO/IEC 14543-3}\cite{knx,knx_standard}) which is the successor to three previously used \emph{fieldbus} systems, namely \emph{European Home Systems Protocol} (\eacs{EHS}), \emph{BatiBUS} and \emph{European Installation Bus} (\eacs{EIB}). It supports the use of several physical communication media such as \emph{twisted pair} wiring, \emph{power line} networking, \emph{Ethernet}, \emph{infrared} or \emph{radio}. There is a wide range of devices that can be used for controlling a \emph{KNX} network.
+  \item \textbf{KNX:} \emph{KNX} is an international standard (\emph{ISO/IEC 14543-3}~\cite{knx,knx_standard}) which is the successor to three previously used \emph{fieldbus} systems, namely \emph{European Home Systems Protocol} (\eacs{EHS}), \emph{BatiBUS} and \emph{European Installation Bus} (\eacs{EIB}). It supports the use of several physical communication media such as \emph{twisted pair} wiring, \emph{power line} networking, \emph{Ethernet}, \emph{infrared} or \emph{radio}. There is a wide range of devices that can be used for controlling a \emph{KNX} network.
   
   \item \textbf{LonWorks:} Developed by \emph{Echelon Corporation}~\cite{echelon} in 1990, \emph{LonWorks} (\emph{Local Operating Network})~\cite{lonworks} is a widely used fieldbus standard; since 2008, the technology is standardised as \emph{ISO/IEC~14908}\cite{ISO14908}. \emph{LonWorks} supports \emph{twisted pair} cabling and \emph{power line} networking and can be controlled by any general-purpose processor which can use the \emph{LonTalk} protocol that is employed by \emph{LonWorks}.
   
@@ -68,7 +68,7 @@ There are several competing standards for \emph{fieldbus} systems, including:
 
 \subsection{\emph{KNX} sensors}
 
-Each of the \emph{fieldbus} systems mentioned in section~\ref{sec:fieldbus} provides a variety of sensors. \emph{KNX}, which is an open standard, is in this section used as an example to illustrate the weather sensors that are available for \emph{fieldbus} systems.
+Each of the \emph{fieldbus} systems mentioned in Section~\ref{sec:fieldbus} provides a variety of sensors. \emph{KNX}, which is an open standard, is in this section used as an example to illustrate the weather sensors that are available for \emph{fieldbus} systems.
 
 \emph{KNX} weather sensors are available for
 \begin{itemize}
@@ -146,10 +146,10 @@ Table~\ref{table:weather_data3} lists the  weather services together with the da
 
 Most services provide their data via \eacs{HTTP}~\cite{rfc2616}, hence simple access from Java applications is possible using existing libraries such as the \emph{Apache HttpComponents project}~\cite{apache_hc}. \eacs{DWD} uses access via \eacs{FTP} (\emph{File Transfer Protocol})~\cite{rfc959} while \eacs{NWS} (\emph{National Weather Service}) employs \eacs{REST} (\emph{Representational State Transfer})~\cite{REST} and \eacs{SOAP} (\emph{Simple Object Access Protocol})~\cite{SOAP} for the access to its data. \eacs{FTP}, \eacs{REST}, and \eacs{SOAP} can all be used in Java applications, but their use may lead to higher implementation costs compared to the use of \eacs{HTTP}.
 
-Regarding the terms of use that are summarised in table~\ref{table:weather_data4}, there are some services that require the creation of an account (\eacs{DWD}, \emph{World Weather Online}, \emph{Weather Underground}, and \emph{Weather.com}) while others don't (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \yrno, and \eacs{METAR}). Some services provide all of their data freely (\eacs{DWD}, \yrno, \eacs{METAR}, or \eacs{NWS}), others provide the data freely only for non-commercial purposes (\emph{Yahoo! Weather}, \emph{World Weather Online}, and \emph{Weather Underground}); for some services, the terms of use are unknown (\emph{Google Weather Feed}, \emph{Weather.com}).
+Regarding the terms of use that are summarised in Table~\ref{table:weather_data4}, there are some services that require the creation of an account (\eacs{DWD}, \emph{World Weather Online}, \emph{Weather Underground}, and \emph{Weather.com}) while others don't (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \yrno, and \eacs{METAR}). Some services provide all of their data freely (\eacs{DWD}, \yrno, \eacs{METAR}, or \eacs{NWS}), others provide the data freely only for non-commercial purposes (\emph{Yahoo! Weather}, \emph{World Weather Online}, and \emph{Weather Underground}); for some services, the terms of use are unknown (\emph{Google Weather Feed}, \emph{Weather.com}).
 
 % TODO conflict with information in table
-Except the ones not providing information about updates (\emph{Yahoo! Weather}, \emph{World Weather Online}, \emph{Weather Underground} and \emph{Weather.com}) and the one being discontinued (\emph{Google Weather Feed}), all weather services declare to perform regular updates to their weather services (see table~\ref{table:weather_data5}). Any changes are announced either on the web pages, via \eacs{RSS} feeds or via email.
+Except the ones not providing information about updates (\emph{Yahoo! Weather}, \emph{World Weather Online}, \emph{Weather Underground} and \emph{Weather.com}) and the one being discontinued (\emph{Google Weather Feed}), all weather services declare to perform regular updates to their weather services (see Table~\ref{table:weather_data5}). Any changes are announced either on the web pages, via \eacs{RSS} feeds or via email.
 
 Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); from some services, only limited forecasts are available (\eacs{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
 
@@ -389,9 +389,9 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \label{table:weather_services}
 \end{table}
 
-Table~\ref{table:weather_services} summarises the main advantages and disadvantages of the weather services discussed in~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits the requirements of smart homes and \smarthomeweather best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
+Table~\ref{table:weather_services} summarises the main advantages and disadvantages of the weather services discussed in Section~\ref{sec:internet_services} regarding the requirements listed there. Based on that evaluation, it is determined that \yrno clearly suits the requirements of smart homes and \smarthomeweather best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
-Thus, \yrno is used in chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \smarthomeweather ontology. See section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
+Thus, \yrno is used in Chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \smarthomeweather ontology. See Section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
 
 Nevertheless, the source of weather data shall remain replaceable. The ontology is designed in a way that makes switching to another weather service simple. If \yrno is to be replaced by another weather service, the ontology remains unchanged; only the program that imports weather data must be adapted. If the weather service used does not support one or more weather elements specified in the ontology, they are simply omitted in the program's output.
 
@@ -410,7 +410,7 @@ The ontology uses the following weather elements which are available from many I
 Furthermore, the overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition; two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used at the same time. These states are taken from the list of symbols used for describing the weather condition in the \eacs{API} of \yrno~\cite{yrno_faq}.
 
 % TODO clash: ontology does support data not provided from any service or sensor
-Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see section~\ref{sec:sun_position} for details.
+Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see Section~\ref{sec:sun_position} for details.
 
 In case a weather service does not provide a value for the dew point, there are simple means available for calculating that value from the values of temperature and relative humidity. E.g. the following formula leads to a dew point value with an accuracy sufficient for smart homes~\cite{dew_point_calculation}:
 
@@ -421,7 +421,7 @@ $t_d$ represents the dew point temperature, $t$ the air temperature and $RH$ the
 As the atmospheric pressure decreases with increasing altitude above sea level, it is necessary to convert the pressure value observed by a sensor to the equivalent pressure at sea level using the \emph{Barometric formula}~\cite{us76_standard_atmosphere}.
 This is not necessary for many Internet weather services (including \yrno) as these often report a value that has already been converted.
 
-To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See table~\ref{table:competency_questions} % TODO wrong reference?
+To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from Section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. See Table~\ref{table:competency_questions} % TODO wrong reference?
 for details about which competency questions can be answered by using which weather element(s). Section~\ref{sec:ontology_evaluation} will discuss whether \smarthomeweather can actually answer the competency questions.
 
 \begin{table}
@@ -560,7 +560,7 @@ There are several algorithms for calculating the sun's position (specified by ze
 \begin{itemize}
   \item The \emph{Solar Position Algorithm} (\eacs{SPA})~\cite{SPA_algorithm} provides results for zenith and azimuth angles with uncertainties of less than \num{0.0003} degrees in the period from 2000~BC to 6000~AD. However, the algorithm which is complicated to implement. Hence, it is used only in contexts that require values of that precision.
   
-  \item An algorithm that can be implemented more easily is the \emph{\acs{PSA} algorithm}~\cite{PSA_algorithm}, named after \emph{Plataforma Solar de Almería}~\cite{PSA} (a centre for the exploration of the use of solar energy situated in the Province of Almería in Spain) where the algorithm was developed. The results provided by this algorithm differ from the actual values more than the results calculated by the \eacs{SPA}: For the period between 1999 and 2015, the differences per value are smaller than \num{0.01} degrees. As this level of accuracy is sufficient for use in a smart home, the \emph{\acs{PSA} algorithm} is suitable for use by the \emph{Weather importer} application (see section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{\acs{PSA} algorithm} in C++ is available; this implementation can easily be ported to Java.
+  \item An algorithm that can be implemented more easily is the \emph{\acs{PSA} algorithm}~\cite{PSA_algorithm}, named after \emph{Plataforma Solar de Almería}~\cite{PSA} (a centre for the exploration of the use of solar energy situated in the Province of Almería in Spain) where the algorithm was developed. The results provided by this algorithm differ from the actual values more than the results calculated by the \eacs{SPA}: For the period between 1999 and 2015, the differences per value are smaller than \num{0.01} degrees. As this level of accuracy is sufficient for use in a smart home, the \emph{\acs{PSA} algorithm} is suitable for use by the \emph{Weather importer} application (see Section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{\acs{PSA} algorithm} in C++ is available; this implementation can easily be ported to Java.
 \end{itemize}
 
 

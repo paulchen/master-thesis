@@ -45,7 +45,7 @@ Another core principle of an ontology is reusability~\cite{reuse1,reuse2}. In or
 
 \vspace{1em}
 
-Ontologies are expressed using formal languages. There are many of these \emph{ontology languages} such as \eacs{KIF} (\emph{Knowledge Interchange Format})~\cite{KIFReference}, \emph{DAML+OIL}~\cite{DAML+OIL} -- a successor to \eacs{DAML}~\cite{DAML} (\emph{\eacs{DARPA} Agent Markup Language}) and \eacs{OIL} (\emph{Ontology Inference Layer})~\cite{OIL} that combines features of both --, \eacs{RDFS} (\emph{RDF Schema})~\cite{RDFS}, and \eacs{OWL}~\cite{OWL}. The latter, the \emph{Web Ontology Language}, is used in the \smarthomeweather project; thus, section~\ref{subsec:owl} gives a brief introduction into \eacs{OWL}.
+Ontologies are expressed using formal languages. There are many of these \emph{ontology languages} such as \eacs{KIF} (\emph{Knowledge Interchange Format})~\cite{KIFReference}, \emph{DAML+OIL}~\cite{DAML+OIL} -- a successor to \eacs{DAML}~\cite{DAML} (\emph{\eacs{DARPA} Agent Markup Language}) and \eacs{OIL} (\emph{Ontology Inference Layer})~\cite{OIL} that combines features of both --, \eacs{RDFS} (\emph{RDF Schema})~\cite{RDFS}, and \eacs{OWL}~\cite{OWL}. The latter, the \emph{Web Ontology Language}, is used in the \smarthomeweather project; thus, Section~\ref{subsec:owl} gives a brief introduction into \eacs{OWL}.
 
 Over the years, many ontologies have been developed. Some of them define concepts and relations that can be found across many knowledge domains. These ontologies are often imported into other ontologies in order to minimise the effort of creating new ontologies and to simplify interoperability of ontologies. Examples for such ontologies that are implemented in \eacs{OWL} or \emph{\eacs{RDF} Schema} are:
 \begin{itemize}
@@ -78,9 +78,9 @@ The type \texttt{xsd:\hspace{0pt}float} of both literals is defined in \emph{XML
 
 The complete \eacs{URI} of \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} is \texttt{http://example.org/\hspace{0pt}weather\#\hspace{0pt}CurrentWeather} and the \eacs{URI} of \texttt{geo:\hspace{0pt}Vienna} is \texttt{http://example.org/geo\#Vienna}. As in \eacs{XML}, substrings at the beginning of \eacss{URI} may be replaced by \emph{prefixes} to avoid frequent recurrences of the same strings. The part of the \eacss{URI} replaced by the prefix is called a \emph{namespace} which is used to group \eacss{URI} for elements from the same source together; e.g. all concepts, properties, and individuals defined by \smarthomeweather have identifiers in the same namespace.
 
-For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://\hspace{0pt}example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in figure~\ref{fig:rdf_example}.
+For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://\hspace{0pt}example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in Figure~\ref{fig:rdf_example}.
 
-For expressing the data that is represented by an \eacs{RDF} model, several serialization formats are available. The \eacs{RDF} recommendation is based on \emph{RDF/XML} which maps the \eacs{RDF} model to an \eacs{XML} document~\cite{RDF_XML}. The representation of the above example in \emph{RDF/XML} can be seen in figure~\ref{fig:rdfxml_example}. As \emph{RDF/XML} is a rather verbose format which may be difficult to read for humans, the \eacs{N3} (\emph{Notation3}) representation for \eacs{RDF} is available which was developed with human-readability in mind~\cite{Notation3}. \emph{Notation3} incorporates some syntax features that go beyond the expressive power of \eacs{RDF}. A subset of \emph{Notation3} named \eacs{Turtle} (\emph{Terse RDF Triple Language}) is available that is limited to the features required to map \eacs{RDF} models~\cite{Turtle}. Figure~\ref{fig:turtle_example} shows the above example in \eacs{Turtle} syntax.
+For expressing the data that is represented by an \eacs{RDF} model, several serialization formats are available. The \eacs{RDF} recommendation is based on \emph{RDF/XML} which maps the \eacs{RDF} model to an \eacs{XML} document~\cite{RDF_XML}. The representation of the above example in \emph{RDF/XML} can be seen in Figure~\ref{fig:rdfxml_example}. As \emph{RDF/XML} is a rather verbose format which may be difficult to read for humans, the \eacs{N3} (\emph{Notation3}) representation for \eacs{RDF} is available which was developed with human-readability in mind~\cite{Notation3}. \emph{Notation3} incorporates some syntax features that go beyond the expressive power of \eacs{RDF}. A subset of \emph{Notation3} named \eacs{Turtle} (\emph{Terse RDF Triple Language}) is available that is limited to the features required to map \eacs{RDF} models~\cite{Turtle}. Figure~\ref{fig:turtle_example} shows the above example in \eacs{Turtle} syntax.
 
 \begin{figure} % TODO syntax highlighting
 \begin{lstlisting}
@@ -102,7 +102,7 @@ For expressing the data that is represented by an \eacs{RDF} model, several seri
   </rdf:Description>
 </rdf:RDF>
 \end{lstlisting}
-\caption{\eacs{RDF} example from figure~\ref{fig:rdf_example} encoded in \emph{RDF/XML} syntax}
+\caption{\eacs{RDF} example from Figure~\ref{fig:rdf_example} encoded in \emph{RDF/XML} syntax}
 \label{fig:rdfxml_example}
 \end{figure}
 
@@ -118,7 +118,7 @@ weather:CurrentWeather weather:hasTemperatureValue "18.2"^^xsd:float ;
 
 weather:CurrentWeather geo:hasLocation geo:Vienna .
 \end{lstlisting}
-\caption{\eacs{RDF} example from figure~\ref{fig:rdf_example} encoded in \eacs{Turtle} syntax}
+\caption{\eacs{RDF} example from Figure~\ref{fig:rdf_example} encoded in \eacs{Turtle} syntax}
 \label{fig:turtle_example}
 \end{figure}
 
@@ -137,7 +137,7 @@ The property \texttt{rdfs:domain} states that any resource that has a given prop
 \label{fig:rdfs_example}
 \end{figure}
 
-Figure~\ref{fig:rdfs_example} shows the example from figure~\ref{fig:rdf_example}, enriched by some elements that are introduced by \eacs{RDFS}. The data model introduces two classes, \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and \texttt{geo:\hspace{0pt}Location}. \texttt{weather:\hspace{0pt}CurrentWeather} and \texttt{geo:\hspace{0pt}Vienna} are instances of \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and \texttt{geo:\hspace{0pt}Location}, respectively. \texttt{geo:\hspace{0pt}has\hspace{0pt}Location} is a property with domain \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and range \texttt{geo:\hspace{0pt}Location}.
+Figure~\ref{fig:rdfs_example} shows the example from Figure~\ref{fig:rdf_example}, enriched by some elements that are introduced by \eacs{RDFS}. The data model introduces two classes, \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and \texttt{geo:\hspace{0pt}Location}. \texttt{weather:\hspace{0pt}CurrentWeather} and \texttt{geo:\hspace{0pt}Vienna} are instances of \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and \texttt{geo:\hspace{0pt}Location}, respectively. \texttt{geo:\hspace{0pt}has\hspace{0pt}Location} is a property with domain \texttt{weather:\hspace{0pt}Weather\hspace{0pt}State} and range \texttt{geo:\hspace{0pt}Location}.
 
 \eacs{RDFS} comes with reasoning support~\cite{RDF_semantics}; e.g. in the above example, the statements
 
@@ -173,7 +173,7 @@ Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among oth
 
 Reasoning in \eacs{OWL} respects the \emph{open world assumption}~\cite{open_world_assumption1,open_world_assumption2}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa~\cite{MonotonicReasoning}.
 
-Queries on \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL} models are often performed using \eacs{SPARQL}, a query language for \eacs{RDF}~\cite{SPARQL}. Figure~\ref{fig:sparql_example} shows an example for the use of \eacs{SPARQL} to query all temperature values known for Vienna, Austria in the \eacs{RDFS} model depicted in figure~\ref{fig:rdfs_example}.
+Queries on \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL} models are often performed using \eacs{SPARQL}, a query language for \eacs{RDF}~\cite{SPARQL}. Figure~\ref{fig:sparql_example} shows an example for the use of \eacs{SPARQL} to query all temperature values known for Vienna, Austria in the \eacs{RDFS} model depicted in Figure~\ref{fig:rdfs_example}.
 
 \begin{figure}
 \begin{lstlisting}
@@ -187,11 +187,11 @@ WHERE {
     ?state weather:hasTemperatureValue ?temperature.
 }
 \end{lstlisting}
-\caption{\eacs{SPARQL} code to query all known temperature values in the model from figure~\ref{fig:rdf_example}}
+\caption{\eacs{SPARQL} code to query all known temperature values in the model from Figure~\ref{fig:rdf_example}}
 \label{fig:sparql_example}
 \end{figure}
 
-\eacs{OWL} ontologies are often designed using semantic editors like \protege~\cite{protege}. Common reasoners for \eacs{OWL} include \emph{Pellet}~\cite{pellet}, \emph{RacerPro}~\cite{RacerPro}, \emph{FaCT++}~\cite{factplusplus} and \emph{HermiT}~\cite{hermit}. \protege and \emph{Pellet} are used to develop the \smarthomeweather ontology in chapter~\ref{ch:smarthomeweather_ontology}.
+\eacs{OWL} ontologies are often designed using semantic editors like \protege~\cite{protege}. Common reasoners for \eacs{OWL} include \emph{Pellet}~\cite{pellet}, \emph{RacerPro}~\cite{RacerPro}, \emph{FaCT++}~\cite{factplusplus} and \emph{HermiT}~\cite{hermit}. \protege and \emph{Pellet} are used to develop the \smarthomeweather ontology in Chapter~\ref{ch:smarthomeweather_ontology}.
 
 \section{ThinkHome}
 
@@ -207,7 +207,7 @@ the \emph{KB Interface Agent} which provides the link between the knowledge base
 
 To investigate the possibility that an already existing ontology qualifies to be used as a basis for \smarthomeweather, this section presents a selection of ontologies that have been designed to cover the domain of weather data. In case no suitable ontology can be identified, the advantages and disadvantages of the ontologies discussed are analysed in order to avoid their shortcomings in \smarthomeweather and to benefit from their advantages.
 
-This section covers \emph{Semantic Sensor Web} (section~\ref{subsec:onto1}), the \emph{\eacs{SSN} ontology} (section~\ref{subsec:onto2}), \emph{\eacs{SWEET}} (section~\ref{subsec:onto5}), and \emph{NextGen} (section~\ref{subsec:onto4}). There are several other approaches such as the \emph{SENSEI project}~\cite{sensei} which are not covered here.
+This section covers \emph{Semantic Sensor Web} (Section~\ref{subsec:onto1}), the \emph{\eacs{SSN} ontology} (Section~\ref{subsec:onto2}), \emph{\eacs{SWEET}} (Section~\ref{subsec:onto5}), and \emph{NextGen} (Section~\ref{subsec:onto4}). There are several other approaches such as the \emph{SENSEI project}~\cite{sensei} which are not covered here.
 
 Apart from ontology-based weather data models, there exist several approaches which incorporate both current and predicted weather data without embodying an ontology. A commonly used approach is the use of a mathematical model that allows the transformation of the problem of predictive control based on weather data to an optimization problem~\cite{NonOntologicalApproach1,NonOntologicalApproach2}. As the structure of these approaches differs greatly from the ontological approach that is found at smart home systems like \thinkhome, these approaches are not covered here.
 
@@ -220,7 +220,7 @@ There exists a huge number of sensor networks around the globe comprising sensor
 
 The ontology of \eacs{SSW} -- which is referred to as the \emph{\eacs{SSW} ontology} from now on -- is built upon seven top-level concepts, excluding the concepts \emph{Location} and \emph{Time} which are imported from other sources. These top-level concepts are \emph{Feature} (an abstraction of a phenomenon from the real word, e.g. a weather event such as a blizzard), \emph{Observation} (the act of observing a property or phenomenon with the goal of a value of a property), \emph{ObservationCollection} (a set of \emph{Observation}s), \emph{Process} (a method, algorithm, or instrument, or a system of these), \emph{PropertyType} (a characteristic of one or more types of \emph{Feature}s), \emph{ResultData} (an estimate of the value of some property generated by a known procedure), and \emph{UnitOfMeasurement} (as the name suggests, a unit of measurement).
 
-The \eacs{SSW} ontology includes temporal data using \emph{OWL-Time} (see section~\ref{subsec:date_ontologies}), units of measurements and geographical data based on the \emph{Basic (WGS84 lat/long) Vocabulary} (see section~\ref{subsec:location_ontologies}). The concept \emph{WeatherObservation} comes with five predefined sub-concepts designed to map observations of atmospheric pressure, precipitation, radiation, temperature, or wind, respectively. Additional concepts may be added for observations of other phenomena.
+The \eacs{SSW} ontology includes temporal data using \emph{OWL-Time} (see Section~\ref{subsec:date_ontologies}), units of measurements and geographical data based on the \emph{Basic (WGS84 lat/long) Vocabulary} (see Section~\ref{subsec:location_ontologies}). The concept \emph{WeatherObservation} comes with five predefined sub-concepts designed to map observations of atmospheric pressure, precipitation, radiation, temperature, or wind, respectively. Additional concepts may be added for observations of other phenomena.
 
 The \eacs{SSW} ontology does not support forecast values, but extending the \eacs{SSW} ontology to implement those would be possible.
 
@@ -281,7 +281,7 @@ Extensions to the \eacs{SWEET} ontologies in order address the second and the th
 
 In order to efficiently process huge amounts of input weather data, \eacs{NNEW} incorporates a knowledge base implemented using a set of ontologies. The \eacs{NNEW} ontology is centered around concepts and relations describing past, current, and future weather phenomena.
 
-The \eacs{NNEW} ontology is built on top of the \eacs{SWEET} ontologies (see section~\ref{subsec:onto5}) to map weather phenomena. Extensions to \eacs{SWEET} include additional weather phenomena and concepts and relations that lead to the \emph{4-D Wx Data Cube} (\emph{Four Dimensional Weather Data Cube}) which uses time as the fourth dimension for the ``location'' of weather observations.
+The \eacs{NNEW} ontology is built on top of the \eacs{SWEET} ontologies (see Section~\ref{subsec:onto5}) to map weather phenomena. Extensions to \eacs{SWEET} include additional weather phenomena and concepts and relations that lead to the \emph{4-D Wx Data Cube} (\emph{Four Dimensional Weather Data Cube}) which uses time as the fourth dimension for the ``location'' of weather observations.
 
 It was decided not to use the \eacs{NNEW} ontology for \smarthomeweather for the same reasons as already explained in the case of \eacs{SWEET}. In the context of smart homes, the \eacs{NNEW} ontology appears just as an extension to \eacs{SWEET} and therefore it is not qualified in equal measure. Furthermore, \eacs{NNEW} is still work in progress and no final version is available that could be seen as a standard.
 
@@ -325,7 +325,7 @@ Furthermore, the \emph{Basic Geo (WGS84 lat/long) Vocabulary} is not a standard;
 
 For specifying temporal properties, the \eacs{W3C} offers a \emph{working draft} of \emph{OWL-Time}\cite{owl-time}, a \emph{Time Ontology in \eacs{OWL}}. It defines the concept called \Egls{temporal entity} that can either be an \Egls{instant} or an \Egls{interval}. Using appropriate attributes, the properties of a \Egls{temporal entity} are specified. Although \emph{OWL-Time} is in the state of a \emph{working draft} since September 2006, the main concepts and attributes that will be reused by other ontologies are likely to remain unchanged in future releases of that ontology.
 
-Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being used to specify an instant while figure~\ref{fig:owl_time_example2} demonstrates how a time interval is specified using \emph{OWL-Time}.
+Figure~\ref{fig:owl_time_example1} shows an example of \emph{OWL-Time} being used to specify an instant while Figure~\ref{fig:owl_time_example2} demonstrates how a time interval is specified using \emph{OWL-Time}.
 
 \subsection{Units of measurements}
 \label{subsec:unit_ontologies}
@@ -348,7 +348,7 @@ As the use of units of measurement is a topic that occurs in many ontologies, th
 
 The \emph{Measurement Units Ontology}\cite{MUOWeb,MUO} is a simple and light-weight approach to enrich measurement values in an ontology with appropriate units. Some of the most important units are pre-defined, others can easily be added when needed. The \emph{Measurement Units Ontology} (\muo) is still work in progress, however it is not expected that it might change heavily in the future. Everything that will be reused by other ontologies will probably remain unchanged. Hence, \muo can be imported into any ontology without problems.
 
-Figure~\ref{fig:nounits_example} shows the representation of an estate with its length and width specified using the datatype properties \texttt{hasLength} and \texttt{hasWidth}. In figure~\ref{fig:muo_example}, \muo is introduced to specify that both length and width are measured in metres: \texttt{hasLength} and \texttt{hasWidth} become object properties which link blank nodes to the individual \texttt{Estate}; \texttt{hasLength} and \texttt{hasWidth} are now both sub-properties of the property \texttt{muo:Quality value}. Each blank node has two properties, \texttt{muo:numerical value} states the literal value while \texttt{muo:measured in} gives the unit of measurement for the literal value. The unit (\texttt{meter} in this case) is represented by an instance of \texttt{muo:Unit of measurement}.
+Figure~\ref{fig:nounits_example} shows the representation of an estate with its length and width specified using the datatype properties \texttt{hasLength} and \texttt{hasWidth}. In Figure~\ref{fig:muo_example}, \muo is introduced to specify that both length and width are measured in metres: \texttt{hasLength} and \texttt{hasWidth} become object properties which link blank nodes to the individual \texttt{Estate}; \texttt{hasLength} and \texttt{hasWidth} are now both sub-properties of the property \texttt{muo:Quality value}. Each blank node has two properties, \texttt{muo:numerical value} states the literal value while \texttt{muo:measured in} gives the unit of measurement for the literal value. The unit (\texttt{meter} in this case) is represented by an instance of \texttt{muo:Unit of measurement}.
 
 \begin{figure}
 \centering
@@ -376,9 +376,9 @@ Besides the \emph{Measurement Units Ontology} and the \emph{Ontology of Units of
 
 \section{Conclusion}
 
-As section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a starting point for \smarthomeweather.
+As Section~\ref{sec:weather_ontologies} discusses, unfortunately no existing ontology covers the domain of weather data in a way suitable for using it as a starting point for \smarthomeweather.
 
-Thus, a completely new ontology is created (see chapter~\ref{ch:smarthomeweather_ontology}). From the insights gained in this chapter through existing weather ontologies, the following aspects are considered for the development of \smarthomeweather:
+Thus, a completely new ontology is created (see Chapter~\ref{ch:smarthomeweather_ontology}). From the insights gained in this chapter through existing weather ontologies, the following aspects are considered for the development of \smarthomeweather:
 
 \begin{itemize}
   \item Many of the existing weather ontologies are intended to map a whole sensor network. In the case of \smarthomeweather, this is not necessary. To avoid overhead, only observations of weather elements (temperature, humidity etc.) will be covered, not their sensors. One goal of \smarthomeweather is to keep it as sophisticated as required, but as simple as possible.
