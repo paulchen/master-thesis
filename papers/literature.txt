@@ -258,7 +258,7 @@ NEW (2013-04-09):
   A.J. Bernheim Brush, Bongshin Lee, Ratul Mahajan, Sharad Agarwal, Stefan Saroiu, Colin Dixon. Home Automation in the Wild: Challenges and Opportunities
 
 * cacm2011-advancing-home.pdf
-  Keith Edwards, Rebecca E. Grinter, Ratul Mahajan, David Wetherall
+  Keith Edwards, Rebecca E. Grinter, Ratul Mahajan, David Wetherall. Advancing the State of Home Networking
 
 * smart_environments.pdf
   MICHAEL C. MOZER. Lessons from an Adaptive Home
