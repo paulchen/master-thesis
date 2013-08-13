@@ -395,3 +395,6 @@ NEW (2013-04-09):
 * ontology-design-fca.pdf
   Hele-Mai Haav. A Semi-automatic Method to Ontology Design by Using FCA
 
+* art_2009_LNGC_ApproachToComparing.pdf
+  L. M. Vilches-Blázquez, J. A. Ramos, F. J. López-Pellicer, O. Corcho, J. Nogueras-Iso. An approach to comparing different ontologies in the context of hydrographical information
+
