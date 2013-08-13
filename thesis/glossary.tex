@@ -1,198 +1,198 @@
 \newglossaryentry{temperature}{
-  name={temperature},
+  name={Temperature},
   description={Sub-concept of \emph{Weather phenomenon} representing temperature. The temperature value is specified using the property \emph{has temperature value}. Sub-concepts are \emph{Frost}, \emph{Cold}, \emph{Below room temperature}, \emph{Room temperature}, \emph{Above room temperature}, and \emph{Heat}},
   see={weather phenomenon,has temperature value,frost,cold,below room temperature,room temperature,above room temperature,heat}
 }
 \newglossaryentry{room temperature}{
-  name={room temperature},
+  name={Room temperature},
   description={Sub-concept of \emph{Temperature} representing a temperature of least \num{20} and at most \SI{25}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{above room temperature}{
-  name={above room temperature},
+  name={Above room temperature},
   description={Sub-concept of \emph{Temperature} representing a temperature of more than \num{25} and less than or equal to \SI{30}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{below room temperature}{
-  name={below room temperature},
+  name={Below room temperature},
   description={Sub-concept of \emph{Temperature} representing a temperature of more than or equal to \num{10} and less than \SI{20}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{cold}{
-  name={cold},
+  name={Cold},
   description={Sub-concept of \emph{Temperature} representing a temperature of more than or equal to \num{0} and less than \SI{10}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{frost}{
-  name={frost},
+  name={Frost},
   description={Sub-concept of \emph{Temperature} representing a temperature below \SI{0}{\celsius}},
   see={temperature}
 }
 \newglossaryentry{heat}{
-  name={heat},
+  name={Heat},
   description={Sub-concept of \emph{Temperature} representing a temperature above \SI{30}{\celsius}},
   see={temperature}
 }
 
 
 \newglossaryentry{sun position}{
-  name={sun position},
-  description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon (specified by the property \emph{has sun elevation angle} and its direction \emph{has sun direction}. Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction.},
+  name={Sun position},
+  description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon (specified by the property \emph{has sun elevation angle} and its direction \emph{has sun direction}. Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction},
   see={weather phenomenon,has sun elevation angle,has sun direction,day,solar twilight,twilight,civil twilight,nautical twilight,astronomical twilight,night,sun from north,sun from east,sun from south,sun from west}
 }
 \newglossaryentry{day}{
-  name={day},
-  description={Sub-concept of \emph{sun position} that represents the sun being exactly at or above the horizon},
+  name={Day},
+  description={Sub-concept of \emph{Sun position} that represents the sun being exactly at or above the horizon},
   see={sun position}
 }
 \newglossaryentry{night}{
-  name={night},
-  description={Sub-concept of \emph{sun position} that represents the sun being more than \num{18} degrees below horizon},
+  name={Night},
+  description={Sub-concept of \emph{Sun position} that represents the sun being more than \num{18} degrees below horizon},
   see={sun position}
 }
 \newglossaryentry{solar twilight}{
-  name={solar twilight},
-  description={Sub-concept of \emph{sun position} that represents the sun being above horizon, but less than \num{6} degrees above},
+  name={Solar twilight},
+  description={Sub-concept of \emph{Sun position} that represents the sun being above horizon, but less than \num{6} degrees above},
   see={sun position,day}
 }
 \newglossaryentry{sun below horizon}{
-  name={sun below horizon},
-  description={Sub-concept of \emph{sun position} that represents the sun being below the horizon},
+  name={Sun below horizon},
+  description={Sub-concept of \emph{Sun position} that represents the sun being below the horizon},
   see={sun position,night,twilight}
 }
 \newglossaryentry{twilight}{
-  name={twilight},
-  description={Sub-concept of \emph{sun position} that represents the sun being below horizon and at most \num{18} degrees below horizon},
+  name={Twilight},
+  description={Sub-concept of \emph{Sun position} that represents the sun being below horizon and at most \num{18} degrees below horizon},
   see={sun position,civil twilight,nautical twilight,astronomical twilight}
 }
 \newglossaryentry{civil twilight}{
-  name={civil twilight},
-  description={Sub-concept of \emph{sun position} that represents the sun being below horizon and at most \num{6} degrees below horizon},
+  name={Civil twilight},
+  description={Sub-concept of \emph{Sun position} that represents the sun being below horizon and at most \num{6} degrees below horizon},
   see={sun position,twilight}
 }
 \newglossaryentry{nautical twilight}{
-  name={nautical twilight},
-  description={Sub-concept of \emph{sun position} that represents the sun being more than \num{6} degrees and no more than \num{12} degrees below horizon},
+  name={Nautical twilight},
+  description={Sub-concept of \emph{Sun position} that represents the sun being more than \num{6} degrees and no more than \num{12} degrees below horizon},
   see={sun position,twilight}
 }
 \newglossaryentry{astronomical twilight}{
-  name={astronomical twilight},
-  description={Sub-concept of \emph{sun position} that represents the sun being more than \num{12} degrees and no more than \num{18} degrees below horizon},
+  name={Astronomical twilight},
+  description={Sub-concept of \emph{Sun position} that represents the sun being more than \num{12} degrees and no more than \num{18} degrees below horizon},
   see={sun position,twilight}
 }
 \newglossaryentry{sun from north}{
-  name={sun from north},
-  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{315} or at most \num{45} degrees},
+  name={Sun from north},
+  description={Sub-concept of \emph{Sun position} that represents a sun direction of more than \num{315} or at most \num{45} degrees},
   see={sun position}
 }
 \newglossaryentry{sun from east}{
-  name={sun from east},
-  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{45} and at most \num{135} degrees},
+  name={Sun from east},
+  description={Sub-concept of \emph{Sun position} that represents a sun direction of more than \num{45} and at most \num{135} degrees},
   see={sun position}
 }
 \newglossaryentry{sun from south}{
-  name={sun from south},
-  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{135} and at most \num{225} degrees},
+  name={Sun from south},
+  description={Sub-concept of \emph{Sun position} that represents a sun direction of more than \num{135} and at most \num{225} degrees},
   see={sun position}
 }
 \newglossaryentry{sun from west}{
-  name={sun from west},
-  description={Sub-concept of \emph{sun position} that represents a sun direction of more than \num{225} and at most \num{315} degrees},
+  name={Sun from west},
+  description={Sub-concept of \emph{Sun position} that represents a sun direction of more than \num{225} and at most \num{315} degrees},
   see={sun position}
 }
 
 
 
 \newglossaryentry{atmospheric pressure}{
-  name={atmospheric pressure},
+  name={Atmospheric pressure},
   description={Sub-concept of \emph{Weather phenomenon} representing atmospheric pressure. The value is specified using the property \emph{has pressure value}. Sub-concepts are \emph{Very low pressure}, \emph{Low pressure}, \emph{Average pressure}, \emph{High pressure}, and \emph{Very high pressure}},
   see={weather phenomenon,has pressure value,very low pressure,low pressure,average pressure,high pressure,very high pressure}
 }
 \newglossaryentry{very low pressure}{
-  name={very low pressure},
+  name={Very low pressure},
   description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of less than \SI{998}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{low pressure}{
-  name={low pressure},
+  name={Low pressure},
   description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \num{998} and less than \SI{1008}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{average pressure}{
-  name={average pressure},
+  name={Average pressure},
   description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \num{1008} and less than \SI{1018}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{high pressure}{
-  name={high pressure},
+  name={High pressure},
   description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \num{1018} and less than \SI{1028}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 \newglossaryentry{very high pressure}{
-  name={very high pressure},
+  name={Very high pressure},
   description={Sub-concept of \emph{Atmospheric pressure} representing a pressure of at least \SI{1028}{\hecto\pascal}},
   see={atmospheric pressure}
 }
 
 \newglossaryentry{wind}{
-  name={wind},
+  name={Wind},
   description={Sub-concept of \emph{Weather phenomenon} representing wind (speed and direction, the latter is optional). Wind speed is given using the property \emph{has wind speed}; wind direction is specified using \emph{has wind direction}. Sub-concepts are \emph{Directional wind}, \emph{North wind}, \emph{East wind}, \emph{South wind}, and \emph{West wind} for the wind direction, and \emph{Calm}, \emph{Light wind}, \emph{Strong wind}, \emph{Storm}, and \emph{Hurricane} for the wind speed},
   see={weather phenomenon,has wind speed,has wind direction,directional wind,north wind,east wind,south wind,west wind,calm,light wind,strong wind,storm,hurricane}
 }
 \newglossaryentry{directional wind}{
-  name={directional wind},
+  name={Directional wind},
   description={Sub-concept of \emph{Wind} including a direction},
   see={wind,north wind,east wind,south wind,west wind}
 }
 \newglossaryentry{north wind}{
-  name={north wind},
+  name={North wind},
   description={Sub-concept of \emph{Wind} representing wind approximately coming from the north, e.g. originating from a direction of at least \num{315} or less than \num{45} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{east wind}{
-  name={east wind},
+  name={East wind},
   description={Sub-concept of \emph{Wind} representing wind approximately coming from the east, e.g. originating from a direction of at least \num{45} and less than \num{135} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{south wind}{
-  name={south wind},
+  name={South wind},
   description={Sub-concept of \emph{Wind} representing wind approximately coming from the south, e.g. originating from a direction of at least \num{135} and less than \num{225} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{west wind}{
-  name={wind wind},
+  name={West wind},
   description={Sub-concept of \emph{Wind} representing wind  approximately coming from the wind, e.g. originating from a direction of at least \num{225} and less than \num{315} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{calm}{
-  name={calm},
+  name={Calm},
   description={Sub-concept of \emph{Wind} representing wind with a speed below \SI{1}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{light wind}{
-  name={light wind},
+  name={Light wind},
   description={Sub-concept of \emph{Wind} representing wind with a speed of at least \num{1} and less than \SI{10}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{strong wind}{
-  name={strong wind},
+  name={Strong wind},
   description={Sub-concept of \emph{Wind} representing wind with a speed of at least \num{10} and less than \SI{20}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{storm}{
-  name={storm},
+  name={Storm},
   description={Sub-concept of \emph{Wind} representing wind  with a speed of at least \SI{20}{\metre\per\second}},
   see={wind}
 }
 \newglossaryentry{hurricane}{
-  name={hurricane},
+  name={Hurricane},
   description={Sub-concept of \emph{Wind} representing wind with a speed of at least \SI{32}{\metre\per\second}},
   see={wind}
 }
 
 
 \newglossaryentry{cloud cover}{
-  name={cloud cover},
+  name={Cloud cover},
   description={Sub-concept of \emph{Weather phenomenon} describing the current cloud coverage in \emph{okta} (integer numbers from \num{0} to \num{9}) which is given using the property \emph{has cloud cover}; the altitude of the cloud layer is given by the property \emph{has cloud altitude}. Sub-concepts are \emph{Clear sky}, \emph{Partly cloudy}, \emph{Mostly cloudy}, \emph{Overcast}, and \emph{Unknown cloud cover}},
   see={weather phenomenon,has cloud cover,has cloud altitude,okta,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover}
 }
@@ -202,83 +202,83 @@
   see={cloud cover,clear sky,partly cloudy,mostly cloudy,overcast,unknown cloud cover}
 }
 \newglossaryentry{clear sky}{
-  name={clear sky},
+  name={Clear sky},
   description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{0}$\:$\emph{okta}},
    see={okta,cloud cover}
 }
 \newglossaryentry{partly cloudy}{
-  name={partly cloudy},
+  name={Partly cloudy},
   description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{1}, \num{2}, \num{3}, or \num{4}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 \newglossaryentry{mostly cloudy}{
-  name={mostly cloudy},
+  name={Mostly cloudy},
   description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{5}, \num{6}, or \num{7}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 \newglossaryentry{overcast}{
-  name={overcast},
+  name={Overcast},
   description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{8}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 \newglossaryentry{unknown cloud cover}{
-  name={unknown cloud cover},
+  name={Unknown cloud cover},
   description={Sub-concept of \emph{Cloud cover} representing cloud coverage that is reported to be \num{9}$\:$\emph{okta}},
   see={okta,cloud cover}
 }
 
 \newglossaryentry{weather report}{
-  name={weather report},
+  name={Weather report},
   description={Concept that summarises all data acquired at a certain \emph{observation time} for a certain \emph{location} from a \emph{weather source}, about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}},
   see={weather state,current weather report,forecast weather report,weather source,observation time,start time,end time,location}
 }
 \newglossaryentry{current weather report}{
-  name={current weather report},
+  name={Current weather report},
   description={Sub-concept of \emph{Weather report} describing the current weather},
   see={weather report}
 }
 \newglossaryentry{weather report from sensor}{
-  name={weather report from sensor},
+  name={Weather report from sensor},
   description={Sub-concept of \emph{weather report}; contains data obtained from one or more \emph{sensor sources}},
   see={weather report,sensor source}
 }
 \newglossaryentry{weather report from service}{
-  name={weather report from service},
+  name={Weather report from service},
   description={Sub-concept of \emph{weather report}; contains data obtained from an Internet \emph{service source}},
   see={weather report,service source}
 }
 \newglossaryentry{current weather report from sensor}{
-  name={current weather report from sensor},
+  name={Current weather report from sensor},
   description={Sub-concept of \emph{Current weather report}; compiled from data from a \emph{sensor source}},
   see={weather report,current weather report,sensor source}
 }
 \newglossaryentry{current weather report from service}{
-  name={current weather report from service},
+  name={Current weather report from service},
   description={Sub-concept of \emph{Current weather report}; compiled from data from a \emph{service source}},
   see={weather report,current weather report,service source}
 }
 \newglossaryentry{forecast weather report}{
-  name={forecast weather report},
+  name={Forecast weather report},
   description={Sub-concept of \emph{Weather report} for some time after its \emph{observation time}},
   see={weather report,observation time,short range weather report,medium range weather report,long range weather report}
 }
 \newglossaryentry{short range weather report}{
-  name={short range weather report},
+  name={Short range weather report},
   description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most \num{3} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report}, and \emph{Forecast 3 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{medium range weather report}{
-  name={medium range weather report},
+  name={Medium range weather report},
   description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than \num{3} hours and less than \num{12} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 6 hours weather report}, \emph{Forecast 9 hours weather report}, and \emph{Forecast 12 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{long range weather report}{
-  name={long range weather report},
+  name={Long range weather report},
   description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least \num{12} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report}, and \emph{Forecast 24 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{observation time}{
-  name={observation time},
+  name={Observation time},
   description={The time when the weather data was collected from the weather sensor or the Internet weather service, given by an instance of the concept \emph{Instant} from \emph{OWL-Time}\cite{owl-time}},
   see={weather report,has observation time,instant}
 }
@@ -288,12 +288,12 @@
   see={weather report,observation time}
 }
 \newglossaryentry{start time}{
-  name={start time},
+  name={Start time},
   description={The time a \emph{Weather report} is valid from, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{start time}},
   see={weather report,has start time,end time,observation time,interval}
 }
 \newglossaryentry{end time}{
-  name={end time},
+  name={End time},
   description={The time a \emph{Weather report} is valid until, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{end time}},
   see={weather report,has end time,start time,observation time,interval}
 }
@@ -308,7 +308,7 @@
   see={weather report,end time,has start time,observation time}
 }
 \newglossaryentry{priority}{
-  name={priority},
+  name={Priority},
   description={An integer value indicating which \emph{weather report} for a certain period of time is to be preferred over another \emph{weather report} for the same period of time},
   see={weather report,has priority}
 }
@@ -320,107 +320,107 @@
 
 
 \newglossaryentry{dew point}{
-  name={dew point},
+  name={Dew point},
   description={Sub-concept of \emph{Weather phenomenon} that describes the dew point. The value is given using the property \emph{has dew point value}},
   see={weather phenomenon,has dew point value}
 }
 
 \newglossaryentry{humidity}{
-  name={humidity},
+  name={Humidity},
   description={Sub-concept of \emph{Weather phenomenon} representing the relative humidity of the air; the humidity value is specified using the property \emph{has humidity value}. Sub-concepts are \emph{Very dry}, \emph{Dry}, \emph{Average humidity}, \emph{Moist}, and \emph{Very moist}},
   see={weather phenomenon,has humidity value,very dry,dry,average humidity,moist,very moist}
 }
 \newglossaryentry{very dry}{
-  name={very dry},
+  name={Very dry},
   description={Sub-concept of \emph{Humidity} describing relative humidity of less than \num{30} percent},
   see={humidity}
 }
 \newglossaryentry{dry}{
-  name={dry},
+  name={Dry},
   description={Sub-concept of \emph{Humidity} describing relative humidity of at least \num{30} and less than \num{40} percent},
   see={humidity}
 }
 \newglossaryentry{average humidity}{
-  name={average humidity},
+  name={Average humidity},
   description={Sub-concept of \emph{Humidity} describing relative humidity of at least \num{40} and at most \num{70} percent},
   see={humidity}
 }
 \newglossaryentry{moist}{
-  name={moist},
+  name={Moist},
   description={Sub-concept of \emph{Humidity} describing relative humidity of more than \num{70} and at most \num{80} percent},
   see={humidity}
 }
 \newglossaryentry{very moist}{
-  name={very moist},
+  name={Very moist},
   description={Sub-concept of \emph{Humidity} describing relative humidity of more than \num{80} percent},
   see={humidity}
 }
 
 
 \newglossaryentry{precipitation}{
-  name={precipitation},
+  name={Precipitation},
   description={Sub-concept of \emph{Weather phenomenon} that describes precipitation (intensity and probability). Intensity is specified by the property \emph{has precipitation intensity}, probability by \emph{has precipitation probability}. Sub-concepts are \emph{No rain}, \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain}, and \emph{Tropical storm rain}},
   see={weather phenomenon,has precipitation intensity,has precipitation probability,no rain,light rain,medium rain,heavy rain,extremely heavy rain,tropical storm rain}
 }
 \newglossaryentry{no rain}{
-  name={no rain},
+  name={No rain},
   description={Sub-concept of \emph{Precipitation} representing absence precipitation (because either the intensity of precipitation is \num{0})},
   see={precipitation}
 }
 \newglossaryentry{light rain}{
-  name={light rain},
+  name={Light rain},
   description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{0} and at most \SI{5}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{medium rain}{
-  name={medium rain},
+  name={Medium rain},
   description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{5} and at most \SI{20}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{heavy rain}{
-  name={heavy rain},
+  name={Heavy rain},
   description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{20} and at most \SI{50}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{extremely heavy rain}{
-  name={extremely heavy rain},
+  name={Extremely heavy rain},
   description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \num{50} and at most \SI{100}{\milli\metre\per\hour}},
   see={precipitation}
 }
 \newglossaryentry{tropical storm rain}{
-  name={tropical storm rain},
+  name={Tropical storm rain},
   description={Sub-concept of \emph{Precipitation} representing a precipitation probability greater than \num{0} and an intensity of more than \SI{100}{\milli\metre\per\hour}},
   see={precipitation}
 }
 
 
 \newglossaryentry{solar radiation}{
-  name={solar radiation},
+  name={Solar radiation},
   description={Sub-concept of \emph{Weather phenomenon} representing solar radiation; the value is specified using the property \emph{has solar radiation value}. Sub-concepts are \emph{No radiation}, \emph{Low radiation}, \emph{Mediumr radiation}, \emph{High radiation}, and \emph{Very high radiation}},
   see={weather phenomenon,has solar radiation value,no radiation,low radiation,medium radiation,high radiation,very high radiation}
 }
 \newglossaryentry{no radiation}{
-  name={no radiation},
+  name={No radiation},
   description={Sub-concept of \emph{Solar radiation} describing the absence of any solar radiation (\SI{0}{\watt\per\square\metre})},
   see={solar radiation}
 }
 \newglossaryentry{low radiation}{
-  name={low radiation},
+  name={Low radiation},
   description={Sub-concept of \emph{Solar radiation} describing solar radiation of more than \SI{0}{\watt\per\square\metre} and less than \SI{250}{\watt\per\square\metre}},
   see={solar radiation}
 }
 \newglossaryentry{medium radiation}{
-  name={medium radiation},
+  name={Medium radiation},
   description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \SI{250}{\watt\per\square\metre} and less than \SI{500}{\watt\per\square\metre}},
   see={solar radiation}
 }
 \newglossaryentry{high radiation}{
-  name={high radiation},
+  name={High radiation},
   description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \SI{500}{\watt\per\square\metre} and less than \SI{750}{\watt\per\square\metre}},
   see={solar radiation}
 }
 \newglossaryentry{very high radiation}{
-  name={very high radiation},
+  name={Very high radiation},
   description={Sub-concept of \emph{Solar radiation} describing solar radiation of at least \SI{750}{\watt\per\square\metre}},
   see={solar radiation}
 }
@@ -454,34 +454,34 @@
 
 
 \newglossaryentry{weather source}{
-  name={weather source},
+  name={Weather source},
   description={A concept representing a source for weather data, either a set of \emph{weather sensors} or an Internet \emph{weather service}. Sub-concepts are \emph{Sensor source}, and \emph{Service source}},
   see={sensor source,service source}
 }
 \newglossaryentry{sensor source}{
-  name={sensor source},
+  name={Sensor source},
   description={A sub-concept of \emph{Weather Source} representing a sensor or a set of sensors offering some kind of weather data},
   see={weather source}
 }
 \newglossaryentry{service source}{
-  name={service source},
+  name={Service source},
   description={A sub-concept of \emph{Weather Source} representing an Internet weather service offering some kind of weather data},
   see={weather source}
 }
 
 \newglossaryentry{weather condition}{
-  name={weather condition},
+  name={Weather condition},
   description={A concept describing the overall state of the weather, represented by (a combination of) these individuals: \emph{Sun}, \emph{Light clouds}, \emph{Partly cloudy}, \emph{Cloudy}, \emph{Fog}, \emph{Rain}, \emph{Snow}, \emph{Sleet}, and \emph{Thunder}},
   see={weather state,has condition}
 }
 \newglossaryentry{weather phenomenon}{
-  name={weather phenomenon},
+  name={Weather phenomenon},
   description={A concept that represents a certain weather element. Relevant weather elements are \emph{Atmospheric pressure}, \emph{Cloud cover}, \emph{Dew point}, \emph{Humidity}, \emph{Precipitation}, \emph{Solar radiation}, \emph{Sun position}, \emph{Temperature}, and \emph{Wind}},
   see={atmospheric pressure,cloud cover,dew point,humidity,precipitation,solar radiation,sun position,temperature,wind}
 }
 
 \newglossaryentry{weather state}{
-  name={weather state},
+  name={Weather state},
   description={A concept that represents all data available about weather phenomena for a certain \emph{Weather report}. A set of instances of the concept \emph{Weather phenomenon} are linked to every instance of \emph{Weather state}},
   see={weather report,weather phenomenon}
 }
@@ -601,108 +601,108 @@
 }
 
 \newglossaryentry{instant}{
-  name={instant},
+  name={Instant},
   description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}\cite{owl-time} that specifies an instant},
   see={temporal entity,interval}
 }
 \newglossaryentry{interval}{
-  name={interval},
+  name={Interval},
   description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}\cite{owl-time} that specifies a period of time by its length (not start and end time)},
   see={temporal entity,instant}
 }
 \newglossaryentry{temporal entity}{
-  name={temporal entity},
+  name={Temporal entity},
   description={Concept defined by \emph{OWL-Time}\cite{owl-time}; either an \emph{Instant} or an \emph{Interval}},
   see={instant,interval}
 }
 
 \newglossaryentry{calm weather}{
-  name={calm weather},
+  name={Calm weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Calm} and an instance of \emph{Light wind} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,calm,light wind}
 }
 \newglossaryentry{clear weather}{
-  name={clear weather},
+  name={Clear weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Clear sky} or \emph{Partly cloudy} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,clear sky,partly cloudy}
 }
 \newglossaryentry{cold weather}{
-  name={cold weather},
+  name={Cold weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Cold} or \emph{Frost} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,cold,frost}
 }
 \newglossaryentry{dry weather}{
-  name={dry weather},
+  name={Dry weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Dry} or \emph{Very dry} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,dry,very dry}
 }
 \newglossaryentry{fair weather}{
-  name={fair weather},
-  description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Calm weather}, \emph{Clear weather}, and \emph{No rain weather} at the same time.},
+  name={Fair weather},
+  description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Calm weather}, \emph{Clear weather}, and \emph{No rain weather} at the same time},
   see={weather state,calm weather,clear weather,no rain weather}
 }
 \newglossaryentry{moist weather}{
-  name={moist weather},
+  name={Moist weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Moist} or \emph{Very moist} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,moist,very moist}
 }
 \newglossaryentry{hot weather}{
-  name={hot weather},
+  name={Hot weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Heat} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,heat}
 }
 \newglossaryentry{airing weather}{
-  name={airing weather},
-  description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Fair weather} and \emph{Pleasant temperature weather} at the same time.},
+  name={Airing weather},
+  description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Fair weather} and \emph{Pleasant temperature weather} at the same time},
   see={weather state,fair weather,pleasant temperature weather}
 }
 \newglossaryentry{cloudy weather}{
-  name={cloudy weather},
+  name={Cloudy weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Mostly cloudy} or \emph{Overcast} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,mostly cloudy,overcast}
 }
 \newglossaryentry{pleasant temperature weather}{
-  name={pleasant temperature weather},
+  name={Pleasant temperature weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Below room temperature}, \emph{Room temperature}, or \emph{Above room temperature} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,below room temperature,room temperature,above room temperature}
 }
 \newglossaryentry{severe weather}{
-  name={severe weather},
+  name={Severe weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Stormy weather} and \emph{Very rainy weather} at the same time},
   see={weather state,stormy weather,very rainy weather}
 }
 \newglossaryentry{stormy weather}{
-  name={stormy weather},
+  name={Stormy weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Storm} or \emph{Hurricane} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,storm,hurricane}
 }
 \newglossaryentry{thunderstorm}{
-  name={thunderstorm},
+  name={Thunderstorm},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Severe weather} and is linked to the instance \emph{Thunder} of the concept \emph{Weather condition} via the property \emph{has condition} at the same time},
   see={weather state,has condition,weather condition,severe weather}
 }
 \newglossaryentry{very rainy weather}{
-  name={very rainy weather},
+  name={Very rainy weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Heavy rain}, \emph{Extremely heavy rain}, or \emph{Tropical storm rain} via the property \emph{has weather phenomenon}. By reasoning, it is a sub-concept of \emph{Rainy weather} as well},
   see={weather state,rainy weather,heavy rain,extremely heavy rain,tropical storm rain}
 }
 \newglossaryentry{windy weather}{
-  name={windy weather},
+  name={Windy weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is either an instance of \emph{Stormy weather} or linked to an instance of \emph{Strong wind} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,stormy weather,strong wind}
 }
 \newglossaryentry{no rain weather}{
-  name={no rain weather},
+  name={No rain weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{No rain} via the property \emph{has weather phenomenon}},
   see={}
 }
 \newglossaryentry{sun protection weather}{
-  name={sun protection weather},
+  name={Sun protection weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Clear weather} and linked to an instance of \emph{Day} via the property \emph{has weather phenomenon}},
   see={}
 }
 \newglossaryentry{rainy weather}{
-  name={rainy weather},
+  name={Rainy weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{Light rain}, \emph{Medium rain}, \emph{Heavy rain}, \emph{Extremely heavy rain}, or \emph{Tropical storm rain} via the property \emph{has weather phenomenon}},
   see={weather state,has weather phenomenon,light rain,medium rain,heavy rain,extremely heavy rain,tropical storm rain}
 }
