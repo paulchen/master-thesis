@@ -424,7 +424,7 @@ The sub-concepts of \Egls{weather state} are (in alphabetical order):
 \begin{itemize}
   \item \Egls{airing weather} is defined as the intersection of \Egls{fair weather} and \Egls{pleasant temperature weather}. \Egls{airing weather} describes a weather state that provides good conditions for airing: The outside temperature is neither too low nor too high, there is no precipitation, no or hardly any cloud cover, and at most light wind. For any other weather state, airing may be possible as well, but some drawbacks may occur.
   
-  \item \Egls{calm weather} is a weather state describing no or at least light wind. An instance of \Egls{calm weather} is related to an instance of either \Egls{calm} or \Egls{light wind} via the property \egls{has weather phenomenon}. \Egls{calm weather} is used to simplify the definition of \Egls{fair weather}.
+  \item \Egls{calm weather} is a weather state describing no or at least light wind. An instance of \Egls{calm weather} is related to an instance of either \Egls{calm} or \Egls{light wind} via the property \egls{has weather phenomenon}. \Egls{calm weather} is used to simplify the definition of \Egls{fair weather} and to answer wind-related competency questions, e.g. whether the windows may be opened.
   
   \item \Egls{clear weather} describes either no cloud cover or at most light cloud cover. An instance of \Egls{clear weather} is related to an instance of either \Egls{clear sky} or \Egls{partly cloudy} via the property \egls{has weather phenomenon}. \Egls{clear weather} is used to simplify the definitions of \Egls{fair weather} and \Egls{sun protection weather}.
   
@@ -434,32 +434,34 @@ The sub-concepts of \Egls{weather state} are (in alphabetical order):
   
   \item \Egls{dry weather} describes a low value of relative humidity. An instance of \Egls{dry weather} is related to an instance of either \Egls{dry} or \Egls{very dry} via the property \egls{has weather phenomenon}, i.e. the relative humidity is below \SI{40}{\percent}. At this value of relative humidity, it may be necessary to moisturise the air inside the building to ensure the inhabitants' comfort.
   
-  \item \Egls{fair weather}: % TODO
+  \item \Egls{fair weather} is the intersection of \Egls{calm weather}, \Egls{clear weather}, and \Egls{no rain weather}. Hence, \Egls{fair weather} represents no cloud or at most light cloud cover, at most light wind, and the absence of precipitation. The \eacs{OWL} reasoner infers an instance of \Egls{weather state} to be an instance of \Egls{fair weather} if and only if it is an instance of \Egls{calm weather}, \Egls{clear weather}, and \Egls{no rain weather}. \Egls{fair weather} represents a weather situation where only little adverse weather-related effects on the building are to be expected. Furthermore, the concept \Egls{fair weather} is used to simplify the definition of the concept \Egls{airing weather}.
   
-  \item \Egls{hot weather}: % TODO
+  \item \Egls{hot weather} is a weather state describing a temperature that is far above room temperature. An instance of \Egls{hot weather} is related to an instance of \Egls{heat} via the property \egls{has weather phenomenon}, i.e. during the state of \Egls{hot weather}, the outside temperature is above \SI{30}{\celsius}. At this temperature, it is probably necessary to cool the building.
   
-  \item \Egls{moist weather}: % TODO
+  \item \Egls{moist weather} describes a high value of relative humidity. An instance of \Egls{moist weather} is related to an instance of either \Egls{moist} or \Egls{very moist} via the property \egls{has weather phenomenon}, i.e. the relative humidity is above \SI{80}{\percent}. At this value of relative humidity, it may be necessary to dehumidify the air inside the building to maintain a certain level of comfort for the inhabitants.
   
-  \item \Egls{no awning weather}: % TODO
+  \item \Egls{no awning weather} represents a weather state where all awnings should be retracted due for safety reasons. \Egls{no awning weather} is the union of \egls{severe weather} and a \egls{weather state} that is related to an instance of \Egls{strong wind} via the property \egls{has weather phenomenon}. Hence, during the state of \Egls{no awning weather}, there is at storm together with heavy rain or strong wind. The \eacs{OWL} reasoner infers \Egls{no awning weather} to be a sub-concept of \Egls{windy weather} and a super-concept of \Egls{severe weather}.
   
-  \item \Egls{no rain weather}: % TODO
+  \item \Egls{no rain weather} represents the absence of precipitation, either because the precipitation probability is \num{0} or the precipitation intensity is \SI{0}{\milli\metre\per\hour}. An instance of \Egls{weather state} is defined to be an instance of \Egls{no rain weather} if a and only if it is related to an instance of \Egls{no rain} via the property \egls{has weather phenomenon}. \Egls{no rain weather} is used to simplify the definition of \Egls{fair weather} and to help finding answers to precipitation-related competency questions, e.g. whether irrigation of the garden is necessary.
   
-  \item \Egls{pleasant temperature weather}: % TODO
+  \item \Egls{pleasant temperature weather} is a weather state representing a temperature just below, at, or just above room temperature. \Egls{pleasant temperature weather} is defined as a \Egls{weather state} that is related to an instance of \Egls{below room temperature}, \Egls{room temperature}, or \Egls{above room temperature} via the property \egls{has weather phenomenon}, i.e. during the state of \Egls{pleasant temperature weather}, the outside temperature is at least \SI{10}{\celsius} and at most \SI{30}{\celsius}. At that temperature, heating or cooling the building may not be necessary. \Egls{pleasant temperature weather} is used to simplify the definition of \Egls{airing weather}.
   
-  \item \Egls{rainy weather}: % TODO
+  \item \Egls{rainy weather} represents a weather state with precipitation. An instance of \Egls{weather state} is defined to be an instance of \Egls{rainy weather} if and only if it is related to an instance of \Egls{light rain}, \Egls{medium rain}, \Egls{heavy rain}, \Egls{extremely heavy rain}, or \Egls{tropical storm rain} via the property \egls{has weather phenomenon}. Although not recognised by the \eacs{OWL} reasoner due to the \emph{Open World Assumption}, this weather state is the de-facto complement of \Egls{no rain}. As \Egls{no rain} can be used to answer competency questions related to precipitation. An \eacs{OWL} reasoner infers \Egls{rainy weather} to be a super-concept of \Egls{very rainy weather}.
 
-  \item \Egls{severe weather}: % TODO
+  \item \Egls{severe weather} is a weather state that represents the combination of strong wind or storm and heavy rain. \Egls{severe weather} is defined as the intersection of \Egls{stormy weather} and \Egls{very rainy weather}, i.e. severe weather involves a wind speed of more than \SI{20}{\metre\per\second}, a precipitation probability greater than \num{0}, and a precipitation intensity of above \SI{20}{\milli\metre\per\hour}. By definition, \Egls{severe weather} is a sub-class of \Egls{stormy weather} and \Egls{very rainy weather} and a super-class of \Egls{thunderstorm}; an \eacs{OWL} reasoner additionally infers \Egls{severe weather} to be sub-class of \Egls{no awning weather}. \Egls{severe weather} is used to answer competency questions such as ``Will there be severe weather'' and to simplify the definitions of the concept \Egls{thunderstorm}.
   
-  \item \Egls{stormy weather}: % TODO
+  \item \Egls{stormy weather} is a weather state that represents storm, i.e. a wind speed of more than \SI{20}{\metre\per\second}. An instance of \Egls{weather state} is defined to be an instance of \Egls{stormy weather} if and only if it is related to an instance of \Egls{storm} via the property \egls{has weather phenomenon}. \Egls{stormy weather} is used to answer wind-related competency questions and to simplify the definition of the concepts \Egls{windy weather} and \Egls{severe weather}.
   
-  \item \Egls{sun protection weather}: % TODO
+  \item \Egls{sun protection weather} represents a weather state that requires covering elements of the building that should not be exposed to direct sunlight; e.g. awnings should be extended. An instance of \Egls{sun protection weather} is defined to be an instance of \Egls{fair weather} that is related to an instance of \Egls{day} via the property \egls{has weather phenomenon}.
   
-  \item \Egls{thunderstorm}: % TODO
+  \item \Egls{thunderstorm} represents a state of severe weather including thunderstorms. An instance of \Egls{weather state} is defined to be an instance of \Egls{thunderstorm} if and only if it is an instance of \Egls{severe weather} and is related to the individual \emph{Thunder} via the property \egls{has weather condition}.
   
-  \item \Egls{very rainy weather}: % TODO
+  \item \Egls{very rainy weather} represents a weather state with heavy rain or snowfall. An instance of \Egls{weather state} is defined to be an instance of \Egls{very rainy weather} if and only if it is related to an instance of \Egls{heavy rain}, \Egls{extremely heavy rain}, or \Egls{tropical storm rain} via the property \egls{has weather phenomenon}. \Egls{very rainy weather} is suitable for providing answers to precipitation-related competency questions; furthermore, \Egls{very rainy weather} is used to simplify the definition of \Egls{severe weather}. An \eacs{OWL} reasoner infers \Egls{very rainy weather} to be a sub-concept of \Egls{rainy weather}.
   
-  \item \Egls{windy weather}: % TODO
+  \item \Egls{windy weather} is a weather state that represents strong wind or storm. An instance of \Egls{weather state} is defined to be an instance of \Egls{windy weather} if and only if it is an instance of \Egls{stormy weather} or it is related to an instance of \Egls{strong wind} via the property \egls{has weather phenomenon}. Although not recognised by an \eacs{OWL} reasoner (due to the \emph{Open World Assumption}), \Egls{windy weather} is the de-facto complement of \Egls{calm}. By an \eacs{OWL} reasoner, \Egls{windy weather} is inferred to be a super-concept of \Egls{no awning weather} and \Egls{stormy weather}. As the concept \Egls{calm}, \Egls{windy weather} is used to answer wind-related competency questions.
 \end{itemize}
+
+No other sub-concepts of \Egls{weather state} were introduced as no definitions could be identified that would further help answering any of the competency questions.
 
 \subsection{Binary relations diagram}
 \label{subsec:binary_relations_diagram}
