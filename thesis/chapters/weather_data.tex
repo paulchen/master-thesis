@@ -7,7 +7,7 @@ Based on the insights acquired from existing work in Chapter~\ref{ch:existing_wo
 \section{Weather information}
 \label{sec:weather_information}
 
-In order to identify which data is required for the \smarthomeweather ontology, it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centered around a set of \emph{competency questions}\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
+In order to identify which data is required for the \smarthomeweather ontology, it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centered around a set of \emph{competency questions}~\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
 
 Below are the questions that have been identified to be adequate competency questions for \smarthomeweather; the list stems from analysis of the processes at a smart home that may be influenced by weather.
 
@@ -59,9 +59,9 @@ There are several competing standards for \emph{fieldbus} systems, including:
   
   \item \textbf{KNX:} \emph{KNX} is an international standard (\emph{ISO/IEC 14543-3}~\cite{knx,knx_standard}) which is the successor to three previously used \emph{fieldbus} systems, namely \emph{European Home Systems Protocol} (\eacs{EHS}), \emph{BatiBUS} and \emph{European Installation Bus} (\eacs{EIB}). It supports the use of several physical communication media such as \emph{twisted pair} wiring, \emph{power line} networking, \emph{Ethernet}, \emph{infrared} or \emph{radio}. There is a wide range of devices that can be used for controlling a \emph{KNX} network.
   
-  \item \textbf{LonWorks:} Developed by \emph{Echelon Corporation}~\cite{echelon} in 1990, \emph{LonWorks} (\emph{Local Operating Network})~\cite{lonworks} is a widely used fieldbus standard; since 2008, the technology is standardised as \emph{ISO/IEC~14908}\cite{ISO14908}. \emph{LonWorks} supports \emph{twisted pair} cabling and \emph{power line} networking and can be controlled by any general-purpose processor which can use the \emph{LonTalk} protocol that is employed by \emph{LonWorks}.
+  \item \textbf{LonWorks:} Developed by \emph{Echelon Corporation}~\cite{echelon} in 1990, \emph{LonWorks} (\emph{Local Operating Network})~\cite{lonworks} is a widely used fieldbus standard; since 2008, the technology is standardised as \emph{ISO/IEC~14908}~\cite{ISO14908}. \emph{LonWorks} supports \emph{twisted pair} cabling and \emph{power line} networking and can be controlled by any general-purpose processor which can use the \emph{LonTalk} protocol that is employed by \emph{LonWorks}.
   
-  \item \textbf{BACnet:} \eacs{BACnet} (\emph{building automation and control networks})~\cite{bacnet} is another communications protocol which is internationally standardised in \emph{ISO~16484-5}\cite{ISO16484}. It employs several communication means such as \emph{Ethernet}, \emph{BACnet/IP}, \emph{Point-to-point connections} over \emph{RS-232} or \emph{LonWorks}' \emph{LonTalk}.
+  \item \textbf{BACnet:} \eacs{BACnet} (\emph{building automation and control networks})~\cite{bacnet} is another communications protocol which is internationally standardised in \emph{ISO~16484-5}~\cite{ISO16484}. It employs several communication means such as \emph{Ethernet}, \emph{BACnet/IP}, \emph{Point-to-point connections} over \emph{RS-232} or \emph{LonWorks}' \emph{LonTalk}.
   
   \item \textbf{LCN:} \eacs{LCN} (\emph{Local Control Network})~\cite{LCN} is a proprietary home automation system developed by \emph{Issendorf KG} in 1992. \eacs{LCN} is organised into \emph{\eacs{LCN} modules} that exchange data over a single data wire and the neutral wire power supply.
 \end{itemize}
@@ -487,7 +487,7 @@ is constructed, e.g.
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
 \end{lstlisting}
 
-for the city of Vienna, Austria (N~\SI {48.21}{\degree }, E~\SI {16.37}{\degree }, \SI {171}{\metre } above \eacs {MSL}). An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} \emph{Schema}\cite{xml-schema} definition that can be found online~\cite{yrno_schema}.
+for the city of Vienna, Austria (N~\SI {48.21}{\degree }, E~\SI {16.37}{\degree }, \SI {171}{\metre } above \eacs {MSL}). An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} \emph{Schema}~\cite{xml-schema} definition that can be found online~\cite{yrno_schema}.
 
 The structure of this \eacs{XML} document is as follows (attributes are omitted for better readability):
 

@@ -48,9 +48,9 @@ Other than its name suggests, \texttt{OntologyClass} is an interface that is imp
 
 The classes inside the package \texttt{model} are:
 \begin{itemize}
-  \item \texttt{GeographicalPosition} resembles the concept \Egls{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} that is imported into the \smarthomeweather ontology.
+  \item \texttt{GeographicalPosition} resembles the concept \Egls{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}~\cite{wgs84_vocabulary} that is imported into the \smarthomeweather ontology.
   
-  \item \texttt{TemporalEntity} corresponds to the concept \Egls{temporal entity} in the \emph{OWL-Time}\cite{owl-time} ontology. The are two sub-classes, \texttt{Instant} and \texttt{Interval} that resemble the concepts \Egls{instant} and \Egls{interval}, respectively.
+  \item \texttt{TemporalEntity} corresponds to the concept \Egls{temporal entity} in the \emph{OWL-Time}~\cite{owl-time} ontology. The are two sub-classes, \texttt{Instant} and \texttt{Interval} that resemble the concepts \Egls{instant} and \Egls{interval}, respectively.
   
   % TODO problem with overfull hbox
   \item \texttt{WeatherPhenomenon} corresponds to the concept \Egls{weather phenomenon} in the \smarthomeweather ontology. As it is an abstract class, only its subclasses \texttt{CloudCover}, \texttt{DewPoint}, \texttt{Humidity}, \texttt{Precipitation}, \texttt{Pressure}, \texttt{SolarRadiation}, \texttt{SunPosition}, \\ \texttt{Temperature} and \texttt{Wind} can be instantiated that each resemble the corresponding concept of the ontology.
@@ -69,7 +69,7 @@ Additionally, there is an enumeration named \texttt{WeatherConditions} having va
 \section{The application}
 \label{sec:importer_application}
 
-The \emph{Weather Importer} application basically performs three tasks when being launched: It reads the \smarthomeweather ontology in \emph{RDF/XML syntax}\cite{RDF_XML} from a file, modifies it in some way and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{\eacs{Turtle} syntax}\cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}. % TODO how is the ontology being modified?
+The \emph{Weather Importer} application basically performs three tasks when being launched: It reads the \smarthomeweather ontology in \emph{RDF/XML syntax}~\cite{RDF_XML} from a file, modifies it in some way and writes the modified ontology into another file, either in \emph{RDF/XML syntax} or in \emph{\eacs{Turtle} syntax}~\cite{Turtle}. There are four operation modes that are covered below: \texttt{fetch}, \texttt{timestamps}, \texttt{remove} and \texttt{turtle}. % TODO how is the ontology being modified?
 
 The application depends on the \emph{Apache Jena} framework~\cite{apache_jena} (successfully tested with 2.10.0). For the unit tests (see Section~\ref{sec:importer_tests}), \emph{JUnit}~\cite{junit} (4.11), the \emph{Pellet} \eacs{OWL} 2 reasoner~\cite{pellet} (2.3.0) and \emph{Cobertura}~\cite{cobertura} (1.9.4.1) are used. The version numbers given in parentheses give the versions of the most recent releases of the libraries at the time of writing. Newer releases may work, but have not been tested.
 
@@ -99,12 +99,12 @@ As most weather services do not provide data for arbitrary points in time, the \
   
   \item If there is more than one \texttt{WeatherReport} object covering the same period of time, all data from these objects are merged into one object; the remaining objects will be discarded.
   
-  \item In case there is no data for a period of time, it is calculated using linear interpolation from data before and after the missing period\cite{maths}.
+  \item In case there is no data for a period of time, it is calculated using linear interpolation from data before and after the missing period~\cite{maths}.
   
-  \item An instance of \texttt{SunPosition} is associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the \emph{PSA algorithm}\cite{PSA_algorithm} (refer to Section~\ref{sec:sun_position} for details); the C++ reference implementation of the \emph{PSA algorithm}~\cite{psa_online} was ported to Java.
+  \item An instance of \texttt{SunPosition} is associated to each instance of \texttt{WeatherState}. The sun position data is calculated using the \emph{PSA algorithm}~\cite{PSA_algorithm} (refer to Section~\ref{sec:sun_position} for details); the C++ reference implementation of the \emph{PSA algorithm}~\cite{psa_online} was ported to Java.
 \end{itemize}
 
-Additionally, the class \texttt{WeatherState} provides the method \texttt{mergePhenomena()} which merges all instances of \texttt{WeatherPhenomenon} of the same type that are associated to that instance of \texttt{WeatherState}. Actual merging of values takes place in the constructors of the subclasses of \texttt{WeatherPhenomenon}; all current implementations merge values by calculating the arithmetic mean of all values provided\cite{maths}.
+Additionally, the class \texttt{WeatherState} provides the method \texttt{mergePhenomena()} which merges all instances of \texttt{WeatherPhenomenon} of the same type that are associated to that instance of \texttt{WeatherState}. Actual merging of values takes place in the constructors of the subclasses of \texttt{WeatherPhenomenon}; all current implementations merge values by calculating the arithmetic mean of all values provided~\cite{maths}.
 
 Both methods provide the developer of an implementation of the interface \texttt{Importer} with more flexibility on how to import weather data: There is no need to create a separate instance of \texttt{WeatherReport} for every possible period of time; each \texttt{WeatherReport} object may cover more than one hour and more than one instance of each subclass of \texttt{WeatherPhenomenon} may be associated to each instance of \texttt{WeatherState}. The latter eases merging values from several sources (e.g. an Internet weather service and a set of weather sensors).
 

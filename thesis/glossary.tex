@@ -279,7 +279,7 @@
 }
 \newglossaryentry{observation time}{
   name={Observation time},
-  description={The time when the weather data was collected from the weather sensor(s) or the Internet weather service, given by an instance of the concept \emph{Instant} from \emph{OWL-Time}\cite{owl-time}},
+  description={The time when the weather data was collected from the weather sensor(s) or the Internet weather service, given by an instance of the concept \emph{Instant} from \emph{OWL-Time}~\cite{owl-time}},
   see={weather report,has observation time,instant}
 }
 \newglossaryentry{has observation time}{
@@ -289,12 +289,12 @@
 }
 \newglossaryentry{start time}{
   name={Start time},
-  description={The time a \emph{Weather report} is valid from, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{Observation time} and its \emph{Start time}},
+  description={The time a \emph{Weather report} is valid from, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}~\cite{owl-time} that specifies the interval between the report's \emph{Observation time} and its \emph{Start time}},
   see={weather report,has start time,end time,observation time,interval}
 }
 \newglossaryentry{end time}{
   name={End time},
-  description={The time a \emph{Weather report} is valid until, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{Observation time} and its \emph{End time}},
+  description={The time a \emph{Weather report} is valid until, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}~\cite{owl-time} that specifies the interval between the report's \emph{Observation time} and its \emph{End time}},
   see={weather report,has end time,start time,observation time,interval}
 }
 \newglossaryentry{has start time}{
@@ -428,27 +428,27 @@
 
 \newglossaryentry{location}{
   name={location},
-  description={An object property of \emph{Weather report} the geographical position the \emph{Weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}; links to an instance of the concept \emph{Point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}},
+  description={An object property of \emph{Weather report} the geographical position the \emph{Weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model~\cite{WGS84}; links to an instance of the concept \emph{Point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}~\cite{wgs84_vocabulary}},
   see={weather report,lat,long,alt}
 }
 \newglossaryentry{point}{
   name={Point},
-  description={A concept defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} representing a location which is given by \emph{alt}(itude), \emph{long}(itude), and \emph{lat}(itude). It is connected from an entity using the property \emph{location}},
+  description={A concept defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}~\cite{wgs84_vocabulary} representing a location which is given by \emph{alt}(itude), \emph{long}(itude), and \emph{lat}(itude). It is connected from an entity using the property \emph{location}},
   see={lat,long,alt,location}
 }
 \newglossaryentry{lat}{
   name={lat},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the latitude of the \emph{Point} a \emph{Weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}~\cite{wgs84_vocabulary} specifying the latitude of the \emph{Point} a \emph{Weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
   see={weather report,point}
 }
 \newglossaryentry{long}{
   name={long},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the longitude of the \emph{Point} a \emph{Weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}~\cite{wgs84_vocabulary} specifying the longitude of the \emph{Point} a \emph{Weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
   see={weather report,point}
 }
 \newglossaryentry{alt}{
   name={alt},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the height above \eacs{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{Weather report} is valid for, in metres},
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}~\cite{wgs84_vocabulary} specifying the height above \eacs{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{Weather report} is valid for, in metres},
   see={weather report,point}
 }
 
@@ -525,67 +525,67 @@
 
 \newglossaryentry{has cloud altitude}{
   name={has cloud altitude},
-  description={Property that specifies the cloud altitude of a cloud layer represented by an instance of \emph{Cloud cover}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the cloud altitude of a cloud layer represented by an instance of \emph{Cloud cover}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={cloud cover}
 }
 \newglossaryentry{has cloud cover}{
   name={has cloud cover},
-  description={Property that specifies the cloud coverage of a cloud layer represented by an instance of \emph{Cloud cover}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the cloud coverage of a cloud layer represented by an instance of \emph{Cloud cover}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={cloud cover}
 }
 \newglossaryentry{has dew point value}{
   name={has dew point value},
-  description={Property that specifies the dew point value of an instance of \emph{Dew point}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the dew point value of an instance of \emph{Dew point}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={dew point}
 }
 \newglossaryentry{has humidity value}{
   name={has humidity value},
-  description={Property that specifies the humidity value of an instance of \emph{Humidity}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the humidity value of an instance of \emph{Humidity}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={humidity}
 }
 \newglossaryentry{has precipitation probability}{
   name={has precipitation probability},
-  description={Property that specifies the precipitation probability of an instance of \emph{Precipitation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the precipitation probability of an instance of \emph{Precipitation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={precipitation}
 }
 \newglossaryentry{has precipitation intensity}{
   name={has precipitation intensity},
-  description={Property that specifies the precipitation intensity of an instance of \emph{Precipitation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the precipitation intensity of an instance of \emph{Precipitation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={precipitation}
 }
 \newglossaryentry{has pressure value}{
   name={has pressure value},
-  description={Property that specifies the pressure value of an instance of \emph{Atmospheric pressure}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the pressure value of an instance of \emph{Atmospheric pressure}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={atmospheric pressure}
 }
 \newglossaryentry{has solar radiation value}{
   name={has solar radiation value},
-  description={Property that specifies the solar radiation value of an instance of \emph{Solar radiation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the solar radiation value of an instance of \emph{Solar radiation}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={solar radiation}
 }
 \newglossaryentry{has sun direction}{
   name={has sun direction},
-  description={Property that specifies the sun's direction of an instance of \emph{Sun position}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the sun's direction of an instance of \emph{Sun position}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={sun position}
 }
 \newglossaryentry{has sun elevation angle}{
   name={has sun elevation angle},
-  description={Property that specifies the sun's elevation angle (the sun's height above horizon) of an instance of \emph{Sun position}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the sun's elevation angle (the sun's height above horizon) of an instance of \emph{Sun position}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={sun position}
 }
 \newglossaryentry{has temperature value}{
   name={has temperature value},
-  description={Property that specifies the temperature value of an instance of \emph{Temperature}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the temperature value of an instance of \emph{Temperature}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={temperature}
 }
 \newglossaryentry{has wind direction}{
   name={has wind direction},
-  description={Property that specifies the wind direction of an instance of \emph{Wind}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the wind direction of an instance of \emph{Wind}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={wind}
 }
 \newglossaryentry{has wind speed}{
   name={has wind speed},
-  description={Property that specifies the wind speed of an instance of \emph{Wind}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}\cite{MUO} to provide both a value and its unit},
+  description={Property that specifies the wind speed of an instance of \emph{Wind}. This property makes use of concepts and properties defined by the \emph{Measurement Units Ontology}~\cite{MUO} to provide both a value and its unit},
   see={wind}
 }
 
@@ -602,17 +602,17 @@
 
 \newglossaryentry{instant}{
   name={Instant},
-  description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}\cite{owl-time} that specifies an instant},
+  description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}~\cite{owl-time} that specifies an instant},
   see={temporal entity,interval}
 }
 \newglossaryentry{interval}{
   name={Interval},
-  description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}\cite{owl-time} that specifies a period of time by its length (not start and end time)},
+  description={Sub-concept of \emph{Temporal entity} defined by \emph{OWL-Time}~\cite{owl-time} that specifies a period of time by its length (not start and end time)},
   see={temporal entity,instant}
 }
 \newglossaryentry{temporal entity}{
   name={Temporal entity},
-  description={Concept defined by \emph{OWL-Time}\cite{owl-time}; either an \emph{Instant} or an \emph{Interval}},
+  description={Concept defined by \emph{OWL-Time}~\cite{owl-time}; either an \emph{Instant} or an \emph{Interval}},
   see={instant,interval}
 }
 
