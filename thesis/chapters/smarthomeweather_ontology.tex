@@ -237,6 +237,8 @@ The only predefined individuals are instances of the concept \Egls{weather condi
 
 As stated in Section~\ref{sec:ontology_glossary}, there are five top-level concepts; all other concepts are sub-concepts to these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These \emph{Concept-classification trees} are presented in this section.
 
+\subsubsection{Weather condition}
+
 A \Egls{weather condition} does not have any sub-concepts. Hence, its classification tree which is shown in Figure~\ref{fig:tree_weather_condition} consists of only one element.
 
 \begin{figure}
@@ -245,6 +247,8 @@ A \Egls{weather condition} does not have any sub-concepts. Hence, its classifica
   \caption{Concept-classification tree for \Egls{weather condition}}
   \label{fig:tree_weather_condition}
 \end{figure}
+
+\subsubsection{Weather phenomenon}
 
 A \Egls{weather phenomenon} represents a certain weather element. Every specific weather element is a sub-concept of \Egls{weather phenomenon}; the evolving tree is shown in Figure~\ref{fig:tree_weather_phenomenon}. For sake of clarity, this tree is broken up to several diagrams; all sub-concepts of sub-concepts of \Egls{weather phenomenon} are not shown in Figure~\ref{fig:tree_weather_phenomenon}. There is a separate diagram for each sub-concept of \Egls{weather phenomenon}:
 
@@ -346,6 +350,8 @@ There is no separate diagram for \Egls{dew point} as that concept does not have 
 
 Refer to Section~\ref{sec:appendix_conceptualisation} in the appendix for a tabular display of the sub-concepts of \Egls{weather phenomenon}.
 
+\subsubsection{Weather report}
+
 A \Egls{weather report} has two attributes that define its main characteristics: \egls{has start time} and \egls{has source}. As discussed in Section~\ref{sec:ontology_glossary}, a number of sub-concepts is defined in order to reflect different values of these two attributes. The resulting concept-classification tree is shown in Figure~\ref{fig:tree_weather_report}.
 
 \begin{figure}
@@ -370,6 +376,8 @@ A \Egls{weather source} can either be a \Egls{sensor source} or a \Egls{service 
   \caption{Concept-classification tree for \Egls{weather source}}
   \label{fig:tree_weather_source}
 \end{figure}
+
+\subsubsection{Weather state}
 
 A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see Section~\ref{sec:ontology_glossary}). The resulting tree is seen in Figure~\ref{fig:tree_weather_state}.
 
@@ -424,7 +432,7 @@ The sub-concepts of \Egls{weather state} are (in alphabetical order):
   
   \item \Egls{cold weather} is a weather state describing a temperature that is far below room temperature. An instance of \Egls{cold weather} is related to an instance of either \Egls{cold} or \Egls{frost} via the property \egls{has weather phenomenon}; i.e. during the state of \Egls{cold weather}, the outside temperature is below \SI{10}{\celsius}. At this temperature, it is probably necessary to heat the building.
   
-  \item \Egls{dry weather}: % TODO
+  \item \Egls{dry weather} describes a low value of relative humidity. An instance of \Egls{dry weather} is related to an instance of either \Egls{dry} or \Egls{very dry} via the property \egls{has weather phenomenon}, i.e. the relative humidity is below \SI{40}{\percent}. At this value of relative humidity, it may be necessary to moisturise the air inside the building to ensure the inhabitants' comfort.
   
   \item \Egls{fair weather}: % TODO
   
@@ -452,9 +460,6 @@ The sub-concepts of \Egls{weather state} are (in alphabetical order):
   
   \item \Egls{windy weather}: % TODO
 \end{itemize}
-
-
-The sub-concept relationships as shown in Figure~\ref{fig:tree_weather_state} are a result of the reasoning process and stem from the definitions of the concepts. % TODO
 
 \subsection{Binary relations diagram}
 \label{subsec:binary_relations_diagram}
