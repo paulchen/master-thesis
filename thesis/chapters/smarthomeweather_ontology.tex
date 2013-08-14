@@ -197,7 +197,7 @@ Thus, the concepts that can be found in \smarthomeweather are:
   \item \Egls{weather condition}
   \item \Egls{weather phenomenon}:
     \begin{itemize}
-      \item \Egls{atmospheric pressure}: \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, \Egls{very high pressure}
+      \item \Egls{atmospheric pressure}: \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, \Egls{very high pressure}.
       \item \Egls{cloud cover}: \Egls{clear sky}, \Egls{partly cloudy}, \Egls{mostly cloudy}, \Egls{overcast}, \Egls{unknown cloud cover}.
       \item \Egls{dew point}.
       \item \Egls{humidity}: \Egls{very dry}, \Egls{dry}, \Egls{average humidity}, \Egls{moist}, \Egls{very moist}.
@@ -207,9 +207,9 @@ Thus, the concepts that can be found in \smarthomeweather are:
       \item \Egls{temperature}: \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{room temperature}, \Egls{above room temperature}, \Egls{heat}.
       \item \Egls{wind}: \Egls{directional wind}, \Egls{north wind}, \Egls{east wind}, \Egls{south wind}, \Egls{west wind}, \Egls{calm}, \Egls{light wind}, \Egls{strong wind}, \Egls{storm}, \Egls{hurricane}.
     \end{itemize}
-  \item \Egls{weather report}: \Egls{weather report from sensor}, \Egls{weather report from service}, \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}, \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report}, …, \emph{Forecast 24 hours weather report}
+  \item \Egls{weather report}: \Egls{weather report from sensor}, \Egls{weather report from service}, \Egls{current weather report}, \Egls{current weather report from sensor}, \Egls{current weather report from service}, \Egls{forecast weather report}, \Egls{short range weather report}, \Egls{medium range weather report}, \Egls{long range weather report}, \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report}, …, \emph{Forecast 24 hours weather report}.
   \item \Egls{weather source}: \Egls{sensor source}, \Egls{service source}.
-  \item \Egls{weather state}: \egls{airing weather}, \egls{calm weather}, \egls{clear weather}, \egls{cloudy weather}, \egls{cold weather}, \egls{dry weather}, \egls{fair weather}, \egls{hot weather}, \egls{moist weather}, \egls{no rain weather}, \egls{pleasant temperature weather}, \egls{rainy weather}, \egls{severe weather}, \egls{sun protection weather}, \egls{thunderstorm}, \egls{very rainy weather}, \egls{windy weather}
+  \item \Egls{weather state}: \Egls{airing weather}, \Egls{calm weather}, \Egls{clear weather}, \Egls{cloudy weather}, \Egls{cold weather}, \Egls{dry weather}, \Egls{fair weather}, \Egls{hot weather}, \Egls{moist weather}, \Egls{no awning weather}, \Egls{no rain weather}, \Egls{pleasant temperature weather}, \Egls{rainy weather}, \Egls{severe weather}, \Egls{stormy weather}, \Egls{sun protection weather}, \Egls{thunderstorm}, \Egls{very rainy weather}, \Egls{windy weather}.
 \end{itemize}
 
 \paragraph{Relations:}
@@ -372,6 +372,53 @@ A \Egls{weather source} can either be a \Egls{sensor source} or a \Egls{service 
 \end{figure}
 
 A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see Section~\ref{sec:ontology_glossary}). The resulting tree is seen in Figure~\ref{fig:tree_weather_state}.
+
+The idea behind this approach is to provide simple answers to some of the competency questions. Except the concept \Egls{weather state}, every concept from this tree is defined to be a sub-concept of \Egls{weather state} and to be related to a set of instances of \Egls{weather phenomenon} and \Egls{weather condition} that have certain properties. In total, there are \num{19} sub-concepts of \Egls{weather state}; their definitions and their roles in the ontologies and in performing weather-related tasks in a smart home are presented below.
+
+The sub-concepts of \Egls{weather state} are:
+
+\begin{itemize}
+  \item \Egls{airing weather}: % TODO
+  
+  \item \Egls{calm weather}: % TODO
+  
+  \item \Egls{clear weather}: % TODO
+  
+  \item \Egls{cloudy weather}: % TODO
+  
+  \item \Egls{cold weather}: % TODO
+  
+  \item \Egls{dry weather}: % TODO
+  
+  \item \Egls{fair weather}: % TODO
+  
+  \item \Egls{hot weather}: % TODO
+  
+  \item \Egls{moist weather}: % TODO
+  
+  \item \Egls{no awning weather}: % TODO
+  
+  \item \Egls{no rain weather}: % TODO
+  
+  \item \Egls{pleasant temperature weather}: % TODO
+  
+  \item \Egls{rainy weather}: % TODO
+
+  \item \Egls{severe weather}: % TODO
+  
+  \item \Egls{stormy weather}: % TODO
+  
+  \item \Egls{sun protection weather}: % TODO
+  
+  \item \Egls{thunderstorm}: % TODO
+  
+  \item \Egls{very rainy weather}: % TODO
+  
+  \item \Egls{windy weather}: % TODO
+\end{itemize}
+
+
+The sub-concept relationships as shown in Figure~\ref{fig:tree_weather_state} are a result of the reasoning process and stem from the definitions of the concepts. % TODO
 
 \begin{figure}
   \centering
