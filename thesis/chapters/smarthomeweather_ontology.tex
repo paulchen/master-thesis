@@ -383,7 +383,6 @@ A \Egls{weather state} represents the set of weather phenomena that belong to a 
 
 \begin{figure}
   \centering
-  % TODO description for this figure
   \includegraphics[width=\textwidth]{figures/diagrams/weather-state.pdf}
   \caption{Concept-classification tree for \Egls{weather state}. All properties are of type \emph{rdfs:subClassOf}}
   \label{fig:tree_weather_state}
@@ -395,7 +394,22 @@ The idea behind this approach is to provide simple answers to some of the compet
   \item Some concepts (\Egls{calm weather}, \Egls{clear weather}, \Egls{cloudy weather}, \Egls{cold weather}, \Egls{dry weather}, \Egls{hot weather}, \Egls{moist weather}, \Egls{no rain weather}, \Egls{pleasant temperature weather}, \Egls{rainy weather}, \Egls{stormy weather}, and \Egls{very rainy weather}) are defined as sub-concepts of \Egls{weather state}; additionally, an instance of \Egls{weather state} must be related to certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} to be an instance of one of these sub-concepts. For instance, an instance of \Egls{calm weather} is defined to be an instance of \Egls{weather state} having a property \egls{has weather phenomenon} that relates an instance of \Egls{calm} or \Egls{light wind} to it:
   
   \begin{lstlisting}
-TODO example code
+weather:CalmWeather rdf:type owl:Class ;
+  owl:equivalentClass [ rdf:type owl:Class ;
+    owl:intersectionOf ( weather:WeatherState
+      [ rdf:type owl:Class ;
+        owl:unionOf ( [ rdf:type owl:Restriction ;
+          owl:onProperty weather:hasWeatherPhenomenon ;
+          owl:someValuesFrom weather:Calm
+        ]
+        [ rdf:type owl:Restriction ;
+          owl:onProperty weather:hasWeatherPhenomenon ;
+          owl:someValuesFrom weather:LightWind
+        ]
+      )
+    ]  
+  )
+] .
   \end{lstlisting}
   
   Some sub-concept relationships of these concepts (e.g. \Egls{very rainy weather} being a sub-concept of \Egls{rainy weather}) are inferred by the \eacs{OWL} reasoner.
@@ -403,15 +417,28 @@ TODO example code
   \item Some other concepts (\Egls{airing weather}, \Egls{fair weather}, and \Egls{severe weather}) are defined as either the union or the intersection of a set of other sub-concepts of \Egls{weather state}, e.g. \Egls{airing weather} is the intersection of \Egls{fair weather} and \Egls{pleasant temperature weather}. Hence, an instance of \Egls{weather state} must be an instance of both \Egls{fair weather} and \Egls{pleasant temperature weather} to be an instance of \Egls{airing weather}:
   
   \begin{lstlisting}
-TODO example code
+:AiringWeather rdf:type owl:Class ;
+  owl:equivalentClass [ rdf:type owl:Class ;
+    owl:intersectionOf ( :FairWeather
+      :PleasantTemperatureWeather
+    )
+  ] .
   \end{lstlisting}
   
-  In the case of these concepts, the \eacs{OWL} reasoner does not infer any sub-concept relationships that are not explicitely defined.
+  In the case of these concepts, the \eacs{OWL} reasoner does not infer any sub-concept relationships that are not explicitly defined.
   
   \item All other concepts (\Egls{no awning weather}, \Egls{sun protection weather}, \Egls{thunderstorm}, and \Egls{windy weather}) are a combination of the first two ways to define the concepts, i.e. an instance of one of these concepts is an instance of at least one other sub-concept of \Egls{weather state} and/or is related to one or more certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} at the same time. For instance, an instance of \Egls{sun protection weather} must be an instance of \Egls{clear weather} that is related to an instance of \Egls{day} via the property \egls{has weather phenomenon}:
   
   \begin{lstlisting}
-TODO example code
+:SunProtectionWeather rdf:type owl:Class ;
+  owl:equivalentClass [ rdf:type owl:Class ;
+    owl:intersectionOf ( :ClearWeather
+      [ rdf:type owl:Restriction ;
+        owl:onProperty :hasWeatherPhenomenon ;
+        owl:someValuesFrom :Day
+      ]
+    )
+  ] .
   \end{lstlisting}
   
   Some sub-concept relationships of these concepts are again inferred by the \eacs{OWL} reasoner.
@@ -525,6 +552,7 @@ Section~\ref{sec:implementation} describes the reuse of the aforementioned ontol
 \label{sec:implementation}
 
 % TODO reasoning
+% TODO reference conceptualisation section
 
 After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
