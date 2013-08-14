@@ -37,7 +37,7 @@
 
 \newglossaryentry{sun position}{
   name={Sun position},
-  description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon (specified by the property \emph{has sun elevation angle} and its direction \emph{has sun direction}. Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction},
+  description={Sub-concept of \emph{Weather phenomenon} describing the position of the sun, given by its elevation above horizon (specified by the property \emph{has sun elevation angle}) and its direction (specified by the property \emph{has sun direction}). Sub-concepts are \emph{Day}, \emph{Solar twilight}, \emph{Twilight}, \emph{Civil twilight}, \emph{Nautical twilight}, \emph{Astronomical twilight}, and \emph{Night} for the elevation above horizon, and \emph{Sun from north}, \emph{Sun from east}, \emph{Sun from South}, and \emph{Sun from West} for the direction},
   see={weather phenomenon,has sun elevation angle,has sun direction,day,solar twilight,twilight,civil twilight,nautical twilight,astronomical twilight,night,sun from north,sun from east,sun from south,sun from west}
 }
 \newglossaryentry{day}{
@@ -161,7 +161,7 @@
 }
 \newglossaryentry{west wind}{
   name={West wind},
-  description={Sub-concept of \emph{Wind} representing wind  approximately coming from the wind, e.g. originating from a direction of at least \num{225} and less than \num{315} degrees},
+  description={Sub-concept of \emph{Wind} representing wind  approximately coming from the west, e.g. originating from a direction of at least \num{225} and less than \num{315} degrees},
   see={wind,directional wind}
 }
 \newglossaryentry{calm}{
@@ -229,7 +229,7 @@
 
 \newglossaryentry{weather report}{
   name={Weather report},
-  description={Concept that summarises all data acquired at a certain \emph{observation time} for a certain \emph{location} from a \emph{weather source}, about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}},
+  description={Concept that summarises all data acquired at a certain \emph{Observation time} for a certain \emph{location} from a \emph{Weather source}, about the current weather or the weather some time in the future. Exactly one \emph{Weather state} is linked to each \emph{Weather report}},
   see={weather state,current weather report,forecast weather report,weather source,observation time,start time,end time,location}
 }
 \newglossaryentry{current weather report}{
@@ -239,82 +239,82 @@
 }
 \newglossaryentry{weather report from sensor}{
   name={Weather report from sensor},
-  description={Sub-concept of \emph{weather report}; contains data obtained from one or more \emph{sensor sources}},
+  description={Sub-concept of \emph{Weather report}; contains data obtained from one or more \emph{Sensor sources}},
   see={weather report,sensor source}
 }
 \newglossaryentry{weather report from service}{
   name={Weather report from service},
-  description={Sub-concept of \emph{weather report}; contains data obtained from an Internet \emph{service source}},
+  description={Sub-concept of \emph{Weather report}; contains data obtained from an Internet \emph{Service source}},
   see={weather report,service source}
 }
 \newglossaryentry{current weather report from sensor}{
   name={Current weather report from sensor},
-  description={Sub-concept of \emph{Current weather report}; compiled from data from a \emph{sensor source}},
+  description={Sub-concept of \emph{Current weather report}; compiled from data from a \emph{Sensor source}},
   see={weather report,current weather report,sensor source}
 }
 \newglossaryentry{current weather report from service}{
   name={Current weather report from service},
-  description={Sub-concept of \emph{Current weather report}; compiled from data from a \emph{service source}},
+  description={Sub-concept of \emph{Current weather report}; compiled from data from a \emph{Service source}},
   see={weather report,current weather report,service source}
 }
 \newglossaryentry{forecast weather report}{
   name={Forecast weather report},
-  description={Sub-concept of \emph{Weather report} for some time after its \emph{observation time}},
+  description={Sub-concept of \emph{Weather report} for some time after its \emph{Observation time}},
   see={weather report,observation time,short range weather report,medium range weather report,long range weather report}
 }
 \newglossaryentry{short range weather report}{
   name={Short range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most \num{3} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report}, and \emph{Forecast 3 hours weather report}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at most \num{3} hours in the future relative to the \emph{Observation time}. Its sub-concepts are \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report}, and \emph{Forecast 3 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{medium range weather report}{
   name={Medium range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than \num{3} hours and less than \num{12} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 6 hours weather report}, \emph{Forecast 9 hours weather report}, and \emph{Forecast 12 hours weather report}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time more than \num{3} hours and less than \num{12} hours in the future relative to the \emph{Observation time}. Its sub-concepts are \emph{Forecast 6 hours weather report}, \emph{Forecast 9 hours weather report}, and \emph{Forecast 12 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{long range weather report}{
   name={Long range weather report},
-  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least \num{12} hours in the future relative to the \emph{observation time}. Its sub-concepts are \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report}, and \emph{Forecast 24 hours weather report}},
+  description={Sub-concept of \emph{Weather report} describing a forecast for a point of time at least \num{12} hours in the future relative to the \emph{Observation time}. Its sub-concepts are \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report}, and \emph{Forecast 24 hours weather report}},
   see={weather report,forecast weather report,observation time}
 }
 \newglossaryentry{observation time}{
   name={Observation time},
-  description={The time when the weather data was collected from the weather sensor or the Internet weather service, given by an instance of the concept \emph{Instant} from \emph{OWL-Time}\cite{owl-time}},
+  description={The time when the weather data was collected from the weather sensor(s) or the Internet weather service, given by an instance of the concept \emph{Instant} from \emph{OWL-Time}\cite{owl-time}},
   see={weather report,has observation time,instant}
 }
 \newglossaryentry{has observation time}{
   name={has observation time},
-  description={An object property of \emph{Weather report} that specifies the report's \emph{observation time}},
+  description={An object property of \emph{Weather report} that specifies the report's \emph{Observation time}},
   see={weather report,observation time}
 }
 \newglossaryentry{start time}{
   name={Start time},
-  description={The time a \emph{Weather report} is valid from, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{start time}},
+  description={The time a \emph{Weather report} is valid from, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{Observation time} and its \emph{Start time}},
   see={weather report,has start time,end time,observation time,interval}
 }
 \newglossaryentry{end time}{
   name={End time},
-  description={The time a \emph{Weather report} is valid until, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{observation time} and its \emph{end time}},
+  description={The time a \emph{Weather report} is valid until, given by an instance of the concept \emph{Interval} from \emph{OWL-Time}\cite{owl-time} that specifies the interval between the report's \emph{Observation time} and its \emph{End time}},
   see={weather report,has end time,start time,observation time,interval}
 }
 \newglossaryentry{has start time}{
   name={has start time},
-  description={An object property of \emph{weather report} that specifies the report's \emph{start time}},
+  description={An object property of \emph{Weather report} that specifies the report's \emph{Start time}},
   see={weather report,start time,has end time,observation time}
 }
 \newglossaryentry{has end time}{
   name={has end time},
-  description={An object property of \emph{weather report} that specifies the report's \emph{end time}},
+  description={An object property of \emph{Weather report} that specifies the report's \emph{End time}},
   see={weather report,end time,has start time,observation time}
 }
 \newglossaryentry{priority}{
   name={Priority},
-  description={An integer value indicating which \emph{weather report} for a certain period of time is to be preferred over another \emph{weather report} for the same period of time},
+  description={An integer value indicating which \emph{Weather report} for a certain period of time is to be preferred over another \emph{Weather report} for the same period of time},
   see={weather report,has priority}
 }
 \newglossaryentry{has priority}{
   name={has priority},
-  description={A data property of \emph{weather report} that specifies the report's \emph{priority}},
+  description={A data property of \emph{Weather report} that specifies the report's \emph{Priority}},
   see={weather report,priority}
 }
 
@@ -364,7 +364,7 @@
 }
 \newglossaryentry{no rain}{
   name={No rain},
-  description={Sub-concept of \emph{Precipitation} representing absence precipitation (because either the intensity of precipitation is \num{0})},
+  description={Sub-concept of \emph{Precipitation} representing absence of precipitation (because either the intensity or the probability of precipitation is \num{0})},
   see={precipitation}
 }
 \newglossaryentry{light rain}{
@@ -428,34 +428,34 @@
 
 \newglossaryentry{location}{
   name={location},
-  description={An object property of \emph{weather report} the geographical position the \emph{weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}; links to an instance of the concept \emph{point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}},
+  description={An object property of \emph{Weather report} the geographical position the \emph{Weather report} is valid for, given by \emph{altitude}, \emph{longitude} and \emph{latitude}, using the \emph{WGS84} reference model\cite{WGS84}; links to an instance of the concept \emph{Point} of the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary}},
   see={weather report,lat,long,alt}
 }
 \newglossaryentry{point}{
-  name={point},
-  description={A concept defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} representing a location which is given by \emph{altitude}, \emph{longitude} and \emph{latitude}. It is connected from an entity using the property \emph{location}},
+  name={Point},
+  description={A concept defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} representing a location which is given by \emph{alt}(itude), \emph{long}(itude), and \emph{lat}(itude). It is connected from an entity using the property \emph{location}},
   see={lat,long,alt,location}
 }
 \newglossaryentry{lat}{
   name={lat},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the latitude of the \emph{point} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the latitude of the \emph{Point} a \emph{Weather report} is valid for, given as a decimal number. Positive values refer to positions north of the equator, negative values refer to positions south of the equator},
   see={weather report,point}
 }
 \newglossaryentry{long}{
   name={long},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the longitude of the \emph{point} a \emph{weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the longitude of the \emph{Point} a \emph{Weather report} is valid for, given as a decimal number. Positive values refer to positions east of the prime meridian at Greenwich, negative values refer to positions west of the prime meridian},
   see={weather report,point}
 }
 \newglossaryentry{alt}{
   name={alt},
-  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the height above \eacs{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{weather report} is valid for, in metres},
+  description={Property defined by the \emph{Basic Geo (WGS84 lat/long) Vocabulary}\cite{wgs84_vocabulary} specifying the height above \eacs{MSL} (\emph{mean sea level}) of the \emph{location} the \emph{Weather report} is valid for, in metres},
   see={weather report,point}
 }
 
 
 \newglossaryentry{weather source}{
   name={Weather source},
-  description={A concept representing a source for weather data, either a set of \emph{weather sensors} or an Internet \emph{weather service}. Sub-concepts are \emph{Sensor source}, and \emph{Service source}},
+  description={A concept representing a source for weather data, either a set of weather sensors or an Internet weather service. Sub-concepts are \emph{Sensor source}, and \emph{Service source}},
   see={sensor source,service source}
 }
 \newglossaryentry{sensor source}{
@@ -591,12 +591,12 @@
 
 \newglossaryentry{has previous weather state}{
   name={has previous weather state},
-  description={Property that links an instance of \emph{Weather state} to the immediately preceding instance concerning their \emph{start time}s, if such an instance exists. Both this property and its reverse property \emph{has next weather state} are functional properties},
+  description={Property that links an instance of \emph{Weather state} to the immediately preceding instance concerning their \emph{Start time}s, if such an instance exists. Both this property and its reverse property \emph{has next weather state} are functional properties},
   see={weather state,has next weather state}
 }
 \newglossaryentry{has next weather state}{
   name={has next weather state},
-  description={Property that links an instance of \emph{Weather state} to the immediately succeeding instance concerning their \emph{start time}s, if such an instance exists. Both this property and its reverse property \emph{has previous weather state} are functional properties},
+  description={Property that links an instance of \emph{Weather state} to the immediately succeeding instance concerning their \emph{Start time}s, if such an instance exists. Both this property and its reverse property \emph{has previous weather state} are functional properties},
   see={weather state,has previous weather state}
 }
 
@@ -694,12 +694,12 @@
 \newglossaryentry{no rain weather}{
   name={No rain weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is linked to an instance of \emph{No rain} via the property \emph{has weather phenomenon}},
-  see={}
+  see={weather state,has weather phenomenon,no rain}
 }
 \newglossaryentry{sun protection weather}{
   name={Sun protection weather},
   description={Sub-concept of \emph{Weather state} representing a \emph{Weather state} that is an instance of \emph{Clear weather} and linked to an instance of \emph{Day} via the property \emph{has weather phenomenon}},
-  see={}
+  see={weather state,has weather phenomenon,clear weather,day}
 }
 \newglossaryentry{rainy weather}{
   name={Rainy weather},
