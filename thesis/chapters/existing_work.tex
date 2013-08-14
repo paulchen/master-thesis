@@ -191,6 +191,17 @@ WHERE {
 \label{fig:sparql_example}
 \end{figure}
 
+\eacs{SWRL} is a language for \eacs{OWL} which is used to express rules~\cite{SWRL}. \eacs{SWRL} can be used to define relations that may be difficult or impossible to define using \eacs{OWL} alone, e.g. due to the \emph{open world assumption}. Given a model that contains a concept \texttt{WeatherState} for a certain time and a intransitive property \texttt{hasNextWeatherState} which relates two consecutive instances of \texttt{WeatherState} to each other, Figure~\ref{fig:swrl_example} gives an example demonstrating how the semantics transitive property \texttt{hasLaterWeatherState} can be defined based on \texttt{hasNextWeatherState}.
+
+\begin{figure}
+\begin{lstlisting}
+hasNextWeatherState(?s1, ?s2) ⇒ hasLaterWeatherState(?s1, ?s2)
+hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒ hasLaterWeatherState(?s1, ?s3)
+\end{lstlisting}
+\caption{\eacs{SWRL} example defining a transitive property based on a intransitive one.}
+\label{fig:swrl_example}
+\end{figure}
+
 \eacs{OWL} ontologies are often designed using semantic editors like \protege~\cite{protege}. Common reasoners for \eacs{OWL} include \emph{Pellet}~\cite{pellet}, \emph{RacerPro}~\cite{RacerPro}, \emph{FaCT++}~\cite{factplusplus} and \emph{HermiT}~\cite{hermit}. \protege and \emph{Pellet} are used to develop the \smarthomeweather ontology in Chapter~\ref{ch:smarthomeweather_ontology}.
 
 \section{ThinkHome}

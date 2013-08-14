@@ -172,7 +172,7 @@ In this section, only those deliverables are presented that are necessary to ful
 \subsection{Glossary of Terms}
 \label{sec:ontology_glossary}
 
-When describing the scope of \smarthomeweather, the \emph{Ontology Requirements Specification Document} in Section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \eacs{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, and \Egls{weather condition}. All other concepts are sub-concepts of these five concepts.
+When describing the scope of \smarthomeweather, the \emph{Ontology Requirements Specification Document} in Section~\ref{sec:ontology_specification} mentions five top-level concepts (i.e. concepts that do not have a superclass except \emph{Thing} in \eacs{OWL}) of the ontology: \Egls{weather report}, \Egls{weather state}, \Egls{weather phenomenon}, \Egls{weather condition}, and \Egls{weather source}. All other concepts are sub-concepts of these five concepts.
 
 In this section, only a list of terms is given; the complete \emph{Glossary of Terms} with short descriptions of each term can be found in Appendix~\ref{main}.
 
@@ -446,12 +446,11 @@ Section~\ref{sec:implementation} describes the reuse of the aforementioned ontol
 
 After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
-The \smarthomeweather ontology is implemented in OWL using \protege 4.1 together with the \emph{Pellet} \eacs{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \eacs{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
+The \smarthomeweather ontology is implemented in OWL using \protege 4.3 together with the \emph{Pellet} \eacs{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \eacs{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
 
 To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state} and \egls{weather report} works correctly, \emph{JUnit}~\cite{junit} is used (see Section~\ref{sec:importer_tests}). Every test case loads the \smarthomeweather ontology using the \emph{Jena framework}, adds appropriate individuals and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
 
 During implementation of \smarthomeweather in \eacs{OWL}, the identifiers of concepts, properties and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}~\cite{CamelCase}, e.g. \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \eacs{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
-
 
 \subsection{Imported ontologies}
 \label{sec:ontology_imports}
@@ -561,8 +560,145 @@ Furthermore, there are questions that cannot be answered using an \eacs{OWL} ont
   \item When will it outside be colder than inside the house? When will it be warmer?
 \end{itemize}
 
-However, for each of the above competency questions, whether a direct answer can be given or not, \smarthomeweather can provide all available data; an external program (which is not limited by the \emph{Open World Assumption}) can access this data (e.g. using \eacs{SPARQL} queries) and generate an answer.
+However, for each of the above competency questions, whether a direct answer can be given or not, \smarthomeweather can provide all available data; an external program (which is not limited by the \emph{Open World Assumption}) can access this data and generate an answer. Section~\ref{sec:queries_rules} presents examples of \eacs{SPARQL} queries and \eacs{SWRL} rules for answering the competency questions the ontology itself does not give an answer for.
 
 Hence, the ontology constructed in this chapter complies with its specification in Section~\ref{sec:ontology_specification}.
 
-% TODO SPARQL queries/SWRL rules
+\section{\eacs{SPARQL} and \eacs{SWRL}}
+\label{sec:queries_rules}
+
+As previously stated, not all competency questions from the specification can be answered using an \eacs{OWL} ontology alone; reasons are that the
+
+The competency questions that require \eacs{SPARQL} queries and/or \eacs{SWRL} rules can be grouped into three categories of questions:
+\begin{itemize}
+  \item What is the maximum or minimum value of temperature, humidity, … over a given period of time?
+  \item Will there be a weather state that satisfies certain conditions within a given period of time?
+  \item Will the value of temperature, humidity, … rise or fall over a given period of time?
+\end{itemize}
+
+This section discusses how an answer for each of these categories can be determined using \eacs{SPARQL} and/or \eacs{SWRL}.
+
+In the following examples of \eacs{SPARQL} queries, any prefix definitions are omitted. \eacs{SWRL} rules are presented in the syntax presented in Section 2.2 of the \eacs{SWRL} specification (``Human Readable Syntax'')~\cite{SWRL}; all prefixes are omitted for clarity.
+
+% TODO mention unnecssary checks in SPARQL queries: e.g. ?x a weather:WeatherReport, ?s a time:Interval 
+
+% TODO example: SPARQL maximum value
+\begin{lstlisting}
+SELECT (MAX(?t) AS ?t_max)
+WHERE {
+    ?x weather:hasTemperatureValue ?y.
+    ?y muo:numericalValue ?t.
+}
+\end{lstlisting}
+
+% TODO example: SPARQL maximum value, >0, <=3 hours
+\begin{lstlisting}
+SELECT (MAX(?t) AS ?t_max)
+WHERE {
+    ?p weather:hasTemperatureValue ?v.
+    ?v muo:numericalValue ?t.
+    ?p weather:belongsToWeatherState ?s.
+    ?s weather:belongsToWeatherReport ?r.
+    ?s weather:hasStartTime ?h.
+    ?h time:hasDurationDescription ?d.
+    ?d time:hours ?h.
+    FILTER (?h > "0"^^xsd:decimal).
+    FILTER (?h <= "3"^^xsd:decimal).
+}
+\end{lstlisting}
+
+% TODO example: SPARQL maximum value, ShortRangeForecastReport
+\begin{lstlisting}
+SELECT (MAX(?t) AS ?t_max)
+WHERE {
+    ?p weather:hasTemperatureValue ?v.
+    ?v muo:numericalValue ?t.
+    ?p weather:belongsToWeatherState ?s.
+    ?s weather:belongsToWeatherReport ?r.
+    ?r a weather:ShortRangeForecastReport.
+}
+\end{lstlisting}
+
+% TODO example: SPARQL temperature value < 0
+\begin{lstlisting}
+SELECT ?s
+WHERE {
+    ?s weather:hasWeatherPhenomenon ?p.
+    ?p weather:hasTemperatureValue ?v.
+    ?v muo:numericalValue ?t.
+    FILTER (?t < "0"^^xsd:decimal).
+}
+\end{lstlisting}
+
+% TODO example: SPARQL temperature frost
+\begin{lstlisting}
+SELECT ?s
+WHERE {
+    ?s weather:hasWeatherPhenomenon ?p.
+    ?p a weather:Frost.
+}
+\end{lstlisting}
+
+% TODO example: SPARQL temperature, ShortRangeForecastReport
+\begin{lstlisting}
+SELECT ?s
+WHERE {
+    ?s weather:hasWeatherPhenomenon ?p.
+    ?p a weather:Frost.
+    ?s weather:belongsToWeatherReport ?r.
+    ?r a weather:ShortRangeForecastReport.
+}
+\end{lstlisting}
+
+% TODO example: SPARQL hasNextWeatherState
+\begin{lstlisting}
+SELECT ?s1 ?s2
+WHERE {
+    ?s1 weather:hasNextWeatherState ?s2.
+}
+\end{lstlisting}
+
+% TODO example: SPARQL hasNextWeatherState+
+\begin{lstlisting}
+SELECT ?s1 ?s2
+WHERE {
+    ?s1 weather:hasNextWeatherState+ ?s2.
+}
+\end{lstlisting}
+
+% TODO example: SPARQL rising temperature
+\begin{lstlisting}
+SELECT ?s1 ?s2
+WHERE {
+    ?s1 weather:hasWeatherPhenomenon ?t1.
+    ?t1 weather:hasTemperatureValue ?v1.
+    ?v1 muo:numericalValue ?n1.
+    ?s2 weather:hasWeatherPhenomenon ?t2.
+    ?t2 weather:hasTemperatureValue ?v2.
+    ?v2 muo:numericalValue ?n2.
+    ?s1 weather:hasNextWeatherState+ ?s2.
+    FILTER (?n2 > ?n1).
+}
+\end{lstlisting}
+
+% TODO example: SWRL hasLaterWeatherState
+\begin{lstlisting}
+hasNextWeatherState(?s1, ?s2) ⇒ hasLaterWeatherState(?s1, ?s2)
+hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒ hasLaterWeatherState(?s1, ?s3)
+\end{lstlisting}
+
+% TODO example: SWRL increasingTemperature
+\begin{lstlisting}
+hasWeatherPhenomenon(?s1, ?t1) ∧ hasTemperatureValue(?t1, ?v1) ∧ numericalValue(?v1, ?m1) ∧
+hasWeatherPhenomenon(?s2, ?t2) ∧ hasTemperatureValue(?t2, ?v2) ∧ numericalValue(?v2, ?m2) ∧ 
+greaterThan(?m2, ?m1) ∧ hasLaterWeatherState(?s1, ?s2) ⇒ increasingTemperature(?s1, ?s2)
+\end{lstlisting}
+
+% TODO example: SPARQL increasingTemperature
+\begin{lstlisting}
+SELECT ?s1 ?s2
+WHERE {
+    ?s1 weather:increasingTemperature ?s2.
+}
+\end{lstlisting}
+
