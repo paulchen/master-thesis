@@ -373,20 +373,56 @@ A \Egls{weather source} can either be a \Egls{sensor source} or a \Egls{service 
 
 A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see Section~\ref{sec:ontology_glossary}). The resulting tree is seen in Figure~\ref{fig:tree_weather_state}.
 
-The idea behind this approach is to provide simple answers to some of the competency questions. Except the concept \Egls{weather state}, every concept from this tree is defined to be a sub-concept of \Egls{weather state} and to be related to a set of instances of \Egls{weather phenomenon} and \Egls{weather condition} that have certain properties. In total, there are \num{19} sub-concepts of \Egls{weather state}; their definitions and their roles in the ontologies and in performing weather-related tasks in a smart home are presented below.
+\begin{figure}
+  \centering
+  % TODO description for this figure
+  \includegraphics[width=\textwidth]{figures/diagrams/weather-state.pdf}
+  \caption{Concept-classification tree for \Egls{weather state}. All properties are of type \emph{rdfs:subClassOf}}
+  \label{fig:tree_weather_state}
+\end{figure}
 
-The sub-concepts of \Egls{weather state} are:
+The idea behind this approach is to provide simple answers to some of the competency questions. Apart from the concept \Egls{weather state}, there are three ways how the concepts are defined:
 
 \begin{itemize}
-  \item \Egls{airing weather}: % TODO
+  \item Some concepts (\Egls{calm weather}, \Egls{clear weather}, \Egls{cloudy weather}, \Egls{cold weather}, \Egls{dry weather}, \Egls{hot weather}, \Egls{moist weather}, \Egls{no rain weather}, \Egls{pleasant temperature weather}, \Egls{rainy weather}, \Egls{stormy weather}, and \Egls{very rainy weather}) are defined as sub-concepts of \Egls{weather state}; additionally, an instance of \Egls{weather state} must be related to certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} to be an instance of one of these sub-concepts. For instance, an instance of \Egls{calm weather} is defined to be an instance of \Egls{weather state} having a property \egls{has weather phenomenon} that relates an instance of \Egls{calm} or \Egls{light wind} to it:
   
-  \item \Egls{calm weather}: % TODO
+  \begin{lstlisting}
+TODO example code
+  \end{lstlisting}
   
-  \item \Egls{clear weather}: % TODO
+  Some sub-concept relationships of these concepts (e.g. \Egls{very rainy weather} being a sub-concept of \Egls{rainy weather}) are inferred by the \eacs{OWL} reasoner.
+
+  \item Some other concepts (\Egls{airing weather}, \Egls{fair weather}, and \Egls{severe weather}) are defined as either the union or the intersection of a set of other sub-concepts of \Egls{weather state}, e.g. \Egls{airing weather} is the intersection of \Egls{fair weather} and \Egls{pleasant temperature weather}. Hence, an instance of \Egls{weather state} must be an instance of both \Egls{fair weather} and \Egls{pleasant temperature weather} to be an instance of \Egls{airing weather}:
   
-  \item \Egls{cloudy weather}: % TODO
+  \begin{lstlisting}
+TODO example code
+  \end{lstlisting}
   
-  \item \Egls{cold weather}: % TODO
+  In the case of these concepts, the \eacs{OWL} reasoner does not infer any sub-concept relationships that are not explicitely defined.
+  
+  \item All other concepts (\Egls{no awning weather}, \Egls{sun protection weather}, \Egls{thunderstorm}, and \Egls{windy weather}) are a combination of the first two ways to define the concepts, i.e. an instance of one of these concepts is an instance of at least one other sub-concept of \Egls{weather state} and/or is related to one or more certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} at the same time. For instance, an instance of \Egls{sun protection weather} must be an instance of \Egls{clear weather} that is related to an instance of \Egls{day} via the property \egls{has weather phenomenon}:
+  
+  \begin{lstlisting}
+TODO example code
+  \end{lstlisting}
+  
+  Some sub-concept relationships of these concepts are again inferred by the \eacs{OWL} reasoner.
+\end{itemize}
+
+The definitions of all \num{19} sub-concepts of \Egls{weather state} and their roles in the the ontologies and in performing weather-related tasks in a smart home are presented below.
+
+The sub-concepts of \Egls{weather state} are (in alphabetical order):
+
+\begin{itemize}
+  \item \Egls{airing weather} is defined as the intersection of \Egls{fair weather} and \Egls{pleasant temperature weather}. \Egls{airing weather} describes a weather state that provides good conditions for airing: The outside temperature is neither too low nor too high, there is no precipitation, no or hardly any cloud cover, and at most light wind. For any other weather state, airing may be possible as well, but some drawbacks may occur.
+  
+  \item \Egls{calm weather} is a weather state describing no or at least light wind. An instance of \Egls{calm weather} is related to an instance of either \Egls{calm} or \Egls{light wind} via the property \egls{has weather phenomenon}. \Egls{calm weather} is used to simplify the definition of \Egls{fair weather}.
+  
+  \item \Egls{clear weather} describes either no cloud cover or at most light cloud cover. An instance of \Egls{clear weather} is related to an instance of either \Egls{clear sky} or \Egls{partly cloudy} via the property \egls{has weather phenomenon}. \Egls{clear weather} is used to simplify the definitions of \Egls{fair weather} and \Egls{sun protection weather}.
+  
+  \item \Egls{cloudy weather} is a weather state describing heavy clouds. An instance of \Egls{cloudy weather} is related to an instance of either \Egls{mostly cloudy} or \Egls{overcast} via the property \egls{has weather phenomenon}. Although not recognised by \eacs{OWL} (due to the \emph{Open World Assumption}), this concept is the de-facto complement of \Egls{clear weather}.
+  
+  \item \Egls{cold weather} is a weather state describing a temperature that is far below room temperature. An instance of \Egls{cold weather} is related to an instance of either \Egls{cold} or \Egls{frost} via the property \egls{has weather phenomenon}; i.e. during the state of \Egls{cold weather}, the outside temperature is below \SI{10}{\celsius}. At this temperature, it is probably necessary to heat the building.
   
   \item \Egls{dry weather}: % TODO
   
@@ -419,14 +455,6 @@ The sub-concepts of \Egls{weather state} are:
 
 
 The sub-concept relationships as shown in Figure~\ref{fig:tree_weather_state} are a result of the reasoning process and stem from the definitions of the concepts. % TODO
-
-\begin{figure}
-  \centering
-  % TODO description for this figure
-  \includegraphics[width=\textwidth]{figures/diagrams/weather-state.pdf}
-  \caption{Concept-classification tree for \Egls{weather state}. All properties are of type \emph{rdfs:subClassOf}}
-  \label{fig:tree_weather_state}
-\end{figure}
 
 \subsection{Binary relations diagram}
 \label{subsec:binary_relations_diagram}
