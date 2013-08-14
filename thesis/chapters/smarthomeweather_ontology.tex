@@ -567,9 +567,9 @@ Hence, the ontology constructed in this chapter complies with its specification 
 \section{\eacs{SPARQL} and \eacs{SWRL}}
 \label{sec:queries_rules}
 
-As previously stated, not all competency questions from the specification can be answered using an \eacs{OWL} ontology alone; reasons are that the
+As previously stated, not all competency questions from the specification can be answered using an \eacs{OWL} ontology alone; reasons are either that an appropriate construct in \eacs{OWL} would be too complicated or that giving an answer using \eacs{OWL} is impossible at all due to the \emph{Open World Assumption}. To provide answers to these questions, \eacs{SPARQL} queries and/or \eacs{SWRL} rules can be used.
 
-The competency questions that require \eacs{SPARQL} queries and/or \eacs{SWRL} rules can be grouped into three categories of questions:
+These competency questions can be grouped into three categories of questions:
 \begin{itemize}
   \item What is the maximum or minimum value of temperature, humidity, … over a given period of time?
   \item Will there be a weather state that satisfies certain conditions within a given period of time?
@@ -701,4 +701,3 @@ WHERE {
     ?s1 weather:increasingTemperature ?s2.
 }
 \end{lstlisting}
-
