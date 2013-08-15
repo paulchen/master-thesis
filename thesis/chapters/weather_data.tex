@@ -468,7 +468,7 @@ This section gives an overview on how requests to the weather \eacs{API} of \yrn
 For an arbitrary request, latitude and longitude must be specified (in degrees; northern latitudes and eastern longitudes are represented by positive values)~\cite{yrno_documentation}. Additionally, the altitude above sea level (in metres) may be specified for locations outside of Norway. Based on this input data, a \emph{URL} of the format
 
 % TODO improve formatting of lstlisting environments
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{text}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longitude>
 \end{minted}
@@ -476,7 +476,7 @@ http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longitude>
 
 or
 
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\vspace{1mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{text}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longitude>;msl=<altitude>
 \end{minted}
@@ -484,7 +484,7 @@ http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longitude>
 
 is constructed, e.g.
 
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\vspace{1mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{text}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
 \end{minted}

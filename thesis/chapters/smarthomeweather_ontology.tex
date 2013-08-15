@@ -391,9 +391,11 @@ A \Egls{weather state} represents the set of weather phenomena that belong to a 
 The idea behind this approach is to provide simple answers to some of the competency questions. Apart from the concept \Egls{weather state}, there are three ways how the concepts are defined:
 
 \begin{itemize}
-  \item Some concepts (\Egls{calm weather}, \Egls{clear weather}, \Egls{cloudy weather}, \Egls{cold weather}, \Egls{dry weather}, \Egls{hot weather}, \Egls{moist weather}, \Egls{no rain weather}, \Egls{pleasant temperature weather}, \Egls{rainy weather}, \Egls{stormy weather}, and \Egls{very rainy weather}) are defined as sub-concepts of \Egls{weather state}; additionally, an instance of \Egls{weather state} must be related to certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} to be an instance of one of these sub-concepts. For instance, an instance of \Egls{calm weather} is defined to be an instance of \Egls{weather state} having a property \egls{has weather phenomenon} that relates an instance of \Egls{calm} or \Egls{light wind} to it:
+  \item Some concepts (\Egls{calm weather}, \Egls{clear weather}, \Egls{cloudy weather}, \Egls{cold weather}, \Egls{dry weather}, \Egls{hot weather}, \Egls{moist weather}, \Egls{no rain weather}, \Egls{pleasant temperature weather}, \Egls{rainy weather}, \Egls{stormy weather}, and \Egls{very rainy weather}) are defined as sub-concepts of \Egls{weather state}; additionally, an instance of \Egls{weather state} must be related to certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} to be an instance of one of these sub-concepts. For instance, an instance of \Egls{calm weather} is defined to be an instance of \Egls{weather state} having a property \egls{has weather phenomenon} that relates an instance of \Egls{calm} or \Egls{light wind} to it (see Listing~\ref{listing:concept_definition1}).
   
-  \begin{lstlisting}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 weather:CalmWeather rdf:type owl:Class ;
   owl:equivalentClass [ rdf:type owl:Class ;
     owl:intersectionOf ( weather:WeatherState
@@ -410,26 +412,40 @@ weather:CalmWeather rdf:type owl:Class ;
     ]  
   )
 ] .
-  \end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\caption{Definition of the concept \Egls{calm weather} in \smarthomeweather in \emph{Turtle syntax}}
+\label{listing:concept_definition1}
+\end{mintlisting}
   
   Some sub-concept relationships of these concepts (e.g. \Egls{very rainy weather} being a sub-concept of \Egls{rainy weather}) are inferred by the \eacs{OWL} reasoner.
 
-  \item Some other concepts (\Egls{airing weather}, \Egls{fair weather}, and \Egls{severe weather}) are defined as either the union or the intersection of a set of other sub-concepts of \Egls{weather state}, e.g. \Egls{airing weather} is the intersection of \Egls{fair weather} and \Egls{pleasant temperature weather}. Hence, an instance of \Egls{weather state} must be an instance of both \Egls{fair weather} and \Egls{pleasant temperature weather} to be an instance of \Egls{airing weather}:
+  \item Some other concepts (\Egls{airing weather}, \Egls{fair weather}, and \Egls{severe weather}) are defined as either the union or the intersection of a set of other sub-concepts of \Egls{weather state}, e.g. \Egls{airing weather} is the intersection of \Egls{fair weather} and \Egls{pleasant temperature weather}. Hence, an instance of \Egls{weather state} must be an instance of both \Egls{fair weather} and \Egls{pleasant temperature weather} to be an instance of \Egls{airing weather} (see Listing~\ref{listing:concept_definition2}).
   
-  \begin{lstlisting}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 :AiringWeather rdf:type owl:Class ;
   owl:equivalentClass [ rdf:type owl:Class ;
     owl:intersectionOf ( :FairWeather
       :PleasantTemperatureWeather
     )
   ] .
-  \end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\caption{Definition of the concept \Egls{airing weather} in \smarthomeweather in \emph{Turtle syntax}}
+\label{listing:concept_definition2}
+\end{mintlisting}
   
   In the case of these concepts, the \eacs{OWL} reasoner does not infer any sub-concept relationships that are not explicitly defined.
   
-  \item All other concepts (\Egls{no awning weather}, \Egls{sun protection weather}, \Egls{thunderstorm}, and \Egls{windy weather}) are a combination of the first two ways to define the concepts, i.e. an instance of one of these concepts is an instance of at least one other sub-concept of \Egls{weather state} and/or is related to one or more certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} at the same time. For instance, an instance of \Egls{sun protection weather} must be an instance of \Egls{clear weather} that is related to an instance of \Egls{day} via the property \egls{has weather phenomenon}:
+  \item All other concepts (\Egls{no awning weather}, \Egls{sun protection weather}, \Egls{thunderstorm}, and \Egls{windy weather}) are a combination of the first two ways to define the concepts, i.e. an instance of one of these concepts is an instance of at least one other sub-concept of \Egls{weather state} and/or is related to one or more certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} at the same time. For instance, an instance of \Egls{sun protection weather} must be an instance of \Egls{clear weather} that is related to an instance of \Egls{day} via the property \egls{has weather phenomenon} (see Listing~\ref{listing:concept_definition3}).
   
-  \begin{lstlisting}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 :SunProtectionWeather rdf:type owl:Class ;
   owl:equivalentClass [ rdf:type owl:Class ;
     owl:intersectionOf ( :ClearWeather
@@ -439,7 +455,12 @@ weather:CalmWeather rdf:type owl:Class ;
       ]
     )
   ] .
-  \end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\caption{Definition of the concept \Egls{sun protection weather} in \smarthomeweather in \emph{Turtle syntax}}
+\label{listing:concept_definition3}
+\end{mintlisting}
   
   Some sub-concept relationships of these concepts are again inferred by the \eacs{OWL} reasoner.
 \end{itemize}
@@ -692,17 +713,20 @@ In the following examples of \eacs{SPARQL} queries, any prefix definitions are o
 
 The following example shows a \eacs{SPARQL} query to obtain the maximum temperature value stored in the ontology; note that the query contains only the necessary \emph{triple patterns}; any triple patterns that are not necessary to obtain the desired result are omitted, e.g. it is not necessary to ensure that \texttt{?p} is an instance of \texttt{weather:Temperature} as the domain of the property \texttt{weather:hasTemperatureValue} is defined to be \texttt{weather:Temperature} and therefore an \eacs{OWL} reasoner can infer that \texttt{?p} must be an instance of \texttt{weather:Temperature}.
 
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\vspace{3mm}\begin{minted}{sparql}
 SELECT (MAX(?t) AS ?t_max)
 WHERE {
     ?p weather:hasTemperatureValue ?v.
     ?v muo:numericalValue ?t.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 This query can be extended to obtain the maximum temperature value during the next three hours. For this query to work, the query follows the property \texttt{weather:belongsToWeatherState} to reach the \Egls{weather state} \texttt{?s} that corresponds to the \Egls{weather phenomenon} \texttt{?p}; furthermore, \texttt{weather:belongsToWeatherReport} leads to the corresponding \Egls{weather report} \texttt{?r}. Then a limitation on this \Egls{weather report}'s start time is introduced.
 
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\vspace{3mm}\begin{minted}{sparql}
 SELECT (MAX(?t) AS ?t_max)
 WHERE {
     ?p weather:hasTemperatureValue ?v.
@@ -715,11 +739,13 @@ WHERE {
     FILTER (?h > "0"^^xsd:decimal).
     FILTER (?h <= "3"^^xsd:decimal).
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 However, this query can be simplified as there is already a concept that resembles a \Egls{weather report} for the desired period of time (\Egls{short range weather report}):
 
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\vspace{3mm}\begin{minted}{sparql}
 SELECT (MAX(?t) AS ?t_max)
 WHERE {
     ?p weather:hasTemperatureValue ?v.
@@ -728,11 +754,13 @@ WHERE {
     ?s weather:belongsToWeatherReport ?r.
     ?r a weather:ShortRangeForecastReport.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 In a similar way, instances of \Egls{weather phenomenon} that satisfy a certain condition can be found. For instance, the following query obtains all instances of \Egls{weather state} that represent a temperature of below \SI{0}{\celsius}:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 SELECT ?s
 WHERE {
     ?s weather:hasWeatherPhenomenon ?p.
@@ -740,21 +768,25 @@ WHERE {
     ?v muo:numericalValue ?t.
     FILTER (?t < "0"^^xsd:decimal).
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 As the sub-concept \Egls{frost} of \Egls{temperature} already represents a temperature value of below \SI{0}{\celsius}, the query can be shortened:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 SELECT ?s
 WHERE {
     ?s weather:hasWeatherPhenomenon ?p.
     ?p a weather:Frost.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 Restrictions about time and weather phenomena can be combined, i.e. to find all instances of \Egls{weather state} that represent a temperature of below \SI{0}{\celsius} during the next three hours:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 SELECT ?s
 WHERE {
     ?s weather:hasWeatherPhenomenon ?p.
@@ -762,29 +794,35 @@ WHERE {
     ?s weather:belongsToWeatherReport ?r.
     ?r a weather:ShortRangeForecastReport.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 To fetch all pairs of consecutive instances of \Egls{weather state} using the property \egls{has next weather state}, this query can be used:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 SELECT ?s1 ?s2
 WHERE {
     ?s1 weather:hasNextWeatherState ?s2.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 \eacs{SPARQL}~1.1 allows querying the transitive closure of an object property; the following query yields all pairs of \Egls{weather state}s \texttt{(?s1, ?s2)} where \texttt{?s1} describe the weather state for an earlier point of time than \texttt{?s2}:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 SELECT ?s1 ?s2
 WHERE {
     ?s1 weather:hasNextWeatherState+ ?s2.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 With these insights, it is possible to write this query that returns all pairs of \Egls{weather state}s that indicate an increasing temperature value over time, i.e. the temperature value of \texttt{?s2} is higher than the temperature value of \texttt{?s1} while \texttt{?s2} describes a later weather state than \texttt{?s1}:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 SELECT ?s1 ?s2
 WHERE {
     ?s1 weather:hasWeatherPhenomenon ?t1.
@@ -796,30 +834,38 @@ WHERE {
     ?s1 weather:hasNextWeatherState+ ?s2.
     FILTER (?n2 > ?n1).
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 In order to simplify the \eacs{SPARQL} queries that are required to provide answers to competency questions, \eacs{SWRL} rules can be introduced; e.g. the following \eacs{SWRL} rules define the property \emph{has later weather state} (which has to be separately added to the ontology) which represents the transitive closure of \egls{has next weather state}:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{text}
 hasNextWeatherState(?s1, ?s2) ⇒ hasLaterWeatherState(?s1, ?s2)
-hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒ hasLaterWeatherState(?s1, ?s3)
-\end{lstlisting}
+  hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒
+    hasLaterWeatherState(?s1, ?s3)
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 This rule defines the property \emph{increasing temperature} which relates pairs of \Egls{weather state}s to each other that indicate an increasing temperature value over time:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{text}
 hasWeatherPhenomenon(?s1, ?t1) ∧ hasTemperatureValue(?t1, ?v1) ∧ numericalValue(?v1, ?m1) ∧
   hasWeatherPhenomenon(?s2, ?t2) ∧ hasTemperatureValue(?t2, ?v2) ∧ numericalValue(?v2, ?m2) ∧ 
   greaterThan(?m2, ?m1) ∧ hasLaterWeatherState(?s1, ?s2) ⇒ increasingTemperature(?s1, ?s2)
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 Now, the query for all pairs of \Egls{weather state}s that indicate an increasing temperature value over time can be simplified in the following way:
 
-\begin{lstlisting}
+\vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 SELECT ?s1 ?s2
 WHERE {
     ?s1 weather:increasingTemperature ?s2.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 Eventually, using \eacs{SWRL} rules and \eacs{SPARQL} queries as shown above, answers to all competency questions from the specification of \smarthomeweather can be provided.
