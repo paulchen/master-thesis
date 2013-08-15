@@ -482,7 +482,7 @@ The state of \emph{conceptualisation} consists of several tasks as shown in Figu
 
 At first, the ontologist builds a \emph{Glossary of Terms}. This glossary includes all the relevant terms of the domain (concepts, instances, attributes, relations etc.). It can be built as a table having the columns \emph{name}, \emph{synonyms}, \emph{acronyms}, \emph{description} (for a natural language description of the term) and \emph{type} (specifying whether the term is a concept, an instance, an attribute, a relation etc.).
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabular}{|p{.2\textwidth}|p{.2\textwidth}|p{.2\textwidth}|p{.2\textwidth}|}
   \hline
@@ -492,10 +492,10 @@ At first, the ontologist builds a \emph{Glossary of Terms}. This glossary includ
   \hline
 \end{tabular}
 \caption{Template for the glossary of terms as proposed by \methontology.}
-\label{fig:methontology_example_glossary}
-\end{figure}
+\label{table:methontology_example_glossary}
+\end{table}
 
-Figure~\ref{fig:methontology_example_glossary} shows a template for the glossary of terms.
+Table~\ref{table:methontology_example_glossary} shows a template for the glossary of terms.
 
 \paragraph{Task 2: Concept Taxonomies}
 
@@ -533,9 +533,9 @@ In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagr
 
 The \emph{concept dictionary} contains all domain concepts together with their relations, their instances and their class attributes (i.e. attributes that describe properties of classes) and instance attributes (i.e. attributes that describe properties of instances). All information from the previous steps contribute to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts.
 
-Figure~\ref{fig:methontology_example_concept_dictionary} shows a template for the concept dictionary.
+Table~\ref{table:methontology_example_concept_dictionary} shows a template for the concept dictionary.
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabular}{|p{.2\textwidth}|p{.5\textwidth}|p{.2\textwidth}|}
   \hline
@@ -545,14 +545,14 @@ Figure~\ref{fig:methontology_example_concept_dictionary} shows a template for th
   \hline
 \end{tabular}
 \caption{Template for the concept dictionary as proposed by \methontology.}
-\label{fig:methontology_example_concept_dictionary}
-\end{figure}
+\label{table:methontology_example_concept_dictionary}
+\end{table}
 
 \paragraph{Task 5: Ad-hoc binary relation details}
 
-In this step, for all ad-hoc binary relations details are specified in a tabular manner. The resulting table has a row for each relation and columns named \emph{relation name}, \emph{source concept}, \emph{source cardinality (max)}, \emph{target concept}, \emph{inverse relation}. Figure~\ref{fig:methontology_example_binary_relations_table} shows a template for the binary relations table.
+In this step, for all ad-hoc binary relations details are specified in a tabular manner. The resulting table has a row for each relation and columns named \emph{relation name}, \emph{source concept}, \emph{source cardinality (max)}, \emph{target concept}, \emph{inverse relation}. Table~\ref{table:methontology_example_binary_relations_table} shows a template for the binary relations table.
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabular}{|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|p{.167\textwidth}|}
   \hline
@@ -562,8 +562,8 @@ In this step, for all ad-hoc binary relations details are specified in a tabular
   \hline
 \end{tabular}
 \caption{Template for the binary relations table as proposed by \methontology.}
-\label{fig:methontology_example_binary_relations_table}
-\end{figure}
+\label{table:methontology_example_binary_relations_table}
+\end{table}
 
 \paragraph{Task 6: Instance attributes}
 
@@ -571,9 +571,9 @@ This step leads to an \emph{instance attributes table}. That is a table of all \
 
 The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute.
 
-See Figure~\ref{fig:methontology_example_instance_attributes} for a template for the instance attributes table.
+See Table~\ref{table:methontology_example_instance_attributes} for a template for the instance attributes table.
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabular}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
   \hline
@@ -583,14 +583,14 @@ See Figure~\ref{fig:methontology_example_instance_attributes} for a template for
   \hline
 \end{tabular}
 \caption{Template for the instance attributes table as proposed by \methontology.}
-\label{fig:methontology_example_instance_attributes}
-\end{figure}
+\label{table:methontology_example_instance_attributes}
+\end{table}
 
 \paragraph{Task 7: Class attributes}
 
 All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns are \emph{name}, \emph{concept name} (i.e. the name of the concept where the attribute is defined), \emph{value type}, \emph{value(s)}, \emph{minimum cardinality} and \emph{maximum cardinality}. Additionally, all information about related instance attributes, class attributes, constants, rules, and formulae may be specified that are specified in the instance attribute as well.
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
   \hline
@@ -600,16 +600,16 @@ All class attributes that are listed in the concept dictionary are described in 
   \hline
 \end{tabular}
 \caption{Template for the class attributes table as proposed by \methontology.}
-\label{fig:methontology_example_class_attributes}
-\end{figure}
+\label{table:methontology_example_class_attributes}
+\end{table}
 
-Figure~\ref{fig:methontology_example_class_attributes} shows a template for the class attributes table.
+Table~\ref{table:methontology_example_class_attributes} shows a template for the class attributes table.
 
 \paragraph{Task 8: Constants}
 
 In this step, the \emph{constants table} is created that specifies details about all the constants listed in the glossary of terms. Each constant is specified by its name, its value type, its value, the measurement unit for numerical constants, and the attributes that can be inferred using the constant.
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
   \hline
@@ -619,16 +619,16 @@ In this step, the \emph{constants table} is created that specifies details about
   \hline
 \end{tabular}
 \caption{Template for the constants table as proposed by \methontology.}
-\label{fig:methontology_example_constants}
-\end{figure}
+\label{table:methontology_example_constants}
+\end{table}
 
-Figure~\ref{fig:methontology_example_constants} shows a template for the constants table.
+Table~\ref{table:methontology_example_constants} shows a template for the constants table.
 
 \paragraph{Task 9: Formal axioms}
 
-In this task, the ontology designer must determine whether the ontology contains formal axioms. In case it contains any, these axioms must be defined precisely in a \emph{formal axioms table}. For each axiom, this table specifies the name, a description in natural language, the logical expression that formally describes the axiom in first-order logic (or the logic the ontology language intended to use is based upon), and all concepts, attributes, relations, and variables that are referred to in the logical expression. Figure~\ref{fig:methontology_example_axioms} presents a template for the formal axioms table.
+In this task, the ontology designer must determine whether the ontology contains formal axioms. In case it contains any, these axioms must be defined precisely in a \emph{formal axioms table}. For each axiom, this table specifies the name, a description in natural language, the logical expression that formally describes the axiom in first-order logic (or the logic the ontology language intended to use is based upon), and all concepts, attributes, relations, and variables that are referred to in the logical expression. Table~\ref{table:methontology_example_axioms} presents a template for the formal axioms table.
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
   \hline
@@ -638,20 +638,20 @@ In this task, the ontology designer must determine whether the ontology contains
   \hline
 \end{tabularx}
 \caption{Template for the formal axioms table as proposed by \methontology.}
-\label{fig:methontology_example_axioms}
-\end{figure}
+\label{table:methontology_example_axioms}
+\end{table}
 
 \paragraph{Task 10: Rules}
 
 Similary to the task of identifying and describing formal axioms within the ontology, in this step the ontology designer must determine whether the ontology contains any rules. If it contains any, a \emph{rules table} must be built to precisely describe all rules and their properties: Their name, their description, an expression in first-order logic, and all concepts, attributes, relations, and variables involved. In contrast to formal axioms, the expression of rules always has the form \emph{if <conditions> then <consequent>}; hereby \emph{<conditions>} is a conjunction of atoms while \emph{<consequent>} is a single atom.
 
-For the rules table, the template for the formal axioms table (see Figure~\ref{fig:methontology_example_axioms}) can be reused.
+For the rules table, the template for the formal axioms table (see Table~\ref{table:methontology_example_axioms}) can be reused.
 
 \paragraph{Task 11: Instances}
 
-Within an ontology, a set of instances may be predefined. This task involves listing these individuals, again in tabular manner. The columns of this \emph{instances table} are the name of the instance, the name of the concept and all of the instance's attributes together with their respective values. Figure~\ref{fig:methontology_example_instances} depicts a template for the instances table.
+Within an ontology, a set of instances may be predefined. This task involves listing these individuals, again in tabular manner. The columns of this \emph{instances table} are the name of the instance, the name of the concept and all of the instance's attributes together with their respective values. Table~\ref{table:methontology_example_instances} depicts a template for the instances table.
 
-\begin{figure}
+\begin{table}
 \centering
 \begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
   \hline
@@ -661,8 +661,8 @@ Within an ontology, a set of instances may be predefined. This task involves lis
   \hline
 \end{tabular}
 \caption{Template for the instants table as proposed by \methontology.}
-\label{fig:methontology_example_instances}
-\end{figure}
+\label{table:methontology_example_instances}
+\end{table}
 
 \subsubsection{Formalisation}
 
