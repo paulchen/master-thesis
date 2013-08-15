@@ -53,7 +53,6 @@
 
 \usepackage{mdframed}
 \usepackage{longtable}
-\usepackage{listings} % TODO remove
 
 \usepackage{newfloat}
 \DeclareFloatingEnvironment[name=Listing,listname={List of Listings}]{mintlisting}
@@ -66,7 +65,7 @@
 \usepackage[scaled]{beramono}
 
 \usepackage{minted}
-\usemintedstyle{manni}
+%\usemintedstyle{manni}
 \fvset{fontsize=\scriptsize}
 
 \definecolor{listingBottom}{cmyk}{.1,.1,.1,.1}
@@ -76,37 +75,6 @@
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
 \definecolor{stringColor}{rgb}{.5,0,0}
 \definecolor{contentColor}{rgb}{0,0,0}
-
-\lstdefinelanguage{XML}
-{
-  alsoletter={\:},
-  basicstyle=\ttfamily\color{contentColor}\scriptsize,
-  morestring=[b]",
-  emph={<,>,/>},
-  emphstyle=\color{darkblue},
-  emph={[2]xmlns\:},
-  emphstyle={[2]\bfseries\color{cyan}},
-  morecomment=[s]{<?}{?>},
-  stringstyle=\color{stringColor},
-  identifierstyle=\color{darkblue},
-  keywordstyle=\bfseries\color{cyan},
-  morekeywords={rdf:,geo:,weather}% list your attributes here
-}
-\newcommand{\resetlisting}[0]{\lstset{
-      frame=trbl,
-      basicstyle=\scriptsize\ttfamily,
-      moredelim=**[is][{\btHL[fill=green!20]}]{@@}{@@},
-      extendedchars=\true,inputencoding=utf8x
-}}
-\newcommand{\turtlelisting}[0]{\lstset{ % TODO
-      frame=none,
-      basicstyle=\scriptsize\ttfamily
-}}
-\newcommand{\xmllisting}[0]{\lstset{
-      frame=none,
-      basicstyle=\scriptsize\ttfamily,
-      language=XML
-}}
 
 \usepackage{xspace}
 
@@ -156,27 +124,6 @@
 
 \newcommand{\treg}{\textsuperscript{\textregistered}}
 \newcommand{\ttra}{\textsuperscript{\texttrademark}}
-
-\makeatletter
-\newenvironment{btHighlight}[1][]
-{\begingroup\tikzset{bt@Highlight@par/.style={#1}}\begin{lrbox}{\@tempboxa}}
-{\end{lrbox}\bt@HL@box[bt@Highlight@par]{\@tempboxa}\endgroup}
-
-\newcommand\btHL[1][]{%
-  \begin{btHighlight}[#1]\bgroup\aftergroup\bt@HL@endenv%
-}
-\def\bt@HL@endenv{%
-  \end{btHighlight}%   
-  \egroup
-}
-\newcommand{\bt@HL@box}[2][]{%
-  \tikz[#1]{%
-    \pgfpathrectangle{\pgfpoint{1pt}{0pt}}{\pgfpoint{\wd #2}{\ht #2}}%
-    \pgfusepath{use as bounding box}%
-    \node[anchor=base west, fill=orange!30,outer sep=0pt,inner xsep=1pt, inner ysep=0pt, rounded corners=0pt, minimum height=\ht\strutbox+1pt,#1]{\raisebox{1pt}{\strut}\strut\usebox{#2}};
-  }%
-}
-\makeatother
 
 \setcounter{maxsecnumdepth}{2}
 
