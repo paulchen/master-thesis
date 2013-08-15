@@ -208,16 +208,16 @@ WHERE {
 
 \eacs{SWRL} is a language for \eacs{OWL} which is used to express rules~\cite{SWRL}. \eacs{SWRL} can be used to define relations that may be difficult or impossible to define using \eacs{OWL} alone, e.g. due to the \emph{open world assumption}. Given a model that contains a concept \texttt{WeatherState} for a certain time and a intransitive property \texttt{hasNextWeatherState} which relates two consecutive instances of \texttt{WeatherState} to each other, Listing~\ref{listing:swrl_example} gives an example demonstrating how the semantics transitive property \texttt{hasLaterWeatherState} can be defined based on \texttt{hasNextWeatherState}.
 
-% TODO fix this by downloading a new version of minted (v2.0alpha)
 \begin{mintlisting}
 \begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{text}
 hasNextWeatherState(?s1, ?s2) ⇒ hasLaterWeatherState(?s1, ?s2)
-hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒ hasLaterWeatherState(?s1, ?s3)
+hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3)
+                 ⇒ hasLaterWeatherState(?s1, ?s3)
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\caption{\eacs{SWRL} example defining a transitive property based on a intransitive one.}
+\caption{\eacs{SWRL} example defining a transitive property based on an intransitive one.}
 \label{listing:swrl_example}
 \end{mintlisting}
 
