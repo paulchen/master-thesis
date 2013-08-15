@@ -481,7 +481,7 @@ The sub-concepts of \Egls{weather state} are (in alphabetical order):
   
   \item \Egls{sun protection weather} represents a weather state that requires covering elements of the building that should not be exposed to direct sunlight; e.g. awnings should be extended. An instance of \Egls{sun protection weather} is defined to be an instance of \Egls{fair weather} that is related to an instance of \Egls{day} via the property \egls{has weather phenomenon}.
   
-  \item \Egls{thunderstorm} represents a state of severe weather including thunderstorms. An instance of \Egls{weather state} is defined to be an instance of \Egls{thunderstorm} if and only if it is an instance of \Egls{severe weather} and is related to the individual \emph{Thunder} via the property \egls{has weather condition}.
+  \item \Egls{thunderstorm} represents a state of severe weather including thunderstorms. An instance of \Egls{weather state} is defined to be an instance of \Egls{thunderstorm} if and only if it is an instance of \Egls{severe weather} and is related to the individual \emph{Thunder} via the property \egls{has condition}.
   
   \item \Egls{very rainy weather} represents a weather state with heavy rain or snowfall. An instance of \Egls{weather state} is defined to be an instance of \Egls{very rainy weather} if and only if it is related to an instance of \Egls{heavy rain}, \Egls{extremely heavy rain}, or \Egls{tropical storm rain} via the property \egls{has weather phenomenon}. \Egls{very rainy weather} is suitable for providing answers to precipitation-related competency questions; furthermore, \Egls{very rainy weather} is used to simplify the definition of \Egls{severe weather}. An \eacs{OWL} reasoner infers \Egls{very rainy weather} to be a sub-concept of \Egls{rainy weather}.
   
@@ -690,18 +690,18 @@ This section discusses how an answer for each of these categories can be determi
 
 In the following examples of \eacs{SPARQL} queries, any prefix definitions are omitted. \eacs{SWRL} rules are presented in the syntax presented in Section 2.2 of the \eacs{SWRL} specification (``Human Readable Syntax'')~\cite{SWRL}; all prefixes are omitted for clarity.
 
-% TODO mention unnecssary checks in SPARQL queries: e.g. ?x a weather:WeatherReport, ?s a time:Interval 
+The following example shows a \eacs{SPARQL} query to obtain the maximum temperature value stored in the ontology; note that the query contains only the necessary \emph{triple patterns}; any triple patterns that are not necessary to obtain the desired result are omitted, e.g. it is not necessary to ensure that \texttt{?p} is an instance of \texttt{weather:Temperature} as the domain of the property \texttt{weather:hasTemperatureValue} is defined to be \texttt{weather:Temperature} and therefore an \eacs{OWL} reasoner can infer that \texttt{?p} must be an instance of \texttt{weather:Temperature}.
 
-% TODO example: SPARQL maximum value
 \begin{lstlisting}
 SELECT (MAX(?t) AS ?t_max)
 WHERE {
-    ?x weather:hasTemperatureValue ?y.
-    ?y muo:numericalValue ?t.
+    ?p weather:hasTemperatureValue ?v.
+    ?v muo:numericalValue ?t.
 }
 \end{lstlisting}
 
-% TODO example: SPARQL maximum value, >0, <=3 hours
+This query can be extended to obtain the maximum temperature value during the next three hours. For this query to work, the query follows the property \texttt{weather:belongsToWeatherState} to reach the \Egls{weather state} \texttt{?s} that corresponds to the \Egls{weather phenomenon} \texttt{?p}; furthermore, \texttt{weather:belongsToWeatherReport} leads to the corresponding \Egls{weather report} \texttt{?r}. Then a limitation on this \Egls{weather report}'s start time is introduced.
+
 \begin{lstlisting}
 SELECT (MAX(?t) AS ?t_max)
 WHERE {
@@ -709,7 +709,7 @@ WHERE {
     ?v muo:numericalValue ?t.
     ?p weather:belongsToWeatherState ?s.
     ?s weather:belongsToWeatherReport ?r.
-    ?s weather:hasStartTime ?h.
+    ?r weather:hasStartTime ?h.
     ?h time:hasDurationDescription ?d.
     ?d time:hours ?h.
     FILTER (?h > "0"^^xsd:decimal).
@@ -717,7 +717,8 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SPARQL maximum value, ShortRangeForecastReport
+However, this query can be simplified as there is already a concept that resembles a \Egls{weather report} for the desired period of time (\Egls{short range weather report}):
+
 \begin{lstlisting}
 SELECT (MAX(?t) AS ?t_max)
 WHERE {
@@ -729,7 +730,8 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SPARQL temperature value < 0
+In a similar way, instances of \Egls{weather phenomenon} that satisfy a certain condition can be found. For instance, the following query obtains all instances of \Egls{weather state} that represent a temperature of below \SI{0}{\celsius}:
+
 \begin{lstlisting}
 SELECT ?s
 WHERE {
@@ -740,7 +742,8 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SPARQL temperature frost
+As the sub-concept \Egls{frost} of \Egls{temperature} already represents a temperature value of below \SI{0}{\celsius}, the query can be shortened:
+
 \begin{lstlisting}
 SELECT ?s
 WHERE {
@@ -749,7 +752,8 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SPARQL temperature, ShortRangeForecastReport
+Restrictions about time and weather phenomena can be combined, i.e. to find all instances of \Egls{weather state} that represent a temperature of below \SI{0}{\celsius} during the next three hours:
+
 \begin{lstlisting}
 SELECT ?s
 WHERE {
@@ -760,7 +764,8 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SPARQL hasNextWeatherState
+To fetch all pairs of consecutive instances of \Egls{weather state} using the property \egls{has next weather state}, this query can be used:
+
 \begin{lstlisting}
 SELECT ?s1 ?s2
 WHERE {
@@ -768,7 +773,8 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SPARQL hasNextWeatherState+
+\eacs{SPARQL}~1.1 allows querying the transitive closure of an object property; the following query yields all pairs of \Egls{weather state}s \texttt{(?s1, ?s2)} where \texttt{?s1} describe the weather state for an earlier point of time than \texttt{?s2}:
+
 \begin{lstlisting}
 SELECT ?s1 ?s2
 WHERE {
@@ -776,7 +782,8 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SPARQL rising temperature
+With these insights, it is possible to write this query that returns all pairs of \Egls{weather state}s that indicate an increasing temperature value over time, i.e. the temperature value of \texttt{?s2} is higher than the temperature value of \texttt{?s1} while \texttt{?s2} describes a later weather state than \texttt{?s1}:
+
 \begin{lstlisting}
 SELECT ?s1 ?s2
 WHERE {
@@ -791,23 +798,28 @@ WHERE {
 }
 \end{lstlisting}
 
-% TODO example: SWRL hasLaterWeatherState
+In order to simplify the \eacs{SPARQL} queries that are required to provide answers to competency questions, \eacs{SWRL} rules can be introduced; e.g. the following \eacs{SWRL} rules define the property \emph{has later weather state} (which has to be separately added to the ontology) which represents the transitive closure of \egls{has next weather state}:
+
 \begin{lstlisting}
 hasNextWeatherState(?s1, ?s2) ⇒ hasLaterWeatherState(?s1, ?s2)
 hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒ hasLaterWeatherState(?s1, ?s3)
 \end{lstlisting}
 
-% TODO example: SWRL increasingTemperature
+This rule defines the property \emph{increasing temperature} which relates pairs of \Egls{weather state}s to each other that indicate an increasing temperature value over time:
+
 \begin{lstlisting}
 hasWeatherPhenomenon(?s1, ?t1) ∧ hasTemperatureValue(?t1, ?v1) ∧ numericalValue(?v1, ?m1) ∧
-hasWeatherPhenomenon(?s2, ?t2) ∧ hasTemperatureValue(?t2, ?v2) ∧ numericalValue(?v2, ?m2) ∧ 
-greaterThan(?m2, ?m1) ∧ hasLaterWeatherState(?s1, ?s2) ⇒ increasingTemperature(?s1, ?s2)
+  hasWeatherPhenomenon(?s2, ?t2) ∧ hasTemperatureValue(?t2, ?v2) ∧ numericalValue(?v2, ?m2) ∧ 
+  greaterThan(?m2, ?m1) ∧ hasLaterWeatherState(?s1, ?s2) ⇒ increasingTemperature(?s1, ?s2)
 \end{lstlisting}
 
-% TODO example: SPARQL increasingTemperature
+Now, the query for all pairs of \Egls{weather state}s that indicate an increasing temperature value over time can be simplified in the following way:
+
 \begin{lstlisting}
 SELECT ?s1 ?s2
 WHERE {
     ?s1 weather:increasingTemperature ?s2.
 }
 \end{lstlisting}
+
+Eventually, using \eacs{SWRL} rules and \eacs{SPARQL} queries as shown above, answers to all competency questions from the specification of \smarthomeweather can be provided.
