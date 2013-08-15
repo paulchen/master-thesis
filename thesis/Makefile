@@ -19,12 +19,12 @@ all: thesis.pdf
 figures: $(addsuffix .pdf, $(basename $(wildcard $(FIGURES_DIR)/*.dia))) $(addsuffix .pdf, $(basename $(wildcard $(DIAGRAMS_DIR)/*.dia)))
 
 thesis.pdf: *.tex chapters/*.tex references.bib figures
-	pdflatex thesis
+	pdflatex -shell-escape thesis
 	bibtex thesis
 	makeglossaries thesis
-	pdflatex thesis
+	pdflatex -shell-escape thesis
 	makeglossaries thesis
-	pdflatex thesis
+	pdflatex -shell-escape thesis
 
 $(FIGURES_DIR)/%.pdf: $(FIGURES_DIR)/%.svg
 	$(inkscape-command)

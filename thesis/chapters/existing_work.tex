@@ -80,10 +80,12 @@ The complete \eacs{URI} of \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weathe
 
 For the above example, the prefix \texttt{weather} has been defined to replace the string \texttt{http://\hspace{0pt}example.org/weather\#} and \texttt{geo} replaces \texttt{http://example.org/geo\#}. This results in the identifiers \texttt{weather:CurrentWeather} and \texttt{geo:Vienna} that can be found in Figure~\ref{fig:rdf_example}.
 
-For expressing the data that is represented by an \eacs{RDF} model, several serialization formats are available. The \eacs{RDF} recommendation is based on \emph{RDF/XML} which maps the \eacs{RDF} model to an \eacs{XML} document~\cite{RDF_XML}. The representation of the above example in \emph{RDF/XML} can be seen in Figure~\ref{fig:rdfxml_example}. As \emph{RDF/XML} is a rather verbose format which may be difficult to read for humans, the \eacs{N3} (\emph{Notation3}) representation for \eacs{RDF} is available which was developed with human-readability in mind~\cite{Notation3}. \emph{Notation3} incorporates some syntax features that go beyond the expressive power of \eacs{RDF}. A subset of \emph{Notation3} named \eacs{Turtle} (\emph{Terse RDF Triple Language}) is available that is limited to the features required to map \eacs{RDF} models~\cite{Turtle}. Figure~\ref{fig:turtle_example} shows the above example in \eacs{Turtle} syntax.
+For expressing the data that is represented by an \eacs{RDF} model, several serialization formats are available. The \eacs{RDF} recommendation is based on \emph{RDF/XML} which maps the \eacs{RDF} model to an \eacs{XML} document~\cite{RDF_XML}. The representation of the above example in \emph{RDF/XML} can be seen in Listing~\ref{listing:rdfxml_example}. As \emph{RDF/XML} is a rather verbose format which may be difficult to read for humans, the \eacs{N3} (\emph{Notation3}) representation for \eacs{RDF} is available which was developed with human-readability in mind~\cite{Notation3}. \emph{Notation3} incorporates some syntax features that go beyond the expressive power of \eacs{RDF}. A subset of \emph{Notation3} named \eacs{Turtle} (\emph{Terse RDF Triple Language}) is available that is limited to the features required to map \eacs{RDF} models~\cite{Turtle}. Listing~\ref{listing:turtle_example} shows the above example in \eacs{Turtle} syntax.
 
-\begin{figure} % TODO syntax highlighting
-\begin{lstlisting}
+
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{xml}
 <?xml version="1.0"?>
 <rdf:RDF xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
       xmlns:geo="http://example.org/geo#"
@@ -101,13 +103,17 @@ For expressing the data that is represented by an \eacs{RDF} model, several seri
     <geo:hasLocation rdf:resource="http://example.org/geo#Vienna" />
   </rdf:Description>
 </rdf:RDF>
-\end{lstlisting}
-\caption{\eacs{RDF} example from Figure~\ref{fig:rdf_example} encoded in \emph{RDF/XML} syntax}
-\label{fig:rdfxml_example}
-\end{figure}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\begin{figure}
-\begin{lstlisting}
+\caption{\eacs{RDF} example from Figure~\ref{fig:rdf_example} encoded in \emph{RDF/XML} syntax}
+\label{listing:rdfxml_example}
+\end{mintlisting}
+
+
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix weather: <http://example.org/weather#> .
 @prefix geo: <http://example.org/geo#> .
@@ -117,10 +123,14 @@ weather:CurrentWeather weather:hasTemperatureValue "18.2"^^xsd:float ;
     weather:hasHumidityValue ".72"^^xsd:float .
 
 weather:CurrentWeather geo:hasLocation geo:Vienna .
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
 \caption{\eacs{RDF} example from Figure~\ref{fig:rdf_example} encoded in \eacs{Turtle} syntax}
-\label{fig:turtle_example}
-\end{figure}
+\label{listing:turtle_example}
+\end{mintlisting}
+
+\resetlisting
 
 \vspace{1em}
 
@@ -141,20 +151,22 @@ Figure~\ref{fig:rdfs_example} shows the example from Figure~\ref{fig:rdf_example
 
 \eacs{RDFS} comes with reasoning support~\cite{RDF_semantics}; e.g. in the above example, the statements
 
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 weather:CurrentWeather rdf:type weather:WeatherState .
 geo:Vienna rdf:type geo:Location .
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 can be removed without loss of knowledge. A reasoner can deduce them from these statements:
 
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 weather:CurrentWeather geo:hasLocation geo:Vienna .
 geo:location rdfs:domain weather:WeatherState .
 geo:location rdfs:range geo:Location .
-\end{lstlisting}
-
-\vspace{1em}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 Many of the concepts and properties defined by \eacs{RDFS} are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} which is based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}~\cite{OWL-working-group} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
 \eacs{OWL} 2 remains fully compatible to \eacs{OWL} 1, i.e. all \eacs{OWL} 1 ontologies are \eacs{OWL} 2 ontologies as well, with unchanged semantics.
@@ -173,10 +185,11 @@ Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among oth
 
 Reasoning in \eacs{OWL} respects the \emph{open world assumption}~\cite{open_world_assumption1,open_world_assumption2}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa~\cite{MonotonicReasoning}.
 
-Queries on \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL} models are often performed using \eacs{SPARQL}, a query language for \eacs{RDF}~\cite{SPARQL}. Figure~\ref{fig:sparql_example} shows an example for the use of \eacs{SPARQL} to query all temperature values known for Vienna, Austria in the \eacs{RDFS} model depicted in Figure~\ref{fig:rdfs_example}.
+Queries on \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL} models are often performed using \eacs{SPARQL}, a query language for \eacs{RDF}~\cite{SPARQL}. Listing~\ref{listing:sparql_example} shows an example for the use of \eacs{SPARQL} to query all temperature values known for Vienna, Austria in the \eacs{RDFS} model depicted in Figure~\ref{fig:rdfs_example}.
 
-\begin{figure}
-\begin{lstlisting}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 @prefix weather: <http://example.org/weather#>
 @prefix geo: <http://example.org/geo#>
 
@@ -186,21 +199,27 @@ WHERE {
     ?state geo:Location geo:Vienna.
     ?state weather:hasTemperatureValue ?temperature.
 }
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
 \caption{\eacs{SPARQL} code to query all known temperature values in the model from Figure~\ref{fig:rdf_example}}
-\label{fig:sparql_example}
-\end{figure}
+\label{listing:sparql_example}
+\end{mintlisting}
 
-\eacs{SWRL} is a language for \eacs{OWL} which is used to express rules~\cite{SWRL}. \eacs{SWRL} can be used to define relations that may be difficult or impossible to define using \eacs{OWL} alone, e.g. due to the \emph{open world assumption}. Given a model that contains a concept \texttt{WeatherState} for a certain time and a intransitive property \texttt{hasNextWeatherState} which relates two consecutive instances of \texttt{WeatherState} to each other, Figure~\ref{fig:swrl_example} gives an example demonstrating how the semantics transitive property \texttt{hasLaterWeatherState} can be defined based on \texttt{hasNextWeatherState}.
+\eacs{SWRL} is a language for \eacs{OWL} which is used to express rules~\cite{SWRL}. \eacs{SWRL} can be used to define relations that may be difficult or impossible to define using \eacs{OWL} alone, e.g. due to the \emph{open world assumption}. Given a model that contains a concept \texttt{WeatherState} for a certain time and a intransitive property \texttt{hasNextWeatherState} which relates two consecutive instances of \texttt{WeatherState} to each other, Listing~\ref{listing:swrl_example} gives an example demonstrating how the semantics transitive property \texttt{hasLaterWeatherState} can be defined based on \texttt{hasNextWeatherState}.
 
-\begin{figure}
-\begin{lstlisting}
+% TODO fix this by downloading a new version of minted (v2.0alpha)
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{sparql}
 hasNextWeatherState(?s1, ?s2) ⇒ hasLaterWeatherState(?s1, ?s2)
 hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒ hasLaterWeatherState(?s1, ?s3)
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
 \caption{\eacs{SWRL} example defining a transitive property based on a intransitive one.}
-\label{fig:swrl_example}
-\end{figure}
+\label{listing:swrl_example}
+\end{mintlisting}
 
 \eacs{OWL} ontologies are often designed using semantic editors like \protege~\cite{protege}. Common reasoners for \eacs{OWL} include \emph{Pellet}~\cite{pellet}, \emph{RacerPro}~\cite{RacerPro}, \emph{FaCT++}~\cite{factplusplus} and \emph{HermiT}~\cite{hermit}. \protege and \emph{Pellet} are used to develop the \smarthomeweather ontology in Chapter~\ref{ch:smarthomeweather_ontology}.
 
