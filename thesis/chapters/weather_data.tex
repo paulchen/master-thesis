@@ -468,27 +468,35 @@ This section gives an overview on how requests to the weather \eacs{API} of \yrn
 For an arbitrary request, latitude and longitude must be specified (in degrees; northern latitudes and eastern longitudes are represented by positive values)~\cite{yrno_documentation}. Additionally, the altitude above sea level (in metres) may be specified for locations outside of Norway. Based on this input data, a \emph{URL} of the format
 
 % TODO improve formatting of lstlisting environments
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{text}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longitude>
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 or
 
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{text}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=<latitude>;lon=<longitude>;msl=<altitude>
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 is constructed, e.g.
 
-\begin{lstlisting}
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{text}
 http://api.yr.no/weatherapi/locationforecast/1.8/?lat=48.21;lon=16.37;msl=171
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
 for the city of Vienna, Austria (N~\SI {48.21}{\degree }, E~\SI {16.37}{\degree }, \SI {171}{\metre } above \eacs {MSL}). An \eacs{HTTP} \emph{GET} request to this \eacs{URL} returns an \eacs{XML} document conforming to the \eacs{XML} \emph{Schema}~\cite{xml-schema} definition that can be found online~\cite{yrno_schema}.
 
-The structure of this \eacs{XML} document is as follows (attributes are omitted for better readability):
+The structure of this \eacs{XML} document is shown in Listing~\ref{listing:yrno_structure} (attributes are omitted for better readability).
 
-\begin{lstlisting}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{xml}
 <weatherdata>
 	<meta>
 		<model />
@@ -497,15 +505,20 @@ The structure of this \eacs{XML} document is as follows (attributes are omitted 
 		/* ... */
 	</product>
 </weatherdata>
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\caption{Structure of the \eacs{XML} document returned by the \eacs{API} of \emph{yr.no}; attributes are omitted for better readability.}
+\label{listing:yrno_structure}
+\end{mintlisting}
 
 The attributes of the \texttt{<model>} element describe when the forecast has been created, when it will be updated for the next time and what date and time of the first and the last forecast returned are.
 
-There is an arbitrary number of \texttt{<time>} elements that are children of the \texttt{<product>} element. Every \texttt{<time>} element represents the weather forecast for a certain period of time. Each \texttt{<time>} element has a \texttt{<location>} element that has a child element for each weather property.
+There is an arbitrary number of \texttt{<time>} elements that are children of the \texttt{<product>} element. Every \texttt{<time>} element represents the weather forecast for a certain period of time. Each \texttt{<time>} element has a \texttt{<location>} element that has a child element for each weather property. A typical \texttt{<time>} element is depicted in Listing~\ref{listing:yrno_time_element}.
 
-This is a typical \texttt{<time>} element:
-
-\begin{lstlisting}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{xml}
 <time datatype="forecast" from="2013-06-24T12:00:00Z" to="2013-06-24T12:00:00Z">
 	<location altitude="171" latitude="48.2100" longitude="16.3700">
 		<temperature id="TTT" unit="celcius" value="15.7"/>
@@ -520,7 +533,12 @@ This is a typical \texttt{<time>} element:
 		<highClouds id="HIGH" percent="43.0"/>
 	</location>
 </time>
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\caption{A typical \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no}.}
+\label{listing:yrno_time_element}
+\end{mintlisting}
 
 % TODO annotation: "elements that can be retrieved from yr.no"
 In total, there are $41$ elements that are allowed to be children of the \texttt{<location>} element. The ones that are relevant for \smarthomeweather are: \texttt{pressure}, \texttt{precipitation}, \texttt{cloudiness}, \texttt{lowClouds}, \texttt{mediumClouds}, \texttt{highClouds}, \texttt{temperature}, \texttt{dewpoint\hspace{0pt}Temperature}, \texttt{humidity}, \texttt{windDirection}, \texttt{windSpeed}, and \texttt{symbol}. While other elements may occur in the weather reports for some locations (especially for locations within Norway), these are the elements which are used worldwide.
@@ -530,17 +548,24 @@ None of the child elements is required. However, for most places of the world, t
 \begin{itemize}
   \item Some \texttt{<location>} elements have the child elements \texttt{temperature}, \texttt{windDirection}, \texttt{windSpeed}, \texttt{humidity}, \texttt{pressure}, \texttt{cloudiness}, \texttt{fog}, \texttt{lowClouds}, \texttt{mediumClouds} and \texttt{highClouds} (as shown above). The values of the attributes from and to of the enclosing \texttt{<time>} element are equal. % TODO annotation: hier könnte noch etwas mehr darüber gesagt werden
   
-  \item Some \texttt{<location>} elements have the child elements \texttt{precipitation} and \texttt{symbol}; the values of the attributes \texttt{from} and \texttt{to} of the enclosing \texttt{<time>} element differ by three to six hours; such an element looks like this:
+  \item Some \texttt{<location>} elements have the child elements \texttt{precipitation} and \texttt{symbol}; the values of the attributes \texttt{from} and \texttt{to} of the enclosing \texttt{<time>} element differ by three to six hours; see Listing~\ref{listing:yrno_time_element2} for an example of such an element.
 \end{itemize}
 
-\begin{lstlisting}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{xml}
 <time datatype="forecast" from="2013-06-24T06:00:00Z" to="2013-06-24T12:00:00Z">
 	<location altitude="171" latitude="48.2100" longitude="16.3700">
 		<precipitation unit="mm" value="2.5"/>
 		<symbol id="LIGHTRAIN" number="9"/>
 	</location>
 </time>
-\end{lstlisting}
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\caption{A \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no} describing a period of time.}
+\label{listing:yrno_time_element2}
+\end{mintlisting}
 
 The content of the \eacs{XML} document covers a period of nine days, starting at the current day.
 
