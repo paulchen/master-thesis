@@ -35,7 +35,7 @@ $(FIGURES_DIR)/%.svg: $(FIGURES_DIR)/%.dia
 clean: clean-thesis clean-figures
 
 clean-thesis:
-	rm -f *.log *.bbl *.aux *.blg *.log *.out *.toc *~ *.pdf chapters/*~ chapters/*backup *.glg *.glo *.gls *.ilg *.ind *.ist *.xdy *backup *.lof *.lot
+	rm -f *.log *.bbl *.aux *.blg *.log *.out *.toc *~ *.pdf chapters/*~ chapters/*backup *.glg *.glo *.gls *.ilg *.ind *.ist *.xdy *backup *.lof *.lot *.aex *.lolistingx *.lomintlisting *.pyg
 
 clean-figures:
 	find $(FIGURES_DIR) -name "*.svg" -delete
