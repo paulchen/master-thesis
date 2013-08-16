@@ -185,7 +185,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \item[2] part of \eacs{NOAA} (\emph{National Oceanic and Atmospheric Administration})~\cite{noaa}
 \end{tablenotes}
 \end{threeparttable}
-\caption{Names, operators, web pages, and coverage areas of all weather services that have been evaluated.}
+\caption[Names, operators, web pages, and coverage areas of weather services]{Names, operators, web pages, and coverage areas of all weather services that have been evaluated.}
 \label{table:weather_data1}
 \end{table}
 
@@ -223,7 +223,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \item[3] \eacs{METAR}s are available in \eacs{HTML} format from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available.
 \end{tablenotes}
 \end{threeparttable}
-\caption{Data formats and protocols for data access of weather services.}
+\caption[Data formats and data access protocols of weather services]{Data formats and protocols for data access of weather services.}
 \label{table:weather_data3}
 \end{table}
   
@@ -252,7 +252,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}~\cite{ccby30}\\
   \hline
 \end{tabular}
-\caption{Access restrictions and terms of use for weather services.}
+\caption[Access restrictions and terms of use for weather services]{Access restrictions and terms of use for weather services.}
 \label{table:weather_data4}
 \end{table}
 
@@ -286,7 +286,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \item[1] \emph{METAR} is standardised by \eacs{ICAO}~\cite{ICAO}. It was introduced in 1968 and has been modified a number of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
 \end{tablenotes}
 \end{threeparttable}
-\caption{Stability of weather services.}
+\caption[Stability of weather services]{Stability of weather services.}
 \label{table:weather_data5}
 \end{table}
 
@@ -348,7 +348,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
 \item[1] Further data is available via non-public interfaces which are adapted on customer request.
 \end{tablenotes}
 \end{threeparttable}
-\caption{Weather data provided by weather services.}
+\caption[Weather data provided by weather services]{Weather data provided by weather services.}
 \label{table:weather_data6}
 \end{table}
 
@@ -382,7 +382,7 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \textbf{yr.no} & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0}~\cite{ccby30} & - \\
   \hline
 \end{tabular}
-\caption{Advantages and disadvantages of Internet weather services.}
+\caption[Advantages and disadvantages of Internet weather services]{Advantages and disadvantages of Internet weather services.}
 \label{table:weather_services}
 \end{table}
 
@@ -457,7 +457,7 @@ When will it outside be colder than inside the house? When will it be warmer? & 
 \hline
 \end{tabular}
 \label{table:competency_questions}
-\caption{Assignment of competency questions to weather element(s).}
+\caption[Assignment of competency questions to weather element(s)]{Assignment of competency questions to weather element(s).}
 \end{table}
 
 \section{Weather data \eacs{API} of \yrno}
@@ -508,7 +508,7 @@ The structure of this \eacs{XML} document is shown in Listing~\ref{listing:yrno_
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\caption{Structure of the \eacs{XML} document returned by the \eacs{API} of \emph{yr.no}; attributes are omitted for better readability.}
+\caption[Structure of the \eacs{XML} document returned by the \eacs{API} of \emph{yr.no}]{Structure of the \eacs{XML} document returned by the \eacs{API} of \emph{yr.no}; attributes are omitted for better readability.}
 \label{listing:yrno_structure}
 \end{mintlisting}
 
@@ -536,7 +536,7 @@ There is an arbitrary number of \texttt{<time>} elements that are children of th
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\caption{A typical \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no}.}
+\caption[A \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no} (1)]{A typical \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no}.}
 \label{listing:yrno_time_element}
 \end{mintlisting}
 
@@ -563,7 +563,7 @@ None of the child elements is required. However, for most places of the world, t
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\caption{A \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no} describing a period of time.}
+\caption[A \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no} (2)]{A \texttt{<time>} element returned by the \eacs{API} of \emph{yr.no} describing a period of time.}
 \label{listing:yrno_time_element2}
 \end{mintlisting}
 
