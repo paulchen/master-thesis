@@ -90,7 +90,7 @@ This approach divides ontology development into a set of stages, as depicted in 
     \begin{itemize}
       \item \emph{Ontology Capture}: Concepts and relationships are identified and textually defined. Furthermore, terms which refer to these concepts and relationships are defined.
       
-      \item \emph{Ontology Coding}: In this step, the representation of the ontology from the \emph{Ontology Capture} stage is transformed into a formal (ontology) language (e.g. \eacs{OWL}), presumably using an ontology development environment (such as \protege).
+      \item \emph{Ontology Coding}: In this step, the representation of the ontology from the \emph{Ontology Capture} stage is transformed into a formal (ontology) language (e.g.\ \eacs{OWL}), presumably using an ontology development environment (such as \protege).
       
       \item \emph{Integrating Existing Ontologies}: As the ontology being developed partly covers the scope of ontologies that are already exist, research has to be done which ontologies can be reused.
     \end{itemize}
@@ -148,10 +148,10 @@ This approach splits the ontology development process into a set of activities a
   \item \emph{First Order Logic: Terminology}: In this step, the terminology is specified using first-order logic (or the logic used by the intended ontology language)~\cite{FirstOrderLogic}. The terms (objects, attributes, and relations) are derived from the previously formulated competency questions.
   \item Then, the competency questions are transformed into \emph{Formal Competency Questions} in terms of entailment and consistency problems with respect to the axioms in the ontology.
   \item \emph{First Order Logic: Axioms}: Now, formal axioms are stated that define the terms and constraints on objects in the ontology using first-order logic.
-  \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e. it can provide answers to all % TODO something is missing
+  \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e.\ it can provide answers to all % TODO something is missing
 \end{itemize}
 
-Once all these steps are completed, the formal model is implemented using a ontology language (e.g. \eacs{OWL}).
+Once all these steps are completed, the formal model is implemented using a ontology language (e.g.\ \eacs{OWL}).
 
 \subsubsection{Applications}
 
@@ -188,7 +188,7 @@ The approach is divided into a set of steps:
 \begin{enumerate}
   \item The domain and scope of the ontology are determined. The preferred way for this is to formulate \emph{competency questions} the ontology should be able to answer.
   \item Existing ontologies are considered to be reused to avoid doing work that has already been done and to simplify interoperability with other ontologies.
-  \item Important terms in the ontology are enumerated, i.e. a \emph{glossary of terms} is built.
+  \item Important terms in the ontology are enumerated, i.e.\ a \emph{glossary of terms} is built.
   \item From the glossary in the previous step, all terms that are classes are identified. They are then related to each other in order to create a \emph{class hierarchy}.
    \item The next step iterates over all classes and tries to identify terms from the glossary which are properties of the classes.
   \item Then, for the properties the ranges of possible values are specified.
@@ -252,7 +252,7 @@ During the \emph{inception phase}, requirements are captured. The \emph{elaborat
 The \emph{requirements workflow} consists of a set of tasks which analyses the knowledge domain; scope and purpose of the ontology, relevant terms, related use cases, and competency questions are identified. These results are the input for the \emph{analysis workflow} which refines concepts and their relations and enriches their description with detailed definitions in order to create a \emph{reference glossary}. The goal of the \emph{design workflow} is to model concepts, concept hierarchies, and domain-specific relationships from the previously created \emph{reference glossary} for their later implementation.
 During the \emph{implementation workflow}, the ontology designed in the previous workflow are translated to an ontology language. Finally, the \emph{test workflow} involves the evaluation of the ontology for \emph{semantic quality} (the absence of contradictory concepts) and \emph{pragmatic quality} (the usefulness of the ontology for the user).
 
-Each of these steps includes the generation of one or more documentation artefacts (e.g. diagrams or tables) that document the results. Hence, once the \eacs{UPON} process is completed, both the ontology and its documentation are completed and match each other. Documentation is not implemented as a separate step to avoid any problems that may arise from such an approach.
+Each of these steps includes the generation of one or more documentation artefacts (e.g.\ diagrams or tables) that document the results. Hence, once the \eacs{UPON} process is completed, both the ontology and its documentation are completed and match each other. Documentation is not implemented as a separate step to avoid any problems that may arise from such an approach.
 
 \subsubsection{Applications}
 
@@ -296,7 +296,7 @@ Important to note about \methontology is the absence of \emph{documentation} as 
 % TODO Ich würde wie bereits bei den anderen beschriebenen Methodologien den Überblicksgraph (Fig. 4.6) bereits hier einfügen und danach immer auf diese Figure referenzieren -> gibt ein einheitlicheres Bild.
 \subsubsection{Applications}
 
-Applications of \methontology include the \emph{Legal Ontology}~\cite{MethontologyLegal}, the \emph{Chemical Ontology}~\cite{MethontologyChemical}, the \emph{Graduation Screen Ontology}~\cite{GraduationScreenOntology}, the \emph{Ontology for Metabolic Pathways}~\cite{MetabolicPathways}, the \emph{Vehicles' Ontology} for checking the consistency of official documents in eGovernment~\cite{VehiclesOntology}, the ontology for a context-aware semantic approach for the effective selection of an assistive software~\cite{AssistiveSoftware}, and a cartographic ontology~\cite{CartographicOntology}. Some ontology designers opted for an approach that combines \methontology with another approach, e.g. for the development of an educational ontology~\cite{EducationalOntology} using a combination of \methontology and a \emph{Model Driven Approach}~\cite{ModelDrivenApproach}.
+Applications of \methontology include the \emph{Legal Ontology}~\cite{MethontologyLegal}, the \emph{Chemical Ontology}~\cite{MethontologyChemical}, the \emph{Graduation Screen Ontology}~\cite{GraduationScreenOntology}, the \emph{Ontology for Metabolic Pathways}~\cite{MetabolicPathways}, the \emph{Vehicles' Ontology} for checking the consistency of official documents in eGovernment~\cite{VehiclesOntology}, the ontology for a context-aware semantic approach for the effective selection of an assistive software~\cite{AssistiveSoftware}, and a cartographic ontology~\cite{CartographicOntology}. Some ontology designers opted for an approach that combines \methontology with another approach, e.g.\ for the development of an educational ontology~\cite{EducationalOntology} using a combination of \methontology and a \emph{Model Driven Approach}~\cite{ModelDrivenApproach}.
 For the development of an ontology in the hydrographical domain~\cite{HydrographicalOntology}, the designers combined the top-down approach of \methontology with a bottom-up approach based on \emph{Formal Concept Analysis}~\cite{FormalConceptAnalysis}.
 
 \subsubsection{Analysis}
@@ -400,7 +400,7 @@ This section describes \methontology as a well-defined approach to perform all a
 
 For each of the activities, only ideas behind them are covered, but their application is omitted. They are applied in Chapter~\ref{ch:smarthomeweather_ontology} where \methontology is used to create the \smarthomeweather ontology.
 
-Each section that describes an activity involving the creation of some documentation artefact (e.g. a table or a document), a template for the respective artefact is presented.
+Each section that describes an activity involving the creation of some documentation artefact (e.g.\ a table or a document), a template for the respective artefact is presented.
 
 \subsubsection{Specification}
 \label{subsec:methontology_specification}
@@ -531,7 +531,7 @@ In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagr
 
 \paragraph{Task 4: Concept dictionary}
 
-The \emph{concept dictionary} contains all domain concepts together with their relations, their instances, their class attributes (i.e. attributes that describe properties of classes), and their instance attributes (i.e. attributes that describe properties of instances). All information from the previous steps contribute to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts.
+The \emph{concept dictionary} contains all domain concepts together with their relations, their instances, their class attributes (i.e.\ attributes that describe properties of classes), and their instance attributes (i.e.\ attributes that describe properties of instances). All information from the previous steps contribute to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts.
 
 Table~\ref{table:methontology_example_concept_dictionary} shows a template for the concept dictionary.
 
@@ -588,7 +588,7 @@ See Table~\ref{table:methontology_example_instance_attributes} for a template fo
 
 \paragraph{Task 7: Class attributes}
 
-All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns are \emph{name}, \emph{concept name} (i.e. the name of the concept where the attribute is defined), \emph{value type}, \emph{value(s)}, \emph{minimum cardinality}, and \emph{maximum cardinality}. Additionally, all information about related instance attributes, class attributes, constants, rules, and formulae may be specified that are specified in the instance attribute as well.
+All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns are \emph{name}, \emph{concept name} (i.e.\ the name of the concept where the attribute is defined), \emph{value type}, \emph{value(s)}, \emph{minimum cardinality}, and \emph{maximum cardinality}. Additionally, all information about related instance attributes, class attributes, constants, rules, and formulae may be specified that are specified in the instance attribute as well.
 
 \begin{table}
 \centering
@@ -666,7 +666,7 @@ Within an ontology, a set of instances may be predefined. This task involves lis
 
 \subsubsection{Formalisation}
 
-\emph{Formalisation} is the transition from the informal description of the tables and diagrams in the previous step of \emph{conceptualisation} into the chosen ontology language, e.g. \eacs{OWL}. As this is tightly coupled with the \emph{implementation} of the ontology (see Section~\ref{subsec:methontology_implementation}), this is a task which is not performed separately.
+\emph{Formalisation} is the transition from the informal description of the tables and diagrams in the previous step of \emph{conceptualisation} into the chosen ontology language, e.g.\ \eacs{OWL}. As this is tightly coupled with the \emph{implementation} of the ontology (see Section~\ref{subsec:methontology_implementation}), this is a task which is not performed separately.
 
 \subsubsection{Integration}
 
@@ -696,7 +696,7 @@ During \emph{Evaluation}, verification takes place whether all artefacts that ha
 
 The completed ontology must fulfil all functional and non-functional requirements listed the \emph{Ontology Requirements Specification Document} presented in Section~\ref{subsec:methontology_specification}. In case of a mismatch, the ontology traverses the activities of the life cycle (\emph{Conceptualisation}, \emph{Formalisation}, \emph{Integration}, \emph{Implementation}, and \emph{Evaluation}) once more.
 
-There may be requirements that an ontology is unable to fulfil due to certain limitations, e.g. the \emph{open world assumption}~\cite{open_world_assumption1}. For instance, \eacs{OWL}, which honors the \emph{open world assumption}, cannot tell the absence of an instance of some concept. This leads to cases where an ontology fails to answer a competency question such as ``Does this group only consist of women?''; just because the ontology does not contain an individual which is a man, it does not mean that there is no man; the ontology can only tell that there is no man it knows about.
+There may be requirements that an ontology is unable to fulfil due to certain limitations, e.g.\ the \emph{open world assumption}~\cite{open_world_assumption1}. For instance, \eacs{OWL}, which honors the \emph{open world assumption}, cannot tell the absence of an instance of some concept. This leads to cases where an ontology fails to answer a competency question such as ``Does this group only consist of women?''; just because the ontology does not contain an individual which is a man, it does not mean that there is no man; the ontology can only tell that there is no man it knows about.
 
 Evaluation (and specification) must hereby take limitations into account which affect ontologies or the ontology language being used.
 

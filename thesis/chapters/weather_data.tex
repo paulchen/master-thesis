@@ -35,7 +35,7 @@ The above competency questions can be answered when the (predicted) state of the
 
 A set of measurement value for one or more points of time is called \emph{weather state} from now on.
 
-Apart from weather elements, Internet weather services often provide some information that will be called \emph{weather condition} from now on. Generally speaking, the weather condition is a one-word description of the current weather situation. Examples for the general weather conditions are ``Sun'', ``Rain'', and ``Fog''. Some weather conditions can be split up into several conditions, e.g. ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
+Apart from weather elements, Internet weather services often provide some information that will be called \emph{weather condition} from now on. Generally speaking, the weather condition is a one-word description of the current weather situation. Examples for the general weather conditions are ``Sun'', ``Rain'', and ``Fog''. Some weather conditions can be split up into several conditions, e.g.\ ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
 
 Sources for weather data are weather sensors and weather forecasts. As smart homes perform no weather forecasting on its own, forecast data is gathered from weather services via Internet. While data about the current weather state can be obtained from both weather sensors and Internet services, the only source for data about future weather states are Internet services.
 
@@ -107,16 +107,16 @@ For evaluation of Internet weather services, the following aspects are examined:
   \item \textbf{Data access:} How does the access to weather data work? How is data requested and how is the answer being received?\\
   The less complicated a request is, the more suitable a weather service is for \smarthomeweather. Requests in \eacs{HTTP} (\emph{Hypertext Transfer Protocol})~\cite{rfc2616} are preferred due to the simplicity of performing requests on the client side in Java using the \emph{Apache HttpComponents project}~\cite{apache_hc}.
   
-  \item \textbf{Access restrictions, terms of use:} Is the service available freely or is the access restricted? Are credentials (e.g. a username and a password or an access key) required for access? If yes, can the credentials be obtained in a simple way or does that entail a complicated procedure? Are there any access fees for academic or commercial use?\\
+  \item \textbf{Access restrictions, terms of use:} Is the service available freely or is the access restricted? Are credentials (e.g.\ a username and a password or an access key) required for access? If yes, can the credentials be obtained in a simple way or does that entail a complicated procedure? Are there any access fees for academic or commercial use?\\
   A service being less restricted is preferred over a service coming with more restrictions.
   
   \item \textbf{Documentation:} Is there any documentation for this service? Does it cover all aspects or are there some features that are undocumented?\\
   Of course, a service without documentation is unsuitable. A better documented service is always preferred over a service that is less documented.
   
-  \item \textbf{Stability:} Can one expect the service to remain unchanged over a reasonable amount of time (e.g. several years)? If there will be future changes, will they be announced? How long will they be announced in advance?\\
+  \item \textbf{Stability:} Can one expect the service to remain unchanged over a reasonable amount of time (e.g.\ several years)? If there will be future changes, will they be announced? How long will they be announced in advance?\\
   A stable service is preferred over an unstable one. A better handling of changes is preferred over a worse handling of changes.
   
-  \item \textbf{Weather elements:} Which weather elements (e.g. temperature, relative humidity, dew point etc.) are covered by the service?\\
+  \item \textbf{Weather elements:} Which weather elements (e.g.\ temperature, relative humidity, dew point etc.) are covered by the service?\\
   A weather service covering a wider range of weather elements is preferred over a service covering a smaller range.
   
   % TODO explain: why 48 hours?
@@ -139,7 +139,7 @@ Table~\ref{table:weather_data1} lists all weather services that have been evalua
 
 Table~\ref{table:weather_data3} lists the  weather services together with the data format they use to provide their data. For the case of Java, \eacs{XML}-based formats including \eacs{RSS} feeds (\emph{Rich Site Summary})~\cite{RSS} are preferred because of the built-in support for \eacs{XML} by \eacs{DOM} and \eacs{SAX}. There are libraries for providing \eacs{JSON} and \eacs{JSONP} (\emph{\acs{JSON} with padding})~\cite{jsonp} support for Java. \eacs{CSV} (\emph{comma-separated values})~\cite{rfc4180} is a format that can be parsed easily in any language, although using \eacs{CSV} leads to more implementation costs than \eacs{XML}. There are no libraries available that provide Java support for the \eacs{SYNOP} format (\emph{Surface Synoptic Observations}~\cite{SYNOP} which is used by \eacs{DWD}; hence this format is unsuitable to be used in a Java application.
 
-\eacs{METAR} (\emph{Meteorological Aerodrome Report})~\cite{metar} is a format for reporting weather data~\cite{metar} that is standardised by the \emph{International Civil Aviation Organisation} (\eacs{ICAO})~\cite{ICAO}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g. \emph{PyMETAR}~\cite{pymetar} for Python or an implementation for Java~\cite{metar-java}.
+\eacs{METAR} (\emph{Meteorological Aerodrome Report})~\cite{metar} is a format for reporting weather data~\cite{metar} that is standardised by the \emph{International Civil Aviation Organisation} (\eacs{ICAO})~\cite{ICAO}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g.\ \emph{PyMETAR}~\cite{pymetar} for Python or an implementation for Java~\cite{metar-java}.
 
 Most services provide their data via \eacs{HTTP}~\cite{rfc2616}, hence simple access from Java applications is possible using existing libraries such as the \emph{Apache HttpComponents project}~\cite{apache_hc}. \eacs{DWD} uses access via \eacs{FTP} (\emph{File Transfer Protocol})~\cite{rfc959} while \eacs{NWS} (\emph{National Weather Service}) employs \eacs{REST} (\emph{Representational State Transfer})~\cite{REST} and \eacs{SOAP} (\emph{Simple Object Access Protocol})~\cite{SOAP} for the access to its data. \eacs{FTP}, \eacs{REST}, and \eacs{SOAP} can all be used in Java applications, but their use may lead to higher implementation costs compared to the use of \eacs{HTTP}.
 
@@ -404,7 +404,7 @@ The ontology uses the following weather elements which are available from many I
   \item solar radiation.
 \end{itemize}
 
-Furthermore, the overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition; two contradictory states, e.g. \emph{light clouds} and \emph{partly cloudy}, may not be used at the same time. These states are taken from the list of symbols used for describing the weather condition in the \eacs{API} of \yrno~\cite{yrno_faq}.
+Furthermore, the overall weather condition is added to the ontology. This weather condition is described by the following states: \emph{Cloudy}, \emph{fog}, \emph{light clouds}, \emph{partly cloudy}, \emph{rain}, \emph{sleet}, \emph{sun}, \emph{thunder}. At most three of them may be used together to describe the overall weather condition; two contradictory states, e.g.\ \emph{light clouds} and \emph{partly cloudy}, may not be used at the same time. These states are taken from the list of symbols used for describing the weather condition in the \eacs{API} of \yrno~\cite{yrno_faq}.
 
 % TODO clash: ontology does support data not provided from any service or sensor
 Additionally, the ontology supports the position of the sun. This data is not obtained from any sensor or service; a few algorithms are available for calculating the sun's position given date, time and the geographical position (latitude and longitude); see Section~\ref{sec:sun_position} for details.
@@ -413,7 +413,7 @@ In case a weather service does not provide a value for the dew point, there are 
 
 \[t_d \approx t-\left(\frac{100-RH}{5}\right)\]
 
-$t_d$ represents the dew point temperature, $t$ the air temperature, and $RH$ the relative humidity in percent (i.e. in the interval $[0,100]$). Accordingly, the value of relative humidity can be calculated from the values of dew point and temperature using the same method (the case of a missing temperature value, but values of dew point and relative humidity is unlikely).
+$t_d$ represents the dew point temperature, $t$ the air temperature, and $RH$ the relative humidity in percent (i.e.\ in the interval $[0,100]$). Accordingly, the value of relative humidity can be calculated from the values of dew point and temperature using the same method (the case of a missing temperature value, but values of dew point and relative humidity is unlikely).
 
 As the atmospheric pressure decreases with increasing altitude above sea level, it is necessary to convert the pressure value observed by a sensor to the equivalent pressure at sea level using the \emph{Barometric formula}~\cite{us76_standard_atmosphere}.
 This is not necessary for many Internet weather services (including \yrno) as these often report a value that has already been converted.

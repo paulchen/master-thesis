@@ -1,7 +1,7 @@
 \chapter{The \emph{Weather Importer}}
 \label{ch:weather_importer}
 
-In previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} discusses the details of weather services that are available via Internet, with the example of the \eacs{API} by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements of the \smarthomeweather project. Chapter~\ref{ch:smarthomeweather_ontology} describes the design of the \smarthomeweather ontology. Eventually, the ontology needs to be populated with data, i.e. individuals that comprise the current and future state of the weather at the desired location.
+In previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} discusses the details of weather services that are available via Internet, with the example of the \eacs{API} by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements of the \smarthomeweather project. Chapter~\ref{ch:smarthomeweather_ontology} describes the design of the \smarthomeweather ontology. Eventually, the ontology needs to be populated with data, i.e.\ individuals that comprise the current and future state of the weather at the desired location.
 
 For that process, a standalone Java application has been developed. As its main purpose is to import weather data, it was named \emph{Weather Importer}.
 
@@ -36,7 +36,7 @@ Other than its name suggests, \texttt{OntologyClass} is an interface that is imp
 \begin{itemize}
   \item \texttt{createIndividuals()} creates individuals and statements holding the data that is stored in the object and adds them to the ontology. The method calls \texttt{createIndividuals()} for any objects that are connected to this object, with the exception of instances of \texttt{Weather\hspace{0pt}State} and \texttt{Weather\hspace{0pt}Report} that are linked together via the properties \texttt{previousState} and \texttt{previousReport}, respectively.
   
-  \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \smarthomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g. an \texttt{Instant} creates an individual of type \Egls{instant} and one of type \emph{DateTimeDescription}\footnote{\emph{DateTimeDescription} is defined by \emph{OWL-Time} as the concept that represents the timestamp of an \Egls{instant}; the property \emph{inDateTime} links an instance of \emph{DateTimeDescription} to an instance of \Egls{instant}.}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \Egls{instant} individual; the corresponding \emph{DateTimeDescription} object can be obtained by querying the ontology for the statement having the previously returned
+  \item \texttt{getIndividual()} returns the \texttt{Individual} object previously created by the method \texttt{createIndividuals()} that represents the main ontology individual described by the object. In some classes, due to the structure of the \smarthomeweather ontology and the ontologies being imported, calling \texttt{createIndividuals()} will add more than one individual to the ontology, e.g.\ an \texttt{Instant} creates an individual of type \Egls{instant} and one of type \emph{DateTimeDescription}\footnote{\emph{DateTimeDescription} is defined by \emph{OWL-Time} as the concept that represents the timestamp of an \Egls{instant}; the property \emph{inDateTime} links an instance of \emph{DateTimeDescription} to an instance of \Egls{instant}.}. \texttt{getIndividual()} will return the \texttt{Individual} object representing the \Egls{instant} individual; the corresponding \emph{DateTimeDescription} object can be obtained by querying the ontology for the statement having the previously returned
   \Egls{instant} individual as subject and the property \emph{inDateTime} as predicate.
   
   \item \texttt{getTurtleStatements()} returns an instance of \texttt{TurtleStore} that contains a set of \texttt{TurtleStatement} objects each representing an \eacs{RDF} triple in \emph{\eacs{Turtle} syntax}. The instance being returned contains all data that calling \texttt{createIndividuals()} would add to the ontology. See Section~\ref{subsec:importer_turtle} for details.
@@ -78,7 +78,7 @@ The application depends on the \emph{Apache Jena} framework~\cite{apache_jena} (
 \begin{itemize}
   \item The targets \texttt{compile} and \texttt{compile\_test} compile the application and the \emph{JUnit} test cases, respectively. \texttt{dist} generates two \emph{JAR} files~\cite{jar}, one containing the application and one for the class that imports weather data from \yrno. \texttt{clean} removes all files and directories generated by the aforementioned targets and the target \texttt{javadoc}; \texttt{rebuild} executes \texttt{clean}, \texttt{compile}, \texttt{dist}, and \texttt{compile\_test} consecutively.
   \item The targets \texttt{fetch}, \texttt{timestamps}, \texttt{remove}, and \texttt{turtle} launch the application in the respective modes.
-  \item The target \texttt{test} runs the \emph{JUnit} test cases; \texttt{coverage} generates a coverage report using \emph{Cobertura}, i.e. an overview about which parts of the application's code are covered by the test cases (see Section~\ref{sec:importer_tests} for details).
+  \item The target \texttt{test} runs the \emph{JUnit} test cases; \texttt{coverage} generates a coverage report using \emph{Cobertura}, i.e.\ an overview about which parts of the application's code are covered by the test cases (see Section~\ref{sec:importer_tests} for details).
   \item The target \texttt{javadoc} generates documentation from comments in the source code using the \emph{Javadoc Tool}~\cite{javadoc}.
 \end{itemize}
 
@@ -106,7 +106,7 @@ As most weather services do not provide data for arbitrary points in time, the \
 
 Additionally, the class \texttt{WeatherState} provides the method \texttt{mergePhenomena()} which merges all instances of \texttt{WeatherPhenomenon} of the same type that are associated to that instance of \texttt{WeatherState}. Actual merging of values takes place in the constructors of the subclasses of \texttt{WeatherPhenomenon}; all current implementations merge values by calculating the arithmetic mean of all values provided~\cite{maths}.
 
-Both methods provide the developer of an implementation of the interface \texttt{Importer} with more flexibility on how to import weather data: There is no need to create a separate instance of \texttt{WeatherReport} for every possible period of time; each \texttt{WeatherReport} object may cover more than one hour and more than one instance of each subclass of \texttt{WeatherPhenomenon} may be associated to each instance of \texttt{WeatherState}. The latter eases merging values from several sources (e.g. an Internet weather service and a set of weather sensors).
+Both methods provide the developer of an implementation of the interface \texttt{Importer} with more flexibility on how to import weather data: There is no need to create a separate instance of \texttt{WeatherReport} for every possible period of time; each \texttt{WeatherReport} object may cover more than one hour and more than one instance of each subclass of \texttt{WeatherPhenomenon} may be associated to each instance of \texttt{WeatherState}. The latter eases merging values from several sources (e.g.\ an Internet weather service and a set of weather sensors).
 
 \subsection{\texttt{timestamps} mode}
 
@@ -227,8 +227,8 @@ Section~\ref{sec:appendix_turtle_output} in the appendix shows a part of the out
 
 The following test categories are implemented:
 \begin{itemize}
-  \item \textbf{Category 1:} Tests for \eacs{OWL} reasoning concerning single individuals of the ontology; e.g. an instance of \Egls{weather phenomenon} that has a \egls{has temperature value} property must be reasoned to be an instance of \egls{temperature}.
-  \item \textbf{Category 2:} Tests that involve reasoning for instances of several concepts; e.g. correct reasoning of \Egls{calm weather}.
+  \item \textbf{Category 1:} Tests for \eacs{OWL} reasoning concerning single individuals of the ontology; e.g.\ an instance of \Egls{weather phenomenon} that has a \egls{has temperature value} property must be reasoned to be an instance of \egls{temperature}.
+  \item \textbf{Category 2:} Tests that involve reasoning for instances of several concepts; e.g.\ correct reasoning of \Egls{calm weather}.
   \item \textbf{Category 3:} Tests for the import of weather data from \yrno.
   \item \textbf{Category 4:} Tests for the output in \emph{\eacs{Turtle} syntax}.
 \end{itemize}
@@ -254,7 +254,7 @@ All test cases of \emph{category 1} and \emph{category 2} share the same approac
 During a full test run, the above steps are executed \num{4620} times for \emph{category 1} test cases and \num{2250} times for \emph{category 2} test cases.
 
 % TODO number of test cases
-A test of \emph{category 3} is implemented using a pre-defined snippet containing an \eacs{XML} document as it is returned by the \eacs{API} of \yrno. This snippet is fed into the \emph{Weather Importer} to generate an object-oriented data model. Then it is verified whether this data model contains exactly the data from the snippet. Some of the snippets are invalid, i.e. they contain \eacs{XML} code as \yrno is not allowed to return. % TODO last sentence (starting at i.e. unclear)
+A test of \emph{category 3} is implemented using a pre-defined snippet containing an \eacs{XML} document as it is returned by the \eacs{API} of \yrno. This snippet is fed into the \emph{Weather Importer} to generate an object-oriented data model. Then it is verified whether this data model contains exactly the data from the snippet. Some of the snippets are invalid, i.e.\ they contain \eacs{XML} code as \yrno is not allowed to return. % TODO last sentence (starting at i.e.\ unclear)
 In that case, the \emph{Weather Importer} is expected to fail with an appropriate error message. The total number of different snippets used for \emph{category 3} \emph{JUnit} test cases is \num{31}.
 
 During a test of \emph{category 4}, an object-oriented weather data model is generated which is then exported to \eacs{Turtle} syntax. This output is then compared to the expected output. There are \num{12} such test cases.
