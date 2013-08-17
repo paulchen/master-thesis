@@ -1,22 +1,27 @@
 \documentclass[a4paper,11pt,twoside]{memoir}
 \chapterstyle{veelo}
 
+%% Build instructions:
+%% 
+%% This thesis was successfully compiled with a complete distribution of TeXLive (Ubuntu package "texlive-latex-full") on Ubuntu 13.04.
+%%
+%% To use the Makefile, you'll need "make" from the the Ubuntu package "make".
+%%
+%% To build the figures, dia and inkscape are required (from the Ubuntu packages "dia" and "inkscape", respectively.
+%%
+%% For syntax highlighting, pygmentize must be installed (Ubuntu package "python-pygments").
+%% n3pygments (https://github.com/gniezen/n3pygments.git) must be installed for syntax highlighting of SPARQL and N3 (Turtle code);
+%% __init__.py of n3pygments in the version of Aug 15, 2013 must be replaced by the one found in the Git repository of this thesis.
+%% There is a bug in the parser that leads to defective output of pygmentize.
+%% To install n3pygments, Python's setuptools must be installed (Ubuntu package "python-setuptools").
+
 \renewcommand*{\printchaptertitle}[1]{%
     \hrule\vskip\onelineskip \raggedleft \chaptitlefont #1}
 
 
-% TODO check: always place a comma before 'and' and 'or'
-
 % TODO http://en.wikibooks.org/wiki/LaTeX/Tips_and_Tricks#id_est_and_exempli_gratia_.28i.e._and_e.g..29
 
 % TODO use/usage
-
-% TODO build instructions:
-% texlive-latex-full
-% git clone https://github.com/gniezen/n3pygments.git
-% cp ~/diplomarbeit/__init__.py __init__.py
-% sudo python setup.py install
-% sudo apt-get install python-setuptools
 
 \usepackage{TUINFDA}
 
