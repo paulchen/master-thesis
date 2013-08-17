@@ -435,15 +435,15 @@ weather:dateTime0           a                                     time:DateTimeD
                             time:day                              "---04"^^xsd:gDay ;
                             time:month                            "--04"^^xsd:gMonth ;
                             time:year                             "2013"^^xsd:gYear .
-
-weather:instant0            time:inDateTime                       weather:dateTime0 .
-
-weather:weatherReport0      weather:hasObservationTime            weather:instant0 .
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 \noindent
 \begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
+weather:instant0            time:inDateTime                       weather:dateTime0 .
+
+weather:weatherReport0      weather:hasObservationTime            weather:instant0 .
+
 weather:weatherState0       a                                     weather:WeatherState .
 
 _:blank1                    muo:numericalValue                    "0.0"^^xsd:float ;
@@ -496,7 +496,11 @@ weather:wind0               a                                     weather:Weathe
                             weather:hasWindSpeed                  _:blank9 ;
                             weather:hasWindDirection              _:blank10 ;
                             weather:belongsToWeatherState         weather:weatherState0 .
-
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+\noindent
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 _:blank11                   muo:numericalValue                    220 ;
                             muo:measuredIn                        muo:degree .
 _:blank12                   muo:numericalValue                    "40.76"^^xsd:float ;
@@ -507,11 +511,9 @@ weather:sunPosition0.0      a                                     weather:Weathe
                             weather:belongsToWeatherState         weather:weatherState0 .
 
 weather:weatherState0       weather:hasCondition                  weather:PartlyCloud .
-\end{minted}
-\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
-\noindent
-\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
-\begin{minted}{turtle}
+
+weather:weatherReport0      weather:hasWeatherState               weather:weatherReport0 .
+
 weather:weatherReport1      a                                     weather:WeatherReport ;
                             weather:hasPriority                   421 ;
                             weather:hasSource                     weather:yr_no .
@@ -559,7 +561,11 @@ _:blank18                   muo:numericalValue                    "0.58"^^xsd:fl
 weather:humidity1           a                                     weather:WeatherPhenomenon ;
                             weather:hasHumidityValue              _:blank18 ;
                             weather:belongsToWeatherState         weather:weatherState1 .
-
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+\noindent
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
 _:blank19                   muo:numericalValue                    "-0.8"^^xsd:float ;
                             muo:measuredIn                        muo:degrees-Celsius .
 weather:dewPoint1           a                                     weather:WeatherPhenomenon ;
@@ -574,11 +580,6 @@ weather:pressure1           a                                     weather:Weathe
 
 _:blank21                   muo:numericalValue                    "1.5"^^xsd:float ;
                             muo:measuredIn                        weather:metresPerSecond .
-\end{minted}
-\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
-\noindent
-\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
-\begin{minted}{turtle}
 _:blank22                   muo:numericalValue                    47 ;
                             muo:measuredIn                        muo:degree .
 weather:wind1               a                                     weather:WeatherPhenomenon ;
@@ -596,5 +597,7 @@ weather:sunPosition1.0      a                                     weather:Weathe
                             weather:belongsToWeatherState         weather:weatherState1 .
 
 weather:weatherState1       weather:hasCondition                  weather:PartlyCloud .
+
+weather:weatherReport1      weather:hasWeatherState               weather:weatherReport1 .
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
