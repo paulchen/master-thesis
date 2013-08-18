@@ -61,7 +61,7 @@ For each methodology, the following topics are discussed in Section~\ref{sec:ont
     \end{itemize}
 \end{itemize}
 
-Section~\ref{sec:approaches_conclusion} compares the methodologies and comes to a decision regarding the methodology which fits the requirements of \smarthomeweather best and thus is used for the development of the ontology. It is possible that this decision is not unambiguous if more than one approach turns out to be suitable for the present context.
+Section~\ref{subsec:approaches_summary} compares the methodologies and comes to a decision regarding the methodology which fits the requirements of \smarthomeweather best and thus is used for the development of the ontology. It is possible that this decision is not unambiguous if more than one approach turns out to be suitable for the present context.
 
 As Section~\ref{sec:ontology_approaches} focuses on the characteristics of the methodologies required to take a decision in favour of one of the approaches, Section~\ref{sec:methontology} then describes the selected approach in a more detailed manner.
 
@@ -148,7 +148,7 @@ This approach splits the ontology development process into a set of activities a
   \item \emph{First Order Logic: Terminology}: In this step, the terminology is specified using first-order logic (or the logic used by the intended ontology language)~\cite{FirstOrderLogic}. The terms (objects, attributes, and relations) are derived from the previously formulated competency questions.
   \item Then, the competency questions are transformed into \emph{Formal Competency Questions} in terms of entailment and consistency problems with respect to the axioms in the ontology.
   \item \emph{First Order Logic: Axioms}: Now, formal axioms are stated that define the terms and constraints on objects in the ontology using first-order logic.
-  \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e.\ it can provide answers to all % TODO something is missing
+  \item Finally, \emph{Completeness Theorems} are defined which are used to prove whether the ontology is complete (i.e.\ it can provide answers to all competency questions).
 \end{itemize}
 
 Once all these steps are completed, the formal model is implemented using a ontology language (e.g.\ \eacs{OWL}).
@@ -162,7 +162,7 @@ Examples for the application of this methodology are the \emph{ontology of virtu
 The approach proposed by Grüninger and Fox is a rather formal one that is based on first-order logic which forms the base of many ontology languages.
 
 \begin{itemize}
-  \item \textbf{Effort:} Putting all parts of the ontology being developed into a formal model in first-order logic may turn out to be a tedious task. The % TODO something is missing
+  \item \textbf{Effort:} Putting all parts of the ontology being developed into a formal model in first-order logic may turn out to be a tedious task which involves far more effort compared to other approaches.
   
   \item \textbf{Usage:} Several applications of this approach can be found in literature. However, there are approaches such as \methontology (see Section~\ref{subsec:approach5}) or the approach by Uschold and King (see Section~\ref{subsec:approach3}) that are far more popular than this approach.
   
@@ -281,19 +281,22 @@ The \eacs{UPON} approach is a deeply structured approach that applies well-estab
 \subsection{METHONTOLOGY}
 \label{subsec:approach5}
 
-% TODO citations?
-
 \subsubsection{Description}
 
-\methontology partitions the development process of an ontology into several activities: \emph{Planification}, \emph{specification}, \emph{knowledge acquisition}, \emph{conceptualisation}, \emph{formalisation}, \emph{integration}, \emph{implementation}, \emph{evaluation}, \emph{documentation}, and \emph{maintenance}.
+\methontology partitions the development process of an ontology into several activities, as shown in Figure~\ref{fig:methontology1}: \emph{Planification}, \emph{specification}, \emph{knowledge acquisition}, \emph{conceptualisation}, \emph{formalisation}, \emph{integration}, \emph{implementation}, \emph{evaluation}, \emph{documentation}, and \emph{maintenance}.
 
-Because the activity of \emph{planification} is finished by defining the development process of \methontology, ontology construction starts with \emph{specification} (by creating a \emph{Ontology Requirements Specification Document}) and \emph{knowledge acquisition} about the given domain from all available sources. \emph{Conceptualisation} then generates a set of diagrams and tables that describe different aspects of the ontology. These artefacts are the \emph{glossary of terms}, diagrams showing the \emph{concept taxonomies}, \emph{binary relation diagrams}, the \emph{concept dictionary}, and tables for \emph{binary relation details}, \emph{instance attributes}, \emph{class attributes}, \emph{constants}, \emph{formal axioms}, \emph{rules}, and \emph{instances}. % TODO too much italics
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/ontology_lifecycle.pdf}
+  \caption[States and activities proposed by \methontology]{States and activities in the life cycle of an ontology according to \methontology~\cite{Methontology}.}
+  \label{fig:methontology1}
+\end{figure}
+
+Because the activity of \emph{planification} is finished by defining the development process of \methontology, ontology construction starts with \emph{specification} (by creating a \emph{Ontology Requirements Specification Document}) and \emph{knowledge acquisition} about the given domain from all available sources. \emph{Conceptualisation} then generates a set of diagrams and tables that describe different aspects of the ontology. These artefacts are the glossary of terms, diagrams showing the concept taxonomies, binary relation diagrams, the concept dictionary, and tables for binary relation details, instance attributes, class attributes, constants, formal axioms, rules, and instances.
 
 The \emph{integration} activity consists of research of already existing ontologies which can be reused. Afterwards, \emph{implementation} transforms the previously described model into the desired ontology language. Finally, \emph{evaluation} ensures that the ontology that has been implemented corresponds to its specification.
 
 Important to note about \methontology is the absence of \emph{documentation} as a separate development step. Each of the other activities enforces the creation of one or more artefacts (diagrams or tables) which precisely document the results of this step. During the implementation activity, all required information about the ontology is taken from these artefacts. Hence, when all other steps are completed, the documentation is ready as well. Any problems regarding missing, incomplete, or inaccurate documentation are avoided.
 
-% TODO Ich würde wie bereits bei den anderen beschriebenen Methodologien den Überblicksgraph (Fig. 4.6) bereits hier einfügen und danach immer auf diese Figure referenzieren -> gibt ein einheitlicheres Bild.
 \subsubsection{Applications}
 
 Applications of \methontology include the \emph{Legal Ontology}~\cite{MethontologyLegal}, the \emph{Chemical Ontology}~\cite{MethontologyChemical}, the \emph{Graduation Screen Ontology}~\cite{GraduationScreenOntology}, the \emph{Ontology for Metabolic Pathways}~\cite{MetabolicPathways}, the \emph{Vehicles' Ontology} for checking the consistency of official documents in eGovernment~\cite{VehiclesOntology}, the ontology for a context-aware semantic approach for the effective selection of an assistive software~\cite{AssistiveSoftware}, and a cartographic ontology~\cite{CartographicOntology}. Some ontology designers opted for an approach that combines \methontology with another approach, e.g.\ for the development of an educational ontology~\cite{EducationalOntology} using a combination of \methontology and a \emph{Model Driven Approach}~\cite{ModelDrivenApproach}.
@@ -317,9 +320,8 @@ For the development of an ontology in the hydrographical domain~\cite{Hydrograph
   \item \textbf{Documentation:} \methontology enforces the generation of documents which document the ontology at the time when the proposed steps are performed; documentation is not a step which has to be performed separately. Hence, \methontology avoids many problems regarding the documentation.
 \end{itemize}
 
-% TODO split section to summary and conclusion
-\section{Conclusion}
-\label{sec:approaches_conclusion}
+\subsection{Summary}
+\label{subsec:approaches_summary}
 
 The previous section gave detailed insights into some popular methodologies for developing ontologies from scratch. Table~\ref{table:approaches_comparison} summarises the main advantages and disadvantages of these approaches that have been identified in the previous section.
 
@@ -355,8 +357,9 @@ Considering the characteristics of the development approaches, \methontology is 
 Chapter \ref{ch:smarthomeweather_ontology} describes the process of building the \smarthomeweather ontology in detail.
 
 \section{\methontology}
+\label{sec:methontology}
 
-As Section~\ref{sec:approaches_conclusion} opted for \methontology as the methodology to be used for developing \smarthomeweather, this section presents \methontology in a more detailed manner.
+As Section~\ref{subsec:approaches_summary} opted for \methontology as the methodology to be used for developing \smarthomeweather, this section presents \methontology in a more detailed manner.
 
 \vspace{1em}
 
@@ -383,18 +386,11 @@ The ontology development process used by \methontology divides the process into 
   \item \textbf{Maintenance:} It may be necessary to apply modifications throughout the lifetime of the ontology.
 \end{itemize}
 
-\begin{figure}
-  \includegraphics[width=\textwidth]{figures/ontology_lifecycle.pdf}
-  \caption[States and activities proposed by \methontology]{States and activities in the life cycle of an ontology according to \methontology~\cite{Methontology}.}
-  \label{fig:methontology1}
-\end{figure}
-
 These activities -- which are depicted in Figure~\ref{fig:methontology1} -- are arranged into the step of \emph{planification} that must be performed at the very beginning of development, a \emph{set of stages} (consisting of \emph{specification}, \emph{conceptualisation}, \emph{formalisation}, \emph{integration}, \emph{implementation}, and \emph{maintenance}) which the ontology moves through during its creation and some activities (\emph{knowledge acquisition}, \emph{documentation}, and \emph{evaluation}) that are performed throughout the whole development process in parallel to the stages.
 
 Differently to what is shown in Figure~\ref{fig:methontology1}, \methontology follows an evolving life cycle model similar to the iterative-incremental approach that is used in the \emph{Spiral Model} in software development~\cite{spiral_model}. This life cycle model which allows the ontology to grow according to its needs. Whenever it is necessary, pieces of the ontology can be added, modified, and deleted. Thus, one state does not have to be completely finished before the next state is begun. The ontology cycles through each state numerous times until the ontology meets all requirements and the results of each step correspond to each other.
 
 \subsection{The \methontology approach}
-\label{sec:methontology}
 
 This section describes \methontology as a well-defined approach to perform all activities mentioned above.
 
@@ -712,4 +708,10 @@ At any time in the future, changes to the ontology may become necessary. A modif
 
 Whenever a change is necessary, the ontology again cycles the states of \emph{specification}, \emph{conceptualisation}, \emph{formalisation}, \emph{integration}, and \emph{implementation} repeatedly until all requirements are met and all artefacts generated in these states correspond to each other. \emph{Knowledge acquisition} and \emph{evaluation} are also again performed throughout all of these states.
 
-% TODO new section: conclusion
+\section{Conclusion}
+
+The previous sections in this chapter present five different well-known approaches towards the development of a new ontology from scratch. Besides giving an overview of the development process proposed by each of the approaches, Section~\ref{sec:ontology_approaches} enumerates existing applications of each approach. Furthermore, the approaches are examined regarding a set of eight characteristics in order to identify special features and shortcomings.
+
+Section~\ref{sec:approaches_summary} summarises the advantages and disadvantages of the approaches discussed. Due to its straight-forward approach, the enforcement of creating thorough and complete documentation, and the high number of known applications, the decision is made in favour of \methontology. Section~\ref{sec:methontology} focuses on the development process proposed by \methontology and describes all details that are relevant for the development of \smarthomeweather.
+
+Chapter~\ref{ch:smarthomeweather_ontology} describes the application of \methontology on the domain of weather-based predictive control in smart homes to develop the \smarthomeweather ontology.
