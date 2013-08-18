@@ -649,17 +649,19 @@ As required by the functional requirements presented in Section~\ref{sec:ontolog
 
 The main use of \eacs{OWL} reasoning in \smarthomeweather is the construction of the concept hierarchies as discussed in Section~\ref{sec:concept_classification_trees}; \Egls{weather phenomenon} serves as an example in this section. The hierarchy of \Egls{weather report source} is an exception as it is statically defined and is not affected by reasoning.
 
-\Egls{weather phenomenon} is defined to be a concept:
-
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
 :WeatherPhenomenon rdf:type owl:Class .
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\Egls{temperature} is defined to be a \Egls{weather phenomenon} which has a property \egls{has temperature value} specifying a temperature value (a numeric value of the type \texttt{xsd:float}) and its unit (degrees Celsius); all other sub-concepts of \Egls{weather phenomenon} are defined in a similar way:
+\caption[Definition of \Egls{weather phenomenon} in \emph{Turtle} syntax]{Definition of \Egls{weather phenomenon} in \emph{Turtle} syntax.}
+\label{listing:reasoning1}
+\end{mintlisting}
 
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
 :Temperature rdf:type owl:Class ;
   owl:equivalentClass [ rdf:type owl:Class ;
@@ -682,9 +684,14 @@ The main use of \eacs{OWL} reasoning in \smarthomeweather is the construction of
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\Egls{room temperature} is defined analogously; in addition to \Egls{temperature}, restrictions on the temperature values are added (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}):
+\caption[Definition of \Egls{temperature} in \emph{Turtle} syntax]{Definition of \Egls{temperature} in \emph{Turtle} syntax.}
+\label{listing:reasoning2}
+\end{mintlisting}
 
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\Egls{weather phenomenon} is defined to be a concept (see Listing~\ref{listing:reasoning1}). \Egls{temperature} is then defined to be a \Egls{weather phenomenon} which has a property \egls{has temperature value} specifying a temperature value (a numeric value of the type \texttt{xsd:float}) and its unit (degrees Celsius), as seen in Listing~\ref{listing:reasoning2}. All other sub-concepts of \Egls{weather phenomenon} are defined in a similar way.
+
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
 :RoomTemperature rdf:type owl:Class ;
   owl:equivalentClass [ rdf:type owl:Class ;
@@ -717,7 +724,11 @@ The main use of \eacs{OWL} reasoning in \smarthomeweather is the construction of
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-All other sub-concepts of \Egls{temperature} (\Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{above room temperature}, and \Egls{heat}) are defined in the same way.
+\caption[Definition of \Egls{room temperature} in \emph{Turtle} syntax]{Definition of \Egls{room temperature} in \emph{Turtle} syntax.}
+\label{listing:reasoning3}
+\end{mintlisting}
+
+\Egls{room temperature} is defined analogously; in addition to \Egls{temperature}, restrictions on the temperature values are added (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}), as seen in Listing~\ref{listing:reasoning3}. All other sub-concepts of \Egls{temperature} (\Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{above room temperature}, and \Egls{heat}) are defined in the same way.
 
 The \eacs{OWL} reasoner is then able to infer the following facts:
 \begin{itemize}
@@ -729,9 +740,9 @@ The \eacs{OWL} reasoner is then able to infer the following facts:
 
 The hierarchy of \Egls{weather state} is inferred in a similar way; refer to Section~\ref{sec:concept_classification_trees} for details about how reasoning in that hierarchy works.
 
-The hierarchy of \Egls{weather report} emerges from the values two of the properties of \Egls{weather report}: \egls{has source} and \egls{has start time}. Depending on the type of the instance of \Egls{weather source} the property \egls{has source} refers to, a \Egls{weather report} is either a \Egls{weather report from sensor} or a \Egls{weather report from service}:
 
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
 :WeatherReportFromService rdf:type owl:Class ;
   owl:equivalentClass [ rdf:type owl:Class ;
@@ -745,9 +756,14 @@ The hierarchy of \Egls{weather report} emerges from the values two of the proper
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-Depending on the instance of \Egls{interval} the property \egls{has start time} refers to, a \Egls{weather report} is inferred to be an instance of \Egls{current weather report}, \Egls{forecast weather report}, \Egls{short range weather report}, \emph{forecast 1 hour weather report} etc. For instance, \Egls{current weather report} is defined as follows:
+\caption[Definition of \Egls{weather report from service} in \emph{Turtle} syntax]{Definition of \Egls{weather report from service} in \emph{Turtle} syntax.}
+\label{listing:reasoning4}
+\end{mintlisting}
 
-\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+The hierarchy of \Egls{weather report} emerges from the values two of the properties of \Egls{weather report}: \egls{has source} and \egls{has start time}. Depending on the type of the instance of \Egls{weather source} the property \egls{has source} refers to, a \Egls{weather report} is either a \Egls{weather report from sensor} or a \Egls{weather report from service} (see Listing~\ref{listing:reasoning4}). Depending on the instance of \Egls{interval} the property \egls{has start time} refers to, a \Egls{weather report} is inferred to be an instance of \Egls{current weather report}, \Egls{forecast weather report}, \Egls{short range weather report}, \emph{forecast 1 hour weather report} etc. For instance, \Egls{current weather report} is defined as seen in Listing~\ref{listing:reasoning5}.
+
+\begin{mintlisting}
+\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
 :CurrentWeatherReport rdf:type owl:Class ;
   owl:equivalentClass [ rdf:type owl:Class ;
@@ -766,6 +782,10 @@ Depending on the instance of \Egls{interval} the property \egls{has start time} 
 ] .
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\caption[Definition of \Egls{current weather report} in \emph{Turtle} syntax]{Definition of \Egls{current weather report} in \emph{Turtle} syntax.}
+\label{listing:reasoning5}
+\end{mintlisting}
 
 There are two sub-concepts of \Egls{weather report} which depend on both \egls{has start time} and \egls{has source} (\Egls{current weather report from sensor} and \Egls{current weather report from service}). Each of them is defined as the intersection of two sub-concepts of \Egls{weather report} that each depend on one of the two sub-properties; e.g.\ \Egls{current weather report from sensor} is defined to be the intersection of \Egls{current weather report} and \Egls{weather report from sensor}. Thus, the \eacs{OWL} reasoner infers \Egls{current weather report from sensor} to be a sub-concept of both \Egls{current weather report} and \Egls{weather report from sensor}.
 
