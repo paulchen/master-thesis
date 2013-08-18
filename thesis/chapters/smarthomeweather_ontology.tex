@@ -1,12 +1,5 @@
-% TODO their caption is -> their captions are
 \chapter{The \smarthomeweather ontology}
 \label{ch:smarthomeweather_ontology}
-
-
-% TODO check if the things mentioned here are properly covered in the chapters referred
-
-% TODO elaborate steps more?
-
 
 The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter~\ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \smarthomeweather ontology, what data will be used and where to obtain it. Chapter~\ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of a weather data ontology for smart homes, a new ontology is to be designed. Chapter~\ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology~\cite{Methontology} is identified to be the best suitable approach.
 
@@ -33,8 +26,8 @@ All diagrams in this chapter showing parts of an ontology adhere to the followin
   \item \emph{Instances} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
   \item \emph{Blank nodes} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color3}{\#23B8DC}}.
   \item \emph{Literals} are drawn as rectangles filled with the color \texttt{\colorbox{convention_color_bg4}{\textcolor{convention_color4}{\#FFFF66}}}.
-  \item \emph{Properties in the \eacs{RDF}~\cite{RDF} and \eacs{RDFS}~\cite{RDFS} namespace} are drawn as dashed lines. Their caption is written in \emph{italics}.
-  \item \emph{Properties in other namespaces} are drawn as solid lines. Their caption is \emph{not} written in \emph{italics}.
+  \item \emph{Properties in the \eacs{RDF}~\cite{RDF} and \eacs{RDFS}~\cite{RDFS} namespace} are drawn as dashed lines. Their captions are written in \emph{italics}.
+  \item \emph{Properties in other namespaces} are drawn as solid lines. Their captions are \emph{not} written in \emph{italics}.
 \end{itemize}
 
 Every ontology should stick to a set of naming conventions that are explicitly stated~\cite{Ontology101}. The conventions for \smarthomeweather are as follows:
@@ -90,7 +83,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Intended end-users}: End-users of the ontologies are inhabitants of smart homes. % TODO is the system itself the end-user?
+\textbf{Intended end-users}: The end-users of \smarthomeweather are ontology-based control systems for smart homes.
 
 \vspace{.3cm}
 
@@ -272,8 +265,9 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
     \label{fig:tree_atmospheric_pressure}
   \end{figure}
 
-  % TODO definition of "okta"
-  \item \Egls{cloud cover} (Figure~\ref{fig:tree_cloud_cover}): The sub-concepts of \Egls{cloud cover} are defined using different cloud coverage values: \Egls{clear sky} (cloud coverage of \num{0}$\:$\emph{okta}), \Egls{partly cloudy} (\num{1}$\:$\emph{okta} to \num{4}$\:$\emph{okta}), \Egls{mostly cloudy} (\num{5}$\:$\emph{okta} to \num{7}$\:$\emph{okta}), \Egls{overcast} (\num{8}$\:$\emph{okta}) and \Egls{unknown cloud cover} (\num{9}$\:$\emph{okta}).
+  \item \Egls{cloud cover} (Figure~\ref{fig:tree_cloud_cover}): The sub-concepts of \Egls{cloud cover} are defined using different cloud coverage values. In \smarthomeweather, the cloud coverage is specified using a measurement unit named \egls{okta} which is commonly used in meteorology~\cite{GlossaryOfMeteorology}. \Egls{okta} is a numeric value that describe how many eights of the sky are covered by clouds. In addition to the values from \num{0}$\:$\egls{okta} to \num{8}$\:$\egls{okta}, there is a special value (\num{9}$\:$\egls{okta}) which is used in case the cloud coverage is unknown (e.g.\ if the view of the sky at a weather station is obstructed).
+  
+  \smarthomeweather defines five sub-concepts of \Egls{cloud cover} which are \Egls{clear sky} (cloud coverage of \num{0}$\:$\egls{okta}), \Egls{partly cloudy} (\num{1}$\:$\egls{okta} to \num{4}$\:$\egls{okta}), \Egls{mostly cloudy} (\num{5}$\:$\egls{okta} to \num{7}$\:$\egls{okta}), \Egls{overcast} (\num{8}$\:$\egls{okta}) and \Egls{unknown cloud cover} (\num{9}$\:$\egls{okta}).
   
   \begin{figure}
     \centering
@@ -575,9 +569,6 @@ Section~\ref{sec:implementation} describes the reuse of the aforementioned ontol
 \section{Implementation}
 \label{sec:implementation}
 
-% TODO reasoning
-% TODO reference conceptualisation section
-
 After exhaustive analysis and structuring in the previous sections, the step of implementing the ontology has become a straight-forward task.
 
 The \smarthomeweather ontology is implemented in OWL using \protege 4.3 together with the \emph{Pellet} \eacs{OWL} 2 Reasoner. \emph{Pellet} includes \emph{Pellint}~\cite{pellint}, an ontology performance tool that uses a set of patterns to find possible performance problems in an \eacs{OWL} ontology. \emph{Pellint} has been used intensively to ensure it does not report any problems that could affect reasoning performance.
@@ -633,7 +624,7 @@ Figure~\ref{fig:muo1} shows how an instance of \Egls{temperature} would be imple
 
 \vspace{1em}
 
-Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded. % TODO mention geo ontology
+Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded using the \emph{Basic (WGS84 lat/long) Vocabulary}.
 
 \begin{figure}
   \centering
