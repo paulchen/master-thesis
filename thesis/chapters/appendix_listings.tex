@@ -11,7 +11,7 @@ In order to keep the documentation of \smarthomeweather clear, a set of tables i
 The tables in this section are:
 
 \begin{itemize}
-  \item \emph{Concept dictionaries} for \Egls{weather condition}, \Egls{weather report}, and \Egls{weather source} (Table~\ref{table:concept_dict1}), and for \Egls{weather phenomenon} and \Egls{weather state} (Table~\ref{table:concept_dict2}); see Section~\ref{subsec:concept_dictionaries} for details about \emph{concept dictionaries}.
+  \item \emph{Concept dictionaries} for \Egls{weather condition}, \Egls{weather state}, and \Egls{weather source} (Table~\ref{table:concept_dict1}), and for \Egls{weather phenomenon} and \Egls{weather report} (Table~\ref{table:concept_dict2}); see Section~\ref{subsec:concept_dictionaries} for details about \emph{concept dictionaries}.
   
   \item The \emph{Binary relations table} in Table~\ref{table:binary_relations_table}; see Section~\ref{subsec:binary_relations_table} for details.
   
@@ -39,7 +39,7 @@ The tables in this section are:
   \Egls{service source} & & \egls{is source of}, \egls{has source} \\
   \hline
 \end{tabular}
-\caption[Concept dictionary (1)]{Concept dictionary for \Egls{weather condition}, \Egls{weather report}, \Egls{weather state}, and \Egls{weather source}.}
+\caption[Concept dictionary (1)]{Concept dictionary for \Egls{weather condition}, \Egls{weather state}, and \Egls{weather source}.}
 \label{table:concept_dict1}
 \end{table}
 
@@ -115,7 +115,7 @@ The tables in this section are:
 
 \begin{table}
 \centering
-\begin{tabular}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|}
+\begin{tabular}{|p{0.17\textwidth}|p{0.13\textwidth}|p{0.13\textwidth}|p{0.13\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|}
   \hline
   \textbf{Attribute name} & \textbf{Concept name} & \textbf{Value type} & \textbf{Value range} & \textbf{Unit} & \textbf{Cardinality} (min, max)\\
   \hline\hline
@@ -159,9 +159,9 @@ The tables in this section are:
 
 \begin{table}
 \centering
-\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+\begin{tabular}{|p{0.15\textwidth}|p{0.23\textwidth}|p{0.3\textwidth}|p{0.13\textwidth}|}
   \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{Attribute name} & \textbf{Attribute value(s)} \\
   \hline\hline
   \Egls{atmospheric pressure} & \Egls{very low pressure} & \egls{has pressure value} & $< 998$ \\
   \hline
@@ -193,7 +193,6 @@ The tables in this section are:
   \hline
   \Egls{humidity} & \Egls{very moist} & \egls{has humidity value} & $> 0.8$ \\
   \hline\hline
-  % TODO format this appropriately
   \Egls{precipitation} & \Egls{no rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & 0 \newline 0 \\
   \hline
   \Egls{precipitation} & \Egls{light rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $(0, 5]$ \newline $(0, 1]$ \\
@@ -209,9 +208,9 @@ The tables in this section are:
 
 \begin{table}
 \centering
-\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+\begin{tabular}{|p{0.17\textwidth}|p{0.19\textwidth}|p{0.3\textwidth}|p{0.21\textwidth}|}
   \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{Attribute name} & \textbf{Attribute value(s)} \\
   \hline\hline
   \Egls{precipitation} & \Egls{extremely heavy rain} & \egls{has precipitation intensity} \newline \egls{has precipitation probability} & $(50, 100]$ \newline $(0, 1]$ \\
   \hline
@@ -258,9 +257,9 @@ The tables in this section are:
 
 \begin{table}
 \centering
-\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+\begin{tabular}{|p{0.17\textwidth}|p{0.25\textwidth}|p{0.24\textwidth}|p{0.21\textwidth}|}
   \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{Attribute name} & \textbf{Attribute value(s)} \\
   \hline\hline
   \Egls{temperature} & \egls{frost} & \egls{has temperature value} & $< 0$ \\
   \hline
@@ -317,9 +316,9 @@ The tables in this section are:
 
 \begin{table}
 \centering
-\begin{tabular}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+\begin{tabular}{|p{0.20\textwidth}|p{0.29\textwidth}|p{0.20\textwidth}|p{0.18\textwidth}|}
   \hline
-  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{attribute name} & \textbf{attribute value(s)} \\
+  \textbf{Super-concept} & \textbf{Sub-concept} & \textbf{Attribute name} & \textbf{Attribute value(s)} \\
   \hline\hline
   \egls{weather report} & \emph{Forecast 6 hours weather report} & \egls{has start time} & $6$ \\
   \hline
