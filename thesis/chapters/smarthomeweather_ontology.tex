@@ -132,6 +132,8 @@ Every ontology should stick to a set of naming conventions that are explicitly s
   \item When will it outside be colder than inside the house? When will it be warmer?
 \end{itemize}
 
+Additionally, \smarthomeweather shall be designed in a way that allows simple and efficient \eacs{OWL} reasoning.
+
 \setlength{\leftskip}{0cm}
 
 \vspace{.2cm}
@@ -640,6 +642,135 @@ Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather repo
   \label{fig:owl_wgs84}
 \end{figure}
 
+\subsection{Reasoning}
+\label{sec:reasoning}
+
+As required by the functional requirements presented in Section~\ref{sec:ontology_specification}, \smarthomeweather shall be developed with simple and efficient \eacs{OWL} reasoning in mind.
+
+The main use of \eacs{OWL} reasoning in \smarthomeweather is the construction of the concept hierarchies as discussed in Section~\ref{sec:concept_classification_trees}; \Egls{weather phenomenon} serves as an example in this section. The hierarchy of \Egls{weather report source} is an exception as it is statically defined and is not affected by reasoning.
+
+\Egls{weather phenomenon} is defined to be a concept:
+
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
+:WeatherPhenomenon rdf:type owl:Class .
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\Egls{temperature} is defined to be a \Egls{weather phenomenon} which has a property \egls{has temperature value} specifying a temperature value (a numeric value of the type \texttt{xsd:float}) and its unit (degrees Celsius); all other sub-concepts of \Egls{weather phenomenon} are defined in a similar way:
+
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
+:Temperature rdf:type owl:Class ;
+  owl:equivalentClass [ rdf:type owl:Class ;
+    owl:intersectionOf ( :WeatherPhenomenon
+      [ rdf:type owl:Restriction ;
+          owl:onProperty :hasTemperatureValue ;
+          owl:someValuesFrom [ rdf:type owl:Class ;
+            owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                owl:onProperty muo:measuredIn ;
+                owl:hasValue temperature:degree-Celsius
+            ]
+            [ rdf:type owl:Restriction ;
+                owl:onProperty muo:numericalValue ;
+                owl:someValuesFrom xsd:float
+            ] )
+          ]
+      ]
+    )
+] .
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\Egls{room temperature} is defined analogously; in addition to \Egls{temperature}, restrictions on the temperature values are added (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}):
+
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
+:RoomTemperature rdf:type owl:Class ;
+  owl:equivalentClass [ rdf:type owl:Class ;
+    owl:intersectionOf ( :WeatherPhenomenon
+      [ rdf:type owl:Restriction ;
+          owl:onProperty :hasTemperatureValue ;
+          owl:someValuesFrom [ rdf:type owl:Class ;
+            owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                owl:onProperty muo:measuredIn ;
+                owl:hasValue temperature:degree-Celsius
+            ]
+            [ rdf:type owl:Restriction ;
+                owl:onProperty muo:numericalValue ;
+                owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                  owl:onDatatype xsd:float ;
+                  owl:withRestrictions ( [ xsd:minInclusive "20.0"^^xsd:float ] )
+                ]
+            ]
+            [ rdf:type owl:Restriction ;
+                owl:onProperty muo:numericalValue ;
+                owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                  owl:onDatatype xsd:float ;
+                  owl:withRestrictions ( [ xsd:maxInclusive "25.0"^^xsd:float ] )
+                ]
+            ] )
+          ]
+      ]
+    )
+] .
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+All other sub-concepts of \Egls{temperature} (\Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{above room temperature}, and \Egls{heat}) are defined in the same way.
+
+The \eacs{OWL} reasoner is then able to infer the following facts:
+\begin{itemize}
+  \item \Egls{temperature} is a sub-concept of \Egls{weather phenomenon} and \Egls{room temperature} is a sub-concept of \Egls{temperature}.
+  \item Any instance of \Egls{weather phenomenon} that has an appropriate property of type \egls{has temperature value} is an instance of \Egls{temperature}.
+  \item Any instance of \Egls{weather phenomenon} that has a property of type \egls{has temperature value} specifying a temperature value of at least \SI{20}{\celsius} and at most \SI{25}{\celsius} is an instance of both \Egls{temperature} and \Egls{room temperature}.
+  \item As \egls{has temperature value} is a functional property, all pairs of sub-concepts of \Egls{temperature} are disjoint. This is especially important regarding the \emph{Open World Assumption} as an instance of one sub-concept is definitely known not to be an instance of another sub-concept.
+\end{itemize}
+
+The hierarchy of \Egls{weather state} is inferred in a similar way; refer to Section~\ref{sec:concept_classification_trees} for details about how reasoning in that hierarchy works.
+
+The hierarchy of \Egls{weather report} emerges from the values two of the properties of \Egls{weather report}: \egls{has source} and \egls{has start time}. Depending on the type of the instance of \Egls{weather source} the property \egls{has source} refers to, a \Egls{weather report} is either a \Egls{weather report from sensor} or a \Egls{weather report from service}:
+
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
+:WeatherReportFromService rdf:type owl:Class ;
+  owl:equivalentClass [ rdf:type owl:Class ;
+    owl:intersectionOf ( :WeatherReport
+      [ rdf:type owl:Restriction ;
+          owl:onProperty :hasSource ;
+          owl:someValuesFrom :ServiceSource
+      ]
+    )
+] .
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+Depending on the instance of \Egls{interval} the property \egls{has start time} refers to, a \Egls{weather report} is inferred to be an instance of \Egls{current weather report}, \Egls{forecast weather report}, \Egls{short range weather report}, \emph{forecast 1 hour weather report} etc. For instance, \Egls{current weather report} is defined as follows:
+
+\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
+\begin{minted}{turtle}
+:CurrentWeatherReport rdf:type owl:Class ;
+  owl:equivalentClass [ rdf:type owl:Class ;
+    owl:intersectionOf ( :WeatherReport
+      [ rdf:type owl:Restriction ;
+          owl:onProperty :hasStartTime ;
+          owl:someValuesFrom [ rdf:type owl:Restriction ;
+              owl:onProperty time:hasDurationDescription ;
+              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                  owl:onProperty time:hours ;
+                  owl:hasValue 0
+              ]
+          ]
+      ]
+    )
+] .
+\end{minted}
+\vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+There are two sub-concepts of \Egls{weather report} which depend on both \egls{has start time} and \egls{has source} (\Egls{current weather report from sensor} and \Egls{current weather report from service}). Each of them is defined as the intersection of two sub-concepts of \Egls{weather report} that each depend on one of the two sub-properties; e.g.\ \Egls{current weather report from sensor} is defined to be the intersection of \Egls{current weather report} and \Egls{weather report from sensor}. Thus, the \eacs{OWL} reasoner infers \Egls{current weather report from sensor} to be a sub-concept of both \Egls{current weather report} and \Egls{weather report from sensor}.
+
+Based on these reasoning capabilities in \smarthomeweather, it is possible to provide answers to some of the competency questions (cf. Section~\ref{sec:ontology_evaluation}). To answer all of the questions, \eacs{SWRL} rules and \eacs{SPARQL} queries can be implemented (see Section~\ref{sec:queries_rules}).
+
 \section{Evaluation}
 \label{sec:ontology_evaluation}
 
@@ -661,7 +792,9 @@ Thus, all non-functional requirements are met by \smarthomeweather.
 \subsection{Functional requirements}
 \label{sec:evaluation_functional}
 
-\smarthomeweather meets its functional requirements if it provides answers to all competency questions. This section evaluates if answers are provided and how answers can be drawn from the ontology.
+As \eacs{OWL} reasoning has been an integral part of the implementation step (cf. Section~\ref{sec:reasoning}, at this point it is necessary to verify that \smarthomeweather provides answers to all competency questions; if all these questions are sufficiently covered, \smarthomeweather meets all functional requirements.
+
+This section evaluates if answers to the competency questions are provided and how answers can be drawn from the ontology.
 
 For the following questions, \smarthomeweather can give straight answers:
 \begin{itemize}
