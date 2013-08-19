@@ -7,7 +7,7 @@ The second part sheds light on a selection of existing work regarding weather da
 
 \section{Foundations}
 
-This chapter presents the foundations the work in this thesis builds upon: The concept of an ontology, the \emph{Web Ontology Language} (\eacs{OWL}), and smart homes utilising ontologies using the example of \thinkhome.
+This chapter presents the foundations the work in this thesis builds upon: The concept of an ontology and the \emph{Web Ontology Language} (\eacs{OWL}).
 
 \subsection{Ontologies}
 \label{subsec:ontologies}
@@ -166,7 +166,7 @@ geo:location rdfs:range geo:Location .
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-Many of the concepts and properties defined by \eacs{RDFS} are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} which is based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}~\cite{OWL-working-group} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
+Many of the concepts and properties defined by \eacs{RDFS} are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} which is based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}~\cite{OWL-working-group} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 was released in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
 \eacs{OWL} 2 remains fully compatible to \eacs{OWL} 1, i.e.\ all \eacs{OWL} 1 ontologies are \eacs{OWL} 2 ontologies as well, with unchanged semantics.
 
 Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among others which are omitted here):
@@ -181,7 +181,7 @@ Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among oth
   \item Properties can have various characteristics: A property can be inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:property\hspace{0pt}DisjointWith}). A property can be reflexive (i.e.\ it relates everything to itself, \texttt{owl:\hspace{0pt}ReflexiveProperty}), irreflexive (no individual can be related to itself, \texttt{owl:Ir\-re\-flex\-iveProperty}), functional (every individual can be linked to at most one other individual, \texttt{owl:FunctionalProperty}), or inverse functional (the inverse property is functional, \texttt{owl:InverseFunctionalProperty}).
 \end{itemize}
 
-Reasoning in \eacs{OWL} respects the \emph{open world assumption}~\cite{open_world_assumption1,open_world_assumption2}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa~\cite{MonotonicReasoning}.
+Reasoning in \eacs{OWL} respects the \emph{Open World Assumption}~\cite{open_world_assumption1,open_world_assumption2}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa~\cite{MonotonicReasoning}.
 
 Queries on \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL} models are often performed using \eacs{SPARQL}, a query language for \eacs{RDF}~\cite{SPARQL}. Listing~\ref{listing:sparql_example} shows an example for the use of \eacs{SPARQL} to query all temperature values known for Vienna, Austria in the \eacs{RDFS} model depicted in Figure~\ref{fig:rdfs_example}.
 
@@ -204,7 +204,7 @@ WHERE {
 \label{listing:sparql_example}
 \end{mintlisting}
 
-\eacs{SWRL} is a language for \eacs{OWL} which is used to express rules~\cite{SWRL}. \eacs{SWRL} can be used to define relations that may be difficult or impossible to define using \eacs{OWL} alone, e.g.\ due to the \emph{open world assumption}. Given a model that contains a concept \texttt{WeatherState} for a certain time and a intransitive property \texttt{hasNextWeatherState} which relates two consecutive instances of \texttt{WeatherState} to each other, Listing~\ref{listing:swrl_example} gives an example demonstrating how the semantics transitive property \texttt{hasLaterWeatherState} can be defined based on \texttt{hasNextWeatherState}.
+\eacs{SWRL} is a language for \eacs{OWL} which is used to express rules~\cite{SWRL}. \eacs{SWRL} can be used to define relations that may be difficult or impossible to define using \eacs{OWL} alone, e.g.\ due to the \emph{Open World Assumption}. Given a model that contains a concept \texttt{WeatherState} for a certain time and an intransitive property \texttt{hasNextWeatherState} which relates two consecutive instances of \texttt{WeatherState} to each other, Listing~\ref{listing:swrl_example} gives an example demonstrating how the semantics of a transitive property \texttt{hasLaterWeatherState} can be defined based on \texttt{hasNextWeatherState}.
 
 \begin{mintlisting}
 \begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
@@ -291,13 +291,13 @@ The primary reason for not using the \eacs{SSN} ontology for \smarthomeweather i
 
 Works based on \eacs{SWEET} include work on integrating volcanic and atmospheric data in the context of volcanic eruptions~\cite{sweet_example1}, an ontology of fractures of the Earth's crust~\cite{sweet_example2}, and an extension of \eacs{SWEET} by climate and forecasting terms~\cite{sweet_example3}.
 
-In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualified approach for reusing them in an weather ontology. Units of measurements, temporal definitions, and specifications of geographical positions are supported. However, \eacs{SWEET} comes with a few downside that finally led to the decision not to use them in \smarthomeweather:
+In the context of smart homes, the \eacs{SWEET} ontologies are the best-qualified approach for reusing them in an weather ontology. Units of measurements, temporal definitions, and specifications of geographical positions are supported. However, \eacs{SWEET} comes with a few downsides that finally led to the decision not to use them in \smarthomeweather:
 \begin{itemize}
   \item Although \eacs{SWEET} is separated into a large number of ontologies, there are many dependencies between ontologies. Importing a single ontology into an \eacs{OWL} ontology causes the import of all of its dependencies. It is impossible to import one ontology from \eacs{SWEET} without importing dozens of other ontologies.
   
-  \item \eacs{SWEET} does not currently cover future events.
+  \item \eacs{SWEET} currently does not cover future events.
   
-  \item \eacs{SWEET} does not cover all weather elements that are relevant.
+  \item \eacs{SWEET} does not cover all weather elements that are relevant for smart homes.
 \end{itemize}
 
 Extensions to the \eacs{SWEET} ontologies in order address the second and the third issue would be possible; an extension of \eacs{SWEET} to include forecast data already exists~\cite{sweet_example3}. However, as a large number of extensions would be necessary, it was decided not to use any parts of \eacs{SWEET} for \smarthomeweather and to build a new ontology from scratch instead.
