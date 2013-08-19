@@ -151,7 +151,7 @@ The second step proposed by \methontology is \emph{Knowledge Acquisition}. All k
   \item Which weather data are relevant for smart homes?
   \item Which weather data are available from sensors (Section~\ref{sec:weather_sensors}) and Internet services (Section~\ref{sec:internet_services})? How can this data be acquired?
   \item Which data do not have any use for \smarthomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
-  \item What knowledge about weather in general is required to build an appropriate ontology~(cf. Chapter~\ref{ch:weather_data}?
+  \item What knowledge about weather in general is required to build an appropriate ontology~(cf.\ Chapter~\ref{ch:weather_data}?
 \end{itemize}
 
 Furthermore, Chapter~\ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g.\ the \emph{Glossary of Meteorology}~\cite{GlossaryOfMeteorology} by the \emph{American Meteorological Society}~\cite{AMS}.
@@ -780,7 +780,7 @@ The hierarchy of \Egls{weather report} emerges from the values two of the proper
 
 There are two sub-concepts of \Egls{weather report} which depend on both \egls{has start time} and \egls{has source} (\Egls{current weather report from sensor} and \Egls{current weather report from service}). Each of them is defined as the intersection of two sub-concepts of \Egls{weather report} that each depend on one of the two sub-properties; e.g.\ \Egls{current weather report from sensor} is defined to be the intersection of \Egls{current weather report} and \Egls{weather report from sensor}. Thus, the \eacs{OWL} reasoner infers \Egls{current weather report from sensor} to be a sub-concept of both \Egls{current weather report} and \Egls{weather report from sensor}.
 
-Based on these reasoning capabilities in \smarthomeweather, it is possible to provide answers to some of the competency questions (cf. Section~\ref{sec:ontology_evaluation}). To answer all of the questions, \eacs{SWRL} rules and \eacs{SPARQL} queries can be implemented (see Section~\ref{sec:queries_rules}).
+Based on these reasoning capabilities in \smarthomeweather, it is possible to provide answers to some of the competency questions (cf.\ Section~\ref{sec:ontology_evaluation}). To answer all of the questions, \eacs{SWRL} rules and \eacs{SPARQL} queries can be implemented (see Section~\ref{sec:queries_rules}).
 
 \section{Evaluation}
 \label{sec:ontology_evaluation}
@@ -803,7 +803,7 @@ Thus, all non-functional requirements are met by \smarthomeweather.
 \subsection{Functional requirements}
 \label{sec:evaluation_functional}
 
-As \eacs{OWL} reasoning has been an integral part of the implementation step (cf. Section~\ref{sec:reasoning}, at this point it is necessary to verify that \smarthomeweather provides answers to all competency questions; if all these questions are sufficiently covered, \smarthomeweather meets all functional requirements.
+As \eacs{OWL} reasoning has been an integral part of the implementation step (cf.\ Section~\ref{sec:reasoning}, at this point it is necessary to verify that \smarthomeweather provides answers to all competency questions; if all these questions are sufficiently covered, \smarthomeweather meets all functional requirements.
 
 This section evaluates if answers to the competency questions are provided and how answers can be drawn from the ontology.
 
