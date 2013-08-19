@@ -559,7 +559,7 @@ One of the goals when designing an ontology is to reuse existing ontologies wher
 The following ontologies have been selected for the import into \smarthomeweather:
 \begin{itemize}
   \item \emph{OWL-Time}~\cite{owl-time} is used for specifying temporal data (for date and time of a \Egls{weather report}).
-  \item The \emph{Basic Geo (WGS84 lat/long) Vocabulary}~\cite{wgs84_vocabulary} is used for specifying the location a \Egls{weather report} if valid for.
+  \item The \emph{Basic Geo (\acs{WGS84} lat/long) Vocabulary}~\cite{wgs84_vocabulary} is used for specifying the location a \Egls{weather report} if valid for.
   \item The \emph{Measurement Units Ontology}~\cite{MUO} (\muo) is used to enrich measurement values of each \Egls{weather phenomenon} with a unit (e.g.\ temperature in \si{\celsius}, rain in \si{\milli\metre\per\hour}). Although \muo does come with a few shortcomings (see Section~\ref{sec:implementation}), it is the ontology that has been identified to be the the one that fits \smarthomeweather's requirements best.
   \item Unfortunately, no weather ontology has been identified that defines weather concepts in a way that suits \smarthomeweather's requirements. Hence, \smarthomeweather defines its own concepts and properties for the domain of weather data.
 \end{itemize}
@@ -624,7 +624,7 @@ Figure~\ref{fig:muo1} shows how an instance of \Egls{temperature} would be imple
 
 \vspace{1em}
 
-Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded using the \emph{Basic (WGS84 lat/long) Vocabulary}.
+Figure~\ref{fig:owl_wgs84} shows how the \egls{location} of a \Egls{weather report} is encoded using the \emph{Basic (\acs{WGS84} lat/long) Vocabulary}.
 
 \begin{figure}
   \centering
@@ -795,7 +795,7 @@ There are three non-functional requirements:
 \begin{itemize}
   \item \textbf{Naming conventions}: All identifiers in \smarthomeweather follow the naming conventions stated in Section~\ref{sec:ontology_conventions}.
   \item \textbf{Documentation}: Due to following the \methontology approach, the ontology is well documented at every stage of development.
-  \item \textbf{Usage of other ontologies}: \smarthomeweather imports the \emph{Basic Geo (WGS84 lat/long) Vocabulary}, \muo, and \emph{OWL-Time}; no ontology has been found that satisfies the requirements of \smarthomeweather regarding concepts for weather data, thus \smarthomeweather defines its own concepts.
+  \item \textbf{Usage of other ontologies}: \smarthomeweather imports the \emph{Basic Geo (\acs{WGS84} lat/long) Vocabulary}, \muo, and \emph{OWL-Time}; no ontology has been found that satisfies the requirements of \smarthomeweather regarding concepts for weather data, thus \smarthomeweather defines its own concepts.
 \end{itemize}
 
 Thus, all non-functional requirements are met by \smarthomeweather.
