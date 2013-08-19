@@ -20,7 +20,7 @@ Based on these insights, this chapter describes the process of designing the \sm
 \definecolor{convention_color4}{HTML}{FFFF66}
 \definecolor{convention_color_bg4}{HTML}{AAAAAA}
 
-All diagrams in this chapter showing parts of an ontology adhere to the following conventions, as seen in the example diagram shown in Figure~\ref{fig:diagram_example}. These conventions has already been adhered to in Chapter~\ref{ch:existing_work}:
+All diagrams in this chapter showing parts of an ontology adhere to the following conventions, as seen in the example diagram shown in Figure~\ref{fig:diagram_example}. These conventions have already been adhered to in Chapter~\ref{ch:existing_work}:
 \begin{itemize}
   \item \emph{Concepts} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color1}{\#99CCFF}}.
   \item \emph{Instances} are drawn as ellipses filled with the color \texttt{\textcolor{convention_color2}{\#87E776}}.
@@ -37,7 +37,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
   \item Two identifiers may not use names that only differ in their capitalization. Using both \emph{Weather State} and \emph{weather state} in the name namespace is possible in \eacs{OWL}, but leads to confusion.
   \item Identifiers may only consist of upper and lower case \eacs{ASCII} letters (\emph{A} to \emph{Z} and \emph{a} to \emph{z}), numerical digits from \emph{0} to \emph{9} and spaces, i.e.\ all identifiers must match the regular expression \texttt{\textasciicircum[A-za-z0-9~]+\$}.
   \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g.\ \emph{Weather state} or \emph{Weather report}.
-  \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongs to}, followed by the name of the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongs to}, followed by the inverse property's \emph{range}. As an alternative to the prefix \emph{belongs to}, the prefix \emph{is} in conjunction with the suffix \emph{of} and the inverse property's \emph{domain} may be used.
+  \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongs to}, followed by the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongs to}, followed by the inverse property's \emph{range}. As an alternative to the prefix \emph{belongs to}, the prefix \emph{is} in conjunction with the suffix \emph{of} and the inverse property's \emph{domain} may be used.
   
   E.g. the name of a property with the domain \emph{Weather report} and the range \emph{Weather state} has the name \emph{has weather state}. If \emph{has weather state} has an inverse property, it will have the name \emph{belongs to weather report} or \emph{is weather state of}.
 \end{itemize}
@@ -70,7 +70,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 \textbf{Scope}: The ontology has to cover a set of five core concepts from the domain of weather data:
 
 \begin{itemize}
-  \item \emph{weather phenomenon}: Represents a certain weather element. Relevant weather elements are \emph{temperature}, \emph{humidity}, \emph{dew point}, \emph{wind speed}, and \emph{direction}, \emph{precipitation intensity} and \emph{probability}, \emph{atmospheric pressure}, \emph{cloud cover}, \emph{solar radiation}, and the \emph{sun's position}.
+  \item \emph{Weather phenomenon}: Represents a certain weather element. Relevant weather elements are \emph{temperature}, \emph{humidity}, \emph{dew point}, \emph{wind speed} and \emph{direction}, \emph{precipitation intensity} and \emph{probability}, \emph{atmospheric pressure}, \emph{cloud cover}, \emph{solar radiation}, and the \emph{sun's position}.
   \item \emph{Weather condition}: Overall state of the weather given by a simple verbal description: \emph{sun}, \emph{light clouds}, \emph{partly cloudy}, \emph{cloudy}, \emph{fog}, \emph{rain}, \emph{snow}, \emph{sleet}, \emph{thunder}.
   \item \emph{Weather state}: Summarises all weather phenomena for a certain time. 
   \item \emph{Weather report}: Summarises all data acquired at a certain time about the current weather or the weather some time in the future. Exactly one \emph{weather state} is linked to each \emph{weather report}.
@@ -83,7 +83,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 
 \vspace{.3cm}
 
-\textbf{Intended end-users}: The end-users of \smarthomeweather are ontology-based control systems for smart homes.
+\textbf{Intended end-users}: The end-users of \smarthomeweather are ontology-based smart home systems.
 
 \vspace{.3cm}
 
@@ -101,7 +101,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
 \textbf{Non-functional requirements}:
 
 \begin{itemize}
-  \item The ontology must adhere to the naming conventions presented in Section~\ref{sec:ontology_conventions} regarding the identifiers that may be used for classes, properties, and individuals.
+  \item The ontology must adhere to the naming conventions presented in Section~\ref{sec:ontology_conventions} regarding the identifiers that are used for classes, properties, and individuals.
   \item The ontology must be documented thoroughly in order to make it easily reusable.
   \item The ontology must re-use existing ontologies wherever possible.
 \end{itemize}
@@ -149,9 +149,9 @@ The second step proposed by \methontology is \emph{Knowledge Acquisition}. All k
 
 \begin{itemize}
   \item Which weather data are relevant for smart homes?
-  \item Which weather data are available from sensors (Section~\ref{sec:weather_sensors}) and Internet services (Section~\ref{sec:internet_services})? How can this data be acquired?
+  \item Which weather data are available from sensors (Section~\ref{sec:weather_sensors}) and Internet services (Section~\ref{sec:weather_services})? How can this data be acquired?
   \item Which data do not have any use for \smarthomeweather due to being too complicated or because they cannot be processed in an ontology in a useful way?
-  \item What knowledge about weather in general is required to build an appropriate ontology~(cf.\ Chapter~\ref{ch:weather_data}?
+  \item What knowledge about weather in general is required to build an appropriate ontology~(cf.\ Chapter~\ref{ch:weather_data})?
 \end{itemize}
 
 Furthermore, Chapter~\ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g.\ the \emph{Glossary of Meteorology}~\cite{GlossaryOfMeteorology} by the \emph{American Meteorological Society}~\cite{AMS}.
@@ -161,7 +161,7 @@ Furthermore, Chapter~\ref{ch:existing_work} covers existing ontologies that cove
 
 In the third step of \methontology, the \emph{Conceptualisation} step, the domain knowledge is structured into a conceptional model that describes the problem and its solution in terms of the domain vocabulary that has been identified in the \emph{Specification} process.
 
-The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes, and binary relations that will form the ontology. Besides the glossary, this section covers \emph{Concept-classification trees} (Section~\ref{sec:concept_classification_trees}), \emph{Binary relationship diagrams} (Section~\ref{subsec:binary_relations_diagram}), \emph{Concept dictionaries} (Section~\ref{subsec:binary_relations_diagram}), \emph{Binary relations tables} (Section~\ref{subsec:binary_relations_table}), \emph{Instance attribute tables} (Section~\ref{subsec:binary_relations_table}), and \emph{Class attributes tables} (Section~\ref{subsec:class_attributes_table}). \emph{Constant tables}, \emph{Formal axiom tables}, and \emph{Rules tables} have been omitted as the components described by these tables do not appear in \smarthomeweather.
+The starting point of \emph{Conceptualisation} is a complete \emph{Glossary of Terms} that covers all concepts, instances, attributes, and binary relations that will form the ontology. Besides the glossary, this section covers \emph{Concept-classification trees} (Section~\ref{sec:concept_classification_trees}), \emph{Binary relationship diagrams} (Section~\ref{subsec:binary_relations_diagram}), \emph{Concept dictionaries} (Section~\ref{subsec:concept_dictionaries}), \emph{Binary relations tables} (Section~\ref{subsec:binary_relations_table}), \emph{Instance attribute tables} (Section~\ref{subsec:instance_attributes_table}), \emph{Class attributes tables} (Section~\ref{subsec:class_attributes_table}), and \emph{Instances tables} (Section~\ref{subsec:instances_table}). \emph{Constant tables}, \emph{Formal axiom tables}, and \emph{Rules tables} have been omitted as the components described by these tables do not appear in \smarthomeweather.
 
 In this section, only those deliverables are presented that are necessary to fully understand the structure of \smarthomeweather. All tables that have only been created for the sake of completeness can be found in Appendix~\ref{sec:appendix_conceptualisation}.
 
@@ -178,7 +178,7 @@ Section~\ref{sec:weather_conclusion} presents the weather elements that are used
 
 For all weather elements except \Egls{dew point}, categories are introduced in order to allow easy differentiation of weather observations by their respective measurement values. In the case of \Egls{temperature}, the sub-concepts differ from each other by the observed temperature values. The sub-concepts of \Egls{temperature} are \Egls{frost} (for an observed temperature value of below \SI{0}{\celsius}), \Egls{cold} (at least \SI{0}{\celsius} and less than \SI{10}{\celsius}), \Egls{below room temperature} (at least \SI{10}{\celsius} and less than \SI{20}{\celsius}), \Egls{room temperature} (at least \SI{20}{\celsius} and at most \SI{25}{\celsius}), \Egls{above room temperature} (more than \SI{25}{\celsius} and at most \SI{30}{\celsius}), and \Egls{heat} (more than \SI{30}{\celsius}). Refer to Section~\ref{sec:concept_classification_trees} for the concept-classification trees that result from this approach including the definitions of the respective sub-concepts.
 
-A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
+A \egls{weather report} can encapsulate data either about the current weather or about the weather some time in the future which is specified by its \egls{start time}. Additionally, weather data can have its origin at a set of weather sensors or at an Internet weather service. To take this into account, a few sub-concepts of \egls{weather report} are introduced:
 
 If the \egls{weather report} describes the current weather, it is a \Egls{current weather report}; if it describes the future weather, it is a \Egls{forecast weather report}. Depending on how far the \Egls{weather report}'s \egls{start time} lies ahead, it is a \Egls{short range weather report} (at most 3 hours in the future), a \Egls{medium range weather report} (more than 3 hours and less than 12 hours in the future), or a \Egls{long range weather report} (at least 12 hours in the future). Furthermore, there are sub-concepts of \egls{weather report}, each having a \egls{start time} of 1, 2, 3, 6, 9, 12, 15, 18, or 24 hours; these concepts are named \emph{Forecast 1 hour weather report}, \emph{Forecast 2 hours weather report} etc., respectively.
 
@@ -186,11 +186,11 @@ If the source of weather data is a \Egls{sensor source}, the corresponding \Egls
 
 A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from sensor} is a \Egls{current weather report from sensor}. A \Egls{weather report} that is both a \Egls{current weather report} and a \Egls{weather report from service} is a \Egls{current weather report from service}.
 
-Several sub-concepts of \Egls{weather state} describe certain combinations of instances of \Egls{weather phenomenon} being associated with a \Egls{weather state}. These concepts are listed below; refer to the glossary in Appendix~\ref{main} for their definitions.
+Several sub-concepts of \Egls{weather state} describe certain combinations of instances of \Egls{weather phenomenon} being associated with a \Egls{weather state}. These concepts are listed below; refer to the glossary in Appendix~\ref{main} for their definitions. In the context of the concept-classification trees (see Section~\ref{sec:concept_classification_trees}), the ideas behind the sub-concepts of \Egls{weather state} are discussed.
 
 Thus, the concepts that can be found in \smarthomeweather are:
 \begin{itemize}
-  \item \Egls{weather condition}
+  \item \Egls{weather condition}.
   \item \Egls{weather phenomenon}:
     \begin{itemize}
       \item \Egls{atmospheric pressure}: \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, \Egls{very high pressure}.
@@ -231,7 +231,7 @@ The only predefined individuals are instances of the concept \Egls{weather condi
 \subsection{Concept-classification trees}
 \label{sec:concept_classification_trees}
 
-As stated in Section~\ref{sec:ontology_glossary}, there are five top-level concepts; all other concepts are sub-concepts to these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These \emph{Concept-classification trees} are presented in this section.
+As stated in Section~\ref{sec:ontology_glossary}, there are five top-level concepts; all other concepts are sub-concepts of these top-level concepts. As a consequence, each of these concepts becomes root of a tree of concepts. These \emph{Concept-classification trees} are presented in this section.
 
 \subsubsection{Weather condition}
 
@@ -303,9 +303,9 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
     \label{fig:tree_solar_radiation}
   \end{figure}
 
-  \item \Egls{sun position} (Figure~\ref{fig:tree_sun_position}): There are sub-concepts that are defined depending on the sun's azimuth angle, while others are defined depending on the sun's elevation above horizon:
+  \item \Egls{sun position} (Figure~\ref{fig:tree_sun_position}): There are sub-concepts that are defined depending on the sun's direction, while others are defined depending on the sun's elevation above horizon:
     \begin{itemize}
-      \item Those depending on the azimuth angle are \Egls{sun from north} (azimuth angle of at least \SI{0}{\degree} and at most \SI{45}{\degree} or of more than \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{sun from east} (azimuth angle of more than \SI{45}{\degree} and at most \SI{135}{\degree}), \Egls{sun from south} (azimuth angle of more than \SI{135}{\degree} and at most \SI{225}{\degree}), and \Egls{sun from east} (azimuth angle of more than \SI{225}{\degree} and at most \SI{315}{\degree}).
+      \item Those depending on the azimuth angle are \Egls{sun from north} (azimuth angle of at least \SI{0}{\degree} and at most \SI{45}{\degree} or of more than \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{sun from east} (azimuth angle of more than \SI{45}{\degree} and at most \SI{135}{\degree}), \Egls{sun from south} (azimuth angle of more than \SI{135}{\degree} and at most \SI{225}{\degree}), and \Egls{sun from west} (azimuth angle of more than \SI{225}{\degree} and at most \SI{315}{\degree}).
       
       \item The sub-concepts defined via the elevation angle are \Egls{day} (elevation angle of at least \SI{0}{\degree} and at most \SI{90}{\degree}), \Egls{solar twilight} (elevation angle of at least \SI{0}{\degree} and less than \SI{6}{\degree}), \Egls{sun below horizon} (elevation angle of at least \SI{-90}{\degree} and less than \SI{0}{\degree}), \Egls{twilight} (elevation angle of at least \SI{-18}{\degree} and less than \SI{0}{\degree}), \Egls{civil twilight} (elevation angle of at least \SI{-6}{\degree} and less than \SI{0}{\degree}), \Egls{nautical twilight} (elevation angle of at least \SI{-12}{\degree} and less than \SI{-6}{\degree}), \Egls{astronomical twilight} (elevation angle of at least \SI{-18}{\degree} and less than \SI{-12}{\degree}), and \Egls{night} (elevation angle of at least \SI{-90}{\degree} and less than \SI{-18}{\degree}). Refer to the \emph{Glossary of Meteorology} for the definitions of the different states of twilight~\cite{GlossaryOfMeteorology}.
     \end{itemize}
@@ -328,9 +328,9 @@ A \Egls{weather phenomenon} represents a certain weather element. Every specific
 
   \item \Egls{wind} (Figure~\ref{fig:tree_wind}): As for \Egls{sun position}, there are two types of sub-concepts of \Egls{wind} -- those defined by the wind speed and those defined by the wind direction:
     \begin{itemize}
-      \item If an instance of \Egls{wind} has the property \egls{has wind direction}, it is defined to be an instance of \Egls{directional wind}. This concept in turn has four sub-concepts: \Egls{north wind} (wind direction of at least \SI{0}{\degree} and less than \SI{45}{\degree} or of at least \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{east wind} (at least \SI{45}{\degree} and less than \SI{135}{\degree}), \Egls{south wind} (at least \SI{135}{\degree} and less than \SI{225}{\degree}), and \Egls{east wind} (at least \SI{225}{\degree} and less than \SI{315}{\degree}).
+      \item If an instance of \Egls{wind} has the property \egls{has wind direction}, it is defined to be an instance of \Egls{directional wind}. This concept in turn has four sub-concepts: \Egls{north wind} (wind direction of at least \SI{0}{\degree} and less than \SI{45}{\degree} or of at least \SI{315}{\degree} and less than \SI{360}{\degree}), \Egls{east wind} (at least \SI{45}{\degree} and less than \SI{135}{\degree}), \Egls{south wind} (at least \SI{135}{\degree} and less than \SI{225}{\degree}), and \Egls{west wind} (at least \SI{225}{\degree} and less than \SI{315}{\degree}).
       
-      \item Depending on the wind speed, there are the sub-concepts \egls{calm} (wind speed of at least \SI{0}{\kilo\metre\per\hour} and less than \SI{1}{\kilo\metre\per\hour}), \egls{light wind} (at least \SI{1}{\kilo\metre\per\hour} and less than \SI{10}{\kilo\metre\per\hour}), \egls{strong wind} (at least \SI{10}{\kilo\metre\per\hour} and less than \SI{20}{\kilo\metre\per\hour}), \egls{storm} (at least \SI{20}{\kilo\metre\per\hour}), and \egls{hurricane} (at least \SI{32}{\kilo\metre\per\hour}).
+      \item Depending on the wind speed, there are the sub-concepts \egls{calm} (wind speed of at least \SI{0}{\metre\per\second} and less than \SI{1}{\metre\per\second}), \egls{light wind} (at least \SI{1}{\metre\per\second} and less than \SI{10}{\metre\per\second}), \egls{strong wind} (at least \SI{10}{\metre\per\second} and less than \SI{20}{\metre\per\second}), \egls{storm} (at least \SI{20}{\metre\per\second}), and \egls{hurricane} (at least \SI{32}{\metre\per\second}).
       
     \end{itemize}
     
@@ -365,6 +365,8 @@ The concepts \Egls{short range weather report}, \Egls{medium range weather repor
   \item \Egls{long range weather report}: \emph{Forecast 12 hour weather report}, \emph{Forecast 15 hours weather report}, \emph{Forecast 18 hours weather report}, \emph{Forecast 21 hours weather report}, and \emph{Forecast 24 hours weather report} for weather reports describing the weather in 12, 15, 18, 21, and 24 hours, respectively.
 \end{itemize}
 
+\subsubsection{Weather source}
+
 A \Egls{weather source} can either be a \Egls{sensor source} or a \Egls{service source} (see Figure~\ref{fig:tree_weather_source}).
 
 \begin{figure}
@@ -388,7 +390,7 @@ A \Egls{weather state} represents the set of weather phenomena that belong to a 
 The idea behind this approach is to provide simple answers to some of the competency questions. Apart from the concept \Egls{weather state}, there are three ways how the concepts are defined:
 
 \begin{itemize}
-  \item Some concepts (\Egls{calm weather}, \Egls{clear weather}, \Egls{cloudy weather}, \Egls{cold weather}, \Egls{dry weather}, \Egls{hot weather}, \Egls{moist weather}, \Egls{no rain weather}, \Egls{pleasant temperature weather}, \Egls{rainy weather}, \Egls{stormy weather}, and \Egls{very rainy weather}) are defined as sub-concepts of \Egls{weather state}; additionally, an instance of \Egls{weather state} must be related to certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} to be an instance of one of these sub-concepts. For instance, an instance of \Egls{calm weather} is defined to be an instance of \Egls{weather state} having a property \egls{has weather phenomenon} that relates an instance of \Egls{calm} or \Egls{light wind} to it (see Listing~\ref{listing:concept_definition1}).
+  \item Some concepts (\Egls{calm weather}, \Egls{clear weather}, \Egls{cloudy weather}, \Egls{cold weather}, \Egls{dry weather}, \Egls{hot weather}, \Egls{moist weather}, \Egls{no rain weather}, \Egls{pleasant temperature weather}, \Egls{rainy weather}, \Egls{stormy weather}, and \Egls{very rainy weather}) are defined as sub-concepts of \Egls{weather state}; additionally, an instance of \Egls{weather state} must be related to certain instances of \Egls{weather phenomenon} and/or \Egls{weather condition} to be an instance of one of these sub-concepts. For instance, an instance of \Egls{calm weather} is defined to be an instance of \Egls{weather state} having a property \egls{has weather phenomenon} that relates an instance of \Egls{calm} or \Egls{light wind} to it (see Listing~\ref{listing:concept_definition1} for the implementation in \eacs{OWL}).
   
 \begin{mintlisting}
 \begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
@@ -483,9 +485,9 @@ The sub-concepts of \Egls{weather state} are (in alphabetical order):
   
   \item \Egls{hot weather} is a weather state describing a temperature that is far above room temperature. An instance of \Egls{hot weather} is related to an instance of \Egls{heat} via the property \egls{has weather phenomenon}, i.e.\ during the state of \Egls{hot weather}, the outside temperature is above \SI{30}{\celsius}. At this temperature, it is probably necessary to cool the building.
   
-  \item \Egls{moist weather} describes a high value of relative humidity. An instance of \Egls{moist weather} is related to an instance of either \Egls{moist} or \Egls{very moist} via the property \egls{has weather phenomenon}, i.e.\ the relative humidity is above \SI{80}{\percent}. At this value of relative humidity, it may be necessary to dehumidify the air inside the building to maintain a certain level of comfort for the inhabitants.
+  \item \Egls{moist weather} describes a high value of relative humidity. An instance of \Egls{moist weather} is related to an instance of either \Egls{moist} or \Egls{very moist} via the property \egls{has weather phenomenon}, i.e.\ the relative humidity is above \SI{70}{\percent}. At this value of relative humidity, it may be necessary to dehumidify the air inside the building to maintain a certain level of comfort for the inhabitants.
   
-  \item \Egls{no awning weather} represents a weather state where all awnings should be retracted due for safety reasons. \Egls{no awning weather} is the union of \egls{severe weather} and a \egls{weather state} that is related to an instance of \Egls{strong wind} via the property \egls{has weather phenomenon}. Hence, during the state of \Egls{no awning weather}, there is at storm together with heavy rain or strong wind. The \eacs{OWL} reasoner infers \Egls{no awning weather} to be a sub-concept of \Egls{windy weather} and a super-concept of \Egls{severe weather}.
+  \item \Egls{no awning weather} represents a weather state where all awnings should be retracted due to safety reasons. \Egls{no awning weather} is the union of \egls{severe weather} and a \egls{weather state} that is related to an instance of \Egls{strong wind} via the property \egls{has weather phenomenon}. Hence, during the state of \Egls{no awning weather}, there is at storm together with heavy rain or strong wind. The \eacs{OWL} reasoner infers \Egls{no awning weather} to be a sub-concept of \Egls{windy weather} and a super-concept of \Egls{severe weather}.
   
   \item \Egls{no rain weather} represents the absence of precipitation, either because the precipitation probability is \num{0} or the precipitation intensity is \SI{0}{\milli\metre\per\hour}. An instance of \Egls{weather state} is defined to be an instance of \Egls{no rain weather} if and only if it is related to an instance of \Egls{no rain} via the property \egls{has weather phenomenon}. \Egls{no rain weather} is used to simplify the definition of \Egls{fair weather} and to help finding answers to precipitation-related competency questions, e.g.\ whether irrigation of the garden is necessary.
   
@@ -493,7 +495,7 @@ The sub-concepts of \Egls{weather state} are (in alphabetical order):
   
   \item \Egls{rainy weather} represents a weather state with precipitation. An instance of \Egls{weather state} is defined to be an instance of \Egls{rainy weather} if and only if it is related to an instance of \Egls{light rain}, \Egls{medium rain}, \Egls{heavy rain}, \Egls{extremely heavy rain}, or \Egls{tropical storm rain} via the property \egls{has weather phenomenon}. Although not recognised by the \eacs{OWL} reasoner due to the \emph{Open World Assumption}, this weather state is the de-facto complement of \Egls{no rain}. As \Egls{no rain} can be used to answer competency questions related to precipitation. An \eacs{OWL} reasoner infers \Egls{rainy weather} to be a super-concept of \Egls{very rainy weather}.
 
-  \item \Egls{severe weather} is a weather state that represents the combination of strong wind or storm and heavy rain. \Egls{severe weather} is defined as the intersection of \Egls{stormy weather} and \Egls{very rainy weather}, i.e.\ severe weather involves a wind speed of more than \SI{20}{\metre\per\second}, a precipitation probability greater than \num{0}, and a precipitation intensity of above \SI{20}{\milli\metre\per\hour}. By definition, \Egls{severe weather} is a sub-class of \Egls{stormy weather} and \Egls{very rainy weather} and a super-class of \Egls{thunderstorm}; an \eacs{OWL} reasoner additionally infers \Egls{severe weather} to be sub-class of \Egls{no awning weather}. \Egls{severe weather} is used to answer competency questions such as ``Will there be severe weather?'' and to simplify the definitions of the concept \Egls{thunderstorm}.
+  \item \Egls{severe weather} is a weather state that represents the combination of strong wind or storm and heavy rain. \Egls{severe weather} is defined as the intersection of \Egls{stormy weather} and \Egls{very rainy weather}, i.e.\ severe weather involves a wind speed of more than \SI{20}{\metre\per\second}, a precipitation probability greater than \num{0}, and a precipitation intensity of above \SI{20}{\milli\metre\per\hour}. By definition, \Egls{severe weather} is a sub-class of \Egls{stormy weather} and \Egls{very rainy weather} and a super-class of \Egls{thunderstorm}; an \eacs{OWL} reasoner additionally infers \Egls{severe weather} to be sub-class of \Egls{no awning weather}. \Egls{severe weather} is used to answer competency questions such as ``Will there be severe weather?'' and to simplify the definition of the concept \Egls{thunderstorm}.
   
   \item \Egls{stormy weather} is a weather state that represents storm, i.e.\ a wind speed of more than \SI{20}{\metre\per\second}. An instance of \Egls{weather state} is defined to be an instance of \Egls{stormy weather} if and only if it is related to an instance of \Egls{storm} via the property \egls{has weather phenomenon}. \Egls{stormy weather} is used to answer wind-related competency questions and to simplify the definition of the concepts \Egls{windy weather} and \Egls{severe weather}.
   
@@ -554,7 +556,7 @@ The only pre-defined instances in \smarthomeweather are the instances of the con
 \section{Integration}
 \label{sec:integration}
 
-One of the goals when designing an ontology is to reuse existing ontologies where possible~\cite{reuse1,reuse2}. Chapter~\ref{ch:existing_work} sheds some light on a selection of existing ontologies around the domain of weather data. In the domain of \smarthomeweather, four areas have been identified where existing ontologies may be reused. These areas are location data (Section~\ref{subsec:location_ontologies}), measurement units (Section~\ref{subsec:unit_ontologies}), specifications of date and time (Section~\ref{subsec:date_ontologies}), and weather concepts (Section~\ref{sec:weather_ontologies}).
+One of the goals when designing an ontology is to reuse existing ontologies where possible~\cite{reuse1,reuse2}. Chapter~\ref{ch:existing_work} sheds some light on a selection of existing ontologies around the domain of weather data. In the domain of \smarthomeweather, four areas have been identified where existing ontologies may be reused. These areas are location data (Section~\ref{subsec:location_ontologies}), units of measurement (Section~\ref{subsec:unit_ontologies}), specifications of date and time (Section~\ref{subsec:date_ontologies}), and weather concepts (Section~\ref{sec:weather_ontologies}).
 
 The following ontologies have been selected for the import into \smarthomeweather:
 \begin{itemize}
@@ -575,7 +577,7 @@ The \smarthomeweather ontology is implemented in OWL using \protege 4.3 together
 
 To ensure that the reasoning of all sub-concepts of \egls{weather phenomenon}, \egls{weather state}, and \egls{weather report} works correctly, \emph{JUnit}~\cite{junit} is used (see Section~\ref{sec:importer_tests}). Every test case loads the \smarthomeweather ontology using the \emph{Jena framework}, adds appropriate individuals, and checks using the \emph{Pellet reasoner} if reasoning is performed in the desired manner.
 
-During implementation of \smarthomeweather in \eacs{OWL}, the identifiers of concepts, properties, and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}~\cite{CamelCase}, e.g.\ \Egls{weather state} becomes \emph{WeatherState} and \egls{has start time} becomes \emph{hasStartTime}. Hence, in the \eacs{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
+During implementation of \smarthomeweather in \eacs{OWL}, the identifiers of concepts, properties, and instances in this document are modified by removing all space characters and concatenating all parts of the identifier using \emph{camel case}~\cite{CamelCase}, e.g.\ \Egls{weather state} becomes \texttt{WeatherState} and \egls{has start time} becomes \texttt{hasStartTime}. Hence, in the \eacs{OWL} implementation, all identifiers match the regular expression \texttt{\textasciicircum[A-za-z0-9]+\$}.
 
 \subsection{Imported ontologies}
 \label{sec:ontology_imports}
@@ -751,7 +753,7 @@ The hierarchy of \Egls{weather state} is inferred in a similar way; refer to Sec
 \label{listing:reasoning4}
 \end{mintlisting}
 
-The hierarchy of \Egls{weather report} emerges from the values two of the properties of \Egls{weather report}: \egls{has source} and \egls{has start time}. Depending on the type of the instance of \Egls{weather source} the property \egls{has source} refers to, a \Egls{weather report} is either a \Egls{weather report from sensor} or a \Egls{weather report from service} (see Listing~\ref{listing:reasoning4}). Depending on the instance of \Egls{interval} the property \egls{has start time} refers to, a \Egls{weather report} is inferred to be an instance of \Egls{current weather report}, \Egls{forecast weather report}, \Egls{short range weather report}, \emph{forecast 1 hour weather report} etc. For instance, \Egls{current weather report} is defined as seen in Listing~\ref{listing:reasoning5}.
+The hierarchy of \Egls{weather report} emerges from the values two of the properties of \Egls{weather report}: \egls{has source} and \egls{has start time}. Depending on the type of the instance of \Egls{weather source} the property \egls{has source} refers to, a \Egls{weather report} is either a \Egls{weather report from sensor} or a \Egls{weather report from service} (see Listing~\ref{listing:reasoning4}). Depending on the instance of \Egls{interval} the property \egls{has start time} refers to, a \Egls{weather report} is inferred to be an instance of \Egls{current weather report}, \Egls{forecast weather report}, \Egls{short range weather report}, \emph{Forecast 1 hour weather report} etc. For instance, \Egls{current weather report} is defined as seen in Listing~\ref{listing:reasoning5}.
 
 \begin{mintlisting}
 \begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
@@ -803,7 +805,7 @@ Thus, all non-functional requirements are met by \smarthomeweather.
 \subsection{Functional requirements}
 \label{sec:evaluation_functional}
 
-As \eacs{OWL} reasoning has been an integral part of the implementation step (cf.\ Section~\ref{sec:reasoning}, at this point it is necessary to verify that \smarthomeweather provides answers to all competency questions; if all these questions are sufficiently covered, \smarthomeweather meets all functional requirements.
+As \eacs{OWL} reasoning has been an integral part of the implementation step (cf.\ Section~\ref{sec:reasoning}), at this point it is necessary to verify that \smarthomeweather provides answers to all competency questions; if all these questions are sufficiently covered, \smarthomeweather meets all functional requirements.
 
 This section evaluates if answers to the competency questions are provided and how answers can be drawn from the ontology.
 
@@ -823,7 +825,7 @@ However, there are questions that cannot be answered by \smarthomeweather as wri
   \item Do we need to irrigate the garden?
 \end{itemize}
 
-Furthermore, there are questions that cannot be answered using an \eacs{OWL} ontology due to the \emph{Open World Assumption}~\cite{open_world_assumption1}. For instance, an \eacs{OWL} reasoner cannot determine that some attribute value is the lowest one as it does not know whether there may be lower value it does not know anything about; the reasoner only knows about the presence of individuals and attribute values, but nothing about their absence.
+Furthermore, there are questions that cannot be answered using an \eacs{OWL} ontology due to the \emph{Open World Assumption}~\cite{open_world_assumption1}. For instance, an \eacs{OWL} reasoner cannot determine that some attribute value is the lowest one as it does not know whether there may be lower values it does not know anything about; the reasoner only knows about the presence of individuals and attribute values, but nothing about their absence.
 
 \begin{itemize}
   \item What will be the minimum temperature, humidity, … over the next 24 hours? What about maximum values?
@@ -868,7 +870,7 @@ WHERE {
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-This query can be extended to obtain the maximum temperature value during the next three hours. For this query to work, the query follows the property \texttt{weather:belongsToWeatherState} to reach the \Egls{weather state} \texttt{?s} that corresponds to the \Egls{weather phenomenon} \texttt{?p}; furthermore, \texttt{weather:belongsToWeatherReport} leads to the corresponding \Egls{weather report} \texttt{?r}. Then a limitation on this \Egls{weather report}'s start time is introduced.
+This query can be extended to obtain the maximum temperature value during the next three hours. For this query to work, the query follows the property \texttt{weather:belongsToWeather\hspace{0pt}State} to reach the \Egls{weather state} \texttt{?s} that corresponds to the \Egls{weather phenomenon} \texttt{?p}; furthermore, \texttt{weather:belongsToWeatherReport} leads to the corresponding \Egls{weather report} \texttt{?r}. Then a limitation on this \Egls{weather report}'s start time is introduced.
 
 \noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \vspace{3mm}\begin{minted}{sparql}
@@ -953,13 +955,13 @@ WHERE {
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-\eacs{SPARQL}~1.1 allows querying the transitive closure of an object property; the following query yields all pairs of \Egls{weather state}s \texttt{(?s1, ?s2)} where \texttt{?s1} describe the weather state for an earlier point of time than \texttt{?s2}:
+\eacs{SPARQL}~1.1 allows querying the transitive closure of an object property; the following query yields all pairs of \Egls{weather state}s \texttt{(?s1, ?s2)} where \texttt{?s1} describes the weather state for an earlier point of time than \texttt{?s2}:
 
 \vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{sparql}
 SELECT ?s1 ?s2
 WHERE {
-    ?s1 weather:hasNextWeatherState++ ?s2.
+    ?s1 weather:hasNextWeatherState+ ?s2.
 }
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
@@ -987,12 +989,13 @@ In order to simplify the \eacs{SPARQL} queries that are required to provide answ
 \vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{text}
 hasNextWeatherState(?s1, ?s2) ⇒ hasLaterWeatherState(?s1, ?s2)
-  hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒
-    hasLaterWeatherState(?s1, ?s3)
+
+hasLaterWeatherState(?s1, ?s2) ∧ hasLaterWeatherState(?s2, ?s3) ⇒
+  hasLaterWeatherState(?s1, ?s3)
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-This rule defines the property \emph{increasing temperature} which relates pairs of \Egls{weather state}s to each other that indicate an increasing temperature value over time:
+This rule defines the semantics of a new property \emph{increasing temperature} which relates pairs of \Egls{weather state}s to each other in a way that indicates an increasing temperature value over time:
 
 \vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{text}
