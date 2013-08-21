@@ -13,3 +13,6 @@ chapters/*~
 *.xdy
 *.lof
 *.lot
+*.aex
+*.pyg
+*.lomintlisting
