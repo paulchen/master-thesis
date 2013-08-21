@@ -16,3 +16,6 @@
 *.out
 *.snm
 *.vrb
+figures/house.pdf
+*.aex
+*.pyg

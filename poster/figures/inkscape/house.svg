@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1608.0138"
+   height="1161.4678"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.4 r9939"
+   version="1.0"
+   sodipodi:docname="test.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lstart"
+       style="overflow:visible">
+      <path
+         id="path3783"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3768"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3765"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2461"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2650"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.71658086"
+     inkscape:cx="1346.1856"
+     inkscape:cy="630.32779"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1151"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false"
+     fit-margin-top="20"
+     fit-margin-left="20"
+     fit-margin-right="20"
+     fit-margin-bottom="20">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4994"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="522.7035px"
+       originy="20.006491px" />
+  </sodipodi:namedview>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(434.0625,301.21783)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 650.43739,457.29046 0.0161,93.26563 -34.875,-27.90625 0,312.59375 -484.25,0 0,-318.1875 -37.687499,33.5 1.921875,-93.67771 32.579074,-31.91604 0.4053,0 0,-178.625 58.59375,0 0,130.96875 184.21875,-160.1875 279.07765,240.17187 z"
+       id="rect3464"
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#99ccff;fill-opacity:0.4456522;stroke:#000000;stroke-width:2.17743444;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m -133.13486,401.44429 0.13015,65.74341 -279.96066,0 0,155.87032 280.28613,0 0.0975,54.65775 L 48.016158,539.36875 -133.13494,401.44429 z"
+       id="rect4769"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:60px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="-394.9707"
+       y="555.2099"
+       id="text4789"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4791"
+         x="-394.9707"
+         y="555.2099">Temperature</tspan></text>
+    <g
+       id="g5050"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,185.15879,126.10242)">
+      <path
+         inkscape:connector-curvature="0"
+         id="rect4769-0"
+         d="m -185.16519,-2.1585409 0.13015,65.7434099 -279.96066,0 0,155.870321 280.28613,0 0.0975,54.65775 L -4.014171,135.76592 -185.16527,-2.1585409 z"
+         style="fill:#99ccff;fill-opacity:0.4456522;stroke:#000000;stroke-width:2.17743444;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4789-8"
+         y="158.34537"
+         x="-330.17194"
+         style="font-size:60px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="158.34537"
+           x="-330.17194"
+           id="tspan4791-5"
+           sodipodi:role="line">Wind</tspan></text>
+    </g>
+    <g
+       id="g5108"
+       transform="translate(1359.2325,260.96148)">
+      <path
+         inkscape:connector-curvature="0"
+         id="rect4769-3"
+         d="m -486.19449,147.16166 -0.13015,65.74341 279.96066,0 0,155.87032 -280.28613,0 -0.0975,54.65775 -180.5979,-138.34702 181.1511,-137.92446 z"
+         style="fill:#99ccff;fill-opacity:0.4456522;stroke:#000000;stroke-width:2.17743444;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4789-1"
+         y="301.85013"
+         x="-550.96021"
+         style="font-size:60px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="301.85013"
+           x="-550.96021"
+           id="tspan4791-0"
+           sodipodi:role="line">Humidity</tspan></text>
+    </g>
+    <g
+       id="g5103"
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,344.22257,423.64255)">
+      <path
+         inkscape:connector-curvature="0"
+         id="rect4769-3-5"
+         d="m 430.65947,-64.956756 -0.13015,65.74341003 279.96066,0 0,155.87032597 -280.28613,0 -0.0975,54.65775 -180.5979,-138.347025 181.1511,-137.924461 z"
+         style="fill:#99ccff;fill-opacity:0.4456522;stroke:#000000;stroke-width:2.17743444;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4789-1-7"
+         y="95.54715"
+         x="437.67108"
+         style="font-size:60px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="95.54715"
+           x="437.67108"
+           id="tspan4791-0-7"
+           sodipodi:role="line">Rain</tspan></text>
+    </g>
+    <g
+       id="g5124"
+       transform="matrix(0,-1,1,0,334.25342,462.46967)">
+      <path
+         inkscape:connector-curvature="0"
+         id="rect4769-3-3"
+         d="m 462.75634,-102.63569 -0.13015,65.743414 279.96066,0 0,155.870316 -280.28613,0 -0.0975,54.65775 -180.5979,-138.347016 181.1511,-137.924464 z"
+         style="fill:#99ccff;fill-opacity:0.4456522;stroke:#000000;stroke-width:2.17743444;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4789-1-9"
+         y="57.34087"
+         x="479.56778"
+         style="font-size:60px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="57.34087"
+           x="479.56778"
+           id="tspan4791-0-8"
+           sodipodi:role="line">Sun</tspan></text>
+    </g>
+  </g>
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Open Clip Art Library</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>house-silhouette</dc:title>
+        <dc:date>2008-09-05T21:51:59</dc:date>
+        <dc:description>House silhouette</dc:description>
+        <dc:source>http://openclipart.org/detail/19100/house-silhouette-by-josuemb</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>josuemb</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>building</rdf:li>
+            <rdf:li>building</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>home</rdf:li>
+            <rdf:li>home</rdf:li>
+            <rdf:li>house</rdf:li>
+            <rdf:li>house</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>silhouette</rdf:li>
+            <rdf:li>silhouette</rdf:li>
+            <rdf:li>svg</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

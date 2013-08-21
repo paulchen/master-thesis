@@ -14,8 +14,10 @@
 
 \documentclass[final,hyperref={pdfpagelabels=true}]{beamer}
 
+\usepackage{minted}
 \usepackage{TUINFPST}
 \usepackage{listings}
+\usepackage{wrapfig}
 
 %\title[Computational Intelligence]{Interactive Computer Generated Architecture}
 % if you have a long title looking squeezed on the poster, just force
@@ -40,7 +42,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Display a grid to help align images 
-\beamertemplategridbackground[12.7mm] % TODO remove
+%\beamertemplategridbackground[12.7mm] % TODO remove
 
 % play around with the background colors
 % \setbeamercolor{background canvas}{bg=yellow}
@@ -84,7 +86,7 @@
 
 
 % for crop marks, uncomment the following line
-\usepackage[cross,width=88truecm,height=123truecm,center]{crop}
+%\usepackage[cross,width=88truecm,height=123truecm,center]{crop} % TODO
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -101,7 +103,7 @@
     % ---------------------------------------------------------%
     % Set up a column
     \begin{column}{.45\textwidth}
-      \begin{block}{Why introduce smart homes?}
+      \begin{block}{Smart homes and ontologies}
 	\emph{Smart homes} are dwellings that are equipped with
 	some kind of intelligence that enables them to perform tasks
 	on its own without human intervention. Some of their goals are:
@@ -112,41 +114,36 @@
           \item Reducing the overall energy consumption.
         \end{itemize}
 
-	Areas served by smart homes include … % TODO
-
-%	Components of smart homes are \emph{sensors} which provide
-%	data about the current state, while \emph{actuators} can
-%	execute various tasks. \emph{Intelligent control} represents
-%	a gateway for managing the systems via an \emph{internal
-%	network}. % TODO replace this by an image or omit it completely?
-      \end{block}
-
-      \begin{block}{Why use ontologies?}
-	Many smart home systems suffer from several shortcomings, e.g.
+	Many smart home systems suffer from several shortcomings:
 	\begin{itemize}
-	  \item … % TODO
-	  \item … % TODO
-	  \item … % TODO
+	  \item Smart home systems tend to be very complex.
+	  \item Optimisations and customisations imply a huge effort.
+	  \item Smart homes are less powerful or flexible than desired.
 	\end{itemize}
 
-	Smart home environments such as \emph{ThinkHome}~\cite{CR2011-TH_Journal}
-	aim to overcome these problems by utilising a knowledge base
-	built using \emph{OWL}.
-        % TODO 
-	% logical model, OWL, ThinkHome, reasoning
+	One approach to overcome these problems is to utilise a knowledge
+	base built using \emph{OWL}, like in \emph{ThinkHome}~\cite{CR2011-TH_Journal}.
       \end{block}
 
-      \begin{block}{Why add a weather data model?}
-	Wweather has a wide influence on a dwelling.
-	Introducing \emph{SmartHomeWeather}, a data model for current and future weather states,
-	enables a smart home to utilise various aspects of this
-	influence to make a set of control decisions, e.g.:
+      \begin{block}{Why introduce a weather data model?}
+        \begin{wrapfigure}{r}{.45\textwidth}
+	  \centering
+	  \includegraphics[width=.45\textwidth]{figures/inkscape/house}
+	\end{wrapfigure}
+
+	\mbox{Weather has a wide influence on}
+	\mbox{a dwelling. Introducing \emph{SmartHome-}}
+	\mbox{\emph{Weather}, a data model for current}
+	\mbox{for current and future weather}
+	\mbox{states, enables a smart home to}
+	\mbox{utilise various aspects of this}
+	\mbox{influence to make a set of control}
+	decisions, regarding e.g.
 	\begin{itemize}
-	  \item foo
-	  \item bar
-	  \item blah
-	  \item blubb
-	  \item Prepare for severe weather, e.g. by closing windows or retracting awnings.
+  	  \item heating, ventilation, and air conditioning (\emph{HVAC}),
+	  \item the utilisation of solar and wind power,
+	  \item irrigation, or
+	  \item preparations for severe weather, e.g. by closing windows or retracting awnings.
 	\end{itemize}
 
 	Data about weather states is gathered from local sensors and Internet weather services.
@@ -156,14 +153,22 @@
 	The work preceding the development of \emph{SmartHomeWeather} followed this methodological approach:
 	\begin{itemize}
 	  \item Existing weather ontologies were evaluated; none of them were found to be suitable to be used in smart homes.
-	  \item Particular ways were identified in which weather data can be used in smart homes. This led to the set of weather elements supported by the ontology to be temperature, humidity… % TODO
+	  \item Particular ways were identified in which weather data can be used in smart homes. This led to the set of weather elements supported by the ontology (temperature, humidity…).
 	  \item Among approaches for building ontologies from scratch, \emph{METHONTOLOGY}~\cite{Methontology} was selected to be applied to the development process of \emph{SmartHomeWeather}.
 	  \item A selection of Internet weather services was evaluated. The \emph{API} provided by the \emph{Norwegian Meteorological Institute} is used as an example.
 	\end{itemize}
       \end{block}
 
       \begin{block}{The \emph{SmartHomeWeather} ontology}
-	The \emph{SmartHomeWeather} ontology is built around five top-level concepts which together with their sub-concepts form a model for maintaining data about current and future weather and perform efficient \emph{OWL} reasoning on it.
+	The \emph{SmartHomeWeather} ontology is built around five top-level
+	concepts which together with their sub-concepts form a model for
+	maintaining data about current and future weather and perform efficient
+	\emph{OWL} reasoning on it:
+	
+	\begin{itemize}
+	  \item A \emph{Weather phenomenon} describes a certain weather
+		  element (e.g.\ temperature or humidity).
+	\end{itemize}
       \end{block}
     \end{column}
     % ---------------------------------------------------------%
@@ -173,107 +178,67 @@
     % Set up a column 
     \begin{column}{.45\textwidth}
       \begin{block}{The \emph{SmartHomeWeather} ontology (cont.)}
-	\includegraphics[width=\textwidth]{figures/binary-relations.pdf}
+	\includegraphics[width=\textwidth]{figures/dia/binary-relations}
 	\begin{itemize}
-          \item ...
-          \item ...
-          \item ...
-          \item ...
-          \item ...
+	  \item \emph{Weather condition} is a one-word description of the
+		  weather situation (e.g.\ ``Sun'' or ``Fog'').
+	  \item A \emph{Weather state} describes the weather situation as a
+		  set of instances of \emph{Weather phenomenon}.
+          \item A \emph{Weather report} describes the weather for a certain
+		  point of time.
+	  \item A \emph{Weather report source} (sensor or Internet service)
+		  provides weather data.
 	\end{itemize}
 
-	Sub-concepts of \emph{Weather phenomenon} are defined using \emph{OWL} axioms:
-
-	\vspace{5mm}
-	\begin{tikzpicture}%
-          \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
-	    \begin{minipage}{\textwidth}
-	      \hspace{3mm}
-              \begin{minipage}{\textwidth}
-              \vspace{3mm}
-    	      \begin{lstlisting}
-RoomTemperature :- WeatherPhenomenon and
-        hasTemperature >= 20 and
-        hasTemperature <= 25
-	      \end{lstlisting}
-	      \end{minipage}
-            \end{minipage}
-	  };
-	\end{tikzpicture}
-
-	Sub-concepts of \emph{Weather state} are defined in a similar way:
-
-	\begin{lstlisting}
-	\end{lstlisting}
-
-	\vspace{5mm}
-	\begin{tikzpicture}%
-          \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
-	    \begin{minipage}{\textwidth}
-	      \hspace{3mm}
-              \begin{minipage}{\textwidth}
-              \vspace{3mm}
-    	      \begin{lstlisting}
-WindyWeather :- something
-	      \end{lstlisting}
-	      \end{minipage}
-            \end{minipage}
-	  };
-	\end{tikzpicture}
-
-	Due to limitations of \emph{OWL} (\emph{Open-World Assumption}), some ... are retrieved using \emph{SPARQL} queries: % TODO though not part of \emph{SmartHomeWeather}
-
-	\vspace{5mm}
-	\begin{tikzpicture}%
-          \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
-	    \begin{minipage}{\textwidth}
-	      \hspace{3mm}
-              \begin{minipage}{\textwidth}
-              \vspace{3mm}
-    	      \begin{lstlisting}
-blah
-	      \end{lstlisting}
-	      \end{minipage}
-            \end{minipage}
-	  };
-	\end{tikzpicture}
-
-	\emph{SWRL} rules are used as well:
-
-	\vspace{5mm}
-	\begin{tikzpicture}%
-          \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
-	    \begin{minipage}{\textwidth}
-	      \hspace{3mm}
-              \begin{minipage}{\textwidth}
-              \vspace{3mm}
-    	      \begin{lstlisting}
-blah
-	      \end{lstlisting}
-	      \end{minipage}
-            \end{minipage}
-	  };
-	\end{tikzpicture}
-      \end{block}
-
-      \begin{block}{The Weather Importer}
-	% TODO
-      \end{block}
-
-      \begin{block}{Future work}
-	Interoperation with other data sources:
+	There are several sub-concepts which are inferred using \emph{OWL} reasoning, e.g.\ 
 	\begin{itemize}
-	  \item … % TODO
-	  \item … % TODO
-	  \item … % TODO
+	  \item \emph{Temperature} of \emph{Weather phenomenon} (which again has sub-concepts, e.g.\
+		  \emph{Room temperature}),
+	  \item \emph{Pleasant temperature weather} of \emph{Weather state}, and
+	  \item \emph{Short range weather report} of \emph{Weather report}.
+	\end{itemize}
+
+	The data model can be queried using \emph{SPARQL} queries, e.g.\ to query all \emph{Weather report}s describing room temperature:
+
+	\vspace{10mm}
+	\begin{tikzpicture}%
+          \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
+	    \begin{minipage}{\textwidth}
+	      \hspace{5mm}
+              \begin{minipage}{\textwidth}
+              \vspace{5mm}
+    	      \begin{minted}{sparql}
+SELECT ?r
+WHERE {
+    ?r weather:hasWeatherState ?s.
+    ?s weather:hasWeatherPhenomenon ?t.
+    ?t a weather:RoomTemperature.
+}
+    	      \end{minted}
+    	      \vspace{5mm}
+	      \end{minipage}
+            \end{minipage}
+	  };
+	\end{tikzpicture}
+	\vspace{-12mm}
+	
+	The \emph{Weather Importer}, a Java application, imports weather data from sensors and services
+	into the ontology.
+      \end{block}
+      
+      \begin{block}{Future work}
+	Interoperation with other data sources, e.g.:
+	\begin{itemize}
+	  \item Minimising costs for electrical power based on weather data and varying costs for electrical power over time.
+	  \item Improving decision making based on both weather data and the buildings' inhabitants' actions.
+	  \item Learning from weather situations and their influence on the dwelling.
 	\end{itemize}
       \end{block}
 
       \begin{block}{References}
+        \footnotesize
 	\bibliographystyle{thesis}
 	\bibliography{references}
-
-	% TODO owl, thinkhome, ontologies, ...?
       \end{block}
     \end{column}
     % ---------------------------------------------------------%
@@ -291,6 +256,7 @@ blah
 \end{frame}
 
 \end{document}
+
 
 %%% Local Variables:
 %%% TeX-PDF-mode: t
