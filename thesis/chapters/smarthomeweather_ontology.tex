@@ -858,6 +858,8 @@ This section discusses how an answer for each of these categories can be determi
 
 In the following examples of \eacs{SPARQL} queries, any prefix definitions are omitted. \eacs{SWRL} rules are presented in the syntax presented in Section 2.2 of the \eacs{SWRL} specification (``Human Readable Syntax'')~\cite{SWRL}; all prefixes are omitted for clarity.
 
+\subsubsection{Maximum and minimum values}
+
 The following example shows a \eacs{SPARQL} query to obtain the maximum temperature value stored in the ontology; note that the query contains only the necessary \emph{triple patterns}; any triple patterns that are not necessary to obtain the desired result are omitted, e.g.\ it is not necessary to ensure that \texttt{?p} is an instance of \texttt{weather:Temperature} as the domain of the property \texttt{weather:hasTemperatureValue} is defined to be \texttt{weather:Temperature} and therefore an \eacs{OWL} reasoner can infer that \texttt{?p} must be an instance of \texttt{weather:Temperature}.
 
 \noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
@@ -904,6 +906,8 @@ WHERE {
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
+\subsubsection{Weather states satisfying certain conditions}
+
 In a similar way, instances of \Egls{weather phenomenon} that satisfy a certain condition can be found. For instance, the following query obtains all instances of \Egls{weather state} that represent a temperature of below \SI{0}{\celsius}:
 
 \vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
@@ -930,7 +934,7 @@ WHERE {
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-Restrictions about time and weather phenomena can be combined, i.e.\ to find all instances of \Egls{weather state} that represent a temperature of below \SI{0}{\celsius} during the next three hours:
+Restrictions about time and weather phenomena can be combined, e.g.\ to find all instances of \Egls{weather state} that represent a temperature of below \SI{0}{\celsius} during the next three hours:
 
 \vspace{3mm}\noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{sparql}
@@ -943,6 +947,8 @@ WHERE {
 }
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
+
+\subsubsection{Rising and falling values of weather phenomena over time}
 
 To fetch all pairs of consecutive instances of \Egls{weather state} using the property \egls{has next weather state}, this query can be used:
 
