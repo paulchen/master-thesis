@@ -16,6 +16,7 @@
 *.out
 *.snm
 *.vrb
-figures/house.pdf
+figures/dia/*.pdf
+figures/inkscape/*.pdf
 *.aex
 *.pyg
