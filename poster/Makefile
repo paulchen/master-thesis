@@ -54,7 +54,7 @@ clean-dia:
 	rm -f $(DIA_DIR)/*.pdf
 
 clean-inkscape:
-	rm -f $(INKSCAE_DIR)/*.pdf
+	rm -f $(INKSCAPE_DIR)/*.pdf
 
 clean-poster:
 	rm -f poster.pdf poster.aux poster.log poster.nav poster.out poster.snm poster.toc poster.bbl poster.blg poster.vrb poster.aex poster.out.pyg poster.pyg
