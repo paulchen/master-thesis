@@ -29,7 +29,7 @@ Nine different Internet weather services are evaluated regarding the ability to 
 
 \section{Outlook}
 
-\smarthomeweather provides two areas where future work can be done. These are the elimination of its current shortcomings and the search for further use cases for the data it provides.
+Regarding \smarthomeweather, there are two areas where future work can be done. These are the elimination of its current shortcomings and the search for further use cases for the data it provides.
 
 \subsubsection{Shortcomings in the current version}
 
@@ -47,9 +47,9 @@ Furthermore, \smarthomeweather suffers from performance issues regarding the tim
 
 One reason for these performance issues is the use of the \muo ontology which increases the reasoning time by about $30 \%$ (see Section~\ref{sec:ontology_imports}). Abandonment of this ontology would speed up the reasoning process, though this would introduce problems regarding literal values without a unit. There are other ontologies which may be used instead of the \muo ontology (see Section~\ref{subsec:unit_ontologies}), such as the \eacs{OM} ontology. However, as the \eacs{OM} ontology adds about the same level of complexity to the ontology, it is certain that it increases the reasoning time of the smart home's knowledge base to the same extent as \muo. It is questionable whether there is a unit ontology that allows faster reasoning than \muo.
 
-Further performance optimisations may be possible by modifying the internal structure of \smarthomeweather without changing name and semantics of externally accessed concepts. E.g. concepts such as \Egls{weather report}, \Egls{weather state}, and \Egls{weather phenomenon} together with their respective sub-concepts remain part of the ontology while the definitions of these concepts are modified to allow faster reasoning. However, at the present time it is unknown to what degree performance gains are possible using this approach.
+Further performance optimisations may be possible by modifying the internal structure of \smarthomeweather without changing name and semantics of externally accessed concepts. For instance, concepts such as \Egls{weather report}, \Egls{weather state}, and \Egls{weather phenomenon} together with their respective sub-concepts remain part of the ontology while the definitions of these concepts are modified to allow faster reasoning. However, at the present time it is unknown to what degree performance gains are possible using this approach.
 
-Nevertheless, its current state, \smarthomeweather represents an ontology that fully complies with its specification of covering current and future weather data as far as possible. \smarthomeweather may even provide answers to many questions that have not been considered during its development. Eventually, the employment of \smarthomeweather in environments other than smart homes is also imaginable, wherever current and future weather data is used.
+Nevertheless, its current state, \smarthomeweather represents an ontology that fully complies with its specification of covering current and future weather data as far as possible. \smarthomeweather may even provide answers to many questions that have not been considered during its development. Eventually, the employment of \smarthomeweather in environments other than smart homes is also imaginable, wherever current and future weather data are to be used.
 
 \subsubsection{Further uses of data provided by \smarthomeweather}
 

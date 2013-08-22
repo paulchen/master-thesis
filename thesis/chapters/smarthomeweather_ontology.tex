@@ -3,7 +3,7 @@
 
 The previous chapters cover all topics that require discussion before being able to build a new ontology from scratch: Chapter~\ref{ch:weather_data} discusses all details about weather data that is necessary and reasonable for the \smarthomeweather ontology, what data will be used and where to obtain it. Chapter~\ref{ch:existing_work} gives an overview about existing ontologies in the domain of weather data. As none of the existing ontologies being discussed fits the needs of a weather data ontology for smart homes, a new ontology is to be designed. Chapter~\ref{ch:development_approaches} analyses some of the most popular approaches for building ontologies from scratch. Among those, \methontology~\cite{Methontology} is identified to be the best suitable approach.
 
-Based on these insights, this chapter describes the process of designing the \smarthomeweather ontology in detail. The development process follows the steps proposed by \methontology as described in Chapter~\ref{sec:methontology}.
+Based on these insights, this chapter describes the process of designing the \smarthomeweather ontology in detail. The development process follows the steps proposed by \methontology as described in Section~\ref{sec:methontology}.
 
 \section{Conventions}
 \label{sec:ontology_conventions}
@@ -39,14 +39,14 @@ Every ontology should stick to a set of naming conventions that are explicitly s
   \item \emph{Concepts} have an identifier that is in singular case and starts with an upper case letter. Typically a concept's identifier is a noun, e.g.\ \emph{Weather state} or \emph{Weather report}.
   \item \emph{Properties} have an identifier that starts with a lower case letter and starts with the prefix \emph{has} or \emph{belongs to}, followed by the name of the concept which is the property's \emph{range}. The inverse property of a property having an identifier starting with \emph{has} has an identifier starting with \emph{belongs to}, followed by the inverse property's \emph{range}. As an alternative to the prefix \emph{belongs to}, the prefix \emph{is} in conjunction with the suffix \emph{of} and the inverse property's \emph{domain} may be used.
   
-  E.g. the name of a property with the domain \emph{Weather report} and the range \emph{Weather state} has the name \emph{has weather state}. If \emph{has weather state} has an inverse property, it will have the name \emph{belongs to weather report} or \emph{is weather state of}.
+  For instance, the name of a property with the domain \emph{Weather report} and the range \emph{Weather state} has the name \emph{has weather state}. If \emph{has weather state} has an inverse property, it will have the name \emph{belongs to weather report} or \emph{is weather state of}.
 \end{itemize}
 
 
 \section{Specification}
 \label{sec:ontology_specification}
 
-\emph{Specification}, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in Chapter~\ref{sec:methontology} and uses the document template taken presented in Section~\ref{subsec:methontology_specification}~\cite{ORSD}.
+\emph{Specification}, the first step proposed by \methontology, aims at creating an \emph{Ontology Requirements Specification Document} using natural language. It adheres to the approach discussed in Section~\ref{sec:methontology} and uses the document template taken presented in Section~\ref{subsec:methontology_specification}~\cite{ORSD}.
 
 \vspace{1em}
 
@@ -119,7 +119,7 @@ Every ontology should stick to a set of naming conventions that are explicitly s
   \item Will there be sunshine today? 
   \item Do we need to irrigate the garden?
   \item Will there be severe weather?
-  \item Will temperature drop/stay below $0^\circ C$?
+  \item Will temperature drop/stay below \SI{0}{\celsius}?
   \item When can we open windows and when do we have to keep them shut?
   \item When do we need sun protection?
   \item When will it outside be colder than inside the house? When will it be warmer?
@@ -154,7 +154,7 @@ The second step proposed by \methontology is \emph{Knowledge Acquisition}. All k
   \item What knowledge about weather in general is required to build an appropriate ontology~(cf.\ Chapter~\ref{ch:weather_data})?
 \end{itemize}
 
-Furthermore, Chapter~\ref{ch:existing_work} covers existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g.\ the \emph{Glossary of Meteorology}~\cite{GlossaryOfMeteorology} by the \emph{American Meteorological Society}~\cite{AMS}.
+Furthermore, Chapter~\ref{ch:existing_work} discusses existing ontologies that cover the domain of weather data. An additional source of knowledge is available through works about weather in general, e.g.\ the \emph{Glossary of Meteorology}~\cite{GlossaryOfMeteorology} by the \emph{American Meteorological Society}~\cite{AMS}.
 
 \section{Conceptualisation}
 \label{sec:ontology_concept}
@@ -378,7 +378,7 @@ A \Egls{weather source} can either be a \Egls{sensor source} or a \Egls{service 
 
 \subsubsection{Weather state}
 
-A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see Section~\ref{sec:ontology_glossary}). The resulting tree is seen in Figure~\ref{fig:tree_weather_state}.
+A \Egls{weather state} represents the set of weather phenomena that belong to a certain \Egls{weather report}. In order to emphasise certain combinations of instances of \Egls{weather phenomenon} being linked to the same instance of \Egls{weather state}, several sub-concepts of \Egls{weather state} are introduced (see Section~\ref{sec:ontology_glossary}). The resulting tree is shown in Figure~\ref{fig:tree_weather_state}.
 
 \begin{figure}
   \centering
@@ -539,12 +539,12 @@ The \emph{Binary relation table} specifies all relations from Section~\ref{subse
 
 An \emph{Instance attributes table} lists all instance attributes in \smarthomeweather together with the concept where they belong to, their value type and value range, the unit of measurement, and their cardinality. The \emph{Instance attributes table} can be found in the appendix in Table~\ref{table:instance_attributes_table}.
 
-The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{\eacs{XML} Schema}~\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect usage of the \emph{Measurements Unit Ontology} (\muo)~\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to. See Section~\ref{sec:ontology_imports} for details about the implementation of \muo in \smarthomeweather.
+The data types \emph{xsd:integer} and \emph{xsd:decimal} in the table refer to the types defined in \emph{\eacs{XML} Schema}~\cite{xml-schema-datatypes}. For sake of simplicity, this table does not respect the usage of the \emph{Measurements Unit Ontology} (\muo)~\cite{MUO}. In the ontology, all attributes listed below that belong to a sub-concept of \Egls{weather phenomenon} do not refer to a literal as stated here. Instead, they link to a blank node of type \emph{Quality value} which in turn has two attributes, one for the literal value (named \emph{numerical value}) and one for the unit (named \emph{measured in}). The type given in the table below is the type of the value the property \emph{numerical value} refers to; see section~\ref{sec:ontology_imports} for details about the implementation of \muo in \smarthomeweather.
 
 \subsection{Class attributes table}
 \label{subsec:class_attributes_table}
 
-Many concepts within the \smarthomeweather ontology define themselves to be specializations of other concepts (see Section~\ref{sec:concept_classification_trees} above). E.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, and \Egls{very high pressure} are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
+Many concepts within the \smarthomeweather ontology define themselves to be specializations of other concepts (see Section~\ref{sec:concept_classification_trees} above), e.g. the concepts \Egls{very low pressure}, \Egls{low pressure}, \Egls{average pressure}, \Egls{high pressure}, and \Egls{very high pressure} which are all sub-concepts of \Egls{atmospheric pressure}. They all differ by the value of the instance attribute \egls{has pressure value} that every instance of \Egls{atmospheric pressure} has.
 
 These concepts are summarised in the \emph{Class attributes table} in the appendix in Table~\ref{table:class_attributes_table1}, Table~\ref{table:class_attributes_table2}, Table~\ref{table:class_attributes_table3}, and Table~\ref{table:class_attributes_table4}. As in the \emph{Instance attributes tables} in Section~\ref{subsec:instance_attributes_table}, this table does not respect the use of \muo; no units are specified.
 
@@ -611,7 +611,7 @@ Figure~\ref{fig:muo1} shows how an instance of \Egls{temperature} would be imple
 \begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{figures/diagrams/muo1.pdf}
-  \caption[An instance of \Egls{temperature} without units]{An instance of \Egls{temperature} together with the property \egls{has temperature value} representing a temperature of \SI{17.2}{\celsius} (without using a unit ontology).}
+  \caption[An instance of \Egls{temperature} without units]{An instance of \Egls{temperature} together with the property \egls{has temperature value} representing a temperature of \num{17.2} (without using a unit ontology).}
   \label{fig:muo1}
 \end{figure}
 
