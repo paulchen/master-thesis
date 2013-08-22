@@ -21,7 +21,7 @@ This chapter discusses some existing methodologies for the construction of ontol
 \begin{itemize}
   \item the one by Uschuld and King~\cite{UscholdKing} (Section~\ref{subsec:approach3}),
   
-  \item the method used by Grüninger and Fox for the \eacs{TOVE} (\emph{TOronto Visual Enterprise}) ontologies~\cite{GruningerFox} (Section~\ref{subsec:approach4}),
+  \item the methodology used by Grüninger and Fox for the \eacs{TOVE} (\emph{TOronto Visual Enterprise}) ontologies~\cite{GruningerFox} (Section~\ref{subsec:approach4}),
   
   \item \emph{Ontology 101} by Noy and McGuinness~\cite{Ontology101} (Section~\ref{subsec:approach1}),
 
@@ -48,11 +48,11 @@ For each methodology, the following topics are discussed in Section~\ref{sec:ont
     \begin{itemize}
       \item \textbf{Effort:} Different approaches lead to different efforts for the development of ontologies. Although the minimisation of the effort is not a target of \smarthomeweather, it is unnecessary to apply an approach which leads to an enormous development effort compared to other methodologies.
       
-      \item \textbf{Usage:} If an approach is widely used, this may indicate that the approach is considered suitable for ontology development by many designers. The other way, a seldomly applied methodology may be inappropriate for most use cases.
+      \item \textbf{Usage:} If an approach is widely used, this may indicate that the approach is considered suitable for ontology development by many designers. The other way, a rarely applied methodology may be inappropriate for most use cases.
       
       \item \textbf{Applicability:} An approach may be limited to certain kinds of domains and be unsuitable for designing \smarthomeweather.
       
-      \item \textbf{Strictness:} Due to the fact that there is no one correct way to design an ontology, every approach must leave a certain margin to the ontology designer to decide about implementation details. However, a margin being too wide may lead to an inaccurate or incomplete ontology.
+      \item \textbf{Strictness:} Due to the fact that there is not a single way to correctly design an ontology, every approach must leave a certain margin to the ontology designer to decide about implementation details. However, a margin being too wide may lead to an inaccurate or incomplete ontology.
       
       \item \textbf{Formality:} The ontology design process can reside on an \emph{informal} level (the ontology and all artefacts created during development are described using natural language, in tables, and in diagrams), a \emph{formal} level (all aspects of the ontology are described using the logical model of the ontology language the ontology is intended to be implemented in), or anything in between.
       
@@ -93,7 +93,7 @@ This approach divides ontology development into a set of stages, as depicted in 
       
       \item \emph{Ontology Coding}: In this step, the representation of the ontology from the \emph{Ontology Capture} stage is transformed into a formal (ontology) language (e.g.\ \eacs{OWL}), presumably using an ontology development environment (such as \protege).
       
-      \item \emph{Integrating Existing Ontologies}: As the ontology being developed partly covers the scope of ontologies that already exist, research has to be done which ontologies can be reused.
+      \item \emph{Integrating Existing Ontologies}: As the ontology being developed partly covers the scope of already existing ontologies, research has to be done which ontologies can be reused.
     \end{itemize}
     
   \item \emph{Evaluation}: During this stage, it is verified whether the ontology has the ability to fulfil the purpose that was initially identified.
@@ -291,7 +291,7 @@ The \eacs{UPON} approach is a deeply structured approach that applies well-estab
   \label{fig:methontology1}
 \end{figure}
 
-\emph{Planification} is the step of creating a plan which tasks need to be performed at which time during the development of an ontology. Such a plan is proposed by \methontology itself. Hence, when following \methontology, ontology construction starts with \emph{specification} (by creating a \emph{Ontology Requirements Specification Document}) and \emph{knowledge acquisition} about the given domain from all available sources. \emph{Conceptualisation} then generates a set of diagrams and tables that describe different aspects of the ontology. These artefacts are the glossary of terms, diagrams showing the concept taxonomies, binary relation diagrams, the concept dictionary, and tables for binary relation details, instance attributes, class attributes, constants, formal axioms, rules, and instances.
+\emph{Planification} is the step of creating a plan which tasks need to be performed at which time during the development of an ontology. Such a plan is proposed by \methontology itself. Hence, when following \methontology, ontology construction starts with \emph{specification} (by creating an \emph{Ontology Requirements Specification Document}) and \emph{knowledge acquisition} about the given domain from all available sources. \emph{Conceptualisation} then generates a set of diagrams and tables that describe different aspects of the ontology. These artefacts are the glossary of terms, diagrams showing the concept taxonomies, binary relation diagrams, the concept dictionary, and tables for binary relation details, instance attributes, class attributes, constants, formal axioms, rules, and instances.
 
 The \emph{integration} activity consists of research of already existing ontologies which can be reused. Afterwards, \emph{implementation} transforms the previously described model into the desired ontology language. Finally, \emph{evaluation} ensures that the ontology that has been implemented corresponds to its specification.
 
@@ -305,7 +305,7 @@ For the development of an ontology in the hydrographical domain~\cite{Hydrograph
 \subsubsection{Analysis}
 
 \begin{itemize}
-  \item \textbf{Effort:} Compared to \emph{Ontology 101}, the effort of \methontology is higher, but far below the effort that arises when applying the software engineering approach from Section~\ref{subsec:approach2}.
+  \item \textbf{Effort:} Compared to \emph{Ontology 101}, the effort of \methontology is higher, but far below the effort that arises when applying the \eacs{UPON} approach from Section~\ref{subsec:approach2}.
   
   \item \textbf{Usage:} \methontology is one of the most widely used approaches for developing ontologies. This may indicate that it is considered by many ontology developers to be well suited for many domains.
   
@@ -474,7 +474,7 @@ The state of \emph{conceptualisation} consists of several tasks as shown in Figu
 
 \paragraph{Task 1: Glossary of Terms}
 
-At first, a \emph{Glossary of Terms} is built. This glossary includes all the relevant terms of the domain (concepts, instances, attributes, relations etc.). It can be built as a table having the columns \emph{name}, \emph{synonyms}, \emph{acronyms}, \emph{description} (for a natural language description of the term), and \emph{type} (specifying whether the term is a concept, an instance, an attribute, a relation etc.).
+At first, a \emph{Glossary of Terms} is built. This glossary includes all the relevant terms of the domain (concepts, instances, attributes, relations etc.). It can be built as a table having the columns \emph{name}, \emph{synonyms}, \emph{acronyms}, \emph{description} (for a natural language description of the term), and \emph{type} (specifying whether the term is a concept, an instance, an attribute, a relation etc.). Table~\ref{table:methontology_example_glossary} shows a template for the glossary of terms.
 
 \begin{table}
 \centering
@@ -488,8 +488,6 @@ At first, a \emph{Glossary of Terms} is built. This glossary includes all the re
 \caption[Template for the glossary of terms]{Template for the glossary of terms as proposed by \methontology.}
 \label{table:methontology_example_glossary}
 \end{table}
-
-Table~\ref{table:methontology_example_glossary} shows a template for the glossary of terms.
 
 \paragraph{Task 2: Concept Taxonomies}
 
@@ -525,9 +523,7 @@ In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagr
 
 \paragraph{Task 4: Concept dictionary}
 
-The \emph{concept dictionary} contains all domain concepts together with their relations, their instances, their class attributes (i.e.\ attributes that describe properties of classes), and their instance attributes (i.e.\ attributes that describe properties of instances). All information from the previous steps contribute to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts.
-
-Table~\ref{table:methontology_example_concept_dictionary} shows a template for the concept dictionary.
+The \emph{concept dictionary} contains all domain concepts together with their relations, their instances, their class attributes (i.e.\ attributes that describe properties of classes), and their instance attributes (i.e.\ attributes that describe properties of instances). All information from the previous steps contribute to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts. Table~\ref{table:methontology_example_concept_dictionary} shows a template for the concept dictionary.
 
 \begin{table}
 \centering
@@ -563,9 +559,7 @@ In this step, for all ad-hoc binary relations details are specified in a tabular
 
 This step leads to an \emph{instance attributes table}. That is a table of all \emph{instance attributes} that are listed in the concept dictionary. Each row contains the description of one instance attribute. An instance attribute is an attribute that describes a property of an instance of a concept. Its value may be different for each instance of the concept.
 
-The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality}, and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes, and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute.
-
-See Table~\ref{table:methontology_example_instance_attributes} for a template for the instance attributes table.
+The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality}, and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes, and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute. See Table~\ref{table:methontology_example_instance_attributes} for a template for the instance attributes table.
 
 \begin{table}
 \centering
@@ -582,7 +576,7 @@ See Table~\ref{table:methontology_example_instance_attributes} for a template fo
 
 \paragraph{Task 7: Class attributes}
 
-All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns are \emph{super-concept}, \emph{sub-concept} (i.e.\ the name of the concept where the attribute is defined), \emph{attribute name}, and \emph{attribute value(s)}. Additionally, all information about related instance attributes, class attributes, constants, rules, and formulae may be specified that are specified in the instance attribute as well.
+All class attributes that are listed in the concept dictionary are described in detail in the \emph{class attributes table}. Each row describes one class attribute. The columns are \emph{super-concept}, \emph{sub-concept} (i.e.\ the name of the concept where the attribute is defined), \emph{attribute name}, and \emph{attribute value(s)}. Additionally, all information about related instance attributes, class attributes, constants, rules, and formulae may be specified that are described in the instance attribute as well. Table~\ref{table:methontology_example_class_attributes} shows a template for the class attributes table.
 
 \begin{table}
 \centering
@@ -597,11 +591,9 @@ All class attributes that are listed in the concept dictionary are described in 
 \label{table:methontology_example_class_attributes}
 \end{table}
 
-Table~\ref{table:methontology_example_class_attributes} shows a template for the class attributes table.
-
 \paragraph{Task 8: Constants}
 
-In this step, the \emph{constants table} is created that specifies details about all the constants listed in the glossary of terms. Each constant is specified by its name, its value type, its value, the measurement unit for numerical constants, and the attributes that can be inferred using the constant.
+In this step, the \emph{constants table} is created that specifies details about all the constants listed in the glossary of terms. Each constant is specified by its name, its value type, its value, the measurement unit for numerical constants, and the attributes that can be inferred using the constant. Table~\ref{table:methontology_example_constants} shows a template for the constants table.
 
 \begin{table}
 \centering
@@ -615,8 +607,6 @@ In this step, the \emph{constants table} is created that specifies details about
 \caption[Template for the constants table]{Template for the constants table as proposed by \methontology.}
 \label{table:methontology_example_constants}
 \end{table}
-
-Table~\ref{table:methontology_example_constants} shows a template for the constants table.
 
 \paragraph{Task 9: Formal axioms}
 
@@ -682,7 +672,7 @@ The task of implementing the ontology in an ontology language requires an enviro
 
 Together with the implementation, the information about the ontology gathered during the process described in Section~\ref{subsec:methontology_conceptualisation} is now formalised into the formal model of the ontology language being used.
 
-In the case of the \smarthomeweather ontology an \eacs{OWL} ontology~\cite{OWL} is created using \protege~\cite{protege} together with the \emph{Pellet} reasoner~\cite{pellet}.
+In the case of the \smarthomeweather ontology, an \eacs{OWL} ontology~\cite{OWL} is created using \protege~\cite{protege} together with the \emph{Pellet} reasoner~\cite{pellet}.
 
 \subsubsection{Evaluation}
 
@@ -702,7 +692,7 @@ Hence, in \methontology, \emph{documentation} is an activity that is not perform
 
 \subsubsection{Maintenance}
 
-At any time in the future, changes to the ontology may become necessary. A modification of the ontology's requirements may be one reason therefor; inaccurateness that occurred during the ontology development process may be another reason.
+At any time in the future, changes to the ontology may become necessary. A modification of the ontology's requirements may be one reason; inaccurateness that occurred during the ontology development process may be another reason.
 
 Whenever a change is necessary, the ontology again cycles the states of \emph{specification}, \emph{conceptualisation}, \emph{formalisation}, \emph{integration}, and \emph{implementation} repeatedly until all requirements are met and all artefacts generated in these states correspond to each other. \emph{Knowledge acquisition} and \emph{evaluation} are also again performed throughout all of these states.
 
