@@ -3,7 +3,7 @@
 
 The first part of this chapter covers the foundations the work of this thesis builds upon. It gives introductions into all relevant topics, e.g.\ ontologies and associated modelling languages such as \eacs{RDF}, \eacs{RDFS}, and \eacs{OWL}. Furthermore, it discusses the basic principles of \thinkhome which serves as an example of a smart home that uses a knowledge base built upon a set of ontologies.
 
-The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies which may be reused in an ontology for weather data are discussed. The final section of this chapter reviews all ontologies that are presented and identifies elements that can be used in the \smarthomeweather ontology.
+The second part sheds light on a selection of existing work regarding weather data in smart homes and ontologies for weather data. Additionally, some ontologies are discussed which may be reused in an ontology for weather data. The final section of this chapter reviews all ontologies that are presented and identifies elements that can be used in the \smarthomeweather ontology.
 
 \section{Foundations}
 
@@ -67,9 +67,9 @@ Many standards such as \eacs{RDF}, \eacs{RDFS}, or \eacs{OWL} and some of the ab
 \subsection{OWL}
 \label{subsec:owl}
 
-The \emph{Resource Description Framework} (\eacs{RDF}) is a standard model for knowledge representation~\cite{RDF}. It is specified in a set of recommendations by the \eacs{W3C}.
+The \emph{Resource Description Framework} (\eacs{RDF}) is a standard model for knowledge representation~\cite{RDF}. It is specified in a set of \emph{recommendations} by the \eacs{W3C}.
 
-In \eacs{RDF}, the term \emph{resources} is used for instances. Each resource can have an arbitrary number of \emph{properties}, i.e.\ \emph{attributes} that associate \emph{literate} values (e.g.\ numerical values, strings) to the resource or \emph{relations} that link this resource to other resources. Resources and properties are expressed using \emph{statements} (\emph{triples}) which consist of three parts called \emph{subject}, \emph{predicate}, and \emph{object}. To identify resources and properties, \eacs{RDF} uses \eacss{URI} (\emph{Unified Resource Locators})\footnote{\eacss{URI} are strings defined by \emph{\eacs{RFC} 3986}~\cite{rfc3986} that uniquely identify things.}. In case a resource does not have an identifier, it is a \emph{blank node}.
+In \eacs{RDF}, the term \emph{resources} is used for instances. Each resource can have an arbitrary number of \emph{properties}, i.e.\ \emph{attributes} that associate \emph{literate} values (e.g.\ numerical values, strings) to the resource or \emph{relations} that link this resource to other resources. Resources and properties are expressed using \emph{statements} (\emph{triples}) which consist of three parts that are called \emph{subject}, \emph{predicate}, and \emph{object}. To identify resources and properties, \eacs{RDF} uses \eacss{URI} (\emph{Unified Resource Identifiers})\footnote{\eacss{URI} are strings defined by \emph{\eacs{RFC} 3986}~\cite{rfc3986} that uniquely identify things.}. In case a resource does not have an identifier, it is a \emph{blank node}.
 
 \begin{figure}
 \centering
@@ -78,7 +78,7 @@ In \eacs{RDF}, the term \emph{resources} is used for instances. Each resource ca
 \label{fig:rdf_example}
 \end{figure}
 
-Figure~\ref{fig:rdf_example} depicts a simple example for a piece of knowledge from the domain of weather data expressed using \eacs{RDF}: The resource \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} represents the current state of the weather. The property \texttt{geo:\hspace{0pt}has\hspace{0pt}Location} links the \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} to the resource \texttt{geo:\hspace{0pt}Vienna} which represents the city of Vienna, Austria; i.e.\ \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} describes the weather for Vienna. \texttt{weather:\hspace{0pt}weather\hspace{0pt}State} has two more properties, \texttt{weather:\hspace{0pt}has\hspace{0pt}Temperature\hspace{0pt}Value} and \texttt{weather:\hspace{0pt}has\hspace{0pt}Humidity\hspace{0pt}Value}, which link two literal values to the resource: a temperature value of \SI{18.2}{\celsius} and a relative humidity value of $72 \%$.
+Figure~\ref{fig:rdf_example} depicts a simple example for a piece of knowledge from the domain of weather data expressed using \eacs{RDF}: The resource \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} represents the current state of the weather. The property \texttt{geo:\hspace{0pt}has\hspace{0pt}Location} links \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} to the resource \texttt{geo:\hspace{0pt}Vienna} which represents the city of Vienna, Austria; i.e.\ \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} describes the weather for Vienna. \texttt{weather:\hspace{0pt}weather\hspace{0pt}State} has two more properties, \texttt{weather:\hspace{0pt}has\hspace{0pt}Temperature\hspace{0pt}Value} and \texttt{weather:\hspace{0pt}has\hspace{0pt}Humidity\hspace{0pt}Value}, which link two literal values to the resource: a temperature value of \SI{18.2}{\celsius} and a relative humidity value of $72 \%$.
 The type \texttt{xsd:\hspace{0pt}float} of both literals is defined in \emph{XML Schema}~\cite{xml-schema,xml-schema-datatypes}, one of the several \eacs{XML} schema languages available that define the structure of \eacs{XML} documents (\emph{Extensible Markup Langauge})~\cite{XML}.
 
 The complete \eacs{URI} of \texttt{weather:\hspace{0pt}Current\hspace{0pt}Weather} is \texttt{http://example.org/\hspace{0pt}weather\#\hspace{0pt}CurrentWeather} and the \eacs{URI} of \texttt{geo:\hspace{0pt}Vienna} is \texttt{http://example.org/geo\#Vienna}. As in \eacs{XML}, substrings at the beginning of \eacss{URI} may be replaced by \emph{prefixes} to avoid frequent recurrences of the same strings. The part of the \eacss{URI} replaced by the prefix is called a \emph{namespace} which is used to group \eacss{URI} for elements from the same source together; e.g.\ all concepts, properties, and individuals defined by \smarthomeweather have identifiers in the same namespace.
@@ -119,7 +119,6 @@ For expressing the data that is represented by an \eacs{RDF} model, several seri
 \begin{mintlisting}
 \begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix weather: <http://example.org/weather#> .
 @prefix geo: <http://example.org/geo#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -137,7 +136,7 @@ weather:CurrentWeather geo:hasLocation geo:Vienna .
 
 \vspace{1em}
 
-\eacs{RDF} \emph{schema} (\eacs{RDFS}) is a recommendation by the \eacs{W3C} that builds upon \eacs{RDF}~\cite{RDFS}. It introduces a set of concepts and properties adding features that go beyond the expressive power of \eacs{RDF}.
+\eacs{RDF} \emph{schema} (\eacs{RDFS}) is a \emph{recommendation} by the \eacs{W3C} that builds upon \eacs{RDF}~\cite{RDFS}. It introduces a set of concepts and properties adding features that go beyond the expressive power of \eacs{RDF}.
 
 All things described by \eacs{RDF} are instances of \texttt{rdfs:Resource}. Concepts -- which are introduced by \eacs{RDFS} -- are instances of \texttt{rdfs:Class}, and properties are instances of \texttt{rdfs:\hspace{0pt}Property}. Other concepts introduced by \eacs{RDFS} are \texttt{rdfs:\hspace{0pt}Literal}, \texttt{rdfs:\hspace{0pt}Datatype}, and \texttt{rdfs:\hspace{0pt}XMLLiteral}.
 
@@ -166,24 +165,24 @@ can be removed without loss of knowledge. A reasoner can deduce them from these 
 \noindent\begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
 \begin{minted}{turtle}
 weather:CurrentWeather geo:hasLocation geo:Vienna .
-geo:location rdfs:domain weather:WeatherState .
-geo:location rdfs:range geo:Location .
+geo:hasLocation rdfs:domain weather:WeatherState .
+geo:hasLocation rdfs:range geo:Location .
 \end{minted}
 \vspace{3mm}\end{minipage}\end{minipage}};\end{tikzpicture}
 
-Many of the concepts and properties defined by \eacs{RDFS} are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} which is based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}~\cite{OWL-working-group} of the \eacs{W3C}. \eacs{OWL} 1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL} 2 was released in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL} 2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
-\eacs{OWL} 2 remains fully compatible to \eacs{OWL} 1, i.e.\ all \eacs{OWL} 1 ontologies are \eacs{OWL} 2 ontologies as well, with unchanged semantics.
+Many of the concepts and properties defined by \eacs{RDFS} are included in the \emph{Web Ontology Language} (\eacs{OWL}), a more expressive ontology language than \eacs{RDFS} which is based on \eacs{RDF} and \eacs{RDFS}. \eacs{OWL} is developed by the \emph{OWL Working Group}~\cite{OWL-working-group} of the \eacs{W3C}. \eacs{OWL}~1 was first published in July 2002 as a \emph{working draft} and became a \eacs{W3C} \emph{recommendation} in February 2004\footnote{Both \emph{working draft} and \emph{recommendation} are \emph{maturity levels} proposed by the \eacs{W3C} that indicate the state of their technical reports~\cite{w3c-process}.}~\cite{OWL1}; the first \emph{working draft} of \eacs{OWL}~2 was released in March 2009 and the \eacs{W3C} \emph{recommendation} of \eacs{OWL}~2 in October 2009 with a second edition being finally released in December 2012~\cite{OWL}.
+\eacs{OWL}~2 remains fully compatible to \eacs{OWL}~1, i.e.\ all \eacs{OWL}~1 ontologies are \eacs{OWL}~2 ontologies as well, with unchanged semantics.
 
 Compared to \eacs{RDFS}, \eacs{OWL} introduces the following elements (among others which are omitted here):
 
 \begin{itemize}
-  \item Properties are instances of \texttt{owl:ObjectProperty}, \texttt{owl:DatatypeProperty} or both; the property is termed \emph{object property} or \emph{datatype property}, respectively. An \emph{object property} links an individual to another individual while a \emph{datatype property} links an individual to a literal value.
+  \item Properties are instances of \texttt{owl:ObjectProperty}, \texttt{owl:DatatypeProperty}, or both; the property is termed \emph{object property} or \emph{datatype property}, respectively. An \emph{object property} links an individual to another individual while a \emph{datatype property} links an individual to a literal value.
   \item The property \texttt{owl:equivalentClass} is used to state that two classes are equivalent while \texttt{owl:allDisjointClasses} states that there is no individual that is an instance of more than one class from the defined set of classes.
-  \item Some ontology languages include a \emph{Unique Name Assumption} which states that two different names always refer to different entities in the world~\cite{unique_name_assumption}. \eacs{OWL} does not make this assumption, but provides the properties \texttt{owl:sameAs} and \texttt{owl:differentFrom} that are used to explicitely state that two individuals are the same individual or two individuals can never be the same individual.
-  \item Using the properties \texttt{owl:intersectionOf}, \texttt{owl:unionOf}, and \texttt{owl:complementOf} can be used to describe complex classes in a notation borrowed from set theory, e.g.\ if there are two classes, \texttt{Man} and \texttt{Woman}, the class \texttt{Person} can be defined as the class union of them (if no other classes exist).
+  \item Some ontology languages include a \emph{Unique Name Assumption} which states that two different names always refer to different entities in the world~\cite{unique_name_assumption}. \eacs{OWL} does not make this assumption, but provides the properties \texttt{owl:sameAs} and \texttt{owl:differentFrom} that are used to explicitely state that two individuals are the same individual or that two individuals can never be the same individual.
+  \item The properties \texttt{owl:intersectionOf}, \texttt{owl:unionOf}, and \texttt{owl:complementOf} can be used to describe complex classes in a notation borrowed from set theory, e.g.\ if there are two classes, \texttt{Man} and \texttt{Woman}, the class \texttt{Person} can be defined as the class union of them (if no other classes exist).
   \item Using one of the properties \texttt{owl:allValuesFrom}, \texttt{owl:someValuesFrom}, and \texttt{owl:\hspace{0pt}hasValue}, a class can be defined based on the values or classes of their properties.
   \item The cardinality of properties per class can be limited using the properties \texttt{owl:minCar\-di\-nal\-ity}, \texttt{owl:maxCardinality}, and \texttt{owl:cardinality}
-  \item Properties can have various characteristics: A property can be inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:property\hspace{0pt}DisjointWith}). A property can be reflexive (i.e.\ it relates everything to itself, \texttt{owl:\hspace{0pt}ReflexiveProperty}), irreflexive (no individual can be related to itself, \texttt{owl:Ir\-re\-flex\-iveProperty}), functional (every individual can be linked to at most one other individual, \texttt{owl:FunctionalProperty}), or inverse functional (the inverse property is functional, \texttt{owl:InverseFunctionalProperty}).
+  \item Properties can have various characteristics: A property can be an inverse property of another property (\texttt{owl:inverseOf}) and two properties can be disjoint (\texttt{owl:property\hspace{0pt}DisjointWith}). A property can be reflexive (i.e.\ it relates everything to itself, \texttt{owl:\hspace{0pt}ReflexiveProperty}), irreflexive (no individual can be related to itself, \texttt{owl:Ir\-re\-flex\-iveProperty}), functional (every individual can be linked to at most one other individual, \texttt{owl:FunctionalProperty}), or inverse functional (the inverse property is functional, \texttt{owl:InverseFunctionalProperty}).
 \end{itemize}
 
 Reasoning in \eacs{OWL} respects the \emph{Open World Assumption}~\cite{open_world_assumption1,open_world_assumption2}. If some statement cannot be inferred, it is not allowed to assume that this statement is false. Hence, reasoning in \eacs{OWL} is \emph{monotonic}: Adding more information to a model cannot cause anything become false that has previously known to be true, and vice versa~\cite{MonotonicReasoning}.
