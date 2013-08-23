@@ -401,3 +401,6 @@ NEW (2013-04-09):
 * p2115-brush.pdf
   A.J. Bernheim Brush, Bongshin Lee, Ratul Mahajan, Sharad Agarwal, Stefan Saroiu, Colin Dixon. Home Automation in the Wild: Challenges and Opportunities
 
+* 998-1185469_smart-city-cornerstone-urban-efficiency.pdf
+  Aoun, Charbel. The Smart City Cornerstone: Urban Efficiency
+
