@@ -404,3 +404,6 @@ NEW (2013-04-09):
 * 998-1185469_smart-city-cornerstone-urban-efficiency.pdf
   Aoun, Charbel. The Smart City Cornerstone: Urban Efficiency
 
+* White_Paper_Smart_Cities_Applications.pdf
+  Net!Works European Technology Platform. Expert Working Group on Smart Cities Applications and Requirements
+
