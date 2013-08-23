@@ -6,7 +6,7 @@ Based on the insights acquired from existing work in Chapter~\ref{ch:existing_wo
 \section{Weather information}
 \label{sec:weather_information}
 
-In order to identify which data is required for the \smarthomeweather ontology, it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centered around a set of \emph{competency questions}~\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
+In order to identify which data is required for the \smarthomeweather ontology, it is necessary to define the scope that shall be covered by the ontology. When designing an ontology, requirements analysis is often centred around a set of \emph{competency questions}~\cite{Ontology101,UscholdKing,GruningerFox,Methontology}. If the ontology is able to provide answers to all of these competency questions, its requirements are met.
 
 Below are the questions that have been identified to be adequate competency questions for \smarthomeweather; the list stems from analysis of the processes at a smart home that may be influenced by weather.
 
@@ -35,7 +35,7 @@ The above competency questions can be answered when the (predicted) state of the
 
 A set of measurement values for one particular point of time is called \emph{weather state} from now on.
 
-Apart from weather elements, Internet weather services often provide some information that will be called \emph{weather condition} from now on. Generally speaking, the weather condition is a one-word description of the current weather situation. Examples for the general weather conditions are ``Sun'', ``Rain'', and ``Fog''. Some weather conditions can be split up into several conditions, e.g.\ ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
+Apart from weather elements, Internet weather services often provide some information that will be called \emph{weather condition} from now on. Generally speaking, the weather condition is a one-word description of the current weather situation. Examples for the general weather condition are ``Sun'', ``Rain'', and ``Fog''. Some weather conditions can be split up into several conditions, e.g.\ ``It is overcast and raining'' into ``Overcast'' and ``Rain''.
 
 Sources for weather data are weather sensors and weather forecasts. As smart homes perform no weather forecasting on their own, forecast data is gathered from weather services via Internet. While data about the current weather state can be obtained from both weather sensors and Internet services, the only source for data about future weather states are Internet services.
 
@@ -92,9 +92,9 @@ This section presents the details of a number of popular weather services that a
 \subsection{Available Internet services}
 \label{sec:internet_services}
 
-There is a tremendous amount of services providing weather data over the Internet\footnote{No website has been found that compiles a comprehensive list of Internet weather services; however, there are many websites that discuss various services~\cite{WeatherServices1,WeatherServices2,WeatherServices3}}. However, only a small number of these services is suitable for usage in the context of \smarthomeweather. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
+There is a tremendous amount of services providing weather data over the Internet\footnote{No website has been found that compiles a comprehensive list of Internet weather services; however, there are many websites that discuss various services~\cite{WeatherServices1,WeatherServices2,WeatherServices3}.}. However, only a small number of these services is suitable for usage in the context of \smarthomeweather. The services differ regarding the way data is provided, the data format, the area being covered, the terms of use etc.
 
-The access to Internet weather services in \smarthomeweather is implemented in Java, hence an important question about a certain weather service is whether in can easily be accessed from within a Java program.
+The access to Internet weather services in \smarthomeweather is implemented in Java, hence an important question about a certain weather service is whether it can easily be accessed from within a Java program.
 
 For evaluation of Internet weather services, the following aspects are examined:
 
@@ -201,9 +201,9 @@ Table~\ref{table:weather_data1} lists all weather services that have been evalua
   \hline
 \end{tabular}
 \begin{tablenotes}
-\item[1] \eacs{DWD} uses \eacs{SYNOP} (\emph{surface synoptic observations})~\cite{SYNOP} for current weather data, a data format frequently used for weather observations specified by the \eacs{WMO} (\emph{World Meteorological Organization})~\cite{WMO}; furthermore, \eacs{DWD} uses a data format which is not machine-readable consisting of weather maps, tables, and texts for forecasts.
+\item[1] \eacs{DWD} uses \eacs{SYNOP} (\emph{surface synoptic observations})~\cite{SYNOP} for current weather data, a data format frequently used for weather observations specified by the \eacs{WMO} (\emph{World Meteorological Organization})~\cite{WMO}; furthermore, for forecasts \eacs{DWD} uses a data format which is not machine-readable consisting of weather maps, tables, and texts.
 \item[2] \eacs{METAR} uses its own format standardised by \eacs{ICAO} which is not human readable.
-\item[3] Weather reports in \eacs{METAR} format are available in \eacs{HTML} format from \eacs{NOAA}'s web page\tnote{2} (\emph{National Oceanic and Atmospheric Administration}). Various other data sources are available.
+\item[3] Weather reports in \eacs{METAR} format are available in \eacs{HTML} format from \eacs{NOAA}'s web page (\emph{National Oceanic and Atmospheric Administration})~\cite{noaa}. Various other data sources are available.
 \end{tablenotes}
 \end{threeparttable}
 \caption[Data formats and data access protocols of weather services]{Data formats and protocols for data access of weather services.}
@@ -212,7 +212,7 @@ Table~\ref{table:weather_data1} lists all weather services that have been evalua
 
 Table~\ref{table:weather_data3} lists the weather services together with the data format they use to provide their data. For the case of Java, \eacs{XML}-based formats including \eacs{RSS} feeds (\emph{Rich Site Summary})~\cite{RSS} are preferred because of the built-in support for \eacs{XML} by \eacs{DOM} and \eacs{SAX}. There are libraries for providing \eacs{JSON} and \eacs{JSONP} (\emph{\acs{JSON} with padding})~\cite{jsonp} support for Java. \eacs{CSV} (\emph{comma-separated values})~\cite{rfc4180} is a format that can be parsed easily in any language, although using \eacs{CSV} leads to more implementation costs than \eacs{XML}. There are no libraries available that provide Java support for the \eacs{SYNOP} format (\emph{Surface Synoptic Observations})~\cite{SYNOP} which is used by \eacs{DWD}; hence this format is unsuitable to be used in a Java application.
 
-\eacs{METAR} (\emph{Meteorological Aerodrome Report})~\cite{metar} is a format for reporting weather data~\cite{metar} that is standardised by the \emph{International Civil Aviation Organization} (\eacs{ICAO})~\cite{ICAO}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g.\ \emph{PyMETAR}~\cite{pymetar} for Python or an implementation for Java~\cite{metar-java}.
+\eacs{METAR} (\emph{Meteorological Aerodrome Report})~\cite{metar} is a format for reporting weather data that is standardised by the \emph{International Civil Aviation Organization} (\eacs{ICAO})~\cite{ICAO}. It is primarily used in aviation to provide weather data to pilots of aircraft. There are a few parsers available, e.g.\ \emph{PyMETAR}~\cite{pymetar} for Python or an implementation for Java~\cite{metar-java}.
 
 Most services provide their data via \eacs{HTTP}~\cite{rfc2616}, hence simple access from Java applications is possible using existing libraries such as the \emph{Apache HttpComponents project}~\cite{apache_hc}. \eacs{DWD} uses access via \eacs{FTP} (\emph{File Transfer Protocol})~\cite{rfc959} while \eacs{NWS} (\emph{National Weather Service}) employs \eacs{REST} (\emph{Representational State Transfer})~\cite{REST} and \eacs{SOAP} (\emph{Simple Object Access Protocol})~\cite{SOAP} for the access to its data. \eacs{FTP}, \eacs{REST}, and \eacs{SOAP} can all be used in Java applications, but their use may lead to higher implementation costs compared to the use of \eacs{HTTP}.
 
@@ -224,21 +224,21 @@ Most services provide their data via \eacs{HTTP}~\cite{rfc2616}, hence simple ac
   \hline\hline
   \textbf{DWD} & An account is mandatory for access. Account creation is a matter of minutes and new accounts do not need to be approved by \eacs{DWD}. The usage of \eacs{DWD} is free within smart home projects.\\
   \hline
-  \textbf{Google Weather Feed} & No account required; terms of use unknown (does not have an explicitely stated licence due to being an inofficial interface) \\
+  \textbf{Google Weather Feed} & No account required; terms of use unknown (does not have an explicitly stated licence due to being an inofficial interface). \\
   \hline
-  \textbf{\acs{METAR}} & Freely available without restrictions \\
+  \textbf{\acs{METAR}} & Freely available without restrictions. \\
   \hline
-  \textbf{\acs{NWS}} & Freely available without restrictions \\
+  \textbf{\acs{NWS}} & Freely available without restrictions. \\
   \hline
-  \textbf{Weather.com} & An account must be created in a complicated process; licence unclear \\
+  \textbf{Weather.com} & An account must be created in a complicated process; licence unclear. \\
   \hline
-  \textbf{Weather Underground} & Account creation is mandatory; available for personal, non-commercial use (public \eacs{API}); custom weather services are available \\
+  \textbf{Weather Underground} & Account creation is mandatory; available for personal, non-commercial use (public \eacs{API}); custom weather services are available. \\
   \hline
-  \textbf{World Weather Online} & An account must be created for accessing both the Free \eacs{API} and the Premium \eacs{API}. The Free \eacs{API} is free of charge for personal and commercial use, credits must be given to World Weather Online. A Premium \eacs{API} is available at a charge.\\
+  \textbf{World Weather Online} & An account must be created for accessing both the Free \eacs{API} and the Premium \eacs{API}. The Free \eacs{API} is free of charge for personal and commercial use, credits must be given to \emph{World Weather Online}. A Premium \eacs{API} is available at a charge.\\
   \hline
   \textbf{Yahoo! Weather} & Free of charge for individuals and non-profit organizations, attribution required. No statement about commercial use anywhere in the documentation.\\
   \hline
-  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}~\cite{ccby30}\\
+  \textbf{yr.no} & No account required; data licenced under \emph{CC-BY 3.0}~\cite{ccby30}.\\
   \hline
 \end{tabular}
 \caption[Access restrictions and terms of use for weather services]{Access restrictions and terms of use for weather services.}
@@ -256,25 +256,25 @@ Regarding the terms of use that are summarised in Table~\ref{table:weather_data4
   \hline\hline
   \textbf{DWD} & A few changes every weeks which are announced via email at least one week in advance; nothing about the data required by \smarthomeweather has been changed during the last twelve months.\\
   \hline
-  \textbf{Google Weather Feed} & Discontinued~\cite{google_weather} \\
+  \textbf{Google Weather Feed} & Discontinued~\cite{google_weather}. \\
   \hline
   \textbf{\acs{METAR}} & Stable.\tnote{1} \\
   \hline
   \textbf{\acs{NWS}} & Small changes every few months with announcements via \eacs{RSS} that do not effect the core parts of the interface. \\
   \hline
-  \textbf{Weather.com} & Unknown \\
+  \textbf{Weather.com} & Unknown. \\
   \hline
   \textbf{Weather Underground} & The has been a recent \eacs{API} change; the stability is unknown. \\
   \hline
-  \textbf{World Weather Online} & Unknown \\
+  \textbf{World Weather Online} & Unknown. \\
   \hline
-  \textbf{Yahoo! Weather} & Unknown \\
+  \textbf{Yahoo! Weather} & Unknown. \\
   \hline
-  \textbf{yr.no} & New releases of the \eacs{API} one or two times per year; the old \eacs{API} remains in operation a few months after the release of a new one. Announcements are made on the web page. A less frequently changing \eacs{API} with \emph{long term support} is available.\\
+  \textbf{yr.no} & New releases of the \eacs{API} one or two times per year; the old \eacs{API} remains in operation a few months after the release of a new one. Announcements are made on the web page. A less frequently changing \eacs{API} with \emph{long term support} is available~\cite{yrno_lts}.\\
   \hline
 \end{tabular}
 \begin{tablenotes}
-\item[1] \eacs{METAR} is standardised by \eacs{ICAO}~\cite{ICAO}. It was introduced in 1968 and has been modified a number of times since. However, most elements remained the same since introduction and can be expected to remain unchanged in the long run.
+\item[1] \eacs{METAR} is standardised by \eacs{ICAO}~\cite{ICAO}. It was introduced in 1968 and has been modified a number of times since. However, most elements have remained the same since introduction and can be expected to remain unchanged in the long run.
 \end{tablenotes}
 \end{threeparttable}
 \caption[Stability of weather services]{Stability of weather services.}
@@ -283,7 +283,7 @@ Regarding the terms of use that are summarised in Table~\ref{table:weather_data4
 
 Except the ones not providing information about updates (\emph{Yahoo! Weather}, \emph{World Weather Online}, \emph{Weather Underground}, and \emph{Weather.com}) and the one being discontinued (\emph{Google Weather Feed}), all weather services declare to perform regular updates to their weather services (see Table~\ref{table:weather_data5}). Any changes are announced either on the web pages, via \eacs{RSS} feeds, or via email.
 
-Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); from some services, only limited forecasts are available (\eacs{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
+Table~\ref{table:weather_data6} shows which data is available from the weather services. While temperature is available from all services, some services provide only data about a few other weather elements (\emph{Google Weather Feed} and \emph{Weather Underground}); additionally, from some services only limited forecasts are available (\eacs{DWD}, \emph{Yahoo! Weather}, and \emph{World Weather Online}, \emph{Weather.com}). Some services limit the availability of data via their freely accessible interface (\emph{World Weather Online} and \emph{Weather Underground}).
 
 \begin{table}
 \centering
@@ -347,7 +347,7 @@ Table~\ref{table:weather_data6} shows which data is available from the weather s
 \label{table:weather_data6}
 \end{table}
 
-As seen in Table~\ref{table:weather_data6}, \eacs{METAR} only provides current weather data; some services provide forecasts for several days, but issue only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \emph{Weather Underground}, and \emph{World Weather Online}). All weather services provide frequent updates (at least every few hours).
+As seen in Table~\ref{table:weather_data6}, \eacs{METAR} only provides current weather data; some services provide forecasts for several days, but issue only one forecast per day (\emph{Yahoo! Weather}, \emph{Google Weather Feed}, \emph{Weather Underground}, \emph{Weather.com}, and \emph{World Weather Online}). All weather services provide frequent updates (at least every few hours).
 
 Nearly all weather services discussed provide comprehensive documentation regarding their interfaces and use; the only exception is the \emph{Google Weather Feed} which was an inofficial \eacs{API} and therefore has never had any official documentation.
 
@@ -360,30 +360,30 @@ Nearly all weather services discussed provide comprehensive documentation regard
   \hline
   \textbf{Weather service} & \textbf{Advantage(s)} & \textbf{Disadvantage(s)} \\
   \hline \hline
-  \textbf{DWD} & - & Data format (\eacs{SYNOP}); forecasts lack important weather elements \\
+  \textbf{DWD} & - & Data format (\eacs{SYNOP}); forecasts lack important weather elements. \\
   \hline
-  \textbf{Google Weather Feed} & Simple data format (\eacs{XML}) & Unofficial, undocumented \eacs{API}; unknown terms of use; only a small number of available weather elements; discontinued \\
+  \textbf{Google Weather Feed} & Simple data format (\eacs{XML}). & Unofficial, undocumented \eacs{API}; unknown terms of use; only a small number of available weather elements; discontinued. \\
   \hline
-  \textbf{\acs{METAR}} & - & Data format (\eacs{METAR}); no forecasts \\
+  \textbf{\acs{METAR}} & - & Data format (\eacs{METAR}); no forecasts. \\
   \hline
-  \textbf{\acs{NWS}} & Simple data format (\eacs{XML}) & No worldwide coverage \\
+  \textbf{\acs{NWS}} & Simple data format (\eacs{XML}). & No worldwide coverage. \\
   \hline
-  \textbf{Weather.com} & Data formats (\eacs{XML}, \eacs{JSON}) & Complicated account creation \\
+  \textbf{Weather.com} & Data formats (\eacs{XML}, \eacs{JSON}). & Complicated account creation. \\
   \hline
-  \textbf{Weather Underground} & Data formats (\eacs{XML}, \eacs{JSON}) & Public \eacs{API} lacks important data \\
+  \textbf{Weather Underground} & Data formats (\eacs{XML}, \eacs{JSON}). & Public \eacs{API} lacks important data. \\
   \hline
-  \textbf{World Weather Online} & Wide range of data formats & Free \eacs{API} lacks important data \\
+  \textbf{World Weather Online} & Wide range of data formats. & Free \eacs{API} lacks important data. \\
   \hline
-  \textbf{Yahoo! Weather} & Simple data format (\eacs{RSS}) & Low number of forecasts; forecasts lack important weather elements \\
+  \textbf{Yahoo! Weather} & Simple data format (\eacs{RSS}). & Low number of forecasts; forecasts lack important weather elements. \\
   \hline
-  \textbf{yr.no} & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0}~\cite{ccby30} & - \\
+  \textbf{yr.no} & Simple data format (\eacs{XML}); available under \emph{CC-BY 3.0}~\cite{ccby30}. & - \\
   \hline
 \end{tabular}
 \caption[Advantages and disadvantages of Internet weather services]{Advantages and disadvantages of Internet weather services.}
 \label{table:weather_services}
 \end{table}
 
-Table~\ref{table:weather_services} summarises the main advantages and disadvantages of the weather services discussed in Section~\ref{sec:internet_services}. Based on that evaluation, it is determined that \yrno clearly suits the requirements of smart homes and \smarthomeweather best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
+Table~\ref{table:weather_services} summarises the main advantages and disadvantages of the weather services discussed in Section~\ref{sec:internet_services}. Based on that evaluation, it is determined that \yrno clearly suits the requirements of smart homes and \smarthomeweather best. It provides current data and four forecasts per day over a period of nine days. Data is accessible in \eacs{XML} format via \eacs{HTTP} and is licensed under \emph{CC-BY 3.0}~\cite{ccby30}. Data includes at least details about temperature, wind direction and speed, chance and intensity of precipitation, atmospheric pressure, relative humidity, cloud coverage, and fog.
 
 Thus, \yrno is used in Chapter~\ref{ch:weather_importer} for developing the reference implementation of a program that obtains weather data for a certain location and feeds it into the \smarthomeweather ontology; see Section~\ref{sec:weather_data_yr_no} for details on how to query \yrno's weather \eacs{API}.
 
@@ -440,9 +440,9 @@ The structure of this \eacs{XML} document is shown in Listing~\ref{listing:yrno_
 \label{listing:yrno_structure}
 \end{mintlisting}
 
-The attributes of the \texttt{<model>} element describe when the forecast has been created, when it will be updated for the next time, and what date and time of the first and the last forecast returned are.
+The attributes of the \texttt{<model>} element describe when the forecast has been created, when it will be updated for the next time, and the timestamps of the first and the last forecast returned are.
 
-There is an arbitrary number of \texttt{<time>} elements that are children of the \texttt{<product>} element. Every \texttt{<time>} element represents the weather forecast for a certain period of time. Each \texttt{<time>} element has a \texttt{<location>} element that has a child element for each weather property. A typical \texttt{<time>} element is depicted in Listing~\ref{listing:yrno_time_element}.
+There is an arbitrary number of \texttt{<time>} elements that are children of the \texttt{<product>} element. Every \texttt{<time>} element represents the weather forecast for a certain instant or a certain period of time. Each \texttt{<time>} element has a \texttt{<location>} element that has a child element for each weather property. A typical \texttt{<time>} element is depicted in Listing~\ref{listing:yrno_time_element}.
 
 \begin{mintlisting}
 \begin{tikzpicture}\node[draw,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{\begin{minipage}{\textwidth}\hspace{2mm}\begin{minipage}{.95\textwidth}\vspace{3mm}
@@ -503,7 +503,7 @@ The content of an \eacs{XML} document returned by \yrno covers a period of nine 
 
 Besides location-based weather data, some weather services including \yrno offer an interface for retrieving sunrise and sunset data~\cite{yrno_sunrise}. Given a position in latitude and longitude together with a date, the times of rise and set of sun and moon are provided. The elevation angle of the sun at solar noon is also given.
 
-In \smarthomeweather, the position of the sun is specified by azimuth angle and direction. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}. Although it may be possible to calculate the sun's position from sunrise and sunset times and the elevation sun's angle at noon, this leads to unnecessary development effort.
+In \smarthomeweather, the position of the sun is specified by azimuth angle and direction. For data about the sun's position to be of any value, it is necessary that the position is known for every \emph{Weather state}. Although it may be possible to calculate the sun's position from sunrise and sunset times and the sun's elevation angle at noon, this leads to unnecessary development effort.
 
 Furthermore, most of the weather services that are available via Internet do not offer any data about the sun's position. Hence, it was concluded that the data provided by weather services describing the position of the sun are inappropriate for the use within the \smarthomeweather ontology. Instead, the sun's position is provided by one of some well-known algorithms.
 
@@ -512,7 +512,7 @@ There are several algorithms available for calculating the sun's position (speci
 \begin{itemize}
   \item The \emph{Solar Position Algorithm} (\eacs{SPA})~\cite{SPA_algorithm} provides results for zenith and azimuth angles with uncertainties of less than \num{0.0003} degrees in the period from 2000~BC to 6000~AD. However, the algorithm is complicated to implement. Hence, it is used only in contexts that require values of that precision.
   
-  \item An algorithm that can be implemented more easily is the \emph{\acs{PSA} algorithm}~\cite{PSA_algorithm}, named after \emph{Plataforma Solar de Almería}~\cite{PSA} (a centre for the exploration of the use of solar energy situated in the Province of Almería in Spain) where the algorithm was developed. The results provided by this algorithm differ from the actual values more than the results calculated by the \eacs{SPA}: For the period between 1999 and 2015, the differences per value are smaller than \num{0.01} degrees. As this level of accuracy is sufficient for use in a smart home, the \emph{\acs{PSA} algorithm} is suitable for use by the \emph{Weather importer} application (see Section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{\acs{PSA} algorithm} in C++ is available; this implementation can easily be ported to Java.
+  \item An algorithm that can be implemented more easily is the \emph{\acs{PSA} algorithm}~\cite{PSA_algorithm}, named after \emph{Plataforma Solar de Almería}~\cite{PSA} (a centre for the exploration of the use of solar energy situated in the Province of Almería in Spain) where the algorithm was developed. The results provided by this algorithm differ from the actual values more than the results calculated by the \eacs{SPA}: For the period between 1999 and 2015, the differences per value are guaranteed to be smaller than \num{0.01} degrees. As this level of accuracy is sufficient for use in a smart home, the \emph{\acs{PSA} algorithm} is suitable for use by the \emph{Weather importer} application (see Section~\ref{subsec:importer_fetch}). A ready-to-use implementation of the \emph{\acs{PSA} algorithm} in C++ is available; this implementation can easily be ported to Java.
 \end{itemize}
 
 \section{Conclusion}
@@ -542,12 +542,12 @@ In case a weather service does not provide a value for the dew point, there are 
 
 \[t_d \approx t-\left(\frac{100-RH}{5}\right)\]
 
-$t_d$ represents the dew point temperature, $t$ the air temperature, and $RH$ the relative humidity in percent (i.e.\ in the interval $[0,100]$). Accordingly, the value of relative humidity can be calculated from the values of dew point and temperature using the same method (the case that the temperature value is missing, but values of dew point and relative humidity are available is unlikely).
+$t_d$ represents the dew point temperature, $t$ the air temperature, and $RH$ the relative humidity in percent (i.e.\ in the interval $[0,100]$). Analogously, the value of relative humidity can be calculated from the values of dew point and temperature using the same method (the case that the temperature value is missing, but values of dew point and relative humidity are available is unlikely).
 
 As the atmospheric pressure decreases with increasing altitude above sea level, it is necessary to convert the pressure value observed by a sensor to the equivalent pressure at sea level using the \emph{Barometric formula}~\cite{us76_standard_atmosphere}.
 This is not necessary for many Internet weather services (including \yrno) as these often report a value that has already been converted.
 
-To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from Section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. As seen in Table~\ref{table:competency_questions} which shows which competency questions can be answered by using which weather element(s), all required data is available. Once the development of \smarthomeweather is completed, Section~\ref{sec:ontology_evaluation} will discuss whether the ontology can actually answer the competency questions.
+To ensure the ontology can be used in the desired manner, it is necessary that the competency questions from Section~\ref{sec:weather_information} can be answered by the ontology using the provided input data. As seen in Table~\ref{table:competency_questions} which shows which competency questions can be answered by using which weather element(s), all required data are available. Once the development of \smarthomeweather is completed, Section~\ref{sec:ontology_evaluation} will discuss whether the ontology can actually answer the competency questions.
 
 \begin{table}
 \centering
