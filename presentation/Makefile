@@ -4,6 +4,7 @@ all: presentation.pdf
 
 presentation.pdf: presentation.tex references.bib
 	pdflatex presentation.tex
+	pdflatex presentation.tex
 #	bibtex presentation
 #	pdflatex presentation.tex
 #	bibtex presentation
