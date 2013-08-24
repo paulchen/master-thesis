@@ -1,0 +1,28 @@
++ Title
++ Table of contents
++ Introduction
+  + Smart Homes
+  + Problems
+  + Ontological approach
++ Existing work
+  + Weather ontologies
+  + Related ontologies
++ Weather data
+  + Sensors and services
+  + Weather services
+  + Weather elements
++ Ontology design methodologies
+  + List
+  + METHODOLOGY
++ SmartHomeWeather
+  + Competency questions
+  + Binary relations
+  + Hierarchy of Weather phenomenon
+  + Hierarchy of Weather state
+  + Hierarchy of Weather report
+  + SPARQL and SWRL
++ Weather Importer
++ Conclusion
+  + Resume
+  + Future work
++ Thanks
