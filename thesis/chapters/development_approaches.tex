@@ -50,7 +50,7 @@ For each methodology, the following topics are discussed in Section~\ref{sec:ont
       
       \item \textbf{Usage:} If an approach is widely used, this may indicate that the approach is considered suitable for ontology development by many designers. The other way, a rarely applied methodology may be inappropriate for most use cases.
       
-      \item \textbf{Applicability:} An approach may be limited to certain kinds of domains and be unsuitable for designing \smarthomeweather.
+      \item \textbf{Applicability:} An approach may be limited to certain kinds of domains and may therefore be unsuitable for designing \smarthomeweather.
       
       \item \textbf{Strictness:} Due to the fact that there is not a single way to correctly design an ontology, every approach must leave a certain margin to the ontology designer to decide about implementation details. However, a margin being too wide may lead to an inaccurate or incomplete ontology.
       
@@ -87,7 +87,7 @@ This approach divides ontology development into a set of stages, as depicted in 
 \begin{itemize}
   \item \emph{Identify Purpose}: At the very beginning, the purpose of the ontology needs to be identified: Why is the ontology built, what are its intended uses, and what is its scope? A set of \emph{competency questions} is formulated.
   
-  \item \emph{Building Ontology}: This stage is divided into three sub-stages:
+  \item \emph{Building the Ontology}: This stage is divided into three sub-stages:
     \begin{itemize}
       \item \emph{Ontology Capture}: Concepts and relationships are identified and textually defined. Furthermore, terms which refer to these concepts and relationships are defined.
       
@@ -106,14 +106,14 @@ As this approach is one of the first comprehensive methodologies for ontology de
 
 \subsubsection{Applications}
 
-There are various applications of this methodology. Some examples include the \emph{Enterprise Ontology} which models the domain of business enterprises~\cite{uschold_example1} (probably the most prominent example based on this methodology), the \emph{e-Business Model Ontology} that covers processes found in businesses available over the Web~\cite{uschold_example2}, and the \emph{\eacs{LKIF} Core Ontology of Basic Legal Concepts} (\emph{Legal Knowledge Interchange Format})~\cite{uschold_example3}.
+There are various applications of this methodology. Some examples include the \emph{Enterprise Ontology} which models the domain of business enterprises~\cite{uschold_example1} (probably the most prominent example based on this methodology), the \emph{e-Business Model Ontology} that covers processes found in businesses available over the Web~\cite{uschold_example2}, and the \emph{\acs{LKIF} Core Ontology of Basic Legal Concepts} (\emph{Legal Knowledge Interchange Format})~\cite{uschold_example3}.
 
 \subsubsection{Analysis}
 
 \begin{itemize}
   \item \textbf{Effort:} The effort caused by using this approach can be considered to be low, compared to other approaches such as \methontology (see Section~\ref{subsec:approach5}) or the \eacs{UPON} methodology (refer to Section~\ref{subsec:approach2}).
   
-   \item \textbf{Usage:} There are several applications of this approach which qualify the approach for being suitable for many different knowledge domains.
+   \item \textbf{Usage:} There are several applications of this approach which qualify the approach to be suitable for many different knowledge domains.
   
   \item \textbf{Applicability:} There are no restrictions regarding the application of this approach to various domains.
   
@@ -121,7 +121,7 @@ There are various applications of this methodology. Some examples include the \e
   
   \item \textbf{Formality:} This is an informal approach involving natural language descriptions.
   
-  \item \textbf{Level of detail:} The description of this approach does give an overview, but does not go into the details of each step.
+  \item \textbf{Level of detail:} The description of this approach does give an overview, but it does not go into the details of each step.
   
   \item \textbf{Documentation:} The process proposed by this approach includes a \emph{Documentation} step; however, it does not enforce the creation of documentation artefacts throughout the development process. Additionally, no details about how to structure the documentation are defined.
 \end{itemize}
@@ -247,9 +247,9 @@ De~Nicola, Missikoff, and Navigli observed many similarities between creating so
 
 As the \emph{Unified Process}, \eacs{UPON} is \emph{use-case driven}, \emph{iterative}, and \emph{incremental}. As shown in Figure~\ref{fig:upon_process}, the \eacs{UPON} \emph{process} consists of \emph{cycles}, \emph{phases}, \emph{iterations}, and \emph{workflows}. The whole process is divided into cycles which each result in a new version of the ontology. Four different phases (\emph{inception}, \emph{elaboration}, \emph{construction}, and \emph{transition}) form each cycle. Each phase in turn is divided into an arbitrary number of iterations; during each iteration, five workflows (\emph{requirements}, \emph{analysis}, \emph{design}, \emph{implementation}, and \emph{test}) take place.
 
-During the \emph{inception phase}, requirements are captured. The \emph{elaboration phase} comprises the identification and structuring of fundamental concepts. The \emph{construction phase} involves the creation of elements in the ontology to be created. Eventually, in the \emph{transition phase} testing and evaluation of the work within this cycle takes place.
+During the \emph{inception phase}, requirements are captured. The \emph{elaboration phase} comprises the identification and structuring of fundamental concepts. The \emph{construction phase} involves the creation of elements in the ontology to be created. Eventually, in the \emph{transition phase} testing and evaluation of the work within this cycle take place.
 
-The \emph{requirements workflow} consists of a set of tasks which analyses the knowledge domain; scope and purpose of the ontology, relevant terms, related use cases, and competency questions are identified. These results are the input for the \emph{analysis workflow} which refines concepts and their relations and enriches their description with detailed definitions in order to create a \emph{reference glossary}. The goal of the \emph{design workflow} is to model concepts, concept hierarchies, and domain-specific relationships from the previously created \emph{reference glossary} for their later implementation.
+The \emph{requirements workflow} consists of a set of tasks which analyse the knowledge domain; scope and purpose of the ontology, relevant terms, related use cases, and competency questions are identified. These results are the input for the \emph{analysis workflow} which refines concepts and their relations and enriches their description with detailed definitions in order to create a \emph{reference glossary}. The goal of the \emph{design workflow} is to model concepts, concept hierarchies, and domain-specific relationships from the previously created \emph{reference glossary} for their later implementation.
 During the \emph{implementation workflow}, the ontology designed in the previous workflow is translated into an ontology language. Finally, the \emph{test workflow} involves the evaluation of the ontology for \emph{semantic quality} (the absence of contradictory concepts) and \emph{pragmatic quality} (the usefulness of the ontology for the user).
 
 Each of these steps includes the generation of one or more documentation artefacts (e.g.\ diagrams or tables) that document the results. Hence, once the \eacs{UPON} process is completed, both the ontology and its documentation are completed and match each other. Documentation is not implemented as a separate step to avoid any problems that may arise from such an approach.
@@ -260,7 +260,7 @@ Each of these steps includes the generation of one or more documentation artefac
 
 \subsubsection{Analysis}
 
-The \eacs{UPON} approach is a deeply structured approach that applies well-established technologies from software development to the field of ontology design. While this approach leads to well-designed ontologies and works well for developing large environments, in the case of \smarthomeweather this is possibly an over-engineered approach.
+The \eacs{UPON} approach is a deeply structured approach that applies well-established technologies from software development to the field of ontology design. While this approach leads to well-designed ontologies and works well for developing ontologies within large environments, in the case of \smarthomeweather this is possibly an over-engineered approach.
 
 \begin{itemize}
   \item \textbf{Effort:} Due to its process which consists of many single steps generating a huge number of artefacts, the application of the \eacs{UPON} methodology leads to a greater effort compared to other approaches such as \methontology (see Section~\ref{subsec:approach5}). The smaller the ontology to be developed is, the larger the difference becomes. As \smarthomeweather can be considered to be a rather small ontology, \eacs{UPON} may be unsuitable for its design.
@@ -293,7 +293,7 @@ The \eacs{UPON} approach is a deeply structured approach that applies well-estab
 
 \emph{Planification} is the step of creating a plan which tasks need to be performed at which time during the development of an ontology. Such a plan is proposed by \methontology itself. Hence, when following \methontology, ontology construction starts with \emph{specification} (by creating an \emph{Ontology Requirements Specification Document}) and \emph{knowledge acquisition} about the given domain from all available sources. \emph{Conceptualisation} then generates a set of diagrams and tables that describe different aspects of the ontology. These artefacts are the glossary of terms, diagrams showing the concept taxonomies, binary relation diagrams, the concept dictionary, and tables for binary relation details, instance attributes, class attributes, constants, formal axioms, rules, and instances.
 
-The \emph{integration} activity consists of research of already existing ontologies which can be reused. Afterwards, \emph{implementation} transforms the previously described model into the desired ontology language. Finally, \emph{evaluation} ensures that the ontology that has been implemented corresponds to its specification.
+The \emph{integration} activity consists of research regarding already existing ontologies which may be reused. Afterwards, \emph{implementation} transforms the previously described model into the desired ontology language. Finally, \emph{evaluation} ensures that the ontology that has been implemented corresponds to its specification.
 
 Important to note about \methontology is the absence of \emph{documentation} as a separate development step. Each of the other activities enforces the creation of one or more artefacts (diagrams or tables) which precisely document the results of this step. During the implementation activity, all required information about the ontology is taken from these artefacts. Hence, when all other steps are completed, the documentation is ready as well. Any problems regarding missing, incomplete, or inaccurate documentation are avoided.
 
@@ -354,7 +354,7 @@ Considering the characteristics of the development approaches, \methontology is 
   \item It is widely used for the development of a variety of ontologies. This implies that many ontology developers consider it suitable for the application on many different domains.
 \end{itemize}
 
-Chapter \ref{ch:smarthomeweather_ontology} describes the process of building the \smarthomeweather ontology in detail.
+Chapter \ref{ch:smarthomeweather_ontology} describes the process of building the \smarthomeweather ontology using \methontology in detail.
 
 \section{\methontology}
 \label{sec:methontology}
@@ -377,7 +377,7 @@ The ontology development process used by \methontology divides the process into 
   \item \textbf{Planification:} This step involves creating a plan regarding which tasks need to be done and how they are arranged. As \methontology already proposes such a plan, this step is omitted when following \methontology to design an ontology.
   \item \textbf{Specification:} The purpose, intended uses, and end-users of the planned ontology are specified in an \emph{Ontologies Requirements Specification Document}.
   \item \textbf{Knowledge acquisition:} Knowledge about the ontology's domain is acquired.
-  \item \textbf{Conceptualisation:} The knowledge previously acquired is conceptualised into a model that describes the problem that shall be solved by the ontology and how the ontology solves it.
+  \item \textbf{Conceptualisation:} The knowledge previously acquired is conceptualised into a model that describes the problem that shall be solved by the ontology and how the ontology is intended to solve it.
   \item \textbf{Formalisation:} This conceptual model is then formalised.
   \item \textbf{Integration:} As ontologies are built to be reused, as many existing ontologies as possible are to be integrated into the new ontology.
   \item \textbf{Implementation:} The ontology is then implemented using a formal language.
@@ -403,7 +403,7 @@ Each section that describes an activity involving the creation of some documenta
 
 \methontology defines a precise approach for the development of an ontology. It specifies certain activities that need to be performed, how these activities are performed, and in which order. Thus, the activity of \emph{planification} is completed by specifying \methontology itself and the ontology developer is exempted therefrom. Hence, the first step of developing an ontology from scratch is \emph{specification}
 
-During \emph{specification}, an \emph{Ontology Requirements Specification Document} is generated. This document is written in natural language using a set of intermediate representations or using competence questions. It should include
+During \emph{specification}, an \emph{Ontology Requirements Specification Document} is generated. This document is written in natural language using a set of intermediate representations or using competency questions. It should include
 
 \begin{itemize}
   \item the name and the purpose of the ontology, its scope, its intended uses, and possible end-users,
@@ -478,11 +478,11 @@ At first, a \emph{Glossary of Terms} is built. This glossary includes all the re
 
 \begin{table}
 \centering
-\begin{tabular}{|p{.2\textwidth}|p{.2\textwidth}|p{.2\textwidth}|p{.2\textwidth}|}
+\begin{tabular}{|p{.15\textwidth}|p{.15\textwidth}|p{.15\textwidth}|p{.15\textwidth}|p{.15\textwidth}|}
   \hline
-  \textbf{Name} & \textbf{Acronyms} & \textbf{Description} & \textbf{Type} \\
+  \textbf{Name} & \textbf{Synonyms} & \textbf{Acronyms} & \textbf{Description} & \textbf{Type} \\
   \hline\hline
-  … & … & … & … \\
+  … & … & … & … & … \\
   \hline
 \end{tabular}
 \caption[Template for the glossary of terms]{Template for the glossary of terms as proposed by \methontology.}
@@ -497,7 +497,7 @@ Once the glossary of terms contains a sizeable number of concepts, these ontolog
 \begin{enumerate}
   \item \textbf{Subclass-Of}: If a concept $B$ is a \emph{Subclass-Of} a concept $A$, every instance of $B$ is also an instance of $A$.
   \item \textbf{Disjoint-Decomposition}: A \emph{Disjoint-Decomposition} of a concept $C$ is a set of subclasses of $C$ such that an instance of one of these subclasses can never be a subclass of another of these subclasses, while an instance of $C$ is not necessarily an instance of one of its subclasses.
-  \item \textbf{Exhaustive-Decomposition}: A \emph{Exhaustive-Decomposition} of a concept $C$ is a set of subclasses of $C$ such that every instance of $C$ is an instance of at least one of its subclasses.
+  \item \textbf{Exhaustive-Decomposition}: An \emph{Exhaustive-Decomposition} of a concept $C$ is a set of subclasses of $C$ such that every instance of $C$ is an instance of at least one of its subclasses.
   \item \textbf{Partition}: A \emph{Partition} of $C$ is a set of subclasses of $C$ such that every instance of $C$ is an instance of exactly one of its subclasses.
 \end{enumerate}
 
@@ -512,7 +512,7 @@ The concept taxonomies are visualised in \emph{concept-classification trees} whi
 
 \paragraph{Task 3: Ad-hoc binary relation diagrams}
 
-In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagrams show all ad-hoc relationships between concepts of the same (or different) concept taxonomies. See Figure~\ref{fig:methontology_example_binary_relations} for an example of a binary relation diagram.
+In the next step, \emph{ad-hoc binary relation diagrams} are created. These diagrams show all ad-hoc relationships between concepts of the same (or different) concept taxonomies. See Figure~\ref{fig:methontology_example_binary_relations} for an example of a binary relation diagram.
 
 \begin{figure}
 \centering
@@ -523,7 +523,7 @@ In the next step, \emph{ad-hoc binary relation diagrams} are created. This diagr
 
 \paragraph{Task 4: Concept dictionary}
 
-The \emph{concept dictionary} contains all domain concepts together with their relations, their instances, their class attributes (i.e.\ attributes that describe properties of classes), and their instance attributes (i.e.\ attributes that describe properties of instances). All information from the previous steps contribute to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts. Table~\ref{table:methontology_example_concept_dictionary} shows a template for the concept dictionary.
+The \emph{concept dictionary} contains all domain concepts together with their relations, their instances, their class attributes (i.e.\ attributes that describe properties of classes), and their instance attributes (i.e.\ attributes that describe properties of instances). All information from the previous steps contributes to this dictionary. The concept dictionary is again being built as a table having appropriate columns for all required information. Like the concept-classification trees, this table may be split into a set of smaller tables if the ontology contains a large number of concepts. Table~\ref{table:methontology_example_concept_dictionary} shows a template for the concept dictionary.
 
 \begin{table}
 \centering
@@ -540,7 +540,7 @@ The \emph{concept dictionary} contains all domain concepts together with their r
 
 \paragraph{Task 5: Ad-hoc binary relation details}
 
-In this step, for all ad-hoc binary relations details are specified in a tabular manner. The resulting table has a row for each relation and columns named \emph{relation name}, \emph{source concept}, \emph{source cardinality (max)}, \emph{target concept}, \emph{inverse relation}. Table~\ref{table:methontology_example_binary_relations_table} shows a template for the binary relations table.
+In this step, for all ad-hoc binary relations their details are specified in a tabular manner. The resulting table has a row for each relation and columns named \emph{relation name}, \emph{source concept}, \emph{source cardinality (max)}, \emph{target concept}, \emph{inverse relation}. Table~\ref{table:methontology_example_binary_relations_table} shows a template for the binary relations table.
 
 \begin{table}
 \centering
@@ -559,7 +559,7 @@ In this step, for all ad-hoc binary relations details are specified in a tabular
 
 This step leads to an \emph{instance attributes table}. That is a table of all \emph{instance attributes} that are listed in the concept dictionary. Each row contains the description of one instance attribute. An instance attribute is an attribute that describes a property of an instance of a concept. Its value may be different for each instance of the concept.
 
-The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{minimum cardinality}, and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes, and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute. See Table~\ref{table:methontology_example_instance_attributes} for a template for the instance attributes table.
+The columns of the table are \emph{attribute name}, \emph{concept name}, \emph{value type} (\emph{Integer}, \emph{Float}, \emph{String}, etc.), \emph{value range}, \emph{unit of measurement}, \emph{minimum cardinality}, and \emph{maximum cardinality}. Additionally, the following information may be specified: instance attributes, class attributes, and constants used to infer values of the attribute; attributes that can be inferred using values of this attribute; formulae or rules that allow inferring values of the attribute; and references used to define the attribute. See Table~\ref{table:methontology_example_instance_attributes} for a template for the instance attributes table.
 
 \begin{table}
 \centering
@@ -627,7 +627,7 @@ In this task, the ontology designer must determine whether the ontology contains
 
 \paragraph{Task 10: Rules}
 
-Similary to the task of identifying and describing formal axioms within the ontology, in this step the ontology designer must determine whether the ontology contains any rules. If it contains any, a \emph{rules table} must be built to precisely describe all rules and their properties: Their name, their description, an expression in first-order logic, and all concepts, attributes, relations, and variables involved. In contrast to formal axioms, the expression of rules always has the form \emph{if <conditions> then <consequent>}; hereby \emph{<conditions>} is a conjunction of atoms while \emph{<consequent>} is a single atom.
+Similary to the task of identifying and describing formal axioms within the ontology, in this step the ontology designer must determine whether the ontology contains any rules. If it contains any, a \emph{rules table} must be built to precisely describe all rules and their properties: Their names, their descriptions, expressions in first-order logic, and all concepts, attributes, relations, and variables involved. In contrast to formal axioms, the expression of rules always has the form \emph{if <conditions> then <consequent>}; hereby \emph{<conditions>} is a conjunction of atoms while \emph{<consequent>} is a single atom.
 
 For the rules table, the template for the formal axioms table (see Table~\ref{table:methontology_example_axioms}) can be reused.
 
@@ -650,7 +650,7 @@ Within an ontology, a set of instances may be predefined. This task involves lis
 
 \subsubsection{Formalisation}
 
-\emph{Formalisation} is the transition from the informal description of the tables and diagrams in the previous step of \emph{conceptualisation} into the chosen ontology language, e.g.\ \eacs{OWL}. As this is tightly coupled with the \emph{implementation} of the ontology (see Section~\ref{subsec:methontology_implementation}), this is a task which is not performed separately.
+\emph{Formalisation} is the transition from the informal description of the tables and diagrams in the previous step of \emph{conceptualisation} into the chosen ontology language, e.g.\ \eacs{OWL}. As this is tightly coupled with the \emph{implementation} of the ontology (see Section~\ref{subsec:methontology_implementation}), this is a task which is often not performed separately.
 
 \subsubsection{Integration}
 
@@ -678,7 +678,7 @@ In the case of the \smarthomeweather ontology, an \eacs{OWL} ontology~\cite{OWL}
 
 During \emph{evaluation}, verification takes place whether all artefacts that have yet been created or updated in the previous steps satisfy the requirements that have been initially defined. \emph{evaluation} is not an activity which is performed at the very end of the development process; instead, \emph{evaluation} takes place whenever an artefact (a diagram, a table, or the implementation of the ontology) is created or updated in order to ensure that mistakes are found as soon as possible.
 
-The completed ontology must fulfil all functional and non-functional requirements listed the \emph{Ontology Requirements Specification Document} presented in Section~\ref{subsec:methontology_specification}. In case of a mismatch, the ontology traverses the activities of the life cycle (\emph{conceptualisation}, \emph{formalisation}, \emph{integration}, \emph{implementation}, and \emph{evaluation}) once more.
+The completed ontology must fulfil all functional and non-functional requirements listed in the \emph{Ontology Requirements Specification Document} presented in Section~\ref{subsec:methontology_specification}. In case of a mismatch, the ontology traverses the activities of the life cycle (\emph{conceptualisation}, \emph{formalisation}, \emph{integration}, \emph{implementation}, and \emph{evaluation}) once more.
 
 There may be requirements that an ontology is unable to fulfil due to certain limitations, e.g.\ the \emph{Open World Assumption}~\cite{open_world_assumption1}. For instance, \eacs{OWL}, which honors the \emph{Open World Assumption}, cannot tell the absence of an instance of some concept. This leads to cases where an ontology fails to answer a competency question such as ``Does this group only consist of women?''; just because the ontology does not contain an individual which is a man, it does not mean that there is no man; the ontology can only tell that there is no man it knows about.
 
