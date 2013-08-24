@@ -55,7 +55,7 @@
   \vskip\tuinf@bordersep
   \hskip\tuinf@bordersep
   \begin{tikzpicture}
-    \node[draw,rectangle,line width=3pt,rounded corners=10pt,inner sep=0pt]{
+    \node[draw,rectangle,line width=3pt,rounded corners=10pt,inner sep=0pt,shade,top color=white,bottom color=white]{
       \begin{minipage}[t][\tuinf@headheight]{\tuinf@headwidth}
         \begin{center}
           \begin{minipage}[t][\tuinf@headheight]{\tuinf@leftheadwidth}\vspace{\tuinf@headsep}%
@@ -108,7 +108,7 @@
   \hskip\tuinf@bordersep
   \begin{minipage}[t]{\tuinf@headwidth}
     \raggedleft\tikz{
-      \node[draw,rectangle,line width=3pt,inner sep=10pt]{
+      \node[draw,rectangle,line width=3pt,inner sep=10pt,shade,top color=white,bottom color=white]{
         \fontsize{24pt}{29pt}\selectfont Kontakt:~\insertshortauthor
       };
     }

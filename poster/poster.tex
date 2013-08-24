@@ -38,10 +38,10 @@
 \author[paulchen@rueckgr.at]{Paul Staroch}
 \institute[]{%
   Technische Universit{\"a}t Wien\\[0.25\baselineskip]
-  Institut für computergestützte Automation\\[0.25\baselineskip]
-  Arbeitsbereich: Automation Systems Group\\[0.25\baselineskip]
-  BetreuerIn: Ao.Univ.-Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner\\[0.25\baselineskip]
-  AssistentIn: Dipl.-Ing. Mario Kofler
+  Institut für Rechnergestützte Automation\\[0.25\baselineskip]
+  Arbeitsbereich: Automatisierungssysteme\\[0.25\baselineskip]
+  Betreuer: Ao.Univ.-Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner\\[0.25\baselineskip]
+  Assistent: Dipl.-Ing. Mario Kofler
 }
 \titlegraphic{\includegraphics[height=52mm]{figures/183-1.pdf}}
 \date[\today]{\today}
@@ -54,12 +54,12 @@
 %\beamertemplategridbackground[12.7mm] % TODO remove
 
 % play around with the background colors
-% \setbeamercolor{background canvas}{bg=yellow}
+%\setbeamercolor{background canvas}{bg=yellow}
 
 % use a background picture
-%\usebackgroundtemplate{%
-%  \includegraphics[width=\paperwidth]{logo_KBS_2_CMYK}
-%}
+\usebackgroundtemplate{%
+  \includegraphics[width=\paperwidth]{figures/ap51514966743ad_full.jpg}
+}
 
 % play around with block colors
 \setbeamercolor{block body}{fg=black,bg=white}
@@ -69,6 +69,7 @@
 \definecolor{listingBottom}{cmyk}{.1,.1,.1,.1}
 
 \setbeamertemplate{block begin}{
+  \pgfsetfillopacity{0.7}
   \begin{beamercolorbox}{block title}%
     \begin{tikzpicture}%
       \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=TuWienBlueLight]{%
@@ -78,13 +79,13 @@
       };
     \end{tikzpicture}%
   \end{beamercolorbox}
-  \vspace*{1cm}
-  \begin{beamercolorbox}{block body}%
+  \begin{beamercolorbox}[colsep=1.5pt,sep=1cm]{block body}%
+%  \vspace*{.5cm}
 }
 
 \setbeamertemplate{block end}{
   \end{beamercolorbox}
-  \vspace{2cm}
+  \vspace{1cm}
 }
 
 % setup postit
@@ -104,6 +105,8 @@
 
 % \setlength{\parskip}{15em}
 
+% \addtobeamertemplate{block begin}{\pgfsetfillopacity{0.5}}{\pgfsetfillopacity{1}}
+
 \begin{document}
 
 % We have a single poster frame.
@@ -113,9 +116,10 @@
     % Set up a column
     \begin{column}{.45\textwidth}
       \begin{block}{Smart homes and ontologies}
-        \begin{wrapfigure}{r}{.35\textwidth}
+        \begin{wrapfigure}{r}{.45\textwidth}
 	  \centering
 	  \includegraphics[width=.35\textwidth]{figures/inkscape/smart_home}
+	  \vspace{4cm}
 	\end{wrapfigure}
 
 	\vspace{-1.5em}
@@ -148,13 +152,13 @@
 	\vspace{.5em}
 	To overcome these problems, a knowledge
 	base built using \emph{OWL} can be introduced.
-	% like in \emph{ThinkHome}. %~\cite{CR2011-TH_Journal}.
       \end{block}
 
       \begin{block}{Why introduce a weather data model?}
-        \begin{wrapfigure}{r}{.45\textwidth}
+        \begin{wrapfigure}{r}{.55\textwidth}
 	  \centering
-	  \includegraphics[width=.45\textwidth]{figures/inkscape/house}
+	  \includegraphics[width=.46\textwidth]{figures/inkscape/house}
+	  \vspace{4cm}
 	\end{wrapfigure}
 
 	\vspace{-1.5em}
@@ -179,7 +183,7 @@
 	\end{itemize}
 
 	\vspace{.5em}
-	Data about weather states is obtained from local sensors and Internet weather services.
+	Data about weather states are obtained from local sensors and Internet weather services.
       \end{block}
 
       \begin{block}{Methodological approach}
@@ -215,7 +219,7 @@
     % Set up a column 
     \begin{column}{.45\textwidth}
       \begin{block}{The \emph{SmartHomeWeather} ontology (cont.)}
-	\includegraphics[width=\textwidth]{figures/dia/binary-relations}
+	\includegraphics[width=\textwidth-2cm]{figures/dia/binary-relations}
 	\begin{itemize}
 	  \item \emph{Weather phenomenon}: A certain weather
 		  element: temperature, humidity, …
@@ -234,7 +238,7 @@
 	This is a part of the concept hierarchy of \emph{Weather phenomenon}:
 	
 	\vspace{1em}
-	\includegraphics[width=\textwidth]{figures/dia/hierarchy}
+	\includegraphics[width=\textwidth-2cm]{figures/dia/hierarchy}
 
 	\vspace{.5em}
 	Querying the data model is done using \emph{SPARQL} queries:
@@ -242,9 +246,9 @@
 	\vspace{10mm}
 	\begin{tikzpicture}%
           \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
-	    \begin{minipage}{\textwidth}
+	    \begin{minipage}{\dimexpr\textwidth-2cm}
 	      \hspace{5mm}
-              \begin{minipage}{\textwidth}
+              \begin{minipage}{\dimexpr\textwidth-2cm}
               \vspace{10mm}
     	      \begin{minted}{sparql}
 SELECT ?r
