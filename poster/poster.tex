@@ -22,7 +22,7 @@
 \usepackage{comment}
 
 \usepackage[scaled]{beramono}
-\fvset{fontsize=\normalsize}
+\fvset{fontsize=\tiny}
 
 \usemintedstyle{perldoc}
 
@@ -40,8 +40,8 @@
   Technische Universit{\"a}t Wien\\[0.25\baselineskip]
   Institut für Rechnergestützte Automation\\[0.25\baselineskip]
   Arbeitsbereich: Automatisierungssysteme\\[0.25\baselineskip]
-  Betreuer: Ao.Univ.-Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner\\[0.25\baselineskip]
-  Assistent: Dipl.-Ing. Mario Kofler
+  Betreuung: Ao.Univ.-Prof. Dipl.-Ing. Dr.techn. Wolfgang Kastner\\[0.25\baselineskip]
+  Mitwirkung: Dipl.-Ing. Mario Kofler
 }
 \titlegraphic{\includegraphics[height=52mm]{figures/183-1.pdf}}
 \date[\today]{\today}
@@ -106,6 +106,14 @@
 % \setlength{\parskip}{15em}
 
 % \addtobeamertemplate{block begin}{\pgfsetfillopacity{0.5}}{\pgfsetfillopacity{1}}
+
+\DeclareUnicodeCharacter{21D2}{$\Rightarrow$}
+\DeclareUnicodeCharacter{2227}{$\wedge$}
+\DeclareUnicodeCharacter{00A0}{~}
+
+
+%\PrerenderUnicode{⇒}
+%\PrerenderUnicode{∧}
 
 \begin{document}
 
@@ -203,7 +211,6 @@
 	  \item The \emph{SmartHomeWeather} ontology is built around five top-level concepts.
 	  \item It supports current and future weather data.
 	  \item It allows weather-based control decisions within smart home systems.
-% TODO	  \item Each top-level concept is root of a concept hierarchy.
 	  \item \emph{SmartHomeWeather} \mbox{uses \emph{OWL} reasoning} heavily.
 	\end{itemize}
 
@@ -228,8 +235,8 @@
 		  weather situation: ``Sun'', ``Fog'', …
 	  \item \emph{Weather state}: The weather situation as a
 		  set of \emph{Weather} \emph{phenomena}.
-	  \item \emph{Weather report}: The weather for one
-		  point of time.
+	  \item \emph{Weather report}: All data about the weather for one
+		  point of time (location, source, weather situation).
 	\end{itemize}
 	\hspace{-1.05cm}\begin{minipage}{\dimexpr.45\textwidth}
 	  \vspace{.3em}
@@ -241,7 +248,8 @@
 	  \vspace{.5em}
 
 	  \hfill\begin{minipage}{\dimexpr\textwidth-1.05cm}
-	  Each concept is root of a concept hierarchy.
+	  \raggedright
+	  Each concept is root \mbox{of a concept hierarchy.}
 	  \end{minipage}
 	\end{minipage}
 	\begin{minipage}{\dimexpr.5\textwidth}
@@ -250,33 +258,71 @@
   	  \includegraphics[width=\textwidth]{figures/dia/hierarchy}
 	\end{minipage}
 
-	
-	\vspace{1em}
+	\vspace{2em}
 
-	\vspace{.5em}
-	Querying the data model is done using \emph{SPARQL} queries:
+	Querying the data model is done using \emph{SWRL} rules and \emph{SPARQL} queries.
 
-	% TODO add SWRL, reformulate SPARQL
 	\vspace{10mm}
+	\begin{minipage}[t]{.5\textwidth}
+	\raggedright
+	\begin{tikzpicture}%
+          \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
+	    \begin{minipage}{\dimexpr\textwidth-2cm}
+	      \hspace{5mm}
+              \begin{minipage}{\dimexpr\textwidth-2cm}
+              \vspace{11mm}
+    	      \begin{minted}{text}
+hasWeatherPhenomenon(?s1, ?t1) ∧
+  hasTemperatureValue(?t1, ?v1) ∧
+
+  hasWeatherPhenomenon(?s2, ?t2) ∧
+  hasTemperatureValue(?t2, ?v2) ∧
+
+  greaterThan(?v2, ?v1) ∧
+  hasNextWeatherState(?s1, ?s2) ⇒
+    increasingTemperature(?s1, ?s2)
+    	      \end{minted}
+    	      \vspace{10mm}
+	      \end{minipage}
+            \end{minipage}
+	  };
+	\end{tikzpicture}
+	\begin{minipage}[t]{.87\textwidth}
+	  \vspace{-1em}\raggedright\scriptsize\emph{SWRL} rule (simplified) to find consecutive \emph{Weather state}s that denote increasing temperature.
+        \end{minipage}
+	\end{minipage}\begin{minipage}[t]{.5\textwidth}
+	\raggedright
 	\begin{tikzpicture}%
           \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
 	    \begin{minipage}{\dimexpr\textwidth-2cm}
 	      \hspace{5mm}
               \begin{minipage}{\dimexpr\textwidth-2cm}
               \vspace{10mm}
+% WHERE {
     	      \begin{minted}{sparql}
-SELECT ?r
+SELECT ?s2
 WHERE {
-    ?r weather:hasWeatherState ?s.
-    ?s weather:hasWeatherPhenomenon ?t.
-    ?t a weather:RoomTemperature.
+    ?s1 weather:increasingTemperature ?s2.
+    ?s1 weather:belongsToWeatherReport ?r.
+    ?r a weather:ShortRangeForecastReport.
 }
+  
+ 
+ 
+ 
+ 
     	      \end{minted}
-    	      \vspace{5mm}
+    	      \vspace{33.4mm}
 	      \end{minipage}
             \end{minipage}
 	  };
 	\end{tikzpicture}
+	\begin{minipage}[t]{.87\textwidth}
+	  \vspace{-1em}\raggedright\scriptsize\emph{SPARQL} query to obtain all \emph{Weather states} for the upcoming three hours (\texttt{ShortRangeForecast- Report}) that denote increasing temperature (refer to the \emph{SWRL} rule seen on the left).
+
+~
+        \end{minipage}
+	\end{minipage}	
       \end{block}
       
       \begin{block}{The \emph{Weather Importer}}
@@ -300,6 +346,7 @@ WHERE {
 	
 	\begin{itemize}
 	  \item retrieves weather data from local sensors and Internet services.
+	  \item generates individuals based on weather data.
 	  \item \mbox{provides unit tests for \emph{SmartHomeWeather}.}
 	\end{itemize}
       \end{block}
@@ -312,6 +359,8 @@ WHERE {
 	    \item Learning from weather situations and their influence on the dwelling.
 	    \item Mutual benefits of \emph{Smart Cities} and smart homes utilising \emph{SmartHomeWeather}.
 	  \end{itemize}
+
+	  \vspace{4.2mm}
       \end{block}
 
 %      \begin{block}{References}
