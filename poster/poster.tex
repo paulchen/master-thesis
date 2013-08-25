@@ -119,7 +119,7 @@
         \begin{wrapfigure}{r}{.45\textwidth}
 	  \centering
 	  \vspace{-1em}
-	  \includegraphics[width=.34\textwidth]{figures/inkscape/smart_home}
+	  \includegraphics[width=.31\textwidth]{figures/inkscape/smart_home}
 	\end{wrapfigure}
 
 	\vspace{-1.5em}
@@ -172,11 +172,10 @@
 	  \item \mbox{Utilisation of solar and} wind power.
 	\end{itemize}
 
+	\vspace{-.2em}
 	\begin{itemize}
 	  \item Preparing for severe weather (e.g.\ close windows, retract awnings).
 	\end{itemize}
-
-	\emph{SmartHomeWeather} is an ontological model for current and future weather data that allows weather-base control decisions.
       \end{block}
 
       \begin{block}{Methodological approach}
@@ -202,9 +201,13 @@
 
 	\begin{itemize}
 	  \item The \emph{SmartHomeWeather} ontology is built around five top-level concepts.
-	  \item Each top-level concept is root of a concept hierarchy.
-	  \item \emph{OWL} reasoning is heavily used.
+	  \item It supports current and future weather data.
+	  \item It allows weather-based control decisions within smart home systems.
+% TODO	  \item Each top-level concept is root of a concept hierarchy.
+	  \item \emph{SmartHomeWeather} \mbox{uses \emph{OWL} reasoning} heavily.
 	\end{itemize}
+
+	\vspace{1.5em}
       \end{block}
     \end{column}
     % ---------------------------------------------------------%
@@ -214,36 +217,46 @@
     % Set up a column 
     \begin{column}{.45\textwidth}
       \begin{block}{The \emph{SmartHomeWeather} ontology (cont.)}
-	\vspace{-1.5em}
+	\vspace{-.25em}
+
+	The top-level concepts are:
 
 	\begin{itemize}
-	  \item \emph{Weather phenomenon}: A certain weather
+  	  \item \emph{Weather phenomenon}: A certain weather
 		  element: temperature, humidity, …
 	  \item \emph{Weather condition}: A one-word description of the
 		  weather situation: ``Sun'', ``Fog'', …
 	  \item \emph{Weather state}: The weather situation as a
-		  set of \emph{Weather phenomena}.
-          \item \emph{Weather report}: The weather for one
+		  set of \emph{Weather} \emph{phenomena}.
+	  \item \emph{Weather report}: The weather for one
 		  point of time.
-	  \item \emph{Weather report source}: A source of weather data
-		  (sensor or Internet service)
 	\end{itemize}
+	\hspace{-1.05cm}\begin{minipage}{\dimexpr.45\textwidth}
+	  \vspace{.3em}
+	  \begin{itemize}
+  	    \item \emph{Weather report source}: \mbox{A source of weather data}
+	  	  (sensor or Internet service)
+	  \end{itemize}
 
-	\vspace{.5em}
-	
-	This is a part of the concept hierarchy of \emph{Weather phenomenon}:
+	  \vspace{.5em}
+
+	  \hfill\begin{minipage}{\dimexpr\textwidth-1.05cm}
+	  Each concept is root of a concept hierarchy.
+	  \end{minipage}
+	\end{minipage}
+	\begin{minipage}{\dimexpr.5\textwidth}
+	  \centering
+	  \vspace{2em}
+  	  \includegraphics[width=\textwidth]{figures/dia/hierarchy}
+	\end{minipage}
+
 	
 	\vspace{1em}
-
-        \begin{wrapfigure}{r}{.55\textwidth}
-	  \vspace{-.5em}
-	  \centering
-  	  \includegraphics[width=.45\textwidth]{figures/dia/hierarchy}
-	\end{wrapfigure}
 
 	\vspace{.5em}
 	Querying the data model is done using \emph{SPARQL} queries:
 
+	% TODO add SWRL, reformulate SPARQL
 	\vspace{10mm}
 	\begin{tikzpicture}%
           \node[draw,rectangle,line width=3pt,rounded corners=0pt,inner sep=0pt,shade,top color=white,bottom color=listingBottom]{%
@@ -264,24 +277,29 @@ WHERE {
             \end{minipage}
 	  };
 	\end{tikzpicture}
-	\vspace{-12mm}
-	
-	The Java application \emph{Weather Importer} retrieves weather data from sensors and services into \emph{SmartHomeWeather}.
       \end{block}
       
       \begin{block}{The \emph{Weather Importer}}
-        \begin{wrapfigure}{r}{.55\textwidth}
-	  \vspace{-.5em}
-	  \centering
-  	  \includegraphics[width=.4\textwidth]{figures/dia/importer-model-simple}
-	\end{wrapfigure}
+        \begin{minipage}{\dimexpr.49\textwidth}
+	  \mbox{The \emph{Weather Importer}}
 
-	\vspace{-1.5em}
+	  \hspace{-.84em}\begin{minipage}{\dimexpr\textwidth+.84em}
+	    \vspace{.4em}
+	    \begin{itemize}
+	      \item is implemented in Java.
+	      \item \mbox{uses an object-oriented model} resembling the structure of \emph{SmartHomeWeather}.
+	    \end{itemize}
+	  \end{minipage}
+	\end{minipage}
+	\begin{minipage}{\dimexpr.41\textwidth}
+	  \centering
+  	  \includegraphics[width=.95\textwidth]{figures/dia/importer-model-simple}
+	\end{minipage}
+
+	\vspace{.3em}
 	
-	\mbox{The \emph{Weather Importer}}
 	\begin{itemize}
-	  \item is implemented in Java.
-	  \item retrieves data from local sensors and Internet weather services.
+	  \item retrieves weather data from local sensors and Internet services.
 	  \item \mbox{provides unit tests for \emph{SmartHomeWeather}.}
 	\end{itemize}
       \end{block}
@@ -292,7 +310,7 @@ WHERE {
             \item Minimising costs for electrical power based on weather data and varying costs for electrical power over time.
 	    \item Improving decision making based on both weather data and the buildings' inhabitants' actions.
 	    \item Learning from weather situations and their influence on the dwelling.
-	    \item Mutual benefits of smart homes utilising \emph{SmartHomeWeather} and \emph{Smart Cities}.
+	    \item Mutual benefits of \emph{Smart Cities} and smart homes utilising \emph{SmartHomeWeather}.
 	  \end{itemize}
       \end{block}
 
