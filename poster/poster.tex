@@ -58,7 +58,7 @@
 
 % use a background picture
 \usebackgroundtemplate{%
-  \includegraphics[width=\paperwidth]{figures/ap51514966743ad_full.jpg}
+  \includegraphics[width=\paperwidth,height=\paperheight]{figures/ap51514966743ad_full.jpg}
 }
 
 % play around with block colors
@@ -118,30 +118,27 @@
       \begin{block}{Smart homes and ontologies}
         \begin{wrapfigure}{r}{.45\textwidth}
 	  \centering
-	  \includegraphics[width=.35\textwidth]{figures/inkscape/smart_home}
-	  \vspace{4cm}
+	  \vspace{-1em}
+	  \includegraphics[width=.34\textwidth]{figures/inkscape/smart_home}
 	\end{wrapfigure}
 
 	\vspace{-1.5em}
 	
-	\emph{Smart homes} are dwellings that
-	
-	\begin{itemize}
-	  \item \mbox{are equipped with some kind} of intelligence.
-	  \item perform tasks on their own.
-	\end{itemize}
+	\emph{Smart homes} are dwellings that are equipped\\
+	\mbox{with some kind of intelligence to perform}
+	tasks on their own.
 
 	\vspace{.5em}
 	Some of their goals are:
 
 	\begin{itemize}
-	  \item \mbox{Support the inhabitants in their} routine tasks.
-	  \item Maintain or increase comfort.
-          \item Reduce the energy consumption.
+	  \item \mbox{Support with routine tasks.}
+	  \item Increase comfort.
+	  \item \mbox{Reduce energy consumption.}
         \end{itemize}
 
 	\vspace{.5em}
-        Problems of many smart home systems:
+	\mbox{Common problems of many smart home systems:}
 
         \begin{itemize}
 	  \item High complexity.
@@ -151,60 +148,58 @@
 
 	\vspace{.5em}
 	To overcome these problems, a knowledge
-	base built using \emph{OWL} can be introduced.
+	base built upon \emph{OWL} can be introduced.
+	A smart home can use the knowledge from this
+	model to make appropriate control decisions.
       \end{block}
 
       \begin{block}{Why introduce a weather data model?}
         \begin{wrapfigure}{r}{.55\textwidth}
+	  \vspace{-.5em}
 	  \centering
-	  \includegraphics[width=.46\textwidth]{figures/inkscape/house}
-	  \vspace{4cm}
+	  \includegraphics[width=.45\textwidth]{figures/inkscape/house}
 	\end{wrapfigure}
 
 	\vspace{-1.5em}
 	
 	\mbox{Weather has a wide influence on}
-	\mbox{a dwelling. \emph{SmartHomeWeather}}
+	\mbox{a dwelling. Examples for weather-}
+	\mbox{related control decisions are:}
 	
 	\begin{itemize}
-	  \item is an ontological data model.
-	  \item supports current and future weather data.
-	  \item enables a smart home to make weather-based control decisions.
-	\end{itemize}
-
-	\vspace{.5em}
-	Examples for such control decisions:
-	
-	\begin{itemize}
-  	  \item Heating, ventilation, and air conditioning (\emph{HVAC}),
-	  \item Utilisation of solar and wind power.
+  	  \item Heating, ventilation, and air conditioning (\emph{HVAC}).
 	  \item Irrigation.
-	  \item Preparing for severe weather (e.g. close windows, retract awnings).
+	  \item \mbox{Utilisation of solar and} wind power.
 	\end{itemize}
 
-	\vspace{.5em}
-	Data about weather states are obtained from local sensors and Internet weather services.
+	\begin{itemize}
+	  \item Preparing for severe weather (e.g.\ close windows, retract awnings).
+	\end{itemize}
+
+	\emph{SmartHomeWeather} is an ontological model for current and future weather data that allows weather-base control decisions.
       \end{block}
 
       \begin{block}{Methodological approach}
-	The preliminary work included:
+	\vspace{-.5em}
 	\begin{itemize}
 	  \item Evaluation of existing weather ontologies.
 	  \item Identification of uses cases for weather data in smart homes.
 	  \item Analysis of methodologies for ontology design.
-	  \item Examination of sources for weather data (sensors and Internet services).
-	\end{itemize}
-	
-	\vspace{.5em}
-	Based on this knowledge, the following steps were performed:
-	
-	\begin{itemize}
+	  \item Examination of sources for weather data.
 	  \item Design of \emph{SmartHomeWeather} using \emph{METHONTOLOGY}. % ~\cite{Methontology}.
 	  \item Development of \emph{Weather Importer}.
 	\end{itemize}
       \end{block}
 
       \begin{block}{The \emph{SmartHomeWeather} ontology}
+        \begin{wrapfigure}{r}{.55\textwidth}
+	  \vspace{-.5em}
+	  \centering
+  	  \includegraphics[width=.45\textwidth]{figures/dia/binary-relations}
+	\end{wrapfigure}
+
+	\vspace{-1.5em}
+
 	\begin{itemize}
 	  \item The \emph{SmartHomeWeather} ontology is built around five top-level concepts.
 	  \item Each top-level concept is root of a concept hierarchy.
@@ -219,7 +214,8 @@
     % Set up a column 
     \begin{column}{.45\textwidth}
       \begin{block}{The \emph{SmartHomeWeather} ontology (cont.)}
-	\includegraphics[width=\textwidth-2cm]{figures/dia/binary-relations}
+	\vspace{-1.5em}
+
 	\begin{itemize}
 	  \item \emph{Weather phenomenon}: A certain weather
 		  element: temperature, humidity, …
@@ -238,7 +234,12 @@
 	This is a part of the concept hierarchy of \emph{Weather phenomenon}:
 	
 	\vspace{1em}
-	\includegraphics[width=\textwidth-2cm]{figures/dia/hierarchy}
+
+        \begin{wrapfigure}{r}{.55\textwidth}
+	  \vspace{-.5em}
+	  \centering
+  	  \includegraphics[width=.45\textwidth]{figures/dia/hierarchy}
+	\end{wrapfigure}
 
 	\vspace{.5em}
 	Querying the data model is done using \emph{SPARQL} queries:
@@ -268,16 +269,31 @@ WHERE {
 	The Java application \emph{Weather Importer} retrieves weather data from sensors and services into \emph{SmartHomeWeather}.
       \end{block}
       
-      \begin{block}{Future work}
+      \begin{block}{The \emph{Weather Importer}}
+        \begin{wrapfigure}{r}{.55\textwidth}
+	  \vspace{-.5em}
+	  \centering
+  	  \includegraphics[width=.4\textwidth]{figures/dia/importer-model-simple}
+	\end{wrapfigure}
+
+	\vspace{-1.5em}
+	
+	\mbox{The \emph{Weather Importer}}
 	\begin{itemize}
-	  \item Identification of further use cases of \emph{SmartHomeWeather}.
-	  \item Interoperation with other data sources, e.g.:
-	    \begin{itemize}
-	      \item Minimising costs for electrical power based on weather data and varying costs for electrical power over time.
-	      \item Improving decision making based on both weather data and the buildings' inhabitants' actions.
-	      \item Learning from weather situations and their influence on the dwelling.
-	    \end{itemize}
+	  \item is implemented in Java.
+	  \item retrieves data from local sensors and Internet weather services.
+	  \item \mbox{provides unit tests for \emph{SmartHomeWeather}.}
 	\end{itemize}
+      \end{block}
+
+      \begin{block}{Future work}
+	Further use cases of \emph{SmartHomeWeather} may be identified. Interoperation with other systems and data sources can be examined:
+          \begin{itemize}
+            \item Minimising costs for electrical power based on weather data and varying costs for electrical power over time.
+	    \item Improving decision making based on both weather data and the buildings' inhabitants' actions.
+	    \item Learning from weather situations and their influence on the dwelling.
+	    \item Mutual benefits of smart homes utilising \emph{SmartHomeWeather} and \emph{Smart Cities}.
+	  \end{itemize}
       \end{block}
 
 %      \begin{block}{References}
