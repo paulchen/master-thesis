@@ -58,8 +58,12 @@
 
 % use a background picture
 \usebackgroundtemplate{%
-%  \includegraphics[width=\paperwidth,height=\paperheight]{figures/ap51514966743ad_full.jpg}
-  \includegraphics[width=\paperwidth,height=\paperheight]{figures/background.jpg}
+  \ifdefined\isprint
+    \includegraphics[width=\paperwidth,height=\paperheight]{figures/background_print.jpg}
+  \else
+    \includegraphics[width=\paperwidth,height=\paperheight]{figures/background.jpg}
+  \fi
+
 }
 
 % play around with block colors
@@ -90,14 +94,16 @@
 }
 
 % setup postit
-\setbeamercolor{postit}{fg=black,bg=yellow} 
-\newenvironment{postit}
-{\begin{beamercolorbox}[sep=1em,wd=7cm]{postit}}
-{\end{beamercolorbox}}
+%\setbeamercolor{postit}{fg=black,bg=yellow} 
+%\newenvironment{postit}
+%{\begin{beamercolorbox}[sep=1em,wd=7cm]{postit}}
+%{\end{beamercolorbox}}
 
 
 % for crop marks, uncomment the following line
-\usepackage[cross,width=88truecm,height=123truecm,center]{crop} % TODO
+\ifdefined\isprint
+  \usepackage[cross,width=88truecm,height=123truecm,center]{crop}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
