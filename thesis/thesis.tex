@@ -23,7 +23,11 @@
 
 \usepackage{TUINFDA}
 
-\definecolor{linkcolor}{HTML}{000088}
+\ifdefined\isprint
+  \definecolor{linkcolor}{HTML}{000000}
+\else
+  \definecolor{linkcolor}{HTML}{000088}
+\fi
 
 \usepackage{url}
 \usepackage{bookmark}
