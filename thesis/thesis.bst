@@ -769,7 +769,7 @@ FUNCTION {online}
     { organization output }
     { format.editors output.nonnull }
   if$
-  format.authors output
+  format.authors "author" output.check
   title howpublished new.block.checkb
   format.title output
   howpublished new.block.checka

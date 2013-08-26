@@ -1,13 +1,13 @@
 \chapter{The \emph{Weather Importer}}
 \label{ch:weather_importer}
 
-In previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} discusses the details of weather services that are available via Internet, with the example of the \eacs{API} by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements of the \smarthomeweather project. Chapter~\ref{ch:smarthomeweather_ontology} describes the design of the \smarthomeweather ontology. Eventually, the ontology needs to be populated with data, i.e.\ individuals that comprise the current and future state of the weather at the desired location.
+In the previous chapters, two topics are discussed that are relevant for this chapter: Chapter~\ref{ch:weather_data} discusses the details of weather services that are available via Internet, with the example of the \eacs{API} by the \emph{Norwegian Meteorological Institute} (\yrno) that is found to best fit the requirements of the \smarthomeweather project. Chapter~\ref{ch:smarthomeweather_ontology} describes the design of the \smarthomeweather ontology. Eventually, the ontology needs to be populated with data, i.e.\ individuals that comprise the current and future state of the weather at the desired location.
 
 For that process, a standalone Java application has been developed. As its main purpose is to import weather data, it was named \emph{Weather Importer}.
 
 At its current state of development, \emph{Weather Importer} obtains data only from \yrno in order to provide a reference implementation being both simple and functional, but it is designed to allow the simple integration of other weather services that are available via Internet as well as data from local weather sensors.
 
-The classes are arranged in two packages, \texttt{model} and \texttt{main}. The \texttt{model} package contains an object-oriented data model for the weather data being processed (see Section~\ref{sec:importer_model}). All other classes belong to the \texttt{main} package, including the \texttt{Main} class providing the \texttt{main} method, the classes \texttt{TurtleStatement} and \texttt{TurtleStore} for output in \emph{\eacs{Turtle} syntax}~\cite{Turtle} (see Section~\ref{subsec:importer_turtle}), the interface \texttt{Importer}, and its reference implementation \texttt{YrNoImporter} (see Section~\ref{subsec:importer_fetch}), \texttt{WeatherImporterProperties} which encapsulates the \emph{properties file} (see Section~\ref{sec:importer_application}), and \texttt{WeatherImporterException}, an exception class that is used throughout the application.
+The classes are arranged in two packages, \texttt{model} and \texttt{main}. The \texttt{model} package contains an object-oriented data model for the weather data being processed (see Section~\ref{sec:importer_model}). All other classes belong to the \texttt{main} package, including the \texttt{Main} class providing the \texttt{main} method, the classes \texttt{TurtleStatement} and \texttt{TurtleStore} for output in \emph{\acs{Turtle} syntax}~\cite{Turtle} (see Section~\ref{subsec:importer_turtle}), the interface \texttt{Importer} together with its reference implementation \texttt{YrNoImporter} (see Section~\ref{subsec:importer_fetch}), \texttt{WeatherImporterProperties} which encapsulates the \emph{properties file} (see Section~\ref{sec:importer_application}), and \texttt{WeatherImporterException}, an exception class that is used throughout the application.
 
 All classes belonging to \emph{Weather Importer} include comments suitable for use with the \emph{Javadoc Tool}~\cite{javadoc}.
 
@@ -90,7 +90,7 @@ In \texttt{fetch} mode, \emph{Weather Importer} reads the \smarthomeweather onto
 
 To provide the reference implementation that is found in the class \texttt{YrNoImporter}, \emph{Weather Importer} obtains weather data from \yrno as described in Section~\ref{sec:weather_data_yr_no}. Any other sources for weather data, regardless whether that sources are weather sensors, Internet weather services or any combination of a set of these, can be utilised by creating a class that implements the interface \texttt{Importer}. This interface defines a single method named \texttt{fetchWeather()} that returns a \texttt{Weather} object containing all weather data obtained from sensors and/or services.
 
-By calling the method \texttt{createIndividuals()} of that \texttt{Weather} object, the weather data is added \emph{Apache Jena}'s in-memory representation of the ontology. Eventually, the modified ontology is written back to a file in \emph{RDF/XML} syntax.
+By calling the method \texttt{createIndividuals()} of that \texttt{Weather} object, the weather data is added to \emph{Apache Jena}'s in-memory representation of the ontology. Eventually, the modified ontology is written back to a file in \emph{RDF/XML} syntax.
 
 As most weather services do not provide data for arbitrary points in time, the \texttt{Weather} class provides the method \texttt{normalizeWeatherReports()}. It transforms the data encapsulated by the \texttt{Weather} object in the following ways:
 \begin{itemize}
@@ -183,7 +183,7 @@ weather:dateTime0           time:year                             "2013"^^xsd:gY
 \label{listing:importer_timestamps2}
 \end{mintlisting}
 
-In \texttt{timestamp} mode, for each instance of \Egls{weather report} stored in the ontology its \Egls{observation time} is retrieved and the difference to the current time in hours is calculated. This difference is then subtracted from both the individual's \Egls{start time} and \Egls{end time}; the difference is added to the individual's \Egls{observation time}. Listing~\ref{listing:importer_timestamps1} shows a part of the statements generated by running \emph{Weather Importer} in \texttt{fetch} mode; Listing~\ref{listing:importer_timestamps2} shows the statements that have been modified by \emph{Weather Importer} running in \texttt{timestamps} mode two hours later; the altered statements include
+In \texttt{timestamps} mode, for each instance of \Egls{weather report} stored in the ontology its \Egls{observation time} is retrieved and the difference to the current time in hours is calculated. This difference is then subtracted from both the individual's \Egls{start time} and \Egls{end time}; the difference is added to the individual's \Egls{observation time}. Listing~\ref{listing:importer_timestamps1} shows a part of the statements generated by running \emph{Weather Importer} in \texttt{fetch} mode; Listing~\ref{listing:importer_timestamps2} shows the statements that have been modified by \emph{Weather Importer} running in \texttt{timestamps} mode two hours later; the altered statements include
 
 \begin{itemize}
   \item the properties \texttt{weather:hasStartTime} and \texttt{weather:hasEndTime} of the individuals \texttt{weather:weatherReport2} and \texttt{weather:weatherReport3} and
@@ -222,7 +222,7 @@ Section~\ref{sec:appendix_turtle_output} in the appendix shows a part of the out
 \section{Unit tests}
 \label{sec:importer_tests}
 
-\emph{Weather Importer} incorporates a set of \emph{JUnit}~\cite{junit} tests that cover reasoning in the \smarthomeweather ontology and the application itself. For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used. Additionally, \emph{Cobertura} extends the \emph{JUnit} framework by the generation of a coverage report that lists in detail how often the lines in all Java class files are executed during the unit tests. Using \emph{Cobertura}, it is possible to determine if every line of code that is intended to be tested is actually tested. According to the analysis generated by \emph{Cobertura}, the coverage is \num{100}~\% for all classes that are target of unit tests.
+\emph{Weather Importer} incorporates a set of \emph{JUnit}~\cite{junit} tests that cover reasoning in the \smarthomeweather ontology and the application itself. For testing correct reasoning, the \emph{Apache Jena} framework and the \emph{Pellet} reasoner are used. Additionally, \emph{Cobertura}~\cite{cobertura} extends the \emph{JUnit} framework by the generation of a coverage report that lists in detail how often the lines in all Java class files are executed during the unit tests. Using \emph{Cobertura}, it is possible to determine if every line of code that is intended to be tested is actually tested. According to the analysis generated by \emph{Cobertura}, the coverage is \num{100}~\% for all classes that are target of unit tests.
 
 The following test categories are implemented:
 \begin{itemize}
@@ -240,7 +240,7 @@ All test cases of \emph{category 1} and \emph{category 2} share the same approac
   \item Using \emph{Apache Jena}, the \smarthomeweather ontology is read from its \emph{RDF/XML} representation from disk and an in-memory representation is created.
   \item One or more test individuals together with their properties are added to the in-memory ontology. For example, when testing the correct functionality of the sub-concept \Egls{room temperature} of \Egls{temperature}, an instance of \Egls{weather phenomenon} is generated together with a property of type \egls{has temperature value} that assigns the value of \SI{20}{\celsius} to the \Egls{weather phenomenon} using the \muo ontology.
   \item The \emph{Pellet} reasoner is invoked to obtain all statements that can be inferred from the currently available knowledge base.
-  \item The set of all statements that include the previously generated instance(s) is compared to a predefined set of expected statements. For the test case to be successful, the two sets must match.
+  \item The set of all statements that includes the previously generated instance(s) is compared to a predefined set of expected statements. For the test case to be successful, the two sets must match.
   
   In the above example of testing \Egls{room temperature}, the created instance of \Egls{weather phenomenon} must be inferred to be an instance of \Egls{weather phenomenon}, \Egls{temperature}, and \Egls{room temperature}. Additionally, it must not be an instance of \Egls{frost}, \Egls{cold}, \Egls{below room temperature}, \Egls{above room temperature}, or \Egls{heat}.
   \item The in-memory representation of \smarthomeweather is destroyed.
