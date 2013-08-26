@@ -247,10 +247,8 @@ All test cases of \emph{category 1} and \emph{category 2} share the same approac
   \item The steps 1 to 5 are repeated to perform another test. When testing \Egls{room temperature}, another temperature value could be chosen  or another sub-concept of \Egls{temperature} could be selected. \Egls{temperature} is tested with values in the range from \SI{-100}{\celsius} to \SI{100}{\celsius}, with a resolution of \SI{0.1}{\celsius} between \SI{0}{\celsius} and \SI{30}{\celsius} and \SI{0.5}{\celsius} otherwise. As soon as all these values have been tested, another sub-concept of \Egls{weather phenomenon} becomes the subject of the unit tests.
 \end{enumerate}
 
-% TODO number of test cases
 During a full test run, the above steps are executed \num{4620} times for \emph{category 1} test cases and \num{2250} times for \emph{category 2} test cases.
 
-% TODO number of test cases
 A test of \emph{category 3} is implemented using a pre-defined snippet containing an \eacs{XML} document as it is returned by the \eacs{API} of \yrno. This snippet is fed into the \emph{Weather Importer} to generate an object-oriented data model. Then it is verified whether this data model contains exactly the data from the snippet. Some of the snippets are invalid, i.e.\ the \eacs{XML} document does not adhere to the \eacs{XML} \emph{Schema} definition of \yrno's \eacs{API}~\cite{yrno_schema}.
 In that case, the \emph{Weather Importer} is expected to fail with an appropriate error message. The total number of different snippets used for \emph{category 3} \emph{JUnit} test cases is \num{31}.
 
