@@ -6,7 +6,7 @@ DIA             = dia
 INKSCAPE        = inkscape
 GHOSTSCRIPT     = gs
 
-.PHONY: clean dia inkscape clean-dia clean-inkscape clean-poster poster print
+.PHONY: clean dia inkscape clean-dia clean-inkscape clean-poster poster print clean-figures
 
 define cmyk-command
 $(GHOSTSCRIPT) -o $@ -sDEVICE=pdfwrite -sProcessColorModel=DeviceCMYK -sColorConversionStrategy=CMYK -sColorConversionStrategyForImages=CMYK $<
@@ -45,13 +45,22 @@ $(INKSCAPE_DIR)/%.pdf: $(INKSCAPE_DIR)/%_rgb.pdf
 $(INKSCAPE_DIR)/%_rgb.pdf: $(INKSCAPE_DIR)/%.svg
 	$(inkscape-command)
 
-poster.pdf: poster.tex dia inkscape
+poster.pdf: poster.tex dia inkscape figures/background.jpg
 	pdflatex -shell-escape poster.tex
 
-poster_print.pdf: poster.tex dia inkscape
+poster_print.pdf: poster.tex dia inkscape figures/background_cmyk.jpg
 	pdflatex -shell-escape poster_print.tex
 
-clean: clean-poster clean-dia clean-inkscape
+figures/background.jpg: figures/background_print.jpg
+	convert -quality 96 figures/background_print.jpg figures/background.jpg
+
+figures/background_cmyk.jpg: figures/background_print.jpg
+	convert -quality 100 -profile profiles/AppleRGB.icc -profile profiles/EuroscaleUncoated.icc figures/background_print.jpg figures/background_cmyk.jpg
+
+clean: clean-poster clean-dia clean-inkscape clean-figures
+
+clean-figures:
+	rm -f figures/background_cmyk.jpg figures/background.jpg
 
 clean-dia:
 	rm -f $(DIA_DIR)/*.pdf
