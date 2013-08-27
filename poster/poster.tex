@@ -116,8 +116,7 @@
 
 \DeclareUnicodeCharacter{21D2}{$\Rightarrow$}
 \DeclareUnicodeCharacter{2227}{$\wedge$}
-\DeclareUnicodeCharacter{00A0}{~}
-
+%\DeclareUnicodeCharacter{00A0}{~}
 
 %\PrerenderUnicode{⇒}
 %\PrerenderUnicode{∧}
@@ -278,17 +277,22 @@
 	      \hspace{5mm}
               \begin{minipage}{\dimexpr\textwidth-2cm}
               \vspace{11mm}
-    	      \begin{minted}{text}
-hasWeatherPhenomenon(?s1, ?t1) ∧
-  hasTemperatureValue(?t1, ?v1) ∧
+	      \ttfamily\tiny
+\noindent hasWeatherPhenomenon(?s1, ?t1) $\wedge$
 
-  hasWeatherPhenomenon(?s2, ?t2) ∧
-  hasTemperatureValue(?t2, ?v2) ∧
+~~hasTemperatureValue(?t1, ?v1) $\wedge$
 
-  greaterThan(?v2, ?v1) ∧
-  hasNextWeatherState(?s1, ?s2) ⇒
-    increasingTemperature(?s1, ?s2)
-    	      \end{minted}
+\vspace{1.5em}
+~~hasWeatherPhenomenon(?s2, ?t2) $\wedge$
+
+~~hasTemperatureValue(?t2, ?v2) $\wedge$
+
+\vspace{1.45em}
+~~greaterThan(?v2, ?v1) $\wedge$
+
+~~hasNextWeatherState(?s1, ?s2) $\Rightarrow$
+
+~~~~increasingTemperature(?s1, ?s2)
     	      \vspace{10mm}
 	      \end{minipage}
             \end{minipage}
