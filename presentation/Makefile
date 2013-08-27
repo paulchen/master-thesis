@@ -32,7 +32,7 @@ $(DIA_DIR)/%.svg: $(DIA_DIR)/%.dia
 clean: clean-presentation clean-figures
 
 clean-presentation:
-	rm -f presentation.pdf presentation.aux presentation.log presentation.nav presentation.out presentation.snm presentation.toc presentation.bbl presentation.blg presentation.vrb
+	rm -f presentation.pdf presentation.aux presentation.log presentation.nav presentation.out presentation.snm presentation.toc presentation.bbl presentation.blg presentation.vrb *.aex *.pyg
 
 clean-figures:
 	rm -f figures/dia/*.pdf
