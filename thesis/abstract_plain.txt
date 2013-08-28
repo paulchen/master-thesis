@@ -1,0 +1,11 @@
+In the past few years, the idea of creating smart homes has gained popularity. A smart home possesses some kind of intelligence that allows it to support its inhabitants. The overall goal is to increase the inhabitants' comfort while energy use and costs are reduced as well.
+
+In the context of a project aimed at building smart home systems, this thesis aims at constructing an OWL ontology for weather information, containing data about both current conditions and weather forecasts. The data described by this ontology will enable smart home systems to make decisions based on current and future weather conditions.
+
+At first, the thesis will determine in which particular ways weather data can be used within smart homes. Furthermore, possible sources for weather data will be analysed. Primary sources will be weather services that are that are accessible via Internet. Optionally, local weather stations will be able to provide further data about current weather conditions. A set of Internet-based sources for weather data will be reviewed for their suitability for use within smart homes.
+
+Afterwards, existing ontologies will be reviewed for their structure, advantages, and disadvantages in order to acquire ideas being suitable to be re-used. Several well-known approaches for building new ontologies from scratch will be discussed in detail.
+
+The thesis will follow METHONTOLOGY, the best-fitting of these approaches, to build SmartHomeWeather, an OWL ontology that covers both the weather data being available and the concepts required to perform weather-related tasks within smart homes while always keeping the possibility of simple and efficient OWL reasoning in mind.
+
+Eventually, Weather Importer, a Java application, will be developed that gathers data from weather services and local weather stations and transforms it to comply with the SmartHomeWeather ontology.
