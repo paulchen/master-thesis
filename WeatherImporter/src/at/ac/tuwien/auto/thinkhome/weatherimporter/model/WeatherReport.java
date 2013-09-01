@@ -149,6 +149,8 @@ public class WeatherReport implements OntologyClass {
 			weatherState.setPreviousState(previousReport.getState());
 		}
 		weatherState.createIndividuals(onto);
+		
+		onto.add(onto.createStatement(individual, onto.getProperty(Weather.NAMESPACE + "hasWeatherState"), weatherState.getIndividual()));
 	}
 
 	@Override
