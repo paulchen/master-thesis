@@ -113,7 +113,11 @@
 \DeclareUnicodeCharacter{21D2}{$\Rightarrow$}
 \DeclareUnicodeCharacter{2227}{$\wedge$}
 
+\usepackage{xspace}
+
 \begin{document}
+
+\newcommand{\smarthomeweather}{\emph{Smart\-Home\-Weather}\xspace}
 
 \begin{frame}
   \titlepage
@@ -181,6 +185,8 @@
 		\item Irrigation.
 		\item Preparations for severe weather.
 	\end{itemize}
+	\vspace{1em}
+	\smarthomeweather is an ontology covering current and future weather data.
 \end{frame}
 
 \section{Existing work}
@@ -196,7 +202,7 @@
 		\item NNEW
 		\item …
 	\end{itemize}
-
+	\vspace{1em}
 	Unfortunately, none of them was found to be suitable for smart homes.
 \end{frame}
 
@@ -211,12 +217,26 @@
 				\item …
 			\end{itemize}
 	\end{itemize}
+	\vspace{1em}
+	However, all these ontologies come with various drawbacks.
+\end{frame}
+
+\begin{frame}{Measurement Units Ontology (1)}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{figures/dia/muo1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Measurement Units Ontology (2)}
+	\begin{center}
+		\includegraphics[width=\textwidth]{figures/dia/muo2}
+	\end{center}
 \end{frame}
 
 \subsection{Weather data}
 
 \begin{frame}{Sensors and services}
-	SmartHomeWeather retrieves data from local weather sensors and Internet weather services.
+	\smarthomeweather retrieves data from local weather sensors and Internet weather services.
 
 	\begin{itemize}
 		\item Arbitrary number of sources possible.
@@ -250,18 +270,18 @@
 \end{frame}
 
 \begin{frame}{Weather elements}
-	Weather elements currently used in SmartHomeWeather:
+	Weather elements currently used in \smarthomeweather:
 	\begin{itemize}
 		\item Temperature
 		\item Relative humidity
 		\item Dew point
-		\item Cloud coverage
-		\item Precipitation
-		\item Wind
+		\item Cloud coverage (altitude and amount cloud cover)
+		\item Precipitation (intensity and probability)
+		\item Wind (speed and direction)
 		\item Atmospheric pressure
 		\item Solar radiation
-		\item Position of the sun
-		\item Weather condition
+		\item Position of the sun (azimuth, elevation angle)
+		\item Weather condition (sunshine, rain, snow, …)
 	\end{itemize}
 \end{frame}
 
@@ -316,15 +336,15 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}{Concept hierarchies: Weather state}
-	\begin{center}
-		\includegraphics[width=.8\textwidth]{figures/dia/weather-state}
-	\end{center}
-\end{frame}
-
 \begin{frame}{Concept hierarchies: Weather report}
 	\begin{center}
 		\includegraphics[width=\textwidth]{figures/dia/weather-report}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Concept hierarchies: Weather state}
+	\begin{center}
+		\includegraphics[width=.8\textwidth]{figures/dia/weather-state}
 	\end{center}
 \end{frame}
 
@@ -337,7 +357,7 @@
 
 	\begin{itemize}
 		\item Import from sensors and Internet services.
-		\item Unit tests for SmartHomeWeather and Weather Importer.
+		\item Unit tests for \smarthomeweather and Weather Importer.
 	\end{itemize}
 \end{frame}
 
@@ -376,8 +396,8 @@ hasWeatherPhenomenon(?s1, ?t1) ∧
 \begin{frame}{Conclusion}
 	Results:
 	\begin{itemize}
-		\item SmartHomeWeather allows predictive control based on weather data within smart homes.
-		\item Weather Importer retrieves weather data from various sources into SmartHomeWeather.
+		\item \smarthomeweather allows predictive control based on weather data within smart homes.
+		\item Weather Importer retrieves weather data from various sources into \smarthomeweather.
 	\end{itemize}
 
 	Future work:
