@@ -1,0 +1,75 @@
+Title page: Überleitung -- Einleitung oder "Nachdem der Titel bereits vorweggenommen wurde"
+
+Outline: Worum geht es überhaupt? Wovon gehen wir aus? Was gibt es schon? Was wurde entwickelt?
+
+Smart Homes: Intelligentes Wohnen -> Smart Homes (!). Bestandteile:
+  Sensoren: Temperaturfühler, Überwachungskamera, Bewegungsmelder
+  Aktor: Heizungssteuerung, elektrische Schalter, Beleuchtungsregelung
+
+Problems of Smart Homes: viele Eingabeparameter, komplexe Prozesse
+  Benutzer nicht zufrieden; nehmen Abstand davon, Smart Homes zu nutzen.
+  Potenzial wird nicht ausgeschöpft.
+
+ThinkHome:
+  Grafik aus ThinkHome-Artikel entnommen
+  Wissensbasis auf Ontologiebasis: Sammlung von Daten aus verschiedenen Quellen, bietet Möglichkeiten zur Verarbeitung und Verknüpfung
+  Multiagentensystem: verwendet Daten, trifft Entscheidungen, setzt sie um
+
+Weather data: Idee von SmartHomeWeather; Predictive Control
+
+Outline: Übergang -- Worauf wird aufgebaut?
+
+Weather ontologies:
+  Probleme: Fehlen von Wetterelementen, keine Unterstützung zukünftiger Daten, zu komplex, zu umfangreich, nur ein kleiner Teil brauchbar
+
+Related ontologies:
+  Probleme: veraltet; im Entwicklungsstadium; Komplexität, die man sich einfängt
+
+Measurement Units Ontology: Komplexität am Beispiel von MUO zeigen
+
+Outline: Überleitung
+
+Sensors and Services: modulares Konzept, einfaches Modell; Aufwand für neue Wetterdienste
+
+Weather sensors:
+
+Weather services: neun Wetterdienste untersucht
+  yr.no - Kriterien beschreiben
+
+Weather elements: auf Basis von Sensoren und Diensten verfügbaren oder berechenbaren Daten
+  Berechnung: Temperatur, Luftfeuchtigkeit, Taupunkt; Sonnenstand
+
+Outline: Übergang
+
+Methodologien: Entwicklung neuer Ontologien; fünf wurden behandelt, kurze Beschreibungen
+
+METHONTOLOGY: Grafik zeigt generelle Einteilung der Entwicklung, definiert von den Autoren
+
+Outline: Überleitung -- soviel zu bereits Existierendem
+  Nun: METHONTOLOGY angewandt auf Gebiet von Wetterdaten, Verwendung bestehender Ontologien
+
+Competency questions: sollen von SmartHomeWeather beantwortet werden
+
+Overview: Top-level-Konzepte, Beziehungen
+  Hierarchien: Weather phenomenon, Weather report, Weather state
+  Weather source: nur from sensor/service
+
+Concept hierarchies: Weather phenomenon, Temperature, Weather report
+
+Concept hierarchies: Weather state: teilweise speziell für Smart Homes, kann angepasst werden
+
+Outline: Daten müssen von irgendwoher kommen
+
+Weather Importer: OO-Modell angelehnt an Modell in Ontologie; nur Top-Level-Klassen
+  modularer Aufbau, Importer kann ausgetauscht werden
+
+SPARQL and SWRL (1): Beantwortung von Competency Questions, Open World Assumption; SPAQL
+  hier: Frost innerhalb der nächsten drei Stunden
+
+SPARQL and SWRL (2): SWRL; steigende Temperatur zwischen zwei aufeinanderfolgenden Weather States
+
+Outline: dann bleibt noch das Resümee
+
+Conclusion: weitere Einsatzgebiete
+
+The End: Danke für die Aufmerksamkeit!
