@@ -25,7 +25,7 @@
 
 
 <rdf:RDF xmlns="http://paul.staroch.name/thesis/SmartHomeWeather.owl#"
-     xml:base="http://paul.staroch.name/thesis/SmartHomeWeather.owl"
+     xml:base="http://paul.staroch.name/thesis/SmartHomeWeather.owl#"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:fraction="&ucum;unit/fraction/"
      xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
@@ -44,10 +44,30 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:length="&ucum;unit/length/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:power="&ucum;unit/power/">
-    <owl:Ontology rdf:about="http://paul.staroch.name/thesis/SmartHomeWeather.owl">
+     xmlns:power="&ucum;unit/power/"
+     xmlns:shw="http://paul.staroch.name/thesis/SmartHomeWeather.owl#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:cc="http://creativecommons.org/ns#">
+    <owl:Ontology rdf:about="http://paul.staroch.name/thesis/SmartHomeWeather.owl#">
         <owl:imports rdf:resource="http://purl.oclc.org/NET/muo/ucum/"/>
         <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+	<vann:preferredNamespacePrefix>shw</vann:preferredNamespacePrefix>
+	<vann:preferredNamespaceUri>http://paul.staroch.name/thesis/SmartHomeWeather.owl</vann:preferredNamespaceUri>
+	<dc:title>SmartHomeWeather</dc:title>
+	<dc:description>A ontology defining weather-related concepts and properties being relevant to smart home systems that provide predictive control.</dc:description>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-08-29</dc:issued>
+	<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-01-14</dc:modified>
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</owl:versionInfo>
+	<cc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+	<dc:contributor>
+		<foaf:Person rdf:about="http://paul.staroch.name/foaf/staroch.rdf#paul" />
+	</dc:contributor>
+	<dc:publisher>
+		<foaf:Person rdf:about="http://paul.staroch.name/foaf/staroch.rdf#paul" />
+	</dc:publisher>
+	<dc:creator>
+		<foaf:Person rdf:about="http://paul.staroch.name/foaf/staroch.rdf#paul" />
+	</dc:creator>
     </owl:Ontology>
     
 
